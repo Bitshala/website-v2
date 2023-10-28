@@ -10,7 +10,7 @@ module.exports = {
     },
     fontFamily: {
       header: "Firs Neue, sans-serif",
-      base: "AeonikFono, sans-serif",
+      base: "Aeonik Fono, sans-serif",
     },
     extend: {},
   },
