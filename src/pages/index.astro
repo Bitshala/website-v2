@@ -1,4 +1,5 @@
 ---
+import Carousel from "../components/Carousel";
 import Layout from "../layouts/Layout.astro";
 ---
 
@@ -10,7 +11,7 @@ import Layout from "../layouts/Layout.astro";
       backgroundRepeat: "no-repeat",
       backgroundPosition: "center",
     }}
-    class="m-auto flex min-h-[90vh] max-w-[90vw] flex-col items-center justify-between rounded-lg bg-black p-[10%]"
+    class="m-auto flex min-h-[90vh] flex-col items-center justify-between rounded-lg bg-black p-[10%]"
   >
     <h1 class="font-header text-6xl leading-4 text-white lg:text-[15rem]">
       Bitshala:
@@ -32,4 +33,5 @@ import Layout from "../layouts/Layout.astro";
       >
     </div>
   </main>
+  <Carousel client:visible/>
 </Layout>
