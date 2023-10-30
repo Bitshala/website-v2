@@ -1,6 +1,8 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
+  content: [
+    "./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}",
+  ],
   theme: {
     colors: {
       black: "#333333",
@@ -10,7 +12,7 @@ module.exports = {
     },
     fontFamily: {
       header: "Firs Neue, sans-serif",
-      base: "AeonikFono, sans-serif",
+      base: "Aeonik Fono, sans-serif",
     },
     extend: {},
   },
