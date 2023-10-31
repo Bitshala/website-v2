@@ -1,7 +1,70 @@
+---
+const list1 = [
+  {
+    name: "Twitter",
+    link: "https://twitter.com/bitshala_org",
+  },
+  {
+    name: "YouTube",
+    link: "https://www.youtube.com/@bitshala/videos",
+  },
+  {
+    name: "LinkedIn",
+    link: "https://www.linkedin.com/company/bitshala",
+  },
+  {
+    name: "Instagram",
+    link: "",
+  },
+];
+
+const list2 = [
+  {
+    name: "Team",
+    link: "",
+  },
+  {
+    name: "Resources",
+    link: "",
+  },
+  {
+    name: "Contact",
+    link: "",
+  },
+  {
+    name: "Careers",
+    link: "",
+  },
+];
+
+const list3 = [
+  {
+    name: "Register for Cohort",
+    link: "",
+  },
+  {
+    name: "Bitcoin Study Cohort",
+    link: "",
+  },
+  {
+    name: "Bitcoin Review Club",
+    link: "",
+  },
+  {
+    name: "Bitcoin Talks",
+    link: "",
+  },
+  {
+    name: " Bitcoin Deep Dive",
+    link: "",
+  },
+];
+---
+
 <footer class="mt-5">
   <hr class="opacity-20" />
   <div
-    class="items-center justify-between bg-[#ffdec7] px-3 py-10 sm:flex sm:flex-col md:flex md:flex-row"
+    class="items-center justify-between bg-peach px-3 py-10 sm:flex sm:flex-col md:flex md:flex-row"
   >
     <div
       class="mb-3 text-lg sm:w-full md:ml-5 md:w-3/6 md:text-xl xl:text-3xl"
@@ -31,74 +94,37 @@
       <div>Copyright © 2023 Bitshala</div>
     </div>
     <div class="m-3 p-3">
-      <a
-        href="https://twitter.com/bitshala_org"
-        target="_blank"
-      >
-        <div
-          class="my-1 text-sm hover:font-bold lg:text-xl"
-        >
-          Twitter
-        </div>
-      </a>
-      <a
-        href="https://www.youtube.com/@bitshala/videos"
-        target="_blank"
-      >
-        <div
-          class="my-1 text-sm hover:font-bold lg:text-xl"
-        >
-          YouTube
-        </div>
-      </a>
-      <a
-        href="https://www.linkedin.com/company/bitshala"
-        target="_blank"
-      >
-        <div
-          class="my-1 text-sm hover:font-bold lg:text-xl"
-        >
-          LinkedIn
-        </div>
-      </a>
-      <a>
-        <div
-          class="my-1 text-sm hover:font-bold lg:text-xl"
-        >
-          Instagram
-        </div>
-      </a>
+      {
+        list1.map((li) => (
+          <a href={li.link} target="_blank">
+            <div class="my-1 text-sm hover:font-bold lg:text-xl">
+              {li.name}
+            </div>
+          </a>
+        ))
+      }
     </div>
     <div class="m-3 p-3">
-      <div class="my-1 text-sm hover:font-bold lg:text-xl">
-        Team
-      </div>
-      <div class="my-1 text-sm hover:font-bold lg:text-xl">
-        Resources
-      </div>
-      <div class="my-1 text-sm hover:font-bold lg:text-xl">
-        Contact
-      </div>
-      <div class="my-1 text-sm hover:font-bold lg:text-xl">
-        Career
-      </div>
+      {
+        list2.map((li) => (
+          <a href={li.link} target="_blank">
+            <div class="my-1 text-sm hover:font-bold lg:text-xl">
+              {li.name}
+            </div>
+          </a>
+        ))
+      }
     </div>
     <div class="m-3 p-3">
-      <div class="my-1 text-sm hover:font-bold lg:text-xl">
-        Register for Cohort
-      </div>
-      <div class="my-1 text-sm hover:font-bold lg:text-xl">
-        Bitcoin Study Cohort
-      </div>
-      <div class="my-1 text-sm hover:font-bold lg:text-xl">
-        Bitcoin Review Club
-      </div>
-      <div class="my-1 text-sm hover:font-bold lg:text-xl">
-        Bitcoin Talks
-      </div>
-      <div class="my-1 text-sm hover:font-bold lg:text-xl">
-        Bitcoin Deediv Dive
-      </div>
+      {
+        list3.map((li) => (
+          <a href={li.link} target="_blank">
+            <div class="my-1 text-sm hover:font-bold lg:text-xl">
+              {li.name}
+            </div>
+          </a>
+        ))
+      }
     </div>
     <div class="m-3 hidden p-3 lg:inline">
       <div class="mt-80 flex justify-end">
