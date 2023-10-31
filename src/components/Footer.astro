@@ -1,0 +1,135 @@
+---
+const list1 = [
+  {
+    name: "Twitter",
+    link: "https://twitter.com/bitshala_org",
+  },
+  {
+    name: "YouTube",
+    link: "https://www.youtube.com/@bitshala/videos",
+  },
+  {
+    name: "LinkedIn",
+    link: "https://www.linkedin.com/company/bitshala",
+  },
+  {
+    name: "Instagram",
+    link: "",
+  },
+];
+
+const list2 = [
+  {
+    name: "Team",
+    link: "",
+  },
+  {
+    name: "Resources",
+    link: "",
+  },
+  {
+    name: "Contact",
+    link: "",
+  },
+  {
+    name: "Careers",
+    link: "",
+  },
+];
+
+const list3 = [
+  {
+    name: "Register for Cohort",
+    link: "",
+  },
+  {
+    name: "Bitcoin Study Cohort",
+    link: "",
+  },
+  {
+    name: "Bitcoin Review Club",
+    link: "",
+  },
+  {
+    name: "Bitcoin Talks",
+    link: "",
+  },
+  {
+    name: " Bitcoin Deep Dive",
+    link: "",
+  },
+];
+---
+
+<footer class="mt-5">
+  <hr class="opacity-20" />
+  <div
+    class="items-center justify-between bg-peach px-3 py-10 sm:flex sm:flex-col md:flex md:flex-row"
+  >
+    <div
+      class="mb-3 text-lg sm:w-full md:ml-5 md:w-3/6 md:text-xl xl:text-3xl"
+    >
+      We got a sweet little <span class="font-bold"
+        >discord community</span
+      > of hungry and passionate Bitcoin developers....
+    </div>
+    <a href="https://discord.gg/Sg8vT3aX" target="_blank">
+      <div
+        class="rounded-lg border-2 border-dotted p-2 text-sm hover:bg-orange md:text-xl lg:mr-5 lg:px-10 lg:py-5 xl:text-3xl"
+      >
+        Ahh.. I think I'll fit right in
+      </div>
+    </a>
+  </div>
+
+  <hr class="opacity-20" />
+  <div
+    class="grid grid-cols-3 divide-x bg-[url('../../public/footer/bitshala.png')] bg-cover lg:grid-cols-5"
+  >
+    <div class="m-3 hidden p-3 lg:inline">
+      <img
+        src="../../public/footer/logo.png"
+        class="mb-60 h-16"
+      />
+      <div>Copyright © 2023 Bitshala</div>
+    </div>
+    <div class="m-3 p-3">
+      {
+        list1.map((li) => (
+          <a href={li.link} target="_blank">
+            <div class="my-1 text-sm hover:font-bold lg:text-xl">
+              {li.name}
+            </div>
+          </a>
+        ))
+      }
+    </div>
+    <div class="m-3 p-3">
+      {
+        list2.map((li) => (
+          <a href={li.link} target="_blank">
+            <div class="my-1 text-sm hover:font-bold lg:text-xl">
+              {li.name}
+            </div>
+          </a>
+        ))
+      }
+    </div>
+    <div class="m-3 p-3">
+      {
+        list3.map((li) => (
+          <a href={li.link} target="_blank">
+            <div class="my-1 text-sm hover:font-bold lg:text-xl">
+              {li.name}
+            </div>
+          </a>
+        ))
+      }
+    </div>
+    <div class="m-3 hidden p-3 lg:inline">
+      <div class="mt-80 flex justify-end">
+        Back to top ⬆️
+      </div>
+    </div>
+  </div>
+</footer>
