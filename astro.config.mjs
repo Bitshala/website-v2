@@ -5,7 +5,7 @@ import react from "@astrojs/react";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://bitshala.github.io",
-  base: "/website-v2",
+  site: "https://bitshala.github.io/website-v2",
+  base: "",
   integrations: [tailwind(), react()],
 });
