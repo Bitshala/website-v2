@@ -4,6 +4,7 @@ import Layout from "../layouts/Layout.astro";
 import Footer from "../components/Footer.astro";
 import Testimonial from "../components/Testimonial.astro";
 import People from "../components/People.astro";
+import Hamburger from "../components/hamburger";
 ---
 
 <Layout title="Welcome to Bitshala">
@@ -14,8 +15,12 @@ import People from "../components/People.astro";
       backgroundRepeat: "no-repeat",
       backgroundPosition: "center",
     }}
-    class="m-auto flex min-h-[90vh] flex-col items-center justify-between rounded-lg bg-black p-[10%]"
+    class="m-auto flex min-h-[90vh] flex-col items-center justify-between gap-12 rounded-lg bg-black px-5 py-[10%] pt-4"
   >
+    <div class="mb-10 flex w-full justify-between">
+      <img src="website-v2/footer/logo.png" class="h-16" />
+      <Hamburger client:only />
+    </div>
     <h1
       class="font-header text-6xl leading-4 text-white lg:text-[15rem]"
     >
