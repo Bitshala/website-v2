@@ -56,6 +56,7 @@ const Hamburger = () => {
 
 const SideMenu = () => {
   const links = [
+    { name: "Discord" },
     { name: "Cohorts" },
     { name: "Review Club" },
     { name: "Talks" },
