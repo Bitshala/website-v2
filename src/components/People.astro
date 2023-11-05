@@ -1,0 +1,175 @@
+---
+const team = [
+  {
+    name: "Raj Maitra",
+    desc: "From pen-and-paper engineer to keyboard maverick in many rabbit holes. Often a chaos creator, and yes he’s an actual rabbit.",
+    image: "raj",
+    bgColor: "bg-black",
+    textColor: "text-white",
+    headingColor: "text-orange",
+    twitter: "https://twitter.com/RajarshiMaitra",
+    github: "https://github.com/rajarshimaitra",
+  },
+  {
+    name: "Setu Saurabh",
+    desc: "PM juggling FOSS Bitcoin projects and commercial ventures like a graceful circus performer. It's his Bitcoin extravaganza!",
+    image: "setu",
+    bgColor: "bg-orange",
+    textColor: "text-black",
+    headingColor: "text-black",
+  },
+  {
+    name: "Stratospher",
+    desc: "PM juggling FOSS Bitcoin projects and commercial ventures like a graceful circus performer. It's his Bitcoin extravaganza!",
+    image: "stratospher",
+    bgColor: "bg-orange",
+    textColor: "text-black",
+    headingColor: "text-black",
+  },
+  {
+    name: "Anmol Sharma",
+    desc: "When he is not talking about Bitcoin,he is busy writing code. But let's be honest, he is usually busy talking about Bitcoin.",
+    image: "anmol",
+    bgColor: "bg-black",
+    textColor: "text-white",
+    headingColor: "text-orange",
+  },
+  {
+    name: "Keraliss",
+    desc: "Cozied up by a river in his humble hut with just his laptop, he codes. He says he has all he needs.",
+    image: "keraliss",
+    bgColor: "bg-black",
+    textColor: "text-white",
+    headingColor: "text-orange",
+  },
+  {
+    name: "Ayush Rajpal",
+    desc: "we will have rewrite it in 3rd person tho.. but write a description of yoyrself in whatever form you",
+    image: "paperpsyche",
+    bgColor: "bg-orange",
+    textColor: "text-black",
+    headingColor: "text-black",
+  },
+];
+
+const advisors = [
+  {
+    name: "Adam Jonas",
+    desc: "We don’t know what he does, nobody does. And we’ve stopped asking.",
+    image: "adam",
+    bgColor: "bg-orange",
+    textColor: "text-black",
+    headingColor: "text-black",
+  },
+  {
+    name: "Adi Shankar",
+    desc: "Our puzzling friend who is behind our logo and our name. Though he has been aloof for most of it.",
+    image: "adi",
+    bgColor: "bg-black",
+    textColor: "text-white",
+    headingColor: "text-orange",
+  },
+];
+---
+
+<div>
+  <p class="mt-20 text-center text-2xl">
+    Our Team and Advisors
+  </p>
+  <div class="relative hidden xl:inline">
+    <p class="text-center font-bold lg:text-[32rem]">
+      people
+    </p>
+  </div>
+
+  <div
+    class="my-8 text-center text-3xl font-bold xl:hidden"
+  >
+    Our People
+  </div>
+
+  <div
+    class="mt-2 grid grid-cols-1 gap-2 lg:grid-cols-2 lg:gap-x-12 lg:gap-y-6"
+  >
+    {
+      team.map((member) => (
+        <div
+          class={`flex w-full items-center rounded-xl ${member.bgColor} ${member.textColor}}`}
+        >
+          <img
+            src={`website-v2/people/${member.image}.png`}
+            class="h-28 items-center p-3 lg:h-40"
+          />
+          <div class="flex w-full flex-col">
+            <div class="flex w-full justify-between px-5 py-3">
+              <p
+                class={`font-header text-xl font-extrabold ${member.headingColor} lg:text-5xl`}
+              >
+                {member.name}
+              </p>
+              <div class="flex">
+                <a href={member.github} target="_blank">
+                  <img
+                    src="website-v2/people/github.png"
+                    class="m-1 h-6 rounded-xl bg-white lg:h-10"
+                  />
+                </a>
+                <a href={member.twitter} target="_blank">
+                  <img
+                    src="website-v2/people/twitter.png"
+                    class="m-1 h-6 rounded-xl bg-white lg:h-10"
+                  />
+                </a>
+              </div>
+            </div>
+            <p
+              class={`lg:p3 px-1 ${member.textColor} text-sm lg:text-xl`}
+            >
+              {member.desc}
+            </p>
+          </div>
+        </div>
+      ))
+    }
+  </div>
+
+  <div class="my-5 text-center text-3xl">Our Advisors</div>
+  <div
+    class="mt-2 grid grid-cols-1 gap-2 lg:grid-cols-2 lg:gap-x-12 lg:gap-y-6"
+  >
+    {
+      advisors.map((member) => (
+        <div
+          class={`flex w-full items-center rounded-xl ${member.bgColor} ${member.textColor}}`}
+        >
+          <img
+            src={`website-v2/people/${member.image}.png`}
+            class="h-28 items-center p-3 lg:h-40"
+          />
+          <div class="flex w-full flex-col">
+            <div class="flex w-full justify-between px-5 py-3">
+              <p
+                class={`font-header text-xl font-extrabold ${member.headingColor} lg:text-5xl`}
+              >
+                {member.name}
+              </p>
+              <div class="flex">
+                <a>
+                  <img
+                    src="website-v2/people/twitter.png"
+                    class="m-1 h-8 rounded-xl bg-white lg:h-10"
+                  />
+                </a>
+              </div>
+            </div>
+            <p
+              class={`lg:p3 px-1 py-1 ${member.textColor} text-sm lg:text-xl`}
+            >
+              {member.desc}
+            </p>
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</div>
