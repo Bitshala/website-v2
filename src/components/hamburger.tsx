@@ -56,19 +56,18 @@ const Hamburger = () => {
 
 const SideMenu = () => {
   const links = [
-    { name: "Home" },
     { name: "Cohorts" },
     { name: "Review Club" },
     { name: "Talks" },
   ];
   return (
     <div className="flex h-full w-full flex-col pb-[10%]">
-      <div>
+      <a href="/website-v2">
         <img
           src="website-v2/footer/logo.png"
           className="h-16"
         />
-      </div>
+      </a>
       <div>
         <hr className="my-10 w-1/3 border-0 bg-orange outline outline-orange" />
       </div>
