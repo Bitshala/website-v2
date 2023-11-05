@@ -65,7 +65,7 @@ const SideMenu = () => {
     <div className="flex h-full w-full flex-col pb-[10%]">
       <a href="/website-v2">
         <img
-          src="website-v2/footer/logo.png"
+          src="/website-v2/footer/logo.png"
           className="h-16"
         />
       </a>
