@@ -56,8 +56,8 @@ const Hamburger = () => {
 
 const SideMenu = () => {
   const links = [
-    { name: "Discord" },
-    { name: "Cohorts" },
+    { name: "Discord", url:"https://discord.gg/ekzAUeeR", tar:'_blank' },
+    { name: "Cohorts", url:"/website-v2/cohort" },
     { name: "Review Club" },
     { name: "Talks" },
   ];
@@ -76,7 +76,7 @@ const SideMenu = () => {
       <ul className="flex h-1/2 flex-col justify-between">
         {links.map((link) => {
           return (
-            <a className="text-2xl text-white hover:text-peach">
+            <a href={link.url} target={link.tar} className="text-2xl text-white hover:text-peach">
               {link.name}
             </a>
           );
