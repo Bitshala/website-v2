@@ -1,6 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Hamburger from "../components/hamburger";
+import CohortCard from "../components/CohortCard.astro";
 ---
 
 <Layout title="Welcome to Bitshala">
@@ -31,10 +32,13 @@ import Hamburger from "../components/hamburger";
       > with a community of learners
     </h1>
     <p
-      class="w-2/3 text-center text-xl text-white lg:text-5xl"
+      class="w-2/3 text-center text-xl text-white lg:text-4xl xl:mb-10"
     >
       <span class="text-orange">Study Cohorts</span> Paving
       the Way to Bitcoin Mastery
     </p>
   </main>
+  <div class="xl:absolute xl:-bottom-96">
+    <CohortCard />
+  </div>
 </Layout>
