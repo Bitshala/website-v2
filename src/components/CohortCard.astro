@@ -1,32 +1,45 @@
 ---
 const cardsList = [
   {
-    name: "Learning Bitcoin From The Command Line",
+    name: "Learning Bitcoin From Command Line",
     img: "/website-v2/cohort/lbtcl.png",
     no: "02",
     desc: "Donec laoreet congue justo at rhoncus. Nam aliquet suscipit feugiat...",
-    bgColor: "bg-orange",
-    buttonBg: "bg-white",
-    buttonText: "text-black",
   },
   {
     name: "Mastering Bitcoin by Andreas M. ",
     img: "/website-v2/cohort/masteringBitcoin.png",
     no: "01",
     desc: "Donec laoreet congue justo at rhoncus. Nam aliquet suscipit feugiat...",
-    bgColor: "bg-black",
-    buttonBg: "bg-black",
-    buttonText: "text-white",
+  },
+  {
+    name: "Learning Bitcoin From Command Line",
+    img: "/website-v2/cohort/lbtcl.png",
+    no: "02",
+    desc: "Donec laoreet congue justo at rhoncus. Nam aliquet suscipit feugiat...",
+  },
+  {
+    name: "Mastering Bitcoin by Andreas M. ",
+    img: "/website-v2/cohort/masteringBitcoin.png",
+    no: "01",
+    desc: "Donec laoreet congue justo at rhoncus. Nam aliquet suscipit feugiat...",
   },
 ];
 ---
 
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+<div
+  class="grid grid-cols-1 gap-10 pl-6 pr-14 md:grid-cols-2 xl:grid-cols-4"
+>
+  <!-- <div class="flex justify-center"> -->
   {
     cardsList.map((card) => (
       <div>
         <div
-          class={` rounded-lg md:mx-5 ${card.bgColor} my-2 p-3 text-white`}
+          class={`rounded-2xl  ${
+            Number(card.no) % 2 == 0
+              ? "bg-orange"
+              : "bg-black"
+          } my-2  p-3 text-white`}
         >
           <img src={card.img} class="w-fit" />
           <div class="my-2 px-3">
@@ -39,7 +52,15 @@ const cardsList = [
             <p class="text-base lg:text-xl">{card.desc}</p>
           </div>
           <button
-            class={`my-2 w-full rounded-lg text-base lg:text-xl ${card.buttonBg} px-3 py-5 font-semibold ${card.buttonText} border-2 border-dotted border-white `}
+            class={`my-2 w-full rounded-lg text-base lg:text-xl ${
+              Number(card.no) % 2 == 0
+                ? "bg-white"
+                : "bg-black"
+            } px-3 py-5 font-semibold ${
+              Number(card.no) % 2 == 0
+                ? "text-black"
+                : "text-white"
+            } border-2 border-dotted border-white `}
           >
             Visit the Cohort Page
           </button>
