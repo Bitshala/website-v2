@@ -2,6 +2,9 @@
 import Layout from "../layouts/Layout.astro";
 import Hamburger from "../components/hamburger";
 import CohortCard from "../components/CohortCard.astro";
+import Footer from "../components/Footer.astro";
+import LearnWithUs from "../components/LearnWithUs";
+import Carousel from "../components/Carousel";
 ---
 
 <Layout title="Welcome to Bitshala">
@@ -38,7 +41,7 @@ import CohortCard from "../components/CohortCard.astro";
       the Way to Bitcoin Mastery
     </p>
   </main>
-  <div class="xl:absolute xl:-bottom-96">
-    <CohortCard />
-  </div>
+  <CohortCard />
+  <LearnWithUs client:visible />
+  <Footer />
 </Layout>
