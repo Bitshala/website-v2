@@ -4,6 +4,7 @@ import Hamburger from "../components/hamburger";
 import CohortCard from "../components/CohortCard.astro";
 import Footer from "../components/Footer.astro";
 import Carousel from "../components/Carousel";
+import { Faq } from "../components/Faq";
 ---
 
 <Layout title="Welcome to Bitshala">
@@ -41,6 +42,7 @@ import Carousel from "../components/Carousel";
     </p>
   </main>
   <CohortCard />
+  <Faq client:only />
   <Carousel client:only />
   <Footer />
 </Layout>
