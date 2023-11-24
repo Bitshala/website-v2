@@ -5,7 +5,34 @@ import CohortCard from "../components/CohortCard.astro";
 import Footer from "../components/Footer.astro";
 import Carousel from "../components/Carousel";
 import Header from "../components/Header.astro";
-import { Faq } from "../components/Faq";
+import { CollapseList } from "../components/CollapseList";
+
+const faqConfig = [
+  {
+    q: "How does the Bitcoin Study Cohort work?",
+    a: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ",
+  },
+  {
+    q: "Who can join the Bitcoin Study Cohort?",
+    a: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ",
+  },
+  {
+    q: "Is there a fee to join the cohort?",
+    a: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ",
+  },
+  {
+    q: "What resources are provided to participants?",
+    a: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ",
+  },
+  {
+    q: "Is there a fee to join the cohort?",
+    a: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ",
+  },
+  {
+    q: "What resources are provided to participants?",
+    a: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ",
+  },
+];
 ---
 
 <Layout title="Welcome to Bitshala">
@@ -18,7 +45,11 @@ import { Faq } from "../components/Faq";
   />
 
   <CohortCard />
-  <Faq client:only />
+  <CollapseList
+    listConfig={faqConfig}
+    header="Checkout some of the FAQs"
+    client:only
+  />
   <Carousel client:only />
   <Footer />
 </Layout>
