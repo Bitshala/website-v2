@@ -1,0 +1,18 @@
+---
+import Carousel from "../components/Carousel";
+import Footer from "../components/Footer.astro";
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+---
+
+<Layout title="PR Review Club">
+  <Header
+    heading="Ever wondered about the inner workings of Bitcoin Core?"
+    subheading="Then you’re invited to get your hands dirty with experienced contributors and live PR discussions."
+    image="/website-v2/header/PR_Review_Hero.png"
+    headingColor="text-white"
+    subheadingColor="text-white"
+  />
+  <Carousel client:visible />
+  <Footer />
+</Layout>

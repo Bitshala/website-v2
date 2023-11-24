@@ -4,43 +4,19 @@ import Hamburger from "../components/hamburger";
 import CohortCard from "../components/CohortCard.astro";
 import Footer from "../components/Footer.astro";
 import Carousel from "../components/Carousel";
+import Header from "../components/Header.astro";
 import { Faq } from "../components/Faq";
 ---
 
 <Layout title="Welcome to Bitshala">
-  <main
-    style={{
-      backgroundImage: `url(/website-v2/cohort/hero.png)`,
-      backgroundSize: "cover",
-      backgroundRepeat: "no-repeat",
-      backgroundPosition: "center",
-    }}
-    class="m-auto flex min-h-[90vh] flex-col items-center justify-between gap-12 rounded-lg bg-black px-5 py-[10%] pt-4"
-  >
-    <div class="mb-10 flex w-full justify-between">
-      <a href="/website-v2">
-        <img
-          src="/website-v2/footer/logo.png"
-          class="h-16"
-        />
-      </a>
-      <Hamburger client:only />
-    </div>
+  <Header
+    heading="Dive Deeeeeper into Bitcoin Development with a community of learners"
+    subheading="Study Cohorts Paving the Way to Bitcoin Mastery"
+    image="/website-v2/cohort/hero.png"
+    headingColor="text-white"
+    subheadingColor="text-white"
+  />
 
-    <h1
-      class="text-center font-header text-3xl text-white lg:text-8xl"
-    >
-      Dive Deeeeeper into <span class="text-orange"
-        >Bitcoin Development</span
-      > with a community of learners
-    </h1>
-    <p
-      class="w-2/3 text-center text-xl text-white lg:text-4xl xl:mb-10"
-    >
-      <span class="text-orange">Study Cohorts</span> Paving
-      the Way to Bitcoin Mastery
-    </p>
-  </main>
   <CohortCard />
   <Faq client:only />
   <Carousel client:only />

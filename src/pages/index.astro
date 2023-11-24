@@ -5,49 +5,49 @@ import Footer from "../components/Footer.astro";
 import Testimonial from "../components/Testimonial.astro";
 import LinkCohort from "../components/LinkCohort.astro";
 import People from "../components/People.astro";
-import Hamburger from "../components/hamburger";
+import Header from "../components/Header.astro";
 ---
 
 <Layout title="Welcome to Bitshala">
-  <main
-    style={{
-      backgroundImage: `url(/website-v2/home/headerbg.png)`,
-      backgroundSize: "cover",
-      backgroundRepeat: "no-repeat",
-      backgroundPosition: "center",
-    }}
-    class="m-auto flex min-h-[90vh] flex-col items-center justify-between gap-12 rounded-lg bg-black px-5 py-[10%] pt-4"
+  <Header
+    heading=""
+    subheading=""
+    image="/website-v2/home/headerbg.png"
+    headingColor=""
+    subheadingColor=""
   >
-    <div class="mb-10 flex w-full justify-between">
-      <img src="/website-v2/footer/logo.png" class="h-16" />
-      <Hamburger client:only />
-    </div>
     <h1
+      slot="heading"
       class="font-header text-6xl leading-4 text-white lg:text-[15rem]"
     >
       Bitshala:
     </h1>
     <h2
+      slot="subheading"
       class="text-center font-header text-4xl text-orange lg:text-8xl"
     >
       A Pathshala for Bitcoin
     </h2>
-    <p
-      class="w-2/3 text-center text-xl text-white lg:text-5xl"
-    >
-      Empowering developers to thrive in Bitcoin FOSS World
-    </p>
-    <div class="mt-2 flex w-full justify-between lg:w-2/3">
-      <a
-        class="text-m mx-3 flex w-1/2 items-center justify-center rounded-lg bg-orange p-4 text-center lg:text-2xl"
-        >Dive into the Rabbit Hole</a
+    <div slot="after-heading">
+      <p
+        class="mb-8 text-center text-xl text-white lg:text-5xl"
       >
-      <a
-        class="text-m mx-3 flex w-1/2 items-center justify-center rounded-lg p-4 text-center text-white outline-dashed outline-white lg:text-2xl"
-        >Check out the Study Cohorts</a
-      >
+        Empowering developers to thrive in Bitcoin FOSS
+        World
+      </p>
+      <div class="mt-20 flex w-full justify-between">
+        <a
+          class="text-m mx-3 flex w-1/2 items-center justify-center rounded-lg bg-orange p-4 text-center lg:text-2xl"
+          >Dive into the Rabbit Hole</a
+        >
+        <a
+          class="text-m mx-3 flex w-1/2 items-center justify-center rounded-lg p-4 text-center text-white outline-dashed outline-white lg:text-2xl"
+          >Check out the Study Cohorts</a
+        >
+      </div>
     </div>
-  </main>
+  </Header>
+
   <Testimonial />
   <Carousel client:visible />
   <LinkCohort />

@@ -56,10 +56,14 @@ const Hamburger = () => {
 
 const SideMenu = () => {
   const links = [
-    { name: "Discord", url:"https://discord.gg/ekzAUeeR", tar:'_blank' },
-    { name: "Cohorts", url:"/website-v2/cohort" },
-    { name: "Review Club" },
-    { name: "Talks" },
+    {
+      name: "Discord",
+      url: "https://discord.gg/ekzAUeeR",
+      tar: "_blank",
+    },
+    { name: "Cohorts", url: "/website-v2/cohort" },
+    { name: "Review Club", url: "/website-v2/review" },
+    { name: "Talks", url: "/website-v2/talks" },
   ];
   return (
     <div className="flex h-full w-full flex-col pb-[10%]">
@@ -76,7 +80,11 @@ const SideMenu = () => {
       <ul className="flex h-1/2 flex-col justify-between">
         {links.map((link) => {
           return (
-            <a href={link.url} target={link.tar} className="text-2xl text-white hover:text-peach">
+            <a
+              href={link.url}
+              target={link.tar}
+              className="text-2xl text-white hover:text-peach"
+            >
               {link.name}
             </a>
           );

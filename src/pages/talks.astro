@@ -1,0 +1,19 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Carousel from "../components/Carousel";
+import Footer from "../components/Footer.astro";
+---
+
+<Layout title="Bitcoin Talks">
+  <Header
+    heading="Bitcoin Talks"
+    subheading="Learning Bitcoin alone is hard. We’re here to make it easier through insightful conversations with experienced Bitcoin developers about their Bitcoin journey."
+    image="/website-v2/header/Talks_Hero.png"
+    headingColor="text-white"
+    subheadingColor="text-white"
+  />
+
+  <Carousel client:visible />
+  <Footer />
+</Layout>
