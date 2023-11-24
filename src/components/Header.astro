@@ -38,9 +38,14 @@ const {
   >
     {heading}
   </h1>
+  <slot name="heading" />
   <p
     class={`w-2/3 text-center text-xl ${subheadingColor} lg:text-4xl xl:mb-10`}
   >
     {subheading}
   </p>
+  <slot name="subheading" />
+  <div>
+    <slot name="after-heading" />
+  </div>
 </main>

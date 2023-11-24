@@ -44,15 +44,15 @@ const list3 = [
   },
   {
     name: "Bitcoin Study Cohort",
-    link: "",
+    link: "/website-v2/cohort",
   },
   {
     name: "Bitcoin Review Club",
-    link: "",
+    link: "/website-v2/review",
   },
   {
     name: "Bitcoin Talks",
-    link: "",
+    link: "/website-v2/talks",
   },
   {
     name: " Bitcoin Deep Dive",
@@ -118,7 +118,7 @@ const list3 = [
     <div class="m-3 p-3">
       {
         list3.map((li) => (
-          <a href={li.link} target="_blank">
+          <a href={li.link}>
             <div class="my-1 text-sm hover:font-bold lg:text-xl">
               {li.name}
             </div>
