@@ -3,6 +3,7 @@ import Carousel from "../components/Carousel";
 import Footer from "../components/Footer.astro";
 import Layout from "../layouts/Layout.astro";
 import Header from "../components/Header.astro";
+import EssentialStudyMaterial from "../components/EssentialStudyMaterial.astro";
 ---
 
 <Layout title="PR Review Club">
@@ -13,6 +14,7 @@ import Header from "../components/Header.astro";
     headingColor="text-white"
     subheadingColor="text-white"
   />
+  <EssentialStudyMaterial />
   <Carousel client:visible />
   <Footer />
 </Layout>

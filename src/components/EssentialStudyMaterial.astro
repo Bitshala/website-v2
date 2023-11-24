@@ -1,0 +1,89 @@
+---
+const list1 = [
+  {
+    name: "Common operational steps of Core Review Process",
+    link: "",
+    code: "dummylink",
+  },
+  {
+    name: "Bitcoin Core Codebase Introductory Tour",
+    link: "",
+  },
+];
+const list2 = [
+  {
+    name: "Contributing to Bitcoin Core",
+    link: "",
+  },
+  {
+    name: "Developer Notes",
+    link: "",
+  },
+  {
+    name: "Introduction to Bitcoin Core Development",
+    link: "",
+  },
+  {
+    name: "Contributing to Bitcoin Core, a personal account",
+    link: "",
+  },
+  {
+    name: "Onboarding to Bitcoin Core",
+    link: "",
+  },
+  {
+    name: "From “Hello World” to Bitcoin Core",
+    link: "",
+  },
+];
+---
+
+<div class="my-10 rounded-lg bg-peach p-10">
+  <p class="text-sm">pre-requisits</p>
+  <h1 class="my-2 text-xl font-bold lg:text-3xl">
+    Essential Study Material
+  </h1>
+  <p class="mt-5 text-sm">basics</p>
+  <hr class="mb-8 border-spacing-12 border-dashed" />
+  <div>
+    {
+      list1.map((item) => (
+        <>
+          <div class="mb-5 mt-10 flex justify-between lg:mr-10">
+            <p class="font-black lg:text-xl">{item.name}</p>
+            <div class="flex">
+              <button class="m-1 rounded-lg border-2 border-dotted lg:ml-2 lg:px-5 lg:py-2">
+                Watch Video
+              </button>
+              <button
+                class={`rounded-lg border-2 ${
+                  item.code ? "inline" : "hidden"
+                } m-1 border-dotted lg:px-5 lg:py-2`}
+              >
+                View Code
+              </button>
+            </div>
+          </div>
+          <hr class="border-spacing-12 border-dashed" />
+        </>
+      ))
+    }
+  </div>
+  <p class="mt-10 py-5 text-sm">furthur-reading</p>
+  <hr class="border-spacing-12 border-dashed" />
+  <div>
+    {
+      list2.map((item) => (
+        <>
+          <div class="mb-5 mt-10 flex justify-between lg:mr-10">
+            <p class="font-black lg:text-xl">{item.name}</p>
+            <button class="w-1/5 rounded-lg border-2 border-dotted p-2 lg:w-auto lg:px-5 lg:py-2">
+              Read Now
+            </button>
+          </div>
+          <hr class="border-spacing-12 border-dashed" />
+        </>
+      ))
+    }
+  </div>
+</div>
