@@ -4,16 +4,20 @@ import { useState } from "react";
 export const CollapseList = ({
   header,
   listConfig,
+  disableClick = false,
 }: {
   header: string;
   listConfig: { q: any; a: any }[];
+  disableClick?: boolean;
 }) => {
   const [activeIndex, setActiveIndex] = useState(-1);
   const handleElementClick = (index: number) => {
-    if (activeIndex == index) {
-      setActiveIndex(-1);
-    } else {
-      setActiveIndex(index);
+    if (!disableClick) {
+      if (activeIndex == index) {
+        setActiveIndex(-1);
+      } else {
+        setActiveIndex(index);
+      }
     }
   };
   return (
@@ -31,13 +35,17 @@ export const CollapseList = ({
                 onClick={() => handleElementClick(index)}
               >
                 {el.q}
-                <div
-                  className={` hidden text-3xl transition-transform lg:block ${
-                    activeIndex == index ? `rotate-45` : ``
-                  }`}
-                >
-                  +
-                </div>
+                {!disableClick && (
+                  <div
+                    className={` hidden text-3xl transition-transform lg:block ${
+                      activeIndex == index
+                        ? `rotate-45`
+                        : ``
+                    }`}
+                  >
+                    +
+                  </div>
+                )}
               </button>
               <Collapse
                 in={activeIndex == index}
