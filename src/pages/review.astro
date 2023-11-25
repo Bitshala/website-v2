@@ -4,6 +4,7 @@ import Footer from "../components/Footer.astro";
 import Layout from "../layouts/Layout.astro";
 import Header from "../components/Header.astro";
 import EssentialStudyMaterial from "../components/EssentialStudyMaterial.astro";
+import { VideoList } from "../components/videoList";
 ---
 
 <Layout title="PR Review Club">
@@ -15,6 +16,7 @@ import EssentialStudyMaterial from "../components/EssentialStudyMaterial.astro";
     subheadingColor="text-white"
   />
   <EssentialStudyMaterial />
+  <VideoList />
   <Carousel client:visible />
   <Footer />
 </Layout>
