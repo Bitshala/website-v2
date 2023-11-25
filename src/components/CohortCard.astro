@@ -5,6 +5,7 @@ const cardsList = [
     img: "/website-v2/cohort/lbtcl.png",
     no: "02",
     desc: "Donec laoreet congue justo at rhoncus. Nam aliquet suscipit feugiat...",
+    url: "/website-v2/lbtcl",
   },
   {
     name: "Mastering Bitcoin by Andreas M. ",
@@ -50,19 +51,21 @@ const cardsList = [
             </h1>
             <p class="text-base lg:text-xl">{card.desc}</p>
           </div>
-          <button
-            class={`my-2 w-full rounded-lg text-base lg:text-xl ${
-              Number(card.no) % 2 == 0
-                ? "bg-white"
-                : "bg-black"
-            } px-3 py-5 font-semibold ${
-              Number(card.no) % 2 == 0
-                ? "text-black"
-                : "text-white"
-            } border-2 border-dotted border-white `}
-          >
-            Visit the Cohort Page
-          </button>
+          <a href={card.url}>
+            <button
+              class={`my-2 w-full rounded-lg text-base lg:text-xl ${
+                Number(card.no) % 2 == 0
+                  ? "bg-white"
+                  : "bg-black"
+              } px-3 py-5 font-semibold ${
+                Number(card.no) % 2 == 0
+                  ? "text-black"
+                  : "text-white"
+              } border-2 border-dotted border-white `}
+            >
+              Visit the Cohort Page
+            </button>
+          </a>
         </div>
       </div>
     ))

@@ -4,6 +4,7 @@ import Header from "../components/Header.astro";
 import Carousel from "../components/Carousel";
 import Footer from "../components/Footer.astro";
 import Description from "../components/Description.astro";
+import CohortStructure from "../components/CohortStructure.astro";
 ---
 
 <Layout title="LBTCL">
@@ -14,7 +15,9 @@ import Description from "../components/Description.astro";
     headingColor="text-black"
     subheadingColor="text-white"
   />
+
   <Description />
+  <CohortStructure />
   <Carousel client:visible />
   <Footer />
 </Layout>
