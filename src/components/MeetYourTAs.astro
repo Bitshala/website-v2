@@ -1,0 +1,72 @@
+---
+const team = [
+  {
+    name: "Raj Maitra",
+    desc: "we will have rewrite it in 3rd person tho.. but write a description of yoyrself in whatever form you",
+    image: "raj",
+    twitter: "https://twitter.com/RajarshiMaitra",
+    github: "https://github.com/rajarshimaitra",
+  },
+
+  {
+    name: "Stratospher",
+    desc: "we will have rewrite it in 3rd person tho.. but write a description of yoyrself in whatever form you",
+    image: "stratospher",
+  },
+  {
+    name: "Anmol Sharma",
+    desc: "we will have rewrite it in 3rd person tho.. but write a description of yoyrself in whatever form you",
+    image: "anmol",
+  },
+
+  {
+    name: "Emil Joshi",
+    desc: "we will have rewrite it in 3rd person tho.. but write a description of yoyrself in whatever form you",
+    image: "paperpsyche",
+  },
+];
+---
+
+<div class="rounded-2xl bg-orange p-2 lg:p-5">
+  <h1 class="text-center font-header text-5xl">
+    Meet Your TAs
+  </h1>
+
+  {
+    team.map((member) => (
+      <div class="my-3 flex rounded-lg bg-black">
+        <img
+          src={`/website-v2/people/${member.image}.png`}
+          class="h-28 items-center  p-3 "
+        />
+        <div class="flex flex-col">
+          <div class="flex">
+            <p
+              class={`mt-3 w-4/6 font-header text-xl text-orange lg:px-3 lg:text-3xl xl:w-5/6`}
+            >
+              {member.name}
+            </p>
+            <a href={member.github} target="_blank">
+              <img
+                src="/website-v2/people/github.png"
+                class="mr-3 mt-3 h-8 rounded-xl bg-white "
+              />
+            </a>
+            <a>
+              <img
+                src="/website-v2/people/twitter.png"
+                class="mr-3 mt-3 h-8 rounded-xl bg-white "
+              />
+            </a>
+          </div>
+
+          <p
+            class={`lg:p3 mr-16 px-1 text-sm text-white lg:text-base `}
+          >
+            {member.desc}
+          </p>
+        </div>
+      </div>
+    ))
+  }
+</div>
