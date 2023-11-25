@@ -3,6 +3,7 @@ import Layout from "../layouts/Layout.astro";
 import Header from "../components/Header.astro";
 import Carousel from "../components/Carousel";
 import Footer from "../components/Footer.astro";
+import Description from "../components/Description.astro";
 ---
 
 <Layout title="LBTCL">
@@ -13,7 +14,7 @@ import Footer from "../components/Footer.astro";
     headingColor="text-black"
     subheadingColor="text-white"
   />
-
+  <Description />
   <Carousel client:visible />
   <Footer />
 </Layout>
