@@ -4,13 +4,11 @@ const list = [
     week: "Week 01",
     name: "Introductions",
     chNo: "",
-    bg: "bg-white",
   },
   {
     week: "Week 02",
     name: "Introducing Bitcoin; Setting up Bitcoin core VPS; Understanding your bitcoin setup",
     chNo: "01-03",
-    bg: "bg-peach",
   },
   {
     week: "Week 03",
@@ -22,31 +20,26 @@ const list = [
     week: "Week 04",
     name: "Expanding Bitcoin Transactions’ Multisigs; Expanding Bitcoin Transactions’ PSBTs",
     chNo: "06-07",
-    bg: "bg-peach",
   },
   {
     week: "Week 05",
     name: "Expanding Bitcoin Transactions Other; Introducing Bitcoin Scripts",
     chNo: "08-09",
-    bg: "bg-white",
   },
   {
     week: "Week 06",
     name: "Embedding Bitcoin Scripts in P2SH Transactions; Empowering Timelock with Bitcoin Scripts",
     chNo: "10-11",
-    bg: "bg-peach",
   },
   {
     week: "Week 07",
     name: "Expanding Bitcoin Scripts; Designing Real Bitcoin Scripts",
     chNo: "12-13",
-    bg: "bg-white",
   },
   {
     week: "Week 08",
     name: "Conclusions and Next Steps",
     chNo: "",
-    bg: "bg-peach",
   },
 ];
 ---
@@ -63,10 +56,12 @@ const list = [
   </div>
   <hr class="border-spacing-12 border-dashed" />
   {
-    list.map((item) => (
+    list.map((item, index) => (
       <>
         <div
-          class={`flex items-center justify-center  ${item.bg} px-3 py-5`}
+          class={`flex items-center justify-center  ${
+            index % 2 ? "bg-peach" : "bg-white"
+          } px-3 py-5`}
         >
           <p class="w-1/6 rounded-lg bg-orange py-2 text-center text-white lg:w-1/12">
             {item.week}
