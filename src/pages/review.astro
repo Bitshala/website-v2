@@ -5,6 +5,18 @@ import Layout from "../layouts/Layout.astro";
 import Header from "../components/Header.astro";
 import EssentialStudyMaterial from "../components/EssentialStudyMaterial.astro";
 import { VideoList } from "../components/videoList";
+import {
+  mockedVideoConfig,
+  getPlaylistDetails,
+} from "../scripts/googleApi";
+
+const isProd = import.meta.env.PROD;
+const videoConfig = isProd
+  ? await getPlaylistDetails(
+      "PLdHBT9oS8yMW9rp2_plnJVPYAEAIrDmVL",
+      import.meta.env.GOOGLE_KEY,
+    )
+  : mockedVideoConfig.slice(-6);
 ---
 
 <Layout title="PR Review Club">
@@ -16,7 +28,7 @@ import { VideoList } from "../components/videoList";
     subheadingColor="text-white"
   />
   <EssentialStudyMaterial />
-  <VideoList />
+  <VideoList videoConfig={videoConfig} />
   <Carousel client:visible />
   <Footer />
 </Layout>
