@@ -7,6 +7,96 @@ import Description from "../components/cohortPages/Description.astro";
 import CohortStructure from "../components/cohortPages/CohortStructure.astro";
 import CohortDetails from "../components/cohortPages/CohortDetails.astro";
 import Syllabus from "../components/cohortPages/Syllabus.astro";
+
+const takeaways = [
+  {
+    name: "Mastery of Bitcoin Core",
+    desc: "Participants will gain in-depth knowledge of Bitcoin Core, a fundamental skill for anyone interested in Bitcoin development.",
+  },
+  {
+    name: "Local Node Management",
+    desc: "Acquire the skills to set up and manage a local bitcoind regtest node, allowing for a controlled and customizable environment for testing and experimentation.",
+  },
+  {
+    name: "Scripting Expertise",
+    desc: " Explore advanced scripting techniques, enabling you to create custom Bitcoin scripts and smart contracts.",
+  },
+  {
+    name: "Certificate of Achievement",
+    desc: " Successful participants receive a certificate recognizing their proof-of-work and accomplishment.",
+  },
+  {
+    name: "Foundation for Advanced Study",
+    desc: "After completing the cohort, participants are well-prepared to delve into more advanced topics, such as programmatically interfacing with bitcoin-cli and exploring the lightning network.",
+  },
+  {
+    name: "Community",
+    desc: "Join a community of like-minded learners, actively participating in discussions and collaborative learning, fostering a supportive network.",
+  },
+];
+
+const syllabus = [
+  {
+    week: "Week 01",
+    name: "Introductions",
+    chNo: "",
+  },
+  {
+    week: "Week 02",
+    name: "Introducing Bitcoin; Setting up Bitcoin core VPS; Understanding your bitcoin setup",
+    chNo: "01-03",
+  },
+  {
+    week: "Week 03",
+    name: "Sending Bitcoin Transactions; Controlling bitcoin TXNs",
+    chNo: "04-05",
+    bg: "bg-white",
+  },
+  {
+    week: "Week 04",
+    name: "Expanding Bitcoin Transactions’ Multisigs; Expanding Bitcoin Transactions’ PSBTs",
+    chNo: "06-07",
+  },
+  {
+    week: "Week 05",
+    name: "Expanding Bitcoin Transactions Other; Introducing Bitcoin Scripts",
+    chNo: "08-09",
+  },
+  {
+    week: "Week 06",
+    name: "Embedding Bitcoin Scripts in P2SH Transactions; Empowering Timelock with Bitcoin Scripts",
+    chNo: "10-11",
+  },
+  {
+    week: "Week 07",
+    name: "Expanding Bitcoin Scripts; Designing Real Bitcoin Scripts",
+    chNo: "12-13",
+  },
+  {
+    week: "Week 08",
+    name: "Conclusions and Next Steps",
+    chNo: "",
+  },
+];
+
+const format = [
+  {
+    name: "Format",
+    desc: "Online virtual classroom",
+  },
+  {
+    name: "Structure",
+    desc: "Live sessions, once a week QnA",
+  },
+  {
+    name: "Categories",
+    desc: "Wallets, UTXOs, Transactions",
+  },
+  {
+    name: "Duration",
+    desc: "08 weeks",
+  },
+];
 ---
 
 <Layout title="PB">
@@ -18,10 +108,120 @@ import Syllabus from "../components/cohortPages/Syllabus.astro";
     subheadingColor="text-white"
   />
 
-  <Description />
-  <CohortDetails />
-  <Syllabus />
-  <CohortStructure />
-  <Carousel client:visible />
-  <Footer />
+  <Description>
+    <div slot="text">
+      <h1 class="my-2 font-header text-2xl lg:text-5xl">
+        Learning Bitcoin via Command Line Interface
+      </h1>
+      <p class="lg:text-xl">
+        Learning Bitcoin from the Command Line is a
+        comprehensive tutorial series that teaches you how
+        to use Bitcoin Core through the command line. The
+        series covers all the essential Bitcoin operations
+        that can be performed using the <span
+          class="text-orange">bitcoin-cli</span
+        > and a local <span class="text-orange"
+          >bitcoind</span
+        >
+         regtest node. Starting from basic transaction
+        construction to advanced scripting, this tutorial is
+        a must-read for aspiring Bitcoin developers. Upon
+        successful completion of the cohort program,
+        participants will receive a certificate recognizing
+        their proof-of-work.
+      </p>
+    </div>
+
+    <ul slot="takeaways" class="list-disc">
+      {
+        takeaways.map((takeaway) => (
+          <li class="my-4 lg:text-xl">
+            <span class="font-bold">{takeaway.name}</span> :{" "}
+            {takeaway.desc}
+          </li>
+        ))
+      }
+    </ul>
+  </Description>
+  <CohortDetails>
+    <div slot="prerequisites">
+      <ol class="list-disc p-4 lg:px-8">
+        <li>
+          Basic knowledge of Bitcoin and familiarity with
+          terminal operations
+        </li>
+        <li>Cover the material in Mastering Bitcoin</li>
+        <li>
+          Become comfortable with Unix/Linux command-line
+          terminals
+        </li>
+      </ol>
+      <div
+        class="my-10 grid grid-cols-2 gap-10 lg:grid-cols-4"
+      >
+        {
+          format.map((item) => (
+            <div>
+              <h2 class="font-header text-xl font-bold lg:text-2xl">
+                {item.name}
+              </h2>
+              <p class="lg:text-lg">{item.desc}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+    <div slot="details">
+      <p class="mb-6 font-header lg:text-xl">
+        Cohort level: <span class="text-white"
+          >Intermediate</span
+        >
+      </p>
+      <p class="mb-6 font-header lg:text-xl">
+        The cohort program will comprehensively cover <span
+          class="text-white">chapters 01 to 13</span
+        > of "Learning Bitcoin From Command Line," this
+        provides participants with a solid foundation in
+        Bitcoin operations through the command line.
+      </p>
+      <p class="mb-6 font-header lg:text-xl">
+        After the cohort, participants are encouraged to <span
+          class="text-white"
+          >independently explore chapters 14 to 20</span
+        >
+         , which delve into the advanced functionalities of
+        Bitcoin Core. This will allow them to further
+        explore more advanced topics like programmatically
+        interfacing with bitcoin-cli and the lightning
+        network.
+      </p>
+    </div>
+  </CohortDetails>
 </Layout>
+<Syllabus>
+  <div slot="syllabus">
+    {
+      syllabus.map((item, index) => (
+        <>
+          <div
+            class={`flex items-center justify-center  ${
+              index % 2 ? "bg-peach" : "bg-white"
+            } px-3 py-5`}
+          >
+            <p class="w-1/6 rounded-lg bg-orange py-2 text-center text-white lg:w-1/12">
+              {item.week}
+            </p>
+            <p class="w-4/6 pl-5 text-xl font-bold lg:w-10/12">
+              {item.name}
+            </p>
+            <p class="w-2/6 lg:w-1/12">{item.chNo}</p>
+          </div>
+          <hr class=" border-spacing-12 border-dashed" />
+        </>
+      ))
+    }
+  </div>
+</Syllabus>
+<CohortStructure />
+<Carousel client:visible />
+<Footer />
