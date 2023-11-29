@@ -1,11 +1,11 @@
 ---
-import Carousel from "../components/Carousel";
+import Carousel from "../components/common/Carousel";
 import Layout from "../layouts/Layout.astro";
-import Footer from "../components/Footer.astro";
-import Testimonial from "../components/Testimonial.astro";
-import LinkCohort from "../components/LinkCohort.astro";
-import People from "../components/People.astro";
-import Header from "../components/Header.astro";
+import Footer from "../components/common/Footer.astro";
+import Testimonial from "../components/home/Testimonial.astro";
+import LinkCohort from "../components/home/LinkCohort.astro";
+import People from "../components/home/People.astro";
+import Header from "../components/common/Header.astro";
 ---
 
 <Layout title="Welcome to Bitshala">
@@ -37,6 +37,8 @@ import Header from "../components/Header.astro";
       </p>
       <div class="mt-20 flex w-full justify-between">
         <a
+          href="https://discord.gg/ekzAUeeR"
+          target="_blank"
           class="text-m mx-3 flex w-1/2 items-center justify-center rounded-lg bg-orange p-4 text-center lg:text-2xl"
           >Dive into the Rabbit Hole</a
         >

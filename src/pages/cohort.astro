@@ -1,11 +1,10 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Hamburger from "../components/hamburger";
-import CohortCard from "../components/CohortCard.astro";
-import Footer from "../components/Footer.astro";
-import Carousel from "../components/Carousel";
-import Header from "../components/Header.astro";
-import { CollapseList } from "../components/CollapseList";
+import CohortCard from "../components/cohort/CohortCard.astro";
+import Footer from "../components/common/Footer.astro";
+import Carousel from "../components/common/Carousel";
+import Header from "../components/common/Header.astro";
+import { CollapseList } from "../components/cohort/CollapseList";
 
 const faqConfig = [
   {
@@ -53,3 +52,4 @@ const faqConfig = [
   <Carousel client:visible />
   <Footer />
 </Layout>
+ ../components/cohort/CollapseList
