@@ -1,5 +1,5 @@
-import type { VideoConfigType } from "../scripts/googleApi";
-import { CollapseList } from "./CollapseList";
+import type { VideoConfigType } from "../../scripts/googleApi";
+import { CollapseList } from "../cohort/CollapseList";
 
 export const VideoList = ({
   videoConfig,
