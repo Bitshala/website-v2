@@ -1,5 +1,8 @@
 ---
-
+export interface Props {
+  syllabus: Array<any>;
+}
+const { syllabus } = Astro.props;
 ---
 
 <div class="mb-10 lg:p-5">
@@ -13,5 +16,24 @@
     <p class="w-2/6 lg:w-1/12">Chapters</p>
   </div>
   <hr class="border-spacing-12 border-dashed" />
-  <slot name="syllabus" />
+  {
+    syllabus.map((item, index) => (
+      <>
+        <div
+          class={`flex items-center justify-center  ${
+            index % 2 ? "bg-peach" : "bg-white"
+          } px-3 py-5`}
+        >
+          <p class="w-1/6 rounded-lg bg-orange py-2 text-center text-white lg:w-1/12">
+            {item.week}
+          </p>
+          <p class="w-4/6 pl-5 text-xl font-bold lg:w-10/12">
+            {item.name}
+          </p>
+          <p class="w-2/6 lg:w-1/12">{item.chNo}</p>
+        </div>
+        <hr class=" border-spacing-12 border-dashed" />
+      </>
+    ))
+  }
 </div>

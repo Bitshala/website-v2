@@ -1,5 +1,10 @@
 ---
 import MeetYourTAs from "../cohortPages/MeetYourTAs.astro";
+
+export interface Props {
+  format: Array<any>;
+}
+const { format } = Astro.props;
 ---
 
 <div class="mb-10 flex flex-col gap-2 lg:flex-row lg:gap-8">
@@ -13,7 +18,23 @@ import MeetYourTAs from "../cohortPages/MeetYourTAs.astro";
     <h3 class="font-header text-xl font-bold lg:text-2xl">
       Pre-requisites
     </h3>
-    <slot name="prerequisites" />
+    <div>
+      <slot name="prerequisites" />
+      <div
+        class="my-10 grid grid-cols-2 gap-10 lg:grid-cols-4"
+      >
+        {
+          format.map((item) => (
+            <div>
+              <h2 class="font-header text-xl font-bold lg:text-2xl">
+                {item.name}
+              </h2>
+              <p class="lg:text-lg">{item.desc}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
     <h2
       class="mb-10 font-header text-xl font-bold lg:text-2xl"
     >

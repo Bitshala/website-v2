@@ -1,3 +1,10 @@
+---
+export interface Props {
+  takeaways: Array<any>;
+}
+const { takeaways } = Astro.props;
+---
+
 <div class="my-10 p-5 lg:mx-44">
   <p>Overview</p>
   <slot name="text" />
@@ -6,5 +13,15 @@
   </h3>
   <ul class="list-disc">
     <slot name="takeaways" />
+    <ul slot="takeaways" class="list-disc">
+      {
+        takeaways.map((takeaway) => (
+          <li class="my-4 lg:text-xl">
+            <span class="font-bold">{takeaway.name}</span> :{" "}
+            {takeaway.desc}
+          </li>
+        ))
+      }
+    </ul>
   </ul>
 </div>
