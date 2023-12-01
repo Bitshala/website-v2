@@ -12,7 +12,6 @@ const { takeaways } = Astro.props;
     Takeaways
   </h3>
   <ul class="list-disc">
-    <slot name="takeaways" />
     <ul slot="takeaways" class="list-disc">
       {
         takeaways.map((takeaway) => (
