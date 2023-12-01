@@ -1,0 +1,39 @@
+---
+export interface Props {
+  syllabus: Array<any>;
+}
+const { syllabus } = Astro.props;
+---
+
+<div class="mb-10 lg:p-5">
+  <p class="mb-2">Content</p>
+  <h1 class="font-header text-2xl font-bold lg:text-4xl">
+    What will you learn with this study cohort
+  </h1>
+  <div class="mb-2 mt-5 flex">
+    <p class="w-1/6 lg:w-1/12 lg:pl-5">Weeks</p>
+    <p class="w-4/6 pl-5 lg:w-10/12">Lessons</p>
+    <p class="w-2/6 lg:w-1/12">Chapters</p>
+  </div>
+  <hr class="border-spacing-12 border-dashed" />
+  {
+    syllabus.map((item, index) => (
+      <>
+        <div
+          class={`flex items-center justify-center  ${
+            index % 2 ? "bg-peach" : "bg-white"
+          } px-3 py-5`}
+        >
+          <p class="w-1/6 rounded-lg bg-orange py-2 text-center text-white lg:w-1/12">
+            {item.week}
+          </p>
+          <p class="w-4/6 pl-5 text-xl font-bold lg:w-10/12">
+            {item.name}
+          </p>
+          <p class="w-2/6 lg:w-1/12">{item.chNo}</p>
+        </div>
+        <hr class=" border-spacing-12 border-dashed" />
+      </>
+    ))
+  }
+</div>
