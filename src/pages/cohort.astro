@@ -5,6 +5,7 @@ import Footer from "../components/common/Footer.astro";
 import Carousel from "../components/common/Carousel";
 import Header from "../components/common/Header.astro";
 import { CollapseList } from "../components/cohort/CollapseList";
+import Checkerboard from "../components/cohort/Checkerboard.astro";
 
 const faqConfig = [
   {
@@ -44,6 +45,7 @@ const faqConfig = [
   />
 
   <CohortCard />
+  <Checkerboard />
   <CollapseList
     listConfig={faqConfig}
     header="Checkout some of the FAQs"
