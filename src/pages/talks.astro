@@ -3,6 +3,19 @@ import Layout from "../layouts/Layout.astro";
 import Header from "../components/common/Header.astro";
 import Carousel from "../components/common/Carousel";
 import Footer from "../components/common/Footer.astro";
+import VideoCard from "../components/talks/VideoCard.astro";
+import {
+  getPlaylistDetails,
+  mockedVideoConfig,
+} from "../scripts/googleApi";
+
+const isProd = import.meta.env.PROD;
+const videoConfig = isProd
+  ? await getPlaylistDetails(
+      "PLdHBT9oS8yMX3ozzhidF8-WODxcr8ZwAU",
+      import.meta.env.GOOGLE_KEY,
+    )
+  : mockedVideoConfig.slice(-6);
 ---
 
 <Layout title="Bitcoin Talks">
@@ -13,6 +26,15 @@ import Footer from "../components/common/Footer.astro";
     headingColor="text-white"
     subheadingColor="text-white"
   />
+  <div
+    class="mt-3 grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3"
+  >
+    {
+      videoConfig.map((video) => (
+        <VideoCard video={video} />
+      ))
+    }
+  </div>
 
   <Carousel client:visible />
   <Footer />
