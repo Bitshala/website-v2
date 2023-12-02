@@ -9,6 +9,7 @@ import {
   mockedVideoConfig,
   getPlaylistDetails,
 } from "../scripts/googleApi";
+import HowDoesItWork from "../components/review/HowDoesItWork.astro";
 
 const isProd = import.meta.env.PROD;
 const videoConfig = isProd
@@ -27,8 +28,9 @@ const videoConfig = isProd
     headingColor="text-white"
     subheadingColor="text-white"
   />
-  <EssentialStudyMaterial />
+  <HowDoesItWork />
   <VideoList videoConfig={videoConfig} />
+  <EssentialStudyMaterial />
   <Carousel client:visible />
   <Footer />
 </Layout>

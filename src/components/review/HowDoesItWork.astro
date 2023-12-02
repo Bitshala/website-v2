@@ -1,0 +1,124 @@
+---
+import MeetYourTAs from "../cohortPages/MeetYourTAs.astro";
+const list = [
+  {
+    name: "Stay Updated",
+    desc: " Keep an eye on this 'README' to find weekly updates and information about upcoming club meetings.",
+  },
+  {
+    name: "Join the Community ",
+    desc: "Join the Discord server where the link to join the review club call is shared and where PR-related discussions take place.",
+  },
+  {
+    name: "Engage in Discussions",
+    desc: "Each week's topic details will be included in an Issue. Use the issue comments to post questions and participate in discussions regarding the PR or the review process in general.",
+  },
+  {
+    name: "Review Format",
+    desc: "We start the review process by checking out the PR and going through the 'Notes and Questions' provided in the topic details.",
+  },
+  {
+    name: "Come Prepared",
+    desc: "Prepare your answers before joining the call. Remember, there can be many right answers, and there are no stupid questions.",
+  },
+  {
+    name: "Active Participation",
+    desc: "Join the Jitsi room at the scheduled time and actively participate in the conversation during the live call.",
+  },
+  {
+    name: "Final Review Submission",
+    desc: "After the review session, submit your final review to the original Bitcoin Core PR thread.",
+  },
+];
+const format = [
+  {
+    name: "Format",
+    desc: "Online virtual classroom",
+  },
+  {
+    name: "Structure",
+    desc: "Live sessions, once a week QnA",
+  },
+  {
+    name: "Categories",
+    desc: "Wallets, UTXOs, Transactions",
+  },
+  {
+    name: "Duration",
+    desc: "08 weeks",
+  },
+];
+const team = [
+  {
+    name: "Raj Maitra",
+    desc: "we will have rewrite it in 3rd person tho.. but write a description of yoyrself in whatever form you",
+    image: "raj",
+    twitter: "https://twitter.com/RajarshiMaitra",
+    github: "https://github.com/rajarshimaitra",
+  },
+
+  {
+    name: "Stratospher",
+    desc: "we will have rewrite it in 3rd person tho.. but write a description of yoyrself in whatever form you",
+    image: "stratospher",
+  },
+];
+---
+
+<div class="mt-10 rounded-lg bg-peach">
+  <div class="flex flex-col lg:flex-row">
+    <div class="p-3 lg:w-4/5 lg:p-10">
+      <p>The Deets</p>
+      <h1 class="font-header text-5xl">How does it work</h1>
+      <p class="my-8 font-header text-2xl">
+        How to participate
+      </p>
+      <ul class="mt-5">
+        {
+          list.map((item) => (
+            <li class="my-3">
+              <span class="font-bold">{item.name}</span> :{" "}
+              {item.desc}
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+    <div>
+      <div>
+        <div class="my-10 grid grid-cols-2 gap-10 p-3">
+          {
+            format.map((item) => (
+              <div>
+                <h2 class="font-header text-xl font-bold lg:text-2xl">
+                  {item.name}
+                </h2>
+                <p class="lg:text-lg">{item.desc}</p>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+      <div class="bg-white pt-10 lg:mt-0 lg:px-10">
+        <MeetYourTAs
+          team={[
+            {
+              name: "Raj Maitra",
+              desc: "we will have rewrite it in 3rd person tho.. but write a description of yoyrself in whatever form you",
+              image: "raj",
+              twitter: "https://twitter.com/RajarshiMaitra",
+              github: "https://github.com/rajarshimaitra",
+            },
+
+            {
+              name: "Stratospher",
+              desc: "we will have rewrite it in 3rd person tho.. but write a description of yoyrself in whatever form you",
+              image: "stratospher",
+            },
+          ]}
+          color="bg-peach"
+        />
+      </div>
+    </div>
+  </div>
+</div>

@@ -43,6 +43,34 @@ const { format } = Astro.props;
     <slot name="details" />
   </div>
   <div class="flex grow lg:w-2/5">
-    <MeetYourTAs />
+    <MeetYourTAs
+      team={[
+        {
+          name: "Raj Maitra",
+          desc: "we will have rewrite it in 3rd person tho.. but write a description of yoyrself in whatever form you",
+          image: "raj",
+          twitter: "https://twitter.com/RajarshiMaitra",
+          github: "https://github.com/rajarshimaitra",
+        },
+
+        {
+          name: "Stratospher",
+          desc: "we will have rewrite it in 3rd person tho.. but write a description of yoyrself in whatever form you",
+          image: "stratospher",
+        },
+        {
+          name: "Anmol Sharma",
+          desc: "we will have rewrite it in 3rd person tho.. but write a description of yoyrself in whatever form you",
+          image: "anmol",
+        },
+
+        {
+          name: "Emil Joshi",
+          desc: "we will have rewrite it in 3rd person tho.. but write a description of yoyrself in whatever form you",
+          image: "paperpsyche",
+        },
+      ]}
+      color="bg-orange"
+    />
   </div>
 </div>
