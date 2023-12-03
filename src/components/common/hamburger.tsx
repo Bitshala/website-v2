@@ -56,14 +56,14 @@ const Hamburger = () => {
 
 const SideMenu = () => {
   const links = [
+    { name: "Cohorts", url: "/website-v2/cohorts" },
+    { name: "Review Club", url: "/website-v2/review" },
+    { name: "Talks", url: "/website-v2/talks" },
     {
-      name: "Discord",
+      name: "Join our Discord !",
       url: "https://discord.gg/ekzAUeeR",
       tar: "_blank",
     },
-    { name: "Cohorts", url: "/website-v2/cohort" },
-    { name: "Review Club", url: "/website-v2/review" },
-    { name: "Talks", url: "/website-v2/talks" },
   ];
   return (
     <div className="flex h-full w-full flex-col pb-[10%]">

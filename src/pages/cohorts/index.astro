@@ -1,11 +1,11 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import CohortCard from "../components/cohort/CohortCard.astro";
-import Footer from "../components/common/Footer.astro";
-import Carousel from "../components/common/Carousel";
-import Header from "../components/common/Header.astro";
-import { CollapseList } from "../components/cohort/CollapseList";
-import Checkerboard from "../components/cohort/Checkerboard.astro";
+import Layout from "../../layouts/Layout.astro";
+import CohortCard from "../../components/cohort/CohortCard.astro";
+import Footer from "../../components/common/Footer.astro";
+import Carousel from "../../components/common/Carousel";
+import Header from "../../components/common/Header.astro";
+import { CollapseList } from "../../components/cohort/CollapseList";
+import Checkerboard from "../../components/cohort/Checkerboard.astro";
 
 const faqConfig = [
   {
@@ -35,7 +35,7 @@ const faqConfig = [
 ];
 ---
 
-<Layout title="Welcome to Bitshala">
+<Layout title="Bitshala Cohorts">
   <Header
     heading="Dive Deeeeeper into Bitcoin Development with a community of learners"
     subheading="Study Cohorts Paving the Way to Bitcoin Mastery"
@@ -54,4 +54,3 @@ const faqConfig = [
   <Carousel client:visible />
   <Footer />
 </Layout>
- ../components/cohort/CollapseList
