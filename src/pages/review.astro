@@ -10,6 +10,7 @@ import {
   getPlaylistDetails,
 } from "../scripts/googleApi";
 import HowDoesItWork from "../components/review/HowDoesItWork.astro";
+import { CollapseList } from "../components/cohort/CollapseList";
 
 const isProd = import.meta.env.PROD;
 const videoConfig = isProd
@@ -18,6 +19,33 @@ const videoConfig = isProd
       import.meta.env.GOOGLE_KEY,
     )
   : mockedVideoConfig.slice(-6);
+
+const faqConfig = [
+  {
+    q: "How does the Bitcoin Study Cohort work?",
+    a: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ",
+  },
+  {
+    q: "Who can join the Bitcoin Study Cohort?",
+    a: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ",
+  },
+  {
+    q: "Is there a fee to join the cohort?",
+    a: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ",
+  },
+  {
+    q: "What resources are provided to participants?",
+    a: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ",
+  },
+  {
+    q: "Is there a fee to join the cohort?",
+    a: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ",
+  },
+  {
+    q: "What resources are provided to participants?",
+    a: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ",
+  },
+];
 ---
 
 <Layout title="PR Review Club">
@@ -31,6 +59,11 @@ const videoConfig = isProd
   <HowDoesItWork />
   <VideoList videoConfig={videoConfig} />
   <EssentialStudyMaterial />
+  <CollapseList
+    listConfig={faqConfig}
+    header="Checkout some of the FAQs"
+    client:visible
+  />
   <Carousel client:visible />
   <Footer />
 </Layout>
