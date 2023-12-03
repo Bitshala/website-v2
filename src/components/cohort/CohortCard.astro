@@ -3,27 +3,26 @@ const cardsList = [
   {
     name: "Learning Bitcoin From Command Line",
     img: "/website-v2/cohort/lbtcl.png",
-    no: "02",
     desc: "Donec laoreet congue justo at rhoncus. Nam aliquet suscipit feugiat...",
-    url: "/website-v2/lbtcl",
+    url: "/website-v2/cohorts/lbtcl",
   },
   {
     name: "Mastering Bitcoin by Andreas M. ",
     img: "/website-v2/cohort/masteringBitcoin.png",
-    no: "01",
     desc: "Donec laoreet congue justo at rhoncus. Nam aliquet suscipit feugiat...",
+    url: "/website-v2/cohorts/lbtcl",
   },
   {
     name: "Learning Bitcoin From Command Line",
     img: "/website-v2/cohort/lbtcl.png",
-    no: "02",
     desc: "Donec laoreet congue justo at rhoncus. Nam aliquet suscipit feugiat...",
+    url: "/website-v2/cohorts/lbtcl",
   },
   {
     name: "Mastering Bitcoin by Andreas M. ",
     img: "/website-v2/cohort/masteringBitcoin.png",
-    no: "01",
     desc: "Donec laoreet congue justo at rhoncus. Nam aliquet suscipit feugiat...",
+    url: "/website-v2/cohorts/mb",
   },
 ];
 ---
@@ -32,19 +31,17 @@ const cardsList = [
   class="grid grid-cols-1 gap-10 pl-6 pr-14 md:-translate-y-24 md:grid-cols-2 xl:grid-cols-4"
 >
   {
-    cardsList.map((card) => (
+    cardsList.map((card, index) => (
       <div>
         <div
           class={`rounded-2xl  ${
-            Number(card.no) % 2 == 0
-              ? "bg-orange"
-              : "bg-black"
+            index % 2 == 0 ? "bg-orange" : "bg-black"
           } my-2  p-3 text-white`}
         >
           <img src={card.img} class="w-fit" />
           <div class="my-2 px-3">
             <p class="text-sm lg:text-xl">
-              cohort #{card.no}
+              cohort #0{index + 1}
             </p>
             <h1 class="text-2xl font-semibold lg:text-4xl">
               {card.name}
@@ -54,13 +51,9 @@ const cardsList = [
           <a href={card.url}>
             <button
               class={`my-2 w-full rounded-lg text-base lg:text-xl ${
-                Number(card.no) % 2 == 0
-                  ? "bg-white"
-                  : "bg-black"
+                index % 2 == 0 ? "bg-white" : "bg-black"
               } px-3 py-5 font-semibold ${
-                Number(card.no) % 2 == 0
-                  ? "text-black"
-                  : "text-white"
+                index % 2 == 0 ? "text-black" : "text-white"
               } border-2 border-dotted border-white `}
             >
               Visit the Cohort Page
