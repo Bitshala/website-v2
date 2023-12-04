@@ -1,39 +1,39 @@
-import React, { useState } from "react";
+import { useState } from "react";
+
+const slides = [
+  {
+    url: "/website-v2/activities/cohort.png",
+    title: "Bitcoin Study Cohorts",
+    content:
+      "You, with fellow learners collectively explore selected texts over several weeks in a structured self-study format. You gain hands-on experience and in-depth insights into Bitcoin’s technical aspects. And also receive certificates to celebrate your wins!",
+  },
+  {
+    url: "/website-v2/cohort/lbtcl.png",
+    title: "Bitcoin Deep Dive",
+    content:
+      "Here, for you, we decode the technical intricacies of the Bitcoin protocol layer. Deep Dive is a recorded series for you to explore specific technical topics around Bitcoin. Be ready to geek out during your self-study sessions.",
+  },
+  {
+    url: "/website-v2/activities/cohort.png",
+    title: "Bitcoin Talk",
+    content:
+      "You get to listen to insightful conversations with experienced Bitcoin developers as they share their journeys, provide valuable advice, and offer suggestions for newcomers in the exciting world of Bitcoin development.",
+  },
+  {
+    url: "/website-v2/cohort/lbtcl.png",
+    title: "Bitcoin Core Review Club",
+    content:
+      "You get hand-on experience into the inner workings of Bitcoin Core and understand how experienced contributors review PRs. You’ll also develop a deeper understanding of Bitcoin’s design principles while sharpening your adversarial-thinking skills.",
+  },
+  {
+    url: "/website-v2/activities/cohort.png",
+    title: "Discord Community",
+    content:
+      "Come and become a part of our vibrant community of Bitcoin enthusiasts. Here, you can engage in discussions, challenge ideas, and explore Bitcoin opportunities with like-minded peers passionate about shaping the future of decentralized finance.",
+  },
+];
 
 function Carousel() {
-  const slides = [
-    {
-      url: "/website-v2/activities/cohort.png",
-      title: "Bitcoin Study Cohorts",
-      content:
-        "You, with fellow learners collectively explore selected texts over several weeks in a structured self-study format. You gain hands-on experience and in-depth insights into Bitcoin’s technical aspects. And also receive certificates to celebrate your wins!",
-    },
-    {
-      url: "/website-v2/cohort/lbtcl.png",
-      title: "Bitcoin Deep Dive",
-      content:
-        "Here, for you, we decode the technical intricacies of the Bitcoin protocol layer. Deep Dive is a recorded series for you to explore specific technical topics around Bitcoin. Be ready to geek out during your self-study sessions.",
-    },
-    {
-      url: "/website-v2/activities/cohort.png",
-      title: "Bitcoin Talk",
-      content:
-        "You get to listen to insightful conversations with experienced Bitcoin developers as they share their journeys, provide valuable advice, and offer suggestions for newcomers in the exciting world of Bitcoin development.",
-    },
-    {
-      url: "/website-v2/cohort/lbtcl.png",
-      title: "Bitcoin Core Review Club",
-      content:
-        "You get hand-on experience into the inner workings of Bitcoin Core and understand how experienced contributors review PRs. You’ll also develop a deeper understanding of Bitcoin’s design principles while sharpening your adversarial-thinking skills.",
-    },
-    {
-      url: "/website-v2/activities/cohort.png",
-      title: "Discord Community",
-      content:
-        "Come and become a part of our vibrant community of Bitcoin enthusiasts. Here, you can engage in discussions, challenge ideas, and explore Bitcoin opportunities with like-minded peers passionate about shaping the future of decentralized finance.",
-    },
-  ];
-
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const prevSlide = () => {
@@ -88,12 +88,12 @@ function Carousel() {
 
       {/* Left Arrow */}
 
-      <div className="absolute left-5 top-[50%] hidden -translate-x-0 translate-y-[-50%] cursor-pointer rounded-full bg-black/20 p-2 text-2xl text-white group-hover:block">
-        <button onClick={prevSlide}>⬅️</button>
+      <div className="absolute left-5 top-[50%] hidden -translate-x-0 translate-y-[-50%] cursor-pointer rounded-full bg-black/20 p-2 text-2xl text-white hover:text-5xl group-hover:block">
+        <button onClick={prevSlide}>⇐</button>
       </div>
       {/* Right Arrow */}
-      <div className="absolute right-5 top-[50%] hidden -translate-x-0 translate-y-[-50%] cursor-pointer rounded-full bg-black/20 p-2 text-2xl text-white group-hover:block">
-        <button onClick={nextSlide}>➡️</button>
+      <div className="absolute right-5 top-[50%] hidden -translate-x-0 translate-y-[-50%] cursor-pointer rounded-full bg-black/20 p-2 text-2xl text-white hover:text-5xl group-hover:block">
+        <button onClick={nextSlide}>⇒</button>
       </div>
       <div className="top-4 flex justify-center py-2">
         {slides.map((slide, slideIndex) => (
