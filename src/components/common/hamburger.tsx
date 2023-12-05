@@ -14,7 +14,7 @@ const Hamburger = () => {
   return (
     <>
       <button
-        className="relative h-12 w-12 rounded-lg  bg-[#f7f7f74d] focus:outline-none"
+        className="relative h-12 w-12 rounded-lg  bg-[#f7f7f74d]  focus:outline-none"
         onClick={handleClick}
       >
         <span className="sr-only">Open main menu</span>
@@ -46,7 +46,6 @@ const Hamburger = () => {
         hideHeader
         shouldCloseOnEsc
         from="left"
-        width="300px"
       >
         <SideMenu />
       </SlidingPane>
@@ -56,9 +55,21 @@ const Hamburger = () => {
 
 const SideMenu = () => {
   const links = [
-    { name: "Cohorts", url: "/website-v2/cohorts" },
-    { name: "Review Club", url: "/website-v2/review" },
-    { name: "Talks", url: "/website-v2/talks" },
+    {
+      name: "Cohorts",
+      url: "/website-v2/cohorts",
+      desc: "Learn About our Study Cohorts",
+    },
+    {
+      name: "Review Club",
+      url: "/website-v2/review",
+      desc: "Enjoy the Bitcoin PR Review Club",
+    },
+    {
+      name: "Talks",
+      url: "/website-v2/talks",
+      desc: "Learn about Bitcoin through insightful conversations",
+    },
     {
       name: "Join our Discord !",
       url: "https://discord.gg/ekzAUeeR",
@@ -83,9 +94,13 @@ const SideMenu = () => {
             <a
               href={link.url}
               target={link.tar}
-              className="text-2xl text-white hover:text-peach"
+              className="flex items-center font-header text-2xl font-bold text-white hover:text-orange lg:text-5xl"
             >
               {link.name}
+              <p className="  mx-10 mt-1 hidden items-center justify-center text-2xl text-white  lg:flex">
+                {" "}
+                {link.desc}{" "}
+              </p>
             </a>
           );
         })}
