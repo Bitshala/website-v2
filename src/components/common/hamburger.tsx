@@ -20,7 +20,7 @@ const Hamburger = () => {
   return (
     <>
       <button
-        className="relative h-12 w-12 rounded-lg  bg-[#f7f7f74d]  focus:outline-none"
+        className="relative h-16 w-16 rounded-lg bg-black focus:outline-none"
         onClick={handleClick}
       >
         <span className="sr-only">Open main menu</span>
