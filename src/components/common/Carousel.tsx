@@ -80,7 +80,7 @@ function Carousel() {
           <div className="my-5 lg:p-5 lg:text-3xl">
             {slides[currentIndex].content}
           </div>
-          <button className="mt-5 rounded-lg  border-2 border-dotted border-black  py-4 lg:mx-28">
+          <button className="mt-5 rounded-lg border-2 border-dotted  border-black py-4 text-xl  hover:bg-white lg:mx-28">
             Tell Me More!
           </button>
         </div>
@@ -100,7 +100,7 @@ function Carousel() {
           <div
             key={slideIndex}
             onClick={() => goToSlide(slideIndex)}
-            className="cursor-pointer p-2 text-2xl"
+            className="cursor-pointer p-2 text-3xl hover:text-4xl hover:outline-2 hover:outline-white"
           >
             ⚫
           </div>
