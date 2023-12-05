@@ -80,109 +80,105 @@ const advisors = [
 ];
 ---
 
-<div>
-  <p class="mt-20 text-center text-2xl">
-    Our Team and Advisors
-  </p>
-  <div class="relative hidden xl:inline">
-    <p class="text-center font-bold lg:text-[32rem]">
-      people
-    </p>
-  </div>
+<div
+  class="my-8 text-center text-3xl font-bold md:text-6xl lg:text-9xl"
+>
+  Our People
+</div>
 
-  <div
-    class="my-8 text-center text-3xl font-bold xl:hidden"
-  >
-    Our People
-  </div>
-
-  <div
-    class="mt-2 grid grid-cols-1 gap-2 lg:grid-cols-2 lg:gap-x-12 lg:gap-y-6"
-  >
-    {
-      team.map((member) => (
-        <div
-          class={`flex w-full items-center rounded-xl ${member.bgColor} ${member.textColor}}`}
-        >
-          <img
-            src={`/website-v2/people/${member.image}.png`}
-            class="h-28 items-center p-3 lg:h-40"
-            alt={member.name}
-          />
-          <div class="flex w-full flex-col">
-            <div class="flex w-full justify-between px-5 py-3">
-              <p
-                class={`font-header text-xl font-extrabold ${member.headingColor} lg:text-5xl`}
-              >
-                {member.name}
-              </p>
-              <div class="flex">
-                <a href={member.github} target="_blank">
-                  <img
-                    src="/website-v2/people/github.png"
-                    class="m-1 h-6 rounded-xl bg-white lg:h-10"
-                    alt="Github"
-                  />
-                </a>
-                <a href={member.twitter} target="_blank">
-                  <img
-                    src="/website-v2/people/twitter.png"
-                    class="m-1 h-6 rounded-xl bg-white lg:h-10"
-                    alt="Twitter"
-                  />
-                </a>
-              </div>
-            </div>
+<div
+  class="mt-2 grid grid-cols-1 gap-2 lg:grid-cols-2 lg:gap-x-12 lg:gap-y-6"
+>
+  {
+    team.map((member) => (
+      <div
+        class={`flex w-full items-center rounded-xl ${member.bgColor} ${member.textColor}}`}
+      >
+        <img
+          src={`/website-v2/people/${member.image}.png`}
+          class="h-28 items-center p-3 lg:h-40"
+        />
+        <div class="flex w-full flex-col">
+          <div class="flex w-full justify-between px-5 py-3">
             <p
-              class={`lg:p3 px-1 ${member.textColor} text-sm lg:text-xl`}
+              class={`font-header text-xl font-extrabold ${member.headingColor} lg:text-5xl`}
             >
-              {member.desc}
+              {member.name}
             </p>
-          </div>
-        </div>
-      ))
-    }
-  </div>
-
-  <div class="my-5 text-center text-3xl">Our Advisors</div>
-  <div
-    class="mt-2 grid grid-cols-1 gap-2 lg:grid-cols-2 lg:gap-x-12 lg:gap-y-6"
-  >
-    {
-      advisors.map((member) => (
-        <div
-          class={`flex w-full items-center rounded-xl ${member.bgColor} ${member.textColor}}`}
-        >
-          <img
-            src={`/website-v2/people/${member.image}.png`}
-            class="h-28 items-center p-3 lg:h-40"
-            alt={member.name}
-          />
-          <div class="flex w-full flex-col">
-            <div class="flex w-full justify-between px-5 py-3">
-              <p
-                class={`font-header text-xl font-extrabold ${member.headingColor} lg:text-5xl`}
+            <div class="flex">
+              <a
+                href={member.github}
+                target="_blank"
+                class="group"
               >
-                {member.name}
-              </p>
-              <div class="flex">
-                <a>
-                  <img
-                    src="/website-v2/people/twitter.png"
-                    class="m-1 h-8 rounded-xl bg-white lg:h-10"
-                    alt="Twitter"
-                  />
-                </a>
-              </div>
+                <img
+                  src="/website-v2/people/github.png"
+                  class="m-1 h-6 rounded bg-peach group-hover:bg-white lg:h-10"
+                />
+              </a>
+              <a
+                href={member.twitter}
+                target="_blank"
+                class="group"
+              >
+                <img
+                  src="/website-v2/people/twitter.png"
+                  class="m-1 h-6 rounded bg-peach group-hover:bg-white lg:h-10"
+                />
+              </a>
             </div>
-            <p
-              class={`lg:p3 px-1 py-1 ${member.textColor} text-sm lg:text-xl`}
-            >
-              {member.desc}
-            </p>
           </div>
+          <p
+            class={`lg:p3 px-1 ${member.textColor} text-sm lg:text-xl`}
+          >
+            {member.desc}
+          </p>
         </div>
-      ))
-    }
-  </div>
+      </div>
+    ))
+  }
+</div>
+
+<div
+  class="my-5 text-center text-3xl md:text-6xl lg:text-9xl"
+>
+  Our Advisors
+</div>
+<div
+  class="mt-2 grid grid-cols-1 gap-2 lg:grid-cols-2 lg:gap-x-12 lg:gap-y-6"
+>
+  {
+    advisors.map((member) => (
+      <div
+        class={`flex w-full items-center rounded-xl ${member.bgColor} ${member.textColor}}`}
+      >
+        <img
+          src={`/website-v2/people/${member.image}.png`}
+          class="h-28 items-center p-3 lg:h-40"
+        />
+        <div class="flex w-full flex-col">
+          <div class="flex w-full justify-between px-5 py-3">
+            <p
+              class={`font-header text-xl font-extrabold ${member.headingColor} lg:text-5xl`}
+            >
+              {member.name}
+            </p>
+            <div class="flex">
+              <a class="group">
+                <img
+                  src="/website-v2/people/twitter.png"
+                  class="m-1 h-8 rounded bg-peach group-hover:bg-white lg:h-10 "
+                />
+              </a>
+            </div>
+          </div>
+          <p
+            class={`lg:p3 px-1 py-1 ${member.textColor} text-sm lg:text-xl`}
+          >
+            {member.desc}
+          </p>
+        </div>
+      </div>
+    ))
+  }
 </div>
