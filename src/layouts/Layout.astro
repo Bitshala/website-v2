@@ -28,15 +28,19 @@ const { title } = Astro.props;
   <body class="bg-white">
     <div class="m-auto max-w-screen-2xl">
       <nav
-        class="fixed left-0 top-0 z-50 flex w-full justify-between bg-black bg-opacity-[0.95] p-4"
+        class="fixed left-0 top-0 z-50 w-full bg-black bg-opacity-[0.95] p-4"
       >
-        <a href="/website-v2">
-          <img
-            src="/website-v2/footer/logo.png"
-            class="h-16"
-          />
-        </a>
-        <Hamburger client:only />
+        <div
+          class="m-auto flex w-full justify-between xl:w-4/5"
+        >
+          <a href="/website-v2">
+            <img
+              src="/website-v2/footer/logo.png"
+              class="h-16"
+            />
+          </a>
+          <Hamburger client:only />
+        </div>
       </nav>
       <div class="isolate z-0"><slot /></div>
     </div>
