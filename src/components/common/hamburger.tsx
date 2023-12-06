@@ -11,7 +11,7 @@ import {
 const Hamburger = () => {
   const [open, setOpen] = useState(false);
   const handleClick = () => {
-    setOpen(true);
+    setOpen(!open);
   };
   const handleClose = () => {
     setOpen(false);
@@ -84,14 +84,8 @@ const SideMenu = () => {
     },
   ];
   return (
-    <div className="flex h-full w-full flex-col pb-[10%]">
-      <a href="/website-v2">
-        <img
-          src="/website-v2/footer/logo.png"
-          className="h-16"
-        />
-      </a>
-      <div className="flex">
+    <div className="flex h-full w-full flex-col pb-[10%] pt-16">
+      <div>
         <hr className="my-10 w-1/3 border-0 bg-orange outline outline-orange" />
         <div className="my-6 hidden gap-4 px-10 lg:flex">
           <a
