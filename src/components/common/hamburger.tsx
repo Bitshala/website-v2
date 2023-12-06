@@ -46,7 +46,7 @@ const Hamburger = () => {
         </div>
       </button>
       <SlidingPane
-        className=" bg-black"
+        className=" bg-black opacity-95"
         onRequestClose={handleClose}
         isOpen={open}
         hideHeader
@@ -98,34 +98,26 @@ const SideMenu = () => {
             href="https://twitter.com/bitshala_org"
             target="_blank"
           >
-            <FaTwitter
-              style={{ color: "white", fontSize: "32px" }}
-            />
+            <FaTwitter className="text-4xl text-white hover:text-[#1DA1F2]" />
           </a>
           <a
             href="https://github.com/bitshala"
             target="_blank"
           >
-            <FaGithub
-              style={{ color: "white", fontSize: "32px" }}
-            />
+            <FaGithub className="text-4xl text-white hover:text-[#6e5494]" />
           </a>
           <a
             href="https://www.youtube.com/@bitshala/videos"
             target="_blank"
           >
-            <FaYoutube
-              style={{ color: "white", fontSize: "32px" }}
-            />
+            <FaYoutube className="text-4xl text-white hover:text-[#CD201F]" />
           </a>
 
           <a
             href="https://www.linkedin.com/company/bitshala"
             target="_blank"
           >
-            <FaLinkedin
-              style={{ color: "white", fontSize: "32px" }}
-            />
+            <FaLinkedin className="text-4xl text-white hover:text-[#0077b5]" />
           </a>
         </div>
       </div>
@@ -135,10 +127,10 @@ const SideMenu = () => {
           return (
             <a href={link.url} target={link.tar}>
               <div className="flex ">
-                <p className="flex w-80 items-center font-header text-2xl font-bold text-white hover:text-orange lg:text-4xl">
+                <p className="flex w-80 items-center font-header text-3xl font-bold text-white hover:text-orange lg:text-4xl">
                   {link.name}
                 </p>
-                <p className="  mx-10 mt-1 hidden items-center justify-center text-2xl text-white  lg:flex">
+                <p className="  mx-10 mt-1 hidden items-center justify-center text-xl text-peach  lg:flex">
                   {" "}
                   {link.desc}{" "}
                 </p>
