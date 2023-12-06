@@ -50,7 +50,11 @@ const Carousel = ({
         {config[page].title}
       </h1>
       <div className="lg:flex">
-        <img src={config[page].img} />
+        <img
+          src={config[page].img}
+          loading="lazy"
+          alt={config[page].title}
+        />
         <div className="m-2 flex flex-col justify-between lg:p-10 lg:text-2xl">
           <div>{config[page].content}</div>
           <button className="mt-5 w-1/2 p-2 outline">
@@ -65,6 +69,7 @@ const Carousel = ({
               key={page.title}
               className="h-3 w-3 rounded-full outline hover:bg-white"
               onClick={() => setPage(index)}
+              aria-label={page.title}
             />
           );
         })}
