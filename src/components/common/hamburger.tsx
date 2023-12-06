@@ -46,7 +46,7 @@ const Hamburger = () => {
         </div>
       </button>
       <SlidingPane
-        className=" bg-black opacity-95"
+        className=" bg-black"
         onRequestClose={handleClose}
         isOpen={open}
         hideHeader
@@ -104,7 +104,7 @@ const SideMenu = () => {
             href="https://github.com/bitshala"
             target="_blank"
           >
-            <FaGithub className="text-4xl text-white hover:text-[#6e5494]" />
+            <FaGithub className="text-4xl text-white hover:rounded-full hover:bg-[black] hover:invert" />
           </a>
           <a
             href="https://www.youtube.com/@bitshala/videos"
@@ -131,8 +131,7 @@ const SideMenu = () => {
                   {link.name}
                 </p>
                 <p className="  mx-10 mt-1 hidden items-center justify-center text-xl text-peach  lg:flex">
-                  {" "}
-                  {link.desc}{" "}
+                  {link.desc}
                 </p>
               </div>
             </a>
