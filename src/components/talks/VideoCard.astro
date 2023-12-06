@@ -10,7 +10,7 @@ const { video } = Astro.props as {
   href={video.link}
   target="_blank"
 >
-  <img class="w-full" src={video.img} />
+  <img class="w-full" src={video.img} alt={video.title} />
   <div
     class="mt-2 w-full text-ellipsis font-bold lg:text-xl"
   >
