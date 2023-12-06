@@ -1,6 +1,12 @@
 import { useState } from "react";
 import SlidingPane from "react-sliding-pane";
 import "./sliding-pane.css";
+import {
+  FaTwitter,
+  FaGithub,
+  FaYoutube,
+  FaLinkedin,
+} from "react-icons/fa";
 
 const Hamburger = () => {
   const [open, setOpen] = useState(false);
@@ -74,6 +80,7 @@ const SideMenu = () => {
       name: "Join our Discord !",
       url: "https://discord.gg/ekzAUeeR",
       tar: "_blank",
+      desc: "Join our Discord and be a part of the biggest technical bitcoin community",
     },
   ];
   return (
@@ -84,23 +91,58 @@ const SideMenu = () => {
           className="h-16"
         />
       </a>
-      <div>
+      <div className="flex">
         <hr className="my-10 w-1/3 border-0 bg-orange outline outline-orange" />
+        <div className="my-6 hidden gap-4 px-10 lg:flex">
+          <a
+            href="https://twitter.com/bitshala_org"
+            target="_blank"
+          >
+            <FaTwitter
+              style={{ color: "white", fontSize: "32px" }}
+            />
+          </a>
+          <a
+            href="https://github.com/bitshala"
+            target="_blank"
+          >
+            <FaGithub
+              style={{ color: "white", fontSize: "32px" }}
+            />
+          </a>
+          <a
+            href="https://www.youtube.com/@bitshala/videos"
+            target="_blank"
+          >
+            <FaYoutube
+              style={{ color: "white", fontSize: "32px" }}
+            />
+          </a>
+
+          <a
+            href="https://www.linkedin.com/company/bitshala"
+            target="_blank"
+          >
+            <FaLinkedin
+              style={{ color: "white", fontSize: "32px" }}
+            />
+          </a>
+        </div>
       </div>
 
       <ul className="flex h-1/2 flex-col justify-between">
         {links.map((link) => {
           return (
-            <a
-              href={link.url}
-              target={link.tar}
-              className="flex items-center font-header text-2xl font-bold text-white hover:text-orange lg:text-5xl"
-            >
-              {link.name}
-              <p className="  mx-10 mt-1 hidden items-center justify-center text-2xl text-white  lg:flex">
-                {" "}
-                {link.desc}{" "}
-              </p>
+            <a href={link.url} target={link.tar}>
+              <div className="flex ">
+                <p className="flex w-80 items-center font-header text-2xl font-bold text-white hover:text-orange lg:text-4xl">
+                  {link.name}
+                </p>
+                <p className="  mx-10 mt-1 hidden items-center justify-center text-2xl text-white  lg:flex">
+                  {" "}
+                  {link.desc}{" "}
+                </p>
+              </div>
             </a>
           );
         })}
