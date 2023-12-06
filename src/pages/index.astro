@@ -44,17 +44,18 @@ import Header from "../components/common/Header.astro";
         >
         <a
           href="/website-v2/cohorts"
-          class="text-m mx-3 flex w-1/2 items-center justify-center rounded-lg p-4 text-center text-white outline-dashed outline-white hover:bg-white hover:text-black lg:text-2xl"
+          class="text-m mx-3 flex w-1/2 items-center justify-center rounded-lg bg-black p-4 text-center text-white outline-dashed outline-white hover:bg-white hover:text-black lg:text-2xl"
           >Check out the Study Cohorts</a
         >
       </div>
     </div>
   </Header>
-
-  <Testimonial />
-  <Carousel client:visible />
-  <LinkCohort />
-  <People />
+  <div class="p-4 lg:p-0">
+    <Testimonial />
+    <Carousel client:visible />
+    <LinkCohort />
+    <People />
+  </div>
   <Footer />
 </Layout>
  ../components/common/CarouselMobile.tsx
