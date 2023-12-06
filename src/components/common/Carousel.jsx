@@ -32,6 +32,48 @@ const slides = [
   },
 ];
 
+const MobileCarousel = () => {
+  return (
+    <div className="my-2 flex flex-col lg:hidden  ">
+      {slides.map((slide) => {
+        return (
+          <div className="my-2 rounded-lg bg-orange p-3">
+            <h1 className="mb-5  font-header text-2xl  lg:p-11 lg:text-8xl">
+              {slide.title}
+            </h1>
+            <h1
+              style={{
+                WebkitTextStrokeColor: "black",
+                WebkitTextFillColor: "transparent",
+                WebkitTextStrokeWidth: "2px",
+              }}
+              className="absolute top-12 mb-2 hidden font-header text-2xl opacity-10  lg:p-11 lg:text-9xl xl:flex"
+            >
+              {slide.title}
+            </h1>
+            <div className="flex flex-col lg:flex-row">
+              <div
+                style={{
+                  backgroundImage: `url(${slide.url})`,
+                }}
+                className=" h-40 rounded-2xl bg-contain bg-center bg-no-repeat duration-500 lg:h-96 lg:w-1/2"
+              ></div>
+              <div className="flex  flex-col lg:w-1/2">
+                <div className="my-5 lg:p-5 lg:text-3xl">
+                  {slide.content}
+                </div>
+                <button className="mt-5 rounded-lg border-2 border-dotted  border-black py-4 text-xl  hover:bg-white lg:mx-28">
+                  Tell Me More!
+                </button>
+              </div>
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  );
+};
+
 function Carousel() {
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -55,44 +97,7 @@ function Carousel() {
 
   return (
     <>
-      <div className="my-2 flex flex-col lg:hidden  ">
-        {slides.map((slide) => {
-          return (
-            <div className="my-2 rounded-lg bg-orange p-3">
-              <h1 className="mb-5  font-header text-2xl  lg:p-11 lg:text-8xl">
-                {slide.title}
-              </h1>
-              <h1
-                style={{
-                  WebkitTextStrokeColor: "black",
-                  WebkitTextFillColor: "transparent",
-                  WebkitTextStrokeWidth: "2px",
-                }}
-                className="absolute top-12 mb-2 hidden font-header text-2xl opacity-10  lg:p-11 lg:text-9xl xl:flex"
-              >
-                {slide.title}
-              </h1>
-              <div className="flex flex-col lg:flex-row">
-                <div
-                  style={{
-                    backgroundImage: `url(${slide.url})`,
-                  }}
-                  className=" h-40 rounded-2xl bg-contain bg-center bg-no-repeat duration-500 lg:h-96 lg:w-1/2"
-                ></div>
-                <div className="flex  flex-col lg:w-1/2">
-                  <div className="my-5 lg:p-5 lg:text-3xl">
-                    {slide.content}
-                  </div>
-                  <button className="mt-5 rounded-lg border-2 border-dotted  border-black py-4 text-xl  hover:bg-white lg:mx-28">
-                    Tell Me More!
-                  </button>
-                </div>
-              </div>
-            </div>
-          );
-        })}
-      </div>
-
+      <MobileCarousel />
       <div className="group relative m-auto hidden w-full rounded-2xl bg-orange px-4 py-16  lg:block">
         <h1 className="mb-2 font-header text-2xl  lg:p-11 lg:text-8xl">
           {slides[currentIndex].title}
