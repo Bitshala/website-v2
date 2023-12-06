@@ -1,23 +1,33 @@
+---
+import { Image } from "astro:assets";
+import bitcoin from "../../assets/testimonial/bitcoin.png";
+import person1 from "../../assets/testimonial/person1.png";
+import person2 from "../../assets/testimonial/goku.png";
+---
+
 <div class="mb-10 mt-10">
   <div class="inline lg:hidden">
     <div class="flex">
       <div class="mr-2">
-        <img
-          src="/website-v2/testimonial/bitcoin.png"
+        <Image
+          src={bitcoin}
           class="max-h-96"
+          alt="Image of Bitcoin"
         />
       </div>
       <div class="flex flex-col">
         <div class="mb-4">
-          <img
-            src="/website-v2/testimonial/person1.png"
+          <Image
+            src={person1}
             class="max-h-44"
+            alt="Person 1"
           />
         </div>
         <div>
-          <img
-            src="/website-v2/testimonial/goku.png"
+          <Image
+            src={person2}
             class="max-h-44"
+            alt="Person 2"
           />
         </div>
       </div>
@@ -27,22 +37,25 @@
 <div class="flex">
   <div class="hidden lg:flex">
     <div class="mr-8">
-      <img
-        src="/website-v2/testimonial/bitcoin.png"
+      <Image
+        src={bitcoin}
         class="min-h-96"
+        alt="Image of Bitcoin"
       />
     </div>
     <div class="flex flex-col">
       <div>
-        <img
-          src="/website-v2/testimonial/person1.png"
+        <Image
+          src={person1}
           class="min-h-96 mb-8"
+          alt="Person 1"
         />
       </div>
       <div>
-        <img
-          src="/website-v2/testimonial/goku.png"
+        <Image
+          src={person2}
           class="min-h-96"
+          alt="Person 2"
         />
       </div>
     </div>
@@ -96,7 +109,7 @@
   </p>
   <div
     style={{
-      backgroundImage: `url(/website-v2/testimonial/background.png)`,
+      backgroundImage: `url(/website-v2/testimonial/background.webp)`,
       backgroundSize: "cover",
       backgroundRepeat: "no-repeat",
       backgroundPosition: "center",
