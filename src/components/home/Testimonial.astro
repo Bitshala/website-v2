@@ -5,59 +5,23 @@ import person1 from "../../assets/testimonial/person1.png";
 import person2 from "../../assets/testimonial/goku.png";
 ---
 
-<div class="mb-10 mt-10">
-  <div class="inline lg:hidden">
-    <div class="flex">
-      <div class="mr-2">
-        <Image
-          src={bitcoin}
-          class="max-h-96"
-          alt="Image of Bitcoin"
-        />
-      </div>
-      <div class="flex flex-col">
-        <div class="mb-4">
-          <Image
-            src={person1}
-            class="max-h-44"
-            alt="Person 1"
-          />
-        </div>
-        <div>
-          <Image
-            src={person2}
-            class="max-h-44"
-            alt="Person 2"
-          />
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="flex">
-  <div class="hidden lg:flex">
+<div class="mb-10 mt-10"></div>
+<div class="flex flex-col items-center lg:flex-row">
+  <div class="flex h-min md:p-24 lg:p-0">
     <div class="mr-8">
-      <Image
-        src={bitcoin}
-        class="min-h-96"
-        alt="Image of Bitcoin"
-      />
+      <Image src={bitcoin} alt="Bitcoin" />
     </div>
-    <div class="flex flex-col">
-      <div>
-        <Image
-          src={person1}
-          class="min-h-96 mb-8"
-          alt="Person 1"
-        />
-      </div>
-      <div>
-        <Image
-          src={person2}
-          class="min-h-96"
-          alt="Person 2"
-        />
-      </div>
+    <div class="flex grow flex-col justify-between">
+      <Image
+        src={person1}
+        class="mb-8"
+        alt="Image of Person 1"
+      />
+      <Image
+        src={person2}
+        class="min-h-96"
+        alt="Image of Person 2"
+      />
     </div>
   </div>
   <div class="ml-1 flex flex-col lg:ml-8">
@@ -103,7 +67,7 @@ import person2 from "../../assets/testimonial/goku.png";
 <div
   class="mb-10 mt-8 flex flex-col justify-center text-center lg:mt-28"
 >
-  <p class="mb-8 p-5 text-2xl">
+  <p class="mb-8 p-5 font-header text-2xl">
     You’re probably curious about what we have in store for
     you
   </p>
@@ -114,7 +78,7 @@ import person2 from "../../assets/testimonial/goku.png";
       backgroundRepeat: "no-repeat",
       backgroundPosition: "center",
     }}
-    class="m-auto flex min-h-[90vh] flex-col items-center justify-center rounded-lg bg-black p-[10%]"
+    class="m-auto flex min-h-[90vh] flex-col items-center justify-center rounded-lg bg-black p-2 md:p-10"
   >
     <h1
       class="mb-10 text-xl text-white md:text-3xl lg:text-5xl"

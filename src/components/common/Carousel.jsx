@@ -140,9 +140,9 @@ function Carousel() {
             <div
               key={slideIndex}
               onClick={() => goToSlide(slideIndex)}
-              className="cursor-pointer p-2 text-3xl hover:text-4xl hover:outline-2 hover:outline-white"
+              className={`cursor-pointer p-2 text-3xl ${currentIndex==slideIndex?"":"hover:text-4xl"}`}
             >
-              ⚫
+              {currentIndex==slideIndex?"⚪":"⚫"}
             </div>
           ))}
         </div>

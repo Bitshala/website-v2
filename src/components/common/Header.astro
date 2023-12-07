@@ -1,5 +1,4 @@
 ---
-import Hamburger from "./hamburger";
 export interface Props {
   heading: string;
   subheading: string;
@@ -24,19 +23,8 @@ const {
     backgroundRepeat: "no-repeat",
     backgroundPosition: "center",
   }}
-  class="m-auto flex min-h-[90vh] flex-col items-center justify-between gap-12 rounded-lg bg-black px-5 py-[10%] pt-4"
+  class="m-auto flex min-h-[90vh] flex-col items-center justify-between bg-black px-5 pb-12 pt-32 md:rounded-lg"
 >
-  <div class="mb-10 flex w-full justify-between">
-    <a href="/website-v2">
-      <img
-        src="/website-v2/footer/logo.png"
-        class="h-16"
-        alt="Bitshala Logo"
-      />
-    </a>
-    <Hamburger client:only />
-  </div>
-
   <h1
     class={`text-center font-header ${headingColor} text-3xl  lg:text-8xl`}
   >

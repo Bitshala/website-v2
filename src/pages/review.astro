@@ -56,14 +56,16 @@ const faqConfig = [
     headingColor="text-white"
     subheadingColor="text-white"
   />
-  <HowDoesItWork />
-  <VideoList videoConfig={videoConfig} />
-  <EssentialStudyMaterial />
-  <CollapseList
-    listConfig={faqConfig}
-    header="Checkout some of the FAQs"
-    client:visible
-  />
-  <Carousel client:visible />
+  <div class="p-4 lg:p-0">
+    <HowDoesItWork />
+    <VideoList videoConfig={videoConfig} />
+    <EssentialStudyMaterial />
+    <CollapseList
+      listConfig={faqConfig}
+      header="Checkout some of the FAQs"
+      client:visible
+    />
+    <Carousel client:visible />
+  </div>
   <Footer />
 </Layout>
