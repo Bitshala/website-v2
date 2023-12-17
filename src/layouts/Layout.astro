@@ -1,11 +1,13 @@
 ---
 import Footer from "../components/common/Footer.astro";
+import Header from "../components/common/Header.astro";
 import Hamburger from "../components/common/hamburger";
 interface Props {
   title: string;
+  headerProps: any;
 }
 
-const { title } = Astro.props;
+const { title, headerProps } = Astro.props;
 ---
 
 <!doctype html>
@@ -41,6 +43,9 @@ const { title } = Astro.props;
           <Hamburger client:only />
         </div>
       </nav>
+      <Header {...headerProps}>
+        <slot name="headerChild" />
+      </Header>
       <div class="isolate z-0"><slot /></div>
     </div>
     <Footer />

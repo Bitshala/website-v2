@@ -6,24 +6,26 @@ import Testimonial from "../components/home/Testimonial.astro";
 import LinkCohort from "../components/home/LinkCohort.astro";
 import People from "../components/home/People.astro";
 import Header from "../components/common/Header.astro";
+
+const headerProps = {
+  image: "/website-v2/home/headerbg.webp",
+};
 ---
 
-<Layout title="Welcome to Bitshala">
-  <Header
-    heading=""
-    subheading=""
-    image="/website-v2/home/headerbg.webp"
-    headingColor=""
-    subheadingColor=""
+<Layout
+  title="Welcome to Bitshala"
+  headerProps={headerProps}
+>
+  <div
+    slot="headerChild"
+    class="flex h-[70vh] flex-col justify-between"
   >
     <h1
-      slot="heading"
-      class="font-header text-6xl leading-4 text-white lg:text-[15rem]"
+      class="text-center font-header text-6xl text-white lg:text-[15rem]"
     >
       Bitshala:
     </h1>
     <h2
-      slot="subheading"
       class="text-center font-header text-4xl text-orange lg:text-8xl"
     >
       A Pathshala for Bitcoin
@@ -49,7 +51,7 @@ import Header from "../components/common/Header.astro";
         >
       </div>
     </div>
-  </Header>
+  </div>
   <div class="p-4 lg:p-0">
     <Testimonial />
     <Carousel client:visible />

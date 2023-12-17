@@ -25,19 +25,23 @@ const {
   }}
   class="m-auto flex min-h-[90vh] flex-col items-center justify-between bg-black px-5 pb-12 pt-32 md:rounded-lg"
 >
-  <h1
-    class={`text-center font-header ${headingColor} text-3xl  lg:text-8xl`}
-  >
-    {heading}
-  </h1>
-  <slot name="heading" />
-  <p
-    class={`w-2/3 text-center text-xl ${subheadingColor} lg:text-4xl xl:mb-10`}
-  >
-    {subheading}
-  </p>
-  <slot name="subheading" />
-  <div>
-    <slot name="after-heading" />
-  </div>
+  {
+    heading && subheading ? (
+      <>
+        <h1
+          class={`text-center font-header ${headingColor} text-3xl lg:text-8xl`}
+        >
+          {heading}
+        </h1>
+        <p
+          class={`w-2/3 text-center text-xl ${subheadingColor} lg:text-4xl xl:mb-10`}
+        >
+          {subheading}
+        </p>
+        <div />
+      </>
+    ) : (
+      <slot />
+    )
+  }
 </main>

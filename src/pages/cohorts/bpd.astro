@@ -7,17 +7,20 @@ import Description from "../../components/cohortPages/Description.astro";
 import CohortStructure from "../../components/cohortPages/CohortStructure.astro";
 import CohortDetails from "../../components/cohortPages/CohortDetails.astro";
 import Syllabus from "../../components/cohortPages/Syllabus.astro";
+
+const headerProps = {
+  heading: "",
+  subheading: "",
+  image: "/website-v2/cohort/lbtcl.png",
+  headingColor: "text-black",
+  subheadingColor: "text-white",
+};
 ---
 
-<Layout title="Bitcoin Protocol Dev">
-  <Header
-    heading=""
-    subheading=""
-    image="/website-v2/cohort/lbtcl.png"
-    headingColor="text-black"
-    subheadingColor="text-white"
-  />
-
+<Layout
+  title="Bitcoin Protocol Dev"
+  headerProps={headerProps}
+>
   <Description
     takeaways={[
       {

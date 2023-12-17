@@ -46,16 +46,18 @@ const faqConfig = [
     a: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ",
   },
 ];
+const headerProps = {
+  heading:
+    "Ever wondered about the inner workings of Bitcoin Core?",
+  subheading:
+    "Then you’re invited to get your hands dirty with experienced contributors and live PR discussions.",
+  image: "/website-v2/header/PR_Review_Hero.png",
+  headingColor: "text-white",
+  subheadingColor: "text-white",
+};
 ---
 
-<Layout title="PR Review Club">
-  <Header
-    heading="Ever wondered about the inner workings of Bitcoin Core?"
-    subheading="Then you’re invited to get your hands dirty with experienced contributors and live PR discussions."
-    image="/website-v2/header/PR_Review_Hero.png"
-    headingColor="text-white"
-    subheadingColor="text-white"
-  />
+<Layout title="PR Review Club" headerProps={headerProps}>
   <div class="p-4 lg:p-0">
     <HowDoesItWork />
     <VideoList videoConfig={videoConfig} />

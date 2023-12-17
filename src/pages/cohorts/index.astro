@@ -33,17 +33,19 @@ const faqConfig = [
     a: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ",
   },
 ];
+
+const headerProps = {
+  heading:
+    "Dive Deeeeeper into Bitcoin Development with a community of learners",
+  subheading:
+    "Study Cohorts Paving the Way to Bitcoin Mastery",
+  image: "/website-v2/cohort/hero.png",
+  headingColor: "text-white",
+  subheadingColor: "text-white",
+};
 ---
 
-<Layout title="Bitshala Cohorts">
-  <Header
-    heading="Dive Deeeeeper into Bitcoin Development with a community of learners"
-    subheading="Study Cohorts Paving the Way to Bitcoin Mastery"
-    image="/website-v2/cohort/hero.png"
-    headingColor="text-white"
-    subheadingColor="text-white"
-  />
-
+<Layout title="Bitshala Cohorts" headerProps={headerProps}>
   <CohortCard />
   <Checkerboard />
   <CollapseList
