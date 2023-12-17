@@ -1,11 +1,9 @@
 ---
 import Carousel from "../components/common/Carousel";
 import Layout from "../layouts/Layout.astro";
-import Footer from "../components/common/Footer.astro";
 import Testimonial from "../components/home/Testimonial.astro";
 import LinkCohort from "../components/home/LinkCohort.astro";
 import People from "../components/home/People.astro";
-import Header from "../components/common/Header.astro";
 
 const headerProps = {
   image: "/website-v2/home/headerbg.webp",
@@ -52,10 +50,8 @@ const headerProps = {
       </div>
     </div>
   </div>
-  <div class="p-4 lg:p-0">
-    <Testimonial />
-    <Carousel client:visible />
-    <LinkCohort />
-    <People />
-  </div>
+  <Testimonial />
+  <Carousel client:visible />
+  <LinkCohort />
+  <People />
 </Layout>

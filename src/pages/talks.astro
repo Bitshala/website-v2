@@ -1,8 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Header from "../components/common/Header.astro";
 import Carousel from "../components/common/Carousel";
-import Footer from "../components/common/Footer.astro";
 import VideoCard from "../components/talks/VideoCard.astro";
 import {
   getPlaylistDetails,
@@ -37,7 +35,5 @@ const headerProps = {
       ))
     }
   </div>
-  <div class="p-4 lg:p-0">
-    <Carousel client:visible />
-  </div>
+  <Carousel client:visible />
 </Layout>
