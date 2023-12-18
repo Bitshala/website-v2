@@ -31,16 +31,16 @@ export const CollapseList = ({
           return (
             <li key={el.q} className="text-2xl">
               <button
-                className="flex h-full w-full items-center justify-between p-4"
+                className="group flex h-full w-full items-center justify-between p-4 hover:text-orange"
                 onClick={() => handleElementClick(index)}
               >
                 {el.q}
                 {!disableClick && (
                   <div
-                    className={` hidden text-3xl transition-transform lg:block ${
+                    className={` hidden text-3xl transition-transform  lg:block ${
                       activeIndex == index
                         ? `rotate-45`
-                        : ``
+                        : `group-hover:rotate-90`
                     }`}
                   >
                     +

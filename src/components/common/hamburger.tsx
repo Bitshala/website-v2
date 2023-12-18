@@ -1,11 +1,17 @@
 import { useState } from "react";
 import SlidingPane from "react-sliding-pane";
 import "./sliding-pane.css";
+import {
+  FaTwitter,
+  FaGithub,
+  FaYoutube,
+  FaLinkedin,
+} from "react-icons/fa";
 
 const Hamburger = () => {
   const [open, setOpen] = useState(false);
   const handleClick = () => {
-    setOpen(true);
+    setOpen(!open);
   };
   const handleClose = () => {
     setOpen(false);
@@ -14,7 +20,7 @@ const Hamburger = () => {
   return (
     <>
       <button
-        className="relative h-12 w-12 rounded-lg  bg-[#f7f7f74d] focus:outline-none"
+        className="relative h-16 w-16 rounded-lg bg-black focus:outline-none"
         onClick={handleClick}
       >
         <span className="sr-only">Open main menu</span>
@@ -46,7 +52,6 @@ const Hamburger = () => {
         hideHeader
         shouldCloseOnEsc
         from="left"
-        width="300px"
       >
         <SideMenu />
       </SlidingPane>
@@ -56,36 +61,73 @@ const Hamburger = () => {
 
 const SideMenu = () => {
   const links = [
-    { name: "Cohorts", url: "/website-v2/cohorts" },
-    { name: "Review Club", url: "/website-v2/review" },
-    { name: "Talks", url: "/website-v2/talks" },
+    {
+      name: "Cohorts",
+      url: "/website-v2/cohorts",
+      desc: "Learn About our Study Cohorts",
+    },
+    {
+      name: "Review Club",
+      url: "/website-v2/review",
+      desc: "Enjoy the Bitcoin PR Review Club",
+    },
+    {
+      name: "Talks",
+      url: "/website-v2/talks",
+      desc: "Learn about Bitcoin through insightful conversations",
+    },
     {
       name: "Join our Discord !",
       url: "https://discord.gg/ekzAUeeR",
       tar: "_blank",
+      desc: "Join our Discord and be a part of the biggest technical bitcoin community",
     },
   ];
   return (
-    <div className="flex h-full w-full flex-col pb-[10%]">
-      <a href="/website-v2">
-        <img
-          src="/website-v2/footer/logo.png"
-          className="h-16"
-        />
-      </a>
-      <div>
+    <div className="flex h-full w-full flex-col pb-[10%] pt-16">
+      <div className="mb-7 flex">
         <hr className="my-10 w-1/3 border-0 bg-orange outline outline-orange" />
+        <div className="my-6 hidden gap-4 px-10 lg:flex">
+          <a
+            href="https://twitter.com/bitshala_org"
+            target="_blank"
+          >
+            <FaTwitter className="text-4xl text-white hover:text-[#1DA1F2]" />
+          </a>
+          <a
+            href="https://github.com/bitshala"
+            target="_blank"
+          >
+            <FaGithub className="text-4xl text-white hover:rounded-full hover:bg-[black] hover:invert" />
+          </a>
+          <a
+            href="https://www.youtube.com/@bitshala/videos"
+            target="_blank"
+          >
+            <FaYoutube className="text-4xl text-white hover:text-[#CD201F]" />
+          </a>
+
+          <a
+            href="https://www.linkedin.com/company/bitshala"
+            target="_blank"
+          >
+            <FaLinkedin className="text-4xl text-white hover:text-[#0077b5]" />
+          </a>
+        </div>
       </div>
 
       <ul className="flex h-1/2 flex-col justify-between">
         {links.map((link) => {
           return (
-            <a
-              href={link.url}
-              target={link.tar}
-              className="text-2xl text-white hover:text-peach"
-            >
-              {link.name}
+            <a href={link.url} target={link.tar}>
+              <div className="flex ">
+                <p className="flex w-80 items-center font-header text-3xl font-bold text-white hover:text-orange lg:text-4xl">
+                  {link.name}
+                </p>
+                <p className="mx-10 mt-1 hidden items-center justify-center text-xl text-peach lg:flex">
+                  {link.desc}
+                </p>
+              </div>
             </a>
           );
         })}

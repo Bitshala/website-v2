@@ -12,7 +12,7 @@ import Header from "../components/common/Header.astro";
   <Header
     heading=""
     subheading=""
-    image="/website-v2/home/headerbg.png"
+    image="/website-v2/home/headerbg.webp"
     headingColor=""
     subheadingColor=""
   >
@@ -39,21 +39,22 @@ import Header from "../components/common/Header.astro";
         <a
           href="https://discord.gg/ekzAUeeR"
           target="_blank"
-          class="text-m mx-3 flex w-1/2 items-center justify-center rounded-lg bg-orange p-4 text-center lg:text-2xl"
+          class="text-m mx-3 flex w-1/2 items-center justify-center rounded-lg bg-orange p-4 text-center hover:bg-black hover:text-orange hover:outline-dashed lg:text-2xl"
           >Join Our Community</a
         >
         <a
           href="/website-v2/cohorts"
-          class="text-m mx-3 flex w-1/2 items-center justify-center rounded-lg p-4 text-center text-white outline-dashed outline-white lg:text-2xl"
+          class="text-m mx-3 flex w-1/2 items-center justify-center rounded-lg bg-black p-4 text-center text-white outline-dashed outline-white hover:bg-white hover:text-black lg:text-2xl"
           >Check our Study Cohorts</a
         >
       </div>
     </div>
   </Header>
-
-  <Testimonial />
-  <Carousel client:visible />
-  <LinkCohort />
-  <People />
+  <div class="p-4 lg:p-0">
+    <Testimonial />
+    <Carousel client:visible />
+    <LinkCohort />
+    <People />
+  </div>
   <Footer />
 </Layout>
