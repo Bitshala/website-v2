@@ -1,4 +1,5 @@
 ---
+import Hamburger from "../components/common/hamburger";
 interface Props {
   title: string;
 }
@@ -24,33 +25,48 @@ const { title } = Astro.props;
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
   </head>
-  <body class="bg-white p-3 md:p-5 lg:p-8">
-    <slot />
+  <body class="bg-white">
+    <div class="m-auto max-w-screen-2xl">
+      <nav
+        class="fixed left-0 top-0 z-50 w-full bg-black bg-opacity-[0.95] p-4"
+      >
+        <div class="m-auto flex w-full justify-between">
+          <a href="/website-v2">
+            <img
+              src="/website-v2/footer/logo.png"
+              class="h-16"
+            />
+          </a>
+          <Hamburger client:only />
+        </div>
+      </nav>
+      <div class="isolate z-0"><slot /></div>
+    </div>
   </body>
-</html>
 
-<style>
-  @font-face {
-    font-family: "Aeonik Fono";
-    src: url("/website-v2/fonts/AeonikFono.otf")
-      format("opentype");
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
-  }
-  @font-face {
-    font-family: "Firs Neue";
-    src: url("/website-v2/fonts/FirsNeue.ttf")
-      format("truetype");
-    font-weight: bold;
-    font-style: normal;
-    font-display: swap;
-  }
-  html {
-    font-family: "Aeonik Fono", sans-serif;
-  }
-  h1 {
-    font-family: "Firs Neue", sans-serif;
-    font-weight: bold;
-  }
-</style>
+  <style>
+    @font-face {
+      font-family: "Aeonik Fono";
+      src: url("/website-v2/fonts/AeonikFono.otf")
+        format("opentype");
+      font-weight: normal;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: "Firs Neue";
+      src: url("/website-v2/fonts/FirsNeue.ttf")
+        format("truetype");
+      font-weight: bold;
+      font-style: normal;
+      font-display: swap;
+    }
+    html {
+      font-family: "Aeonik Fono", sans-serif;
+    }
+    h1 {
+      font-family: "Firs Neue", sans-serif;
+      font-weight: bold;
+    }
+  </style>
+</html>
