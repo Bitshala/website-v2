@@ -1,9 +1,7 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import CohortCard from "../../components/cohort/CohortCard.astro";
-import Footer from "../../components/common/Footer.astro";
 import Carousel from "../../components/common/Carousel";
-import Header from "../../components/common/Header.astro";
 import { CollapseList } from "../../components/cohort/CollapseList";
 import Checkerboard from "../../components/cohort/Checkerboard.astro";
 
@@ -29,17 +27,18 @@ const faqConfig = [
     a: "Bitcoin is for the sovereign and not for sheep. Most FOSS projects and ventures look for proof of work before hiring. Your graduating certificate is one of those and can help in opening doors but we advise you to contribute to open-source projects (at BitShala or beyond) to increase your chances of getting hired. FOSS projects incubated by BitShala hire contributors based on the quality of engagement and contributions. We also have a job board to help you find the right Bitcoin gig/work.",
   },
 ];
+
+const headerProps = {
+  heading:
+    "Learning Bitcoin alone can be a daunting journey.",
+  subheading: "Join our cohort and find your tribe",
+  image: "/website-v2/cohort/hero.png",
+  headingColor: "text-white",
+  subheadingColor: "text-white",
+};
 ---
 
-<Layout title="Bitshala Cohorts">
-  <Header
-    heading="Learning Bitcoin alone can be a daunting journey."
-    subheading="Join our cohort and find your tribe"
-    image="/website-v2/cohort/hero.png"
-    headingColor="text-white"
-    subheadingColor="text-white"
-  />
-
+<Layout title="Bitshala Cohorts" headerProps={headerProps}>
   <CohortCard />
   <Checkerboard />
   <CollapseList
@@ -48,5 +47,4 @@ const faqConfig = [
     client:visible
   />
   <Carousel client:visible />
-  <Footer />
 </Layout>

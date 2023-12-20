@@ -1,8 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Header from "../components/common/Header.astro";
 import Carousel from "../components/common/Carousel";
-import Footer from "../components/common/Footer.astro";
 import VideoCard from "../components/talks/VideoCard.astro";
 import {
   getPlaylistDetails,
@@ -16,16 +14,18 @@ const videoConfig = isProd
       import.meta.env.GOOGLE_KEY,
     )
   : mockedVideoConfig.slice(-6);
+
+const headerProps = {
+  heading: "Bitcoin Talks",
+  subheading:
+    "Learning Bitcoin alone is hard. We’re here to make it easier through insightful conversations with experienced Bitcoin developers about their Bitcoin journey.",
+  image: "/website-v2/header/Talks_Hero.png",
+  headingColor: "text-white",
+  subheadingColor: "text-white",
+};
 ---
 
-<Layout title="Bitcoin Talks">
-  <Header
-    heading="Bitcoin Talks"
-    subheading="Learning Bitcoin alone is hard. We’re here to make it easier through insightful conversations with experienced Bitcoin developers about their Bitcoin journey."
-    image="/website-v2/header/Talks_Hero.png"
-    headingColor="text-white"
-    subheadingColor="text-white"
-  />
+<Layout title="Bitcoin Talks" headerProps={headerProps}>
   <div
     class="mt-3 grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3"
   >
@@ -35,8 +35,5 @@ const videoConfig = isProd
       ))
     }
   </div>
-  <div class="p-4 lg:p-0">
-    <Carousel client:visible />
-    <Footer />
-  </div>
+  <Carousel client:visible />
 </Layout>

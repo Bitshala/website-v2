@@ -39,10 +39,10 @@ const slides = [
 
 const MobileCarousel = () => {
   return (
-    <div className="my-2 flex flex-col lg:hidden  ">
+    <div className="my-2 flex flex-col lg:hidden">
       {slides.map((slide) => {
         return (
-          <div className="my-2 rounded-lg bg-orange p-3">
+          <div key={slide.title} className="my-2 rounded-lg bg-orange p-3">
             <h1 className="mb-5  font-header text-2xl  lg:p-11 lg:text-8xl">
               {slide.title}
             </h1>
