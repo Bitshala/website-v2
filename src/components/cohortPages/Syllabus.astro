@@ -13,7 +13,7 @@ const { syllabus } = Astro.props;
   <div class="mb-2 mt-5 flex">
     <p class="w-1/6 lg:w-1/12 lg:pl-5">Weeks</p>
     <p class="w-4/6 pl-5 lg:w-10/12">Lessons</p>
-    <p class="w-2/6 lg:w-1/12">Chapters</p>
+    <p class="w-2/6 text-center lg:w-1/12">Chapters</p>
   </div>
   <hr class="border-spacing-12 border-dashed" />
   {
@@ -30,7 +30,9 @@ const { syllabus } = Astro.props;
           <p class="w-4/6 pl-5 text-xl font-bold lg:w-10/12">
             {item.name}
           </p>
-          <p class="w-2/6 lg:w-1/12">{item.chNo}</p>
+          <p class="w-2/6 text-center lg:w-1/12">
+            {item.chNo}
+          </p>
         </div>
         <hr class=" border-spacing-12 border-dashed" />
       </>
