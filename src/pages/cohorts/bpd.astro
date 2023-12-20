@@ -21,24 +21,16 @@ import Syllabus from "../../components/cohortPages/Syllabus.astro";
   <Description
     takeaways={[
       {
-        name: "Mastery of Bitcoin Core",
-        desc: "Participants will gain in-depth knowledge of Bitcoin Core, a fundamental skill for anyone interested in Bitcoin development.",
+        name: "Understanding Bitcoin Protocol:",
+        desc: "Gain insights into the fundamentals of how the Bitcoin protocol is developed, covering its history, technologies, and ongoing challenges.",
       },
       {
-        name: "Local Node Management",
-        desc: "Acquire the skills to set up and manage a local bitcoind regtest node, allowing for a controlled and customizable environment for testing and experimentation.",
+        name: "Practical Knowledge:",
+        desc: "Acquire practical skills through hands-on assignments and real-world projects related to Bitcoin protocol development.",
       },
       {
-        name: "Scripting Expertise",
-        desc: " Explore advanced scripting techniques, enabling you to create custom Bitcoin scripts and smart contracts.",
-      },
-      {
-        name: "Certificate of Achievement",
-        desc: " Successful participants receive a certificate recognizing their proof-of-work and accomplishment.",
-      },
-      {
-        name: "Foundation for Advanced Study",
-        desc: "After completing the cohort, participants are well-prepared to delve into more advanced topics, such as programmatically interfacing with bitcoin-cli and exploring the lightning network.",
+        name: "Certificate of Completion:",
+        desc: "Receive a certificate recognizing your proof-of-work and accomplishment in Bitcoin protocol development.",
       },
       {
         name: "Community",
@@ -48,24 +40,18 @@ import Syllabus from "../../components/cohortPages/Syllabus.astro";
   >
     <div slot="text">
       <h1 class="my-2 font-header text-2xl lg:text-5xl">
-        Learning Bitcoin via Command Line Interface
+        Bitcoin Protocol Development Study Cohort
       </h1>
       <p class="lg:text-xl">
-        Learning Bitcoin from the Command Line is a
-        comprehensive tutorial series that teaches you how
-        to use Bitcoin Core through the command line. The
-        series covers all the essential Bitcoin operations
-        that can be performed using the <span
-          class="text-orange">bitcoin-cli</span
-        > and a local <span class="text-orange"
-          >bitcoind</span
-        >
-         regtest node. Starting from basic transaction
-        construction to advanced scripting, this tutorial is
-        a must-read for aspiring Bitcoin developers. Upon
-        successful completion of the cohort program,
-        participants will receive a certificate recognizing
-        their proof-of-work.
+        Designed by Chaincode, the Bitcoin Protocol
+        Development cohort is an enlightening course that
+        introduces developers to the basics of how the
+        Bitcoin protocol is developed. The scope covers
+        topics such as the history and evolution of the
+        Bitcoin protocol, the underlying technologies
+        enabling its operation, and the various challenges
+        and opportunities associated with its ongoing
+        development and adoption.
       </p>
     </div>
   </Description>
@@ -77,27 +63,22 @@ import Syllabus from "../../components/cohortPages/Syllabus.astro";
       },
       {
         name: "Structure",
-        desc: "Live sessions, once a week QnA",
+        desc: "Weekly live sessions, group discussions, and Q&A",
       },
       {
         name: "Categories",
-        desc: "Wallets, UTXOs, Transactions",
+        desc: "Bitcoin Basics, Advanced Concepts, Community Engagement",
       },
       {
         name: "Duration",
-        desc: "08 weeks",
+        desc: "06 weeks",
       },
     ]}
   >
     <ol slot="prerequisites" class="list-disc p-4 lg:px-8">
       <li>
-        Basic knowledge of Bitcoin and familiarity with
-        terminal operations
-      </li>
-      <li>Cover the material in Mastering Bitcoin</li>
-      <li>
-        Become comfortable with Unix/Linux command-line
-        terminals
+        Basic knowledge of Bitcoin protocol (pre-read
+        Mastering Bitcoin)
       </li>
     </ol>
     <div slot="details">
@@ -107,22 +88,12 @@ import Syllabus from "../../components/cohortPages/Syllabus.astro";
         >
       </p>
       <p class="mb-6 font-header lg:text-xl">
-        The cohort program will comprehensively cover <span
-          class="text-white">chapters 01 to 13</span
-        > of "Learning Bitcoin From Command Line," this
-        provides participants with a solid foundation in
-        Bitcoin operations through the command line.
-      </p>
-      <p class="mb-6 font-header lg:text-xl">
-        After the cohort, participants are encouraged to <span
-          class="text-white"
-          >independently explore chapters 14 to 20</span
-        >
-         , which delve into the advanced functionalities of
-        Bitcoin Core. This will allow them to further
-        explore more advanced topics like programmatically
-        interfacing with bitcoin-cli and the lightning
-        network.
+        This cohort assumes a basic level of Bitcoin
+        protocol knowledge. Participants are expected to
+        have pre-read Mastering Bitcoin as a prerequisite.
+        The program spans several weeks, covering topics
+        such as SegWit, mining, network block propagation,
+        P2P, scripts, wallets, and more.
       </p>
     </div>
   </CohortDetails>
@@ -131,43 +102,33 @@ import Syllabus from "../../components/cohortPages/Syllabus.astro";
   syllabus={[
     {
       week: "Week 01",
-      name: "Introductions",
-      chNo: "",
+      name: "Welcome to the Bitcoin Protocol Development Seminar",
+      chNo: "00",
     },
     {
       week: "Week 02",
-      name: "Introducing Bitcoin; Setting up Bitcoin core VPS; Understanding your bitcoin setup",
-      chNo: "01-03",
+      name: "SEGWIT",
+      chNo: "01",
     },
     {
       week: "Week 03",
-      name: "Sending Bitcoin Transactions; Controlling bitcoin TXNs",
-      chNo: "04-05",
+      name: "Mining and Network Block Propagation",
+      chNo: "02",
       bg: "bg-white",
     },
     {
       week: "Week 04",
-      name: "Expanding Bitcoin Transactions’ Multisigs; Expanding Bitcoin Transactions’ PSBTs",
-      chNo: "06-07",
+      name: "P2P",
+      chNo: "03",
     },
     {
       week: "Week 05",
-      name: "Expanding Bitcoin Transactions Other; Introducing Bitcoin Scripts",
-      chNo: "08-09",
+      name: "Scripts and Wallets",
+      chNo: "04",
     },
     {
       week: "Week 06",
-      name: "Embedding Bitcoin Scripts in P2SH Transactions; Empowering Timelock with Bitcoin Scripts",
-      chNo: "10-11",
-    },
-    {
-      week: "Week 07",
-      name: "Expanding Bitcoin Scripts; Designing Real Bitcoin Scripts",
-      chNo: "12-13",
-    },
-    {
-      week: "Week 08",
-      name: "Conclusions and Next Steps",
+      name: "Next Steps",
       chNo: "",
     },
   ]}
