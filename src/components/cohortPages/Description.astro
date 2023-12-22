@@ -16,8 +16,8 @@ const { takeaways } = Astro.props;
       {
         takeaways.map((takeaway) => (
           <li class="my-4 lg:text-xl">
-            <span class="font-bold">{takeaway.name}</span> :{" "}
-            {takeaway.desc}
+            <span class="font-header">{takeaway.name}</span>{" "}
+            : {takeaway.desc}
           </li>
         ))
       }
