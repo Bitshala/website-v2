@@ -45,16 +45,27 @@ const faqConfig = [
   },
 ];
 const headerProps = {
-  heading: "Inner glimpses of Bitcoin Core",
-  subheading:
-    "A bi-weekly PR Review Club with experienced core contributors to get your hands dirty with Bitcoin Core Development.",
   image: "/website-v2/header/PR_Review_Hero.png",
-  headingColor: "text-white",
-  subheadingColor: "text-white",
 };
 ---
 
 <Layout title="PR Review Club" headerProps={headerProps}>
+  <div slot="headerChild" class="mt-8 lg:mt-16">
+    <h1
+      class="text-center font-header text-4xl text-white md:text-6xl lg:text-8xl"
+    >
+      Inner glimpses of <span class="text-orange"
+        >Bitcoin Core</span
+      >
+    </h1>
+    <p
+      class="mt-10 text-center text-2xl text-white md:text-3xl lg:mt-28 lg:text-4xl"
+    >
+      A bi-weekly PR Review Club with experienced core
+      contributors to get your hands dirty with Bitcoin Core
+      Development.
+    </p>
+  </div>
   <HowDoesItWork />
   <VideoList videoConfig={videoConfig} />
   <EssentialStudyMaterial />
