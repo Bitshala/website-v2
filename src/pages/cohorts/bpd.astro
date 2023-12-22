@@ -9,9 +9,10 @@ import Syllabus from "../../components/cohortPages/Syllabus.astro";
 const headerProps = {
   heading: "",
   subheading: "",
-  image: "/website-v2/cohort/bpd.png",
+  image: "/website-v2/cohort/bpd.webp",
   headingColor: "text-black",
   subheadingColor: "text-white",
+  isContain: true,
 };
 ---
 
@@ -98,41 +99,41 @@ const headerProps = {
       </p>
     </div>
   </CohortDetails>
+  <Syllabus
+    syllabus={[
+      {
+        week: "Week 01",
+        name: "Welcome to the Bitcoin Protocol Development Seminar",
+        chNo: "00",
+      },
+      {
+        week: "Week 02",
+        name: "SEGWIT",
+        chNo: "01",
+      },
+      {
+        week: "Week 03",
+        name: "Mining and Network Block Propagation",
+        chNo: "02",
+        bg: "bg-white",
+      },
+      {
+        week: "Week 04",
+        name: "P2P",
+        chNo: "03",
+      },
+      {
+        week: "Week 05",
+        name: "Scripts and Wallets",
+        chNo: "04",
+      },
+      {
+        week: "Week 06",
+        name: "Next Steps",
+        chNo: "",
+      },
+    ]}
+  />
+  <CohortStructure />
+  <Carousel client:visible />
 </Layout>
-<Syllabus
-  syllabus={[
-    {
-      week: "Week 01",
-      name: "Welcome to the Bitcoin Protocol Development Seminar",
-      chNo: "00",
-    },
-    {
-      week: "Week 02",
-      name: "SEGWIT",
-      chNo: "01",
-    },
-    {
-      week: "Week 03",
-      name: "Mining and Network Block Propagation",
-      chNo: "02",
-      bg: "bg-white",
-    },
-    {
-      week: "Week 04",
-      name: "P2P",
-      chNo: "03",
-    },
-    {
-      week: "Week 05",
-      name: "Scripts and Wallets",
-      chNo: "04",
-    },
-    {
-      week: "Week 06",
-      name: "Next Steps",
-      chNo: "",
-    },
-  ]}
-/>
-<CohortStructure />
-<Carousel client:visible />

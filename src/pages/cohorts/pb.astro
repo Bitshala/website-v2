@@ -9,9 +9,10 @@ import Syllabus from "../../components/cohortPages/Syllabus.astro";
 const headerProps = {
   heading: "",
   subheading: "",
-  image: "/website-v2/cohort/programmingBitcoin.png",
+  image: "/website-v2/cohort/programmingBitcoin.webp",
   headingColor: "text-black",
   subheadingColor: "text-white",
+  isContain: true,
 };
 ---
 
@@ -102,56 +103,56 @@ const headerProps = {
       </p>
     </div>
   </CohortDetails>
+  <Syllabus
+    syllabus={[
+      {
+        week: "Week 00",
+        name: "Introductions",
+        chNo: "",
+      },
+      {
+        week: "Week 01",
+        name: "Finite Fields and Elliptic Curves",
+        chNo: "01-02",
+      },
+      {
+        week: "Week 02",
+        name: "Elliptic Curve Cryptography",
+        chNo: "03",
+        bg: "bg-white",
+      },
+      {
+        week: "Week 03",
+        name: "Serializations and Transactions",
+        chNo: "04-05",
+      },
+      {
+        week: "Week 04",
+        name: "Scripts and Transaction Validation",
+        chNo: "06-07",
+      },
+      {
+        week: "Week 05",
+        name: "P2SH and Blocks",
+        chNo: "08-09",
+      },
+      {
+        week: "Week 06",
+        name: "Networking and SPV",
+        chNo: "10-11",
+      },
+      {
+        week: "Week 07",
+        name: "Bloom filter Segwit",
+        chNo: "12-13",
+      },
+      {
+        week: "Week 08",
+        name: "Conclusion and Next Step",
+        chNo: "",
+      },
+    ]}
+  />
+  <CohortStructure />
+  <Carousel client:visible />
 </Layout>
-<Syllabus
-  syllabus={[
-    {
-      week: "Week 00",
-      name: "Introductions",
-      chNo: "",
-    },
-    {
-      week: "Week 01",
-      name: "Finite Fields and Elliptic Curves",
-      chNo: "01-02",
-    },
-    {
-      week: "Week 02",
-      name: "Elliptic Curve Cryptography",
-      chNo: "03",
-      bg: "bg-white",
-    },
-    {
-      week: "Week 03",
-      name: "Serializations and Transactions",
-      chNo: "04-05",
-    },
-    {
-      week: "Week 04",
-      name: "Scripts and Transaction Validation",
-      chNo: "06-07",
-    },
-    {
-      week: "Week 05",
-      name: "P2SH and Blocks",
-      chNo: "08-09",
-    },
-    {
-      week: "Week 06",
-      name: "Networking and SPV",
-      chNo: "10-11",
-    },
-    {
-      week: "Week 07",
-      name: "Bloom filter Segwit",
-      chNo: "12-13",
-    },
-    {
-      week: "Week 08",
-      name: "Conclusion and Next Step",
-      chNo: "",
-    },
-  ]}
-/>
-<CohortStructure />
-<Carousel client:visible />

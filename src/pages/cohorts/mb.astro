@@ -8,9 +8,10 @@ import Syllabus from "../../components/cohortPages/Syllabus.astro";
 const headerProps = {
   heading: "",
   subheading: "",
-  image: "/website-v2/cohort/lbtcl.png",
+  image: "/website-v2/cohort/masteringBitcoin.webp",
   headingColor: "text-black",
   subheadingColor: "text-white",
+  isContain: true,
 };
 ---
 
@@ -40,7 +41,13 @@ const headerProps = {
         Mastering Bitcoin Study Cohort
       </h1>
       <p class="lg:text-xl">
-        Mastering Bitcoin Study Cohort, inspired by Andreas Antonopoulos' seminal book on Bitcoin, is your pathway to a profound understanding and appreciation of the world's leading cryptocurrency. Immerse yourself in the intricacies of Bitcoin through our structured program, crafted for comprehensive learning.
+        Mastering Bitcoin Study Cohort, inspired by Andreas
+        Antonopoulos' seminal book on Bitcoin, is your
+        pathway to a profound understanding and appreciation
+        of the world's leading cryptocurrency. Immerse
+        yourself in the intricacies of Bitcoin through our
+        structured program, crafted for comprehensive
+        learning.
       </p>
     </div>
   </Description>
@@ -65,9 +72,7 @@ const headerProps = {
     ]}
   >
     <ol slot="prerequisites" class="list-disc p-4 lg:px-8">
-      <li>
-        Nothing except passion for Bitcoin
-      </li>
+      <li>Nothing except passion for Bitcoin</li>
     </ol>
     <div slot="details">
       <p class="mb-6 font-header lg:text-xl">
@@ -76,48 +81,52 @@ const headerProps = {
         >
       </p>
       <p class="mb-6 font-header lg:text-xl">
-       The cohort program comprehensively covers essential chapters of "Mastering Bitcoin," providing participants with a solid foundation.
+        The cohort program comprehensively covers essential
+        chapters of "Mastering Bitcoin," providing
+        participants with a solid foundation.
       </p>
       <p class="mb-6 font-header lg:text-xl">
-       Post-cohort, participants are encouraged to join other cohorts to advance their understanding of Bitcoin.
+        Post-cohort, participants are encouraged to join
+        other cohorts to advance their understanding of
+        Bitcoin.
       </p>
     </div>
   </CohortDetails>
+  <Syllabus
+    syllabus={[
+      {
+        week: "Week 01",
+        name: "Introduction and How Bitcoin Works",
+        chNo: "01-02",
+      },
+      {
+        week: "Week 02",
+        name: "Bitcoin Core, Keys, Addresses",
+        chNo: "03-04",
+      },
+      {
+        week: "Week 03",
+        name: "Wallets and Transactions",
+        chNo: "05-06",
+        bg: "bg-white",
+      },
+      {
+        week: "Week 04",
+        name: "Advanced Transactions and Scripting",
+        chNo: "07",
+      },
+      {
+        week: "Week 05",
+        name: "The Bitcoin Network and The Blockchain",
+        chNo: "08-09",
+      },
+      {
+        week: "Week 06",
+        name: "Mining, Consensus, Bitcoin Security, Blockchain Applications",
+        chNo: "10-11-12",
+      },
+    ]}
+  />
+  <CohortStructure />
+  <Carousel client:visible />
 </Layout>
-<Syllabus
-  syllabus={[
-    {
-      week: "Week 01",
-      name: "Introduction and How Bitcoin Works",
-      chNo: "01-02",
-    },
-    {
-      week: "Week 02",
-      name: "Bitcoin Core, Keys, Addresses",
-      chNo: "03-04",
-    },
-    {
-      week: "Week 03",
-      name: "Wallets and Transactions",
-      chNo: "05-06",
-      bg: "bg-white",
-    },
-    {
-      week: "Week 04",
-      name: "Advanced Transactions and Scripting",
-      chNo: "07",
-    },
-    {
-      week: "Week 05",
-      name: "The Bitcoin Network and The Blockchain",
-      chNo: "08-09",
-    },
-    {
-      week: "Week 06",
-      name: "Mining, Consensus, Bitcoin Security, Blockchain Applications",
-      chNo: "10-11-12",
-    },
-  ]}
-/>
-<CohortStructure />
-<Carousel client:visible />

@@ -8,7 +8,7 @@ const slides = [
     targetLink: "/website-v2/cohorts",
   },
   {
-    url: "/website-v2/cohort/lbtcl.png",
+    url: "/website-v2/cohort/lbtcl.webp",
     title: "Bitcoin Deep Dive",
     content:
       "Here, for you, we decode the technical intricacies of the Bitcoin protocol layer. Deep Dive is a recorded series for you to explore specific technical topics around Bitcoin. Be ready to geek out during your self-study sessions.",
@@ -22,7 +22,7 @@ const slides = [
     targetLink: "/website-v2/talks",
   },
   {
-    url: "/website-v2/cohort/lbtcl.png",
+    url: "/website-v2/cohort/lbtcl.webp",
     title: "Bitcoin Core Review Club",
     content:
       "You get hand-on experience into the inner workings of Bitcoin Core and understand how experienced contributors review PRs. You’ll also develop a deeper understanding of Bitcoin’s design principles while sharpening your adversarial-thinking skills.",
@@ -56,10 +56,7 @@ const MobileCarousel = () => {
             >
               {slide.title}
             </h1>
-            <div
-              href={slide.targetLink}
-              className="flex flex-col lg:flex-row"
-            >
+            <div href={slide.targetLink} className="flex flex-col lg:flex-row">
               <a href={slide.targetLink}>
                 <div
                   style={{
@@ -69,13 +66,8 @@ const MobileCarousel = () => {
                 ></div>
               </a>
               <div className="flex  flex-col lg:w-1/2">
-                <div className="my-5 lg:p-5 lg:text-3xl">
-                  {slide.content}
-                </div>
-                <a
-                  href={slide.targetLink}
-                  className="flex justify-center"
-                >
+                <div className="my-5 lg:p-5 lg:text-3xl">{slide.content}</div>
+                <a href={slide.targetLink} className="flex justify-center">
                   <button className="mt-1 rounded-lg border-2 border-dotted border-black  px-4 py-4 text-xl  hover:bg-white">
                     Tell Me More!
                   </button>
@@ -94,9 +86,7 @@ function Carousel() {
 
   const prevSlide = () => {
     const isFirstSlide = currentIndex === 0;
-    const newIndex = isFirstSlide
-      ? slides.length - 1
-      : currentIndex - 1;
+    const newIndex = isFirstSlide ? slides.length - 1 : currentIndex - 1;
     setCurrentIndex(newIndex);
   };
 
@@ -163,9 +153,7 @@ function Carousel() {
               key={slideIndex}
               onClick={() => goToSlide(slideIndex)}
               className={`cursor-pointer p-2 text-3xl ${
-                currentIndex == slideIndex
-                  ? ""
-                  : "hover:text-4xl"
+                currentIndex == slideIndex ? "" : "hover:text-4xl"
               }`}
             >
               {currentIndex == slideIndex ? "⚪" : "⚫"}
