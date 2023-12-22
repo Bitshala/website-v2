@@ -62,6 +62,11 @@ const Hamburger = () => {
 const SideMenu = () => {
   const links = [
     {
+      name: "Home",
+      url: "/website-v2/",
+      desc: "Back to the home page.",
+    },
+    {
       name: "Cohorts",
       url: "/website-v2/cohorts",
       desc: "Learn About our Study Cohorts",

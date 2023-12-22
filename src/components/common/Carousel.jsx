@@ -1,35 +1,35 @@
 import { useState } from "react";
 const slides = [
   {
-    url: "/website-v2/activities/cohort.png",
+    url: "/website-v2/activities/cohort.webp",
     title: "Bitcoin Study Cohorts",
     content:
       "You, with fellow learners collectively explore selected texts over several weeks in a structured self-study format. You gain hands-on experience and in-depth insights into Bitcoin’s technical aspects. And also receive certificates to celebrate your wins!",
     targetLink: "/website-v2/cohorts",
   },
   {
-    url: "/website-v2/cohort/lbtcl.png",
+    url: "/website-v2/cohort/lbtcl.webp",
     title: "Bitcoin Deep Dive",
     content:
       "Here, for you, we decode the technical intricacies of the Bitcoin protocol layer. Deep Dive is a recorded series for you to explore specific technical topics around Bitcoin. Be ready to geek out during your self-study sessions.",
     targetLink: "",
   },
   {
-    url: "/website-v2/activities/cohort.png",
+    url: "/website-v2/carousel/talks.webp",
     title: "Bitcoin Talk",
     content:
       "You get to listen to insightful conversations with experienced Bitcoin developers as they share their journeys, provide valuable advice, and offer suggestions for newcomers in the exciting world of Bitcoin development.",
     targetLink: "/website-v2/talks",
   },
   {
-    url: "/website-v2/cohort/lbtcl.png",
+    url: "/website-v2/carousel/reviewClub.webp",
     title: "Bitcoin Core Review Club",
     content:
       "You get hand-on experience into the inner workings of Bitcoin Core and understand how experienced contributors review PRs. You’ll also develop a deeper understanding of Bitcoin’s design principles while sharpening your adversarial-thinking skills.",
     targetLink: "/website-v2/review",
   },
   {
-    url: "/website-v2/activities/cohort.png",
+    url: "/website-v2/activities/cohort.webp",
     title: "Discord Community",
     content:
       "Come and become a part of our vibrant community of Bitcoin enthusiasts. Here, you can engage in discussions, challenge ideas, and explore Bitcoin opportunities with like-minded peers passionate about shaping the future of decentralized finance.",
@@ -56,10 +56,7 @@ const MobileCarousel = () => {
             >
               {slide.title}
             </h1>
-            <div
-              href={slide.targetLink}
-              className="flex flex-col lg:flex-row"
-            >
+            <div href={slide.targetLink} className="flex flex-col lg:flex-row">
               <a href={slide.targetLink}>
                 <div
                   style={{
@@ -69,13 +66,8 @@ const MobileCarousel = () => {
                 ></div>
               </a>
               <div className="flex  flex-col lg:w-1/2">
-                <div className="my-5 lg:p-5 lg:text-3xl">
-                  {slide.content}
-                </div>
-                <a
-                  href={slide.targetLink}
-                  className="flex justify-center"
-                >
+                <div className="my-5 lg:p-5 lg:text-3xl">{slide.content}</div>
+                <a href={slide.targetLink} className="flex justify-center">
                   <button className="mt-1 rounded-lg border-2 border-dotted border-black  px-4 py-4 text-xl  hover:bg-white">
                     Tell Me More!
                   </button>
@@ -94,9 +86,7 @@ function Carousel() {
 
   const prevSlide = () => {
     const isFirstSlide = currentIndex === 0;
-    const newIndex = isFirstSlide
-      ? slides.length - 1
-      : currentIndex - 1;
+    const newIndex = isFirstSlide ? slides.length - 1 : currentIndex - 1;
     setCurrentIndex(newIndex);
   };
 
@@ -163,9 +153,7 @@ function Carousel() {
               key={slideIndex}
               onClick={() => goToSlide(slideIndex)}
               className={`cursor-pointer p-2 text-3xl ${
-                currentIndex == slideIndex
-                  ? ""
-                  : "hover:text-4xl"
+                currentIndex == slideIndex ? "" : "hover:text-4xl"
               }`}
             >
               {currentIndex == slideIndex ? "⚪" : "⚫"}

@@ -22,7 +22,7 @@ const { title, headerProps } = Astro.props;
     <meta name="viewport" content="width=device-width" />
     <link
       rel="icon"
-      href="/website-v2/favicon.svg"
+      href="/website-v2/footer/logo.png"
       sizes="any"
       type="image/svg+xml"
     />
@@ -31,7 +31,7 @@ const { title, headerProps } = Astro.props;
   </head>
   <body class="bg-white">
     <nav
-      class="fixed left-0 top-0 z-50 w-full bg-black bg-opacity-[0.95] p-4"
+      class="fixed left-0 top-0 z-50 w-full bg-black bg-opacity-[0.5] p-4 backdrop-blur-sm"
     >
       <div class="m-auto flex w-full justify-between">
         <a href="/website-v2">
@@ -43,14 +43,21 @@ const { title, headerProps } = Astro.props;
         <Hamburger client:only />
       </div>
     </nav>
+
     <Notification
       message="Apply for a FOSS Career with Chaincode & Bitshala!"
       url="https://chaincode.applytojob.com/apply/40kEabYKUY/Bitshala-Start-Your-Career-In-Bitcoin-FOSS-Development"
       client:only
     />
-    <Header {...headerProps}>
-      <slot name="headerChild" />
-    </Header>
+    {
+      headerProps.removeHeader ? null : (
+        <div>
+          <Header {...headerProps}>
+            <slot name="headerChild" />
+          </Header>
+        </div>
+      )
+    }
 
     <div class="m-auto max-w-screen-2xl p-4 lg:p-0">
       <div class="isolate z-0"><slot /></div>

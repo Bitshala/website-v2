@@ -5,13 +5,10 @@ import Description from "../../components/cohortPages/Description.astro";
 import CohortStructure from "../../components/cohortPages/CohortStructure.astro";
 import CohortDetails from "../../components/cohortPages/CohortDetails.astro";
 import Syllabus from "../../components/cohortPages/Syllabus.astro";
+import CohortHeader from "../../components/cohort/CohortHeader.astro";
 
 const headerProps = {
-  heading: "",
-  subheading: "",
-  image: "/website-v2/cohort/lbtcl.png",
-  headingColor: "text-black",
-  subheadingColor: "text-white",
+  removeHeader: true,
 };
 ---
 
@@ -19,6 +16,9 @@ const headerProps = {
   title="Programming Bitcoin"
   headerProps={headerProps}
 >
+  <CohortHeader
+    img="/website-v2/cohort/programmingBitcoin.webp"
+  />
   <Description
     takeaways={[
       {
@@ -40,7 +40,16 @@ const headerProps = {
         Programming Bitcoin Study Cohort
       </h1>
       <p class="lg:text-xl">
-        Programming Bitcoin, is an in-depth tutorial on Bitcoin Core, unveils the intricacies of Bitcoin development. Using bitcoin-cli and a local bitcoind regtest node, this comprehensive program guides you from the foundations of Bitcoin operations to the implementation of complex scripting. It is a must-read tutorial to explore the limitless possibilities of Bitcoin. Upon successful completion of the cohort program, participants will receive a certificate recognizing their proof-of-work.
+        Programming Bitcoin, is an in-depth tutorial on
+        Bitcoin Core, unveils the intricacies of Bitcoin
+        development. Using bitcoin-cli and a local bitcoind
+        regtest node, this comprehensive program guides you
+        from the foundations of Bitcoin operations to the
+        implementation of complex scripting. It is a
+        must-read tutorial to explore the limitless
+        possibilities of Bitcoin. Upon successful completion
+        of the cohort program, participants will receive a
+        certificate recognizing their proof-of-work.
       </p>
     </div>
   </Description>
@@ -66,9 +75,13 @@ const headerProps = {
   >
     <ol slot="prerequisites" class="list-disc p-4 lg:px-8">
       <li>
-        Familiarity with basic Bitcoin technology. Read through Mastering Bitcoin.
+        Familiarity with basic Bitcoin technology. Read
+        through Mastering Bitcoin.
       </li>
-      <li>Basic understanding of the Python programming language</li>
+      <li>
+        Basic understanding of the Python programming
+        language
+      </li>
     </ol>
     <div slot="details">
       <p class="mb-6 font-header lg:text-xl">
@@ -77,63 +90,68 @@ const headerProps = {
         >
       </p>
       <p class="mb-6 font-header lg:text-xl">
-        This program comprehensively covers chapters 1 to 14 of "Programming Bitcoin," providing participants with a solid foundation in Bitcoin programming and development.
+        This program comprehensively covers chapters 1 to 14
+        of "Programming Bitcoin," providing participants
+        with a solid foundation in Bitcoin programming and
+        development.
       </p>
       <p class="mb-6 font-header lg:text-xl">
-        Beyond the cohort, participants are encouraged to actively engage in projects of interest within the BitShala Discord community.
+        Beyond the cohort, participants are encouraged to
+        actively engage in projects of interest within the
+        BitShala Discord community.
       </p>
     </div>
   </CohortDetails>
+  <Syllabus
+    syllabus={[
+      {
+        week: "Week 00",
+        name: "Introductions",
+        chNo: "",
+      },
+      {
+        week: "Week 01",
+        name: "Finite Fields and Elliptic Curves",
+        chNo: "01-02",
+      },
+      {
+        week: "Week 02",
+        name: "Elliptic Curve Cryptography",
+        chNo: "03",
+        bg: "bg-white",
+      },
+      {
+        week: "Week 03",
+        name: "Serializations and Transactions",
+        chNo: "04-05",
+      },
+      {
+        week: "Week 04",
+        name: "Scripts and Transaction Validation",
+        chNo: "06-07",
+      },
+      {
+        week: "Week 05",
+        name: "P2SH and Blocks",
+        chNo: "08-09",
+      },
+      {
+        week: "Week 06",
+        name: "Networking and SPV",
+        chNo: "10-11",
+      },
+      {
+        week: "Week 07",
+        name: "Bloom filter Segwit",
+        chNo: "12-13",
+      },
+      {
+        week: "Week 08",
+        name: "Conclusion and Next Step",
+        chNo: "",
+      },
+    ]}
+  />
+  <CohortStructure />
+  <Carousel client:visible />
 </Layout>
-<Syllabus
-  syllabus={[
-    {
-      week: "Week 00",
-      name: "Introductions",
-      chNo: "",
-    },
-    {
-      week: "Week 01",
-      name: "Finite Fields and Elliptic Curves",
-      chNo: "01-02",
-    },
-    {
-      week: "Week 02",
-      name: "Elliptic Curve Cryptography",
-      chNo: "03",
-      bg: "bg-white",
-    },
-    {
-      week: "Week 03",
-      name: "Serializations and Transactions",
-      chNo: "04-05",
-    },
-    {
-      week: "Week 04",
-      name: "Scripts and Transaction Validation",
-      chNo: "06-07",
-    },
-    {
-      week: "Week 05",
-      name: "P2SH and Blocks",
-      chNo: "08-09",
-    },
-    {
-      week: "Week 06",
-      name: "Networking and SPV",
-      chNo: "10-11",
-    },
-    {
-      week: "Week 07",
-      name: "Bloom filter Segwit",
-      chNo: "12-13",
-    },
-    {
-      week: "Week 08",
-      name: "Conclusion and Next Step",
-      chNo: "",
-    },
-  ]}
-/>
-<CohortStructure />
-<Carousel client:visible />

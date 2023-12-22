@@ -1,0 +1,17 @@
+---
+export interface Props {
+  img: string;
+}
+const { img } = Astro.props;
+---
+
+<div
+  style={{
+    backgroundImage: `url(${img})`,
+    backgroundSize: "contain",
+    backgroundRepeat: "no-repeat",
+    backgroundPosition: "center",
+  }}
+  class="m-auto mt-20 flex min-h-[30vh] flex-col items-center justify-between px-5 pb-12 pt-32 md:min-h-[60vh] md:rounded-lg lg:min-h-[90vh]"
+>
+</div>
