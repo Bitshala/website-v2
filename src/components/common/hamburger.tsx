@@ -64,7 +64,7 @@ const SideMenu = () => {
     {
       name: "Home",
       url: "/website-v2/",
-      desc: "A Pathshala for Bitcoin",
+      desc: "Back to the home page.",
     },
     {
       name: "Cohorts",

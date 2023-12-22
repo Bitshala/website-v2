@@ -27,12 +27,11 @@ const {
 <main
   style={{
     backgroundImage: `url(${image})`,
+    backgroundSize: "cover",
+    backgroundRepeat: "no-repeat",
+    backgroundPosition: "center",
   }}
-  class={`bg-no-repeat ${
-    isContain
-      ? "bg-contain min-h-[35vh] md:min-h-[45vh] lg:min-h-[90vh] md:mt-5 rounded-lg lg:bg-contain"
-      : "bg-cover min-h-[90vh] bg-black  px-5 pb-12 pt-32"
-  } bg-center m-auto flex  flex-col items-center justify-between   md:rounded-lg lg:bg-cover`}
+  class="m-auto flex min-h-[90vh] flex-col items-center justify-between bg-black px-5 pb-12 pt-32 md:rounded-lg"
 >
   {
     heading && subheading ? (

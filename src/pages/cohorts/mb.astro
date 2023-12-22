@@ -5,17 +5,16 @@ import Description from "../../components/cohortPages/Description.astro";
 import CohortStructure from "../../components/cohortPages/CohortStructure.astro";
 import CohortDetails from "../../components/cohortPages/CohortDetails.astro";
 import Syllabus from "../../components/cohortPages/Syllabus.astro";
+import CohortHeader from "../../components/cohort/CohortHeader.astro";
 const headerProps = {
-  heading: "",
-  subheading: "",
-  image: "/website-v2/cohort/masteringBitcoin.webp",
-  headingColor: "text-black",
-  subheadingColor: "text-white",
   isContain: true,
 };
 ---
 
 <Layout title="Mastering Bitcoin" headerProps={headerProps}>
+  <CohortHeader
+    img="/website-v2/cohort/masteringBitcoin.webp"
+  />
   <Description
     takeaways={[
       {

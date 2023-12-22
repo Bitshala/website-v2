@@ -32,7 +32,19 @@ const { title, headerProps } = Astro.props;
   <body class="bg-white">
     {
       headerProps.isContain ? (
-        <div />
+        <div>
+          <nav class="fixed left-0 top-0 z-50 w-full bg-black bg-opacity-[0.5] p-4 backdrop-blur-sm">
+            <div class="m-auto flex w-full justify-between">
+              <a href="/website-v2">
+                <img
+                  src="/website-v2/footer/logo.png"
+                  class="h-16"
+                />
+              </a>
+              <Hamburger client:only />
+            </div>
+          </nav>
+        </div>
       ) : (
         <div>
           <nav class="fixed left-0 top-0 z-50 w-full bg-black bg-opacity-[0.95] p-4">
@@ -55,9 +67,17 @@ const { title, headerProps } = Astro.props;
       url="https://chaincode.applytojob.com/apply/40kEabYKUY/Bitshala-Start-Your-Career-In-Bitcoin-FOSS-Development"
       client:only
     />
-    <Header {...headerProps}>
-      <slot name="headerChild" />
-    </Header>
+    {
+      headerProps.isContain ? (
+        <div />
+      ) : (
+        <div>
+          <Header {...headerProps}>
+            <slot name="headerChild" />
+          </Header>
+        </div>
+      )
+    }
 
     <div class="m-auto max-w-screen-2xl p-4 lg:p-0">
       <div class="isolate z-0"><slot /></div>
