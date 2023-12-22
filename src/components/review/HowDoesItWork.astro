@@ -2,18 +2,6 @@
 import MeetYourTAs from "../cohortPages/MeetYourTAs.astro";
 const list = [
   {
-    name: "Stay Updated",
-    desc: " Keep an eye on this 'README' to find weekly updates and information about upcoming club meetings.",
-  },
-  {
-    name: "Join the Community ",
-    desc: "Join the Discord server where the link to join the review club jitsi is shared and where PR-related discussions take place.",
-  },
-  {
-    name: "Engage in Discussions",
-    desc: "Each week's topic details will be included in an Issue. Use the issue comments to post questions and participate in discussions regarding the PR or the review process in general.",
-  },
-  {
     name: "Review Format",
     desc: "We start the review process by checking out the PR and going through the 'Notes and Questions' provided in the topic details.",
   },
@@ -66,6 +54,40 @@ const team = [
         How to participate
       </p>
       <ul class="mt-5">
+        <li class="my-3">
+          <span class="font-bold">Stay Updated</span> :{" "}
+           Keep an eye on this <a
+            href="https://github.com/Bitshala/BitcoinCore-PR-Review-Club#bitshala-bitcoin-core-pr-review-club"
+            target="_blank"
+            class="underline">'README'</a
+          > to find weekly updates and information about
+          upcoming club meetings.
+        </li>
+        <li class="my-3">
+          <span class="font-bold">Join the Community</span>
+           :{" "}
+           Join the <a
+            href="https://discord.gg/eHktFzDnmp"
+            target="_blank"
+            class="underline">Discord</a
+          > server where the link to join the review club
+          jitsi is shared and where PR-related discussions
+          take place.
+        </li>
+        <li class="my-3">
+          <span class="font-bold"
+            >Engage in Discussions</span
+          > :{" "}
+           Each week's topic details will be included in an
+          <a
+            href="https://github.com/Bitshala/BitcoinCore-PR-Review-Club/issues"
+            target="_blank"
+            class="underline">Issue</a
+          >
+           . Use the issue comments to post questions and
+          participate in discussions regarding the PR or the
+          review process in general.
+        </li>
         {
           list.map((item) => (
             <li class="my-3">
