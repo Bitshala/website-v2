@@ -1,5 +1,6 @@
 ---
 import MeetYourTAs from "../cohortPages/MeetYourTAs.astro";
+import { ta } from "../common/list.js";
 
 export interface Props {
   format: Array<any>;
@@ -8,7 +9,7 @@ const { format } = Astro.props;
 ---
 
 <div class="mb-10 flex flex-col gap-2 lg:flex-row lg:gap-8">
-  <div class="rounded-2xl bg-orange p-3 lg:w-3/5 lg:p-10">
+  <div class="rounded-2xl bg-peach p-3 lg:w-3/5 lg:p-10">
     <p>The Deets</p>
     <h1
       class="mb-10 mt-3 font-header text-4xl font-bold lg:text-5xl"
@@ -43,34 +44,6 @@ const { format } = Astro.props;
     <slot name="details" />
   </div>
   <div class="flex grow lg:w-2/5">
-    <MeetYourTAs
-      team={[
-        {
-          name: "Raj Maitra",
-          desc: "we will have rewrite it in 3rd person tho.. but write a description of yoyrself in whatever form you",
-          image: "raj",
-          twitter: "https://twitter.com/RajarshiMaitra",
-          github: "https://github.com/rajarshimaitra",
-        },
-
-        {
-          name: "Stratospher",
-          desc: "we will have rewrite it in 3rd person tho.. but write a description of yoyrself in whatever form you",
-          image: "stratospher",
-        },
-        {
-          name: "Anmol Sharma",
-          desc: "we will have rewrite it in 3rd person tho.. but write a description of yoyrself in whatever form you",
-          image: "anmol",
-        },
-
-        {
-          name: "Emil Joshy",
-          desc: "Joined Bitshala to run Bitcoin Core on his Dive Computer. Didn’t work, but he’ll keep trying.",
-          image: "emil",
-        },
-      ]}
-      color="bg-orange"
-    />
+    <MeetYourTAs team={ta} color="bg-peach" />
   </div>
 </div>

@@ -12,28 +12,20 @@ const list1 = [
     name: "LinkedIn",
     link: "https://www.linkedin.com/company/bitshala",
   },
-  {
-    name: "Instagram",
-    link: "",
-  },
 ];
 
 const list2 = [
   {
-    name: "Team",
-    link: "",
+    name: "Home",
+    link: "/website-v2/",
   },
   {
-    name: "Resources",
-    link: "",
+    name: "Team",
+    link: "/website-v2/#our_people",
   },
   {
     name: "Contact",
-    link: "",
-  },
-  {
-    name: "Careers",
-    link: "",
+    link: "mailto:contact@bitshala.org",
   },
 ];
 
@@ -100,7 +92,7 @@ const list3 = [
     <div class="m-3 p-3">
       {
         list2.map((li) => (
-          <a href={li.link} target="_blank">
+          <a href={li.link}>
             <div class="my-1 text-sm hover:font-header lg:text-xl">
               {li.name}
             </div>

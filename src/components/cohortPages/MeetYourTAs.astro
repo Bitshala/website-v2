@@ -10,23 +10,25 @@ const { team, color } = Astro.props;
   class={`flex flex-col rounded-2xl ${color} p-2 lg:gap-10 lg:p-5`}
 >
   <h1
-    class="my-5 text-center font-header text-4xl lg:text-5xl"
+    class="my-3 text-center font-header text-4xl lg:text-5xl"
   >
     Meet Your TAs
   </h1>
 
   {
     team.map((member) => (
-      <div class="my-3 flex rounded-lg bg-black">
+      <div
+        class={`my-3 flex rounded-lg ${member.bgColor} `}
+      >
         <img
           src={`/website-v2/people/${member.image}.png`}
-          class="h-28 items-center  p-3 "
+          class="mt-2 h-28 items-center p-3 align-middle "
           alt={member.name}
         />
         <div class="flex flex-col">
           <div class="flex">
             <p
-              class={`mt-3 w-4/6 font-header text-xl text-orange lg:px-3 lg:text-3xl xl:w-5/6`}
+              class={` mt-3 w-4/6 font-header text-xl ${member.headingColor} lg:text-3xl xl:w-5/6`}
             >
               {member.name}
             </p>
@@ -37,7 +39,7 @@ const { team, color } = Astro.props;
                 alt="Github"
               />
             </a>
-            <a>
+            <a href={member.twitter} target="_blank">
               <img
                 src="/website-v2/people/twitter.png"
                 class="mr-3 mt-3 h-8 rounded-xl bg-white "
@@ -47,7 +49,7 @@ const { team, color } = Astro.props;
           </div>
 
           <p
-            class={`lg:p3 mr-16 px-1 text-sm text-white lg:text-base `}
+            class={`lg:p3 mr-16 px-1 pb-3 text-sm ${member.textColor} lg:text-base `}
           >
             {member.desc}
           </p>
