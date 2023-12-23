@@ -17,6 +17,8 @@ const team = [
     bgColor: "bg-orange",
     textColor: "text-black",
     headingColor: "text-black",
+    twitter: "https://twitter.com/SetuSaurabh",
+    github: "https://github.com/setusaurabh",
   },
   {
     name: "Stratospher",
@@ -25,6 +27,8 @@ const team = [
     bgColor: "bg-orange",
     textColor: "text-black",
     headingColor: "text-black",
+    twitter: "https://twitter.com/spherostrat",
+    github: "https://github.com/stratospher",
   },
   {
     name: "Anmol Sharma",
@@ -33,6 +37,8 @@ const team = [
     bgColor: "bg-black",
     textColor: "text-white",
     headingColor: "text-orange",
+    twitter: "https://twitter.com/theanmolsharma_",
+    github: "https://github.com/theanmolsharma",
   },
   {
     name: "Keraliss",
@@ -41,6 +47,8 @@ const team = [
     bgColor: "bg-black",
     textColor: "text-white",
     headingColor: "text-orange",
+    twitter: "https://twitter.com/keraliss1",
+    github: "https://github.com/keraliss",
   },
   {
     name: "Ayush Rajpal",
@@ -49,6 +57,8 @@ const team = [
     bgColor: "bg-orange",
     textColor: "text-black",
     headingColor: "text-black",
+    twitter: "https://twitter.com/_paperpsych",
+    github: "https://github.com/paperpsych",
   },
   {
     name: "Emil Joshy",
@@ -57,6 +67,8 @@ const team = [
     bgColor: "bg-orange",
     textColor: "text-black",
     headingColor: "text-black",
+    twitter: "https://twitter.com/emjshrx",
+    github: "https://github.com/emjshrx",
   },
 ];
 
@@ -68,6 +80,7 @@ const advisors = [
     bgColor: "bg-orange",
     textColor: "text-black",
     headingColor: "text-black",
+    twitter: "https://twitter.com/adamcjonas",
   },
   {
     name: "Adi Shankar",
@@ -76,12 +89,14 @@ const advisors = [
     bgColor: "bg-black",
     textColor: "text-white",
     headingColor: "text-orange",
+    twitter: "https://twitter.com/adi_shankara_",
   },
 ];
 ---
 
 <div
   class="my-8 text-center text-3xl font-bold md:text-6xl lg:text-9xl"
+  id="our_people"
 >
   Our People
 </div>
@@ -139,11 +154,7 @@ const advisors = [
   }
 </div>
 
-<div
-  class="my-5 text-left text-3xl md:text-6xl lg:text-9xl"
->
-  Advisors
-</div>
+<div class="my-5 text-left text-3xl">Advisors</div>
 <div
   class="mt-2 grid grid-cols-1 gap-2 lg:grid-cols-2 lg:gap-x-12 lg:gap-y-6"
 >
@@ -164,7 +175,11 @@ const advisors = [
               {member.name}
             </p>
             <div class="flex">
-              <a class="group">
+              <a
+                class="group"
+                href={member.twitter}
+                target="_blank"
+              >
                 <img
                   src="/website-v2/people/twitter.png"
                   class="m-1 h-8 rounded bg-peach group-hover:bg-white lg:h-10 "

@@ -1,66 +1,61 @@
 ---
-import { Image } from "astro:assets";
-import bitcoin from "../../assets/testimonial/bitcoin.png";
-import person1 from "../../assets/testimonial/person1.png";
-import person2 from "../../assets/testimonial/goku.png";
+const list = [
+  {
+    title: "Game-changer for Bitcoin Education!",
+    desc: "The questions and practical exercises. I think they are very well designed to make you deeply reflect on the studied topic. It help me a lot to consolidate knowledge. The kindle and super fast support from bitshala team and the rest of bitshala comunity. Sharing knowledge, experience and a lot of good stuff. I was awesome to me you all. I loved the day when instead of following the planned agenda and discussing the weekly questions, there was a debate on philosophical and profound topics about money and  bitcoin. It was great",
+    name: "Lazysatoshi for Learning Bitcoin via CLI",
+  },
+  {
+    title: "Transformative Learning Community",
+    desc: "I feel elated to be a part of the first cohort of graduates from Bitshala, and I hope that it turns into a beacon of Bitcoin literacy in India. It's a tailor-made platform and an avenue of great resources  for those who are keen on traversing on a path to learning and imparting Bitcoin education.",
+    name: "Faisal for Learning Bitcoin via CLI",
+  },
+  {
+    title: "Rich and Empowering Learning Experience",
+    desc: "The LBTCL-cohort was an unbelievably rich and empowering exercise in learning the finer details of a Bitcoin node and transactions. Raj and Setu have made the experience worth so much by their sheer enthusiasm and dedication, that it leaves a mark on you. The mentorship and the community at Bitshala is invaluable, and like Bitcoin, it will gradually then suddenly take the world by storm",
+    name: "Shreyan for Learning Bitcoin via CLI",
+  },
+];
 ---
 
 <div class="mb-10 mt-10"></div>
 <div class="flex flex-col items-center lg:flex-row">
   <div class="flex h-min md:p-24 lg:p-0">
     <div class="mr-8">
-      <Image src={bitcoin} alt="Bitcoin" />
+      <img
+        src="/website-v2/testimonial/bitcoin.png"
+        alt="Bitcoin"
+      />
     </div>
     <div class="flex grow flex-col justify-between">
-      <Image
-        src={person1}
+      <img
+        src="/website-v2/testimonial/person1.png"
         class="mb-8"
         alt="Image of Person 1"
       />
-      <Image
-        src={person2}
+      <img
+        src="/website-v2/testimonial/goku.png"
         class="min-h-96"
         alt="Image of Person 2"
       />
     </div>
   </div>
   <div class="ml-1 flex flex-col lg:ml-8">
-    <div class="mt-8">
-      <h1
-        class="mb-4 text-2xl font-semibold md:text-3xl lg:text-5xl"
-      >
-        Game-changer for Bitcoin Education!
-      </h1>
-      <p class="text-base md:text-lg lg:text-2xl">
-        “The sessions were amazing. This platform is perfect
-        for anyone looking to understand Bitcoin deeply and
-        to play around with its technicals which can get a
-        little too overwhelming when you try to do it all on
-        your own.”
-      </p>
-      <p
-        class="mt-1 text-base font-semibold md:text-lg lg:text-2xl"
-      >
-        - Shreyan Joshi, Developer
-      </p>
-    </div>
-    <div>
-      <h1
-        class="md:t3xl mb-4 mt-4 text-2xl font-semibold lg:text-5xl"
-      >
-        Transformative Learning Community
-      </h1>
-      <p class="text-base md:text-lg lg:text-2xl">
-        “The sessions were amazing. This platform is perfect
-        for anyone looking to understand Bitcoin deeply and
-        to play around with its technicals which can get a
-        little too overwhelming when you try to do it all on
-        your own.”
-      </p>
-      <p class="mt-1 text-base font-semibold lg:text-2xl">
-        - Shreyan Joshi, Developer
-      </p>
-    </div>
+    {
+      list.map((item) => (
+        <div class="mt-8">
+          <h1 class="mb-4 text-2xl font-semibold lg:text-4xl">
+            {item.title}
+          </h1>
+          <p class="text-base md:text-lg lg:text-xl">
+            {item.desc}
+          </p>
+          <p class="mt-1 text-base font-semibold md:text-lg lg:text-2xl">
+            - {item.name}
+          </p>
+        </div>
+      ))
+    }
   </div>
 </div>
 

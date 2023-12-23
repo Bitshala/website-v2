@@ -8,13 +8,6 @@ const slides = [
     targetLink: "/website-v2/cohorts",
   },
   {
-    url: "/website-v2/cohort/lbtcl.webp",
-    title: "Bitcoin Deep Dive",
-    content:
-      "Here, for you, we decode the technical intricacies of the Bitcoin protocol layer. Deep Dive is a recorded series for you to explore specific technical topics around Bitcoin. Be ready to geek out during your self-study sessions.",
-    targetLink: "",
-  },
-  {
     url: "/website-v2/carousel/talks.webp",
     title: "Bitcoin Talk",
     content:
