@@ -28,6 +28,8 @@ const format = [
     desc: "Bi-weekly, Technical, QnA",
   },
 ];
+
+import { reviewClubTa } from "../common/list";
 ---
 
 <div class="mt-10 rounded-lg bg-peach">
@@ -99,32 +101,7 @@ const format = [
         </div>
       </div>
       <div class="bg-white pt-10 lg:mt-0 lg:px-10">
-        <MeetYourTAs
-          team={[
-            {
-              name: "Raj Maitra",
-              desc: "Pen-and-paper engineer turned keyboard warrior in multiple rabbit holes. Often known for making a mess. An actual rabbit.",
-              image: "raj",
-              bgColor: "bg-black",
-              textColor: "text-white",
-              headingColor: "text-orange",
-              twitter: "https://twitter.com/RajarshiMaitra",
-              github: "https://github.com/rajarshimaitra",
-            },
-
-            {
-              name: "Stratospher",
-              desc: "Witchcrafting the gossip between Bitcoin nodes. But Pieter Wuille doesn't know its her cat who writes all the code.",
-              image: "stratospher",
-              bgColor: "bg-orange",
-              textColor: "text-black",
-              headingColor: "text-black",
-              twitter: "https://twitter.com/spherostrat",
-              github: "https://github.com/stratospher",
-            },
-          ]}
-          color="bg-peach"
-        />
+        <MeetYourTAs team={reviewClubTa} color="bg-peach" />
       </div>
     </div>
   </div>

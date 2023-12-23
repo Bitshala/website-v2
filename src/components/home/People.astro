@@ -1,97 +1,5 @@
 ---
-const team = [
-  {
-    name: "Raj Maitra",
-    desc: "Pen-and-paper engineer turned keyboard warrior in multiple rabbit holes. Often known for making a mess. An actual rabbit.",
-    image: "raj",
-    bgColor: "bg-black",
-    textColor: "text-white",
-    headingColor: "text-orange",
-    twitter: "https://twitter.com/RajarshiMaitra",
-    github: "https://github.com/rajarshimaitra",
-  },
-  {
-    name: "Setu Saurabh",
-    desc: "PM juggling Bitcoin FOSS projects and ventures like a circus performer.",
-    image: "setu",
-    bgColor: "bg-orange",
-    textColor: "text-black",
-    headingColor: "text-black",
-    twitter: "https://twitter.com/SetuSaurabh",
-    github: "https://github.com/setusaurabh",
-  },
-  {
-    name: "Stratospher",
-    desc: "Witchcrafting the gossip between Bitcoin nodes. But Pieter Wuille doesn't know its her cat who writes all the code.",
-    image: "stratospher",
-    bgColor: "bg-orange",
-    textColor: "text-black",
-    headingColor: "text-black",
-    twitter: "https://twitter.com/spherostrat",
-    github: "https://github.com/stratospher",
-  },
-  {
-    name: "Anmol Sharma",
-    desc: "When he is not talking about Bitcoin,he is busy writing code. But let's be honest, he is usually busy talking about Bitcoin.",
-    image: "anmol",
-    bgColor: "bg-black",
-    textColor: "text-white",
-    headingColor: "text-orange",
-    twitter: "https://twitter.com/theanmolsharma_",
-    github: "https://github.com/theanmolsharma",
-  },
-  {
-    name: "Keraliss",
-    desc: "Contemplating by a river in his humble hut with his laptop, he codes. He says thats all he needs.",
-    image: "keraliss",
-    bgColor: "bg-black",
-    textColor: "text-white",
-    headingColor: "text-orange",
-    twitter: "https://twitter.com/keraliss1",
-    github: "https://github.com/keraliss",
-  },
-  {
-    name: "Ayush Rajpal",
-    desc: "A design ninja with a lot of good questions. Too many actually. So we hired him instead of answering.",
-    image: "paperpsyche",
-    bgColor: "bg-orange",
-    textColor: "text-black",
-    headingColor: "text-black",
-    twitter: "https://twitter.com/_paperpsych",
-    github: "https://github.com/paperpsych",
-  },
-  {
-    name: "Emil Joshy",
-    desc: "Joined Bitshala to run Bitcoin Core on his Dive Computer. Didn’t work, but he’ll keep trying.",
-    image: "emil",
-    bgColor: "bg-orange",
-    textColor: "text-black",
-    headingColor: "text-black",
-    twitter: "https://twitter.com/emjshrx",
-    github: "https://github.com/emjshrx",
-  },
-];
-
-const advisors = [
-  {
-    name: "Adam Jonas",
-    desc: "An invisible force in Bitcoin. Nobody knows what he does. So we’ve stopped asking.",
-    image: "adam",
-    bgColor: "bg-orange",
-    textColor: "text-black",
-    headingColor: "text-black",
-    twitter: "https://twitter.com/adamcjonas",
-  },
-  {
-    name: "Adi Shankar",
-    desc: "The monk who gave us the name and the logo and, but never explained what they mean.",
-    image: "adi",
-    bgColor: "bg-black",
-    textColor: "text-white",
-    headingColor: "text-orange",
-    twitter: "https://twitter.com/adi_shankara_",
-  },
-];
+import { ta, dev, advisors } from "../common/list.js";
 ---
 
 <div
@@ -105,7 +13,55 @@ const advisors = [
   class="mt-2 grid grid-cols-1 gap-2 lg:grid-cols-2 lg:gap-x-12 lg:gap-y-6"
 >
   {
-    team.map((member) => (
+    ta.map((member) => (
+      <div
+        class={`flex w-full items-center rounded-xl ${member.bgColor} ${member.textColor}}`}
+      >
+        <img
+          src={`/website-v2/people/${member.image}.png`}
+          class="h-28 items-center p-3 lg:h-40"
+        />
+        <div class="flex w-full flex-col">
+          <div class="flex w-full justify-between px-5 py-3">
+            <p
+              class={`font-header text-xl font-extrabold ${member.headingColor} lg:text-5xl`}
+            >
+              {member.name}
+            </p>
+            <div class="flex">
+              <a
+                href={member.github}
+                target="_blank"
+                class="group"
+              >
+                <img
+                  src="/website-v2/people/github.png"
+                  class="m-1 h-6 rounded bg-peach group-hover:bg-white lg:h-10"
+                />
+              </a>
+              <a
+                href={member.twitter}
+                target="_blank"
+                class="group"
+              >
+                <img
+                  src="/website-v2/people/twitter.png"
+                  class="m-1 h-6 rounded bg-peach group-hover:bg-white lg:h-10"
+                />
+              </a>
+            </div>
+          </div>
+          <p
+            class={`lg:p3 px-1 ${member.textColor} text-sm lg:text-xl`}
+          >
+            {member.desc}
+          </p>
+        </div>
+      </div>
+    ))
+  }
+  {
+    dev.map((member) => (
       <div
         class={`flex w-full items-center rounded-xl ${member.bgColor} ${member.textColor}}`}
       >
