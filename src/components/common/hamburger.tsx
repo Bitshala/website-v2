@@ -63,22 +63,22 @@ const SideMenu = () => {
   const links = [
     {
       name: "Home",
-      url: "/website-v2/",
+      url: "/",
       desc: "Back to the home page.",
     },
     {
       name: "Cohorts",
-      url: "/website-v2/cohorts",
+      url: "/cohorts",
       desc: "Learn About our Study Cohorts",
     },
     {
       name: "Review Club",
-      url: "/website-v2/review",
+      url: "/review",
       desc: "Enjoy the Bitcoin PR Review Club",
     },
     {
       name: "Talks",
-      url: "/website-v2/talks",
+      url: "/talks",
       desc: "Learn about Bitcoin through insightful conversations",
     },
     {

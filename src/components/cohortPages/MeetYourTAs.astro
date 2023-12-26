@@ -21,7 +21,7 @@ const { team, color } = Astro.props;
         class={`my-3 flex rounded-lg ${member.bgColor} `}
       >
         <img
-          src={`/website-v2/people/${member.image}.png`}
+          src={`/people/${member.image}.png`}
           class="mt-2 h-28 items-center p-3 align-middle "
           alt={member.name}
         />
@@ -34,14 +34,14 @@ const { team, color } = Astro.props;
             </p>
             <a href={member.github} target="_blank">
               <img
-                src="/website-v2/people/github.png"
+                src="/people/github.png"
                 class="mr-3 mt-3 h-8 rounded-xl bg-white "
                 alt="Github"
               />
             </a>
             <a href={member.twitter} target="_blank">
               <img
-                src="/website-v2/people/twitter.png"
+                src="/people/twitter.png"
                 class="mr-3 mt-3 h-8 rounded-xl bg-white "
                 alt="Twitter"
               />

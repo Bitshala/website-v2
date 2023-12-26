@@ -22,7 +22,7 @@ const { title, headerProps } = Astro.props;
     <meta name="viewport" content="width=device-width" />
     <link
       rel="icon"
-      href="/website-v2/footer/logo.png"
+      href="/footer/logo.png"
       sizes="any"
       type="image/svg+xml"
     />
@@ -34,11 +34,8 @@ const { title, headerProps } = Astro.props;
       class="fixed left-0 top-0 z-50 w-full bg-black bg-opacity-[0.5] p-4 backdrop-blur-sm"
     >
       <div class="m-auto flex w-full justify-between">
-        <a href="/website-v2">
-          <img
-            src="/website-v2/footer/logo.png"
-            class="h-16"
-          />
+        <a href="/">
+          <img src="/footer/logo.png" class="h-16" />
         </a>
         <Hamburger client:only />
       </div>
@@ -67,16 +64,14 @@ const { title, headerProps } = Astro.props;
   <style>
     @font-face {
       font-family: "Aeonik Fono";
-      src: url("/website-v2/fonts/AeonikFono.otf")
-        format("opentype");
+      src: url("/fonts/AeonikFono.otf") format("opentype");
       font-weight: normal;
       font-style: normal;
       font-display: swap;
     }
     @font-face {
       font-family: "Firs Neue";
-      src: url("/website-v2/fonts/FirsNeue.ttf")
-        format("truetype");
+      src: url("/fonts/FirsNeue.ttf") format("truetype");
       font-weight: bold;
       font-style: normal;
       font-display: swap;
