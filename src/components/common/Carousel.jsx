@@ -26,7 +26,7 @@ const slides = [
     title: "Discord Community",
     content:
       "Come and become a part of our vibrant community of Bitcoin enthusiasts. Here, you can engage in discussions, challenge ideas, and explore Bitcoin opportunities with like-minded peers passionate about shaping the future of decentralized finance.",
-    targetLink: "https://discord.gg/ekzAUeeR",
+    targetLink: "https://discord.com/invite/STeQFVEWf9",
   },
 ];
 

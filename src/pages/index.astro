@@ -4,6 +4,7 @@ import Layout from "../layouts/Layout.astro";
 import Testimonial from "../components/home/Testimonial.astro";
 import LinkCohort from "../components/home/LinkCohort.astro";
 import People from "../components/home/People.astro";
+import About from "../components/home/About.astro";
 
 const headerProps = {
   image: "/home/headerbg.webp",
@@ -37,7 +38,7 @@ const headerProps = {
       </p>
       <div class="mt-20 flex w-full justify-between">
         <a
-          href="https://discord.gg/ekzAUeeR"
+          href="https://discord.com/invite/STeQFVEWf9"
           target="_blank"
           class="text-m mx-3 flex w-1/2 items-center justify-center rounded-lg bg-orange p-4 text-center hover:bg-black hover:text-orange hover:outline-dashed lg:text-2xl"
           >Join Our Community</a
@@ -50,6 +51,7 @@ const headerProps = {
       </div>
     </div>
   </div>
+  <About />
   <Testimonial />
   <Carousel client:visible />
   <LinkCohort />
