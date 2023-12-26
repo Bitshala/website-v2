@@ -83,7 +83,7 @@ const SideMenu = () => {
     },
     {
       name: "Join our Discord !",
-      url: "https://discord.gg/ekzAUeeR",
+      url: "https://discord.com/invite/STeQFVEWf9",
       tar: "_blank",
       desc: "Join our Discord and be a part of the biggest technical bitcoin community",
     },

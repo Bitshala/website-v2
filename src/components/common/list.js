@@ -97,7 +97,7 @@ export const advisors = [
   {
     name: "Adi Shankar",
     desc:
-      "The monk who gave us the name and the logo and, but never explained what they mean.",
+      "The monk who gave us the name and the logo, but never explained what they mean.",
     image: "adi",
     bgColor: "bg-black",
     textColor: "text-white",
