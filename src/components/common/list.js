@@ -71,10 +71,10 @@ export const dev = [
   },
 
   {
-    name: "Ayush Rajpal",
+    name: "paperpsych",
     desc:
       "A design ninja with a lot of good questions. Too many actually. So we hired him instead of answering.",
-    image: "paperpsyche",
+    image: "paperpsych",
     bgColor: "bg-orange",
     textColor: "text-black",
     headingColor: "text-black",
