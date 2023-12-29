@@ -71,7 +71,7 @@ export const dev = [
   },
 
   {
-    name: "paperpsych",
+    name: "Paperpsych",
     desc:
       "A design ninja with a lot of good questions. Too many actually. So we hired him instead of answering.",
     image: "paperpsych",
