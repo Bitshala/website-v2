@@ -2,7 +2,6 @@
 import Footer from "../components/common/Footer.astro";
 import Header from "../components/common/Header.astro";
 import Hamburger from "../components/common/hamburger";
-import Notification from "../components/common/notification";
 interface Props {
   title: string;
   headerProps: any;
@@ -41,11 +40,6 @@ const { title, headerProps } = Astro.props;
       </div>
     </nav>
 
-    <Notification
-      message="Apply for a FOSS Career with Chaincode & Bitshala!"
-      url="https://chaincode.applytojob.com/apply/40kEabYKUY/Bitshala-Start-Your-Career-In-Bitcoin-FOSS-Development"
-      client:only
-    />
     {
       headerProps.removeHeader ? null : (
         <div>
