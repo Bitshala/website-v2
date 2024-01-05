@@ -8,4 +8,7 @@ export default defineConfig({
   site: "https://www.bitshala.org",
   base: "/",
   integrations: [tailwind(), react()],
+  redirects: {
+    "/apply": "/cohorts",
+  },
 });
