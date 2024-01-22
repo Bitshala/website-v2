@@ -6,6 +6,7 @@ import CohortStructure from "../../components/cohortPages/CohortStructure.astro"
 import CohortDetails from "../../components/cohortPages/CohortDetails.astro";
 import Syllabus from "../../components/cohortPages/Syllabus.astro";
 import CohortHeader from "../../components/cohort/CohortHeader.astro";
+import Application from "../../components/common/Application";
 
 const headerProps = {
   removeHeader: true,
@@ -132,5 +133,6 @@ const headerProps = {
     ]}
   />
   <CohortStructure />
+  <Application name="Bitcoin Protocol Dev" />
   <Carousel client:visible />
 </Layout>
