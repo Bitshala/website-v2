@@ -1,0 +1,21 @@
+---
+import type { ClassNames } from "@emotion/react";
+import Carousel from "../components/common/Carousel";
+import LinkCohort from "../components/home/LinkCohort.astro";
+import Layout from "../layouts/Layout.astro";
+
+const headerProps = {
+  image: "/deepDive/deepDiveHero.webp",
+  heading: "Deep Dive",
+  subheading:
+    "Roll up your sleeves and get ready to go deep into the technicalities of Bitcoin.",
+  headingColor: "text-black",
+  subheadingColor: "text-black",
+};
+---
+
+<Layout title="Bitcoin Deep Dive" headerProps={headerProps}>
+  <div class="my-8">
+    <Carousel client:visible />
+  </div>
+</Layout>
