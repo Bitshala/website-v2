@@ -11,7 +11,7 @@ import Application from "../../components/common/Application";
 const headerProps = {
   removeHeader: true,
 };
-const name = "Bitcoin Protocol Dev";
+const cohortName = "Bitcoin Protocol Dev";
 ---
 
 <Layout
@@ -134,6 +134,6 @@ const name = "Bitcoin Protocol Dev";
     ]}
   />
   <CohortStructure />
-  <Application client:load name={name} />
+  <Application client:load cohortName={cohortName} />
   <Carousel client:visible />
 </Layout>

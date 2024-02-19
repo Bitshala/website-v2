@@ -3,7 +3,7 @@ import axios from "axios";
 import Select from 'react-select';
 
 const Application = ( 
-  {name}: {name: string}
+  {cohortName}: {cohortName: string}
 ) => {
   const [formData, setFormData] = useState({
     name: "",
@@ -18,7 +18,7 @@ const Application = (
     skills: [{}],
     books : [{}],
     enrolled: false,
-    role:name
+    role:cohortName
   });
 
   const [selectedSkills, setSelectedSkills] = useState<OptionType[]>([]);
@@ -74,8 +74,7 @@ const Application = (
     formData.books = selectedBooks;
     e.preventDefault();
     console.log("userdata", formData);
-    axios.post("http://13.232.129.218/register", formData).then((response) => {
-    });
+    axios.post("https://bot.bitshala.org/register", formData);
     console.log("done");
   };
 
