@@ -10,6 +10,8 @@ import Application from "../../components/common/Application";
 const headerProps = {
   removeHeader: true,
 };
+const name =
+  "Lerning Bitcoin Through Command Line Interface";
 ---
 
 <Layout title="LBTCL Cohort" headerProps={headerProps}>
@@ -168,6 +170,6 @@ const headerProps = {
     ]}
   />
   <CohortStructure />
-  <Application client:load />
+  <Application client:load name={name} />
   <Carousel client:visible />
 </Layout>
