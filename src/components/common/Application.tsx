@@ -1,46 +1,14 @@
 import React, { useState, type FormEvent } from "react";
 import axios from "axios";
-import Select from 'react-select';
-import { Alert } from "@mui/material";
-
+import { Alert, Autocomplete, Input, TextField } from "@mui/material";
 
 const skills = [
-  { value: 'Full-stack', label: 'Full-stack' },
-  { value: 'Front-end', label: 'Front-end' },
-  { value: 'Back-end', label: 'Back-end' },
-  { value: 'Dev ops', label: 'Dev ops' },
-  { value: 'UI/UX design', label: 'UI/UX design' },
-  { value: 'Prompt engineering', label: 'Prompt engineering' },
-  { value: "Rust", label: "Rust" },
-  { value: "Python", label: "Python" },
-  { value: "C++", label: "C++" },
-  { value: "Golang", label: "Golang" },
-  { value: "Graphic Design", label: "Graphic Design" },
-  { value: "Video Editing", label: "Video Editing" },
-  { value: "Product Management", label: "Product Management" },
-  { value: "Accounting", label: "Accounting" },
-  { value: "Law", label: "Law" },
-  { value: "Sales", label: "Sales" },
-  { value: "Business Operations", label: "Business Operations" },
-  { value: "Others", label: "Others" }
-]
+  'Full-stack', 'Front-end', 'Back-end', 'Dev ops', 'UI/UX design', 'Prompt engineering', 'Rust', 'Python', 'C++', 'Golang', 'Graphic Design', 'Video Editing', 'Product Management', 'Accounting', 'Law', 'Sales', 'Business Operations', 'Others'
+];
 
 const books = [
-  { value: "Mastering Bitcoin", label: "Mastering Bitcoin" },
-  { value: "Mastering Lightning Network", label: "Mastering Lightning Network" },
-  { value: "BPD", label: "BPD" },
-  { value: "LPD", label: "LPD" },
-  { value: "Learning Bitcoin through Command Line", label: "Learning Bitcoin through Command Line" },
-  { value: "Programming Bitcoin", label: "Programming Bitcoin" },
-  { value: "The Bitcoin Standard", label: "The Bitcoin Standard" },
-  { value: "Sovereign Individual", label: "Sovereign Individual" },
-  { value: "The Broken Money", label: "The Broken Money" },
-  { value: "The Blocksize War", label: "The Blocksize War" },
-  { value: "Others", label: "Others" }
-]
-
-
-
+  'Mastering Bitcoin', 'Mastering Lightning Network', 'BPD', 'LPD', 'Learning Bitcoin through Command Line', 'Programming Bitcoin', 'The Bitcoin Standard', 'Sovereign Individual', 'The Broken Money', 'The Blocksize War', 'Others'
+];
 
 const Application = (
   { cohortName }: { cohortName: string }
@@ -55,11 +23,14 @@ const Application = (
     github: "",
     time: "",
     why: "",
-    skills: [{}],
-    books: [{}],
+    skills: [],
+    books: [],
     enrolled: false,
     role: cohortName
   });
+  const [selectedSkills, setSelectedSkills] = useState([]);
+  const [selectedBooks, setSelectedBooks] = useState([]);
+  const [submitted, setSubmitted] = useState(false);
 
   const list = [
     {
@@ -116,11 +87,8 @@ const Application = (
       type: "text",
       value: formData.why,
     },
-  ]
-  const [selectedSkills, setSelectedSkills] = useState<OptionType[]>([]);
-  const [selectedBooks, setSelectedBooks] = useState<OptionType[]>([]);
+  ];
 
-  const [submitted, setSubmitted] = useState(false);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -132,7 +100,7 @@ const Application = (
     }));
   };
 
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>): void => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     formData.skills = selectedSkills;
     formData.books = selectedBooks;
     e.preventDefault();
@@ -143,15 +111,6 @@ const Application = (
       console.log(error);
     }
   };
-
-  const handleSkills = (selected: OptionType[]) => {
-    setSelectedSkills(selected);
-  };
-
-  const handleBooks = (selected: OptionType[]) => {
-    setSelectedBooks(selected);
-  };
-
   return (
     <>
       <section className="grid place-items-center my-10 ">
@@ -160,7 +119,7 @@ const Application = (
         </h3>
         {
           submitted ? (
-            <Alert severity="success">
+            <Alert severity="success" className="my-5">
               Your application was submitted successfully.
             </Alert>
           ) : (
@@ -173,28 +132,57 @@ const Application = (
                   return (
                     <div key={item.name}>
                       <p>{item.heading}</p>
-                      <input
-                        className="border text-sm rounded-lg block w-full p-2.5 mb-3"
+                      <Input
+                        className="border font-base text-sm rounded-lg block w-full p-2.5 mb-3"
                         type={item.type}
                         name={item.name}
                         value={item.value}
                         onChange={handleChange}
-                        required
                       />
                     </div>
                   )
                 })
               }
+
               <p>Please select list of skills</p>
-              <Select isMulti options={skills} className="border rounded-lg block w-full mb-3 bg-white" name="skills" value={selectedSkills}
-                onChange={handleSkills} required />
+              <Autocomplete
+                className="border font-base text-sm rounded-lg block w-full  mb-3"
+                multiple
+                options={skills}
+                value={selectedSkills}
+                onChange={(e, value) => setSelectedSkills(value)}
+                getOptionLabel={(option) => option}
+                disableCloseOnSelect
+                renderInput={(params) => (
+                  <TextField
+                    {...params}
+                    variant="outlined"
+                    label="Select Skills"
+                    placeholder="Select Skills"
+                  />
+                )}
+              />
 
               <p>Please select books/resources that you have gone through?*</p>
-              <Select isMulti options={books} className="border rounded-lg block w-full mb-3 bg-white" name="skills" value={selectedBooks}
-                onChange={handleBooks} required />
+              <Autocomplete
+                className="border font-base text-sm rounded-lg block w-full mb-3"
+                multiple
+                options={books}
+                value={selectedBooks}
+                onChange={(e, value) => setSelectedBooks(value)}
+                getOptionLabel={(option) => option}
+                disableCloseOnSelect
+                renderInput={(params) => (
 
+                  <TextField
+                    {...params}
+                    variant="outlined"
+                    label="Select Books/Resources"
+                    placeholder="Select Books/Resources"
+                  />
+                )}
+              />
               <button type="submit" className="bg-orange text-white p-2 rounded-lg my-5 hover:text-black hover:bg-peach lg:w-1/3 lg:self-center">Apply</button>
-
             </form>
           )
         }
