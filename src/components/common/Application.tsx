@@ -11,7 +11,7 @@ const books = [
 ];
 
 const Application = (
-  { cohortName }: { cohortName: string }
+  { cohortName, regOpen }: { cohortName: string, regOpen: boolean }
 ) => {
   const [formData, setFormData] = useState({
     name: "",
@@ -28,8 +28,7 @@ const Application = (
     enrolled: false,
     role: cohortName
   });
-  const [selectedSkills, setSelectedSkills] = useState([]);
-  const [selectedBooks, setSelectedBooks] = useState([]);
+  const [isRegOpen, setIsRegOpen] = useState(regOpen);
   const [submitted, setSubmitted] = useState(false);
 
   const list = [
@@ -101,8 +100,6 @@ const Application = (
   };
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
-    formData.skills = selectedSkills;
-    formData.books = selectedBooks;
     e.preventDefault();
     try {
       await axios.post("https://bot.bitshala.org/register", formData);
@@ -113,80 +110,97 @@ const Application = (
   };
   return (
     <>
+    {isRegOpen? (
       <section className="grid place-items-center my-10 ">
-        <h3 className="flex h-14 cursor-pointer items-center font-bold lg:text-4xl">
-          <span className="text-orange px-2">Register</span> for the cohort now!
-        </h3>
-        {
-          submitted ? (
-            <Alert severity="success" className="my-5">
-              Your application was submitted successfully.
-            </Alert>
-          ) : (
-            <form
-              onSubmit={handleSubmit}
-              className="flex flex-col px-5 pt-2 gap-1 rounded-lg lg:w-1/2"
-            >
-              {
-                list.map((item) => {
-                  return (
-                    <div key={item.name}>
-                      <p>{item.heading}</p>
-                      <Input
-                        className="border font-base text-sm rounded-lg block w-full p-2.5 mb-3"
-                        type={item.type}
-                        name={item.name}
-                        value={item.value}
-                        onChange={handleChange}
-                      />
-                    </div>
-                  )
-                })
-              }
+      <h3 className="flex h-14 cursor-pointer items-center font-bold lg:text-4xl">
+        <span className="text-orange px-2">Register</span> for the cohort now!
+      </h3>
+      {
+        submitted ? (
+          <Alert severity="success" className="my-5">
+            Your application was submitted successfully.
+          </Alert>
+        ) : (
+          <form
+            onSubmit={handleSubmit}
+            className="flex flex-col px-5 pt-2 gap-1 rounded-lg lg:w-1/2"
+          >
+            {
+              list.map((item) => {
+                return (
+                  <div key={item.name}>
+                    <p>{item.heading}</p>
+                    <Input
+                      className="border font-base text-sm rounded-lg block w-full p-2.5 mb-3"
+                      type={item.type}
+                      name={item.name}
+                      value={item.value}
+                      onChange={handleChange}
+                    />
+                  </div>
+                )
+              })
+            }
 
-              <p>Please select list of skills</p>
-              <Autocomplete
-                className="border font-base text-sm rounded-lg block w-full  mb-3"
-                multiple
-                options={skills}
-                value={selectedSkills}
-                onChange={(e, value) => setSelectedSkills(value)}
-                getOptionLabel={(option) => option}
-                disableCloseOnSelect
-                renderInput={(params) => (
-                  <TextField
-                    {...params}
-                    variant="outlined"
-                    label="Select Skills"
-                    placeholder="Select Skills"
-                  />
-                )}
-              />
+            <p>Please select list of skills</p>
+            <Autocomplete
+              className="border font-base text-sm rounded-lg block w-full  mb-3"
+              multiple
+              options={skills}
+              value={formData.skills}
+              onChange={(e, value) => {
+                setFormData(prevState => ({
+                    ...prevState,
+                    skills: value 
+                }));
+            }}
+              getOptionLabel={(option) => option}
+              disableCloseOnSelect
+              renderInput={(params) => (
+                <TextField
+                  {...params}
+                  variant="outlined"
+                  label="Select Skills"
+                  placeholder="Select Skills"
+                />
+              )}
+            />
 
-              <p>Please select books/resources that you have gone through?*</p>
-              <Autocomplete
-                className="border font-base text-sm rounded-lg block w-full mb-3"
-                multiple
-                options={books}
-                value={selectedBooks}
-                onChange={(e, value) => setSelectedBooks(value)}
-                getOptionLabel={(option) => option}
-                disableCloseOnSelect
-                renderInput={(params) => (
+            <p>Please select books/resources that you have gone through?*</p>
+            <Autocomplete
+              className="border font-base text-sm rounded-lg block w-full mb-3"
+              multiple
+              options={books}
+              value={formData.books}
+              onChange={(e, value) => {
+                setFormData(prevState => ({
+                    ...prevState,
+                    books: value 
+                }));
+            }}
+              getOptionLabel={(option) => option}
+              disableCloseOnSelect
+              renderInput={(params) => (
 
-                  <TextField
-                    {...params}
-                    variant="outlined"
-                    label="Select Books/Resources"
-                    placeholder="Select Books/Resources"
-                  />
-                )}
-              />
-              <button type="submit" className="bg-orange text-white p-2 rounded-lg my-5 hover:text-black hover:bg-peach lg:w-1/3 lg:self-center">Apply</button>
-            </form>
-          )
-        }
-      </section>
+                <TextField
+                  {...params}
+                  variant="outlined"
+                  label="Select Books/Resources"
+                  placeholder="Select Books/Resources"
+                />
+              )}
+            />
+            <button type="submit" className="bg-orange text-white p-2 rounded-lg my-5 hover:text-black hover:bg-peach lg:w-1/3 lg:self-center">Apply</button>
+          </form>
+        )
+      }
+    </section>
+    ) : (
+      <div className="text-center my-10">
+        <h1 className="lg:text-5xl text-3xl font-bold font-header text-orange">Registration is not open right now</h1>
+        <p className="lg:text-xl my-2">Please keep an eye on our discord for more updates</p>
+      </div>
+    )}
     </>
   );
 };

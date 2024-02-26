@@ -127,6 +127,10 @@ const cohortName = "Mastering Bitcoin";
     ]}
   />
   <CohortStructure />
-  <Application client:load cohortName={cohortName} />
+  <Application
+    client:load
+    cohortName={cohortName}
+    regOpen={false}
+  />
   <Carousel client:visible />
 </Layout>

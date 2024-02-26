@@ -170,6 +170,10 @@ const cohortName =
     ]}
   />
   <CohortStructure />
-  <Application client:load cohortName={cohortName} />
+  <Application
+    client:load
+    cohortName={cohortName}
+    regOpen={true}
+  />
   <Carousel client:visible />
 </Layout>
