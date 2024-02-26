@@ -7,6 +7,7 @@ import CohortDetails from "../../components/cohortPages/CohortDetails.astro";
 import Syllabus from "../../components/cohortPages/Syllabus.astro";
 import CohortHeader from "../../components/cohort/CohortHeader.astro";
 import Application from "../../components/common/Application";
+import { fade } from "astro:transitions";
 const headerProps = {
   removeHeader: true,
 };
@@ -173,7 +174,7 @@ const cohortName =
   <Application
     client:load
     cohortName={cohortName}
-    regOpen={true}
+    regOpen={false}
   />
   <Carousel client:visible />
 </Layout>
