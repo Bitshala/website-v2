@@ -24,7 +24,7 @@ interface FormData {
   skills: string[];
   books: string[];
   enrolled: boolean;
-  role: string; // Assuming cohortName is of type string
+  role: string;
 }
 
 const Application = (
@@ -46,6 +46,7 @@ const Application = (
     role: cohortName
   });
   const [submitted, setSubmitted] = useState(false);
+  const [userExistes, setUserExists] = useState(false);
 
   const list = [
     {
@@ -128,16 +129,23 @@ const Application = (
       [name]: value,
     }));
   };
-
+  
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      await axios.post("https://bot.bitshala.org/register", formData);
+      await axios.post("https://bot.bitshala.org/register", formData).then(
+        (res) => {
+          if (res.data.message === "User already present") {
+            setUserExists(true);
+          }
+        }
+      )
       setSubmitted(true);
     } catch (error) {
       console.log(error);
     }
   };
+  
   return (
     <>
       {regOpen ? (
@@ -148,9 +156,20 @@ const Application = (
             </h3>
             {
               submitted ? (
-                <Alert severity="success" className="my-5">
-                  Your application was submitted successfully. Please keep an eye on the registered email id for further updates.
-                </Alert>
+                <>
+                  {
+                    userExistes ? (
+                      <Alert severity="error" className="my-5">
+                        You are already registered. please check your email
+                      </Alert>
+                    ) : (
+                      <Alert severity="success" className="my-5">
+                        Your application was submitted successfully. Please keep an eye on the registered email id for further updates.
+                      </Alert>
+                    )
+
+                  }
+                </>
               ) : (
                 <form
                   onSubmit={handleSubmit}
@@ -211,7 +230,7 @@ const Application = (
                                   variant="outlined"
                                   label="Select Books/Resources"
                                   placeholder="Select Books/Resources"
-                                  
+
                                 />
                               )}
                             />
@@ -228,7 +247,7 @@ const Application = (
                               name={item.name}
                               value={item.value}
                               onChange={handleChange}
-                              required = {item.isRequired}
+                              required={item.isRequired}
                             />
                           </div>
                         )
