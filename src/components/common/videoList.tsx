@@ -14,15 +14,11 @@ export const VideoList = ({
           return {
             q: (
               <a
-                className="flex items-center text-left "
+                className="flex text-sm lg:text-xl items-center text-left "
                 href={vid.link}
                 target="_blank"
               >
-                <img
-                  className=" mr-5 h-24"
-                  src={vid.img}
-                  alt={vid.title}
-                />
+                <img className=" mr-5 h-24" src={vid.img} alt={vid.title} />
                 {vid.title}
               </a>
             ),
