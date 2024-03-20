@@ -11,7 +11,8 @@ import Application from "../../components/common/Application";
 const headerProps = {
   removeHeader: true,
 };
-const cohortName = "pb_cohort";
+const role = "pb_cohort";
+const cohortName = "Programming Bitcoin";
 ---
 
 <Layout
@@ -156,6 +157,7 @@ const cohortName = "pb_cohort";
   <Application
     client:load
     cohortName={cohortName}
+    role={role}
     regOpen={false}
   />
   <Carousel client:visible />

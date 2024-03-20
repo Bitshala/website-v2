@@ -11,7 +11,8 @@ import { fade } from "astro:transitions";
 const headerProps = {
   removeHeader: true,
 };
-const cohortName = "lbtcl_cohort";
+const role = "lbtcl_cohort";
+const cohortName = "Learning Bitcoin Through Command Line";
 ---
 
 <Layout title="LBTCL Cohort" headerProps={headerProps}>
@@ -173,6 +174,7 @@ const cohortName = "lbtcl_cohort";
   <Application
     client:load
     cohortName={cohortName}
+    role={role}
     regOpen={false}
   />
   <Carousel client:visible />

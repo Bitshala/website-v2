@@ -10,7 +10,8 @@ import Application from "../../components/common/Application";
 const headerProps = {
   removeHeader: true,
 };
-const cohortName = "mb_cohort";
+const role = "mb_cohort";
+const cohortName = "Mastering Bitcoin";
 ---
 
 <Layout title="Mastering Bitcoin" headerProps={headerProps}>
@@ -130,6 +131,7 @@ const cohortName = "mb_cohort";
   <Application
     client:load
     cohortName={cohortName}
+    role={role}
     regOpen={false}
   />
   <Carousel client:visible />
