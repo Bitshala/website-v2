@@ -12,7 +12,8 @@ import { fade } from "astro:transitions";
 const headerProps = {
   removeHeader: true,
 };
-const cohortName = "bpd_cohort";
+const role = "bpd_cohort";
+const cohortName = "Bitcoin Protocol Development";
 ---
 
 <Layout
@@ -138,6 +139,7 @@ const cohortName = "bpd_cohort";
   <Application
     client:load
     cohortName={cohortName}
+    role={role}
     regOpen={true}
   />
   <Carousel client:visible />

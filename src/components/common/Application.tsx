@@ -25,10 +25,11 @@ interface FormData {
   books: string[];
   enrolled: boolean;
   role: string;
+  cohortName: string;
 }
 
 const Application = (
-  { cohortName, regOpen }: { cohortName: string, regOpen: boolean }
+  { cohortName, regOpen, role }: { cohortName: string,role: string, regOpen: boolean }
 ) => {
   const [formData, setFormData] = useState<FormData>({
     name: "",
@@ -43,7 +44,8 @@ const Application = (
     skills: [],
     books: [],
     enrolled: false,
-    role: cohortName
+    role: role,
+    cohortName: cohortName,
   });
   const [submitted, setSubmitted] = useState(false);
   const [userExistes, setUserExists] = useState(false);
