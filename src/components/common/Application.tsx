@@ -147,6 +147,15 @@ const Application = (
       console.log(error);
     }
   };
+
+  function openLink() {
+    const newWindow = window.open("https://discord.gg/nXeeBHDHrt", '_blank', 'noopener,noreferrer,width=800, height=600');
+    // 
+    if (newWindow) {
+      newWindow.opener = null;
+    }
+    window.focus();
+  }
   
   return (
     <>
@@ -161,13 +170,16 @@ const Application = (
                 <>
                   {
                     userExistes ? (
-                      <Alert severity="error" className="my-5">
-                        You are already registered. please check your email
-                      </Alert>
+                      <h1 className="my-5 text-xl p-2 rounded-lg bg-[#ffcccc]">
+                        ❌ You are already registered. Please check your email
+                      </h1>
                     ) : (
-                      <Alert severity="success" className="my-5">
-                        Your application was submitted successfully. Please keep an eye on the registered email id for further updates.
-                      </Alert>
+                      <div className="flex items-center flex-col">
+                        <h1 className="my-5 text-xl p-2 rounded-lg bg-[#e6fff7]">
+                          ✅ Your application was submitted successfully. Please keep an eye on the registered email id for further updates.
+                        </h1>
+                          <a href="https://discord.gg/nXeeBHDHrt" target="_blank" className="my-5 align-middle text-xl font-semibold bg-[#1c3b6a] p-3 rounded-lg text-white ">Join Bitshala Discord Now!</a>
+                      </div>
                     )
 
                   }
@@ -256,8 +268,14 @@ const Application = (
                       }
                     })
                   }
-                  <button type="submit" className="bg-orange text-white p-2 rounded-lg my-5 hover:text-black hover:bg-peach lg:w-1/3 lg:self-center">Apply</button>
+                 
+                  <button type="submit" onClick={openLink} className="bg-orange text-white p-2 rounded-lg my-5 hover:text-black hover:bg-peach lg:w-1/3 lg:self-center">
+                    Apply
+                  </button>
+
+                  {/* <button onClick={openLink}> wehfbewhf</button> */}
                 </form>
+                
               )
             }
           </section>
