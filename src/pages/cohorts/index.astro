@@ -37,9 +37,14 @@ const headerProps = {
   headingColor: "text-white",
   subheadingColor: "text-white",
 };
+const isVisible = true;
 ---
 
-<Layout title="Bitshala Cohorts" headerProps={headerProps}>
+<Layout
+  title="Bitshala Cohorts"
+  headerProps={headerProps}
+  isVisible={isVisible}
+>
   <CohortCard />
   <Checkerboard />
   <CollapseList

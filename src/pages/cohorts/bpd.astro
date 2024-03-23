@@ -14,11 +14,13 @@ const headerProps = {
 };
 const role = "bpd_cohort";
 const cohortName = "Bitcoin Protocol Development";
+const isVisible = false;
 ---
 
 <Layout
   title="Bitcoin Protocol Dev"
   headerProps={headerProps}
+  isVisible={isVisible}
 >
   <CohortHeader img="/cohort/bpd.webp" />
   <Description
@@ -140,12 +142,14 @@ const cohortName = "Bitcoin Protocol Development";
       },
     ]}
   />
-  <CohortStructure />
-  <Application
-    client:only
-    cohortName={cohortName}
-    role={role}
-    regOpen={true}
-  />
+  <div id="applicationForm">
+    <CohortStructure />
+    <Application
+      client:only
+      cohortName={cohortName}
+      role={role}
+      regOpen={true}
+    />
+  </div>
   <Carousel client:visible />
 </Layout>
