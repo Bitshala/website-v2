@@ -59,7 +59,7 @@ export const dev = [
     github: "https://github.com/keraliss",
   },
   {
-    name: "Setu Saurabh",
+    name: "Saurabh",
     desc:
       "PM juggling Bitcoin FOSS projects and ventures like a circus performer.",
     image: "setu",
