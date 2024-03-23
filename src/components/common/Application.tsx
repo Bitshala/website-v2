@@ -29,7 +29,7 @@ interface FormData {
 }
 
 const Application = (
-  { cohortName, regOpen, role }: { cohortName: string,role: string, regOpen: boolean }
+  { cohortName, regOpen, role }: { cohortName: string, role: string, regOpen: boolean }
 ) => {
   const [formData, setFormData] = useState<FormData>({
     name: "",
@@ -52,14 +52,14 @@ const Application = (
 
   const list = [
     {
-      heading: "Name/Pseudonym",
+      heading: "Name/Pseudonym*",
       name: "name",
       type: "text",
       value: formData.name,
       isRequired: true
     },
     {
-      heading: "Email",
+      heading: "Email*",
       name: "email",
       type: "email",
       value: formData.email,
@@ -92,7 +92,7 @@ const Application = (
       value: formData.github,
     },
     {
-      heading: "Why is Bitcoin important to you?",
+      heading: "Why is Bitcoin important to you?*",
       name: "background",
       type: "text",
       value: formData.background,
@@ -106,14 +106,14 @@ const Application = (
       isRequired: false
     },
     {
-      heading: "How many hours per week are you willing to dedicate to this cohort?",
+      heading: "How many hours per week are you willing to dedicate to this cohort?*",
       name: "time",
       type: "text",
       value: formData.time,
       isRequired: true
     },
     {
-      heading: "What do you hope to achieve through this Cohort?",
+      heading: "What do you hope to achieve through this Cohort?*",
       name: "why",
       type: "text",
       value: formData.why,
@@ -131,7 +131,17 @@ const Application = (
       [name]: value,
     }));
   };
-  
+
+
+  // function openLink() {
+  //   const newWindow = window.open("https://discord.gg/nXeeBHDHrt", '_blank', 'noopener,noreferrer,width=800, height=600');
+  //   if (newWindow) {
+  //     newWindow.opener = null;
+  //   }
+  //   window.focus();
+  // }
+
+
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
@@ -143,139 +153,143 @@ const Application = (
         }
       )
       setSubmitted(true);
+      const focusElement = document.getElementById('focus') as HTMLInputElement
+      focusElement.focus();
     } catch (error) {
       console.log(error);
     }
   };
 
-  function openLink() {
-    const newWindow = window.open("https://discord.gg/nXeeBHDHrt", '_blank', 'noopener,noreferrer,width=800, height=600');
-    // 
-    if (newWindow) {
-      newWindow.opener = null;
-    }
-    window.focus();
-  }
-  
+
+
   return (
     <>
       {regOpen ? (
         <>
           <section className="grid place-items-center my-10 ">
-            <h3 className="flex h-14 cursor-pointer items-center font-bold lg:text-4xl">
-              <span className="text-orange px-2">Register</span> for the cohort now!
-            </h3>
+            <input id="focus" className="h-0 w-0" />
             {
               submitted ? (
                 <>
+                  <h3 className="flex h-14 cursor-pointer items-center font-bold lg:text-4xl">
+                    <span className="text-orange px-2">Successfully</span>  registered for the cohort
+                  </h3>
                   {
                     userExistes ? (
-                      <h1 className="my-5 text-xl p-2 rounded-lg bg-[#ffcccc]">
-                        ❌ You are already registered. Please check your email
-                      </h1>
+                      <div className="flex items-center flex-col">
+                        <h1 className="my-5 text-xl p-2 rounded-lg bg-[#ffcccc]">
+                          ❌ You are already registered. Please check your email
+                        </h1>
+                        <a href="https://discord.gg/nXeeBHDHrt" target="_blank" className="my-5 align-middle text-xl font-semibold bg-[#1c3b6a] p-3 rounded-lg text-white ">Join Bitshala Discord Now!</a>
+
+                      </div>
                     ) : (
                       <div className="flex items-center flex-col">
                         <h1 className="my-5 text-xl p-2 rounded-lg bg-[#e6fff7]">
                           ✅ Your application was submitted successfully. Please keep an eye on the registered email id for further updates.
                         </h1>
-                          <a href="https://discord.gg/nXeeBHDHrt" target="_blank" className="my-5 align-middle text-xl font-semibold bg-[#1c3b6a] p-3 rounded-lg text-white ">Join Bitshala Discord Now!</a>
+                        <a href="https://discord.gg/nXeeBHDHrt" target="_blank" className="my-5 align-middle text-xl font-semibold bg-[#1c3b6a] p-3 rounded-lg text-white ">Join Bitshala Discord Now!</a>
                       </div>
                     )
 
                   }
                 </>
               ) : (
-                <form
-                  onSubmit={handleSubmit}
-                  className="flex flex-col px-5 pt-2 gap-1 rounded-lg lg:w-1/2"
-                >
-                  {
-                    list.map((item) => {
-                      if (item.name === 'skills') {
-                        return (
-                          <>
-                            <p>Please select list of skills</p>
-                            <Autocomplete
-                              className="border font-base text-sm rounded-lg block w-full  mb-3"
-                              multiple
-                              options={skills}
-                              value={formData.skills}
-                              onChange={(e, value) => {
-                                setFormData(prevState => ({
-                                  ...prevState,
-                                  skills: value
-                                }));
-                              }}
-                              getOptionLabel={(option) => option}
-                              disableCloseOnSelect
-                              renderInput={(params) => (
-                                <TextField
-                                  {...params}
-                                  variant="outlined"
-                                  label="Select Skills"
-                                  placeholder="Select Skills"
-                                />
-                              )}
-                            />
-                          </>
-                        )
-                      }
-                      else if (item.name === 'books') {
-                        return (
-                          <>
-                            <p>Please select books/resources that you have gone through?*</p>
-                            <Autocomplete
-                              className="border font-base text-sm rounded-lg block w-full mb-3"
-                              multiple
-                              options={books}
-                              value={formData.books}
-                              onChange={(e, value) => {
-                                setFormData(prevState => ({
-                                  ...prevState,
-                                  books: value
-                                }));
-                              }}
-                              getOptionLabel={(option) => option}
-                              disableCloseOnSelect
-                              renderInput={(params) => (
+                <>
+                  <h3 className="flex h-14 cursor-pointer items-center font-bold lg:text-4xl">
+                    <span className="text-orange px-2">Register</span> for the cohort now!
+                  </h3>
+                  <form
+                    onSubmit={handleSubmit}
+                    className="flex flex-col px-5 pt-2 gap-1 rounded-lg lg:w-1/2"
+                  >
+                    {
+                      list.map((item) => {
+                        if (item.name === 'skills') {
+                          return (
+                            <>
+                              <p>Please select list of skills</p>
+                              <Autocomplete
+                                className="border font-base text-sm rounded-lg block w-full  mb-3"
+                                multiple
+                                options={skills}
+                                value={formData.skills}
+                                onChange={(e, value) => {
+                                  setFormData(prevState => ({
+                                    ...prevState,
+                                    skills: value
+                                  }));
+                                }}
+                                getOptionLabel={(option) => option}
+                                disableCloseOnSelect
+                                renderInput={(params) => (
+                                  <TextField
+                                    {...params}
+                                    variant="outlined"
+                                    label="Select Skills"
+                                    placeholder="Select Skills"
+                                  />
+                                )}
+                              />
+                            </>
+                          )
+                        }
+                        else if (item.name === 'books') {
+                          return (
+                            <>
+                              <p>Please select books/resources that you have gone through?</p>
+                              <Autocomplete
+                                className="border font-base text-sm rounded-lg block w-full mb-3"
+                                multiple
+                                options={books}
+                                value={formData.books}
+                                onChange={(e, value) => {
+                                  setFormData(prevState => ({
+                                    ...prevState,
+                                    books: value
+                                  }));
+                                }}
+                                getOptionLabel={(option) => option}
+                                disableCloseOnSelect
+                                renderInput={(params) => (
 
-                                <TextField
-                                  {...params}
-                                  variant="outlined"
-                                  label="Select Books/Resources"
-                                  placeholder="Select Books/Resources"
+                                  <TextField
+                                    {...params}
+                                    variant="outlined"
+                                    label="Select Books/Resources"
+                                    placeholder="Select Books/Resources"
 
-                                />
-                              )}
-                            />
-                          </>
-                        )
-                      }
-                      else {
-                        return (
-                          <div key={item.name}>
-                            <p>{item.heading}</p>
-                            <Input
-                              className="border font-base text-sm rounded-lg block w-full p-2.5 mb-3"
-                              type={item.type}
-                              name={item.name}
-                              value={item.value}
-                              onChange={handleChange}
-                              required={item.isRequired}
-                            />
-                          </div>
-                        )
-                      }
-                    })
-                  }
-                 
-                  <button type="submit" onClick={openLink} className="bg-orange text-white p-2 rounded-lg my-5 hover:text-black hover:bg-peach lg:w-1/3 lg:self-center">
-                    Apply
-                  </button>
+                                  />
+                                )}
+                              />
+                            </>
+                          )
+                        }
+                        else {
+                          return (
+                            <div key={item.name}>
+                              <p>{item.heading}</p>
+                              <Input
+                                className="border font-base text-sm rounded-lg block w-full p-2.5 mb-3"
+                                type={item.type}
+                                name={item.name}
+                                value={item.value}
+                                onChange={handleChange}
+                                required={item.isRequired}
+                              />
+                            </div>
+                          )
+                        }
+                      })
+                    }
 
-                  {/* <button onClick={openLink}> wehfbewhf</button> */}
-                </form>
-                
+                    <button type="submit" className="bg-orange text-white p-2 rounded-lg my-5 hover:text-black hover:bg-peach lg:w-1/3 lg:self-center">
+                      Apply
+                    </button>
+
+                  </form>
+                </>
+
               )
             }
           </section>

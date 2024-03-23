@@ -12,9 +12,14 @@ const headerProps = {
 };
 const role = "mb_cohort";
 const cohortName = "Mastering Bitcoin";
+const isVisible = true;
 ---
 
-<Layout title="Mastering Bitcoin" headerProps={headerProps}>
+<Layout
+  title="Mastering Bitcoin"
+  headerProps={headerProps}
+  isVisible={isVisible}
+>
   <CohortHeader img="/cohort/masteringBitcoin.webp" />
   <Description
     takeaways={[

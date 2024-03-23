@@ -13,9 +13,14 @@ const headerProps = {
 };
 const role = "lbtcl_cohort";
 const cohortName = "Learning Bitcoin Through Command Line";
+const isVisible = true;
 ---
 
-<Layout title="LBTCL Cohort" headerProps={headerProps}>
+<Layout
+  title="LBTCL Cohort"
+  headerProps={headerProps}
+  isVisible={isVisible}
+>
   <CohortHeader img="/cohort/lbtcl.webp" />
   <Description
     takeaways={[

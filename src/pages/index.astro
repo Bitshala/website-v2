@@ -9,11 +9,13 @@ import About from "../components/home/About.astro";
 const headerProps = {
   image: "/home/headerbg.webp",
 };
+const isVisible = true;
 ---
 
 <Layout
   title="Bitshala | A Pathshala for Bitcoin | India, Global South"
   headerProps={headerProps}
+  isVisible={isVisible}
 >
   <div
     slot="headerChild"

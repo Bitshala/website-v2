@@ -12,7 +12,7 @@ const isProd = import.meta.env.PROD;
 const videoConfig = isProd
   ? await getPlaylistDetails(
       "PLdHBT9oS8yMX3ozzhidF8-WODxcr8ZwAU",
-      import.meta.env.GOOGLE_KEY,
+      import.meta.env.GOOGLE_KEY
     )
   : mockedVideoConfig.slice(-6);
 
@@ -24,9 +24,15 @@ const headerProps = {
   headingColor: "text-white",
   subheadingColor: "text-white",
 };
+
+const isVisible = true;
 ---
 
-<Layout title="Bitcoin Talks" headerProps={headerProps}>
+<Layout
+  title="Bitcoin Talks"
+  headerProps={headerProps}
+  isVisible={isVisible}
+>
   <div
     class="my-3 grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3"
   >
