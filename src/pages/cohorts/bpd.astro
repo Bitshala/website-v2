@@ -6,10 +6,14 @@ import CohortStructure from "../../components/cohortPages/CohortStructure.astro"
 import CohortDetails from "../../components/cohortPages/CohortDetails.astro";
 import Syllabus from "../../components/cohortPages/Syllabus.astro";
 import CohortHeader from "../../components/cohort/CohortHeader.astro";
+import Application from "../../components/common/Application";
+import { fade } from "astro:transitions";
 
 const headerProps = {
   removeHeader: true,
 };
+const role = "bpd_cohort";
+const cohortName = "Bitcoin Protocol Development";
 ---
 
 <Layout
@@ -74,6 +78,11 @@ const headerProps = {
       },
     ]}
   >
+    <div class="flex text-2xl" slot="date">
+      <p class="mb-6 mr-2 font-header">
+        Next Cohort Starting On:
+      </p>26th April, 2024.
+    </div>
     <ol slot="prerequisites" class="list-disc p-4 lg:px-8">
       <li>
         Basic knowledge of Bitcoin protocol (pre-read
@@ -132,5 +141,11 @@ const headerProps = {
     ]}
   />
   <CohortStructure />
+  <Application
+    client:only
+    cohortName={cohortName}
+    role={role}
+    regOpen={true}
+  />
   <Carousel client:visible />
 </Layout>

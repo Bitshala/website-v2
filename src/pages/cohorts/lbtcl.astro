@@ -6,9 +6,13 @@ import CohortStructure from "../../components/cohortPages/CohortStructure.astro"
 import CohortDetails from "../../components/cohortPages/CohortDetails.astro";
 import Syllabus from "../../components/cohortPages/Syllabus.astro";
 import CohortHeader from "../../components/cohort/CohortHeader.astro";
+import Application from "../../components/common/Application";
+import { fade } from "astro:transitions";
 const headerProps = {
   removeHeader: true,
 };
+const role = "lbtcl_cohort";
+const cohortName = "Learning Bitcoin Through Command Line";
 ---
 
 <Layout title="LBTCL Cohort" headerProps={headerProps}>
@@ -167,5 +171,11 @@ const headerProps = {
     ]}
   />
   <CohortStructure />
+  <Application
+    client:only
+    cohortName={cohortName}
+    role={role}
+    regOpen={false}
+  />
   <Carousel client:visible />
 </Layout>
