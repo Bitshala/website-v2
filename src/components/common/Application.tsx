@@ -143,20 +143,14 @@ const Application = (
         }
       )
       setSubmitted(true);
+      const focusElement = document.getElementById('focus') as HTMLInputElement
+      focusElement.focus();
     } catch (error) {
       console.log(error);
     }
   };
 
-  function openLink() {
-    const newWindow = window.open("https://discord.gg/nXeeBHDHrt", '_blank', 'noopener,noreferrer,width=800, height=600');
-    // 
-    if (newWindow) {
-      newWindow.opener = null;
-    }
-    window.focus();
-  }
-  
+
   return (
     <>
       {regOpen ? (
@@ -165,6 +159,7 @@ const Application = (
             <h3 className="flex h-14 cursor-pointer items-center font-bold lg:text-4xl">
               <span className="text-orange px-2">Register</span> for the cohort now!
             </h3>
+            <input id="focus" className="h-0 w-0"/>
             {
               submitted ? (
                 <>
@@ -269,11 +264,10 @@ const Application = (
                     })
                   }
                  
-                  <button type="submit" onClick={openLink} className="bg-orange text-white p-2 rounded-lg my-5 hover:text-black hover:bg-peach lg:w-1/3 lg:self-center">
+                  <button type="submit" className="bg-orange text-white p-2 rounded-lg my-5 hover:text-black hover:bg-peach lg:w-1/3 lg:self-center">
                     Apply
                   </button>
 
-                  {/* <button onClick={openLink}> wehfbewhf</button> */}
                 </form>
                 
               )
