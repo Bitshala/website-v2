@@ -77,6 +77,11 @@ const SideMenu = () => {
       desc: "Learn about Bitcoin through insightful conversations",
     },
     {
+      name: "Meetups",
+      url: "/meetup",
+      desc: "Come, hang with us in the meetups",
+    },
+    {
       name: "Join our Discord!",
       url: "https://discord.com/invite/STeQFVEWf9",
       tar: "_blank",
