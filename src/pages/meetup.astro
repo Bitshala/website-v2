@@ -2,6 +2,7 @@
 import About from "../components/meetup/About.astro";
 import Gallery from "../components/meetup/gallery";
 import Layout from "../layouts/Layout.astro";
+import Slider from "../components/meetup/slider";
 
 const isVisible = true;
 const headerProps = {
@@ -29,7 +30,7 @@ const headerProps = {
       BITDEVS
     </h1>
     <p
-      class="mx-96 mt-10 w-1/2 text-center text-2xl font-semibold text-white md:text-3xl lg:mt-28 lg:text-5xl"
+      class="mt-10 text-center text-xl font-semibold text-white md:text-3xl lg:mx-96 lg:mt-28 lg:w-1/2 lg:text-5xl"
     >
       Monthly Offline Meetup to dive into the core of
       Bitcoin Tech
@@ -38,10 +39,11 @@ const headerProps = {
     <a
       href="https://discord.com/invite/STeQFVEWf9"
       target="_blank"
-      class="text-m mt-60 w-1/3 rounded-lg bg-white p-4 text-center hover:bg-orange hover:text-white lg:text-2xl"
+      class="text-m mt-60 rounded-lg bg-white p-4 text-center hover:bg-orange hover:text-white lg:w-1/3 lg:text-2xl"
       >Explore Upcoming Meetups</a
     >
   </div>
   <About />
-  <Gallery />
+  <!-- <Gallery /> -->
+  <Slider client:load />
 </Layout>
