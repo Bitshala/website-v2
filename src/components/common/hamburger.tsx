@@ -79,7 +79,7 @@ const SideMenu = () => {
     {
       name: "Meetups",
       url: "/meetup",
-      desc: "Come, hang with us in the meetups",
+      desc: "Come, hang with us in the Meetups",
     },
     {
       name: "Join our Discord!",

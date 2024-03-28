@@ -1,21 +1,30 @@
-import React, { useState } from "react";
-
-const photos = [
-  { id: 1, url: "/meetup/Gallery/1.webp" },
-  { id: 2, url: "/meetup/Gallery/2.webp" },
-  { id: 3, url: "/meetup/Gallery/3.webp" },
-  { id: 4, url: "/meetup/Gallery/4.webp" },
-  { id: 5, url: "/meetup/Gallery/5.webp" },
-  { id: 6, url: "/meetup/Gallery/6.webp" },
-  { id: 7, url: "/meetup/Gallery/7.webp" },
-  { id: 8, url: "/meetup/Gallery/8.webp" },
-  { id: 9, url: "/meetup/Gallery/9.webp" },
-  { id: 10, url: "/meetup/Gallery/10.webp" },
-  { id: 11, url: "/meetup/Gallery/11.webp" },
-  { id: 12, url: "/meetup/Gallery/12.webp" },
+import { useState } from "react";
+const images = [
+  "/meetup/Gallery/1.webp",
+  "/meetup/Gallery/2.webp",
+  "/meetup/Gallery/3.webp",
+  "/meetup/Gallery/4.webp",
+  "/meetup/Gallery/5.webp",
+  "/meetup/Gallery/6.webp",
+  "/meetup/Gallery/7.webp",
+  "/meetup/Gallery/8.webp",
+  "/meetup/Gallery/9.webp",
+  "/meetup/Gallery/10.webp",
+  "/meetup/Gallery/11.webp",
+  "/meetup/Gallery/12.webp",
 ];
 
 const Gallery = () => {
+  const [visible, setVisible] = useState(6);
+  const [disabled, setDisabled] = useState(false);
+
+  const loadMore = () => {
+    setVisible((prev) => prev + 6);
+    if (visible >= images.length) {
+      setDisabled(!disabled);
+    }
+  };
+
   return (
     <div>
       <div>
@@ -26,11 +35,26 @@ const Gallery = () => {
         </p>
       </div>
       <div className="grid grid-cols-3 w-full gap-3 my-10">
-        {photos.map((item) => {
-          return <img className="rounded-lg" src={item.url} />;
+        {images.slice(0, visible).map((image, index) => {
+          return (
+            <img
+              key={index}
+              className="rounded-lg"
+              src={image}
+              alt={`Image ${index}`}
+            />
+          );
         })}
       </div>
-      <button>View More</button>
+      <button
+        onClick={loadMore}
+        disabled={disabled}
+        className={`text-center w-full underline  items-center ${
+          disabled ? "hidden" : ""
+        }`}
+      >
+        View More
+      </button>
     </div>
   );
 };
