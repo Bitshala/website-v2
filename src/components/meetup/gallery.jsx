@@ -42,6 +42,7 @@ const Gallery = () => {
               className="rounded-lg"
               src={image}
               alt={`Image ${index}`}
+              loading="lazy"
             />
           );
         })}

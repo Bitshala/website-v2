@@ -1,5 +1,12 @@
 ---
-
+let details = {
+  name: "Silent Payments Deep Dive",
+  desc: " Get ready for another exciting Bitcoin Tech Meetup in Bangalore, this time diving deep into the world of Silent Payments! We'll explore how this innovative tech enhances privacy and efficiency within the Bitcoin",
+  month: "March",
+  img: "/meetup/Bengaluru_BITDEVS_March.webp",
+  link: "https://discord.com/invite/STeQFVEWf9",
+  isHappening: true,
+};
 ---
 
 <div class="my-20">
@@ -26,29 +33,41 @@
   <div
     class="flex flex-col justify-center rounded-3xl bg-[#fff] p-3 shadow-xl lg:flex-row lg:p-10 lg:py-10"
   >
-    <img
-      src="/meetup/Bengaluru_BITDEVS_March.webp"
-      class="h-[50vh] rounded-lg py-2"
-    />
-    <div class="my-10 flex flex-col lg:mx-10">
-      <h1
-        class="mb-5 font-header text-3xl text-orange lg:text-7xl"
-      >
-        Silent Payments Deep Dive
-      </h1>
-      <p class="text-md lg:text-2xl">
-        Get ready for another exciting Bitcoin Tech Meetup
-        in Bangalore, this time diving deep into the world
-        of Silent Payments! We'll explore how this
-        innovative tech enhances privacy and efficiency
-        within the Bitcoin network.
-      </p>
-      <a
-        href="https://discord.com/invite/STeQFVEWf9"
-        target="_blank"
-        class="text-m mt-8 w-1/2 rounded-lg p-4 text-center outline-dashed hover:bg-orange hover:text-white lg:text-2xl"
-        >Tell me more</a
-      >
-    </div>
+    {
+      details.isHappening ? (
+        <>
+          <img
+            src={details.img}
+            class="h-[50vh] rounded-lg py-2"
+          />
+          <div class="my-10 flex flex-col lg:mx-10">
+            <h1 class="mb-5 font-header text-3xl text-orange lg:text-7xl">
+              {details.name}
+            </h1>
+            <p class="text-md lg:text-2xl">
+              {details.desc}
+            </p>
+            <a
+              href={details.link}
+              target="_blank"
+              class="text-m mt-8 w-1/2 rounded-lg p-4 text-center outline-dashed hover:bg-orange hover:text-white lg:text-2xl"
+            >
+              Attend
+            </a>
+          </div>
+        </>
+      ) : (
+        <div class="my-3">
+          <h1 class="mb-5 font-header text-3xl text-orange lg:text-5xl">
+            Oops! Bitcoiners not found this month :(
+          </h1>
+          <p class="text-md lg:text-xl">
+            This {details.month}, we're not doing a BITDEVS
+            session. Come back soon to check details for any
+            updates.
+          </p>
+        </div>
+      )
+    }
   </div>
 </div>

@@ -55,7 +55,7 @@ const Slider = () => {
           slidesPerView={1.4}
           spaceBetween={10}
           centeredSlides={true}
-          initialSlide={1}
+          initialSlide={3}
           speed={1000}
           pagination={{
             clickable: true,
