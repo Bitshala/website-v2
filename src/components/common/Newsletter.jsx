@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 const Newsletter = () => {
   const [email, setEmail] = useState("");
-  const [submitted, setSubmitted] = useState(true);
+  const [submitted, setSubmitted] = useState(false);
   const data = {
     Email: email,
   };
@@ -19,7 +19,6 @@ const Newsletter = () => {
       }
     );
     setSubmitted(true);
-    setEmail("");
   };
   return (
     <div className="my-10 rounded-xl bg-[#fff] p-10 shadow-lg flex flex-col items-center justify-center">
