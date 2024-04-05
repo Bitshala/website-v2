@@ -77,6 +77,11 @@ const SideMenu = () => {
       desc: "Learn about Bitcoin through insightful conversations",
     },
     {
+      name: "Reading Club",
+      url: "/readingClub",
+      desc: "Weekly reading club for Bitcoin learners",
+    },
+    {
       name: "Join our Discord!",
       url: "https://discord.com/invite/STeQFVEWf9",
       tar: "_blank",

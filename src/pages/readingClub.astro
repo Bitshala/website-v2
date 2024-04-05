@@ -1,0 +1,41 @@
+---
+import About from "../components/readingClub/About.astro";
+import Layout from "../layouts/Layout.astro";
+import PreviouslyCovered from "../components/readingClub/PreviouslyCovered";
+
+const headerProps = {
+  image: "",
+};
+const isVisible = true;
+---
+
+<Layout
+  title="Reading Club"
+  headerProps={headerProps}
+  isVisible={isVisible}
+>
+  <div
+    slot="headerChild"
+    class="flex flex-col items-center justify-center"
+  >
+    <h1
+      class="text-center font-header text-4xl text-white md:text-6xl lg:text-9xl"
+    >
+      Bitshala Bitcoin Reading Clubs
+    </h1>
+    <p
+      class="mt-10 text-center text-xl font-semibold text-white md:text-3xl lg:mx-96 lg:mt-28 lg:w-1/2 lg:text-5xl"
+    >
+      Weekly reading club for Bitcoin learners
+    </p>
+
+    <a
+      href="https://discord.com/invite/STeQFVEWf9"
+      target="_blank"
+      class="text-m mt-60 rounded-lg bg-white p-4 text-center font-semibold hover:bg-orange hover:text-white lg:w-1/3 lg:text-2xl"
+      >RSVP on Discord</a
+    >
+  </div>
+  <About client:load />
+  <PreviouslyCovered client:load />
+</Layout>
