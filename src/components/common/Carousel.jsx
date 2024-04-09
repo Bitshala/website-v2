@@ -1,4 +1,4 @@
-import { useState } from "react";
+// import { useState } from "react";
 const slides = [
   {
     url: "/activities/cohort.webp",
@@ -33,7 +33,7 @@ const slides = [
 const MobileCarousel = () => {
   return (
     <div className="my-2 flex flex-col lg:hidden">
-      {slides.map((slide) => {
+      {/* {slides.map((slide) => {
         return (
           <div key={slide.title} className="my-2 rounded-lg bg-orange p-3">
             <h1 className="mb-5  font-header text-2xl  lg:p-11 lg:text-8xl">
@@ -69,33 +69,33 @@ const MobileCarousel = () => {
             </div>
           </div>
         );
-      })}
+      })} */}
     </div>
   );
 };
 
 function Carousel() {
-  const [currentIndex, setCurrentIndex] = useState(0);
+  // const [currentIndex, setCurrentIndex] = useState(0);
 
-  const prevSlide = () => {
-    const isFirstSlide = currentIndex === 0;
-    const newIndex = isFirstSlide ? slides.length - 1 : currentIndex - 1;
-    setCurrentIndex(newIndex);
-  };
+  // const prevSlide = () => {
+  //   const isFirstSlide = currentIndex === 0;
+  //   const newIndex = isFirstSlide ? slides.length - 1 : currentIndex - 1;
+  //   setCurrentIndex(newIndex);
+  // };
 
-  const nextSlide = () => {
-    const isLastSlide = currentIndex === slides.length - 1;
-    const newIndex = isLastSlide ? 0 : currentIndex + 1;
-    setCurrentIndex(newIndex);
-  };
+  // const nextSlide = () => {
+  //   const isLastSlide = currentIndex === slides.length - 1;
+  //   const newIndex = isLastSlide ? 0 : currentIndex + 1;
+  //   setCurrentIndex(newIndex);
+  // };
 
-  const goToSlide = (slideIndex) => {
-    setCurrentIndex(slideIndex);
-  };
+  // const goToSlide = (slideIndex) => {
+  //   setCurrentIndex(slideIndex);
+  // };
 
   return (
     <>
-      <MobileCarousel />
+      {/* <MobileCarousel />
       <div className="group relative m-auto hidden w-full rounded-2xl bg-orange px-4 py-16  lg:block">
         <h1 className="mb-2 font-header text-2xl  lg:p-11 lg:text-8xl">
           {slides[currentIndex].title}
@@ -153,6 +153,23 @@ function Carousel() {
             </div>
           ))}
         </div>
+      </div> */}
+
+      <div className="flex flex-col md:grid-cols-2 md:grid lg:grid lg:grid-cols-3 gap-3">
+        {slides.map((slide, index) => (
+          <div key={index} className="rounded-2xl bg-orange p-5">
+            <h1 className="mb-5 font-header text-2xl lg:text-3xl">
+              {slide.title}
+            </h1>
+            <img src={slide.url} alt="" />
+            <p className="text-xl p-3 md:h-56 lg:h-64 ">{slide.content}</p>
+            <a href={slide.targetLink}>
+              <button className="w-full mt-5 py-4 px-8 border-2 border-dotted rounded-lg hover:bg-white hover:text-black ">
+                Tell Me More!
+              </button>
+            </a>
+          </div>
+        ))}
       </div>
     </>
   );
