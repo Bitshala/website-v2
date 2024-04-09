@@ -41,9 +41,7 @@ const list = [
 const Slider = () => {
   return (
     <div>
-      <h1 class="mb-5 mt-10 font-header text-5xl">
-        Catch Up On Our Coding Adventures
-      </h1>
+      <h1 class="mb-5 mt-10 font-header text-5xl">Previous Meetups</h1>
       <p class="mb-10 text-xl">
         Missed some of our get-togethers? No worries. We've got the highlights
         right here. From figuring out Silent Payments to getting our heads
