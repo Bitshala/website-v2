@@ -2,6 +2,13 @@
 import About from "../components/readingClub/About.astro";
 import Layout from "../layouts/Layout.astro";
 import PreviouslyCovered from "../components/readingClub/PreviouslyCovered";
+import PreviousSessions from "../components/readingClub/PreviousSessions";
+import { getPlaylistDetails } from "../scripts/googleApi";
+
+const videoConfig = await getPlaylistDetails(
+  "PLdHBT9oS8yMXDCEX3L79atyJlrIvrYE-8",
+  import.meta.env.GOOGLE_KEY
+);
 
 const headerProps = {
   image: "",
@@ -36,6 +43,7 @@ const isVisible = true;
       >RSVP on Discord</a
     >
   </div>
-  <About client:load />
+  <About />
   <PreviouslyCovered client:load />
+  <PreviousSessions client:only videoConfig={videoConfig} />
 </Layout>

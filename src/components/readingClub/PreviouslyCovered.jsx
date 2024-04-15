@@ -1,9 +1,3 @@
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
-import "swiper/swiper-bundle.css";
-
-import { Pagination, Navigation } from "swiper/modules";
 const list = [
   {
     id: 1,
@@ -35,45 +29,22 @@ const PreviouslyCovered = () => {
           the books we've covered. Get the gist of past reads and stay in the
           loop with our collective learning journey.
         </p>
-        <div>
-          <Swiper
-            slidesPerView={1.4}
-            spaceBetween={10}
-            centeredSlides={true}
-            initialSlide={1}
-            speed={1000}
-            pagination={{
-              clickable: true,
-            }}
-            navigation={true}
-            modules={[Pagination, Navigation]}
-          >
-            {list.map((item) => {
-              return (
-                <SwiperSlide>
-                  <div class="flex flex-col rounded-3xl bg-[#fff] p-3 lg:flex-row shadow-xl lg:p-10">
-                    <img
-                      src={item.url}
-                      class="lg:h-[30vh] h-[40vh] rounded-lg py-2"
-                    />
-                    <div class="my-2 flex flex-col lg:mx-5">
-                      <h1 class="lg:mb-5 font-header text-2xl text-orange lg:text-3xl">
-                        {item.title}
-                      </h1>
-                      <p class="text-sm lg:text-lg">{item.desc}</p>
-                      <a
-                        href={item.link}
-                        target="_blank"
-                        class="text-m my-5 lg:w-1/2 rounded-lg p-4 text-center outline-dashed hover:bg-orange hover:text-white lg:text-xl"
-                      >
-                        Attend
-                      </a>
-                    </div>
-                  </div>
-                </SwiperSlide>
-              );
-            })}
-          </Swiper>
+        <div className="grid grid-cols-1 gap-5 lg:grid-cols-2">
+          {list.map((item) => {
+            return (
+              <div
+                key={item.id}
+                class="flex flex-col justify-center rounded-3xl bg-[#fff] p-3 shadow-xl lg:p-10 lg:py-10"
+              >
+                <img src={item.url} class="h-[40vh] py-2" />
+                <div className="">
+                  <h1 class="mb-2 mt-2 font-header text-2xl">{item.title}</h1>
+                  <p class="text-lg">{item.desc}</p>
+                  <a className="font-semibold underline">See more...</a>
+                </div>
+              </div>
+            );
+          })}
         </div>
       </div>
     </div>
