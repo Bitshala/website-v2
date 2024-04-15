@@ -22,7 +22,7 @@ const slides = [
     targetLink: "/review",
   },
   {
-    url: "/activities/cohort.webp",
+    url: "/carousel/discord.webp",
     title: "Discord Community",
     content:
       "Come and become a part of our vibrant community of Bitcoin enthusiasts. Here, you can engage in discussions, challenge ideas, and explore Bitcoin opportunities with like-minded peers passionate about shaping the future of decentralized finance.",
