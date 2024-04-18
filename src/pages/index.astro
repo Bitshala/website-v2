@@ -5,6 +5,8 @@ import Testimonial from "../components/home/Testimonial.astro";
 import LinkCohort from "../components/home/LinkCohort.astro";
 import People from "../components/home/People.astro";
 import About from "../components/home/About.astro";
+import Newsletter from "../components/common/Newsletter";
+import Calender from "../components/common/Calender.astro";
 
 const headerProps = {
   image: "/home/headerbg.webp",
@@ -58,4 +60,6 @@ const isVisible = true;
   <Carousel client:visible />
   <LinkCohort />
   <People />
+  <Newsletter client:load />
+  <Calender />
 </Layout>
