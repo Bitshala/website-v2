@@ -7,7 +7,7 @@ import { Pagination, Navigation } from "swiper/modules";
 const list = [
   {
     id: 1,
-    url: "/meetup/Bengaluru_BITDEVS_March.webp",
+    url: "/meetup/bitdevs_1.webp",
     title: "Silent Payments Deep Dive",
     desc:
       "Get ready for another exciting Bitcoin Tech Meetup in Bangalore, this time diving deep into the world of Silent Payments! We'll explore how this innovative tech enhances privacy and efficiency within the Bitcoin network.",
@@ -15,7 +15,7 @@ const list = [
   },
   {
     id: 2,
-    url: "/meetup/Bengaluru_BITDEVS_March.webp",
+    url: "/meetup/bitdevs_2.webp",
     title: "Silent Payments Deep Dive",
     desc:
       "Get ready for another exciting Bitcoin Tech Meetup in Bangalore, this time diving deep into the world of Silent Payments! We'll explore how this innovative tech enhances privacy and efficiency within the Bitcoin network.",
@@ -23,20 +23,20 @@ const list = [
   },
   {
     id: 3,
-    url: "/meetup/Bengaluru_BITDEVS_March.webp",
+    url: "/meetup/bitdevs_3.webp",
     title: "Silent Payments Deep Dive",
     desc:
       "Get ready for another exciting Bitcoin Tech Meetup in Bangalore, this time diving deep into the world of Silent Payments! We'll explore how this innovative tech enhances privacy and efficiency within the Bitcoin network.",
     link: "https://discord.com/invite/STeQFVEWf9",
   },
-  {
-    id: 4,
-    url: "/meetup/Bengaluru_BITDEVS_March.webp",
-    title: "Silent Payments Deep Dive",
-    desc:
-      "Get ready for another exciting Bitcoin Tech Meetup in Bangalore, this time diving deep into the world of Silent Payments! We'll explore how this innovative tech enhances privacy and efficiency within the Bitcoin network.",
-    link: "https://discord.com/invite/STeQFVEWf9",
-  },
+  // {
+  //   id: 4,
+  //   url: "/meetup/bitdevs_2.webp",
+  //   title: "Silent Payments Deep Dive",
+  //   desc:
+  //     "Get ready for another exciting Bitcoin Tech Meetup in Bangalore, this time diving deep into the world of Silent Payments! We'll explore how this innovative tech enhances privacy and efficiency within the Bitcoin network.",
+  //   link: "https://discord.com/invite/STeQFVEWf9",
+  // },
 ];
 const Slider = () => {
   return (
