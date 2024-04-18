@@ -82,6 +82,11 @@ const SideMenu = () => {
       desc: "Weekly reading club for Bitcoin learners",
     },
     {
+      name: "Optech",
+      url: "/optech",
+      desc: "Bitcoin Optech Weekly Deep Dive Series",
+    },
+    {
       name: "Join our Discord!",
       url: "https://discord.com/invite/STeQFVEWf9",
       tar: "_blank",

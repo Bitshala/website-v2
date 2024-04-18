@@ -1,18 +1,18 @@
 const list = [
   {
     id: 1,
-    url: "/readingClub/image.png",
-    title: "How to think about the economy",
+    url: "/readingClub/onboardingToBitcoinCore.webp",
+    title: "Onboarding to Bitcoin core",
     desc:
-      "Get ready for another exciting Bitcoin Tech Meetup in Bangalore, this time diving deep into the etc stuff and all",
+      "Donec laoreet congue justo at rhoncus.Nam aliquet suscipit feugiat. Duis ut nunc sit amet vivero amet shupere",
     link: "https://discord.com/invite/STeQFVEWf9",
   },
   {
     id: 2,
-    url: "/readingClub/image.png",
-    title: "How to think about the economy",
+    url: "/readingClub/devPhilosophy.webp",
+    title: "Bitcoin Dev Philosophy",
     desc:
-      "Get ready for another exciting Bitcoin Tech Meetup in Bangalore, this time diving deep into the etc stuff and all",
+      "Donec laoreet congue justo at rhoncus.Nam aliquet suscipit feugiat. Duis ut nunc sit amet vivero amet shupere",
     link: "https://discord.com/invite/STeQFVEWf9",
   },
 ];

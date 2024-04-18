@@ -1,13 +1,12 @@
 ---
-import About from "../components/readingClub/About.astro";
 import Layout from "../layouts/Layout.astro";
-import PreviouslyCovered from "../components/readingClub/PreviouslyCovered";
+import About from "../components/optech/About.astro";
 import PreviousSessions from "../components/readingClub/PreviousSessions";
 import { getPlaylistDetails } from "../scripts/googleApi";
 import Calender from "../components/common/Calender.astro";
 
 const videoConfig = await getPlaylistDetails(
-  "PLdHBT9oS8yMX3ozzhidF8-WODxcr8ZwAU",
+  "PLdHBT9oS8yMUx09HCH1fgmLUSRPItUmY2",
   import.meta.env.GOOGLE_KEY
 );
 
@@ -18,7 +17,7 @@ const isVisible = true;
 ---
 
 <Layout
-  title="Reading Club"
+  title="Bitcoin Optech"
   headerProps={headerProps}
   isVisible={isVisible}
 >
@@ -29,12 +28,12 @@ const isVisible = true;
     <h1
       class="text-center font-header text-4xl text-white md:text-6xl lg:text-9xl"
     >
-      Bitshala Bitcoin Reading Clubs
+      Latest In Bitcoin Tech This Week
     </h1>
     <p
       class="mt-10 text-center text-xl font-semibold text-white md:text-3xl lg:mx-96 lg:mt-28 lg:w-1/2 lg:text-5xl"
     >
-      Weekly reading club for Bitcoin learners
+      Bitcoin Optech Weekly Deep Dive Series
     </p>
 
     <a
@@ -46,6 +45,5 @@ const isVisible = true;
   </div>
   <About />
   <PreviousSessions client:only videoConfig={videoConfig} />
-  <PreviouslyCovered client:load />
   <Calender />
 </Layout>
