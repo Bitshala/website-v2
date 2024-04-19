@@ -3,14 +3,15 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/swiper-bundle.css";
 import { Pagination, Navigation } from "swiper/modules";
-const PreviousSessions = ({ videoConfig: videoConfig }) => {
+const PreviousSessions = ({
+  videoConfig: videoConfig,
+  heading,
+  description,
+}) => {
   return (
     <div>
-      <h1 class="mb-5 mt-10 font-header text-5xl">Previous Sessions</h1>
-      <p class="mb-10 text-xl">
-        Life got in the way? No problem. You can always catch up on our previous
-        sessions down here.
-      </p>
+      <h1 class="mb-5 mt-10 font-header text-5xl"> {heading}</h1>
+      <p class="mb-10 text-xl">{description}</p>
 
       <Swiper
         slidesPerView={1.4}

@@ -11,7 +11,7 @@ const videoConfig = await getPlaylistDetails(
 );
 
 const headerProps = {
-  image: "",
+  image: "/optech/optechHero.webp",
 };
 const isVisible = true;
 ---
@@ -44,6 +44,11 @@ const isVisible = true;
     >
   </div>
   <About />
-  <PreviousSessions client:only videoConfig={videoConfig} />
+  <PreviousSessions
+    client:only
+    videoConfig={videoConfig}
+    heading="Previous Sessions"
+    description="Life got in the way? No problem. You can always catch up on our previous sessions down here."
+  />
   <Calender />
 </Layout>

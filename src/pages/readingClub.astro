@@ -12,7 +12,7 @@ const videoConfig = await getPlaylistDetails(
 );
 
 const headerProps = {
-  image: "",
+  image: "/readingClub/readingClubHero.webp",
 };
 const isVisible = true;
 ---
@@ -45,7 +45,12 @@ const isVisible = true;
     >
   </div>
   <About />
-  <PreviousSessions client:only videoConfig={videoConfig} />
+  <PreviousSessions
+    client:only
+    videoConfig={videoConfig}
+    heading="Watch us in action"
+    description="Want to take a look at how the club runs? Have a look below. OR if you missed our live reading club... Catch up with the recordings here and join the conversation at your own pace."
+  />
   <PreviouslyCovered client:load />
   <Calender />
 </Layout>
