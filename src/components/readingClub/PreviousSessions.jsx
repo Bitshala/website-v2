@@ -36,7 +36,6 @@ const PreviousSessions = ({
                 ></iframe>
 
                 <div class="my-2 flex flex-col lg:mx-5">
-                  <span>#{video.index}</span>
                   <h1 class="font-header text-2xl text-orange lg:mb-5 lg:text-3xl">
                     {video.title.slice(0, 55)}...
                   </h1>

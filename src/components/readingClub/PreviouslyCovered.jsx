@@ -40,7 +40,6 @@ const PreviouslyCovered = () => {
                 <div className="">
                   <h1 class="mb-2 mt-2 font-header text-2xl">{item.title}</h1>
                   <p class="text-lg">{item.desc}</p>
-                  <a className="font-semibold underline">See more...</a>
                 </div>
               </div>
             );
