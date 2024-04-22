@@ -8,35 +8,27 @@ const list = [
   {
     id: 1,
     url: "/meetup/bitdevs_1.webp",
-    title: "Silent Payments Deep Dive",
+    title: "BIP324",
     desc:
-      "Get ready for another exciting Bitcoin Tech Meetup in Bangalore, this time diving deep into the world of Silent Payments! We'll explore how this innovative tech enhances privacy and efficiency within the Bitcoin network.",
+      "Bengaluru witnessed a vibrant gathering of Bitcoiners and FOSS enthusiasts, where Stratospher unveiled BIP324's potential. It was an evening rich with conversations, connections, and celebration!",
     link: "https://discord.com/invite/STeQFVEWf9",
   },
   {
     id: 2,
     url: "/meetup/bitdevs_2.webp",
-    title: "Silent Payments Deep Dive",
+    title: "Miniscript and Descriptors",
     desc:
-      "Get ready for another exciting Bitcoin Tech Meetup in Bangalore, this time diving deep into the world of Silent Payments! We'll explore how this innovative tech enhances privacy and efficiency within the Bitcoin network.",
+      "Bengaluru had a blast unwrapping the secrets of miniscript and descriptors with fellow Bitcoin buffs over great conversations and snacks!",
     link: "https://discord.com/invite/STeQFVEWf9",
   },
   {
     id: 3,
     url: "/meetup/bitdevs_3.webp",
-    title: "Silent Payments Deep Dive",
+    title: "Privacy Tech and Silent Payments",
     desc:
       "Get ready for another exciting Bitcoin Tech Meetup in Bangalore, this time diving deep into the world of Silent Payments! We'll explore how this innovative tech enhances privacy and efficiency within the Bitcoin network.",
     link: "https://discord.com/invite/STeQFVEWf9",
   },
-  // {
-  //   id: 4,
-  //   url: "/meetup/bitdevs_2.webp",
-  //   title: "Silent Payments Deep Dive",
-  //   desc:
-  //     "Get ready for another exciting Bitcoin Tech Meetup in Bangalore, this time diving deep into the world of Silent Payments! We'll explore how this innovative tech enhances privacy and efficiency within the Bitcoin network.",
-  //   link: "https://discord.com/invite/STeQFVEWf9",
-  // },
 ];
 const Slider = () => {
   return (

@@ -34,7 +34,7 @@ const Gallery = () => {
           gallery to get a feel for what our meetups are like.
         </p>
       </div>
-      <div className="grid grid-cols-3 w-full gap-3 my-10">
+      <div className="grid grid-cols-2 lg:grid-cols-3 w-full gap-3 my-10">
         {images.slice(0, visible).map((image, index) => {
           return (
             <img
