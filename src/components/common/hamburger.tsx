@@ -77,6 +77,11 @@ const SideMenu = () => {
       desc: "Learn about Bitcoin through insightful conversations",
     },
     {
+      name: "Meetups",
+      url: "/meetup",
+      desc: "Come, hang with us in the Meetups",
+    },
+    {
       name: "Reading Club",
       url: "/readingClub",
       desc: "Weekly reading club for Bitcoin learners",

@@ -1,0 +1,44 @@
+---
+import About from "../components/meetup/About.astro";
+import Gallery from "../components/meetup/gallery";
+import Layout from "../layouts/Layout.astro";
+import Slider from "../components/meetup/slider";
+
+const isVisible = true;
+const headerProps = {
+  image: "/header/Meetup_Hero.webp",
+};
+---
+
+<Layout
+  title="Meetup"
+  headerProps={headerProps}
+  isVisible={isVisible}
+>
+  <div
+    slot="headerChild"
+    class="flex flex-col items-center justify-center"
+  >
+    <h1
+      class="text-center font-header text-4xl text-white md:text-6xl lg:text-9xl"
+    >
+      BITDEVS
+    </h1>
+    <p
+      class="mt-10 text-center text-xl font-semibold text-white md:text-3xl lg:mx-96 lg:mt-28 lg:w-1/2 lg:text-5xl"
+    >
+      Monthly Offline Meetup to dive into the core of
+      Bitcoin Tech
+    </p>
+
+    <a
+      href="https://discord.com/invite/STeQFVEWf9"
+      target="_blank"
+      class="text-m mt-60 rounded-lg bg-white p-4 text-center font-semibold hover:bg-orange hover:text-white lg:w-1/3 lg:text-2xl"
+      >Explore Upcoming Meetups</a
+    >
+  </div>
+  <About />
+  <Slider client:only />
+  <Gallery client:load />
+</Layout>

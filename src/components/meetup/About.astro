@@ -1,0 +1,75 @@
+---
+let details = {
+  name: "Silent Payments Deep Dive",
+  desc: " Get ready for another exciting Bitcoin Tech Meetup in Bangalore, this time diving deep into the world of Silent Payments! We'll explore how this innovative tech enhances privacy and efficiency within the Bitcoin",
+  month: "March",
+  img: "/meetup/bitdevs_3.webp",
+  link: "https://discord.com/invite/STeQFVEWf9",
+  isHappening: true,
+};
+---
+
+<div class="my-20">
+  <h1 class="mb-5 mt-10 font-header text-5xl">
+    About BITDEVS
+  </h1>
+  <p class="mb-5 text-xl">
+    Ever wanted to just sit down and talk about Bitcoin
+    coding stuff with people who get it? BITDEVS is where
+    you meet people who code and breathe Bitcoin. We talk
+    about real Bitcoin projects, share code, and solve
+    problems together in a language we all understand. No
+    fluff, just Bitcoin and code.
+  </p>
+  <h1 class="mb-5 mt-10 font-header text-5xl">
+    Upcoming Meetup
+  </h1>
+  <p class="mb-10 text-xl">
+    We're all about diving into Bitcoin's tech together.
+    Whether it's your first time joining us or you're a
+    regular, there's always something new to learn and
+    people to meet. Check out the next one below....
+  </p>
+  <div class="flex justify-center">
+    <div
+      class="flex w-[95%] flex-col rounded-3xl bg-[#fff] p-3 shadow-xl lg:w-[85%] lg:flex-row lg:p-10 lg:py-10"
+    >
+      {
+        details.isHappening ? (
+          <>
+            <img
+              src={details.img}
+              class="h-[50vh] rounded-lg py-2"
+            />
+            <div class="my-7 flex flex-col lg:mx-10">
+              <h1 class="mb-5 font-header text-3xl text-orange lg:text-7xl">
+                {details.name}
+              </h1>
+              <p class="text-md lg:text-2xl">
+                {details.desc}
+              </p>
+              <a
+                href={details.link}
+                target="_blank"
+                class="text-m mt-8 w-1/2 rounded-lg p-4 text-center outline-dashed hover:bg-orange hover:text-white lg:text-2xl"
+              >
+                Attend
+              </a>
+            </div>
+          </>
+        ) : (
+          <div class="my-3">
+            <h1 class="mb-5 font-header text-3xl text-orange lg:text-5xl">
+              Oops! Bitcoiners not found this month :(
+            </h1>
+            <p class="text-md lg:text-xl">
+              This {details.month}, we're not doing a
+              BITDEVS session. Come back soon to check
+              details for any updates.
+            </p>
+          </div>
+        )
+      }
+    </div>
+  </div>
+</div>
