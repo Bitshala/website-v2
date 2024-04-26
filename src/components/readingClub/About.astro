@@ -1,0 +1,59 @@
+---
+let details = {
+  name: "How to think about the economy",
+  desc: "Explore the foundational concepts and principles of austrian economics with this interactive reading club session.",
+  img: "/readingClub/image.png",
+  link: "https://discord.com/invite/STeQFVEWf9",
+  isHappening: true,
+};
+---
+
+<div class="my-10">
+  <h1 class="mb-5 mt-10 font-header text-5xl">
+    About the reading club
+  </h1>
+  <p class="mb-5 text-xl">
+    Dive into the Bitshala Bitcoin Reading Club, where we
+    unfold the pages of Bitcoin literature weekly. It's a
+    space for anyone eager to learn and discuss the
+    intricate world of Bitcoin. Come join our circle of
+    Bitcoin bookworms.
+  </p>
+
+  <h1 class="mb-5 mt-10 font-header text-5xl">
+    Ongoing Book
+  </h1>
+  <p class="mb-5 text-xl">
+    Join this week’s session on 'How to Think About the
+    Economy,' where we connect the dots between Bitcoin and
+    economics. It’s a beginner-friendly book on austrian
+    economics. Everyone’s input is valued here, so hop in
+    and contribute to the conversation!
+  </p>
+
+  <div
+    class="flex flex-col justify-center rounded-3xl bg-[#fff] p-3 shadow-xl lg:flex-row lg:p-10 lg:py-10"
+  >
+    <img
+      src={details.img}
+      class="h-[40vh] rounded-lg py-2"
+    />
+    <div class="flex flex-col lg:mx-10">
+      <h1
+        class="mb-5 font-header text-3xl text-orange lg:text-6xl"
+      >
+        {details.name}
+      </h1>
+      <p class="text-md lg:text-2xl">
+        {details.desc}
+      </p>
+      <a
+        href={details.link}
+        target="_blank"
+        class="text-m mt-8 w-full rounded-lg p-4 text-center outline-dashed hover:bg-orange hover:text-white lg:w-1/2 lg:text-2xl"
+      >
+        Attend
+      </a>
+    </div>
+  </div>
+</div>
