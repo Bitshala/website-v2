@@ -52,7 +52,7 @@ const Application = (
 
   const list = [
     {
-      heading: "Name/Pseudonym*",
+      heading: "Discord Name*",
       name: "name",
       type: "text",
       value: formData.name,
@@ -161,7 +161,6 @@ const Application = (
   };
 
 
-
   return (
     <>
       {regOpen ? (
@@ -205,7 +204,22 @@ const Application = (
                   >
                     {
                       list.map((item) => {
-                        if (item.name === 'skills') {
+                        if (item.name === 'name') {
+                          return (
+                            <>
+                              <p><span className="text-[#002bff] underline"><a href="https://discord.com/invite/STeQFVEWf9">Discord</a></span> Name*</p>
+                              <Input
+                                className="border font-base text-sm rounded-lg block w-full p-2.5 mb-3"
+                                type={item.type}
+                                name={item.name}
+                                value={item.value}
+                                onChange={handleChange}
+                                required={item.isRequired}
+                              />
+                            </>
+                          )
+                        }
+                        else if (item.name === 'skills') {
                           return (
                             <>
                               <p>Please select list of skills</p>
