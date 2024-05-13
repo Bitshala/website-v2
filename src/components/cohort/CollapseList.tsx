@@ -22,7 +22,7 @@ export const CollapseList = ({
   };
   return (
     <>
-      <div className="mb-12 mt-6 text-5xl font-bold">
+      <div className="mb-12 mt-6 text-5xl font-header font-bold">
         {header}
       </div>
       <hr className="mb-8 border-spacing-12 border-dashed" />
@@ -31,7 +31,7 @@ export const CollapseList = ({
           return (
             <li key={el.q} className="text-2xl">
               <button
-                className="group flex h-full w-full items-center justify-between p-4 hover:text-orange"
+                className="group flex h-full w-full font-semibold items-center justify-between p-4 hover:text-orange"
                 onClick={() => handleElementClick(index)}
               >
                 {el.q}

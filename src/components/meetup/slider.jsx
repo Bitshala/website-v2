@@ -69,7 +69,7 @@ const Slider = () => {
                     <a
                       href={item.link}
                       target="_blank"
-                      class="text-m my-5 lg:w-1/2 rounded-lg p-4 text-center outline-dashed hover:bg-orange hover:text-white lg:text-xl"
+                      class="text-m my-5 lg:w-1/2 rounded-lg p-4 text-center outline-dashed hover:bg-orange hover:text-white lg:text-2xl"
                     >
                       Tell me more
                     </a>

@@ -164,7 +164,7 @@ function Carousel() {
             <img src={slide.url} alt="" />
             <p className="text-xl p-3 md:h-56 lg:h-64 ">{slide.content}</p>
             <a href={slide.targetLink}>
-              <button className="w-full mt-5 py-4 px-8 border-2 border-dotted rounded-lg hover:bg-white hover:text-black ">
+              <button className="w-full mt-5 py-4 px-8 border-2 border-dotted rounded-lg text-lg hover:bg-white hover:text-black ">
                 Tell Me More!
               </button>
             </a>
