@@ -179,7 +179,7 @@ const Application = (
                         <h1 className="my-5 text-xl p-2 rounded-lg bg-[#ffcccc]">
                           ❌ You are already registered. Please check your email
                         </h1>
-                        <a href="https://discord.gg/nXeeBHDHrt" target="_blank" className="my-5 align-middle text-xl font-semibold bg-[#1c3b6a] p-3 rounded-lg text-white ">Join Bitshala Discord Now!</a>
+                        <a href="https://discord.gg/nXeeBHDHrt" target="_blank" className="my-5 align-middle text-xl font-bold bg-[#1c3b6a] p-3 rounded-lg text-white ">Join Bitshala Discord Now!</a>
 
                       </div>
                     ) : (
@@ -187,7 +187,7 @@ const Application = (
                         <h1 className="my-5 text-xl p-2 rounded-lg bg-[#e6fff7]">
                           ✅ Your application was submitted successfully. Please keep an eye on the registered email id for further updates.
                         </h1>
-                        <a href="https://discord.gg/nXeeBHDHrt" target="_blank" className="my-5 align-middle text-xl font-semibold bg-[#1c3b6a] p-3 rounded-lg text-white ">Join Bitshala Discord Now!</a>
+                        <a href="https://discord.gg/nXeeBHDHrt" target="_blank" className="my-5 align-middle text-xl font-bold bg-[#1c3b6a] p-3 rounded-lg text-white ">Join Bitshala Discord Now!</a>
                       </div>
                     )
 

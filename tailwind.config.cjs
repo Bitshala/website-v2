@@ -11,8 +11,8 @@ module.exports = {
       peach: "#FFDEC7",
     },
     fontFamily: {
-      header: "Firs Neue, sans-serif",
-      base: "Aeonik Fono, sans-serif",
+      header: "Apfel Grotezk, sans-serif",
+      base: "Satoshi, sans-serif",
     },
     extend: {},
   },

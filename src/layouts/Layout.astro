@@ -113,24 +113,40 @@ const { title, headerProps, isVisible } = Astro.props;
   </body>
   <style>
     @font-face {
-      font-family: "Aeonik Fono";
-      src: url("/fonts/AeonikFono.otf") format("opentype");
+      font-family: "Satoshi";
+      src: url("/fonts/Satoshi-Medium.otf") format("opentype");
       font-weight: normal;
       font-style: normal;
       font-display: swap;
     }
     @font-face {
-      font-family: "Firs Neue";
-      src: url("/fonts/FirsNeue.ttf") format("truetype");
+      font-family: "Satoshi";
+      src: url("/fonts/Satoshi-Bold.otf") format("opentype");
+      font-weight: bold;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: "Apfel Grotezk";
+      src: url("/fonts/ApfelGrotezk-Mittel.otf")
+        format("opentype");
+      font-weight: bold;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: "Apfel Grotezk";
+      src: url("/fonts/ApfelGrotezk-Fett.otf")
+        format("opentype");
       font-weight: bold;
       font-style: normal;
       font-display: swap;
     }
     html {
-      font-family: "Aeonik Fono", sans-serif;
+      font-family: "Satoshi", sans-serif;
     }
     h1 {
-      font-family: "Firs Neue", sans-serif;
+      font-family: "Apfel Grotezk", sans-serif;
       font-weight: bold;
     }
   </style>

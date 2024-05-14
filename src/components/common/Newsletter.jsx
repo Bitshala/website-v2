@@ -40,7 +40,7 @@ const Newsletter = () => {
           />
           <button
             onClick={handleClick}
-            className="text-m mt-2 border-dashed border-2 rounded-lg bg-white p-4 text-center font-semibold hover:bg-orange hover:text-white lg:w-1/3 lg:text-2xl"
+            className="text-m mt-2 border-dashed border-2 rounded-lg bg-white p-4 text-center font-bold hover:bg-orange hover:text-white lg:w-1/3 lg:text-2xl"
           >
             Subscribe
           </button>
