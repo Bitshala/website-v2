@@ -1,0 +1,51 @@
+---
+import About from "../components/apprenticeship/About.astro";
+import Layout from "../layouts/Layout.astro";
+import OurApprentices from "../components/apprenticeship/OurApprentices.astro"
+---
+
+<Layout
+  title="Bitshala Apprenticeship"
+  headerProps={{
+    image: "/header/Apprenticeship_Hero.webp",
+  }}
+  isVisible={true}
+>
+  <div
+    slot="headerChild"
+    class="flex flex-col justify-between lg:h-[70vh]"
+  >
+    <h1
+      class="text-center font-header text-5xl text-white lg:text-[12rem]"
+    >
+      BITSHALA Apprenticeship
+    </h1>
+    <h2
+      class="text-center font-header text-2xl text-orange lg:text-5xl"
+    >
+      Contribute to open-source projects or empower others
+      as a Community Champ. Your journey to making a
+      significant impact in the Bitcoin world starts here!
+    </h2>
+    <div class="mt-20 flex w-full justify-center font-bold">
+      <a
+        href="https://discord.com/invite/STeQFVEWf9"
+        target="_blank"
+        class="text-m mx-3 flex w-1/3 items-center justify-center rounded-lg bg-white p-4 text-center hover:bg-black hover:text-white hover:outline-dashed lg:text-2xl"
+        >Apply for<span class="text-orange"
+          >&nbsp;developer&nbsp;
+        </span>position</a
+      >
+      <a
+        href="/cohorts"
+        class="text-m mx-3 flex w-1/3 items-center justify-center rounded-lg bg-white p-4 text-center text-black outline-dashed outline-white hover:bg-black hover:text-white lg:text-2xl"
+        >Apply for&nbsp;<span class="text-orange"
+          >community champ</span
+        > &nbsp;position
+      </a>
+    </div>
+  </div>
+
+  <About />
+  <OurApprentices />
+</Layout>
