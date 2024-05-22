@@ -1,12 +1,161 @@
+---
+const list1 = [
+  {
+    name: "Shourya Sharma",
+    projectName: "Project Name",
+    desc: "Project description. Lorem ipsum dolor sit amet, consectetur adipiscin elit. Quisque elit metus, sollicitudin pharetra dolor nec, eleifend jba hendrerit. Etiam bibendum enim vel ex sagittis pretium. Proin eusucks tempus augue. Proin aliquet turpis mi, eget dictum dui pulvinar.",
+    skills: ["Rust", "C++", "Javascript"],
+    img: "./people/raj.png",
+    github: "#",
+    twitter: "#",
+  },
+  {
+    name: "Shourya Sharma",
+    projectName: "Project Name",
+    desc: "Project description. Lorem ipsum dolor sit amet, consectetur adipiscin elit. Quisque elit metus, sollicitudin pharetra dolor nec, eleifend jba hendrerit. Etiam bibendum enim vel ex sagittis pretium. Proin eusucks tempus augue. Proin aliquet turpis mi, eget dictum dui pulvinar.",
+    skills: ["Rust", "C++", "Javascript"],
+    img: "./people/raj.png",
+    github: "#",
+    twitter: "#",
+  },
+];
+---
+
 <div class="lg:p-8">
   <h1
-    class="my-8 ml-3 text-3xl font-bold md:text-6xl lg:text-6xl"
+    class="my-8 text-3xl font-bold md:text-6xl lg:text-6xl"
     id="about_us"
   >
     Our Apprentices
   </h1>
-  <p class="m-4 text-base md:text-lg lg:text-2xl">
+  <p class="text-base md:text-lg lg:text-2xl">
     Here are our driven individuals who are shaping the
     future of Bitcoin through innovation and education.
   </p>
+
+  <p
+    class="my-8 font-header text-3xl font-bold text-orange"
+  >
+    Developers
+  </p>
+
+  {
+    list1.map((apprentice) => (
+      <div class="my-5 flex w-full items-center rounded-xl bg-[#f0f0f0]">
+        <img
+          src={apprentice.img}
+          class="h-28 items-center p-3 lg:h-64"
+        />
+        <div class="flex w-full flex-col px-2">
+          <div class="flex w-full justify-between py-2">
+            <p class="font-header text-xl  font-bold lg:text-5xl">
+              {apprentice.name}
+            </p>
+            <div class="flex ">
+              <a
+                href={apprentice.github}
+                target="_blank"
+                class="group"
+              >
+                <img
+                  src="/people/github.png"
+                  class="m-1 h-6 rounded bg-peach group-hover:bg-white lg:h-10"
+                />
+              </a>
+              <a
+                href={apprentice.twitter}
+                target="_blank"
+                class="group"
+              >
+                <img
+                  src="/people/twitter.png"
+                  class="m-1 h-6 rounded bg-peach group-hover:bg-white lg:h-10"
+                />
+              </a>
+            </div>
+          </div>
+          <p class="-mt-4 text-lg  font-semibold lg:m-0 lg:text-2xl">
+            {apprentice.projectName}
+          </p>
+          <p class="lg:p3 text-sm lg:text-lg">
+            {apprentice.desc}
+          </p>
+          <div class="flex flex-wrap gap-1 lg:gap-3">
+            <p class="font-semibold">Skills:</p>
+            {apprentice.skills.map((skill) => (
+              <p class="rounded-lg bg-[#ffdec7] px-2 py-1 text-sm font-semibold">
+                {skill}
+              </p>
+            ))}
+          </div>
+        </div>
+      </div>
+    ))
+  }
+
+  <p
+    class="my-8 font-header text-3xl font-bold text-orange"
+  >
+    Catalysts
+  </p>
+
+  {
+    list1.map((apprentice) => (
+      <div class=" rounded-xl bg-[#f0f0f0]">
+        <div class="my-5 flex w-full items-center">
+          <img
+            src={apprentice.img}
+            class="h-20 items-center  p-3 lg:h-32"
+          />
+
+          <div class="flex w-full flex-col px-2">
+            <div class="flex w-full flex-wrap justify-between py-2">
+              <p class="font-header text-2xl font-bold  lg:text-5xl">
+                {apprentice.name}
+              </p>
+              <div class="flex ">
+                <a
+                  href={apprentice.github}
+                  target="_blank"
+                  class="group"
+                >
+                  <img
+                    src="/people/github.png"
+                    class="m-1 h-6 rounded bg-peach group-hover:bg-white lg:h-10"
+                  />
+                </a>
+                <a
+                  href={apprentice.twitter}
+                  target="_blank"
+                  class="group"
+                >
+                  <img
+                    src="/people/twitter.png"
+                    class="m-1 h-6 rounded bg-peach group-hover:bg-white lg:h-10"
+                  />
+                </a>
+              </div>
+            </div>
+
+            <div class="flex flex-wrap gap-1 lg:gap-3">
+              <p class="font-semibold">Skills:</p>
+              {apprentice.skills.map((skill) => (
+                <p class="rounded-lg bg-[#ffdec7] px-2 py-1 text-sm font-semibold">
+                  {skill}
+                </p>
+              ))}
+            </div>
+          </div>
+        </div>
+        <div class="px-4">
+          <p class="text-2xlb -mt-4 font-semibold lg:m-0">
+            {apprentice.projectName}
+          </p>
+          <p class="lg:p3 text-sm lg:text-lg">
+            {apprentice.desc}
+          </p>
+        </div>
+      </div>
+    ))
+  }
 </div>

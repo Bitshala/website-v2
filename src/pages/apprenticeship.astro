@@ -1,7 +1,8 @@
 ---
 import About from "../components/apprenticeship/About.astro";
 import Layout from "../layouts/Layout.astro";
-import OurApprentices from "../components/apprenticeship/OurApprentices.astro"
+import OurApprentices from "../components/apprenticeship/OurApprentices.astro";
+import DevProjects from "../components/apprenticeship/DevProjects.astro";
 ---
 
 <Layout
@@ -16,29 +17,32 @@ import OurApprentices from "../components/apprenticeship/OurApprentices.astro"
     class="flex flex-col justify-between lg:h-[70vh]"
   >
     <h1
-      class="text-center font-header text-5xl text-white lg:text-[12rem]"
+      class="text-center font-header text-4xl text-white lg:text-8xl xl:text-[12rem]"
     >
-      BITSHALA Apprenticeship
+      BITSHALA Fellowship
     </h1>
     <h2
-      class="text-center font-header text-2xl text-orange lg:text-5xl"
+      class="mx-20 text-center text-xl text-white lg:font-header lg:text-5xl"
     >
-      Contribute to open-source projects or empower others
-      as a Community Champ. Your journey to making a
-      significant impact in the Bitcoin world starts here!
+      Contribute to Bitcoin FOSS or host technical study
+      clubs with Bitshala's paid fellowship program. Your
+      journey to making a significant impact in the Bitcoin
+      world starts here!
     </h2>
-    <div class="mt-20 flex w-full justify-center font-bold">
+    <div
+      class="mt-20 flex w-full flex-col justify-center gap-3 font-bold lg:flex-row"
+    >
       <a
         href="https://discord.com/invite/STeQFVEWf9"
         target="_blank"
-        class="text-m mx-3 flex w-1/3 items-center justify-center rounded-lg bg-white p-4 text-center hover:bg-black hover:text-white hover:outline-dashed lg:text-2xl"
+        class="text-m mx-3 flex items-center justify-center rounded-lg bg-white p-4 text-center hover:bg-black hover:text-white hover:outline-dashed lg:w-1/3 lg:text-2xl"
         >Apply for<span class="text-orange"
           >&nbsp;developer&nbsp;
         </span>position</a
       >
       <a
         href="/cohorts"
-        class="text-m mx-3 flex w-1/3 items-center justify-center rounded-lg bg-white p-4 text-center text-black outline-dashed outline-white hover:bg-black hover:text-white lg:text-2xl"
+        class="text-m mx-3 flex items-center justify-center rounded-lg bg-white p-4 text-center text-black outline-white hover:bg-black hover:text-white hover:outline-dashed lg:w-1/3 lg:text-2xl"
         >Apply for&nbsp;<span class="text-orange"
           >community champ</span
         > &nbsp;position
@@ -48,4 +52,5 @@ import OurApprentices from "../components/apprenticeship/OurApprentices.astro"
 
   <About />
   <OurApprentices />
+  <DevProjects />
 </Layout>
