@@ -1,0 +1,66 @@
+---
+const list = [
+  {
+    logo: "/readingClub/image.png",
+    name: "Name of the project",
+    leadBy: "Catagory",
+    desc: "Project description. Lorem ipsum dolor sit amet, const adipiscin elit. Quisque elit metus, nisl sollicitudinera pharetra dolor nectura, eleifendur hendrerit. Etiam bibendum enim vel ex sagittisty pretium. Proin eu tempus.Nulla dapibus nibh eget convallis tristique. Mauris vestibulum hendrerit dui. Suspendisse mattis sit amet nisi et semper. Integer eu libero nibh.",
+  },
+  {
+    logo: "/readingClub/image.png",
+    name: "Name of the project",
+    leadBy: "Catagory",
+    desc: "Project description. Lorem ipsum dolor sit amet, const adipiscin elit. Quisque elit metus, nisl sollicitudinera pharetra dolor nectura, eleifendur hendrerit. Etiam bibendum enim vel ex sagittisty pretium. Proin eu tempus.Nulla dapibus nibh eget convallis tristique. Mauris vestibulum hendrerit dui. Suspendisse mattis sit amet nisi et semper. Integer eu libero nibh.",
+  },
+];
+---
+
+<div class="lg:p-8">
+  <h1
+    class="my-8 text-3xl font-bold md:text-6xl lg:text-6xl"
+    id="about_us"
+  >
+    Explore Our Catalyst’s Initiatives
+  </h1>
+  <p class="text-base md:text-lg lg:text-2xl">
+    Got a fresh idea for a technical educational project?
+    We’d love to hear it! Below, we showcase initiatives our
+    Catalysts are already pursuing—use these as inspiration
+    to forge your own path. Share your vision, and let’s
+    collaborate to make a real impact.
+  </p>
+
+  <div class="grid grid-cols-1 lg:grid-cols-2 lg:gap-4">
+    {
+      list.map((item) => (
+        <div class="border-neutral-200 my-5 flex flex-col justify-center rounded-3xl bg-[#f0f0f0] p-5">
+          <img
+            loading="lazy"
+            srcset={item.logo}
+            class="rounded-lg"
+          />
+          <div class=" flex w-full flex-col font-medium lg:p-5">
+            <div class="font-header text-3xl font-bold">
+              {item.name}
+            </div>
+
+            <div class="mt-3 text-xl">{item.leadBy}</div>
+            <div class=" mt-4 text-lg ">{item.desc}</div>
+          </div>
+        </div>
+      ))
+    }
+  </div>
+  <div
+    class="flex w-fit gap-5 rounded-xl bg-[#f0f0f0] py-4 pl-5 pr-4 font-medium"
+  >
+    <div class="my-auto text-2xl">
+      Got a new idea for an initiative?
+    </div>
+    <div
+      class="justify-center rounded-xl bg-peach px-5 py-5 text-xl"
+    >
+      Apply now
+    </div>
+  </div>
+</div>

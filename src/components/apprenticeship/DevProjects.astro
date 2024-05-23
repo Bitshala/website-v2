@@ -1,7 +1,25 @@
 ---
 const list = [
   {
-    logo: "./people/raj.png",
+    logo: "./apprenticeship/a.svg",
+    github: "#",
+    twitter: "#",
+    name: "Name of the project",
+    catagory: "Catagory",
+    desc: "Project description. Lorem ipsum dolor sit amet, const adipiscin elit. Quisque elit metus, nisl sollicitudinera pharetra dolor nectura, eleifendur hendrerit. Etiam bibendum enim vel ex sagittisty pretium. Proin eu tempus.Nulla dapibus nibh eget convallis tristique. Mauris vestibulum hendrerit dui. Suspendisse mattis sit amet nisi et semper. Integer eu libero nibh.",
+    skills: ["Rust", "C++", "Javascript"],
+  },
+  {
+    logo: "./apprenticeship/a.svg",
+    github: "#",
+    twitter: "#",
+    name: "Shourya Sharma",
+    catagory: "Rust",
+    desc: "Project description. Lorem ipsum dolor sit amet, const adipiscin elit. Quisque elit metus, nisl sollicitudinera pharetra dolor nectura, eleifendur hendrerit. Etiam bibendum enim vel ex sagittisty pretium. Proin eu tempus.Nulla dapibus nibh eget convallis tristique. Mauris vestibulum hendrerit dui. Suspendisse mattis sit amet nisi et semper. Integer eu libero nibh.",
+    skills: ["Rust", "C++", "Javascript"],
+  },
+  {
+    logo: "./apprenticeship/a.svg",
     github: "#",
     twitter: "#",
     name: "Shourya Sharma",
@@ -25,4 +43,64 @@ const list = [
     to contribute to the Bitcoin community's growth and
     development.
   </p>
+
+  <div
+    class="my-10 grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-3"
+  >
+    {
+      list.map((item) => (
+        <div class="border-neutral-200 flex flex-col justify-center rounded-3xl bg-[#f0f0f0]">
+          <div class="flex w-full flex-col">
+            <div class="flex w-full items-center justify-between gap-5 self-center">
+              <img
+                loading="lazy"
+                srcset={item.logo}
+                class="h-28"
+              />
+              <div class="m-3 flex">
+                <a
+                  href={item.github}
+                  target="_blank"
+                  class="group"
+                >
+                  <img
+                    src="/people/github.png"
+                    class="m-1 h-6 rounded bg-peach group-hover:bg-white lg:h-10"
+                  />
+                </a>
+                <a
+                  href={item.twitter}
+                  target="_blank"
+                  class="group"
+                >
+                  <img
+                    src="/people/twitter.png"
+                    class="m-1 h-6 rounded bg-peach group-hover:bg-white lg:h-10"
+                  />
+                </a>
+              </div>
+            </div>
+            <div class="-mt-10 flex w-full flex-col p-5 font-medium">
+              <div class="font-header text-3xl font-bold">
+                {item.name}
+              </div>
+
+              <div class="mt-3 text-xl">
+                {item.catagory}
+              </div>
+              <div class=" mt-4 text-lg ">{item.desc}</div>
+              <div class="mt-3 flex flex-wrap gap-1 lg:gap-3">
+                <p class="font-semibold">Skills:</p>
+                {item.skills.map((skill) => (
+                  <p class="rounded-lg bg-[#ffdec7] px-2 py-1 text-sm font-semibold">
+                    {skill}
+                  </p>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      ))
+    }
+  </div>
 </div>
