@@ -1,31 +1,44 @@
 ---
 const list = [
   {
-    logo: "./apprenticeship/a.svg",
+    logo: "./footer/logo.png",
     github: "#",
     twitter: "#",
-    name: "Name of the project",
-    catagory: "Catagory",
-    desc: "Project description. Lorem ipsum dolor sit amet, const adipiscin elit. Quisque elit metus, nisl sollicitudinera pharetra dolor nectura, eleifendur hendrerit. Etiam bibendum enim vel ex sagittisty pretium. Proin eu tempus.Nulla dapibus nibh eget convallis tristique. Mauris vestibulum hendrerit dui. Suspendisse mattis sit amet nisi et semper. Integer eu libero nibh.",
-    skills: ["Rust", "C++", "Javascript"],
+    name: "Silent-Payment Library",
+    desc: "A Typescript wallet library implementing all the silent-payment primitives.",
+    skills: ["Typescript"],
   },
   {
-    logo: "./apprenticeship/a.svg",
+    logo: "./footer/logo.png",
     github: "#",
     twitter: "#",
-    name: "Shourya Sharma",
-    catagory: "Rust",
-    desc: "Project description. Lorem ipsum dolor sit amet, const adipiscin elit. Quisque elit metus, nisl sollicitudinera pharetra dolor nectura, eleifendur hendrerit. Etiam bibendum enim vel ex sagittisty pretium. Proin eu tempus.Nulla dapibus nibh eget convallis tristique. Mauris vestibulum hendrerit dui. Suspendisse mattis sit amet nisi et semper. Integer eu libero nibh.",
-    skills: ["Rust", "C++", "Javascript"],
+    name: "Silent Payment Indexer",
+    desc: "A Typescript project to build various mechanisms of fetching the SP indexes.",
+    skills: ["Typescript"],
   },
   {
-    logo: "./apprenticeship/a.svg",
+    logo: "./footer/logo.png",
     github: "#",
     twitter: "#",
-    name: "Shourya Sharma",
-    catagory: "Rust",
-    desc: "Project description. Lorem ipsum dolor sit amet, const adipiscin elit. Quisque elit metus, nisl sollicitudinera pharetra dolor nectura, eleifendur hendrerit. Etiam bibendum enim vel ex sagittisty pretium. Proin eu tempus.Nulla dapibus nibh eget convallis tristique. Mauris vestibulum hendrerit dui. Suspendisse mattis sit amet nisi et semper. Integer eu libero nibh.",
-    skills: ["Rust", "C++", "Javascript"],
+    name: "Coinseletion",
+    desc: "A rust library bringing the Bitcoin Core’s coinselection algorithms to the wallet development world.A crucial missing piece of Bitcoin wallet infrastructure.",
+    skills: ["Typescript"],
+  },
+  {
+    logo: "./footer/logo.png",
+    github: "#",
+    twitter: "#",
+    name: "Bitcoin Core Review",
+    desc: "An ongoing Review Club to get all the aspiring core devs get startedin the dense jungle of Bitcoin Core.",
+    skills: ["Typescript"],
+  },
+  {
+    logo: "./footer/logo.png",
+    github: "#",
+    twitter: "#",
+    name: "Coinswap",
+    desc: "Functioning, minimal-viable binaries and libraries to perform a trustless, p2p Maxwell-Belcher Coinswap Protocol",
+    skills: ["Typescript"],
   },
 ];
 ---
@@ -44,20 +57,23 @@ const list = [
     development.
   </p>
 
-  <div
-    class="my-10 grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-3"
-  >
+  <div class="my-10 grid grid-cols-1 gap-3">
     {
       list.map((item) => (
         <div class="border-neutral-200 flex flex-col justify-center rounded-3xl bg-[#f0f0f0]">
           <div class="flex w-full flex-col">
-            <div class="flex w-full items-center justify-between gap-5 self-center">
-              <img
-                loading="lazy"
-                srcset={item.logo}
-                class="h-28"
-              />
-              <div class="m-3 flex">
+            <div class=" flex w-full items-center justify-between self-center">
+              <div class="flex items-center self-center">
+                <img
+                  loading="lazy"
+                  srcset={item.logo}
+                  class="scale-[0.4] rounded-full  border-4 border-black lg:scale-[0.6] "
+                />
+                <div class="font-header text-xl font-bold lg:text-3xl">
+                  {item.name}
+                </div>
+              </div>
+              <div class="m-3 flex ">
                 <a
                   href={item.github}
                   target="_blank"
@@ -80,17 +96,12 @@ const list = [
                 </a>
               </div>
             </div>
-            <div class="-mt-10 flex w-full flex-col p-5 font-medium">
-              <div class="font-header text-3xl font-bold">
-                {item.name}
+            <div class="mx-5 -mt-12 flex w-full flex-col p-5 font-medium">
+              <div class=" mt-4 text-sm font-thin lg:text-lg ">
+                {item.desc}
               </div>
-
-              <div class="mt-3 text-xl">
-                {item.catagory}
-              </div>
-              <div class=" mt-4 text-lg ">{item.desc}</div>
               <div class="mt-3 flex flex-wrap gap-1 lg:gap-3">
-                <p class="font-semibold">Skills:</p>
+                <p class="font-semibold">Language:</p>
                 {item.skills.map((skill) => (
                   <p class="rounded-lg bg-[#ffdec7] px-2 py-1 text-sm font-semibold">
                     {skill}

@@ -4,6 +4,7 @@ import Layout from "../layouts/Layout.astro";
 import OurApprentices from "../components/apprenticeship/OurApprentices.astro";
 import DevProjects from "../components/apprenticeship/DevProjects.astro";
 import CatalystInitiative from "../components/apprenticeship/CatalystInitiative.astro";
+// import Apply from "../components/apprenticeship/Apply";
 ---
 
 <Layout
@@ -52,7 +53,8 @@ import CatalystInitiative from "../components/apprenticeship/CatalystInitiative.
   </div>
 
   <About />
-  <OurApprentices />
   <DevProjects />
   <CatalystInitiative />
+  <OurApprentices />
+  <!-- <Apply client:only /> -->
 </Layout>

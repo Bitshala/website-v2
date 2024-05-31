@@ -2,25 +2,37 @@
 const list = [
   {
     logo: "/readingClub/image.png",
-    name: "Name of the project",
-    leadBy: "Catagory",
-    desc: "Project description. Lorem ipsum dolor sit amet, const adipiscin elit. Quisque elit metus, nisl sollicitudinera pharetra dolor nectura, eleifendur hendrerit. Etiam bibendum enim vel ex sagittisty pretium. Proin eu tempus.Nulla dapibus nibh eget convallis tristique. Mauris vestibulum hendrerit dui. Suspendisse mattis sit amet nisi et semper. Integer eu libero nibh.",
+    name: "Latest in Bitcoin Tech",
+    leadBy: "Faisal",
+    desc: "A weekly Optech deep-dive session. Where we explore all the cutting edges of Bitcoin technology with fellow learners.",
   },
   {
     logo: "/readingClub/image.png",
-    name: "Name of the project",
-    leadBy: "Catagory",
-    desc: "Project description. Lorem ipsum dolor sit amet, const adipiscin elit. Quisque elit metus, nisl sollicitudinera pharetra dolor nectura, eleifendur hendrerit. Etiam bibendum enim vel ex sagittisty pretium. Proin eu tempus.Nulla dapibus nibh eget convallis tristique. Mauris vestibulum hendrerit dui. Suspendisse mattis sit amet nisi et semper. Integer eu libero nibh.",
+    name: "Hands-On Lightning",
+    leadBy: "Aditya",
+    desc: "A weekly tutorial-based Lightning dev training program. Ideal to kick start your lightning dev journey.",
+  },
+  {
+    logo: "/readingClub/image.png",
+    name: "Bitcoin Reading Club",
+    leadBy: "Shreyan",
+    desc: "A bi-weekly review club to get into the weeds of Bitcoin Core. Ideal for aspiring Bitcoin Core Devs.",
+  },
+  {
+    logo: "/readingClub/image.png",
+    name: "Bitcoin Core Review Club",
+    leadBy: "Stratospher",
+    desc: "A bi-weekly review club to get into the weeds of Bitcoin Core. Ideal for aspiring Bitcoin Core Devs.",
   },
 ];
 ---
 
 <div class="lg:p-8">
   <h1
-    class="my-8 text-3xl font-bold md:text-6xl lg:text-6xl"
+    class="md:text-6Name of the projectxl my-8 text-3xl font-bold lg:text-6xl"
     id="about_us"
   >
-    Explore Our Catalyst’s Initiatives
+    Explore Our Education Programs
   </h1>
   <p class="text-base md:text-lg lg:text-2xl">
     Got a fresh idea for a technical educational project?
@@ -44,23 +56,34 @@ const list = [
               {item.name}
             </div>
 
-            <div class="mt-3 text-xl">{item.leadBy}</div>
+            <div class="mt-3 text-xl">
+              {" "}
+              Hosted By :{" "}
+              <span class="font-header">{item.leadBy}</span>
+            </div>
             <div class=" mt-4 text-lg ">{item.desc}</div>
           </div>
+          <a
+            href={item.leadBy}
+            target="_blank"
+            class="text-m my-5 rounded-lg p-4 text-center outline-dashed hover:bg-orange hover:text-white lg:w-1/2"
+          >
+            Tell me more
+          </a>
         </div>
       ))
     }
   </div>
   <div
-    class="flex w-fit gap-5 rounded-xl bg-[#f0f0f0] py-4 pl-5 pr-4 font-medium"
+    class="flex w-full justify-between gap-5 rounded-xl bg-[#f0f0f0] py-4 pl-5 pr-4"
   >
-    <div class="my-auto text-2xl">
+    <div class="my-auto text-xl lg:text-3xl">
       Got a new idea for an initiative?
     </div>
     <div
-      class="justify-center rounded-xl bg-peach px-5 py-5 text-xl"
+      class="rounded-xl bg-peach p-2 text-center lg:p-5 lg:text-xl"
     >
-      Apply now
+      Apply Now
     </div>
   </div>
 </div>
