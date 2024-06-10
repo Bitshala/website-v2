@@ -4,22 +4,22 @@ const developers = [
     name: "Bit-aloo",
     desc: "A young dev bored within the old mammoths of Oracle, decided to take Bitcoin’s fungibility problem seriously and moving the proverbial mountains of the complex protocol jungle of atomic swaps.",
     img: "./apprenticeship/Bitaloo.png",
-    github: "#",
-    twitter: "#",
+    github: "https://github.com/Shourya742",
+    twitter: "https://x.com/shourya742",
   },
   {
     name: "Rajat",
     desc: "They say there is no right way to start in Bitcoin. Being a Civil Engg didn’t stop this little guy from spinning big code. Also our youngest fellow.",
     img: "./apprenticeship/Rajat.png",
-    github: "#",
-    twitter: "#",
+    github: "https://github.com/wthrajat",
+    twitter: "https://x.com/wthrajat",
   },
   {
     name: "Bala",
     desc: "A material scientist who writes Bitcoin code in free time. He has been picking fights with some hardcore algorithms of selecting coins, in the hope of making a wallet dev’s life easier one day. Only if they knew.",
     img: "./apprenticeship/Bala.png",
-    github: "#",
-    twitter: "#",
+    github: "https://github.com/jkciw",
+    twitter: "https://x.com/balajic86",
   },
 ];
 const educators = [
@@ -27,29 +27,29 @@ const educators = [
     name: "Faisal",
     desc: "The dude that came out of nowhere and busted the myth of “you need a technical background to do Bitcoin”. The only caveman who completed all four Bitshala study cohorts with 100% attendance. Then decided to take it to the next level by becoming the host of the Bitcoin Optech Study Club.",
     img: "./apprenticeship/Faisal.png",
-    github: "#",
-    twitter: "#",
+    github: "",
+    twitter: "https://x.com/faisal_qrs",
   },
   {
     name: "Shreyan",
     desc: "A lawyer by profession who just can't stop talking about Bitcoin. So he turned his madness into a sats stacking mechanism via Bitshala Fellowship and started the first Bitshala Reading Club. The modern-time Bitcoin story reader with a captive audience.",
     img: "./apprenticeship/Shreyan.png",
-    github: "#",
-    twitter: "#",
+    github: "",
+    twitter: "https://x.com/JoshiShreyan",
   },
   {
     name: "Aditya",
     desc: "The lightning developer who got sad because he didn’t have any lightning friends, and decided to take matters into his own hands. He hosts the Hands-on Lightning session every Tuesday where he won’t let you sleep until you make a CLN plugin from scratch.",
     img: "./apprenticeship/Aditya.png",
-    github: "#",
-    twitter: "#",
+    github: "https://github.com/adi2011",
+    twitter: "https://x.com/adityaa2011",
   },
 ];
 ---
 
 <div class="lg:p-8">
   <h1
-    class="my-8 text-3xl font-bold md:text-6xl lg:text-6xl"
+    class="my-8 font-header text-3xl md:text-6xl lg:text-6xl"
     id="about_us"
   >
     Our Fellows
@@ -78,27 +78,32 @@ const educators = [
               <p class="font-header text-xl font-bold lg:text-5xl">
                 {apprentice.name}
               </p>
+
               <div class="flex ">
-                <a
-                  href={apprentice.github}
-                  target="_blank"
-                  class="group"
-                >
-                  <img
-                    src="/people/github.png"
-                    class="m-1 h-6 rounded bg-peach group-hover:bg-white lg:h-10"
-                  />
-                </a>
-                <a
-                  href={apprentice.twitter}
-                  target="_blank"
-                  class="group"
-                >
-                  <img
-                    src="/people/twitter.png"
-                    class="m-1 h-6 rounded bg-peach group-hover:bg-white lg:h-10"
-                  />
-                </a>
+                {apprentice.github && (
+                  <a
+                    href={apprentice.github}
+                    target="_blank"
+                    class="group"
+                  >
+                    <img
+                      src="/apprenticeship/github.png"
+                      class="m-1 h-6 rounded bg-peach group-hover:bg-white lg:h-10"
+                    />
+                  </a>
+                )}
+                {apprentice.twitter && (
+                  <a
+                    href={apprentice.twitter}
+                    target="_blank"
+                    class="group"
+                  >
+                    <img
+                      src="/apprenticeship/twitter.png"
+                      class="m-1 h-6 rounded bg-peach group-hover:bg-white lg:h-10"
+                    />
+                  </a>
+                )}
               </div>
             </div>
 
@@ -118,44 +123,48 @@ const educators = [
   </p>
 
   {
-    educators.map((apprentice) => (
+    educators.map((educator) => (
       <>
         <div class=" my-5 flex gap-3 rounded-xl bg-[#f0f0f0]">
           <img
-            src={apprentice.img}
+            src={educator.img}
             class="h-28 w-24 items-center rounded-3xl p-3 lg:h-64 lg:w-56"
           />
           <div class="p-3 lg:mx-5 lg:mt-8">
             <div class="flex justify-between">
               <p class="font-header text-xl font-bold lg:text-5xl">
-                {apprentice.name}
+                {educator.name}
               </p>
               <div class="flex ">
-                <a
-                  href={apprentice.github}
-                  target="_blank"
-                  class="group"
-                >
-                  <img
-                    src="/people/github.png"
-                    class="m-1 h-6 rounded bg-peach group-hover:bg-white lg:h-10"
-                  />
-                </a>
-                <a
-                  href={apprentice.twitter}
-                  target="_blank"
-                  class="group"
-                >
-                  <img
-                    src="/people/twitter.png"
-                    class="m-1 h-6 rounded bg-peach group-hover:bg-white lg:h-10"
-                  />
-                </a>
+                {educator.github && (
+                  <a
+                    href={educator.github}
+                    target="_blank"
+                    class="group"
+                  >
+                    <img
+                      src="/apprenticeship/github.png"
+                      class="m-1 h-6 rounded bg-peach group-hover:bg-white lg:h-10"
+                    />
+                  </a>
+                )}
+                {educator.twitter && (
+                  <a
+                    href={educator.twitter}
+                    target="_blank"
+                    class="group"
+                  >
+                    <img
+                      src="/apprenticeship/twitter.png"
+                      class="m-1 h-6 rounded bg-peach group-hover:bg-white lg:h-10"
+                    />
+                  </a>
+                )}
               </div>
             </div>
 
             <p class="text-sm lg:my-10 lg:text-xl">
-              {apprentice.desc}
+              {educator.desc}
             </p>
           </div>
         </div>

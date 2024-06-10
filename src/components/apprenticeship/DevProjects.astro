@@ -1,51 +1,56 @@
 ---
 const list = [
   {
-    logo: "./footer/logo.png",
-    github: "#",
-    twitter: "#",
+    logo: "./apprenticeship/bitlogo.png",
+    github:
+      "https://github.com/Bitshala-Incubator/silent-pay",
+    twitter: "https://discord.gg/yHkd8bKRDU",
     name: "Silent-Payment Library",
     desc: "A Typescript wallet library implementing all the silent-payment primitives.",
     skills: ["Typescript"],
   },
   {
-    logo: "./footer/logo.png",
-    github: "#",
-    twitter: "#",
+    logo: "./apprenticeship/bitlogo.png",
+    github:
+      "https://github.com/Bitshala-Incubator/silent-pay-indexer",
+    twitter: "https://discord.gg/yHkd8bKRDU",
     name: "Silent Payment Indexer",
     desc: "A Typescript project to build various mechanisms of fetching the SP indexes.",
     skills: ["Typescript"],
   },
   {
-    logo: "./footer/logo.png",
-    github: "#",
-    twitter: "#",
+    logo: "./apprenticeship/bitlogo.png",
+    github:
+      "https://github.com/Bitshala-Incubator/rust-coinselect",
+    twitter: "https://discord.gg/6AMHcGdDga",
     name: "Coinseletion",
     desc: "A rust library bringing the Bitcoin Core’s coinselection algorithms to the wallet development world.A crucial missing piece of Bitcoin wallet infrastructure.",
-    skills: ["Typescript"],
+    skills: ["Rust"],
   },
   {
-    logo: "./footer/logo.png",
-    github: "#",
-    twitter: "#",
+    logo: "./apprenticeship/bitlogo.png",
+    github:
+      "https://github.com/Bitshala/BitcoinCore-PR-Review-Club",
+    twitter: "https://discord.gg/bDzA7Ae32m",
     name: "Bitcoin Core Review",
     desc: "An ongoing Review Club to get all the aspiring core devs get startedin the dense jungle of Bitcoin Core.",
-    skills: ["Typescript"],
+    skills: ["C++", "Python"],
   },
   {
-    logo: "./footer/logo.png",
-    github: "#",
-    twitter: "#",
+    logo: "./apprenticeship/yinyang.png",
+    github:
+      "https://github.com/utxo-teleport/teleport-transactions",
+    twitter: "https://discord.gg/ZfVxdYRPkt",
     name: "Coinswap",
     desc: "Functioning, minimal-viable binaries and libraries to perform a trustless, p2p Maxwell-Belcher Coinswap Protocol",
-    skills: ["Typescript"],
+    skills: ["Rust"],
   },
 ];
 ---
 
 <div class="lg:p-8">
   <h1
-    class="my-8 text-3xl font-bold md:text-6xl lg:text-6xl"
+    class="my-8 font-header text-3xl md:text-6xl lg:text-6xl"
     id="about_us"
   >
     Explore Dev Projects
@@ -67,7 +72,7 @@ const list = [
                 <img
                   loading="lazy"
                   srcset={item.logo}
-                  class="scale-[0.4] rounded-full  border-4 border-black lg:scale-[0.6] "
+                  class="m-8 h-16  rounded-full  "
                 />
                 <div class="font-header text-xl font-bold lg:text-3xl">
                   {item.name}
@@ -80,7 +85,7 @@ const list = [
                   class="group"
                 >
                   <img
-                    src="/people/github.png"
+                    src="/apprenticeship/github.png"
                     class="m-1 h-6 rounded bg-peach group-hover:bg-white lg:h-10"
                   />
                 </a>
@@ -90,20 +95,20 @@ const list = [
                   class="group"
                 >
                   <img
-                    src="/people/twitter.png"
+                    src="/apprenticeship/discord.png"
                     class="m-1 h-6 rounded bg-peach group-hover:bg-white lg:h-10"
                   />
                 </a>
               </div>
             </div>
             <div class="mx-5 -mt-12 flex w-full flex-col p-5 font-medium">
-              <div class=" mt-4 text-sm font-thin lg:text-lg ">
+              <div class=" mt-4 text-sm font-thin lg:text-xl ">
                 {item.desc}
               </div>
-              <div class="mt-3 flex flex-wrap gap-1 lg:gap-3">
-                <p class="font-semibold">Language:</p>
+              <div class="lg:text-md mt-3 flex flex-wrap gap-1 text-sm lg:gap-3">
+                <p class=" mt-1 font-semibold">Language:</p>
                 {item.skills.map((skill) => (
-                  <p class="rounded-lg bg-[#ffdec7] px-2 py-1 text-sm font-semibold">
+                  <p class="lg:text-md rounded-lg bg-[#ffdec7] px-2 py-1 font-semibold">
                     {skill}
                   </p>
                 ))}

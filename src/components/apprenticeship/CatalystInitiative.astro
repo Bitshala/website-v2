@@ -1,27 +1,35 @@
 ---
 const list = [
   {
-    logo: "/readingClub/image.png",
+    logo: "/apprenticeship/optech.png",
     name: "Latest in Bitcoin Tech",
     leadBy: "Faisal",
+    discord:
+      "https://discord.com/events/1104831812720656540/1242345418353016843",
     desc: "A weekly Optech deep-dive session. Where we explore all the cutting edges of Bitcoin technology with fellow learners.",
   },
   {
-    logo: "/readingClub/image.png",
+    logo: "/apprenticeship/lightning.png",
     name: "Hands-On Lightning",
     leadBy: "Aditya",
+    discord:
+      "https://discord.com/events/1104831812720656540/1242484649972732024",
     desc: "A weekly tutorial-based Lightning dev training program. Ideal to kick start your lightning dev journey.",
   },
   {
-    logo: "/readingClub/image.png",
+    logo: "/apprenticeship/readingClub.png",
     name: "Bitcoin Reading Club",
     leadBy: "Shreyan",
+    discord:
+      "https://discord.com/events/1104831812720656540/1247922484230230138",
     desc: "A bi-weekly review club to get into the weeds of Bitcoin Core. Ideal for aspiring Bitcoin Core Devs.",
   },
   {
-    logo: "/readingClub/image.png",
+    logo: "/apprenticeship/reviewClub.png",
     name: "Bitcoin Core Review Club",
     leadBy: "Stratospher",
+    discord:
+      "https://discord.com/events/1104831812720656540/1244707908382363835",
     desc: "A bi-weekly review club to get into the weeds of Bitcoin Core. Ideal for aspiring Bitcoin Core Devs.",
   },
 ];
@@ -29,7 +37,7 @@ const list = [
 
 <div class="lg:p-8">
   <h1
-    class="md:text-6Name of the projectxl my-8 text-3xl font-bold lg:text-6xl"
+    class="my-8 font-header text-3xl md:text-6xl lg:text-6xl"
     id="about_us"
   >
     Explore Our Education Programs
@@ -45,11 +53,11 @@ const list = [
   <div class="grid grid-cols-1 lg:grid-cols-2 lg:gap-4">
     {
       list.map((item) => (
-        <div class="border-neutral-200 my-5 flex flex-col justify-center rounded-3xl bg-[#f0f0f0] p-5">
+        <div class="border-neutral-200 my-5 flex flex-col justify-center rounded-3xl bg-[#eaeaea] p-5">
           <img
             loading="lazy"
             srcset={item.logo}
-            class="rounded-lg"
+            class="rounded-2xl"
           />
           <div class=" flex w-full flex-col font-medium lg:p-5">
             <div class="font-header text-3xl font-bold">
@@ -64,7 +72,7 @@ const list = [
             <div class=" mt-4 text-lg ">{item.desc}</div>
           </div>
           <a
-            href={item.leadBy}
+            href={item.discord}
             target="_blank"
             class="text-m my-5 rounded-lg p-4 text-center outline-dashed hover:bg-orange hover:text-white lg:w-1/2"
           >

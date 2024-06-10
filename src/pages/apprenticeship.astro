@@ -4,7 +4,7 @@ import Layout from "../layouts/Layout.astro";
 import OurApprentices from "../components/apprenticeship/OurApprentices.astro";
 import DevProjects from "../components/apprenticeship/DevProjects.astro";
 import CatalystInitiative from "../components/apprenticeship/CatalystInitiative.astro";
-// import Apply from "../components/apprenticeship/Apply";
+import Apply from "../components/apprenticeship/Apply";
 ---
 
 <Layout
@@ -21,10 +21,10 @@ import CatalystInitiative from "../components/apprenticeship/CatalystInitiative.
     <h1
       class="text-center font-header text-4xl text-white lg:text-8xl xl:text-[12rem]"
     >
-      BITSHALA Fellowship
+      Bitshala Fellowship
     </h1>
     <h2
-      class="mx-20 text-center text-xl text-white lg:font-header lg:text-5xl"
+      class="mx-5 text-center text-xl text-white lg:mx-20 lg:font-header lg:text-5xl"
     >
       Contribute to Bitcoin FOSS or host technical study
       clubs with Bitshala's paid fellowship program. Your
@@ -35,18 +35,18 @@ import CatalystInitiative from "../components/apprenticeship/CatalystInitiative.
       class="mt-20 flex w-full flex-col justify-center gap-3 font-bold lg:flex-row"
     >
       <a
-        href="https://discord.com/invite/STeQFVEWf9"
-        target="_blank"
-        class="text-m mx-3 flex items-center justify-center rounded-lg bg-white p-4 text-center hover:bg-black hover:text-white hover:outline-dashed lg:w-1/3 lg:text-2xl"
-        >Apply for<span class="text-orange"
+        href="#apply"
+        class="text-m mx-3 flex items-center justify-center rounded-2xl bg-white p-4 text-center hover:bg-black hover:text-white hover:outline-dashed lg:w-1/3 lg:text-2xl"
+        >Apply for<span class="mt-1 font-header text-orange"
           >&nbsp;developer&nbsp;
         </span>position</a
       >
       <a
-        href="/cohorts"
-        class="text-m mx-3 flex items-center justify-center rounded-lg bg-white p-4 text-center text-black outline-white hover:bg-black hover:text-white hover:outline-dashed lg:w-1/3 lg:text-2xl"
-        >Apply for&nbsp;<span class="text-orange"
-          >community champ</span
+        href="#apply"
+        class="text-m mx-3 flex items-center justify-center rounded-2xl bg-white p-4 text-center text-black outline-white hover:bg-black hover:text-white hover:outline-dashed lg:w-1/3 lg:text-2xl"
+        >Apply for&nbsp;<span
+          class="mt-1 font-header text-orange"
+          >educator</span
         > &nbsp;position
       </a>
     </div>
@@ -56,5 +56,7 @@ import CatalystInitiative from "../components/apprenticeship/CatalystInitiative.
   <DevProjects />
   <CatalystInitiative />
   <OurApprentices />
-  <!-- <Apply client:only /> -->
+  <div id="apply">
+    <Apply />
+  </div>
 </Layout>
