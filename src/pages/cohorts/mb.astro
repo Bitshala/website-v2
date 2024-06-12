@@ -132,12 +132,14 @@ const isVisible = false;
       },
     ]}
   />
-  <CohortStructure />
-  <Application
-    client:only
-    cohortName={cohortName}
-    role={role}
-    regOpen={true}
-  />
+  <div id="applicationForm">
+    <CohortStructure />
+    <Application
+      client:only
+      cohortName={cohortName}
+      role={role}
+      regOpen={true}
+    />
+  </div>
   <Carousel client:visible />
 </Layout>
