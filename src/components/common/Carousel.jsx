@@ -1,7 +1,7 @@
 // import { useState } from "react";
 const slides = [
   {
-    url: "/activities/cohort.webp",
+    url: "/cohort/masteringBitcoin.webp",
     title: "Bitcoin Study Cohorts",
     content:
       "You, with fellow learners collectively explore selected texts over several weeks in a structured self-study format. You gain hands-on experience and in-depth insights into Bitcoin’s technical aspects. And also receive certificates to celebrate your wins!",
@@ -155,16 +155,21 @@ function Carousel() {
         </div>
       </div> */}
 
-      <div className="flex flex-col md:grid-cols-2 md:grid lg:grid lg:grid-cols-3 gap-3">
+      <div className="flex flex-col gap-3 md:grid md:grid-cols-2 lg:grid lg:grid-cols-3">
         {slides.map((slide, index) => (
-          <div key={index} className="rounded-2xl bg-orange p-5">
+          <div
+            key={index}
+            className="rounded-2xl bg-orange p-5"
+          >
             <h1 className="mb-5 font-header text-2xl lg:text-3xl">
               {slide.title}
             </h1>
             <img src={slide.url} alt="" />
-            <p className="text-xl p-3 md:h-56 lg:h-64 ">{slide.content}</p>
+            <p className="p-3 text-xl md:h-56 lg:h-64 ">
+              {slide.content}
+            </p>
             <a href={slide.targetLink}>
-              <button className="w-full mt-5 py-4 px-8 border-2 border-dotted rounded-lg text-lg hover:bg-white hover:text-black ">
+              <button className="mt-5 w-full rounded-lg border-2 border-dotted px-8 py-4 text-lg hover:bg-white hover:text-black ">
                 Tell Me More!
               </button>
             </a>
