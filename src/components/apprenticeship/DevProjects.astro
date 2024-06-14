@@ -1,0 +1,122 @@
+---
+const list = [
+  {
+    logo: "./apprenticeship/bitlogo.png",
+    github:
+      "https://github.com/Bitshala-Incubator/silent-pay",
+    twitter: "https://discord.gg/yHkd8bKRDU",
+    name: "Silent-Payment Library",
+    desc: "A Typescript wallet library implementing all the silent-payment primitives.",
+    skills: ["Typescript"],
+  },
+  {
+    logo: "./apprenticeship/bitlogo.png",
+    github:
+      "https://github.com/Bitshala-Incubator/silent-pay-indexer",
+    twitter: "https://discord.gg/yHkd8bKRDU",
+    name: "Silent Payment Indexer",
+    desc: "A Typescript project to build various mechanisms of fetching the SP indexes.",
+    skills: ["Typescript"],
+  },
+  {
+    logo: "./apprenticeship/bitlogo.png",
+    github:
+      "https://github.com/Bitshala-Incubator/rust-coinselect",
+    twitter: "https://discord.gg/6AMHcGdDga",
+    name: "Coinseletion",
+    desc: "A rust library bringing the Bitcoin Core’s coinselection algorithms to the wallet development world.A crucial missing piece of Bitcoin wallet infrastructure.",
+    skills: ["Rust"],
+  },
+  {
+    logo: "./apprenticeship/bitlogo.png",
+    github:
+      "https://github.com/Bitshala/BitcoinCore-PR-Review-Club",
+    twitter: "https://discord.gg/bDzA7Ae32m",
+    name: "Bitcoin Core Review",
+    desc: "An ongoing Review Club to get all the aspiring core devs get startedin the dense jungle of Bitcoin Core.",
+    skills: ["C++", "Python"],
+  },
+  {
+    logo: "./apprenticeship/yinyang.png",
+    github:
+      "https://github.com/utxo-teleport/teleport-transactions",
+    twitter: "https://discord.gg/ZfVxdYRPkt",
+    name: "Coinswap",
+    desc: "Functioning, minimal-viable binaries and libraries to perform a trustless, p2p Maxwell-Belcher Coinswap Protocol",
+    skills: ["Rust"],
+  },
+];
+---
+
+<div class="lg:p-8">
+  <h1
+    class="my-8 font-header text-3xl md:text-6xl lg:text-6xl"
+    id="about_us"
+  >
+    Explore Dev Projects
+  </h1>
+  <p class="text-base md:text-lg lg:text-2xl">
+    Here are open-source projects ready for your innovation
+    and expertise. Each project offers a unique opportunity
+    to contribute to the Bitcoin community's growth and
+    development.
+  </p>
+
+  <div class="my-10 grid grid-cols-1 gap-3">
+    {
+      list.map((item) => (
+        <div class="border-neutral-200 flex flex-col justify-center rounded-3xl bg-[#f0f0f0]">
+          <div class="flex w-full flex-col">
+            <div class=" flex w-full items-center justify-between self-center">
+              <div class="flex items-center self-center">
+                <img
+                  loading="lazy"
+                  srcset={item.logo}
+                  class="m-8 h-16  rounded-full  "
+                />
+                <div class="font-header text-xl font-bold lg:text-3xl">
+                  {item.name}
+                </div>
+              </div>
+              <div class="m-3 flex ">
+                <a
+                  href={item.github}
+                  target="_blank"
+                  class="group"
+                >
+                  <img
+                    src="/apprenticeship/github.png"
+                    class="m-1 h-6 rounded bg-peach group-hover:bg-white lg:h-10"
+                  />
+                </a>
+                <a
+                  href={item.twitter}
+                  target="_blank"
+                  class="group"
+                >
+                  <img
+                    src="/apprenticeship/discord.png"
+                    class="m-1 h-6 rounded bg-peach group-hover:bg-white lg:h-10"
+                  />
+                </a>
+              </div>
+            </div>
+            <div class="mx-5 -mt-12 flex w-full flex-col p-5 font-medium">
+              <div class=" mt-4 text-sm font-thin lg:text-xl ">
+                {item.desc}
+              </div>
+              <div class="lg:text-md mt-3 flex flex-wrap gap-1 text-sm lg:gap-3">
+                <p class=" mt-1 font-semibold">Language:</p>
+                {item.skills.map((skill) => (
+                  <p class="lg:text-md rounded-lg bg-[#ffdec7] px-2 py-1 font-semibold">
+                    {skill}
+                  </p>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</div>

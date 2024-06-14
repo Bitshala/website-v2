@@ -72,6 +72,11 @@ const SideMenu = () => {
       desc: "Enjoy the Bitcoin PR Review Club",
     },
     {
+      name: "Apprenticeship",
+      url: "/apprenticeship",
+      desc: "Enjoy the Bitcoin PR Review Club",
+    },
+    {
       name: "Talks",
       url: "/talks",
       desc: "Learn about Bitcoin through insightful conversations",
