@@ -64,22 +64,12 @@ const SideMenu = () => {
     {
       name: "Cohorts",
       url: "/cohorts",
-      desc: "Learn About our Study Cohorts",
+      desc: "Learn Bitcoin Technicals via Self-Study Cohort Programs.",
     },
     {
-      name: "Review Club",
-      url: "/review",
-      desc: "Enjoy the Bitcoin PR Review Club",
-    },
-    {
-      name: "Apprenticeship",
-      url: "/apprenticeship",
-      desc: "Contribute to Bitcoin FOSS or host technical study clubs with Bitshala's paid fellowship program.",
-    },
-    {
-      name: "Talks",
-      url: "/talks",
-      desc: "Learn about Bitcoin through insightful conversations",
+      name: "Fellowship",
+      url: "/fellowship",
+      desc: "Bitshala's paid fellowship program.",
     },
     {
       name: "Meetups",
@@ -92,9 +82,19 @@ const SideMenu = () => {
       desc: "Weekly reading club for Bitcoin learners",
     },
     {
+      name: "Review Club",
+      url: "/review",
+      desc: "Deep-dive into Bitcoin Core via bi-weekly Review Clubs.",
+    },
+    {
       name: "Optech",
       url: "/optech",
       desc: "Bitcoin Optech Weekly Deep Dive Series",
+    },
+    {
+      name: "Talks",
+      url: "/talks",
+      desc: "Learn about Bitcoin through insightful conversations",
     },
     {
       name: "Join our Discord!",
