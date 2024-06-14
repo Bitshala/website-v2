@@ -74,7 +74,7 @@ const SideMenu = () => {
     {
       name: "Apprenticeship",
       url: "/apprenticeship",
-      desc: "Enjoy the Bitcoin PR Review Club",
+      desc: "Contribute to Bitcoin FOSS or host technical study clubs with Bitshala's paid fellowship program.",
     },
     {
       name: "Talks",
