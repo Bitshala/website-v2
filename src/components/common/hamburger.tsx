@@ -84,7 +84,7 @@ const SideMenu = () => {
     {
       name: "Review Club",
       url: "/review",
-      desc: "Deep-dive into Bitcoin Core via bi-weekly Review Clubs.",
+      desc: "Deep-dive into Bitcoin Core via bi-weekly PR Review Clubs.",
     },
     {
       name: "Optech",
