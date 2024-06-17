@@ -1,35 +1,35 @@
 ---
 const list = [
   {
-    logo: "/apprenticeship/optech.png",
-    name: "Latest in Bitcoin Tech",
-    leadBy: "Faisal",
+    logo: "/bitspace/bengaluruBitdev.webp",
+    name: "BITDEVS June - Seed Signer Workshop Special",
+    date: "22 June 2024",
     discord:
-      "https://discord.com/events/1104831812720656540/1242345418353016843",
-    desc: "A weekly Optech deep-dive session. Where we explore all the cutting edges of Bitcoin technology with fellow learners.",
+      "https://discord.com/events/1104831812720656540/1247922484230230138",
+    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non tortor vitae enim pharetra venenatis a eget eros. Sed fringilla arcu elementum lacus auctor, nec.",
   },
   {
     logo: "/apprenticeship/lightning.png",
-    name: "Hands-On Lightning",
-    leadBy: "Aditya",
-    discord:
-      "https://discord.com/events/1104831812720656540/1242484649972732024",
-    desc: "A weekly tutorial-based Lightning dev training program. Ideal to kick start your lightning dev journey.",
-  },
-  {
-    logo: "/apprenticeship/readingClub.webp",
-    name: "Bitcoin Reading Club",
-    leadBy: "Shreyan",
+    name: "Hands-On Lightning Workshop",
+    date: "27 June 2024",
     discord:
       "https://discord.com/events/1104831812720656540/1247922484230230138",
-    desc: "A general-purpose weekly Reading club to learn and build your non-technical Bitcoin knowledge.",
+    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non tortor vitae enim pharetra venenatis a eget eros. Sed fringilla arcu elementum lacus auctor, nec.",
+  },
+  {
+    logo: "/bitspace/bitdev.webp",
+    name: "Understanding Privacy Tech and Silent Payments",
+    date: "27 June 2024",
+    discord:
+      "https://discord.com/events/1104831812720656540/1247922484230230138",
+    desc: "A bi-weekly review club to get into the weeds of Bitcoin Core. Ideal for aspiring Bitcoin Core Devs.",
   },
   {
     logo: "/apprenticeship/reviewClub.webp",
-    name: "Bitcoin Core Review Club",
-    leadBy: "Stratospher",
+    name: "Bitcoin Core Review Club: Session XX",
+    date: "27 June 2024",
     discord:
-      "https://discord.com/events/1104831812720656540/1244707908382363835",
+      "https://discord.com/events/1104831812720656540/1247922484230230138",
     desc: "A bi-weekly review club to get into the weeds of Bitcoin Core. Ideal for aspiring Bitcoin Core Devs.",
   },
 ];
@@ -40,14 +40,12 @@ const list = [
     class="my-8 font-header text-3xl md:text-6xl lg:text-6xl"
     id="about_us"
   >
-    Explore Our Education Programs
+    Upcoming Events at Bitspace
   </h1>
   <p class="text-base md:text-lg lg:text-2xl">
-    Got a fresh idea for a technical educational project?
-    We’d love to hear it! Below, we showcase initiatives our
-    Catalysts are already pursuing—use these as inspiration
-    to forge your own path. Share your vision, and let’s
-    collaborate to make a real impact.
+    Stay updated with our latest events, workshops, and
+    meetups designed to enhance your Bitcoin knowledge and
+    network with fellow enthusiasts.
   </p>
 
   <div class="grid grid-cols-1 lg:grid-cols-2 lg:gap-4">
@@ -66,8 +64,8 @@ const list = [
 
             <div class="mt-3 text-xl">
               {" "}
-              Hosted By :{" "}
-              <span class="font-header">{item.leadBy}</span>
+              Date :{" "}
+              <span class="font-header">{item.date}</span>
             </div>
             <div class=" mt-4 text-lg ">{item.desc}</div>
           </div>
@@ -86,13 +84,14 @@ const list = [
     class="flex w-full justify-between gap-5 rounded-xl bg-[#f0f0f0] py-4 pl-5 pr-4"
   >
     <div class="my-auto text-xl lg:text-3xl">
-      Got a new idea for an initiative?
+      Want to receive calendar invites for events
+      automatically?
     </div>
     <a href="#apply">
       <div
         class="rounded-xl bg-peach p-2 text-center lg:p-5 lg:text-xl"
       >
-        Apply Now
+        Yes, that’ll be great!
       </div>
     </a>
   </div>
