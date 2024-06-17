@@ -309,7 +309,7 @@ const Application = (
           </section>
         </>
       ) : (
-        <div className="text-center my-10">
+        <div className="text-center justify-center items-center my-10">
           <h1 className="lg:text-5xl text-3xl font-bold font-header text-orange">Registration is not open right now</h1>
           <p className="lg:text-xl my-2">Please keep an eye on the website for more updates</p>
         </div>
