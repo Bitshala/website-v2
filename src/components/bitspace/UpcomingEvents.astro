@@ -2,35 +2,10 @@
 const list = [
   {
     logo: "/bitspace/bengaluruBitdev.webp",
-    name: "BITDEVS June - Seed Signer Workshop Special",
-    date: "22 June 2024",
-    discord:
-      "https://discord.com/events/1104831812720656540/1247922484230230138",
-    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non tortor vitae enim pharetra venenatis a eget eros. Sed fringilla arcu elementum lacus auctor, nec.",
-  },
-  {
-    logo: "/apprenticeship/lightning.png",
-    name: "Hands-On Lightning Workshop",
-    date: "27 June 2024",
-    discord:
-      "https://discord.com/events/1104831812720656540/1247922484230230138",
-    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non tortor vitae enim pharetra venenatis a eget eros. Sed fringilla arcu elementum lacus auctor, nec.",
-  },
-  {
-    logo: "/bitspace/bitdev.webp",
-    name: "Understanding Privacy Tech and Silent Payments",
-    date: "27 June 2024",
-    discord:
-      "https://discord.com/events/1104831812720656540/1247922484230230138",
-    desc: "A bi-weekly review club to get into the weeds of Bitcoin Core. Ideal for aspiring Bitcoin Core Devs.",
-  },
-  {
-    logo: "/apprenticeship/reviewClub.webp",
-    name: "Bitcoin Core Review Club: Session XX",
-    date: "27 June 2024",
-    discord:
-      "https://discord.com/events/1104831812720656540/1247922484230230138",
-    desc: "A bi-weekly review club to get into the weeds of Bitcoin Core. Ideal for aspiring Bitcoin Core Devs.",
+    name: "BITDEVS: Seed Signer Workshop",
+    date: "Saturday, 22 June",
+    link: "https://lu.ma/sykygg03",
+    desc: "Join us for an evening dedicated to Bitcoin self-custody with a special focus on the Seed Signer. Plus, we have an exciting announcement about Bitshala's journey and future!",
   },
 ];
 ---
@@ -48,51 +23,59 @@ const list = [
     network with fellow enthusiasts.
   </p>
 
-  <div class="grid grid-cols-1 lg:grid-cols-2 lg:gap-4">
+  <div class="grid grid-cols-1">
     {
       list.map((item) => (
-        <div class="border-neutral-200 my-5 flex flex-col justify-center rounded-3xl bg-[#eaeaea] p-5">
+        <div class=" my-5 flex flex-col gap-3 rounded-xl bg-[#f0f0f0] p-2 lg:flex-row">
           <img
-            loading="lazy"
-            srcset={item.logo}
-            class="rounded-2xl"
+            src={item.logo}
+            class="w-96 items-center rounded-3xl border-8 border-orange lg:max-h-64  "
           />
-          <div class=" flex w-full flex-col font-medium lg:p-5">
-            <div class="font-header text-3xl font-bold">
-              {item.name}
-            </div>
+          <div class=" lg:mx-5 lg:mt-2">
+            <div class="flex justify-between">
+              <p class="font-header text-xl font-bold lg:text-4xl">
+                {item.name}
+              </p>
 
-            <div class="mt-3 text-xl">
-              {" "}
-              Date :{" "}
-              <span class="font-header">{item.date}</span>
+              <div class="flex">
+                <a
+                  href={item.link}
+                  target="_blank"
+                  class="   rounded-lg bg-white p-2 text-center hover:bg-orange hover:text-white "
+                  style="display: flex; align-items: center;"
+                >
+                  Tell me more!
+                </a>
+              </div>
             </div>
-            <div class=" mt-4 text-lg ">{item.desc}</div>
+            <p class="mx-1 text-sm font-thin lg:text-xl">
+              {" "}
+              {item.date}
+            </p>
+
+            <p class="text-sm lg:my-8 lg:text-xl">
+              {item.desc}
+            </p>
           </div>
-          <a
-            href={item.discord}
-            target="_blank"
-            class="text-m my-5 rounded-lg p-4 text-center outline-dashed hover:bg-orange hover:text-white lg:w-1/2"
-          >
-            Tell me more
-          </a>
         </div>
       ))
     }
   </div>
   <div
-    class="flex w-full justify-between gap-5 rounded-xl bg-[#f0f0f0] py-4 pl-5 pr-4"
+    class="mt-6 flex w-full justify-between gap-5 rounded-xl bg-[#f0f0f0] py-4 pl-5 pr-4"
   >
-    <div class="my-auto text-xl lg:text-3xl">
+    <div class="my-auto text-lg lg:text-3xl">
       Want to receive calendar invites for events
       automatically?
     </div>
-    <a href="#apply">
-      <div
-        class="rounded-xl bg-peach p-2 text-center lg:p-5 lg:text-xl"
+    <div class="flex">
+      <a
+        href="https://calendar.google.com/calendar/u/0?cid=Y182ZGU0MmJjMzI2MzE2ZDczMGQ5ODYzMzVjNmExYjFjYzBiNWM4NWYzNWNlMjEyMWVmZmVhN2Y0ZDNkMDU5ZjAwQGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20"
+        target="_blank"
+        class="cursor-pointer rounded-lg bg-peach p-2 text-center text-sm hover:bg-orange hover:text-white lg:text-lg"
       >
         Yes, that’ll be great!
-      </div>
-    </a>
+      </a>
+    </div>
   </div>
 </div>

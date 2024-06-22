@@ -2,6 +2,9 @@
 import About from "../components/bitspace/About.astro";
 import Layout from "../layouts/Layout.astro";
 import UpcomingEvents from "../components/bitspace/UpcomingEvents.astro";
+import JoinTheSpace from "../components/bitspace/JoinTheSpace.astro";
+import Gallery from "../components/meetup/gallery";
+import CollabWithUs from "../components/bitspace/CollabWithUs.astro";
 ---
 
 <Layout
@@ -30,14 +33,17 @@ import UpcomingEvents from "../components/bitspace/UpcomingEvents.astro";
       class="mt-20 flex w-full flex-col justify-center gap-3 font-bold lg:flex-row"
     >
       <a
-        href="#apply"
+        href="#events"
         class="text-m mx-3 flex items-center justify-center rounded-2xl bg-white p-4 text-center text-black outline-white hover:bg-black hover:text-white hover:outline-dashed lg:w-1/3 lg:text-2xl"
-        >C&nbsp;<span class="mt-1 font-header text-orange"
-          >T</span
-        > &nbsp;A
+        >Check out upcoming events at Bitspace
       </a>
     </div>
   </div>
   <About />
-  <UpcomingEvents />
+  <JoinTheSpace />
+  <div id="events">
+    <UpcomingEvents />
+  </div>
+  <!-- <Gallery client:load /> -->
+  <CollabWithUs />
 </Layout>
