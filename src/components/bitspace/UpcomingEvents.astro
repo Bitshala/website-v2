@@ -1,0 +1,81 @@
+---
+const list = [
+  {
+    logo: "/bitspace/bengaluruBitdev.webp",
+    name: "BITDEVS: Seed Signer Workshop",
+    date: "Saturday, 22 June",
+    link: "https://lu.ma/sykygg03",
+    desc: "Join us for an evening dedicated to Bitcoin self-custody with a special focus on the Seed Signer. Plus, we have an exciting announcement about Bitshala's journey and future!",
+  },
+];
+---
+
+<div class="lg:p-8">
+  <h1
+    class="my-8 font-header text-3xl md:text-6xl lg:text-6xl"
+    id="about_us"
+  >
+    Upcoming Events at Bitspace
+  </h1>
+  <p class="text-base md:text-lg lg:text-2xl">
+    Stay updated with our latest events, workshops, and
+    meetups designed to enhance your Bitcoin knowledge and
+    network with fellow enthusiasts.
+  </p>
+
+  <div class="grid grid-cols-1">
+    {
+      list.map((item) => (
+        <div class=" my-5 flex flex-col gap-3 rounded-xl bg-[#f0f0f0] p-2 lg:flex-row">
+          <img
+            src={item.logo}
+            class="w-96 items-center rounded-3xl border-8 border-orange lg:max-h-64  "
+          />
+          <div class=" lg:mx-5 lg:mt-2">
+            <div class="flex justify-between">
+              <p class="font-header text-xl font-bold lg:text-4xl">
+                {item.name}
+              </p>
+
+              <div class="flex">
+                <a
+                  href={item.link}
+                  target="_blank"
+                  class="   rounded-lg bg-white p-2 text-center hover:bg-orange hover:text-white "
+                  style="display: flex; align-items: center;"
+                >
+                  Tell me more!
+                </a>
+              </div>
+            </div>
+            <p class="mx-1 text-sm font-thin lg:text-xl">
+              {" "}
+              {item.date}
+            </p>
+
+            <p class="text-sm lg:my-8 lg:text-xl">
+              {item.desc}
+            </p>
+          </div>
+        </div>
+      ))
+    }
+  </div>
+  <div
+    class="mt-6 flex w-full justify-between gap-5 rounded-xl bg-[#f0f0f0] py-4 pl-5 pr-4"
+  >
+    <div class="my-auto text-lg lg:text-3xl">
+      Want to receive calendar invites for events
+      automatically?
+    </div>
+    <div class="flex">
+      <a
+        href="https://calendar.google.com/calendar/u/0?cid=Y182ZGU0MmJjMzI2MzE2ZDczMGQ5ODYzMzVjNmExYjFjYzBiNWM4NWYzNWNlMjEyMWVmZmVhN2Y0ZDNkMDU5ZjAwQGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20"
+        target="_blank"
+        class="cursor-pointer rounded-lg bg-peach p-2 text-center text-sm hover:bg-orange hover:text-white lg:text-lg"
+      >
+        Yes, that’ll be great!
+      </a>
+    </div>
+  </div>
+</div>
