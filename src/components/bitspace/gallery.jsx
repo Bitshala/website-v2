@@ -6,7 +6,6 @@ const images = [
   '/bitspace/Gallery/4.webp',
   '/bitspace/Gallery/5.webp',
   '/bitspace/Gallery/6.webp',
-  '/bitspace/Gallery/7.webp',
 ];
 
 const Gallery = () => {
