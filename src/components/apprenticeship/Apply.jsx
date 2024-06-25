@@ -6,6 +6,7 @@ import {
   TextField,
 } from "@mui/material";
 import React, { useState } from "react";
+import axios from "axios";
 
 const employmentStatusOptions = [
   "Student",
@@ -43,9 +44,9 @@ const Apply = () => {
     contributions: [],
     project: "",
     whyPassionate: "",
-    emplymentStatus: "",
-    education: "",
-    lookingForFullTime: "",
+    emplymentStatus: [],
+    education: [],
+    lookingForFullTime: [],
     interest: [],
     technical: "",
     hours: "",
@@ -59,8 +60,9 @@ const Apply = () => {
     impact: "",
     operationalSupport: "",
     status: "",
-    education: "",
-    lookingForFullTime: "",
+    emplymentStatus: [],
+    education: [],
+    lookingForFullTime: [],
     interest: [],
     teachingExperience: "",
     communityEngagement: "",
@@ -315,20 +317,12 @@ const Apply = () => {
   const handleDevSubmit = async (e) => {
     e.preventDefault();
     try {
-      await fetch(
-        "https://sheet.best/api/sheets/689179b9-ecd8-43ff-bb0d-0450a951a8d3",
-        {
-          method: "POST",
-          mode: "cors",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(devFormData),
-        },
-      );
+      await axios.post("https://bot.bitshala.org/devform", devFormData).then(
+        (res) => {
+          console.log(res);
+        }
+      )
       setSubmitted(true);
-      console.log(body);
-      console.log(devFormData);
       const focusElement = document.getElementById("focus");
       focusElement.focus();
     } catch (error) {
@@ -339,20 +333,12 @@ const Apply = () => {
   const handleEduSubmit = async (e) => {
     e.preventDefault();
     try {
-      await fetch(
-        "https://sheet.best/api/sheets/689179b9-ecd8-43ff-bb0d-0450a951a8d3",
-        {
-          method: "POST",
-          mode: "cors",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(eduFormData),
-        },
-      );
+      await axios.post("https://bot.bitshala.org/eduform", eduFormData).then(
+        (res) => {
+          console.log(res);
+        }
+      )
       setSubmitted(true);
-      console.log(body);
-      console.log(eduFormData);
       const focusElement = document.getElementById("focus");
       focusElement.focus();
     } catch (error) {
