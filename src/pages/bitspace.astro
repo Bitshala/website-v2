@@ -3,12 +3,13 @@ import About from "../components/bitspace/About.astro";
 import Layout from "../layouts/Layout.astro";
 import UpcomingEvents from "../components/bitspace/UpcomingEvents.astro";
 import JoinTheSpace from "../components/bitspace/JoinTheSpace.astro";
-import Gallery from "../components/meetup/gallery";
+import Gallery from "../components/bitspace/gallery";
 import CollabWithUs from "../components/bitspace/CollabWithUs.astro";
+import PreviousEvents from "../components/bitspace/PreviousEvents.astro";
 ---
 
 <Layout
-  title="Bitshala Apprenticeship"
+  title="Bitspace"
   headerProps={{
     image: "/header/Apprenticeship_Hero.webp",
   }}
@@ -44,6 +45,7 @@ import CollabWithUs from "../components/bitspace/CollabWithUs.astro";
   <div id="events">
     <UpcomingEvents />
   </div>
-  <!-- <Gallery client:load /> -->
+  <PreviousEvents />
+  <Gallery client:load />
   <CollabWithUs />
 </Layout>

@@ -5,6 +5,7 @@ const list = [
     name: "BITDEVS: Seed Signer Workshop",
     date: "Saturday, 22 June",
     link: "https://lu.ma/sykygg03",
+    isHappening: false,
     desc: "Join us for an evening dedicated to Bitcoin self-custody with a special focus on the Seed Signer. Plus, we have an exciting announcement about Bitshala's journey and future!",
   },
 ];
@@ -26,37 +27,52 @@ const list = [
   <div class="grid grid-cols-1">
     {
       list.map((item) => (
-        <div class=" my-5 flex flex-col gap-3 rounded-xl bg-[#f0f0f0] p-2 lg:flex-row">
-          <img
-            src={item.logo}
-            class="w-96 items-center rounded-3xl border-8 border-orange lg:max-h-64  "
-          />
-          <div class=" lg:mx-5 lg:mt-2">
-            <div class="flex justify-between">
-              <p class="font-header text-xl font-bold lg:text-4xl">
-                {item.name}
-              </p>
+        <div>
+          {item.isHappening ? (
+            <div class=" my-5 flex flex-col gap-3 rounded-xl bg-[#f0f0f0] p-2 lg:flex-row">
+              <img
+                src={item.logo}
+                class="w-96 items-center rounded-3xl border-8 border-orange lg:max-h-64  "
+              />
+              <div class=" lg:mx-5 lg:mt-2">
+                <div class="flex justify-between">
+                  <p class="font-header text-xl font-bold lg:text-4xl">
+                    {item.name}
+                  </p>
 
-              <div class="flex">
-                <a
-                  href={item.link}
-                  target="_blank"
-                  class="   rounded-lg bg-white p-2 text-center hover:bg-orange hover:text-white "
-                  style="display: flex; align-items: center;"
-                >
-                  Tell me more!
-                </a>
+                  <div class="flex">
+                    <a
+                      href={item.link}
+                      target="_blank"
+                      class="   rounded-lg bg-white p-2 text-center hover:bg-orange hover:text-white "
+                      style="display: flex; align-items: center;"
+                    >
+                      Tell me more!
+                    </a>
+                  </div>
+                </div>
+                <p class="mx-1 text-sm font-thin lg:text-xl">
+                  {" "}
+                  {item.date}
+                </p>
+
+                <p class="text-sm lg:my-8 lg:text-xl">
+                  {item.desc}
+                </p>
               </div>
             </div>
-            <p class="mx-1 text-sm font-thin lg:text-xl">
-              {" "}
-              {item.date}
-            </p>
-
-            <p class="text-sm lg:my-8 lg:text-xl">
-              {item.desc}
-            </p>
-          </div>
+          ) : (
+            <div class="my-3 items-center text-center">
+              <h1 class="mb-5 font-header text-3xl text-orange lg:text-5xl">
+                Oops! Bitcoiners not found this month :(
+              </h1>
+              <p class="text-md lg:text-xl">
+                This month, we're not doing an event in
+                Bitspace. Come back soon to check details
+                for any updates.
+              </p>
+            </div>
+          )}
         </div>
       ))
     }
