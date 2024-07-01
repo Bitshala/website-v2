@@ -51,7 +51,7 @@ const list = [
                     </a>
                   </div>
                 </div>
-                <p class="mx-1 text-sm font-thin lg:text-xl">
+                <p class="mx-1 font-header text-sm font-thin lg:text-xl">
                   {" "}
                   {item.date}
                 </p>
@@ -64,12 +64,20 @@ const list = [
           ) : (
             <div class="my-8 items-center rounded-xl border-2 border-[#f0f0f0] p-5 text-center lg:py-12">
               <h1 class="mb-5 font-header text-3xl text-orange lg:text-5xl">
-                Oops! We're still planning next ones out :(
+                Currently, we’re finalizing the details for
+                the next events
               </h1>
-              <p class="text-md lg:text-xl">
-                Curretly, we're finalizing the details for
-                the next events so come check this page
-                again later.
+              <p class="text-md lg:text-2xl">
+                So come check this page again later or
+                follow us on{" "}
+                <a
+                  class="text-orange underline"
+                  href="https://x.com/bitshala"
+                  target="_blank"
+                >
+                  twitter
+                </a>
+                &nbsp; to get updates.
               </p>
             </div>
           )}
