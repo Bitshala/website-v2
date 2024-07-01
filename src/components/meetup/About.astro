@@ -1,11 +1,13 @@
 ---
+import { fade } from "astro:transitions";
+
 let details = {
   name: "Silent Payments Deep Dive",
   desc: " Get ready for another exciting Bitcoin Tech Meetup in Bangalore, this time diving deep into the world of Silent Payments! We'll explore how this innovative tech enhances privacy and efficiency within the Bitcoin",
   month: "March",
   img: "/meetup/bitdevs_3.webp",
   link: "https://discord.com/invite/STeQFVEWf9",
-  isHappening: true,
+  isHappening: false,
 };
 ---
 
@@ -63,9 +65,9 @@ let details = {
               Oops! Bitcoiners not found this month :(
             </h1>
             <p class="text-md lg:text-xl">
-              This {details.month}, we're not doing a
-              BITDEVS session. Come back soon to check
-              details for any updates.
+              This month, we're not doing a BITDEVS session.
+              Come back soon to check details for any
+              updates.
             </p>
           </div>
         )

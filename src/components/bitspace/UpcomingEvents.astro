@@ -5,6 +5,7 @@ const list = [
     name: "BITDEVS: Seed Signer Workshop",
     date: "Saturday, 22 June",
     link: "https://lu.ma/sykygg03",
+    isHappening: false,
     desc: "Join us for an evening dedicated to Bitcoin self-custody with a special focus on the Seed Signer. Plus, we have an exciting announcement about Bitshala's journey and future!",
   },
 ];
@@ -26,37 +27,60 @@ const list = [
   <div class="grid grid-cols-1">
     {
       list.map((item) => (
-        <div class=" my-5 flex flex-col gap-3 rounded-xl bg-[#f0f0f0] p-2 lg:flex-row">
-          <img
-            src={item.logo}
-            class="w-96 items-center rounded-3xl border-8 border-orange lg:max-h-64  "
-          />
-          <div class=" lg:mx-5 lg:mt-2">
-            <div class="flex justify-between">
-              <p class="font-header text-xl font-bold lg:text-4xl">
-                {item.name}
-              </p>
+        <div>
+          {item.isHappening ? (
+            <div class=" my-5 flex flex-col gap-3 rounded-xl bg-[#f0f0f0] p-2 lg:flex-row">
+              <img
+                src={item.logo}
+                class="w-96 items-center rounded-3xl border-8 border-orange lg:max-h-64  "
+              />
+              <div class=" lg:mx-5 lg:mt-2">
+                <div class="flex justify-between">
+                  <p class="font-header text-xl font-bold lg:text-4xl">
+                    {item.name}
+                  </p>
 
-              <div class="flex">
-                <a
-                  href={item.link}
-                  target="_blank"
-                  class="   rounded-lg bg-white p-2 text-center hover:bg-orange hover:text-white "
-                  style="display: flex; align-items: center;"
-                >
-                  Tell me more!
-                </a>
+                  <div class="flex">
+                    <a
+                      href={item.link}
+                      target="_blank"
+                      class="   rounded-lg bg-white p-2 text-center hover:bg-orange hover:text-white "
+                      style="display: flex; align-items: center;"
+                    >
+                      Tell me more!
+                    </a>
+                  </div>
+                </div>
+                <p class="mx-1 font-header text-sm font-thin lg:text-xl">
+                  {" "}
+                  {item.date}
+                </p>
+
+                <p class="text-sm lg:my-8 lg:text-xl">
+                  {item.desc}
+                </p>
               </div>
             </div>
-            <p class="mx-1 text-sm font-thin lg:text-xl">
-              {" "}
-              {item.date}
-            </p>
-
-            <p class="text-sm lg:my-8 lg:text-xl">
-              {item.desc}
-            </p>
-          </div>
+          ) : (
+            <div class="my-8 items-center rounded-xl border-2 border-[#f0f0f0] p-5 text-center lg:py-12">
+              <h1 class="mb-5 font-header text-3xl text-orange lg:text-5xl">
+                Currently, we’re finalizing the details for
+                the next events
+              </h1>
+              <p class="text-md lg:text-2xl">
+                So come check this page again later or
+                follow us on{" "}
+                <a
+                  class="text-orange underline"
+                  href="https://x.com/bitshala"
+                  target="_blank"
+                >
+                  twitter
+                </a>
+                &nbsp; to get updates.
+              </p>
+            </div>
+          )}
         </div>
       ))
     }

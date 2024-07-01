@@ -1,17 +1,5 @@
 import { useState } from "react";
 const images = [
-  "/meetup/Gallery/1.webp",
-  "/meetup/Gallery/2.webp",
-  "/meetup/Gallery/3.webp",
-  "/meetup/Gallery/4.webp",
-  "/meetup/Gallery/5.webp",
-  "/meetup/Gallery/6.webp",
-  "/meetup/Gallery/7.webp",
-  "/meetup/Gallery/8.webp",
-  "/meetup/Gallery/9.webp",
-  "/meetup/Gallery/10.webp",
-  "/meetup/Gallery/11.webp",
-  "/meetup/Gallery/12.webp",
   '/bitspace/Gallery/1.webp',
   '/bitspace/Gallery/2.webp',
   '/bitspace/Gallery/3.webp',
@@ -19,6 +7,9 @@ const images = [
   '/bitspace/Gallery/5.webp',
   '/bitspace/Gallery/6.webp',
   '/bitspace/Gallery/7.webp',
+  '/bitspace/Gallery/8.webp',
+  '/bitspace/Gallery/9.webp',
+  
 ];
 
 const Gallery = () => {
