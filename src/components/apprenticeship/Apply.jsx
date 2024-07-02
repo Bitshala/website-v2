@@ -44,7 +44,7 @@ const Apply = () => {
     contributions: [],
     project: "",
     whyPassionate: "",
-    emplymentStatus: [],
+    employmentStatus: [],
     education: [],
     lookingForFullTime: [],
     interest: [],
@@ -60,7 +60,7 @@ const Apply = () => {
     impact: "",
     operationalSupport: "",
     status: "",
-    emplymentStatus: [],
+    employmentStatus: [],
     education: [],
     lookingForFullTime: [],
     interest: [],
@@ -119,7 +119,7 @@ const Apply = () => {
       heading: "What is your employment status?*",
       inputType: "text",
       name: "employmentStatus",
-      value: devFormData.emplymentStatus,
+      value: devFormData.employmentStatus,
       isRequired: true,
     },
     {
@@ -215,7 +215,7 @@ const Apply = () => {
       heading: "What is your employment status?*",
       inputType: "text",
       name: "employmentStatus",
-      value: devFormData.emplymentStatus,
+      value: devFormData.employmentStatus,
       isRequired: true,
     },
     {
@@ -316,8 +316,14 @@ const Apply = () => {
 
   const handleDevSubmit = async (e) => {
     e.preventDefault();
+    let data = devFormData;
+    data.employmentStatus = devFormData.employmentStatus.toString();
+    data.interest = devFormData.interest.toString();
+    data.lookingForFullTime = devFormData.lookingForFullTime.toString();
+    data.education = devFormData.education.toString();
+    data.contributions = devFormData.contributions.toString();
     try {
-      await axios.post("https://bot.bitshala.org/devform", devFormData).then(
+      await axios.post("https://bot.bitshala.org/devform", data).then(
         (res) => {
           console.log(res);
         }
@@ -332,6 +338,10 @@ const Apply = () => {
 
   const handleEduSubmit = async (e) => {
     e.preventDefault();
+    let eduData = eduFormData;
+    eduData.lookingForFullTime = eduFormData.lookingForFullTime.toString();
+    eduData.employmentStatus = eduFormData.employmentStatus.toString();
+    eduData.education = eduFormData.education.toString();
     try {
       await axios.post("https://bot.bitshala.org/eduform", eduFormData).then(
         (res) => {
@@ -415,15 +425,15 @@ const Apply = () => {
                             required
                             className="mb-3 block w-full rounded-lg border font-base  text-sm"
                             value={
-                              devFormData.emplymentStatus
+                              devFormData.employmentStatus
                                 ? devFormData
-                                    .emplymentStatus[0]
+                                    .employmentStatus[0]
                                 : ""
                             }
                             onChange={(event) => {
                               setDevFormData({
                                 ...devFormData,
-                                emplymentStatus: [
+                                employmentStatus: [
                                   event.target.value,
                                 ],
                               });
@@ -765,15 +775,15 @@ const Apply = () => {
                               required
                               className="mb-3 block w-full rounded-lg border font-base  text-sm"
                               value={
-                                eduFormData.emplymentStatus
+                                eduFormData.employmentStatus
                                   ? eduFormData
-                                      .emplymentStatus[0]
+                                      .employmentStatus[0]
                                   : ""
                               }
                               onChange={(event) => {
                                 setEduFormData({
                                   ...eduFormData,
-                                  emplymentStatus: [
+                                  employmentStatus: [
                                     event.target.value,
                                   ],
                                 });
