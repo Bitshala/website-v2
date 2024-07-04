@@ -1,7 +1,7 @@
 ---
 import About from "../components/bitspace/About.astro";
 import Layout from "../layouts/Layout.astro";
-import UpcomingEvents from "../components/bitspace/UpcomingEvents.astro";
+import UpcomingEvents from "../components/bitspace/UpcomingEvents.jsx";
 import JoinTheSpace from "../components/bitspace/JoinTheSpace.astro";
 import Gallery from "../components/bitspace/gallery";
 import CollabWithUs from "../components/bitspace/CollabWithUs.astro";
@@ -43,7 +43,7 @@ import PreviousEvents from "../components/bitspace/PreviousEvents.astro";
   <About />
   <JoinTheSpace />
   <div id="events">
-    <UpcomingEvents />
+    <UpcomingEvents client:load />
   </div>
   <PreviousEvents />
   <Gallery client:load />
