@@ -1,16 +1,17 @@
 ---
 import About from "../components/bitspace/About.astro";
 import Layout from "../layouts/Layout.astro";
-import UpcomingEvents from "../components/bitspace/UpcomingEvents.astro";
+import UpcomingEvents from "../components/bitspace/UpcomingEvents.jsx";
 import JoinTheSpace from "../components/bitspace/JoinTheSpace.astro";
-import Gallery from "../components/meetup/gallery";
+import Gallery from "../components/bitspace/gallery";
 import CollabWithUs from "../components/bitspace/CollabWithUs.astro";
+import PreviousEvents from "../components/bitspace/PreviousEvents.astro";
 ---
 
 <Layout
-  title="Bitshala Apprenticeship"
+  title="Bitspace"
   headerProps={{
-    image: "/header/Apprenticeship_Hero.webp",
+    image: "/bitspace/hero.webp",
   }}
   isVisible={true}
 >
@@ -26,8 +27,8 @@ import CollabWithUs from "../components/bitspace/CollabWithUs.astro";
     <h2
       class="mx-5 text-center text-xl text-white lg:mx-20 lg:font-header lg:text-5xl"
     >
-      India’s Bitcoin-Only community hub for Bitcoin
-      enthusiasts to work, learn, and have a ton of fun!
+      India's First Bitcoin FOSS Hackerspace to work, learn,
+      and have a ton of fun!
     </h2>
     <div
       class="mt-20 flex w-full flex-col justify-center gap-3 font-bold lg:flex-row"
@@ -42,8 +43,9 @@ import CollabWithUs from "../components/bitspace/CollabWithUs.astro";
   <About />
   <JoinTheSpace />
   <div id="events">
-    <UpcomingEvents />
+    <UpcomingEvents client:load />
   </div>
-  <!-- <Gallery client:load /> -->
+  <PreviousEvents />
+  <Gallery client:load />
   <CollabWithUs />
 </Layout>
