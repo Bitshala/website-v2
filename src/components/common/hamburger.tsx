@@ -97,6 +97,11 @@ const SideMenu = () => {
       desc: "Learn about Bitcoin through insightful conversations",
     },
     {
+      name: "Bitspace",
+      url: "/bitspace",
+      desc: "India’s Bitcoin-Only community hub for Bitcoin enthusiasts!",
+    },
+    {
       name: "Join our Discord!",
       url: "https://discord.com/invite/STeQFVEWf9",
       tar: "_blank",
