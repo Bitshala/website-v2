@@ -4,16 +4,16 @@ import "swiper/css/pagination";
 import "swiper/swiper-bundle.css";
 import { Pagination, Navigation } from "swiper/modules";
 const PreviousSessions = ({
-  videoConfig: videoConfig,
   heading,
   description,
 }) => {
   return (
     <div>
-      <h1 class="mb-5 mt-10 font-header text-5xl"> {heading}</h1>
-      <p class="mb-10 text-xl">{description}</p>
+      <h1 class="mb-5 mt-10 font-header text-5xl">{heading}</h1>
+      <p class = 'mb-5 text-xl'>{description}</p>
+      
 
-      <Swiper
+      {/* <Swiper
         slidesPerView={1.4}
         spaceBetween={10}
         centeredSlides={true}
@@ -47,7 +47,7 @@ const PreviousSessions = ({
             </SwiperSlide>
           );
         })}
-      </Swiper>
+      </Swiper> */}
     </div>
   );
 };

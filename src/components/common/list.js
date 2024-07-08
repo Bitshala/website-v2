@@ -11,17 +11,17 @@ export const ta = [
     github: "https://github.com/rajarshimaitra",
   },
 
-  {
-    name: "Stratospher",
-    desc:
-      "Witchcrafting the gossip between Bitcoin nodes. But Pieter Wuille doesn't know its her cat who writes all the code.",
-    image: "stratospher",
-    bgColor: "bg-orange",
-    textColor: "text-black",
-    headingColor: "text-black",
-    twitter: "https://twitter.com/spherostrat",
-    github: "https://github.com/stratospher",
-  },
+  // {
+  //   name: "Stratospher",
+  //   desc:
+  //     "Witchcrafting the gossip between Bitcoin nodes. But Pieter Wuille doesn't know its her cat who writes all the code.",
+  //   image: "stratospher",
+  //   bgColor: "bg-orange",
+  //   textColor: "text-black",
+  //   headingColor: "text-black",
+  //   twitter: "https://twitter.com/spherostrat",
+  //   github: "https://github.com/stratospher",
+  // },
   {
     name: "Emil Joshy",
     desc:
@@ -33,6 +33,7 @@ export const ta = [
     twitter: "https://twitter.com/emjshrx",
     github: "https://github.com/emjshrx",
   },
+ 
   {
     name: "Anmol Sharma",
     desc:
@@ -44,9 +45,21 @@ export const ta = [
     twitter: "https://twitter.com/theanmolsharma_",
     github: "https://github.com/theanmolsharma",
   },
+
 ];
 
 export const dev = [
+  {
+    name: "Paperpsych",
+    desc:
+      "A design ninja with a lot of good questions. Too many actually. So we hired him instead of answering.",
+    image: "paperpsych",
+    bgColor: "bg-orange",
+    textColor: "text-black",
+    headingColor: "text-black",
+    twitter: "https://twitter.com/_paperpsych",
+    github: "https://github.com/paperpsych",
+  },
   {
     name: "Keraliss",
     desc:
@@ -59,10 +72,10 @@ export const dev = [
     github: "https://github.com/keraliss",
   },
   {
-    name: "Saurabh",
+    name: "Sovrav",
     desc:
       "PM juggling Bitcoin FOSS projects and ventures like a circus performer.",
-    image: "setu",
+    image: "sourav",
     bgColor: "bg-orange",
     textColor: "text-black",
     headingColor: "text-black",
@@ -70,17 +83,8 @@ export const dev = [
     github: "https://github.com/setusaurabh",
   },
 
-  {
-    name: "Paperpsych",
-    desc:
-      "A design ninja with a lot of good questions. Too many actually. So we hired him instead of answering.",
-    image: "paperpsych",
-    bgColor: "bg-orange",
-    textColor: "text-black",
-    headingColor: "text-black",
-    twitter: "https://twitter.com/_paperpsych",
-    github: "https://github.com/paperpsych",
-  },
+
+
 ];
 
 export const advisors = [
@@ -119,15 +123,15 @@ export const reviewClubTa = [
     github: "https://github.com/rajarshimaitra",
   },
 
-  {
-    name: "Stratospher",
-    desc:
-      "Witchcrafting the gossip between Bitcoin nodes. But Pieter Wuille doesn't know its her cat who writes all the code.",
-    image: "stratospher",
-    bgColor: "bg-orange",
-    textColor: "text-black",
-    headingColor: "text-black",
-    twitter: "https://twitter.com/spherostrat",
-    github: "https://github.com/stratospher",
-  },
+  // {
+  //   name: "Stratospher",
+  //   desc:
+  //     "Witchcrafting the gossip between Bitcoin nodes. But Pieter Wuille doesn't know its her cat who writes all the code.",
+  //   image: "stratospher",
+  //   bgColor: "bg-orange",
+  //   textColor: "text-black",
+  //   headingColor: "text-black",
+  //   twitter: "https://twitter.com/spherostrat",
+  //   github: "https://github.com/stratospher",
+  // },
 ];
