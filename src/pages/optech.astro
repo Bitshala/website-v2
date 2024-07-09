@@ -4,6 +4,7 @@ import About from "../components/optech/About.astro";
 import PreviousSessions from "../components/readingClub/PreviousSessions";
 import { getPlaylistDetails } from "../scripts/googleApi";
 import Calender from "../components/common/Calender.astro";
+import type { url } from "../../dist/chunks/pages/apply_d7ea94b6.mjs";
 
 // const videoConfig = await getPlaylistDetails(
 //   "PLdHBT9oS8yMUx09HCH1fgmLUSRPItUmY2",
@@ -46,8 +47,9 @@ const isVisible = true;
   <About />
   <PreviousSessions
     client:only
+    url="https://www.youtube.com/playlist?list=PLdHBT9oS8yMUx09HCH1fgmLUSRPItUmY2"
     heading="Previous Sessions"
-    description="Life got in the way? No problem. You can always catch up on our previous sessions Here."
+    description="Life got in the way? No problem. You can always catch up on our previous sessions here."
   />
   <Calender />
 </Layout>

@@ -23,7 +23,7 @@ export const ta = [
   //   github: "https://github.com/stratospher",
   // },
   {
-    name: "Emil Joshy",
+    name: "Emjshrx",
     desc:
       "Joined Bitshala to run Bitcoin Core on his Dive Computer. Didn’t work, but he’ll keep trying.",
     image: "emil",
