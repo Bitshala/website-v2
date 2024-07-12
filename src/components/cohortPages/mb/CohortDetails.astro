@@ -1,0 +1,36 @@
+---
+// import MeetYourTAs from "../cohortPages/MeetYourTAs.astro";
+// import { ta } from "../common/list.js";
+
+export interface Props {
+  format: Array<any>;
+}
+const { format } = Astro.props;
+---
+
+<div class="flex flex-col gap-2 lg:flex-row lg:gap-8">
+  <div class="rounded-2xl p-3 lg:p-10">
+    <h1
+      class="mt-3 font-header text-4xl font-bold lg:text-5xl"
+    >
+      Cohort Details
+    </h1>
+
+    <div>
+      <div
+        class="mt-10 grid gap-10 md:grid-cols-2 lg:grid-cols-3"
+      >
+        {
+          format.map((item) => (
+            <div>
+              <h2 class=" font-bold text-orange lg:text-2xl">
+                {item.name}
+              </h2>
+              <p class="lg:text-lg">{item.desc}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</div>

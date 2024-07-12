@@ -48,6 +48,66 @@ export const ta = [
 
 ];
 
+export const ta2 = [
+  {
+    name: "Raj",
+    desc:
+      "Lead, Bitshala",
+    image: "raj",
+    bgColor: "bg-black",
+    textColor: "text-white",
+    headingColor: "text-orange",
+    twitter: "https://twitter.com/RajarshiMaitra",
+    github: "https://github.com/rajarshimaitra",
+  },
+
+  {
+    name: "Anmol",
+    desc:
+      "Engineer, Bold",
+    image: "anmol",
+    bgColor: "bg-black",
+    textColor: "text-white",
+    headingColor: "text-orange",
+    twitter: "https://twitter.com/theanmolsharma_",
+    github: "https://github.com/theanmolsharma",
+  },
+
+  {
+    name: "Faisal",
+    desc:
+      "Host, Latest in Bitcoin Tech",
+    image: "Faisal",
+    bgColor: "bg-orange",
+    textColor: "text-black",
+    headingColor: "text-black",
+    twitter: "https://x.com/faisal_qrs",
+  },
+
+  {
+    name: "Aditya",
+    desc:
+      "Host, Hands-on Lightning",
+    image: "Aditya",
+    bgColor: "bg-orange",
+    textColor: "text-black",
+    headingColor: "text-black",
+    twitter: "https://x.com/adityaa2011",
+  },
+
+  {
+    name: "Sourav",
+    desc:
+      "Operations Lead, Bitshala",
+    image: "Sourav",
+    bgColor: "bg-black",
+    textColor: "text-white",
+    headingColor: "text-orange",
+    twitter: "https://x.com/SetuSaurabh",
+    github: "https://github.com/sovrav",
+  },
+]
+
 export const dev = [
   {
     name: "Paperpsych",
