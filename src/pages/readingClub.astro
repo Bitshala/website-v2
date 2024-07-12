@@ -2,7 +2,7 @@
 import About from "../components/readingClub/About.astro";
 import Layout from "../layouts/Layout.astro";
 import PreviouslyCovered from "../components/readingClub/PreviouslyCovered";
-// import PreviousSessions from "../components/readingClub/PreviousSessions";
+import PreviousSessions from "../components/readingClub/PreviousSessions";
 import { getPlaylistDetails } from "../scripts/googleApi";
 import Calender from "../components/common/Calender.astro";
 
@@ -47,8 +47,8 @@ const isVisible = true;
   <About />
   <!-- <PreviousSessions
     client:only
-    videoConfig={videoConfig}
     heading="Watch us in action"
+    url="https://www.youtube.com/watch?v=J4wR4bXxX9Q"
     description="Want to take a look at how the club runs? Have a look below. OR if you missed our live reading club... Catch up with the recordings here and join the conversation at your own pace."
   /> -->
   <PreviouslyCovered client:load />
