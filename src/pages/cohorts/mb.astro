@@ -1,12 +1,14 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import Carousel from "../../components/common/Carousel";
-import Description from "../../components/cohortPages/Description.astro";
 import CohortStructure from "../../components/cohortPages/CohortStructure.astro";
-import CohortDetails from "../../components/cohortPages/CohortDetails.astro";
+import CohortDetails from "../../components/cohortPages/mb/CohortDetails.astro";
 import Syllabus from "../../components/cohortPages/Syllabus.astro";
 import CohortHeader from "../../components/cohort/CohortHeader.astro";
 import Application from "../../components/common/Application";
+import About from "../../components/cohortPages/mb/About.astro";
+import MeetYourTAs from "../../components/cohortPages/mb/MeetYourTAs.astro";
+import CohortGraduates from "../../components/cohortPages/CohortGraduates.astro";
 const headerProps = {
   removeHeader: true,
 };
@@ -21,119 +23,84 @@ const isVisible = false;
   isVisible={isVisible}
 >
   <CohortHeader img="/cohort/masteringBitcoin.webp" />
-  <Description
-    takeaways={[
-      {
-        name: "Mastery of Bitcoin Essentials",
-        desc: "Delve into the fundamental chapters of Mastering Bitcoin, gaining a deep understanding of Bitcoin's core principles.",
-      },
-      {
-        name: "Structured Learning",
-        desc: "Explore key topics over a 6-week period, covering everything from Bitcoin basics to advanced concepts.",
-      },
-      {
-        name: "Community Connection",
-        desc: "Connect with like-minded individuals in engaging discussions and collaborative learning sessions.",
-      },
-      {
-        name: "Certification of Accomplishment",
-        desc: "Receive a certificate recognizing your proof-of-work and accomplishment in mastering Bitcoin.",
-      },
-    ]}
-  >
-    <div slot="text">
-      <h1 class="my-2 font-header text-2xl lg:text-5xl">
-        Mastering Bitcoin Study Cohort
-      </h1>
-      <p class="lg:text-xl">
-        Mastering Bitcoin Study Cohort, inspired by Andreas
-        Antonopoulos' seminal book on Bitcoin, is your
-        pathway to a profound understanding and appreciation
-        of the world's leading cryptocurrency. Immerse
-        yourself in the intricacies of Bitcoin through our
-        structured program, crafted for comprehensive
-        learning.
-      </p>
-    </div>
-  </Description>
+
+  <About />
   <CohortDetails
     format={[
+      {
+        name: "Commencement date",
+        desc: "28th June 2024",
+      },
+      {
+        name: "Registration deadline",
+        desc: "27th June 2024",
+      },
+      {
+        name: "Duration",
+        desc: "08 weeks",
+      },
+      {
+        name: "Cohort level",
+        desc: "Beginner (Basic Theory)",
+      },
+      {
+        name: "Mode",
+        desc: "Self-study, weekly live sessions, group discussions, and QnA",
+      },
       {
         name: "Format",
         desc: "Online virtual classroom",
       },
-      {
-        name: "Structure",
-        desc: "Weekly live sessions, group discussions, and Q&A",
-      },
-      {
-        name: "Categories",
-        desc: "Bitcoin Basics, Advanced Concepts, Community Engagement",
-      },
-      {
-        name: "Duration",
-        desc: "06 weeks",
-      },
     ]}
-  >
-    <ol slot="prerequisites" class="list-disc p-4 lg:px-8">
-      <li>Nothing except passion for Bitcoin</li>
-    </ol>
-    <div slot="details">
-      <p class="mb-6 font-header lg:text-xl">
-        Cohort level: <span class="text-orange"
-          >Beginner</span
-        >
-      </p>
-      <p class="mb-6 font-header lg:text-xl">
-        The cohort program comprehensively covers essential
-        chapters of "Mastering Bitcoin," providing
-        participants with a solid foundation.
-      </p>
-      <p class="mb-6 font-header lg:text-xl">
-        Post-cohort, participants are encouraged to join
-        other cohorts to advance their understanding of
-        Bitcoin.
-      </p>
-    </div>
-  </CohortDetails>
+  />
+  <CohortStructure />
   <Syllabus
     syllabus={[
       {
         week: "Week 01",
-        name: "Introduction and How Bitcoin Works",
+        name: "Introduction (1) ; How Bitcoin Works (2)",
         chNo: "01-02",
+        desc: "Tell me more",
       },
       {
         week: "Week 02",
-        name: "Bitcoin Core, Keys, Addresses",
+        name: "Bitcoin Core (3) ; Keys and Addresses (4)",
         chNo: "03-04",
       },
       {
         week: "Week 03",
-        name: "Wallets and Transactions",
+        name: "Wallet Recovery (5) ; Transactions (6)",
         chNo: "05-06",
-        bg: "bg-white",
       },
       {
         week: "Week 04",
-        name: "Advanced Transactions and Scripting",
-        chNo: "07",
+        name: "Authorization & Authentication (7) ; Digital Signatures (8) ",
+        chNo: "07-08",
       },
       {
         week: "Week 05",
-        name: "The Bitcoin Network and The Blockchain",
-        chNo: "08-09",
+        name: "Transaction Fees (9) ; The Bitcoin Network (10)",
+        chNo: "09-10",
       },
       {
         week: "Week 06",
-        name: "Mining, Consensus, Bitcoin Security, Blockchain Applications",
-        chNo: "10-11-12",
+        name: "The Blockchain (11) ; Mining and Consensus (12)",
+        chNo: "11-12",
+      },
+      {
+        week: "Week 07",
+        name: "Bitcoin Security (13) ; Second-Layer Applications (14)",
+        chNo: "13-14",
+      },
+      {
+        week: "Week 08",
+        name: "Next Steps",
+        chNo: "",
       },
     ]}
   />
+  <MeetYourTAs />
   <div id="applicationForm">
-    <CohortStructure />
     <Application
       client:only
       cohortName={cohortName}
@@ -141,5 +108,5 @@ const isVisible = false;
       regOpen={false}
     />
   </div>
-  <Carousel client:visible />
+  <CohortGraduates />
 </Layout>

@@ -1,0 +1,48 @@
+---
+import { ta2 } from "../../common/list.js";
+---
+
+<div class="lg:p-8">
+  <h1 class="font-header text-3xl md:text-6xl lg:text-6xl">
+    Meet Your TAs
+  </h1>
+
+  <div
+    class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5"
+  >
+    {
+      ta2.map((member) => (
+        <div class="flex justify-between gap-5 max-md:flex-wrap">
+          <div class="flex flex-col items-start justify-center self-start pb-2">
+            <div class=" flex flex-col items-end  p-5  max-md:pl-5">
+              <>
+                <img
+                  src={`/people/${member.image}.png`}
+                  class="rounded-3xl bg-orange align-middle md:h-48"
+                  alt={member.name}
+                />
+                <a
+                  href={member.twitter}
+                  target="_blank"
+                  class="absolute aspect-square h-12 p-2 "
+                >
+                  <img
+                    loading="lazy"
+                    src="https://cdn.builder.io/api/v1/image/assets/TEMP/de6ce37c0eefa5ec6c1150f4463c894dc6835bd62687c5e6baea5ce929e3d459?"
+                    class=""
+                  />
+                </a>
+              </>
+            </div>
+            <div class="ml-4 mt-3 pl-2 font-header text-2xl uppercase text-orange">
+              {member.name}
+            </div>
+            <div class=" ml-4 pl-2  text-base font-medium">
+              {member.desc}
+            </div>
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</div>

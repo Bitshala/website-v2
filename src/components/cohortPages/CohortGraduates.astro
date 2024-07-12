@@ -1,0 +1,61 @@
+---
+const list = [
+  {
+    name: "Bala",
+    img: "/apprenticeship/Bala.webp",
+    role: "Developer",
+    twitter: "https://x.com/balajic86",
+  },
+  {
+    name: "Shreyan",
+    img: "/apprenticeship/Shreyan.webp",
+    role: "Educator",
+    twitter: "https://x.com/JoshiShreyan",
+  },
+  {
+    name: "Faisal",
+    img: "/apprenticeship/Faisal.webp",
+    role: "Educator",
+    twitter: "https://x.com/faisal_qrs",
+  },
+];
+---
+
+<div class="lg:p-8">
+  <h1
+    class="my-8 font-header text-3xl md:text-6xl lg:text-6xl"
+    id="about_us"
+  >
+    Cohort Graduates with Bitshala Fellowship
+  </h1>
+
+  <div class="grid grid-cols-2 md:grid-cols-3">
+    {
+      list.map((member) => (
+        <div class="flex justify-between gap-5 max-md:flex-wrap">
+          <div class="flex flex-col items-start justify-center self-start pb-2">
+            <img
+              src={member.img}
+              class="h-48 items-center rounded-3xl p-3 lg:h-64 lg:w-56"
+            />
+            <div class="ml-4 mt-3 pl-2 font-header text-2xl uppercase text-orange">
+              {member.name}
+            </div>
+            <div class=" ml-4 pl-2  text-base font-medium">
+              {member.role}
+            </div>
+          </div>
+        </div>
+      ))
+    }
+  </div>
+
+  <div class="mt-10 flex justify-center">
+    <a
+      href="/fellowship"
+      class="items-center justify-center rounded-lg bg-black p-5 text-center font-header text-white hover:bg-orange"
+    >
+      Check out the Fellowship Program
+    </a>
+  </div>
+</div>

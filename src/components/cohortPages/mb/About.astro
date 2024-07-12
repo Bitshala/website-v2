@@ -1,0 +1,108 @@
+---
+const takeaways = [
+  {
+    name: "Solid Understanding",
+    desc: "Gain a deep understanding of Bitcoin’s protocol, architecture, and security",
+  },
+  {
+    name: "Hands-On Experience",
+    desc: "Get practical experience with Bitcoin development and tools",
+  },
+  {
+    name: "Economic Insights",
+    desc: "Understand the economic and philosophical aspects of Bitcoin",
+  },
+  {
+    name: "Community",
+    desc: "Join and connect with a vibrant Bitcoin community of like-minded individuals",
+  },
+  {
+    name: "Certification",
+    desc: "Earn a certificate of cohort completion as your proof-of-work",
+  },
+  {
+    name: "First Step to Contribution",
+    desc: "Be able to take your first step to contribute confidently to Bitcoin projects and communities",
+  },
+  {
+    name: "Fellowship Opportunities",
+    desc: "Gain access to fellowship opportunities at Bitshala and exclusive invites to Bitspace for more physical community experiences",
+  },
+];
+---
+
+<div class="lg:p-8">
+  <h1
+    class="my-8 font-header text-3xl md:text-6xl lg:text-6xl"
+    id="about_us"
+  >
+    Mastering Bitcoin Study Cohort
+  </h1>
+  <p class="font-base text-base md:text-lg lg:text-2xl">
+    <span class="font-bold text-orange">What is it?</span>
+     It's a comprehensive, structured learning adventure
+    <span class="font-bold"
+      >designed to give you a solid grasp of Bitcoin’s core
+      principles and tech.</span
+    > We dive into the technical stuff, practical use cases,
+    and the bigger picture of Bitcoin’s impact on finance,
+    using Andreas Antonopoulos’s book "Mastering Bitcoin:
+    Programming the Open Blockchain (3rd Edition)" as our
+    primary study material.
+  </p>
+  <p class="my-5 text-base md:text-lg lg:text-2xl">
+    <span class="font-bold text-orange">Who is it for?</span
+    >
+     This cohort is <span class="font-bold"
+      >open to all
+    </span>— doesn’t matter if you're a dev, designer, or
+    just a curious enthusiast. Whether you’re new to Bitcoin
+    or already have some knowledge, this cohort will level
+    you up and give you the bare minimum Bitcoin know-how to
+    begin your journey (or career) in the Bitcoin world.
+  </p>
+  <p class="text-base md:text-lg lg:text-2xl">
+    <span class="font-bold text-orange">
+      What are the prerequisites?
+    </span>
+    <span class="font-bold"
+      >No specific background needed
+    </span>— just a strong desire to learn about Bitcoin.
+    Some basic knowledge of programming and blockchain tech
+    helps but isn't a must. Your curiosity to learn is the
+    most important tool here!
+  </p>
+
+  <div class="my-10">
+    <slot name="text" />
+    <h3 class="my-8 text-2xl text-orange">
+      What are the takeaways?
+    </h3>
+    <ul class="list-disc pl-5 lg:pl-10">
+      {
+        takeaways.map((takeaway) => (
+          <li class="my-4 lg:text-2xl">
+            <span class="font-header">{takeaway.name}</span>{" "}
+            : {takeaway.desc}
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+
+  <p class="text-base md:text-lg lg:text-2xl">
+    <span class="font-bold text-orange">
+      What is the fellowship program?
+    </span>
+    <span
+      >The fellowship program is your <span
+        class="font-bold">launchpad into</span
+      > the
+      <span class="font-bold">Bitcoin FOSS</span>(Free and
+      Open Source Software) world. Whether it's developing
+      innovative open-source software or leading educational
+      initiatives, this is where your contributions to
+      Bitcoin begin — and maybe even your Bitcoin career!
+    </span>
+  </p>
+</div>
