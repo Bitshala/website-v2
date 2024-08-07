@@ -1,7 +1,7 @@
 // import { useState } from "react";
 const slides = [
   {
-    url: "/cohort/masteringBitcoin.webp",
+    url: "/cohort/mb.webp",
     title: "Bitcoin Study Cohorts",
     content:
       "You, with fellow learners collectively explore selected texts over several weeks in a structured self-study format. You gain hands-on experience and in-depth insights into Bitcoin’s technical aspects. And also receive certificates to celebrate your wins!",
