@@ -1,5 +1,4 @@
 ---
-import type { Hidden } from "@mui/material";
 import Footer from "../components/common/Footer.astro";
 import Header from "../components/common/Header.astro";
 import Hamburger from "../components/common/hamburger";
@@ -31,6 +30,23 @@ const { title, headerProps, isVisible } = Astro.props;
     />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
+
+    <!-- Google tag (gtag.js) -->
+    <script
+      type="text/partytown"
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-MMXLBEEY37"
+    ></script>
+    <script type="text/partytown">
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-MMXLBEEY37");
+    </script>
+
     <!-- Facebook Meta Tags -->
     <meta
       property="og:url"
