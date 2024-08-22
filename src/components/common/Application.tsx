@@ -58,6 +58,7 @@ interface FormData {
   enrolled: boolean;
   role: string;
   cohortName: string;
+  hearFrom: string;
 }
 
 const Application = ({
@@ -84,6 +85,7 @@ const Application = ({
     enrolled: false,
     role: role,
     cohortName: cohortName,
+    hearFrom: "",
   });
   const [submitted, setSubmitted] = useState(false);
   const [userExistes, setUserExists] = useState(false);
@@ -159,6 +161,13 @@ const Application = ({
       name: "why",
       type: "text",
       value: formData.why,
+      isRequired: true,
+    },
+    {
+      heading: "Where did you hear about us?*",
+      name: "hearFrom",
+      type: "text",
+      value: formData.hearFrom,
       isRequired: true,
     },
   ];
