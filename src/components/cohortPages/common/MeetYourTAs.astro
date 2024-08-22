@@ -8,7 +8,7 @@ import { ta2 } from "../../common/list.js";
   </h1>
 
   <div
-    class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5"
+    class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
   >
     {
       ta2.map((member) => (
@@ -18,7 +18,7 @@ import { ta2 } from "../../common/list.js";
               <>
                 <img
                   src={`/people/${member.image}.png`}
-                  class="rounded-3xl bg-orange align-middle md:h-48"
+                  class="rounded-3xl bg-orange align-middle sm:h-12 md:h-48 lg:h-64 "
                   alt={member.name}
                 />
                 <a
