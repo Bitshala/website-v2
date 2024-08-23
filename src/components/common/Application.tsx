@@ -222,22 +222,6 @@ const Application = ({
       console.log("error");
       window.location.reload();
     }
-    try {
-      await axios
-        .post("https://bot.bitshala.org/register", formData)
-        .then((res) => {
-          if (res.data.message === "User already present") {
-            setUserExists(true);
-          }
-        });
-      setSubmitted(true);
-      const focusElement = document.getElementById(
-        "focus",
-      ) as HTMLInputElement;
-      focusElement.focus();
-    } catch (error) {
-      console.log(error);
-    }
   };
 
   return (
