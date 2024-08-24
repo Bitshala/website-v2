@@ -1,0 +1,121 @@
+---
+const takeaways = [
+  {
+    name: "Solid Grasp of Bitcoin Core",
+    desc: "Get in-depth knowledge of Bitcoin Core and its operations",
+  },
+  {
+    name: "Node Management Skills",
+    desc: "Learn to set up and manage a local bitcoind regtest node for testing and experimentation",
+  },
+  {
+    name: "Scripting Proficiency",
+    desc: "Explore advanced scripting techniques to create custom Bitcoin scripts and smart contracts",
+  },
+  {
+    name: "Community",
+    desc: "Join a community of like-minded learners, participating in discussions and collaborative learning",
+  },
+  {
+    name: "Certificate of Achievement",
+    desc: "Earn a certificate recognizing your completion and proof-of-work",
+  },
+  {
+    name: "Foundation for Advanced Study",
+    desc: "Open doors to more advanced topics in Bitcoin development, setting the stage for deeper exploration, such as programmatically interfacing with bitcoin-cli and exploring the lightning network.",
+  },
+  {
+    name: "Fellowship Opportunities",
+    desc: "Gain access to fellowship opportunities at Bitshala and exclusive invites to Bitspace for more physical community experiences",
+  },
+];
+---
+
+<div class="lg:p-8">
+  <h1
+    class="mb-3 mt-8 font-header text-3xl md:text-6xl lg:text-6xl"
+    id="about_us"
+  >
+    Learn Bitcoin from the Command Line
+  </h1>
+  <h3 class="mb-5 font-header text-xl lg:text-3xl">
+    Cohort Kicking off on <span class="text-orange"
+      >13th September 2024</span
+    >
+  </h3>
+  <p class="font-base text-base md:text-lg lg:text-2xl">
+    <span class="font-bold text-orange">What is it?</span>
+     The LBTCL Cohort is a hands-on, immersive cohort
+    <span class="font-bold"
+      >designed to teach you how to interact with Bitcoin
+      Core through the command line interface (CLI).
+    </span>From basic transaction creation to advanced
+    scripting, this cohort covers the essential operations
+    using <span class="font-bold">bitcoin-cli</span> and a
+    local <span class="font-bold"
+      >bitcoind regtest node.</span
+    > It’s the perfect way to build a strong foundation in
+    Bitcoin development, with a focus on practical,
+    command-line skills.
+  </p>
+  <p class="my-5 text-base md:text-lg lg:text-2xl">
+    <span class="font-bold text-orange">Who is it for?</span
+    >
+     This cohort is tailored for <span class="font-bold"
+      >intermediate learners
+    </span>
+     — those who have a basic understanding of Bitcoin and
+    want to deepen their knowledge by working directly with
+    Bitcoin Core. Whether you're a developer, engineer, or
+    just someone eager to get hands-on with Bitcoin, this
+    cohort will help you elevate your Bitcoin development
+    skills to the next level.
+  </p>
+  <p class="text-base md:text-lg lg:text-2xl">
+    <span class="font-bold text-orange">
+      What are the prerequisites?
+    </span>
+     You should have a
+    <span class="font-bold"
+      >basic knowledge of Bitcoin
+    </span> and be <span class="font-bold">
+      comfortable using Unix/Linux command-line terminals.
+    </span> Familiarity with the material in "Mastering
+    Bitcoin" will be helpful, but not required. Your
+    eagerness to dive into the command line is what matters
+    most!
+  </p>
+
+  <div class="my-10">
+    <slot name="text" />
+    <h3 class="my-8 text-2xl font-bold text-orange">
+      What are the takeaways?
+    </h3>
+    <ul class="list-disc pl-5 lg:pl-10">
+      {
+        takeaways.map((takeaway) => (
+          <li class="my-4 lg:text-2xl">
+            <span class="font-header">{takeaway.name}</span>{" "}
+            : {takeaway.desc}
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+
+  <p class="text-base md:text-lg lg:text-2xl">
+    <span class="font-bold text-orange">
+      What is the fellowship program?
+    </span>
+    <span
+      >The fellowship program is your <span
+        class="font-bold">launchpad into</span
+      > the
+      <span class="font-bold">Bitcoin FOSS</span>(Free and
+      Open Source Software) world. Whether it's developing
+      innovative open-source software or leading educational
+      initiatives, this is where your contributions to
+      Bitcoin begin — and maybe even your Bitcoin career!
+    </span>
+  </p>
+</div>

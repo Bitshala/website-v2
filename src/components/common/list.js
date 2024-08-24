@@ -1,8 +1,7 @@
 export const ta = [
   {
     name: "Raj Maitra",
-    desc:
-      "Pen-and-paper engineer turned keyboard warrior in multiple rabbit holes. Often known for making a mess. An actual rabbit.",
+    desc: "Pen-and-paper engineer turned keyboard warrior in multiple rabbit holes. Often known for making a mess. An actual rabbit.",
     image: "raj",
     bgColor: "bg-black",
     textColor: "text-white",
@@ -24,8 +23,7 @@ export const ta = [
   // },
   {
     name: "Emjshrx",
-    desc:
-      "Joined Bitshala to run Bitcoin Core on his Dive Computer. Didn’t work, but he’ll keep trying.",
+    desc: "Joined Bitshala to run Bitcoin Core on his Dive Computer. Didn’t work, but he’ll keep trying.",
     image: "emil",
     bgColor: "bg-orange",
     textColor: "text-black",
@@ -33,11 +31,10 @@ export const ta = [
     twitter: "https://twitter.com/emjshrx",
     github: "https://github.com/emjshrx",
   },
- 
+
   {
     name: "Anmol Sharma",
-    desc:
-      "When he is not talking about Bitcoin,he is busy writing code. But let's be honest, he is usually busy talking about Bitcoin.",
+    desc: "When he is not talking about Bitcoin,he is busy writing code. But let's be honest, he is usually busy talking about Bitcoin.",
     image: "anmol",
     bgColor: "bg-black",
     textColor: "text-white",
@@ -45,14 +42,12 @@ export const ta = [
     twitter: "https://twitter.com/theanmolsharma_",
     github: "https://github.com/theanmolsharma",
   },
-
 ];
 
 export const ta2 = [
   {
-    name: "Raj",
-    desc:
-      "Lead, Bitshala",
+    name: "RAJ",
+    desc: "Lead, Bitshala",
     image: "raj",
     bgColor: "bg-black",
     textColor: "text-white",
@@ -62,9 +57,8 @@ export const ta2 = [
   },
 
   {
-    name: "Anmol",
-    desc:
-      "Engineer, Bold",
+    name: "ANMOL",
+    desc: "Engineer, Bold",
     image: "anmol",
     bgColor: "bg-black",
     textColor: "text-white",
@@ -74,31 +68,17 @@ export const ta2 = [
   },
 
   {
-    name: "Faisal",
-    desc:
-      "Host, Latest in Bitcoin Tech",
+    name: "FAISAL",
+    desc: "Program Manager, Bitshala",
     image: "Faisal",
     bgColor: "bg-orange",
     textColor: "text-black",
     headingColor: "text-black",
     twitter: "https://x.com/faisal_qrs",
   },
-
   {
-    name: "Aditya",
-    desc:
-      "Host, Hands-on Lightning",
-    image: "Aditya",
-    bgColor: "bg-orange",
-    textColor: "text-black",
-    headingColor: "text-black",
-    twitter: "https://x.com/adityaa2011",
-  },
-
-  {
-    name: "Sourav",
-    desc:
-      "Operations Lead, Bitshala",
+    name: "SOVRAV",
+    desc: "Operations Lead, Bitshala",
     image: "Sourav",
     bgColor: "bg-black",
     textColor: "text-white",
@@ -106,13 +86,46 @@ export const ta2 = [
     twitter: "https://x.com/SetuSaurabh",
     github: "https://github.com/sovrav",
   },
-]
+
+  {
+    name: "EMJSHRX",
+    desc: "Open Source Dev",
+    image: "emil",
+    bgColor: "bg-gray",
+    textColor: "text-black",
+    headingColor: "text-blue",
+  },
+  {
+    name: "DELCIN",
+    desc: "Rust Educator",
+    image: "Delcin",
+    bgColor: "bg-blue",
+    textColor: "text-white",
+    headingColor: "text-yellow",
+  },
+  {
+    name: "SHREYAN",
+    desc: "Host, Bitcoin Reads",
+    image: "Shreyan",
+    bgColor: "bg-purple",
+    textColor: "text-white",
+    headingColor: "text-green",
+  },
+  {
+    name: "ADITYA",
+    desc: "Open Source Lightning Dev",
+    image: "Aditya",
+    bgColor: "bg-orange",
+    textColor: "text-black",
+    headingColor: "text-black",
+    twitter: "https://x.com/adityaa2011",
+  },
+];
 
 export const dev = [
   {
     name: "Paperpsych",
-    desc:
-      "A design ninja with a lot of good questions. Too many actually. So we hired him instead of answering.",
+    desc: "A design ninja with a lot of good questions. Too many actually. So we hired him instead of answering.",
     image: "paperpsych",
     bgColor: "bg-orange",
     textColor: "text-black",
@@ -122,8 +135,7 @@ export const dev = [
   },
   {
     name: "Keraliss",
-    desc:
-      "Contemplating by a river in his humble hut with his laptop, he codes. He says thats all he needs.",
+    desc: "Contemplating by a river in his humble hut with his laptop, he codes. He says thats all he needs.",
     image: "keraliss",
     bgColor: "bg-black",
     textColor: "text-white",
@@ -133,8 +145,7 @@ export const dev = [
   },
   {
     name: "Sovrav",
-    desc:
-      "PM juggling Bitcoin FOSS projects and ventures like a circus performer.",
+    desc: "PM juggling Bitcoin FOSS projects and ventures like a circus performer.",
     image: "sourav",
     bgColor: "bg-orange",
     textColor: "text-black",
@@ -142,16 +153,12 @@ export const dev = [
     twitter: "https://twitter.com/SetuSaurabh",
     github: "https://github.com/setusaurabh",
   },
-
-
-
 ];
 
 export const advisors = [
   {
     name: "Adam Jonas",
-    desc:
-      "An invisible force in Bitcoin. Nobody knows what he does. So we’ve stopped asking.",
+    desc: "An invisible force in Bitcoin. Nobody knows what he does. So we’ve stopped asking.",
     image: "adam",
     bgColor: "bg-orange",
     textColor: "text-black",
@@ -160,8 +167,7 @@ export const advisors = [
   },
   {
     name: "Adi Shankar",
-    desc:
-      "The monk who gave us the name and the logo, but never explained what they mean.",
+    desc: "The monk who gave us the name and the logo, but never explained what they mean.",
     image: "adi",
     bgColor: "bg-black",
     textColor: "text-white",
@@ -173,8 +179,7 @@ export const advisors = [
 export const reviewClubTa = [
   {
     name: "Raj Maitra",
-    desc:
-      "Pen-and-paper engineer turned keyboard warrior in multiple rabbit holes. Often known for making a mess. An actual rabbit.",
+    desc: "Pen-and-paper engineer turned keyboard warrior in multiple rabbit holes. Often known for making a mess. An actual rabbit.",
     image: "raj",
     bgColor: "bg-black",
     textColor: "text-white",
