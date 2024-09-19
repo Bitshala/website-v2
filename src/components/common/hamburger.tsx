@@ -1,7 +1,12 @@
 import { useState } from "react";
 import SlidingPane from "react-sliding-pane";
 import "./sliding-pane.css";
-import { FaTwitter, FaGithub, FaYoutube, FaLinkedin } from "react-icons/fa";
+import {
+  FaTwitter,
+  FaGithub,
+  FaYoutube,
+  FaLinkedin,
+} from "react-icons/fa";
 
 const Hamburger = () => {
   const [open, setOpen] = useState(false);
@@ -105,8 +110,7 @@ const SideMenu = () => {
       name: "Join our Discord!",
       url: "https://discord.com/invite/STeQFVEWf9",
       tar: "_blank",
-      desc:
-        "Join our Discord and be a part of the biggest technical bitcoin community",
+      desc: "Join our Discord and be a part of the biggest technical bitcoin community",
     },
   ];
   return (
@@ -114,17 +118,29 @@ const SideMenu = () => {
       <div className="mb-7 flex">
         <hr className="my-10 w-1/3 border-0 bg-orange outline outline-orange" />
         <div className="my-6 hidden gap-4 px-10 lg:flex">
-          <a href="https://twitter.com/bitshala_org" target="_blank">
+          <a
+            href="https://twitter.com/bitshala_org"
+            target="_blank"
+          >
             <FaTwitter className="text-4xl text-white hover:text-[#1DA1F2]" />
           </a>
-          <a href="https://github.com/bitshala" target="_blank">
+          <a
+            href="https://github.com/bitshala"
+            target="_blank"
+          >
             <FaGithub className="text-4xl text-white hover:rounded-full hover:bg-[black] hover:invert" />
           </a>
-          <a href="https://www.youtube.com/@bitshala/videos" target="_blank">
+          <a
+            href="https://www.youtube.com/@bitshala/videos"
+            target="_blank"
+          >
             <FaYoutube className="text-4xl text-white hover:text-[#CD201F]" />
           </a>
 
-          <a href="https://www.linkedin.com/company/bitshala" target="_blank">
+          <a
+            href="https://www.linkedin.com/company/bitshala"
+            target="_blank"
+          >
             <FaLinkedin className="text-4xl text-white hover:text-[#0077b5]" />
           </a>
         </div>
