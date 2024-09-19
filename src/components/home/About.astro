@@ -1,22 +1,22 @@
 ---
 const list = [
   {
-    link: "/home/hrf.png",
+    link: "/home/hrf.webp",
   },
   {
-    link: "/home/bob.png",
+    link: "/home/bob.webp",
   },
   {
-    link: "/home/btrust.png",
+    link: "/home/btrust.webp",
   },
   {
-    link: "/home/chaincode.png",
+    link: "/home/chaincode.webp",
   },
   {
-    link: "/home/pts.png",
+    link: "/home/pts.webp",
   },
   {
-    link: "/home/sob.png",
+    link: "/home/sob.webp",
   },
 ];
 ---
@@ -41,13 +41,15 @@ const list = [
     We want you to be part of the revolution.
   </p>
 
-  <div class="mt-10">
+  <div class="my-10 lg:my-32">
     <h1
       class="my-8 font-header text-xl font-bold md:text-2xl lg:text-4xl"
     >
       Trusted and Supported by
     </h1>
-    <div class="grid w-[120%] grid-cols-7 gap-10">
+    <div
+      class="grid grid-cols-7 items-center gap-6 lg:w-[120%] lg:gap-10"
+    >
       {
         list.map((li) => (
           <a href={li.link}>

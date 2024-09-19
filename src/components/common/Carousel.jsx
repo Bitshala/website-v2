@@ -2,28 +2,32 @@ const slides = [
   {
     url: "/apprenticeship/optech.png",
     title: "Latest in Bitcoin Tech",
-    content: "Stay updated and explore the latest developments in Bitcoin tech",
+    content:
+      "Stay updated and explore the latest developments in Bitcoin tech",
     targetLink: "/",
     cta: "Start staying updated  → ",
   },
   {
     url: "/apprenticeship/readingClub.webp",
     title: "Bitcoin Reading Club",
-    content: "Learn from non-tech Bitcoin books with fun community reading sessions",
+    content:
+      "Learn from non-tech Bitcoin books with fun community reading sessions",
     targetLink: "/reading-club",
     cta: "Join the club   → ",
   },
   {
     url: "/apprenticeship/reviewClub.webp",
     title: "Bitcoin PR Review Club",
-    content: "Review Bitcoin Core PRs together and sharpen your dev skills along the way",
+    content:
+      "Review Bitcoin Core PRs together and sharpen your dev skills along the way",
     targetLink: "/review",
     cta: "Review PRs together  → ",
   },
   {
     url: "/bitspace/bengaluruBitdev.webp",
     title: "Bengaluru BITDEVS",
-    content: "Join us offline for an evening of Bitcoin tech learning and fun",
+    content:
+      "Join us offline for an evening of Bitcoin tech learning and fun",
     targetLink: "/meetup",
     cta: "Tell me more  → ",
   },
@@ -38,18 +42,27 @@ const slides = [
   {
     url: "/apprenticeship/fellowship.webp",
     title: "Bitshala Fellowship (Paid)",
-    content: "Kickstart your Bitcoin FOSS career with hands-on work on real-world projects",
+    content:
+      "Kickstart your Bitcoin FOSS career with hands-on work on real-world projects",
     targetLink: "/apprenticeship/fellowship",
     cta: "Apply for a fellowship  → ",
   },
-
 ];
-
 
 function Carousel() {
   return (
     <>
-      <div className="flex flex-col gap-3 mt-20 md:grid md:grid-cols-2 lg:grid lg:grid-cols-3">
+      <h1 class="my-8 text-center font-header text-xl font-bold md:text-3xl lg:text-5xl">
+        “Bitcoin seems really technical, <br />
+        is it hard to get started?"
+      </h1>
+
+      <p className="m-4 text-center text-base md:text-lg lg:text-2xl">
+        Don’t worry, our club activities, meetups, and study
+        cohorts, will help make <br /> your Bitcoin journey,
+        much more smoother, accessible, and fun.
+      </p>
+      <div className="mt-20 flex flex-col gap-3 md:grid md:grid-cols-2 lg:grid lg:grid-cols-3">
         {slides.map((slide, index) => (
           <div
             key={index}
@@ -58,18 +71,28 @@ function Carousel() {
             <h1 className="mb-5 font-header text-2xl lg:text-3xl">
               {slide.title}
             </h1>
-            <p className="mb-2 text-xl ">
-              {slide.content}
-            </p>
-            <a href={slide.targetLink} className="text-orange">{slide.cta} </a>
-            
-            <img src={slide.url} className="rounded-2xl mt-3" alt="" />
-            <a href={slide.targetLink}>
-             
+            <p className="mb-2 text-xl ">{slide.content}</p>
+            <a
+              href={slide.targetLink}
+              className="text-orange hover:underline"
+            >
+              {slide.cta}{" "}
             </a>
+
+            <img
+              src={slide.url}
+              className="mt-3 rounded-2xl"
+              alt=""
+            />
+            <a href={slide.targetLink}></a>
           </div>
         ))}
       </div>
+      <p class="m-4 text-center text-base md:text-lg lg:mx-28 lg:mb-20 lg:mt-16 lg:text-2xl">
+        And, we totally understand, Bitcoin Tech can seem
+        overwhelming in the start but <br /> it’s hard
+        mostly if you’re trying to learn alone.
+      </p>
     </>
   );
 }
