@@ -1,155 +1,55 @@
 ---
-const list1 = [
+const list = [
   {
-    name: "Twitter",
-    link: "https://twitter.com/bitshala_org",
+    name: "Org ",
+    subMenu: [
+      { name: "About", link: "/org/about" },
+      {
+        name: "Contact us",
+        link: "/bitspace/#contact_us",
+      },
+    ],
   },
   {
-    name: "YouTube",
-    link: "https://www.youtube.com/@bitshala/videos",
+    name: "Bitcoin Career ",
+    subMenu: [
+      { name: "Study cohorts", link: "/cohorts" },
+      { name: "Fellowship", link: "/fellowship" },
+    ],
   },
   {
-    name: "LinkedIn",
-    link: "https://www.linkedin.com/company/bitshala",
-  },
-];
-
-const org = [
-  {
-    name: "About",
-    link: "/#our_story",
+    name: "IRL Funzzz ",
+    subMenu: [
+      { name: "Bitspace", link: "/bitspace" },
+      { name: "BITDEVS", link: "/bitdevs" },
+    ],
   },
   {
-    name: "Contact Us",
-    link: "/#our_story",
-  },
-];
-
-const bitcoin_career = [
-  {
-    name: "Study cohorts",
-    link: "/cohorts",
-  },
-  {
-    name: "Fellowship ",
-    link: "/fellowship",
-  },
-];
-
-const irl_funz = [
-  {
-    name: "Bitspace",
-    link: "/bitspace",
-  },
-  {
-    name: "BITDEVS",
-    link: "/bitspace#BITDEVS",
-  },
-];
-
-const social_clubs = [
-  {
-    name: "Latest in Bitcoin Tech",
-    link: "/optech",
-  },
-  {
-    name: "Reading Club",
-    link: "/readingClub",
-  },
-  {
-    name: "Bitcoin PR Review Club",
-    link: "/review",
-  },
-  {
-    name: "Hands-on Lightning",
-    link: "/handsOnLightning",
-  },
-  {
-    name: "Bitcoin Talks",
-    link: "/talks",
+    name: "Social Clubs ",
+    subMenu: [
+      {
+        name: "Latest in Bitcoin Tech",
+        link: "/optech",
+      },
+      { name: "Reading Club", link: "/readingClub" },
+      {
+        name: "Bitcoin PR Review Club",
+        link: "/review",
+      },
+      {
+        name: "Hands-on Lightning",
+        link: "/hands-on-lightning",
+      },
+      { name: "Bitcoin Talks", link: "/talks" },
+    ],
   },
 ];
 ---
 
-<footer class="mt-5 bg-black text-white">
-  <!-- <hr class="opacity-20" /> -->
-  <!-- <div
-    class="items-center justify-between bg-peach px-3 py-10 sm:flex sm:flex-col md:flex md:flex-row"
-  >
-    <div
-      class="mb-3 text-lg sm:w-full md:ml-5 md:w-3/6 md:text-xl xl:text-3xl"
-    >
-      We got a <span class="font-bold"
-        >discord community</span
-      > of hungry and passionate Bitcoin developers....
-    </div>
-    <a
-      href="https://discord.com/invite/STeQFVEWf9"
-      target="_blank"
-    >
-      <div
-        class="rounded-lg border-2 border-dotted p-2 text-sm hover:bg-orange hover:text-white md:text-xl lg:mr-5 lg:px-10 lg:py-5 xl:text-3xl"
-      >
-        Ahh.. I think I'll fit right in
-      </div>
-    </a>
-  </div> -->
-
-  <!-- <hr class="opacity-20" /> -->
-  <!-- <div
-    class="grid grid-cols-3 divide-x bg-black bg-[url('/footer/bitshala.png')] bg-cover lg:grid-cols-5"
-  >
-    <div class="m-3 hidden p-3 lg:inline">
-      <img
-        src="/footer/logo.png"
-        class="mb-60 h-16"
-        alt="Bitshala Logo"
-      />
-      <div>Copyright © 2024 Bitshala</div>
-    </div>
-    <div class="m-3 p-3">
-      {
-        list1.map((li) => (
-          <a href={li.link} target="_blank">
-            <div class="my-1 text-sm hover:font-header lg:text-xl">
-              {li.name}
-            </div>
-          </a>
-        ))
-      }
-    </div>
-    <div class="m-3 p-3">
-      {
-        list2.map((li) => (
-          <a href={li.link}>
-            <div class="my-1 text-sm hover:font-header lg:text-xl">
-              {li.name}
-            </div>
-          </a>
-        ))
-      }
-    </div>
-    <div class="m-3 p-3">
-      {
-        list3.map((li) => (
-          <a href={li.link}>
-            <div class="my-1 text-sm hover:font-header lg:text-xl">
-              {li.name}
-            </div>
-          </a>
-        ))
-      }
-    </div>
-    <div class="m-3 hidden p-3 lg:inline">
-      <div class="mt-80 flex justify-end">
-        Cypherpunks write code !
-      </div>
-    </div>
-  </div> -->
-
+<footer class="mt-5 bg-black pb-10 text-white lg:py-14">
   <div>
-    <div class="grid grid-cols-1 lg:grid-cols-2">
-      <div class="flex p-10">
+    <div class="flex flex-col lg:flex-row">
+      <div class="flex justify-center p-10 lg:w-2/5">
         <img
           src="/footer/logo.png"
           class="h-16"
@@ -167,76 +67,74 @@ const social_clubs = [
         </div>
       </div>
       <!-- <p class="text-sm">Copyright © 2024 Bitshala</p> -->
-      <div
-        class="m-3 rounded-lg bg-white p-4 text-black lg:m-10 lg:flex lg:w-3/5"
-      >
-        <div class="p-5">
-          We got a <span class="font-bold"
-            >discord community</span
-          > of hungry and passionate Bitcoin developers....
-        </div>
-        <a
-          href="https://discord.com/invite/STeQFVEWf9"
-          target="_blank"
+      <div class="lg:w-3/5">
+        <div
+          class="m-3 rounded-lg bg-white p-4 text-black lg:m-10 lg:flex lg:w-fit"
         >
-          <div class="rounded-lg bg-black p-5 text-white">
-            Ahh.. I think I'll fit right in
+          <div class="p-5">
+            We got a <span class="font-bold"
+              >discord community</span
+            > of hungry and passionate Bitcoin
+            developers....
           </div>
-        </a>
+          <a
+            href="https://discord.com/invite/STeQFVEWf9"
+            target="_blank"
+          >
+            <div
+              class="rounded-lg bg-black p-5 text-white hover:bg-orange"
+            >
+              Ahh.. I think I'll fit right in
+            </div>
+          </a>
+        </div>
       </div>
     </div>
   </div>
-  <div class="grid grid-cols-2">
-    <div>Logos</div>
-    <div class="grid grid-cols-4">
-      <div class="m-3 p-3">
-        <p>Org</p>
-        {
-          org.map((li) => (
-            <a href={li.link} target="_blank">
-              <div class="my-1 text-sm hover:font-header lg:text-lg">
-                {li.name}
-              </div>
-            </a>
-          ))
-        }
+  <div class="flex flex-col lg:flex-row-reverse">
+    <div
+      class="grid grid-cols-2 p-2 lg:w-3/5 lg:grid-cols-4"
+    >
+      {
+        list.map((item) => (
+          <>
+            <div class="my-4 ">
+              <p class=" my-2 text-lg text-white text-opacity-60">
+                {item.name}
+              </p>
+              <ul>
+                {item.subMenu.map((subItem) => (
+                  <li class="my-2 font-header text-xl lg:gap-3">
+                    <a
+                      href={subItem.link}
+                      class="hover:text-orange"
+                    >
+                      {subItem.name}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </>
+        ))
+      }
+    </div>
+    <div class="mt-5 flex flex-col items-center lg:w-2/5">
+      <div class="flex gap-4">
+        <a href="">
+          <img src="/logo/1.png" class="h-10" alt="" />
+        </a>
+        <a href="">
+          <img src="/logo/2.png" class="h-10" alt="" />
+        </a>
+        <a href="">
+          <img src="/logo/3.png" class="h-10" alt="" />
+        </a>
+        <a href="">
+          <img src="/logo/4.png" class="h-10" alt="" />
+        </a>
       </div>
-      <div class="m-3 p-3">
-        <p>BITCOIN CAREER</p>
-        {
-          bitcoin_career.map((li) => (
-            <a href={li.link} target="_blank">
-              <div class="my-1 text-sm hover:font-header lg:text-lg">
-                {li.name}
-              </div>
-            </a>
-          ))
-        }
-      </div>
-      <div class="m-3 p-3">
-        <p>IRL FUNZZ</p>
-        {
-          irl_funz.map((li) => (
-            <a href={li.link} target="_blank">
-              <div class="my-1 text-sm hover:font-header lg:text-lg">
-                {li.name}
-              </div>
-            </a>
-          ))
-        }
-      </div>
-      <div class="m-3 p-3">
-        <p>SOCIAL CLUBS</p>
-        {
-          social_clubs.map((li) => (
-            <a href={li.link} target="_blank">
-              <div class="my-1 text-sm hover:font-header lg:text-lg">
-                {li.name}
-              </div>
-            </a>
-          ))
-        }
-      </div>
+      <p class="text-md mt-5">Copyright © 2024 Bitshala</p>
     </div>
   </div>
 </footer>
