@@ -8,7 +8,7 @@ module.exports = {
       black: "#333333",
       white: "#F7F7F7",
       orange: "#FA8816",
-      peach: "#FFDEC7",
+      peach: "#FFF0E5",
     },
     fontFamily: {
       header: "Apfel Grotezk, sans-serif",

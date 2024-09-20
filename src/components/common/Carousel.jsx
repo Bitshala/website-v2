@@ -51,8 +51,8 @@ const slides = [
 
 function Carousel() {
   return (
-    <>
-      <h1 class="my-8 text-center font-header text-xl font-bold md:text-3xl lg:text-5xl">
+    <div className="mx-auto max-w-screen-xl">
+      <h1 class="my-8 text-center  font-header text-xl font-bold md:text-3xl lg:text-6xl">
         “Bitcoin seems really technical, <br />
         is it hard to get started?"
       </h1>
@@ -62,26 +62,28 @@ function Carousel() {
         cohorts, will help make <br /> your Bitcoin journey,
         much more smoother, accessible, and fun.
       </p>
-      <div className="mt-20 flex flex-col gap-3 md:grid md:grid-cols-2 lg:grid lg:grid-cols-3">
+      <div className="mt-20 flex flex-col gap-7 md:grid md:grid-cols-2 lg:grid lg:grid-cols-3">
         {slides.map((slide, index) => (
           <div
             key={index}
-            className="rounded-2xl bg-peach p-5"
+            className="rounded-3xl bg-peach px-5 pb-5 pt-8"
           >
-            <h1 className="mb-5 font-header text-2xl lg:text-3xl">
+            <h1 className="mb-3 px-3 font-header text-2xl lg:text-3xl">
               {slide.title}
             </h1>
-            <p className="mb-2 text-xl ">{slide.content}</p>
+            <p className="mb-3 px-3 text-xl ">
+              {slide.content}
+            </p>
             <a
               href={slide.targetLink}
-              className="text-orange hover:underline"
+              className="px-3 text-orange hover:underline"
             >
               {slide.cta}{" "}
             </a>
 
             <img
               src={slide.url}
-              className="mt-3 rounded-2xl"
+              className="mt-[32px] rounded-2xl "
               alt=""
             />
             <a href={slide.targetLink}></a>
@@ -93,7 +95,7 @@ function Carousel() {
         overwhelming in the start but <br /> it’s hard
         mostly if you’re trying to learn alone.
       </p>
-    </>
+    </div>
   );
 }
 

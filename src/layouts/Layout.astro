@@ -122,9 +122,22 @@ const { title, headerProps, isVisible } = Astro.props;
       )
     }
 
-    <div class="m-auto max-w-screen-xl p-4 lg:p-0">
-      <div class="isolate z-0"><slot /></div>
-    </div>
+    {
+      headerProps.removePadding ? (
+        <div class="m-auto max-w-full">
+          <div class="isolate z-0">
+            <slot />
+          </div>
+        </div>
+      ) : (
+        <div class="m-auto max-w-screen-xl p-4 lg:p-0">
+          <div class="isolate z-0">
+            <slot />
+          </div>
+        </div>
+      )
+    }
+
     <Footer />
   </body>
   <style>

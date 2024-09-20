@@ -53,51 +53,55 @@ const list = [
 ];
 ---
 
-<div class="bg-gradient-to-b from-orange to-white p-5">
-  <h1
-    class="my-8 text-center font-header text-xl font-bold md:text-3xl lg:text-5xl"
-  >
-    “And, if I wanted to start my Bitcoin dev journey with
-    you, what would that look like?"
-  </h1>
-  <p
-    class="m-4 text-center text-base md:text-lg lg:text-2xl"
-  >
-    Well, we’re glad you asked! Here’s what your journey
-    could look like with us...
-  </p>
+<div
+  class="mx-auto bg-gradient-to-b from-orange to-white p-5 lg:p-10"
+>
+  <div class="mx-auto max-w-screen-xl">
+    <h1
+      class="my-8 text-center font-header text-xl font-bold md:text-3xl lg:text-5xl"
+    >
+      “And, if I wanted to start my Bitcoin dev journey with
+      you, what would that look like?"
+    </h1>
+    <p
+      class="m-4 text-center text-base md:text-lg lg:text-2xl"
+    >
+      Well, we’re glad you asked! Here’s what your journey
+      could look like with us...
+    </p>
 
-  <div class="rounded-2xl lg:p-5">
-    {
-      list.map((item, i) => (
-        <div
-          class={`m-5 flex w-full justify-between gap-2 rounded-lg bg-white lg:gap-5 lg:p-5 ${
-            i % 2 == 0 ? "flex-row" : "flex-row-reverse"
-          }`}
-        >
-          <div class="mx-2 lg:mx-5 lg:pt-8">
-            <p class="w-20 rounded-lg bg-black p-2 text-white">
-              {item.step}
-            </p>
-            <h3 class="font-header text-2xl">
-              {item.title}
-            </h3>
-            <p>{item.desc}</p>
-            <a
-              href={item.link}
-              class="text-orange hover:underline"
-            >
-              {item.buttonText}
-            </a>
+    <div class="rounded-2xl lg:p-5">
+      {
+        list.map((item, i) => (
+          <div
+            class={`m-5 flex w-full justify-between gap-2 rounded-lg bg-white lg:gap-5 lg:p-5 ${
+              i % 2 == 0 ? "flex-row" : "flex-row-reverse"
+            }`}
+          >
+            <div class="mx-2 lg:mx-5 lg:pt-8">
+              <p class="w-20 rounded-lg bg-black p-2 text-white">
+                {item.step}
+              </p>
+              <h3 class="font-header text-2xl">
+                {item.title}
+              </h3>
+              <p>{item.desc}</p>
+              <a
+                href={item.link}
+                class="text-orange hover:underline"
+              >
+                {item.buttonText}
+              </a>
+            </div>
+            <div>
+              <img
+                src={item.img}
+                class="h-[256px] w-[880px] rounded-2xl"
+              />
+            </div>
           </div>
-          <div>
-            <img
-              src={item.img}
-              class="h-[256px] w-[880px] rounded-2xl"
-            />
-          </div>
-        </div>
-      ))
-    }
+        ))
+      }
+    </div>
   </div>
 </div>

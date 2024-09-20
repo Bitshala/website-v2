@@ -11,6 +11,7 @@ import JourneyGuide from "../components/home/JourneyGuide.astro";
 
 const headerProps = {
   image: "/home/headerbg.webp",
+  removePadding: true,
 };
 const isVisible = true;
 ---
@@ -22,24 +23,23 @@ const isVisible = true;
 >
   <div
     slot="headerChild"
-    class="flex h-[70vh] flex-col justify-between"
+    class="mx-auto flex h-[55vh] max-w-screen-xl flex-col justify-between"
   >
     <h1
-      class="text-center font-header text-6xl text-white lg:text-[15rem]"
+      class="text-center font-header text-6xl text-white lg:text-[13rem]"
     >
       Bitshala:
     </h1>
     <h2
-      class="text-center font-header text-4xl text-orange lg:text-8xl"
+      class="text-center font-header text-4xl text-orange lg:text-[4.8rem]"
     >
       A Pathshala for Bitcoin
     </h2>
     <div slot="after-heading">
-      <p
-        class="mb-8 text-center text-xl text-white lg:text-5xl"
-      >
-        Empowering developers to thrive in Bitcoin FOSS
-        World
+      <p class="text-center text-xl text-white lg:text-3xl">
+        Empowering developers to enter and thrive in the
+        world <br /> of Bitcoin FOSS (Free and Open Source
+        Software)
       </p>
       <div
         class="mt-20 flex w-full justify-between font-bold"
@@ -47,12 +47,12 @@ const isVisible = true;
         <a
           href="https://discord.com/invite/STeQFVEWf9"
           target="_blank"
-          class="text-m mx-3 flex w-1/2 items-center justify-center rounded-lg bg-orange p-4 text-center hover:bg-black hover:text-orange hover:outline-dashed lg:text-2xl"
+          class="text-m mx-3 flex w-1/2 items-center justify-center rounded-lg bg-white p-4 text-center hover:border-2 hover:bg-black hover:bg-opacity-50 hover:text-white lg:text-2xl"
           >Join Our Community</a
         >
         <a
           href="/cohorts"
-          class="text-m mx-3 flex w-1/2 items-center justify-center rounded-lg bg-black p-4 text-center text-white outline-dashed outline-white hover:bg-white hover:text-black lg:text-2xl"
+          class="text-m mx-3 flex w-1/2 items-center justify-center rounded-lg border-2 bg-black bg-opacity-50 p-4 text-center text-white hover:bg-white hover:text-black lg:text-2xl"
           >Check our Study Cohorts</a
         >
       </div>
