@@ -3,17 +3,57 @@ import Hamburger from "./hamburger";
 
 const Navbar = () => {
   const list = [
-    { name: "Org ↓ ", link: "https://bitshala.org" },
-    { name: "Bitcoin Career ↓", link: "/#bitcoin_career" },
     {
-      name: "Real Life Funzzz ↓",
-      link: "/#real_life_funzzz",
+      name: "Org ⇩",
+      link: "/org",
+      subMenu: [
+        { name: "About", link: "/org/about" },
+        {
+          name: "Contact us",
+          link: "/bitspace/#contact_us",
+        },
+      ],
     },
-    { name: "Social Clubs ↓", link: "/#social_clubs" },
     {
-      name: "Join our community ↓",
-      link: "/#join_our_community",
+      name: "Bitcoin Career ⇩",
+      link: "/#bitcoin_career",
+      subMenu: [
+        { name: "Study cohorts", link: "/cohorts" },
+        { name: "Fellowship", link: "/fellowship" },
+      ],
     },
+    {
+      name: "IRL Funzzz ⇩",
+      link: "/#irl_funzzz",
+      subMenu: [
+        { name: "Bitspace", link: "/bitspace" },
+        { name: "BITDEVS", link: "/bitdevs" },
+      ],
+    },
+    {
+      name: "Social Clubs ⇩",
+      link: "/#social_clubs",
+      subMenu: [
+        {
+          name: "Latest in Bitcoin Tech",
+          link: "/optech",
+        },
+        { name: "Reading Club", link: "/readingClub" },
+        {
+          name: "Bitcoin PR Review Club",
+          link: "/review",
+        },
+        {
+          name: "Hands-on Lightning",
+          link: "/hands-on-lightning",
+        },
+        { name: "Bitcoin Talks", link: "/talks" },
+      ],
+    },
+    // {
+    //   name: "Join our community",
+    //   link: "/#join_our_community",
+    // },
   ];
 
   return (
@@ -27,24 +67,42 @@ const Navbar = () => {
             />
           </a>
           <div className="flex justify-end">
-            {list.map(({ name, link }) => (
-              <a key={name} href={link}>
-                <div class="group relative">
-                  <button class=" mt-2 flex w-full flex-row items-center rounded-lg px-4 py-4 text-left text-base font-bold uppercase focus:outline-none md:ml-4 md:mt-0 md:inline md:w-auto">
-                    <span className="font-header text-white">
-                      {name}
-                    </span>
-                  </button>
-                  <div class="bg-grey-200 absolute z-10 hidden group-hover:block">
-                    <div class="bg-gray-200 bg-white px-2 pb-4 pt-2 shadow-lg">
-                      <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
-                        <p>dropdown content here</p>
-                      </div>
+            {list.map((item) => (
+              <div class="group relative">
+                <button class=" mt-2 flex w-full flex-row items-center rounded-lg px-4 py-4 text-left text-base font-bold uppercase focus:outline-none md:ml-4 md:mt-0 md:inline md:w-auto">
+                  <span className="font-header text-white">
+                    {item.name}
+                  </span>
+                </button>
+                <div class=" absolute z-10 hidden group-hover:block">
+                  <div class="bg-gray-200  px-2 pb-4 pt-2 shadow-lg">
+                    <div class="grid min-w-max grid-cols-1">
+                      {item.subMenu &&
+                        item.subMenu.map(
+                          ({ name, link }) => (
+                            <div class="flex flex-col bg-black bg-opacity-90 p-2 ">
+                              <a
+                                href={link}
+                                class="block rounded-lg p-2 text-orange  hover:text-white"
+                              >
+                                <p class="font-header text-xl font-bold">
+                                  {name}
+                                </p>
+                              </a>
+                            </div>
+                          ),
+                        )}
                     </div>
                   </div>
                 </div>
-              </a>
+              </div>
             ))}
+            <a
+              href=""
+              class="mt-2 flex w-full flex-row items-center rounded-lg bg-white px-4 pt-5 text-left font-header text-base font-bold uppercase text-black hover:bg-orange hover:text-white focus:outline-none md:ml-4 md:mt-0 md:inline md:w-auto"
+            >
+              Join Our Community
+            </a>
             <Hamburger client:only />
           </div>
         </div>
