@@ -2,13 +2,17 @@
 import { ta, dev, advisors } from "../common/list.js";
 ---
 
-<div
+<!-- <div
   class="my-8 text-center text-3xl font-bold md:text-6xl lg:text-9xl"
   id="our_people"
 >
   Our People
+</div> -->
+<div
+  class="my-5 text-center font-header text-2xl lg:mb-10 lg:text-8xl"
+>
+  Our Team
 </div>
-<div class="my-5 text-left text-3xl">Team</div>
 <div
   class="mt-2 grid grid-cols-1 gap-2 lg:grid-cols-2 lg:gap-x-12 lg:gap-y-6"
 >
@@ -22,7 +26,7 @@ import { ta, dev, advisors } from "../common/list.js";
           class="h-28 items-center p-3 lg:h-40"
         />
         <div class="flex w-full flex-col">
-          <div class="flex w-full justify-between px-5 py-3">
+          <div class="flex w-full justify-between px-1 py-3">
             <p
               class={`font-header text-xl font-bold ${member.headingColor} lg:text-5xl`}
             >
@@ -52,7 +56,7 @@ import { ta, dev, advisors } from "../common/list.js";
             </div>
           </div>
           <p
-            class={`lg:p3 px-1 ${member.textColor} text-sm lg:text-xl`}
+            class={`lg:p3 px-1 ${member.textColor} min-h-[90px] text-sm lg:text-xl`}
           >
             {member.desc}
           </p>
@@ -70,7 +74,7 @@ import { ta, dev, advisors } from "../common/list.js";
           class="h-28 items-center p-3 lg:h-40"
         />
         <div class="flex w-full flex-col">
-          <div class="flex w-full justify-between px-5 py-3">
+          <div class="flex w-full justify-between px-1 py-3">
             <p
               class={`font-header text-xl font-extrabold ${member.headingColor} lg:text-5xl`}
             >
@@ -100,7 +104,7 @@ import { ta, dev, advisors } from "../common/list.js";
             </div>
           </div>
           <p
-            class={`lg:p3 px-1 ${member.textColor} text-sm lg:text-xl`}
+            class={`lg:p3 px-1 ${member.textColor} min-h-[90px] text-sm lg:text-xl`}
           >
             {member.desc}
           </p>
@@ -110,7 +114,11 @@ import { ta, dev, advisors } from "../common/list.js";
   }
 </div>
 
-<div class="my-5 text-left text-3xl">Advisors</div>
+<div
+  class="my-5 text-center font-header text-2xl lg:text-6xl"
+>
+  Our Advisors
+</div>
 <div
   class="mt-2 grid grid-cols-1 gap-2 lg:grid-cols-2 lg:gap-x-12 lg:gap-y-6"
 >
@@ -124,7 +132,7 @@ import { ta, dev, advisors } from "../common/list.js";
           class="h-28 items-center p-3 lg:h-40"
         />
         <div class="flex w-full flex-col">
-          <div class="flex w-full justify-between px-5 py-3">
+          <div class="flex w-full justify-between px-1 py-3">
             <p
               class={`font-header text-xl font-extrabold ${member.headingColor} lg:text-5xl`}
             >
@@ -144,7 +152,7 @@ import { ta, dev, advisors } from "../common/list.js";
             </div>
           </div>
           <p
-            class={`lg:p3 px-1 py-1 ${member.textColor} text-sm lg:text-xl`}
+            class={`lg:p3 px-1 py-1 ${member.textColor} min-h-[90px] text-sm lg:text-xl`}
           >
             {member.desc}
           </p>
