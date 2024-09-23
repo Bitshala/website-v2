@@ -154,7 +154,7 @@ export const dev = [
   },
   {
     name: "Paperpsych",
-    desc: "A design ninja with a lot of good questions. Too many actually. So we hired him instead of answering.",
+    desc: "If he’s not designing, he’s writing copy or tweeting, if he’s not doing that, he’s planning events. If not that... he’s watching Mad Men!",
     image: "paperpsych",
     bgColor: "bg-orange",
     textColor: "text-black",

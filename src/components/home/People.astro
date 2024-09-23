@@ -2,17 +2,13 @@
 import { ta, dev, advisors } from "../common/list.js";
 ---
 
-<!-- <div
-  class="my-8 text-center text-3xl font-bold md:text-6xl lg:text-9xl"
-  id="our_people"
->
-  Our People
-</div> -->
 <div
-  class="my-5 text-center font-header text-2xl lg:mb-10 lg:text-8xl"
+  class="my-24 mb-24 text-center font-header text-3xl font-bold md:text-6xl lg:text-8xl"
+  id="our_people"
 >
   Our Team
 </div>
+
 <div
   class="mt-2 grid grid-cols-1 gap-2 lg:grid-cols-2 lg:gap-x-12 lg:gap-y-6"
 >
@@ -28,7 +24,7 @@ import { ta, dev, advisors } from "../common/list.js";
         <div class="flex w-full flex-col">
           <div class="flex w-full justify-between px-1 py-3">
             <p
-              class={`font-header text-xl font-bold ${member.headingColor} lg:text-5xl`}
+              class={`font-header text-xl font-bold ${member.headingColor} lg:text-4xl`}
             >
               {member.name}
             </p>
@@ -56,7 +52,7 @@ import { ta, dev, advisors } from "../common/list.js";
             </div>
           </div>
           <p
-            class={`lg:p3 px-1 ${member.textColor} min-h-[90px] text-sm lg:text-xl`}
+            class={`lg:p3 px-1 ${member.textColor} min-h-[90px] pr-8 text-sm lg:text-xl`}
           >
             {member.desc}
           </p>
@@ -67,16 +63,16 @@ import { ta, dev, advisors } from "../common/list.js";
   {
     dev.map((member) => (
       <div
-        class={`flex w-full items-center rounded-xl ${member.bgColor} ${member.textColor}}`}
+        class={`flex w-full items-center rounded-3xl ${member.bgColor} ${member.textColor}}`}
       >
         <img
           src={`/people/${member.image}.png`}
-          class="h-28 items-center p-3 lg:h-40"
+          class="h-28 items-center rounded-3xl p-5 pr-5 lg:h-40"
         />
         <div class="flex w-full flex-col">
           <div class="flex w-full justify-between px-1 py-3">
             <p
-              class={`font-header text-xl font-extrabold ${member.headingColor} lg:text-5xl`}
+              class={`font-header text-xl font-extrabold ${member.headingColor} lg:text-4xl`}
             >
               {member.name}
             </p>
@@ -88,7 +84,7 @@ import { ta, dev, advisors } from "../common/list.js";
               >
                 <img
                   src="/people/github.png"
-                  class="m-1 h-6 rounded bg-peach group-hover:bg-white lg:h-10"
+                  class="m-1 h-6 rounded bg-peach group-hover:bg-white lg:h-7"
                 />
               </a>
               <a
@@ -98,13 +94,13 @@ import { ta, dev, advisors } from "../common/list.js";
               >
                 <img
                   src="/people/twitter.png"
-                  class="m-1 h-6 rounded bg-peach group-hover:bg-white lg:h-10"
+                  class="m-1 mr-3 h-6 rounded bg-peach group-hover:bg-white lg:h-7"
                 />
               </a>
             </div>
           </div>
           <p
-            class={`lg:p3 px-1 ${member.textColor} min-h-[90px] text-sm lg:text-xl`}
+            class={`lg:p3 px-1 ${member.textColor} min-h-[90px] pr-8 text-sm lg:text-xl`}
           >
             {member.desc}
           </p>
@@ -115,7 +111,7 @@ import { ta, dev, advisors } from "../common/list.js";
 </div>
 
 <div
-  class="my-5 text-center font-header text-2xl lg:text-6xl"
+  class="my-24 text-center font-header text-2xl lg:text-5xl"
 >
   Our Advisors
 </div>
@@ -125,16 +121,16 @@ import { ta, dev, advisors } from "../common/list.js";
   {
     advisors.map((member) => (
       <div
-        class={`flex w-full items-center rounded-xl ${member.bgColor} ${member.textColor}}`}
+        class={`flex w-full items-center rounded-3xl pr-5  ${member.bgColor} ${member.textColor}}`}
       >
         <img
           src={`/people/${member.image}.png`}
-          class="h-28 items-center p-3 lg:h-40"
+          class="h-28 items-center p-5 lg:h-40"
         />
         <div class="flex w-full flex-col">
           <div class="flex w-full justify-between px-1 py-3">
             <p
-              class={`font-header text-xl font-extrabold ${member.headingColor} lg:text-5xl`}
+              class={`font-header text-xl font-extrabold ${member.headingColor} lg:text-4xl`}
             >
               {member.name}
             </p>
@@ -146,13 +142,13 @@ import { ta, dev, advisors } from "../common/list.js";
               >
                 <img
                   src="/people/twitter.png"
-                  class="m-1 h-8 rounded bg-peach group-hover:bg-white lg:h-10 "
+                  class="m-1 mr-3 h-8 rounded-xl bg-peach group-hover:bg-white lg:h-10 "
                 />
               </a>
             </div>
           </div>
           <p
-            class={`lg:p3 px-1 py-1 ${member.textColor} min-h-[90px] text-sm lg:text-xl`}
+            class={`lg:p3 px-1 ${member.textColor} min-h-[90px] pr-8 text-sm lg:text-xl`}
           >
             {member.desc}
           </p>
