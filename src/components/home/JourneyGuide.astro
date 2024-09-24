@@ -58,7 +58,7 @@ const list = [
 >
   <div class="mx-auto max-w-screen-xl">
     <h1
-      class="my-8 text-center font-header text-xl font-bold md:text-3xl lg:text-5xl"
+      class="my-8 text-center font-header text-xl font-bold md:text-3xl lg:text-6xl"
     >
       “And, if I wanted to start my Bitcoin dev journey with
       you, what would that look like?"
@@ -70,18 +70,18 @@ const list = [
       could look like with us...
     </p>
 
-    <div class="rounded-2xl lg:p-5">
+    <div class="lg:p-5">
       {
         list.map((item, i) => (
           <div
-            class={`my-5 flex w-full justify-between gap-2 rounded-lg bg-white py-3 lg:m-5 lg:gap-5 lg:p-5 ${
+            class={`my-5 flex w-full justify-between gap-2 rounded-3xl bg-white py-3 lg:m-5 lg:gap-5 lg:p-5 ${
               i % 2 == 0
                 ? "lg:flex-row"
                 : "lg:flex-row-reverse"
             } flex-col`}
           >
             <div class="mx-2 lg:mx-5 lg:pt-8">
-              <p class="mb-4 w-20 rounded-lg bg-black p-2 text-white">
+              <p class="mb-4 w-fit rounded-lg bg-black p-2 px-5 text-white">
                 {item.step}
               </p>
               <h3 class="font-header text-2xl">
