@@ -62,13 +62,13 @@ const Navbar = () => {
         <div class="m-auto flex w-full justify-between">
           <a href="/">
             <img
-              src="/footer/logo.png"
-              class="h-16 justify-start"
+              src="/home/logo.png"
+              class="ml-12 h-14  justify-start"
             />
           </a>
           <div className="flex justify-end">
             {list.map((item) => (
-              <div class="group relative">
+              <div class="group relative hidden lg:block">
                 <button class=" mt-2 flex w-full flex-row items-center rounded-lg px-4 py-4 text-left text-base font-bold uppercase focus:outline-none md:ml-4 md:mt-0 md:inline md:w-auto">
                   <span className="font-header text-white">
                     {item.name}
@@ -83,7 +83,7 @@ const Navbar = () => {
                             <div class="flex flex-col bg-black bg-opacity-90 p-2 ">
                               <a
                                 href={link}
-                                class="block rounded-lg p-2 text-orange  hover:text-white"
+                                class="block rounded-lg p-2 text-white  hover:text-orange"
                               >
                                 <p class="font-header text-xl font-bold">
                                   {name}
@@ -99,11 +99,13 @@ const Navbar = () => {
             ))}
             <a
               href=""
-              class="mt-2 flex w-full flex-row items-center rounded-lg bg-white px-4 pt-5 text-left font-header text-base font-bold uppercase text-black hover:bg-orange hover:text-white focus:outline-none md:ml-4 md:mt-0 md:inline md:w-auto"
+              class=" text hidden justify-center rounded-2xl bg-white text-center align-middle font-bold text-black hover:bg-orange hover:text-white lg:flex"
             >
               Join Our Community
             </a>
-            <Hamburger client:only />
+            <div className="sm:block lg:hidden">
+              <Hamburger client:only />
+            </div>
           </div>
         </div>
       </nav>
