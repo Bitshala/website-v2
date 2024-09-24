@@ -62,16 +62,16 @@ function Carousel() {
         cohorts, will help make <br /> your Bitcoin journey,
         much more smoother, accessible, and fun.
       </p>
-      <div className="mt-20 flex flex-col gap-7 md:grid md:grid-cols-2 lg:grid lg:grid-cols-3">
+      <div className="mt-20 flex flex-col gap-4 p-5 md:grid md:grid-cols-2  lg:grid lg:grid-cols-3 lg:gap-7 lg:p-0">
         {slides.map((slide, index) => (
           <div
             key={index}
             className="rounded-3xl bg-peach px-5 pb-5 pt-8"
           >
-            <h1 className="mb-3 px-3 font-header text-2xl lg:text-3xl">
+            <h1 className="mb-3 px-3 font-header text-xl lg:text-3xl">
               {slide.title}
             </h1>
-            <p className="mb-3 px-3 text-xl ">
+            <p className="mb-3 px-3 text-base lg:text-xl ">
               {slide.content}
             </p>
             <a

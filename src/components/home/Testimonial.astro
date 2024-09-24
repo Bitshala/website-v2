@@ -47,33 +47,57 @@ const list = [
     cohort: "on Mastering Bitcoin Cohort",
   },
 ];
+
+const imageList = [
+  [
+    "/testimonial/1.webp",
+    "/testimonial/2.webp",
+    "/testimonial/3.webp",
+  ],
+  [
+    "/testimonial/4.webp",
+    "/testimonial/5.webp",
+    "/testimonial/6.webp",
+  ],
+  ["/testimonial/7.webp", "/testimonial/8.webp"],
+];
 ---
 
 <div
-  class="mx-auto my-24 grid max-w-screen-xl grid-cols-1 gap-x-3 gap-y-4"
+  class="grid- mx-auto my-24 grid max-w-screen-xl grid-cols-1 gap-x-3 gap-y-4"
 >
-  {
-    list.map((item) => (
-      <div class="row-span-ful rounded-2xl border-2 border-orange p-5">
-        <p>{item.text}</p>
-        <section class="flex gap-4 overflow-hidden text-xl font-medium">
-          <img
-            loading="lazy"
-            src={item.img}
-            alt="img"
-            class="my-auto aspect-square w-[60px] shrink-0 self-stretch rounded-full object-contain"
-            alt="Lazysatoshi's profile picture"
-          />
-          <div class="my-auto flex flex-col justify-center self-stretch">
-            <h2 class="text-orange-500 text-orange">
-              {item.name}
-            </h2>
-            <p class="text-zinc-800 mt-3">{item.cohort}</p>
-          </div>
-        </section>
-      </div>
-    ))
-  }
+  <h1
+    class="my-4 text-center font-header text-xl font-bold md:text-3xl lg:my-8 lg:text-6xl"
+  >
+    Hear from others who’ve been in the <br />
+     same place you are right now
+  </h1>
+
+  <!-- <div
+    class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-4"
+  >
+    {
+      list.map((item, index) => (
+        <div class="row-span-full rounded-2xl border-2 border-orange p-5">
+          <p>{item.text}</p>
+          <section class="flex gap-4 overflow-hidden text-xl font-medium">
+            <img
+              loading="lazy"
+              src={item.img}
+              alt="img"
+              class="my-auto aspect-square w-[60px] shrink-0 self-stretch rounded-full object-contain"
+            />
+            <div class="my-auto flex flex-col justify-center self-stretch">
+              <h2 class="text-orange-500">{item.name}</h2>
+              <p class="text-zinc-800 mt-3">
+                {item.cohort}
+              </p>
+            </div>
+          </section>
+        </div>
+      ))
+    }
+  </div> -->
   <!-- <div
     class="row-span-full rounded-2xl border-2 border-orange p-5"
   >
@@ -118,4 +142,28 @@ const list = [
       </div>
     </section>
   </div> -->
+  <div
+    class="grid grid-cols-1 gap-4 p-5 lg:grid-cols-3 lg:p-0"
+  >
+    {
+      imageList.map((column, colIndex) => (
+        <div class="grid gap-4">
+          {column.map((image, imgIndex) => (
+            <div>
+              <img
+                class="lg:l rounded-lg md:h-auto md:max-w-full "
+                src={image}
+                alt=""
+              />
+            </div>
+          ))}
+        </div>
+      ))
+    }
+  </div>
+
+  <p class="px-5 text-center text-2xl lg:mb-10 lg:py-10">
+    P.S. "If I could do it, you can too" is what they’re all
+    trying to say :)
+  </p>
 </div>

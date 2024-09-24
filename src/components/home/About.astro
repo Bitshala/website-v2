@@ -1,16 +1,17 @@
 ---
-const list = [
+const trustedList = [
   {
     link: "/home/hrf.webp",
   },
-  {
-    link: "/home/bob.webp",
-  },
+
   {
     link: "/home/btrust.webp",
   },
+];
+
+const colabList = [
   {
-    link: "/home/chaincode.webp",
+    link: "/home/bob.webp",
   },
   {
     link: "/home/pts.webp",
@@ -38,27 +39,25 @@ const list = [
       Source Software) Devs</span
     >. Our mission is to equip people with the skills and
     knowledge needed to contribute to Bitcoin FOSS projects.
-
-
-    <br />
-     We want you to be part of the revolution.
   </p>
 
-  <div class="my-10 lg:my-32">
+  <div
+    class="m-5 flex rounded-3xl border-2 border-black border-opacity-5 bg-peach lg:m-0 lg:mb-8 lg:mt-32"
+  >
     <h1
-      class="my-8 font-header text-xl font-bold md:text-2xl lg:text-4xl"
+      class="my-3 font-header text-base font-bold lg:my-8 lg:w-1/2 lg:pl-3 lg:text-3xl"
     >
       Trusted and Supported by
     </h1>
     <div
-      class="grid grid-cols-7 items-center gap-6 lg:w-[120%] lg:gap-10"
+      class="flex items-center justify-end gap-6 pr-5 lg:w-[120%] lg:gap-10"
     >
       {
-        list.map((li) => (
+        trustedList.map((li) => (
           <a href={li.link}>
             <img
               src={li.link}
-              class="h-16 object-contain"
+              class="h-8 object-contain lg:h-16"
               alt="Bitshala Logo"
             />
           </a>
@@ -66,4 +65,56 @@ const list = [
       }
     </div>
   </div>
+  <div
+    class="m-5 flex rounded-3xl border-2 border-black border-opacity-5 bg-peach lg:m-0 lg:mb-32"
+  >
+    <h1
+      class="my-3 text-start font-header text-base font-bold lg:my-8 lg:w-1/2 lg:pl-3 lg:text-3xl"
+    >
+      In collaboration with
+    </h1>
+    <div
+      class="flex items-center justify-end gap-6 pr-5 lg:w-[120%] lg:gap-10"
+    >
+      {
+        colabList.map((li) => (
+          <a href={li.link}>
+            <img
+              src={li.link}
+              class="h-8 object-contain lg:h-16"
+              alt="Bitshala Logo"
+            />
+          </a>
+        ))
+      }
+    </div>
+  </div>
+  <p class="m-4 text-base md:text-lg lg:text-2xl">
+    We want you to be part of the revolution.
+  </p>
+
+  <!-- <div
+    class="m-5 my-10 flex rounded-3xl border-2 border-black border-opacity-5 bg-peach lg:m-0 lg:my-32"
+  >
+    <h1
+      class="my-3 font-header text-base font-bold lg:my-8 lg:w-1/2 lg:pl-3 lg:text-3xl"
+    >
+      Trusted and Supported by
+    </h1>
+    <div
+      class="flex items-center justify-end gap-6 pr-5 lg:w-[120%] lg:gap-10"
+    >
+      {
+        list.map((li) => (
+          <a href={li.link}>
+            <img
+              src={li.link}
+              class="h-8 object-contain lg:h-16"
+              alt="Bitshala Logo"
+            />
+          </a>
+        ))
+      }
+    </div>
+  </div> -->
 </div>

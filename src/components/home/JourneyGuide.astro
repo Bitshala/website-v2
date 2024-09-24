@@ -74,18 +74,20 @@ const list = [
       {
         list.map((item, i) => (
           <div
-            class={`m-5 flex w-full justify-between gap-2 rounded-lg bg-white lg:gap-5 lg:p-5 ${
-              i % 2 == 0 ? "flex-row" : "flex-row-reverse"
-            }`}
+            class={`my-5 flex w-full justify-between gap-2 rounded-lg bg-white py-3 lg:m-5 lg:gap-5 lg:p-5 ${
+              i % 2 == 0
+                ? "lg:flex-row"
+                : "lg:flex-row-reverse"
+            } flex-col`}
           >
             <div class="mx-2 lg:mx-5 lg:pt-8">
-              <p class="w-20 rounded-lg bg-black p-2 text-white">
+              <p class="mb-4 w-20 rounded-lg bg-black p-2 text-white">
                 {item.step}
               </p>
               <h3 class="font-header text-2xl">
                 {item.title}
               </h3>
-              <p>{item.desc}</p>
+              <p class="my-2">{item.desc}</p>
               <a
                 href={item.link}
                 class="text-orange hover:underline"
@@ -96,7 +98,7 @@ const list = [
             <div>
               <img
                 src={item.img}
-                class="h-[256px] w-[880px] rounded-2xl"
+                class="h-[256px] w-[880px] rounded-2xl p-2"
               />
             </div>
           </div>
