@@ -15,11 +15,11 @@ import { ta, dev, advisors } from "../common/list.js";
   {
     ta.map((member) => (
       <div
-        class={`flex w-full items-center rounded-xl ${member.bgColor} ${member.textColor}}`}
+        class={`flex w-full items-center rounded-3xl ${member.bgColor} ${member.textColor}}`}
       >
         <img
           src={`/people/${member.image}.png`}
-          class="h-28 items-center p-3 lg:h-40"
+          class="h-28 items-center rounded-3xl p-2 pl-2 lg:h-40 lg:p-5"
         />
         <div class="flex w-full flex-col">
           <div class="flex w-full justify-between px-1 py-3">
@@ -36,7 +36,7 @@ import { ta, dev, advisors } from "../common/list.js";
               >
                 <img
                   src="/people/github.png"
-                  class="m-1 h-6 rounded bg-peach group-hover:bg-white lg:h-10"
+                  class="m-1 h-6 rounded-lg bg-peach group-hover:bg-white lg:h-7"
                 />
               </a>
               <a
@@ -46,13 +46,13 @@ import { ta, dev, advisors } from "../common/list.js";
               >
                 <img
                   src="/people/twitter.png"
-                  class="m-1 h-6 rounded bg-peach group-hover:bg-white lg:h-10"
+                  class="m-1 mr-3 h-6 rounded-lg bg-peach group-hover:bg-white lg:h-7"
                 />
               </a>
             </div>
           </div>
           <p
-            class={`lg:p3 px-1 ${member.textColor} min-h-[90px] pr-8 text-sm lg:text-xl`}
+            class={`lg:p3 px-1 ${member.textColor} min-h-[90px] pr-3 text-sm lg:pr-8 lg:text-xl`}
           >
             {member.desc}
           </p>
@@ -67,7 +67,7 @@ import { ta, dev, advisors } from "../common/list.js";
       >
         <img
           src={`/people/${member.image}.png`}
-          class="h-28 items-center rounded-3xl p-5 pr-5 lg:h-40"
+          class="h-28 items-center rounded-3xl p-2 pl-2 lg:h-40 lg:p-5"
         />
         <div class="flex w-full flex-col">
           <div class="flex w-full justify-between px-1 py-3">
@@ -84,7 +84,7 @@ import { ta, dev, advisors } from "../common/list.js";
               >
                 <img
                   src="/people/github.png"
-                  class="m-1 h-6 rounded bg-peach group-hover:bg-white lg:h-7"
+                  class="m-1 h-6 rounded-lg bg-peach group-hover:bg-white lg:h-7"
                 />
               </a>
               <a
@@ -94,13 +94,13 @@ import { ta, dev, advisors } from "../common/list.js";
               >
                 <img
                   src="/people/twitter.png"
-                  class="m-1 mr-3 h-6 rounded bg-peach group-hover:bg-white lg:h-7"
+                  class="m-1 mr-3 h-6 rounded-lg bg-peach group-hover:bg-white lg:h-7"
                 />
               </a>
             </div>
           </div>
           <p
-            class={`lg:p3 px-1 ${member.textColor} min-h-[90px] pr-8 text-sm lg:text-xl`}
+            class={`lg:p3 px-1 ${member.textColor} min-h-[90px] pb-3 pr-3 text-sm lg:pr-8 lg:text-xl`}
           >
             {member.desc}
           </p>
@@ -116,16 +116,16 @@ import { ta, dev, advisors } from "../common/list.js";
   Our Advisors
 </div>
 <div
-  class="mt-2 grid grid-cols-1 gap-2 lg:grid-cols-2 lg:gap-x-12 lg:gap-y-6"
+  class="mb-5 grid grid-cols-1 gap-2 lg:mb-24 lg:grid-cols-2 lg:gap-x-12 lg:gap-y-6"
 >
   {
     advisors.map((member) => (
       <div
-        class={`flex w-full items-center rounded-3xl pr-5  ${member.bgColor} ${member.textColor}}`}
+        class={`flex w-full items-center rounded-3xl lg:pr-5  ${member.bgColor} ${member.textColor}}`}
       >
         <img
           src={`/people/${member.image}.png`}
-          class="h-28 items-center p-5 lg:h-40"
+          class="h-28 items-center rounded-3xl p-2 pl-2 lg:h-40 lg:p-5"
         />
         <div class="flex w-full flex-col">
           <div class="flex w-full justify-between px-1 py-3">
@@ -142,13 +142,13 @@ import { ta, dev, advisors } from "../common/list.js";
               >
                 <img
                   src="/people/twitter.png"
-                  class="m-1 mr-3 h-8 rounded-xl bg-peach group-hover:bg-white lg:h-10 "
+                  class="m-1 mr-3 h-6 rounded-lg bg-peach group-hover:bg-white lg:h-7 "
                 />
               </a>
             </div>
           </div>
           <p
-            class={`lg:p3 px-1 ${member.textColor} min-h-[90px] pr-8 text-sm lg:text-xl`}
+            class={`lg:p3 px-1 ${member.textColor} min-h-[90px] pr-3 text-sm lg:pr-8 lg:text-xl`}
           >
             {member.desc}
           </p>
