@@ -7,6 +7,13 @@ import {
   FaYoutube,
   FaLinkedin,
 } from "react-icons/fa";
+import { MdKeyboardArrowDown } from "react-icons/md";
+
+import {
+  Accordion,
+  AccordionHeader,
+  AccordionBody,
+} from "@material-tailwind/react";
 
 const Hamburger = () => {
   const [open, setOpen] = useState(false);
@@ -60,59 +67,65 @@ const Hamburger = () => {
 };
 
 const SideMenu = () => {
-  const links = [
+  const [open, setOpen] = useState(1);
+
+  const handleOpen = (value: number) =>
+    setOpen(open === value ? 0 : value);
+
+  const list = [
     {
-      name: "Home",
-      url: "/",
-      desc: "Back to the home page.",
+      name: "Org",
+      link: "/org",
+      subMenu: [
+        { name: "About", link: "/org/about" },
+        {
+          name: "Contact us ",
+          link: "/bitspace/#contact_us",
+        },
+      ],
     },
     {
-      name: "Cohorts",
-      url: "/cohorts",
-      desc: "Learn Bitcoin Technicals via Self-Study Cohort Programs.",
+      name: "Bitcoin Career",
+      link: "/#bitcoin_career",
+      subMenu: [
+        { name: "Study cohorts", link: "/cohorts" },
+        { name: "Fellowship", link: "/fellowship" },
+      ],
     },
     {
-      name: "Fellowship",
-      url: "/fellowship",
-      desc: "Bitshala's paid fellowship program.",
+      name: "IRL Funzzz",
+      link: "/#irl_funzzz",
+      subMenu: [
+        { name: "Bitspace", link: "/bitspace" },
+        { name: "BITDEVS", link: "/meetup" },
+      ],
     },
     {
-      name: "Meetups",
-      url: "/meetup",
-      desc: "Come, hang with us in the Meetups",
+      name: "Social Clubs ",
+      link: "/#social_clubs",
+      subMenu: [
+        {
+          name: "Latest in Bitcoin Tech",
+          link: "/optech",
+        },
+        { name: "Reading Club", link: "/readingClub" },
+        {
+          name: "Bitcoin PR Review Club",
+          link: "/review",
+        },
+        {
+          name: "Hands-on Lightning",
+          link: "/hands-on-lightning",
+        },
+        { name: "Bitcoin Talks", link: "/talks" },
+      ],
     },
-    {
-      name: "Reading Club",
-      url: "/readingClub",
-      desc: "Weekly reading club for Bitcoin learners",
-    },
-    {
-      name: "Review Club",
-      url: "/review",
-      desc: "Deep-dive into Bitcoin Core via bi-weekly PR Review Clubs.",
-    },
-    {
-      name: "Optech",
-      url: "/optech",
-      desc: "Bitcoin Optech Weekly Deep Dive Series",
-    },
-    {
-      name: "Talks",
-      url: "/talks",
-      desc: "Learn about Bitcoin through insightful conversations",
-    },
-    {
-      name: "Bitspace",
-      url: "/bitspace",
-      desc: "India’s Bitcoin-Only community hub for Bitcoin enthusiasts!",
-    },
-    {
-      name: "Join our Discord!",
-      url: "https://discord.com/invite/STeQFVEWf9",
-      tar: "_blank",
-      desc: "Join our Discord and be a part of the biggest technical bitcoin community",
-    },
+    // {
+    //   name: "Join our community",
+    //   link: "/#join_our_community",
+    // },
   ];
+
   return (
     <div className="flex h-full w-full flex-col pb-[10%] pt-16">
       <div className="mb-7 flex">
@@ -146,22 +159,38 @@ const SideMenu = () => {
         </div>
       </div>
 
-      <ul className="flex h-1/2 flex-col justify-between">
-        {links.map((link) => {
-          return (
-            <a href={link.url} target={link.tar}>
-              <div className="flex ">
-                <p className="flex w-80 items-center font-header text-3xl font-bold text-white hover:text-orange lg:text-4xl">
-                  {link.name}
-                </p>
-                <p className="mx-10 mt-1 hidden items-center justify-center text-xl text-peach lg:flex">
-                  {link.desc}
-                </p>
-              </div>
-            </a>
-          );
-        })}
-      </ul>
+      {list.map((item, index) => {
+        return (
+          <Accordion key={index} open={open === index + 1}>
+            <AccordionHeader
+              className="font-header text-2xl text-white "
+              onClick={() => handleOpen(index + 1)}
+            >
+              {item.name}
+              <MdKeyboardArrowDown className="-ml-5" />
+            </AccordionHeader>
+            <AccordionBody>
+              {item.subMenu.map((subItem) => {
+                return (
+                  <div
+                    className="ml-2 font-header text-lg text-white"
+                    key={subItem.name}
+                  >
+                    <a href={subItem.link}>
+                      - {subItem.name}
+                    </a>
+                  </div>
+                );
+              })}
+            </AccordionBody>
+          </Accordion>
+        );
+      })}
+      <p className="font-header text-2xl text-white">
+        <a href="https://discord.com/invite/STeQFVEWf9">
+          Join Discord
+        </a>
+      </p>
     </div>
   );
 };
