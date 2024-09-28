@@ -3,7 +3,7 @@ const list = [
   {
     name: "Org ",
     subMenu: [
-      { name: "About", link: "/org/about" },
+      { name: "About", link: "/about" },
       {
         name: "Contact us",
         link: "/bitspace/#contact_us",
@@ -49,7 +49,9 @@ const list = [
 <footer class="mt-5 bg-black pb-10 text-white lg:py-14">
   <div>
     <div class="flex flex-col lg:flex-row">
-      <div class="flex justify-center p-10 lg:w-2/5">
+      <div
+        class="hidden justify-center p-10 lg:flex lg:w-2/5"
+      >
         <img
           src="/footer/logo.png"
           class="h-16"
@@ -69,12 +71,12 @@ const list = [
       <!-- <p class="text-sm">Copyright © 2024 Bitshala</p> -->
       <div class="lg:w-3/5">
         <div
-          class="m-3 rounded-lg bg-white p-4 text-black lg:m-10 lg:flex lg:w-fit"
+          class="m-3 rounded-lg bg-white p-4 text-lg text-black lg:m-10 lg:flex lg:w-fit lg:text-2xl"
         >
           <div class="p-5">
             We got a <span class="font-bold"
               >discord community</span
-            > of hungry and passionate Bitcoin
+            > of hungry <br /> and passionate Bitcoin
             developers....
           </div>
           <a
@@ -82,7 +84,7 @@ const list = [
             target="_blank"
           >
             <div
-              class="rounded-lg bg-black p-5 text-white hover:bg-orange"
+              class="rounded-lg bg-black p-5 text-white hover:bg-orange lg:mt-3"
             >
               Ahh.. I think I'll fit right in
             </div>
@@ -93,7 +95,7 @@ const list = [
   </div>
   <div class="flex flex-col lg:flex-row-reverse">
     <div
-      class="grid grid-cols-2 p-2 lg:w-3/5 lg:grid-cols-4"
+      class="ml-3 grid grid-cols-2 p-2 lg:ml-36 lg:mr-56 lg:w-3/5 lg:grid-cols-4"
     >
       {
         list.map((item) => (
@@ -119,22 +121,42 @@ const list = [
         ))
       }
     </div>
-    <div class="mt-5 flex flex-col items-center lg:w-2/5">
+    <div
+      class="mt-5 flex flex-row-reverse items-center px-3 sm:justify-between lg:ml-28 lg:w-2/5 lg:flex-col lg:justify-normal"
+    >
       <div class="flex gap-4">
-        <a href="">
-          <img src="/logo/1.png" class="h-10" alt="" />
+        <a href="https://x.com/bitshala">
+          <img
+            src="/logo/1.png"
+            class="h-5 lg:h-10"
+            alt=""
+          />
+        </a>
+        <a href="https://www.youtube.com/@bitshala">
+          <img
+            src="/logo/2.png"
+            class="h-5 lg:h-10"
+            alt=""
+          />
+        </a>
+        <a href="https://www.linkedin.com/company/bitshala">
+          <img
+            src="/logo/3.png"
+            class="h-5 lg:h-10"
+            alt=""
+          />
         </a>
         <a href="">
-          <img src="/logo/2.png" class="h-10" alt="" />
-        </a>
-        <a href="">
-          <img src="/logo/3.png" class="h-10" alt="" />
-        </a>
-        <a href="">
-          <img src="/logo/4.png" class="h-10" alt="" />
+          <img
+            src="/logo/4.png"
+            class="h-5 lg:h-10"
+            alt=""
+          />
         </a>
       </div>
-      <p class="text-md mt-5">Copyright © 2024 Bitshala</p>
+      <p class="text-md mt-5 px-1">
+        Copyright © 2024 Bitshala
+      </p>
     </div>
   </div>
 </footer>
