@@ -4,7 +4,7 @@ const slides = [
     title: "Latest in Bitcoin Tech",
     content:
       "Stay updated and explore the latest developments in Bitcoin tech",
-    targetLink: "/",
+    targetLink: "/optech",
     cta: "Start staying updated  → ",
   },
   {
@@ -12,7 +12,7 @@ const slides = [
     title: "Bitcoin Reading Club",
     content:
       "Learn from non-tech Bitcoin books with fun community reading sessions",
-    targetLink: "/reading-club",
+    targetLink: "/readingClub",
     cta: "Join the club   → ",
   },
   {
@@ -44,7 +44,7 @@ const slides = [
     title: "Bitshala Fellowship (Paid)",
     content:
       "Kickstart your Bitcoin FOSS career with hands-on work on real-world projects",
-    targetLink: "/apprenticeship/fellowship",
+    targetLink: "/fellowship",
     cta: "Apply for a fellowship  → ",
   },
 ];
