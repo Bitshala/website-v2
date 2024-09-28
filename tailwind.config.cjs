@@ -14,7 +14,11 @@ module.exports = {
       header: "Apfel Grotezk, sans-serif",
       base: "Satoshi, sans-serif",
     },
-    extend: {},
+    extend: {
+      fontWeight: {
+        bold: "700", // Ensures bold is 700, typical for headers
+      },
+    },
   },
   plugins: [],
 };

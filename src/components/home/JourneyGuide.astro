@@ -7,7 +7,7 @@ const list = [
     link: "https://discord.com/invite/STeQFVEWf9",
     buttonText: "Take me to Discord  →",
     step: "Step 01",
-    img: "/carousel/discord.webp",
+    img: "/journeyGuide/1.webp",
     isLeft: true,
   },
   {
@@ -17,7 +17,7 @@ const list = [
     link: "https://discord.com/invite/STeQFVEWf9",
     buttonText: "Show me the clubs  →",
     step: "Step 02",
-    img: "/carousel/discord.webp",
+    img: "/journeyGuide/2.webp",
     isLeft: false,
   },
   {
@@ -27,7 +27,7 @@ const list = [
     link: "/cohorts/",
     buttonText: "Let me explore the cohorts  →",
     step: "Step 03",
-    img: "/carousel/discord.webp",
+    img: "/journeyGuide/3.webp",
     isLeft: true,
   },
   {
@@ -37,7 +37,7 @@ const list = [
     link: "https://discord.com/invite/STeQFVEWf9",
     buttonText: "Tell me more about the fellowship  →",
     step: "Step 04",
-    img: "/carousel/discord.webp",
+    img: "/journeyGuide/4.webp",
     isLeft: false,
   },
   {
@@ -47,7 +47,7 @@ const list = [
     link: "https://discord.com/invite/STeQFVEWf9",
     buttonText: "I’d like to know more about Bitspace  →",
     step: "Step 05",
-    img: "/carousel/discord.webp",
+    img: "/journeyGuide/5.webp",
     isLeft: true,
   },
 ];
@@ -58,7 +58,7 @@ const list = [
 >
   <div class="mx-auto max-w-screen-xl">
     <h1
-      class="my-8 text-center font-header text-xl font-bold md:text-3xl lg:text-6xl"
+      class="my-8 text-center font-header text-2xl font-bold md:text-3xl lg:text-6xl"
     >
       “And, if I wanted to start my Bitcoin dev journey with
       you, what would that look like?"
@@ -74,17 +74,17 @@ const list = [
       {
         list.map((item, i) => (
           <div
-            class={`my-5 flex w-full justify-between gap-2 rounded-3xl bg-white py-3 lg:m-5 lg:gap-5 lg:p-5 ${
+            class={`my-5 flex w-full justify-between gap-2 rounded-3xl bg-white px-3 py-5 lg:m-5 lg:gap-5 lg:p-5 lg:py-3 ${
               i % 2 == 0
                 ? "lg:flex-row"
                 : "lg:flex-row-reverse"
             } flex-col`}
           >
-            <div class="mx-2 lg:mx-5 lg:pt-8">
+            <div class="mx-2 lg:mx-5 lg:w-[65rem] lg:pt-8">
               <p class="mb-4 w-fit rounded-lg bg-black p-2 px-5 text-white">
                 {item.step}
               </p>
-              <h3 class="font-header text-2xl">
+              <h3 class="font-header text-2xl ">
                 {item.title}
               </h3>
               <p class="my-2">{item.desc}</p>
@@ -98,7 +98,7 @@ const list = [
             <div>
               <img
                 src={item.img}
-                class="h-[256px] w-[880px] rounded-2xl p-2"
+                class="aspect-video h-48 rounded-2xl p-2 lg:aspect-video lg:h-auto lg:w-[1090px] "
               />
             </div>
           </div>

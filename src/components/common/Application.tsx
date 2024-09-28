@@ -405,7 +405,7 @@ const Application = ({
         </>
       ) : (
         <div className="my-10 items-center justify-center text-center">
-          <h1 className="font-header text-3xl font-bold text-orange lg:text-5xl">
+          <h1 className="font-header text-3xl font-bold  text-orange lg:text-5xl">
             Registration is not open right now
           </h1>
           <p className="my-2 lg:text-xl">

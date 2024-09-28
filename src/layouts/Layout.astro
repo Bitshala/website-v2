@@ -143,41 +143,90 @@ const { title, headerProps, isVisible } = Astro.props;
   <style>
     @font-face {
       font-family: "Satoshi";
-      src: url("/fonts/Satoshi-Medium.otf")
-        format("opentype");
+      src:
+        url("/fonts/Satoshi-Medium.woff2") format("woff2"),
+        url("/fonts/Satoshi-Medium.otf") format("opentype");
       font-weight: normal;
       font-style: normal;
       font-display: swap;
     }
+
     @font-face {
       font-family: "Satoshi";
-      src: url("/fonts/Satoshi-Bold.otf") format("opentype");
+      src:
+        url("/fonts/Satoshi-Bold.woff2") format("woff2"),
+        url("/fonts/Satoshi-Bold.otf") format("opentype");
       font-weight: bold;
       font-style: normal;
       font-display: swap;
     }
+
+    @font-face {
+      font-family: "Satoshi";
+      src:
+        url("/fonts/Satoshi-Medium.woff2") format("woff2"),
+        url("/fonts/Satoshi-Medium.otf") format("opentype");
+      font-weight: normal;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: "Satoshi";
+      src:
+        url("/fonts/Satoshi-Bold.woff2") format("woff2"),
+        url("/fonts/Satoshi-Bold.otf") format("opentype");
+      font-weight: bold;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    /* Apfel Grotezk for headers and bold text */
     @font-face {
       font-family: "Apfel Grotezk";
-      src: url("/fonts/ApfelGrotezk-Mittel.otf")
-        format("opentype");
-      font-weight: bold;
+      src:
+        url("/fonts/ApfelGrotezk-Mittel.woff2")
+          format("woff2"),
+        url("/fonts/ApfelGrotezk-Mittel.otf")
+          format("opentype");
+      font-weight: 500; /* Mittel weight */
       font-style: normal;
       font-display: swap;
     }
+
     @font-face {
       font-family: "Apfel Grotezk";
-      src: url("/fonts/ApfelGrotezk-Fett.otf")
-        format("opentype");
-      font-weight: bold;
+      src:
+        url("/fonts/ApfelGrotezk-Fett.woff2")
+          format("woff2"),
+        url("/fonts/ApfelGrotezk-Fett.otf")
+          format("opentype");
+      font-weight: 700; /* Fett weight (bold) */
       font-style: normal;
       font-display: swap;
     }
+
+    /* Default font for body text */
     html {
       font-family: "Satoshi", sans-serif;
     }
-    h1 {
+
+    /* Headers use Apfel Grotezk and are bold */
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
       font-family: "Apfel Grotezk", sans-serif;
-      font-weight: bold;
+      font-weight: bold; /* Fett weight applied */
+    }
+
+    /* All bold text uses Apfel Grotezk */
+    b,
+    strong {
+      font-family: "Apfel Grotezk", sans-serif;
+      font-weight: bold; /* Fett weight applied */
     }
   </style>
 </html>

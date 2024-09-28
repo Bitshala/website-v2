@@ -14,7 +14,7 @@ const isProd = import.meta.env.PROD;
 const videoConfig = isProd
   ? await getPlaylistDetails(
       "PLdHBT9oS8yMW9rp2_plnJVPYAEAIrDmVL",
-      import.meta.env.GOOGLE_KEY
+      import.meta.env.GOOGLE_KEY,
     )
   : mockedVideoConfig.slice(-6);
 
@@ -58,7 +58,7 @@ const isVisible = true;
 >
   <div slot="headerChild" class="mt-8 lg:mt-16">
     <h1
-      class="text-center font-header text-4xl text-white md:text-6xl lg:text-8xl"
+      class="text-center font-header text-4xl font-bold text-white md:text-6xl lg:text-8xl"
     >
       Inner glimpses of <span class="text-orange"
         >Bitcoin Core</span

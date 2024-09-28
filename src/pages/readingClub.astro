@@ -8,7 +8,7 @@ import Calender from "../components/common/Calender.astro";
 
 const videoConfig = await getPlaylistDetails(
   "PLdHBT9oS8yMVj4DgL1AUpKUnFsYmVWPpj",
-  import.meta.env.GOOGLE_KEY
+  import.meta.env.GOOGLE_KEY,
 );
 
 const headerProps = {
@@ -27,7 +27,7 @@ const isVisible = true;
     class="flex flex-col items-center justify-center"
   >
     <h1
-      class="text-center font-header text-4xl text-white md:text-6xl lg:text-9xl"
+      class="text-center font-header text-4xl font-bold text-white md:text-6xl lg:text-9xl"
     >
       Bitshala Bitcoin Reading Clubs
     </h1>

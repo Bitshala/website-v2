@@ -33,12 +33,14 @@ const takeaways = [
 
 <div class="lg:p-8">
   <h1
-    class="mb-3 mt-8 font-header text-3xl md:text-6xl lg:text-6xl"
+    class="mb-3 mt-8 font-header text-3xl font-bold md:text-6xl lg:text-6xl"
     id="about_us"
   >
     Learn Bitcoin from the Command Line
   </h1>
-  <h3 class="mb-5 font-header text-xl lg:text-3xl">
+  <h3
+    class="mb-5 font-header text-xl font-bold lg:text-3xl"
+  >
     Cohort Kicking off on <span class="text-orange"
       >13th September 2024</span
     >
@@ -95,7 +97,9 @@ const takeaways = [
       {
         takeaways.map((takeaway) => (
           <li class="my-4 lg:text-2xl">
-            <span class="font-header">{takeaway.name}</span>{" "}
+            <span class="font-header font-bold">
+              {takeaway.name}
+            </span>{" "}
             : {takeaway.desc}
           </li>
         ))

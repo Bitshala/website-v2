@@ -1,169 +1,55 @@
 ---
-const list = [
-  {
-    text: "The questions and practical exercises. I think they are very well designed to make you deeply reflect on the studied topic. It help me a lot to consolidate knowledge. The kindle and super fast support from bitshala team and the rest of bitshala comunity. Sharing knowledge, experience and a lot of good stuff. I was awesome to me you all. I loved the day when instead of following the planned agenda and discussing the weekly questions, there was a debate on philosophical and profound topics about money and bitcoin. It was great!",
-    name: "Lazysatoshi",
-    cohort: "on Study Cohorts",
-    img: "/testimonial/lazy.webp",
-  },
-  {
-    text: "Anyone spending four hours of their evenings, in a week, can gain valuable knowledge and experience about technical, economic and philosophical landscape of Bitcoin. The community makes learning fun and effective for me.",
-    name: "Faisal Qureshi",
-    cohort: "on Mastering Bitcoin Cohort",
-    img: "/testimonial/faisal.webp",
-  },
-  {
-    text: "I feel elated to be a part of the first cohort of graduates from Bitshala, and I hope that it turns into a beacon of Bitcoin literacy in India. It's a tailor-made platform and an avenue of great resources for those who are keen on traversing on a path to learning and imparting Bitcoin education.",
-    name: "Bala",
-    cohort: "on Club Activities",
-    img: "/testimonial/bala.webp",
-  },
-  {
-    text: "I came across Bitshala while working on an SOB assignment and decided to join their Bitcoin Protocol Development cohort. Honestly,",
-    name: "Rishabh",
-    cohort: "on Study Cohorts",
-    img: "/testimonial/rishabh.webp",
-  },
-  {
-    text: "Participating in the Programming Bitcoin cohort was one of the most transformative experience for me. The sessions provided invaluable clarity on key concepts such as public key cryptography, giving me a crystal-clear understanding. It was a pivotal moment in my Bitcoin journey that boosted my confidence in mastering Bitcoin's technical aspects.",
-    name: "Tanveer",
-    cohort: "on BPD & Bitshala Community",
-    img: "/testimonial/tanveer.webp",
-  },
-  {
-    text: "Anyone spending four hours of their evenings, in a week, can gain valuable knowledge and experience about technical, economic and philosophical landscape of Bitcoin. The community makes learning fun and effective for me.",
-    name: "Claddy",
-    cohort: "on PB Cohort",
-    img: "/testimonial/claddy.webp",
-  },
-  {
-    text: "If you’re a bitcoin user, you'd like to have a front row 'chair' over all things bitcoin. Bitshala fixes this!",
-    name: "Person Name",
-    cohort: "Cohort name or job title",
-  },
-  {
-    text: "MangoElephant",
-    name: "Rishabh",
-    cohort: "on Mastering Bitcoin Cohort",
-  },
-];
+import { testimonial } from "../common/list.js";
+import TestimonialMobile from "./TestimonialMobile";
 
 const imageList = [
+  ["/testimonial/1.webp", "/testimonial/2.webp"],
   [
-    "/testimonial/1.webp",
-    "/testimonial/2.webp",
     "/testimonial/3.webp",
-  ],
-  [
     "/testimonial/4.webp",
     "/testimonial/5.webp",
-    "/testimonial/6.webp",
   ],
-  ["/testimonial/7.webp", "/testimonial/8.webp"],
+  ["/testimonial/6.webp", "/testimonial/7.webp"],
 ];
 ---
 
-<div
-  class="grid- mx-auto my-24 grid max-w-screen-xl grid-cols-1 gap-x-3 gap-y-4"
->
-  <h1
-    class="my-4 text-center font-header text-xl font-bold md:text-3xl lg:my-8 lg:text-6xl"
-  >
-    Hear from others who’ve been in the <br />
-     same place you are right now
-  </h1>
-
-  <!-- <div
-    class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-4"
-  >
-    {
-      list.map((item, index) => (
-        <div class="row-span-full rounded-2xl border-2 border-orange p-5">
-          <p>{item.text}</p>
-          <section class="flex gap-4 overflow-hidden text-xl font-medium">
-            <img
-              loading="lazy"
-              src={item.img}
-              alt="img"
-              class="my-auto aspect-square w-[60px] shrink-0 self-stretch rounded-full object-contain"
-            />
-            <div class="my-auto flex flex-col justify-center self-stretch">
-              <h2 class="text-orange-500">{item.name}</h2>
-              <p class="text-zinc-800 mt-3">
-                {item.cohort}
-              </p>
-            </div>
-          </section>
-        </div>
-      ))
-    }
-  </div> -->
-  <!-- <div
-    class="row-span-full rounded-2xl border-2 border-orange p-5"
-  >
-    <p>
-      The questions and practical exercises. I think they
-      are very well designed to make you deeply reflect on
-      the studied topic. It help me a lot to consolidate
-      knowledge. The kindle and super fast support from
-      bitshala team and the rest of bitshala comunity.
-      Sharing knowledge, experience and a lot of good stuff.
-      I was awesome to me you all. I loved the day when
-      instead of following the planned agenda and discussing
-      the weekly questions, there was a debate on
-      philosophical and profound topics about money and
-      bitcoin. It was great! The questions and practical
-      exercises. I think they are very well designed to make
-      you deeply reflect on the studied topic. It help me a
-      lot to consolidate knowledge. The kindle and super
-      fast support from bitshala team and the rest of
-      bitshala comunity. Sharing knowledge, experience and a
-      lot of good stuff. I was awesome to me you all. I
-      loved the day when instead of following the planned
-      agenda and discussing the weekly questions, there was
-      a debate on philosophical and profound topics about
-      money and bitcoin. It was great!
-    </p>
-    <section
-      class="flex gap-4 overflow-hidden text-xl font-medium"
-    >
-      <img
-        loading="lazy"
-        src=""
-        alt="img"
-        class="my-auto aspect-square w-[60px] shrink-0 self-stretch rounded-full object-contain"
-        alt="Lazysatoshi's profile picture"
-      />
-      <div
-        class="my-auto flex flex-col justify-center self-stretch"
-      >
-        <h2 class="text-orange-500">Lazysatoshi</h2>
-        <p class="text-zinc-800 mt-3">on Study Cohorts</p>
-      </div>
-    </section>
-  </div> -->
+<div>
   <div
-    class="mt-9 grid grid-cols-2 gap-4 p-5 lg:grid-cols-3 lg:p-0"
+    class="mx-auto my-24 grid max-w-screen-xl grid-cols-1 gap-x-3 gap-y-4"
   >
-    {
-      imageList.map((column, colIndex) => (
-        <div class="grid gap-4">
-          {column.map((image, imgIndex) => (
-            <div>
-              <img
-                class="lg:l rounded-lg md:h-auto md:max-w-full "
-                src={image}
-                alt=""
-              />
-            </div>
-          ))}
-        </div>
-      ))
-    }
-  </div>
+    <h1
+      class="my-4 text-center font-header text-xl font-bold md:text-3xl lg:my-8 lg:text-6xl"
+    >
+      Hear from others who’ve been in the <br />
+       same place you are right now
+    </h1>
 
-  <p class="px-5 text-center text-2xl lg:mb-10 lg:py-10">
-    P.S. "If I could do it, you can too" is what they’re all
-    trying to say :)
-  </p>
+    <div
+      class="mt-9 hidden grid-cols-2 gap-4 p-5 lg:grid lg:grid-cols-3 lg:p-0"
+    >
+      {
+        imageList.map((column, colIndex) => (
+          <div class="grid gap-4">
+            {column.map((image, imgIndex) => (
+              <div>
+                <img
+                  class="h-full rounded-lg "
+                  src={image}
+                  alt=""
+                />
+              </div>
+            ))}
+          </div>
+        ))
+      }
+    </div>
+
+    <div class="md:hidden">
+      <TestimonialMobile client:load />
+    </div>
+  </div>
 </div>
+<p class="mb-10 px-2 text-center text-2xl lg:mb-64">
+  P.S. "If I could do it, you can too" is what they’re all
+  trying to say :)
+</p>

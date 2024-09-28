@@ -24,7 +24,7 @@ const PreviouslyCovered = () => {
   return (
     <div>
       <div>
-        <h1 className="mb-5 mt-10 font-header text-5xl">
+        <h1 className="mb-5 mt-10 font-header text-5xl font-bold">
           Previously Covered Books
         </h1>
         <p className="mb-10 text-xl">
@@ -45,7 +45,7 @@ const PreviouslyCovered = () => {
                   className=" aspect-auto py-2"
                 />
                 <div className="">
-                  <h1 className="mb-2 mt-2 font-header text-2xl">
+                  <h1 className="mb-2 mt-2 font-header text-2xl font-bold">
                     {item.title}
                   </h1>
                   <p className="text-lg">{item.desc}</p>

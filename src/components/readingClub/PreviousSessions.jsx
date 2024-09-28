@@ -11,7 +11,9 @@ const PreviousSessions = ({
   return (
     <div>
       <div class="my-5 items-center rounded-xl bg-[#fff] p-10 text-center shadow-lg">
-        <h1 class="mb-5 font-header text-5xl">{heading}</h1>
+        <h1 class="mb-5 font-header text-5xl font-bold">
+          {heading}
+        </h1>
         <p class="mb-8 text-xl">{description}</p>
 
         <a
@@ -46,7 +48,7 @@ const PreviousSessions = ({
                 ></iframe>
 
                 <div class="my-2 flex flex-col lg:mx-5">
-                  <h1 class="font-header text-2xl text-orange lg:mb-5 lg:text-3xl">
+                  <h1 class="font-header font-bold text-2xl text-orange lg:mb-5 lg:text-3xl">
                     {video.title.slice(0, 55)}...
                   </h1>
                   <p class="text-sm lg:text-lg">

@@ -36,8 +36,12 @@ import { reviewClubTa } from "../common/list";
   <div class="flex flex-col lg:flex-row">
     <div class="p-3 lg:w-4/5 lg:p-10">
       <p>The Deets</p>
-      <h1 class="font-header text-5xl">How does it work</h1>
-      <p class="my-8 font-header text-2xl">
+      <h1 class="font-header text-5xl font-bold">
+        How does it work
+      </h1>
+      <p
+        class="my-8 font-header text-2xl font-bold font-medium"
+      >
         How to participate
       </p>
       <ul class="mt-5">
@@ -91,7 +95,7 @@ import { reviewClubTa } from "../common/list";
           {
             format.map((item) => (
               <div>
-                <h2 class="font-header text-xl font-bold lg:text-2xl">
+                <h2 class="font-header text-xl font-bold  lg:text-2xl">
                   {item.name}
                 </h2>
                 <p class="lg:text-lg">{item.desc}</p>

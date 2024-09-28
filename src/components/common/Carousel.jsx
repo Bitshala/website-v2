@@ -1,6 +1,6 @@
 const slides = [
   {
-    url: "/apprenticeship/optech.png",
+    url: "/carousel/optech.webp",
     title: "Latest in Bitcoin Tech",
     content:
       "Stay updated and explore the latest developments in Bitcoin tech",
@@ -8,7 +8,7 @@ const slides = [
     cta: "Start staying updated  → ",
   },
   {
-    url: "/apprenticeship/readingClub.webp",
+    url: "/carousel/readingClub.webp",
     title: "Bitcoin Reading Club",
     content:
       "Learn from non-tech Bitcoin books with fun community reading sessions",
@@ -16,7 +16,7 @@ const slides = [
     cta: "Join the club   → ",
   },
   {
-    url: "/apprenticeship/reviewClub.webp",
+    url: "/carousel/reviewClub.webp",
     title: "Bitcoin PR Review Club",
     content:
       "Review Bitcoin Core PRs together and sharpen your dev skills along the way",
@@ -24,15 +24,15 @@ const slides = [
     cta: "Review PRs together  → ",
   },
   {
-    url: "/bitspace/bengaluruBitdev.webp",
+    url: "/carousel/bitdev.webp",
     title: "Bengaluru BITDEVS",
     content:
-      "Join us offline for an evening of Bitcoin tech learning and fun",
+      "JJoin us offline for an evening of diving deep into Bitcoin tech with bitcoiners",
     targetLink: "/meetup",
     cta: "Tell me more  → ",
   },
   {
-    url: "/cohort/mb.webp",
+    url: "/carousel/cohort.webp",
     title: "Bitcoin Study Cohorts",
     content:
       "Dive deeper into Bitcoin tech with fellow learners and aspiring developers",
@@ -40,7 +40,7 @@ const slides = [
     cta: "Check out the cohorts   → ",
   },
   {
-    url: "/apprenticeship/fellowship.webp",
+    url: "/carousel/fellowship.webp",
     title: "Bitshala Fellowship (Paid)",
     content:
       "Kickstart your Bitcoin FOSS career with hands-on work on real-world projects",
@@ -52,7 +52,7 @@ const slides = [
 function Carousel() {
   return (
     <div className="mx-auto max-w-screen-xl">
-      <h1 class="my-8 text-center  font-header text-xl font-bold md:text-3xl lg:text-6xl">
+      <h1 class="my-8 pt-20 text-center font-header text-2xl font-bold md:text-3xl lg:pt-0 lg:text-6xl">
         “Bitcoin seems really technical, <br />
         is it hard to get started?"
       </h1>
@@ -62,13 +62,13 @@ function Carousel() {
         cohorts, will help make <br /> your Bitcoin journey,
         much more smoother, accessible, and fun.
       </p>
-      <div className="mt-20 flex flex-col gap-4 p-5 md:grid md:grid-cols-2  lg:grid lg:grid-cols-3 lg:gap-7 lg:p-0">
+      <div className="mt-10 flex flex-col gap-4 p-5 md:grid md:grid-cols-2 lg:my-28 lg:grid lg:grid-cols-3 lg:gap-7 lg:p-0">
         {slides.map((slide, index) => (
           <div
             key={index}
-            className="rounded-3xl bg-peach px-5 pb-5 pt-8"
+            className="lg: rounded-3xl bg-peach px-3 pb-3 pt-5 lg:px-5 lg:pb-5 lg:pt-8"
           >
-            <h1 className="mb-3 px-3 font-header text-xl lg:text-3xl">
+            <h1 className="mb-3 px-3 font-header text-xl font-bold   lg:text-3xl">
               {slide.title}
             </h1>
             <p className="mb-3 px-3 text-base lg:text-xl ">
