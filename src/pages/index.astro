@@ -8,6 +8,7 @@ import About from "../components/home/About.astro";
 import Newsletter from "../components/common/Newsletter";
 import Calender from "../components/common/Calender.astro";
 import JourneyGuide from "../components/home/JourneyGuide.astro";
+import { FaDiscord } from "react-icons/fa";
 
 const headerProps = {
   image: "/home/headerbg.webp",
@@ -50,12 +51,15 @@ const isVisible = true;
           href="https://discord.com/invite/STeQFVEWf9"
           target="_blank"
           class="text-m mx-3 flex w-1/2 items-center justify-center rounded-lg bg-white p-4 text-center hover:border-2 hover:bg-black hover:bg-opacity-50 hover:text-white lg:text-2xl"
-          >Join Our Community</a
-        >
+          >Join Our Community
+          <FaDiscord
+            className="ml-2 text-2xl lg:pt-1 lg:text-3xl"
+          />
+        </a>
         <a
           href="/cohorts"
           class="text-m mx-3 flex w-1/2 items-center justify-center rounded-lg border-2 bg-black bg-opacity-50 p-4 text-center text-white hover:bg-white hover:text-black lg:text-2xl"
-          >Check our Study Cohorts</a
+          >Explore study cohorts →</a
         >
       </div>
     </div>
