@@ -186,11 +186,11 @@ const SideMenu = () => {
           </Accordion>
         );
       })}
-      <p className="font-header text-2xl text-white">
+      {/* <p className="font-header text-2xl text-white">
         <a href="https://discord.com/invite/STeQFVEWf9">
           Join Discord
         </a>
-      </p>
+      </p> */}
     </div>
   );
 };

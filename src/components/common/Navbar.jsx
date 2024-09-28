@@ -1,6 +1,7 @@
 import React from "react";
 import Hamburger from "./hamburger";
 import { MdKeyboardArrowDown } from "react-icons/md";
+import { FaDiscord } from "react-icons/fa";
 
 const Navbar = () => {
   const list = [
@@ -8,7 +9,7 @@ const Navbar = () => {
       name: "Org",
       link: "/org",
       subMenu: [
-        { name: "About", link: "/org/about" },
+        { name: "About", link: "/about" },
         {
           name: "Contact us ",
           link: "/bitspace/#contact_us",
@@ -60,11 +61,11 @@ const Navbar = () => {
   return (
     <div>
       <nav class="fixed left-0 top-0 z-50 w-full bg-black  p-4 backdrop-blur-sm ">
-        <div class="m-auto flex w-full justify-between">
+        <div class="m-auto flex  w-full justify-between gap-4">
           <a href="/">
             <img
               src="/home/logo.png"
-              class="ml-12 h-14  justify-start"
+              class="ml-4 mt-4 h-10 justify-start  lg:mt-0  lg:h-14"
             />
           </a>
           <div className="flex justify-end">
@@ -77,7 +78,7 @@ const Navbar = () => {
                   </span>
                 </button>
                 <div class=" absolute z-10 hidden group-hover:block">
-                  <div class="px-2 pb-4 pt-2 shadow-lg">
+                  <div class="px-2 pb-4 pt-2">
                     <div class="grid min-w-max grid-cols-1">
                       {item.subMenu &&
                         item.subMenu.map(
@@ -100,10 +101,17 @@ const Navbar = () => {
               </div>
             ))}
             <a
-              href=""
+              href="https://discord.com/invite/STeQFVEWf9"
               class=" text mt-2 hidden max-h-10 justify-center rounded-2xl bg-white px-3 pt-2 text-center align-middle font-header text-xl font-bold text-black hover:bg-orange hover:text-white lg:flex"
             >
-              Join Our Community
+              Join Our Community{" "}
+              <FaDiscord className="ml-2 pb-1 text-2xl lg:text-3xl" />
+            </a>
+            <a
+              href=""
+              class=" text mt-3 flex max-h-10 justify-center rounded-2xl bg-white px-3 pt-2 text-center align-middle font-header text-xl font-bold text-black hover:bg-orange hover:text-white lg:hidden"
+            >
+              <FaDiscord className=" text-2xl" />
             </a>
             <div className="sm:block lg:hidden">
               <Hamburger client:only />
