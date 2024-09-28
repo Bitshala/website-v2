@@ -92,7 +92,7 @@ const { title, headerProps, isVisible } = Astro.props;
       content="https://opengraph.b-cdn.net/production/documents/be8ca05b-5de1-4ab8-99b6-b064c8ad0b4c.png?token=Jriat_jsVklKiXah09FNuY3b8X2kT-Vv-3eN4Cgdyvg&height=675&width=1200&expires=33241899715"
     />
   </head>
-  <body class="bg-white">
+  <body class="bg-white select-none">
     <nav
       class="fixed left-0 top-0 z-50 w-full bg-black bg-opacity-[0.5] p-4 backdrop-blur-sm"
     >
@@ -121,7 +121,6 @@ const { title, headerProps, isVisible } = Astro.props;
         </div>
       )
     }
-
     {
       headerProps.removePadding ? (
         <div class="m-auto max-w-full">
