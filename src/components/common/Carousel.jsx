@@ -78,7 +78,7 @@ function Carousel() {
               href={slide.targetLink}
               className="px-3 text-orange hover:underline"
             >
-              {slide.cta}{" "}
+              {slide.cta}
             </a>
 
             <img
