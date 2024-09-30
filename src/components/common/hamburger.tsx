@@ -67,10 +67,9 @@ const Hamburger = () => {
 };
 
 const SideMenu = () => {
-  const [open, setOpen] = useState(1);
+  const [open, setOpen] = useState(true);
 
-  const handleOpen = (value: number) =>
-    setOpen(open === value ? 0 : value);
+  const handleOpen = (value: boolean) => setOpen(value);
 
   const list = [
     {
@@ -120,10 +119,6 @@ const SideMenu = () => {
         { name: "Bitcoin Talks", link: "/talks" },
       ],
     },
-    // {
-    //   name: "Join our community",
-    //   link: "/#join_our_community",
-    // },
   ];
 
   return (
@@ -161,10 +156,12 @@ const SideMenu = () => {
 
       {list.map((item, index) => {
         return (
-          <Accordion key={index} open={open === index + 1}>
+          <Accordion key={index} open={open === open}>
             <AccordionHeader
               className="font-header text-2xl text-white "
-              onClick={() => handleOpen(index + 1)}
+              onClick={() =>
+                handleOpen(open ? false : true)
+              }
             >
               {item.name}
               <MdKeyboardArrowDown className="-ml-5" />
@@ -186,11 +183,6 @@ const SideMenu = () => {
           </Accordion>
         );
       })}
-      {/* <p className="font-header text-2xl text-white">
-        <a href="https://discord.com/invite/STeQFVEWf9">
-          Join Discord
-        </a>
-      </p> */}
     </div>
   );
 };
