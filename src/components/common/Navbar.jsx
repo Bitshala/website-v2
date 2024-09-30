@@ -102,14 +102,14 @@ const Navbar = () => {
             ))}
             <a
               href="https://discord.com/invite/STeQFVEWf9"
-              class=" text mt-2 hidden max-h-10 justify-center rounded-2xl bg-white px-3 pt-2 text-center align-middle font-header text-xl font-bold text-black hover:bg-orange hover:text-white lg:flex"
+              class=" text mt-2 hidden max-h-10 justify-center rounded-xl bg-white px-3 pt-2 text-center align-middle font-header text-xl font-bold text-black hover:bg-orange hover:text-white lg:flex"
             >
               Join Our Community{" "}
               <FaDiscord className="ml-2 pb-1 text-2xl lg:text-3xl" />
             </a>
             <a
               href="https://discord.com/invite/STeQFVEWf9"
-              class=" text mt-3 flex max-h-10 justify-center rounded-2xl bg-white px-3 pt-2 text-center align-middle font-header text-xl font-bold text-black hover:bg-orange hover:text-white lg:hidden"
+              class=" text mt-3 flex max-h-10 justify-center rounded-xl bg-white px-3 pt-2 text-center align-middle font-header text-xl font-bold text-black hover:bg-orange hover:text-white lg:hidden"
             >
               <FaDiscord className=" text-2xl" />
             </a>
