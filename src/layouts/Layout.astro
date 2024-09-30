@@ -96,6 +96,7 @@ const { title, headerProps, isVisible } = Astro.props;
   <body class="bg-white">
     <Navbar client:load />
 
+
     <div class=`${isVisible ? "block" : "hidden"}`>
       <Notification
         message="Register for upcoming LBTCL Study Cohort"
@@ -114,7 +115,9 @@ const { title, headerProps, isVisible } = Astro.props;
       )
     }
 
-    <div class="m-auto max-w-screen-xl p-4 lg:p-0">
+    <div
+      class="m-auto max-w-screen-xl p-4 text-justify lg:p-0"
+    >
       <div class="isolate z-0"><slot /></div>
     </div>
     <Footer />

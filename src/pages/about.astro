@@ -1,0 +1,19 @@
+---
+import AboutUs from "../components/common/AboutUs.astro";
+import People from "../components/home/People.astro";
+import Layout from "../layouts/Layout.astro";
+
+const isVisible = true;
+const headerProps = {
+  removeHeader: true,
+};
+---
+
+<Layout
+  title="About Us"
+  headerProps={headerProps}
+  isVisible={isVisible}
+>
+  <AboutUs />
+  <People />
+</Layout>
