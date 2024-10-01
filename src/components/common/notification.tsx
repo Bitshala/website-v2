@@ -2,7 +2,13 @@ import { Snackbar } from "@mui/material";
 import { FaWindowClose } from "react-icons/fa";
 import { useEffect, useState } from "react";
 
-const Notification = ({ message, url }: { message: string; url: string }) => {
+const Notification = ({
+  message,
+  url,
+}: {
+  message: string;
+  url: string;
+}) => {
   const [open, setOpen] = useState(false);
   const handleClose = () => {
     setOpen(false);
@@ -18,7 +24,7 @@ const Notification = ({ message, url }: { message: string; url: string }) => {
       }}
       open={open}
     >
-      <div className="mt-20 flex items-center rounded-md bg-peach p-2  text-center md:mt-0">
+      <div className="mt-20 flex items-center rounded-md bg-peach p-2  text-center md:-mt-1 lg:mr-96 ">
         <a href={url} target="_blank">
           {message}
         </a>
