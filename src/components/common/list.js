@@ -154,7 +154,7 @@ export const dev = [
   },
   {
     name: "Paperpsych",
-    desc: "If he’s not designing, he’s writing copy or tweeting, if he’s not doing that, he’s planning events. If not that... he’s watching Mad Men!",
+    desc: "If he’s not designing, he’s writing copy, if he’s not doing that, he’s planning some events. If not that.. he’s probably watching Mad Men!",
     image: "paperpsych",
     bgColor: "bg-orange",
     textColor: "text-black",

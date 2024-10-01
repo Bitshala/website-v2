@@ -14,7 +14,7 @@ const headerProps = {
 const role = "pb_cohort";
 const cohortName = "Programming Bitcoin";
 
-const isVisible = true;
+const isVisible = false;
 ---
 
 <Layout
@@ -49,7 +49,7 @@ const isVisible = true;
         class="mb-5 font-header text-xl font-bold lg:text-3xl"
       >
         Cohort Kicking off on <span class="text-orange"
-          >January, 2025</span
+          >November 2024</span
         >
       </h3>
       <p class="lg:text-xl">
@@ -171,7 +171,7 @@ const isVisible = true;
       client:only
       cohortName={cohortName}
       role={role}
-      regOpen={false}
+      regOpen={true}
     />
   </div>
   <Carousel client:visible />
