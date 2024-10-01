@@ -1,143 +1,163 @@
 ---
-const list1 = [
+const list = [
   {
-    name: "Twitter",
-    link: "https://twitter.com/bitshala_org",
+    name: "Org ",
+    subMenu: [
+      { name: "About", link: "/about" },
+      {
+        name: "Contact us",
+        link: "/bitspace/#contact_us",
+      },
+    ],
   },
   {
-    name: "YouTube",
-    link: "https://www.youtube.com/@bitshala/videos",
+    name: "Bitcoin Career ",
+    subMenu: [
+      { name: "Study cohorts", link: "/cohorts" },
+      { name: "Fellowship", link: "/fellowship" },
+    ],
   },
   {
-    name: "LinkedIn",
-    link: "https://www.linkedin.com/company/bitshala",
-  },
-];
-
-const list2 = [
-  {
-    name: "Home",
-    link: "/",
+    name: "IRL Funzzz ",
+    subMenu: [
+      { name: "Bitspace", link: "/bitspace" },
+      { name: "BITDEVS", link: "/meetup" },
+    ],
   },
   {
-    name: "Team",
-    link: "/#our_people",
-  },
-  {
-    name: "Contact",
-    link: "mailto:contact@bitshala.org",
-  },
-];
-
-const list3 = [
-  {
-    name: "Bitcoin Study Cohort",
-    link: "/cohorts",
-  },
-  {
-    name: "Fellowship",
-    link: "/fellowship",
-  },
-  {
-    name: "Meetups",
-    link: "/meetup",
-  },
-  {
-    name: "Reading Club",
-    link: "/readingClub",
-  },
-  {
-    name: "Bitcoin Review Club",
-    link: "/review",
-  },
-  {
-    name: "Optech",
-    link: "/optech",
-  },
-  {
-    name: "Bitcoin Talks",
-    link: "/talks",
-  },
-  {
-    name: "Bitspace",
-    link: "/bitspace",
+    name: "Social Clubs ",
+    subMenu: [
+      {
+        name: "Latest in Bitcoin Tech",
+        link: "/optech",
+      },
+      { name: "Reading Club", link: "/readingClub" },
+      {
+        name: "Bitcoin PR Review Club",
+        link: "/review",
+      },
+      {
+        name: "Hands-on Lightning",
+        link: "https://discord.gg/7PGCfrwZ?event=1284138868777553962",
+      },
+      { name: "Bitcoin Talks", link: "/talks" },
+    ],
   },
 ];
 ---
 
-<footer class="mt-5">
-  <hr class="opacity-20" />
-  <div
-    class="items-center justify-between bg-peach px-3 py-10 sm:flex sm:flex-col md:flex md:flex-row"
-  >
-    <div
-      class="mb-3 text-lg sm:w-full md:ml-5 md:w-3/6 md:text-xl xl:text-3xl"
-    >
-      We got a <span class="font-bold"
-        >discord community</span
-      > of hungry and passionate Bitcoin developers....
-    </div>
-    <a
-      href="https://discord.com/invite/STeQFVEWf9"
-      target="_blank"
-    >
+<footer class="mt-5 bg-black pb-10 text-white lg:py-14">
+  <div>
+    <div class="flex flex-col lg:flex-row">
       <div
-        class="rounded-lg border-2 border-dotted p-2 text-sm hover:bg-orange hover:text-white md:text-xl lg:mr-5 lg:px-10 lg:py-5 xl:text-3xl"
+        class="hidden justify-center p-10 lg:flex lg:w-2/5"
       >
-        Ahh.. I think I'll fit right in
+        <img
+          src="/footer/logo.png"
+          class="h-16"
+          alt="Bitshala Logo"
+        />
+        <div>
+          <p
+            class="ml-2 mt-1 font-header text-2xl font-bold"
+          >
+            Bitshala
+          </p>
+          <p class="text-md ml-2">
+            A Pathshala for Bitcoin
+          </p>
+        </div>
       </div>
-    </a>
+      <div class="lg:w-3/5">
+        <div
+          class="m-3 rounded-lg bg-white p-4 text-lg text-black lg:m-10 lg:flex lg:w-fit lg:px-10 lg:text-2xl"
+        >
+          <div class="p-5">
+            We got a <span class="font-bold"
+              >discord community</span
+            > of hungry <br /> and passionate Bitcoin
+            developers....
+          </div>
+          <a
+            href="https://discord.com/invite/STeQFVEWf9"
+            target="_blank"
+          >
+            <div
+              class="rounded-lg bg-black p-5 text-white hover:bg-orange lg:mt-3 lg:px-2"
+            >
+              Ahh.. I think I'll fit right in!
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
   </div>
-
-  <hr class="opacity-20" />
-  <div
-    class="grid grid-cols-3 divide-x bg-[url('/footer/bitshala.png')] bg-cover lg:grid-cols-5"
-  >
-    <div class="m-3 hidden p-3 lg:inline">
-      <img
-        src="/footer/logo.png"
-        class="mb-60 h-16"
-        alt="Bitshala Logo"
-      />
-      <div>Copyright © 2024 Bitshala</div>
-    </div>
-    <div class="m-3 p-3">
+  <div class="flex flex-col lg:flex-row-reverse">
+    <div
+      class="ml-3 grid grid-cols-2 p-2 lg:ml-24 lg:mr-56 lg:w-3/5 lg:grid-cols-4"
+    >
       {
-        list1.map((li) => (
-          <a href={li.link} target="_blank">
-            <div class="my-1 text-sm hover:font-header lg:text-xl">
-              {li.name}
+        list.map((item) => (
+          <>
+            <div class="my-4 ">
+              <p class=" my-2 text-lg text-white text-opacity-60">
+                {item.name}
+              </p>
+              <ul>
+                {item.subMenu.map((subItem) => (
+                  <li class="my-2 font-header text-xl lg:gap-3">
+                    <a
+                      href={subItem.link}
+                      class="hover:text-orange"
+                    >
+                      {subItem.name}
+                    </a>
+                  </li>
+                ))}
+              </ul>
             </div>
-          </a>
+          </>
         ))
       }
     </div>
-    <div class="m-3 p-3">
-      {
-        list2.map((li) => (
-          <a href={li.link}>
-            <div class="my-1 text-sm hover:font-header lg:text-xl">
-              {li.name}
-            </div>
-          </a>
-        ))
-      }
-    </div>
-    <div class="m-3 p-3">
-      {
-        list3.map((li) => (
-          <a href={li.link}>
-            <div class="my-1 text-sm hover:font-header lg:text-xl">
-              {li.name}
-            </div>
-          </a>
-        ))
-      }
-    </div>
-    <div class="m-3 hidden p-3 lg:inline">
-      <div class="mt-80 flex justify-end">
-        Cypherpunks write code !
+    <div
+      class="mt-5 flex flex-row-reverse items-center px-3 sm:justify-between lg:ml-28 lg:w-2/5 lg:flex-col lg:justify-normal"
+    >
+      <div class="flex gap-4">
+        <a href="https://x.com/bitshala">
+          <img
+            src="/logo/1.png"
+            class="h-5 lg:h-10"
+            alt=""
+          />
+        </a>
+        <a href="https://www.youtube.com/@bitshala">
+          <img
+            src="/logo/2.png"
+            class="h-5 lg:h-10"
+            alt=""
+          />
+        </a>
+        <a href="https://www.linkedin.com/company/bitshala">
+          <img
+            src="/logo/3.png"
+            class="h-5 lg:h-10"
+            alt=""
+          />
+        </a>
+        <a
+          href="https://primal.net/p/npub1m495fdq2e8jleptdq6ruzpmz0esjttln2rjx7dxj9w4zvxs48y3q5pu22l"
+        >
+          <img
+            src="/logo/4.png"
+            class="h-5 lg:h-10"
+            alt=""
+          />
+        </a>
       </div>
+      <p class="text-md mt-5 px-1">
+        Copyright © 2024 Bitshala
+      </p>
     </div>
   </div>
 </footer>
