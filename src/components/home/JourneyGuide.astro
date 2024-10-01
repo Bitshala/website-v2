@@ -1,0 +1,109 @@
+---
+const list = [
+  {
+    title:
+      "Join the community of passionate Bitcoin devs and enthusiasts",
+    desc: "Firstly (and most importantly), join a thriving community of Bitcoin devs and enthusiasts ready to share insights, solve problems together, and grow collectively",
+    link: "https://discord.com/invite/STeQFVEWf9",
+    buttonText: "Take me to Discord  →",
+    step: "Step 01",
+    img: "/journeyGuide/1.webp",
+    isLeft: true,
+  },
+  {
+    title:
+      "Grow your Bitcoin knowledge with hands-on club activities",
+    desc: "Expand your Bitcoin knowledge through hands-on activities and real-world discussions, designed to make learning both effective and enjoyable",
+    link: "/optech",
+    buttonText: "Show me the clubs  →",
+    step: "Step 02",
+    img: "/journeyGuide/2.webp",
+    isLeft: false,
+  },
+  {
+    title:
+      "Gain deeper understanding of Bitcoin tech with fellow aspiring Bitcoin devs",
+    desc: "Dive deeper into Bitcoin tech with structured, hands-on study cohorts — no traditional grading system, just project assignments and building real-world skills",
+    link: "/cohorts/",
+    buttonText: "Let me explore the cohorts  →",
+    step: "Step 03",
+    img: "/journeyGuide/3.webp",
+    isLeft: true,
+  },
+  {
+    title:
+      "Kickstart your Bitcoin career with our paid Fellowship Program",
+    desc: "Put the study cohort lessons to use and begin your Bitcoin FOSS career where you’ll contribute to real Bitcoin projects and gain practical experience with guidance",
+    link: "/fellowship",
+    buttonText: "Tell me more about the fellowship  →",
+    step: "Step 04",
+    img: "/journeyGuide/4.webp",
+    isLeft: false,
+  },
+  {
+    title:
+      "Collaborate and build together with Bitcoin Devs in real life",
+    desc: "Take your learning offline and collaborate in-person with other Bitcoin devs, building real solutions together at Bitspace located in Bengaluru, India lorem ipsum dolor sit amet",
+    link: "/bitspace",
+    buttonText: "I’d like to know more about Bitspace  →",
+    step: "Step 05",
+    img: "/journeyGuide/5.webp",
+    isLeft: true,
+  },
+];
+---
+
+<div
+  class="mx-auto bg-gradient-to-b from-orange to-white p-5 lg:p-10"
+>
+  <div class="mx-auto max-w-screen-xl">
+    <h1
+      class="my-8 text-center font-header text-2xl font-bold md:text-3xl lg:text-6xl"
+    >
+      “And, if I wanted to start my Bitcoin dev journey with
+      you, what would that look like?"
+    </h1>
+    <p
+      class="m-4 text-center text-base md:text-lg lg:text-2xl"
+    >
+      Well, we’re glad you asked! Here’s what your journey
+      could look like with us...
+    </p>
+
+    <div class="lg:p-5">
+      {
+        list.map((item, i) => (
+          <div
+            class={`my-5 flex w-full justify-between gap-2 rounded-3xl bg-white px-3 py-5 lg:m-5 lg:gap-5 lg:p-5 lg:py-3 ${
+              i % 2 == 0
+                ? "lg:flex-row"
+                : "lg:flex-row-reverse"
+            } flex-col`}
+          >
+            <div class="mx-2 lg:mx-5 lg:w-[65rem] lg:pt-8">
+              <p class="mb-4 w-fit rounded-lg bg-black p-2 px-5 text-white">
+                {item.step}
+              </p>
+              <h3 class="font-header text-2xl ">
+                {item.title}
+              </h3>
+              <p class="my-2">{item.desc}</p>
+              <a
+                href={item.link}
+                class="text-orange hover:underline"
+              >
+                {item.buttonText}
+              </a>
+            </div>
+            <div>
+              <img
+                src={item.img}
+                class="aspect-video h-48 rounded-2xl p-2 lg:aspect-video lg:h-auto lg:w-[1090px] "
+              />
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</div>

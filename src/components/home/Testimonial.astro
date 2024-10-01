@@ -1,89 +1,55 @@
 ---
-const list = [
-  {
-    title: "Game-changer for Bitcoin Education!",
-    desc: "The questions and practical exercises. I think they are very well designed to make you deeply reflect on the studied topic. It help me a lot to consolidate knowledge. The kindle and super fast support from bitshala team and the rest of bitshala comunity. Sharing knowledge, experience and a lot of good stuff. I was awesome to me you all. I loved the day when instead of following the planned agenda and discussing the weekly questions, there was a debate on philosophical and profound topics about money and  bitcoin. It was great",
-    name: "Lazysatoshi, Learning Bitcoin via CLI",
-    image: "/testimonial/lazy.webp",
-  },
-  {
-    title: "Transformative Learning Community",
-    desc: "I feel elated to be a part of the first cohort of graduates from Bitshala, and I hope that it turns into a beacon of Bitcoin literacy in India. It's a tailor-made platform and an avenue of great resources  for those who are keen on traversing on a path to learning and imparting Bitcoin education.",
-    name: "Faisal, Learning Bitcoin via CLI",
-    image: "/testimonial/faisal.webp",
-  },
-  {
-    title: "Rich and Empowering Learning Experience",
-    desc: "The LBTCL-cohort was an unbelievably rich and empowering exercise in learning the finer details of a Bitcoin node and transactions. Raj and Setu have made the experience worth so much by their sheer enthusiasm and dedication, that it leaves a mark on you. The mentorship and the community at Bitshala is invaluable, and like Bitcoin, it will gradually then suddenly take the world by storm",
-    name: "Shreyan, Learning Bitcoin via CLI",
-    image: "/testimonial/shreyan.webp",
-  },
+import { testimonial } from "../common/list.js";
+import TestimonialMobile from "./TestimonialMobile";
+
+const imageList = [
+  ["/testimonial/1.webp", "/testimonial/2.webp"],
+  [
+    "/testimonial/3.webp",
+    "/testimonial/4.webp",
+    "/testimonial/5.webp",
+  ],
+  ["/testimonial/6.webp", "/testimonial/7.webp"],
 ];
 ---
 
-<div class="mb-10 mt-10"></div>
-<div class="flex flex-col items-center lg:flex-row">
-  <div class="flex h-min md:p-24 lg:p-0">
-    <div class="mr-8"></div>
-  </div>
-  <div class="ml-1 flex flex-col lg:ml-8">
-    {
-      list.map((item) => (
-        <div class="mt-8 flex-col lg:flex">
-          <img
-            src={item.image}
-            alt={item.name}
-            class="m-4 h-24 w-24 rounded-full"
-          />
-          <div>
-            <h1 class="mb-4 text-2xl font-bold lg:text-4xl">
-              {item.title}
-            </h1>
-            <p class="text-base md:text-lg lg:text-xl">
-              {item.desc}
-            </p>
-            <p class="mt-1 text-base font-bold md:text-lg lg:text-2xl">
-              - {item.name}
-            </p>
-          </div>
-        </div>
-      ))
-    }
-  </div>
-</div>
-
-<div
-  class="mb-10 mt-8 flex flex-col justify-center text-center lg:mt-28"
->
-  <p class="mb-8 p-5 font-header text-5xl">
-    Wondering, what's in store for you?
-  </p>
+<div>
   <div
-    style={{
-      backgroundImage: `url(/testimonial/background.webp)`,
-      backgroundSize: "cover",
-      backgroundRepeat: "no-repeat",
-      backgroundPosition: "center",
-    }}
-    class="m-auto flex min-h-[90vh] flex-col items-center justify-center rounded-lg bg-black p-2 md:p-10"
+    class="mx-auto my-24 grid max-w-screen-xl grid-cols-1 gap-x-3 gap-y-4"
   >
     <h1
-      class="mb-10 text-xl text-white md:text-3xl lg:text-5xl"
+      class="my-4 text-center font-header text-xl font-bold md:text-3xl lg:my-8 lg:text-6xl"
     >
-      Bitcoin Dev journey is hard. We prepare you for the
-      voyage.
+      Hear from others who’ve been in the <br />
+       same place you are right now
     </h1>
 
-    <h1
-      class="text-3xl font-bold text-white md:text-7xl lg:text-8xl"
+    <div
+      class="mt-9 hidden grid-cols-2 gap-4 p-5 lg:grid lg:grid-cols-3 lg:p-0"
     >
-      Community. Clubs. Cohorts. Guidance.
-    </h1>
+      {
+        imageList.map((column, colIndex) => (
+          <div class="grid gap-4">
+            {column.map((image, imgIndex) => (
+              <div>
+                <img
+                  class="h-full rounded-lg "
+                  src={image}
+                  alt=""
+                />
+              </div>
+            ))}
+          </div>
+        ))
+      }
+    </div>
+
+    <div class="md:hidden">
+      <TestimonialMobile client:load />
+    </div>
   </div>
-  <p
-    class="mt-8 text-lg md:text-3xl lg:mt-20 lg:p-20 lg:text-5xl"
-  >
-    Scroll to disover our Community, Study Cohorts, Reading
-    & Review Clubs, Bitdevs, FOSS Mentorships, Gigs & More.
-  </p>
 </div>
+<p class="mb-10 px-2 text-center text-2xl lg:mb-64">
+  P.S. "If I could do it, you can too" is what they’re all
+  trying to say :)
+</p>

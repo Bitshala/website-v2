@@ -317,17 +317,19 @@ const Apply = () => {
   const handleDevSubmit = async (e) => {
     e.preventDefault();
     let data = devFormData;
-    data.employmentStatus = devFormData.employmentStatus.toString();
+    data.employmentStatus =
+      devFormData.employmentStatus.toString();
     data.interest = devFormData.interest.toString();
-    data.lookingForFullTime = devFormData.lookingForFullTime.toString();
+    data.lookingForFullTime =
+      devFormData.lookingForFullTime.toString();
     data.education = devFormData.education.toString();
-    data.contributions = devFormData.contributions.toString();
+    data.contributions =
+      devFormData.contributions.toString();
     try {
-      await axios.post("https://bot.bitshala.org/devform", data).then(
-        (res) => {
-          console.log(res);
-        }
-      )
+      await axios.post(
+        "https://bot.bitshala.org/devform",
+        data,
+      );
       setSubmitted(true);
       const focusElement = document.getElementById("focus");
       focusElement.focus();
@@ -339,15 +341,16 @@ const Apply = () => {
   const handleEduSubmit = async (e) => {
     e.preventDefault();
     let eduData = eduFormData;
-    eduData.lookingForFullTime = eduFormData.lookingForFullTime.toString();
-    eduData.employmentStatus = eduFormData.employmentStatus.toString();
+    eduData.lookingForFullTime =
+      eduFormData.lookingForFullTime.toString();
+    eduData.employmentStatus =
+      eduFormData.employmentStatus.toString();
     eduData.education = eduFormData.education.toString();
     try {
-      await axios.post("https://bot.bitshala.org/eduform", eduFormData).then(
-        (res) => {
-          console.log(res);
-        }
-      )
+      await axios.post(
+        "https://bot.bitshala.org/eduform",
+        eduFormData,
+      );
       setSubmitted(true);
       const focusElement = document.getElementById("focus");
       focusElement.focus();
@@ -360,10 +363,10 @@ const Apply = () => {
     <div>
       {submitted ? (
         <div className="flex items-center justify-center">
-          <h3 className=" text-center font-header text-3xl font-bold lg:text-7xl">
+          <h3 className=" text-center font-header text-3xl font-bold  lg:text-7xl">
             <span className="px-2 text-orange">
               Successfully
-            </span>{" "}
+            </span>
             registered for the Fellowship
           </h3>
         </div>
@@ -371,7 +374,7 @@ const Apply = () => {
         <div>
           <input id="focus" className="h-0 w-0" />
           <div className="flex items-center justify-center">
-            <h1 className=" text-center font-header text-3xl font-bold lg:text-7xl">
+            <h1 className=" text-center font-header text-3xl font-bold  lg:text-7xl">
               <span className="text-orange">
                 Apply&nbsp;
               </span>

@@ -14,7 +14,7 @@ const list = [
 <div>
   <div class="lg:p-8">
     <h1
-      class="my-8 font-header text-3xl md:text-6xl lg:text-6xl"
+      class="my-8 font-header text-3xl font-bold md:text-6xl lg:text-6xl"
       id="about_us"
     >
       Upcoming Events at Bitspace
@@ -37,7 +37,7 @@ const list = [
                 />
                 <div class=" lg:mx-5 lg:mt-2">
                   <div class="flex justify-between">
-                    <p class="font-header text-xl font-bold lg:text-4xl">
+                    <p class="font-header text-xl font-bold  lg:text-4xl">
                       {item.name}
                     </p>
 
@@ -51,8 +51,7 @@ const list = [
                       </a>
                     </div>
                   </div>
-                  <p class="mx-1 font-header text-sm font-thin lg:text-xl">
-                    {" "}
+                  <p class="mx-1 font-header text-sm font-bold lg:text-xl">
                     {item.date}
                   </p>
 
@@ -63,13 +62,13 @@ const list = [
               </div>
             ) : (
               <div class="my-8 items-center rounded-xl border-2 border-[#f0f0f0] p-5 text-center lg:py-12">
-                <h1 class="mb-5 font-header text-3xl text-orange lg:text-5xl">
+                <h1 class="mb-5 font-header text-3xl font-bold text-orange lg:text-5xl">
                   Currently, we’re finalizing the details
                   for the next events
                 </h1>
                 <p class="text-md lg:text-2xl">
                   So come check this page again later or
-                  follow us on{" "}
+                  follow us on
                   <a
                     class="text-orange underline"
                     href="https://x.com/bitshala"

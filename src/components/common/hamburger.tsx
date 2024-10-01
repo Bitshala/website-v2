@@ -7,6 +7,7 @@ import {
   FaYoutube,
   FaLinkedin,
 } from "react-icons/fa";
+
 import { MdKeyboardArrowDown } from "react-icons/md";
 
 import {
@@ -14,6 +15,7 @@ import {
   AccordionHeader,
   AccordionBody,
 } from "@material-tailwind/react";
+
 
 const Hamburger = () => {
   const [open, setOpen] = useState(false);
@@ -100,6 +102,7 @@ const SideMenu = () => {
       ],
     },
     {
+
       name: "Social Clubs ",
       link: "/#social_clubs",
       subMenu: [
@@ -154,6 +157,7 @@ const SideMenu = () => {
         </div>
       </div>
 
+
       {list.map((item, index) => {
         return (
           <Accordion key={index} open={open === open}>
@@ -183,6 +187,7 @@ const SideMenu = () => {
           </Accordion>
         );
       })}
+
     </div>
   );
 };

@@ -235,7 +235,7 @@ const Application = ({
                 <h3 className="flex h-14 cursor-pointer items-center font-bold lg:text-4xl">
                   <span className="px-2 text-orange">
                     Successfully
-                  </span>{" "}
+                  </span>
                   registered for the cohort
                 </h3>
                 {userExistes ? (
@@ -275,7 +275,7 @@ const Application = ({
                 <h3 className="flex h-14 cursor-pointer items-center font-bold lg:text-4xl">
                   <span className="px-2 text-orange">
                     Register
-                  </span>{" "}
+                  </span>
                   for the cohort now!
                 </h3>
                 <form
@@ -291,7 +291,7 @@ const Application = ({
                               <a href="https://discord.com/invite/STeQFVEWf9">
                                 Discord
                               </a>
-                            </span>{" "}
+                            </span>
                             Name*
                           </p>
                           <Input
@@ -405,7 +405,7 @@ const Application = ({
         </>
       ) : (
         <div className="my-10 items-center justify-center text-center">
-          <h1 className="font-header text-3xl font-bold text-orange lg:text-5xl">
+          <h1 className="font-header text-3xl font-bold  text-orange lg:text-5xl">
             Registration is not open right now
           </h1>
           <p className="my-2 lg:text-xl">
