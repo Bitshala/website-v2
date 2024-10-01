@@ -11,9 +11,22 @@ const headerProps = {
 
 <Layout
   title="About Us"
-  headerProps={headerProps}
-  isVisible={isVisible}
+  headerProps={{
+    image: "/home/about.webp",
+  }}
+  isVisible={true}
 >
+  <div
+    slot="headerChild"
+    class="h[30vh] flex flex-col justify-between lg:h-[70vh]"
+  >
+    <h1
+      class="mt-28 text-center font-header text-4xl text-white lg:text-8xl xl:text-9xl"
+    >
+      Get to know us <br />
+       a little better
+    </h1>
+  </div>
   <AboutUs />
   <People />
 </Layout>
