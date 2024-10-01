@@ -101,8 +101,8 @@ const Navbar = () => {
             >
               Join Our Community{" "}
               <img
-                src="/apprenticeship/discord.png"
-                class=" ml-2 h-8 pb-1 text-2xl lg:text-3xl"
+                src="/apprenticeship/discord1.png"
+                class=" ml-2 h-8 rounded-full pb-1 text-2xl lg:text-3xl"
               />
             </a>
             <a
@@ -110,8 +110,8 @@ const Navbar = () => {
               class=" text mt-3 flex max-h-10 justify-center rounded-xl bg-white px-3 pt-2 text-center align-middle font-header text-xl font-bold text-black hover:bg-orange hover:text-white lg:hidden"
             >
               <img
-                src="/apprenticeship/discord.png"
-                class=" h-8 pb-2"
+                src="/apprenticeship/discord1.png"
+                class=" h-8 rounded-full pb-2"
               />
             </a>
             <div className="sm:block lg:hidden">

@@ -1,7 +1,12 @@
 import { useState } from "react";
 import SlidingPane from "react-sliding-pane";
 import "./sliding-pane.css";
-
+import {
+  FaTwitter,
+  FaGithub,
+  FaYoutube,
+  FaLinkedin,
+} from "react-icons/fa";
 import { MdKeyboardArrowDown } from "react-icons/md";
 
 import {
@@ -62,10 +67,10 @@ const Hamburger = () => {
 };
 
 const SideMenu = () => {
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(1);
 
-  const handleOpen = (value: boolean) => setOpen(value);
-
+  const handleOpen = (value: number) =>
+    setOpen(open === value ? 0 : value);
   const list = [
     {
       name: "Org",
@@ -120,12 +125,10 @@ const SideMenu = () => {
     <div className="flex h-full w-full flex-col pb-[10%] pt-16">
       {list.map((item, index) => {
         return (
-          <Accordion key={index} open={open === open}>
+          <Accordion key={index} open={open === index + 1}>
             <AccordionHeader
               className="font-header text-2xl text-white "
-              onClick={() =>
-                handleOpen(open ? false : true)
-              }
+              onClick={() => handleOpen(index + 1)}
             >
               {item.name}
               <MdKeyboardArrowDown className="-ml-5" />
