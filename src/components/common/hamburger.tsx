@@ -76,7 +76,7 @@ const SideMenu = () => {
       name: "Org",
       link: "/org",
       subMenu: [
-        { name: "About", link: "/org/about" },
+        { name: "About", link: "/about" },
         {
           name: "Contact us ",
           link: "/bitspace/#contact_us",
