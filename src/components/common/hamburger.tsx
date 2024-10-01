@@ -7,7 +7,6 @@ import {
   FaYoutube,
   FaLinkedin,
 } from "react-icons/fa";
-
 import { MdKeyboardArrowDown } from "react-icons/md";
 
 import {
@@ -15,7 +14,6 @@ import {
   AccordionHeader,
   AccordionBody,
 } from "@material-tailwind/react";
-
 
 const Hamburger = () => {
   const [open, setOpen] = useState(false);
@@ -69,10 +67,10 @@ const Hamburger = () => {
 };
 
 const SideMenu = () => {
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(1);
 
-  const handleOpen = (value: boolean) => setOpen(value);
-
+  const handleOpen = (value: number) =>
+    setOpen(open === value ? 0 : value);
   const list = [
     {
       name: "Org",
@@ -102,7 +100,6 @@ const SideMenu = () => {
       ],
     },
     {
-
       name: "Social Clubs ",
       link: "/#social_clubs",
       subMenu: [
@@ -126,46 +123,12 @@ const SideMenu = () => {
 
   return (
     <div className="flex h-full w-full flex-col pb-[10%] pt-16">
-      <div className="mb-7 flex">
-        <hr className="my-10 w-1/3 border-0 bg-orange outline outline-orange" />
-        <div className="my-6 hidden gap-4 px-10 lg:flex">
-          <a
-            href="https://twitter.com/bitshala_org"
-            target="_blank"
-          >
-            <FaTwitter className="text-4xl text-white hover:text-[#1DA1F2]" />
-          </a>
-          <a
-            href="https://github.com/bitshala"
-            target="_blank"
-          >
-            <FaGithub className="text-4xl text-white hover:rounded-full hover:bg-[black] hover:invert" />
-          </a>
-          <a
-            href="https://www.youtube.com/@bitshala/videos"
-            target="_blank"
-          >
-            <FaYoutube className="text-4xl text-white hover:text-[#CD201F]" />
-          </a>
-
-          <a
-            href="https://www.linkedin.com/company/bitshala"
-            target="_blank"
-          >
-            <FaLinkedin className="text-4xl text-white hover:text-[#0077b5]" />
-          </a>
-        </div>
-      </div>
-
-
       {list.map((item, index) => {
         return (
-          <Accordion key={index} open={open === open}>
+          <Accordion key={index} open={open === index + 1}>
             <AccordionHeader
               className="font-header text-2xl text-white "
-              onClick={() =>
-                handleOpen(open ? false : true)
-              }
+              onClick={() => handleOpen(index + 1)}
             >
               {item.name}
               <MdKeyboardArrowDown className="-ml-5" />
@@ -187,7 +150,6 @@ const SideMenu = () => {
           </Accordion>
         );
       })}
-
     </div>
   );
 };

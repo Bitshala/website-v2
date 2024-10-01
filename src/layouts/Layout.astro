@@ -94,9 +94,7 @@ const { title, headerProps, isVisible } = Astro.props;
     />
   </head>
   <body class="bg-white">
-    <Navbar client:load />
-
-
+    <Navbar client:only />
 
     <div class=`${isVisible ? "block" : "hidden"}`>
       <Notification
