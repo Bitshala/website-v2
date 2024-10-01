@@ -1,7 +1,6 @@
 import React from "react";
 import Hamburger from "./hamburger";
 import { MdKeyboardArrowDown } from "react-icons/md";
-import { FaDiscord } from "react-icons/fa";
 
 const Navbar = () => {
   const list = [
@@ -52,10 +51,6 @@ const Navbar = () => {
         { name: "Bitcoin Talks", link: "/talks" },
       ],
     },
-    // {
-    //   name: "Join our community",
-    //   link: "/#join_our_community",
-    // },
   ];
 
   return (
@@ -102,16 +97,22 @@ const Navbar = () => {
             ))}
             <a
               href="https://discord.com/invite/STeQFVEWf9"
-              class=" text mt-2 hidden max-h-10 justify-center rounded-xl bg-white px-3 pt-2 text-center align-middle font-header text-xl font-bold text-black hover:bg-orange hover:text-white lg:flex"
+              class=" text mt-2 hidden max-h-10 justify-center rounded-xl bg-white px-3 pb-2 pt-[6px] text-center align-middle font-header text-xl font-bold text-black hover:bg-orange hover:text-white lg:flex"
             >
               Join Our Community{" "}
-              <FaDiscord className="ml-2 pb-1 text-2xl lg:text-3xl" />
+              <img
+                src="/apprenticeship/discord.png"
+                class=" ml-2 h-8 pb-1 text-2xl lg:text-3xl"
+              />
             </a>
             <a
               href="https://discord.com/invite/STeQFVEWf9"
               class=" text mt-3 flex max-h-10 justify-center rounded-xl bg-white px-3 pt-2 text-center align-middle font-header text-xl font-bold text-black hover:bg-orange hover:text-white lg:hidden"
             >
-              <FaDiscord className=" text-2xl" />
+              <img
+                src="/apprenticeship/discord.png"
+                class=" h-8 pb-2"
+              />
             </a>
             <div className="sm:block lg:hidden">
               <Hamburger client:only />

@@ -8,7 +8,6 @@ import About from "../components/home/About.astro";
 import Newsletter from "../components/common/Newsletter";
 import Calender from "../components/common/Calender.astro";
 import JourneyGuide from "../components/home/JourneyGuide.astro";
-import { FaDiscord } from "react-icons/fa";
 
 const headerProps = {
   image: "/home/headerbg.webp",
@@ -52,8 +51,10 @@ const isVisible = true;
           target="_blank"
           class="text-m mx-3 flex w-1/2 items-center justify-center rounded-lg bg-white p-4 text-center hover:border-2 hover:bg-black hover:bg-opacity-50 hover:text-white lg:text-2xl"
           >Join Our Community
-          <FaDiscord
-            className="ml-2 text-2xl lg:pt-1 lg:text-3xl"
+
+          <img
+            src="/apprenticeship/discord.png"
+            class="ml-2 h-10"
           />
         </a>
         <a
