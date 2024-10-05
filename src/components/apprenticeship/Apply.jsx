@@ -393,7 +393,7 @@ const Apply = () => {
                   handleTabClick("devProjects")
                 }
               >
-                Apply for dev projects
+                Apply for a Developer role
               </button>
               <button
                 className={`w-1/2 rounded-lg px-4 py-2 ${
@@ -405,7 +405,19 @@ const Apply = () => {
                   handleTabClick("educationProgram")
                 }
               >
-                Apply for education program
+                Apply for an educator role
+              </button>
+              <button
+                className={`w-1/2 rounded-lg px-4 py-2 ${
+                  selectedTab === "educationProgram"
+                    ? "bg-peach text-black"
+                    : ""
+                }`}
+                onClick={() =>
+                  handleTabClick("educationProgram")
+                }
+              >
+                Apply for design role
               </button>
             </div>
 
