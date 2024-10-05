@@ -69,6 +69,21 @@ const Apply = () => {
     achieve: "",
   });
 
+  const [designFormData, setDesignFormData] = useState({
+    name: "",
+    portfolio: "",
+    github: "",
+    linkedIn: "",
+    project: "",
+    whyPassionate: "",
+    describeSkills: "",
+    contributedBefore: "",
+    education: [],
+    employmentStatus: [],
+    hours: "",
+    achieve: "",
+  });
+
   const devQuestion = [
     {
       heading: "Name / pseudonym*",
@@ -267,6 +282,99 @@ const Apply = () => {
     },
   ];
 
+  const designQuestion = [
+    {
+      heading: "Name / Pseudonym*",
+      name: "name",
+      type: "text",
+      value: designFormData.name,
+      isRequired: true,
+    },
+    {
+      heading: "Portfolio Link*",
+      name: "portfolio",
+      type: "text",
+      value: designFormData.portfolio,
+      isRequired: true,
+    },
+    {
+      heading: "Github Profile",
+      name: "github",
+      type: "text",
+      value: designFormData.github,
+      isRequired: false,
+    },
+    {
+      heading: "LinkedIn Profile",
+      name: "linkedIn",
+      type: "text",
+      value: designFormData.linkedIn,
+      isRequired: false,
+    },
+    {
+      heading:
+        "What project do you wish to contribute to?*",
+      name: "project",
+      type: "text",
+      value: designFormData.project,
+      isRequired: true,
+    },
+    {
+      heading:
+        "Why are you passionate about the project? (Please provide a detailed response)*",
+      name: "whyPassionate",
+      type: "textarea",
+      value: designFormData.whyPassionate,
+      isRequired: true,
+    },
+    {
+      heading:
+        "Please describe your design skill set and experiences, including any open-source contributions or personal projects*",
+      name: "describeSkills",
+      type: "textarea",
+      value: designFormData.describeSkills,
+      isRequired: true,
+    },
+    {
+      heading:
+        "Have you contributed to open-source before or created your own side projects?",
+      name: "contributedBefore",
+      type: "textarea",
+      value: designFormData.contributedBefore,
+      isRequired: false,
+    },
+    {
+      heading:
+        "Tell us a bit about your educational background*",
+      name: "education",
+      type: "text",
+      value: designFormData.education,
+      isRequired: true,
+    },
+    {
+      heading: "What is your employment status?*",
+      name: "employmentStatus",
+      type: "text",
+      value: designFormData.employmentStatus,
+      isRequired: true,
+    },
+    {
+      heading:
+        "How many hours per week can you realistically dedicate to the fellowship (we suggest around 20)?",
+      name: "hours",
+      type: "text",
+      value: designFormData.hours,
+      isRequired: true,
+    },
+    {
+      heading:
+        "What do you hope to achieve during this fellowship, and what would success look like for you? (Please provide a detailed response)",
+      name: "achieve",
+      type: "textarea",
+      value: designFormData.achieve,
+      isRequired: true,
+    },
+  ];
   const handleTabClick = (tab) => {
     setSelectedTab(tab);
   };
