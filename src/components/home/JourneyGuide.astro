@@ -58,13 +58,13 @@ const list = [
 >
   <div class="mx-auto max-w-screen-xl">
     <h1
-      class="my-8 text-center font-header text-2xl font-bold md:text-3xl lg:text-6xl"
+      class="my-8 mt-40 text-center font-header text-3xl font-bold md:text-3xl lg:text-6xl"
     >
       “And, if I wanted to start my Bitcoin dev journey with
       you, what would that look like?"
     </h1>
     <p
-      class="m-4 text-center text-base md:text-lg lg:text-2xl"
+      class="m-4 text-center text-lg md:text-lg lg:text-2xl"
     >
       Well, we’re glad you asked! Here’s what your journey
       could look like with us...
@@ -84,13 +84,15 @@ const list = [
               <p class="mb-4 w-fit rounded-lg bg-black p-2 px-5 text-white">
                 {item.step}
               </p>
-              <h3 class="font-header text-2xl ">
+              <h3 class="font-header text-3xl ">
                 {item.title}
               </h3>
-              <p class="my-2">{item.desc}</p>
+              <p class="my-2 text-lg lg:text-xl">
+                {item.desc}
+              </p>
               <a
                 href={item.link}
-                class="text-orange hover:underline"
+                class="text-lg text-orange hover:underline lg:text-xl"
               >
                 {item.buttonText}
               </a>

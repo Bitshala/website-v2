@@ -28,7 +28,7 @@ const TestimonialMobile = () => {
               <SwiperSlide key={index}>
                 <div className="flex flex-col rounded-3xl border-2 border-orange bg-[#fff] p-3 shadow-xl lg:flex-row lg:p-10">
                   <div className="my-2 flex flex-col lg:mx-5 lg:my-10">
-                    <p className="text-base">{item.text}</p>
+                    <p className="text-lg">{item.text}</p>
                     <div className="flex">
                       <img
                         src={item.img}

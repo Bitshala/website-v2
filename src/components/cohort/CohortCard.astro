@@ -57,11 +57,11 @@ const cardsList = [
           <h1 class="text-2xl font-bold lg:text-4xl">
             {card.name}
           </h1>
-          <p class="text-base lg:text-xl">{card.desc}</p>
+          <p class="text-lg lg:text-xl">{card.desc}</p>
         </div>
         <a href={card.url}>
           <button
-            class={`my-2 w-full rounded-lg text-base  lg:text-xl ${
+            class={`my-2 w-full rounded-lg text-lg  lg:text-xl ${
               index % 2 == 0
                 ? "bg-white text-black hover:bg-black hover:text-peach"
                 : "bg-black text-white hover:bg-orange hover:text-white"

@@ -55,7 +55,7 @@ const Navbar = () => {
 
   return (
     <div>
-      <nav class="fixed left-0 top-0 z-50 w-full bg-black  p-4 backdrop-blur-sm ">
+      <nav class="fixed absolute left-0 top-0 z-30 w-full bg-black  p-4 backdrop-blur-sm ">
         <div class="m-auto flex  w-full justify-between gap-4">
           <a href="/">
             <img
@@ -66,7 +66,7 @@ const Navbar = () => {
           <div className="flex justify-end">
             {list.map((item) => (
               <div class="group relative hidden lg:block">
-                <button class=" mt-2 flex w-full flex-row items-center rounded-lg px-4 py-4 text-left text-base font-bold uppercase focus:outline-none md:ml-4 md:mt-0 md:inline md:w-auto">
+                <button class=" mt-2 flex w-full flex-row items-center rounded-lg px-4 py-4 text-left text-lg font-bold uppercase focus:outline-none md:ml-4 md:mt-0 md:inline md:w-auto">
                   <span className="flex font-header text-white">
                     {item.name}
                     <MdKeyboardArrowDown className="ml-2 pt-1" />
@@ -97,9 +97,9 @@ const Navbar = () => {
             ))}
             <a
               href="https://discord.com/invite/STeQFVEWf9"
-              class=" text mt-2 hidden max-h-10 justify-center rounded-xl bg-white px-3 pb-2 pt-[6px] text-center align-middle font-header text-xl font-bold text-black hover:bg-orange hover:text-white lg:flex"
+              class=" text mt-1 hidden max-h-12 justify-center rounded-xl bg-white px-3 py-10 pb-2 pt-[10px] text-center align-middle font-header text-xl font-bold text-black hover:bg-orange hover:text-white lg:flex"
             >
-              Join Our Community{" "}
+              Join Our Community
               <img
                 src="/apprenticeship/discord1.png"
                 class=" ml-2 h-8 rounded-full pb-1 text-2xl lg:text-3xl"
