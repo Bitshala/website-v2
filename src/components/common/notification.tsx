@@ -24,7 +24,7 @@ const Notification = ({
       }}
       open={open}
     >
-      <div className="relative z-10 mt-20 flex items-center rounded-md bg-peach  p-2 text-center md:-mt-1 lg:mr-96 ">
+      <div className="relative z-10 mt-20 flex items-center rounded-md bg-peach  p-2 text-center md:-mt-1 lg:mr-[500px] ">
         <a href={url} target="_blank">
           {message}
         </a>

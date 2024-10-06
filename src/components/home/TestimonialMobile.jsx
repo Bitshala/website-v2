@@ -28,18 +28,18 @@ const TestimonialMobile = () => {
               <SwiperSlide key={index}>
                 <div className="flex flex-col rounded-3xl border-2 border-orange bg-[#fff] p-3 shadow-xl lg:flex-row lg:p-10">
                   <div className="my-2 flex flex-col lg:mx-5 lg:my-10">
-                    <p className="text-lg">{item.text}</p>
+                    <p className="text-base">{item.text}</p>
                     <div className="flex">
                       <img
                         src={item.img}
                         alt={item.name}
-                        className="h-16 w-16 rounded-full py-2 pr-5"
+                        className="h-16 w-16   py-2 pr-5"
                       />
                       <div className="my-2 flex flex-col">
-                        <h1 className="font-header text-2xl font-bold text-orange lg:mb-5 lg:text-3xl">
+                        <h1 className="font-header text-base font-bold text-orange lg:mb-5 ">
                           {item.name}
                         </h1>
-                        <p className="text-sm lg:text-lg">
+                        <p className="text-sm lg:text-base">
                           {item.cohort}
                         </p>
                       </div>

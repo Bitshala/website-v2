@@ -55,7 +55,7 @@ const Navbar = () => {
 
   return (
     <div>
-      <nav class="fixed absolute left-0 top-0 z-30 w-full bg-black  p-4 backdrop-blur-sm ">
+      <nav class="fixed left-0 top-0 z-30 w-full bg-black  backdrop-blur-sm lg:p-4 ">
         <div class="m-auto flex  w-full justify-between gap-4">
           <a href="/">
             <img
@@ -66,7 +66,7 @@ const Navbar = () => {
           <div className="flex justify-end">
             {list.map((item) => (
               <div class="group relative hidden lg:block">
-                <button class=" mt-2 flex w-full flex-row items-center rounded-lg px-4 py-4 text-left text-lg font-bold uppercase focus:outline-none md:ml-4 md:mt-0 md:inline md:w-auto">
+                <button class=" mt-2 flex w-full flex-row items-center rounded-lg px-4 py-4 text-left text-base font-bold uppercase focus:outline-none md:ml-4 md:mt-0 md:inline md:w-auto">
                   <span className="flex font-header text-white">
                     {item.name}
                     <MdKeyboardArrowDown className="ml-2 pt-1" />
@@ -97,7 +97,7 @@ const Navbar = () => {
             ))}
             <a
               href="https://discord.com/invite/STeQFVEWf9"
-              class=" text mt-1 hidden max-h-12 justify-center rounded-xl bg-white px-3 py-10 pb-2 pt-[10px] text-center align-middle font-header text-xl font-bold text-black hover:bg-orange hover:text-white lg:flex"
+              class=" text mt-1 hidden max-h-12 justify-center rounded-lg bg-white px-6 py-10 pb-2 pt-[10px] text-center align-middle font-header text-xl font-bold text-black hover:bg-orange hover:text-white lg:ml-5 lg:flex"
             >
               Join Our Community
               <img
@@ -107,7 +107,7 @@ const Navbar = () => {
             </a>
             <a
               href="https://discord.com/invite/STeQFVEWf9"
-              class=" text mt-3 flex max-h-10 justify-center rounded-xl bg-white px-3 pt-2 text-center align-middle font-header text-xl font-bold text-black hover:bg-orange hover:text-white lg:hidden"
+              class=" text mt-3 flex max-h-10 justify-center rounded-md bg-white px-2 pt-2 text-center align-middle font-header text-xl font-bold text-black hover:bg-orange hover:text-white lg:hidden"
             >
               <img
                 src="/apprenticeship/discord1.png"

@@ -65,7 +65,7 @@ const Slider = () => {
                     <h1 class="font-header text-2xl font-bold text-orange lg:mb-5 lg:text-3xl">
                       {item.title}
                     </h1>
-                    <p class="text-sm lg:text-lg">
+                    <p class="text-sm lg:text-base">
                       {item.desc}
                     </p>
                     <a

@@ -23,7 +23,7 @@ const isVisible = true;
 >
   <div
     slot="headerChild"
-    class="mx-auto flex h-[50vh] max-w-screen-xl flex-col justify-between"
+    class="mx-auto flex h-[30vh] max-w-screen-xl flex-col justify-between"
   >
     <h1
       class="text-center font-header text-7xl font-bold text-white lg:text-[14rem]"
@@ -31,17 +31,24 @@ const isVisible = true;
       Bitshala
     </h1>
     <h2
-      class="mt-5 text-center font-header text-4xl font-bold text-orange lg:text-[4.8rem]"
+      class="mt-0 text-center font-header text-[25px] font-bold text-orange lg:text-[4.8rem]"
     >
       A Pathshala for Bitcoin
     </h2>
     <div slot="after-heading">
       <p
-        class="mt-5 text-center text-xl text-white lg:mt-10 lg:text-3xl"
+        class="mt-5 hidden text-center text-xl font-normal text-white lg:block lg:text-3xl"
       >
         Empowering developers to enter and thrive in the
         world <br /> of Bitcoin FOSS (Free and Open Source
         Software)
+      </p>
+      <p
+        class="mt-5 block text-center text-xl font-normal text-white lg:hidden lg:text-3xl"
+      >
+        Empowering developers to <br /> enter and thrive in
+        the world of <br /> Bitcoin FOSS (Free and Open <br
+        /> Source Software)
       </p>
       <div
         class="mt-5 flex w-full flex-col justify-between font-bold lg:mt-20 lg:flex-row"
@@ -49,18 +56,18 @@ const isVisible = true;
         <a
           href="https://discord.com/invite/STeQFVEWf9"
           target="_blank"
-          class="mx-3 flex items-center justify-center rounded-xl bg-white p-4 text-center text-lg hover:border-2 hover:bg-orange hover:text-white hover:outline-none lg:w-1/2 lg:text-2xl"
+          class="mx-3 flex items-center justify-center rounded-lg bg-white p-3 text-center text-sm hover:border-[1px] hover:bg-orange hover:text-white hover:outline-none lg:w-1/2 lg:rounded-xl lg:p-4 lg:text-2xl"
           >Join Our Community
 
           <img
             src="/apprenticeship/discord.svg"
-            class="ml-2 mt-1 h-6 rounded-full text-white"
+            class="ml-2 mt-1 h-5 rounded-full text-white"
           />
         </a>
         <a
           href="/cohorts"
-          class="mx-3 mt-2 flex items-center justify-center rounded-xl border-2 bg-black bg-opacity-50
-           p-4 text-center text-lg text-white hover:bg-white hover:text-black lg:mt-0 lg:w-1/2 lg:text-2xl"
+          class="mx-3 mt-2 flex items-center justify-center rounded-lg border-[1px] bg-black bg-opacity-50 p-3 text-center
+           text-sm text-white hover:bg-white hover:text-black lg:mt-0 lg:w-1/2 lg:rounded-xl lg:p-4 lg:text-2xl"
           >Explore study cohorts →</a
         >
       </div>

@@ -27,7 +27,7 @@ const Hamburger = () => {
   return (
     <>
       <button
-        className="relative h-16 w-16 rounded-lg bg-black focus:outline-none"
+        className="relative m-3 h-10 w-10 rounded-lg border-2 border-white bg-black focus:outline-none"
         onClick={handleClick}
       >
         <span className="sr-only">Open main menu</span>
@@ -137,7 +137,7 @@ const SideMenu = () => {
               {item.subMenu.map((subItem) => {
                 return (
                   <div
-                    className="ml-2 font-header text-lg text-white"
+                    className="ml-2 font-header text-base text-white"
                     key={subItem.name}
                   >
                     <a href={subItem.link}>
