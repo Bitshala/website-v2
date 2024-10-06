@@ -64,57 +64,55 @@ const educators = [
   >
     Developers
   </p>
-
-  {
-    developers.map((apprentice) => (
-      <>
-        <div class=" my-5 flex gap-3 rounded-xl bg-[#f0f0f0]">
-          <img
-            src={apprentice.img}
-            class="h-28 w-24 items-center rounded-3xl p-3 lg:h-64 lg:w-56"
-          />
-          <div class="p-3 lg:mx-5 lg:mt-8">
-            <div class="flex justify-between">
-              <p class="font-header text-xl font-bold  lg:text-5xl">
-                {apprentice.name}
-              </p>
-
-              <div class="flex ">
-                {apprentice.github && (
-                  <a
-                    href={apprentice.github}
-                    target="_blank"
-                    class="group"
-                  >
-                    <img
-                      src="/apprenticeship/github.png"
-                      class="m-1 h-6 rounded bg-peach group-hover:bg-white lg:h-10"
-                    />
-                  </a>
-                )}
-                {apprentice.twitter && (
-                  <a
-                    href={apprentice.twitter}
-                    target="_blank"
-                    class="group"
-                  >
-                    <img
-                      src="/apprenticeship/twitter.png"
-                      class="m-1 h-6 rounded bg-peach group-hover:bg-white lg:h-10"
-                    />
-                  </a>
-                )}
-              </div>
+  <div class="grid grid-cols-2 gap-4 lg:grid-cols-4">
+    {
+      developers.map((apprentice) => (
+        <>
+          <div class=" my-5 flex flex-col gap-3 rounded-xl">
+            <img
+              src={apprentice.img}
+              class="h-44 w-44 items-center rounded-3xl p-3 lg:h-56 lg:w-56"
+            />
+            <div class="absolute ml-5 mt-5 flex">
+              {apprentice.github && (
+                <a
+                  href={apprentice.github}
+                  target="_blank"
+                  class="group"
+                >
+                  <img
+                    src="/apprenticeship/github.png"
+                    class="m-1 h-7 rounded bg-peach group-hover:bg-white lg:h-10"
+                  />
+                </a>
+              )}
+              {apprentice.twitter && (
+                <a
+                  href={apprentice.twitter}
+                  target="_blank"
+                  class="group"
+                >
+                  <img
+                    src="/apprenticeship/twitter.png"
+                    class="m-1 h-7 rounded bg-peach group-hover:bg-white lg:h-10"
+                  />
+                </a>
+              )}
             </div>
+            <div class="-mt-4 ml-2  p-1 lg:mr-5">
+              <div class="flex justify-between">
+                <p class="my-3 font-header text-2xl font-medium ">
+                  {apprentice.name}
+                </p>
+              </div>
 
-            <p class="text-sm lg:my-10 lg:text-xl">
-              {apprentice.desc}
-            </p>
+              <p class="text-base">{apprentice.desc}</p>
+            </div>
           </div>
-        </div>
-      </>
-    ))
-  }
+        </>
+      ))
+    }
+  </div>
 
   <p
     class="my-8 font-header text-3xl font-bold text-orange"
