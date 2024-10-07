@@ -45,6 +45,14 @@ const list = [
     desc: "Functioning, minimal-viable binaries and libraries to perform a trustless, p2p Maxwell-Belcher Coinswap Protocol",
     skills: ["Rust"],
   },
+  // {
+  //   logo: "/apprenticeship/newIdea.webp",
+  //   name: "Got a new idea for an education initiative?",
+  //   desc: "Tell us more about it in your fellowship application...",
+  //   link: "/fellowship",
+  //   buttonText: "Apply for the Educator Fellowship  → ",
+  //   skills: ["new"],
+  // },
 ];
 ---
 
@@ -65,58 +73,88 @@ const list = [
   <div class="my-10 grid grid-cols-1 gap-3 lg:grid-cols-2">
     {
       list.map((item) => (
-        <div class=" flex flex-col justify-center rounded-3xl bg-peach ">
-          <div class="flex w-full flex-col">
-            <div class=" flex w-full items-center justify-between self-center">
-              <div class="flex h-32 items-center self-center ">
-                <img
-                  loading="lazy"
-                  srcset={item.logo}
-                  class=" m-8 h-14 rounded-full  "
-                />
-                <div class="mb-12 mt-12 font-header text-lg font-medium  lg:text-3xl">
-                  {item.name}
+        <>
+          <div class=" flex flex-col justify-center rounded-3xl bg-peach ">
+            <div class="flex w-full flex-col">
+              <div class=" flex w-full items-center justify-between self-center">
+                <div class="flex h-32 items-center self-center ">
+                  <img
+                    loading="lazy"
+                    srcset={item.logo}
+                    class=" m-8 h-14 rounded-full  "
+                  />
+                  <div class="mb-12 mt-12 font-header text-lg font-medium  lg:text-3xl">
+                    {item.name}
+                  </div>
+                </div>
+                <div class="m-3 flex w-20 ">
+                  <a
+                    href={item.github}
+                    target="_blank"
+                    class="group"
+                  >
+                    <img
+                      src="/apprenticeship/github.png"
+                      class="m-1 h-8 w-auto rounded  bg-peach p-1 group-hover:bg-white lg:h-10"
+                    />
+                  </a>
+                  <a
+                    href={item.twitter}
+                    target="_blank"
+                    class="group"
+                  >
+                    <img
+                      src="/apprenticeship/discord.png"
+                      class="m-1 h-8  rounded  bg-peach p-1 group-hover:bg-white lg:h-10 "
+                    />
+                  </a>
                 </div>
               </div>
-              <div class="m-3 flex w-20 ">
-                <a
-                  href={item.github}
-                  target="_blank"
-                  class="group"
-                >
-                  <img
-                    src="/apprenticeship/github.png"
-                    class="m-1 h-8 w-auto rounded  bg-peach p-1 group-hover:bg-white lg:h-10"
-                  />
-                </a>
-                <a
-                  href={item.twitter}
-                  target="_blank"
-                  class="group"
-                >
-                  <img
-                    src="/apprenticeship/discord.png"
-                    class="m-1 h-8  rounded  bg-peach p-1 group-hover:bg-white lg:h-10 "
-                  />
-                </a>
-              </div>
-            </div>
-            <div class="mx-5 -mt-12 flex w-full flex-col p-5 font-medium">
-              <div class=" mr-3 mt-4 text-base font-thin lg:text-xl ">
-                {item.desc}
-              </div>
-              <div class="lg:text-md mb-6 mt-3 flex flex-wrap gap-1 text-sm lg:gap-3">
-                <p class=" mt-1 font-semibold">Language:</p>
-                {item.skills.map((skill) => (
-                  <p class="lg:text-md rounded-lg bg-[#ffdec7] px-2 py-1 font-semibold">
-                    {skill}
+              <div class="mx-5 -mt-12 flex w-full flex-col p-5 font-medium">
+                <div class=" mr-3 mt-4 text-base font-thin lg:text-xl ">
+                  {item.desc}
+                </div>
+                <div class="lg:text-md mb-6 mt-3 flex flex-wrap gap-1 text-sm lg:gap-3">
+                  <p class=" mt-1 font-semibold">
+                    Language:
                   </p>
-                ))}
+                  {item.skills.map((skill) => (
+                    <p class="lg:text-md rounded-lg bg-[#ffdec7] px-2 py-1 font-semibold">
+                      {skill}
+                    </p>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
-        </div>
+        </>
       ))
     }
+    <div
+      class="flex w-full flex-col rounded-3xl border-2 border-orange px-5"
+    >
+      <div
+        class="flex w-full items-center justify-between self-center"
+      >
+        <div
+          class="mt-8 font-header text-lg font-medium lg:text-3xl"
+        >
+          Have a entirely different project you’d like to
+          contribute to?
+        </div>
+      </div>
+      <div class="flex w-full flex-col font-medium">
+        <div class="my-5 text-base font-thin lg:text-xl">
+          Tell us about it below in your fellowship
+          application...
+        </div>
+        <a
+          href="#apply"
+          class="mb-8 text-orange hover:underline"
+        >
+          Apply for the Dev Fellowship →
+        </a>
+      </div>
+    </div>
   </div>
 </div>
