@@ -96,7 +96,7 @@ const SideMenu = () => {
       link: "/#irl_funzzz",
       subMenu: [
         { name: "Bitspace", link: "/bitspace" },
-        { name: "BITDEVS", link: "/meetup" },
+        { name: "BITDEVS", link: "/bitdev" },
       ],
     },
     {

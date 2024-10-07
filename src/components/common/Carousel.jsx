@@ -28,7 +28,7 @@ const slides = [
     title: "Bengaluru BITDEVS",
     content:
       "Join us offline for an evening of diving deep into Bitcoin tech with bitcoiners",
-    targetLink: "/meetup",
+    targetLink: "/bitdev",
     cta: "Tell me more  → ",
   },
   {
@@ -63,13 +63,13 @@ function Carousel() {
 
       <p className="mx-4 mt-[40px] hidden text-center text-base md:text-base lg:block lg:text-2xl">
         Don’t worry, our club activities, meetups, and study
-        cohorts, will help make <br /> your Bitcoin journey,
+        cohorts, will help make <br /> your Bitcoin journey
         much more smoother, accessible, and fun.
       </p>
       <p className="mx-4 mt-[40px] block text-center text-base md:text-base lg:hidden lg:text-2xl">
         Don’t worry, our club activities, <br /> meetups,
         and study cohorts, will help <br /> make your
-        Bitcoin journey, much more <br /> smoother,
+        Bitcoin journey much more <br /> smoother,
         accessible, and fun.
       </p>
       <div className="mt-10 flex flex-col gap-4 p-5 md:grid md:grid-cols-2 lg:my-[72px] lg:grid lg:grid-cols-3 lg:gap-7 lg:p-0">

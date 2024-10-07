@@ -21,7 +21,7 @@ const list = [
     name: "IRL Funzzz ",
     subMenu: [
       { name: "Bitspace", link: "/bitspace" },
-      { name: "BITDEVS", link: "/meetup" },
+      { name: "BITDEVS", link: "/bitdev" },
     ],
   },
   {
@@ -52,11 +52,13 @@ const list = [
       <div
         class="hidden justify-center p-10 lg:flex lg:w-2/5"
       >
-        <img
-          src="/home/logo.png"
-          class="h-16"
-          alt="Bitshala Logo"
-        />
+        <a href="/">
+          <img
+            src="/home/logo.png"
+            class="h-14"
+            alt="Bitshala Logo"
+          />
+        </a>
       </div>
 
       <div class="lg:w-3/5">
@@ -114,7 +116,7 @@ const list = [
     <div
       class="mt-5 flex flex-row-reverse justify-between px-3 sm:justify-between lg:ml-28 lg:w-2/5 lg:flex-col lg:items-center lg:justify-normal"
     >
-      <div class="mt-10 flex gap-4">
+      <div class="-ml-16 mt-10 flex gap-4">
         <a href="https://x.com/bitshala">
           <img
             src="/logo/1.png"
@@ -147,11 +149,13 @@ const list = [
         </a>
       </div>
       <p
-        class="text-md mt-5 block px-1 text-left lg:hidden"
+        class="text-md mt-10 block px-1 text-left lg:hidden"
       >
         Copyright © 2024 <br /> Bitshala
       </p>
-      <p class="text-md mt-5 hidden px-1 lg:block">
+      <p
+        class="-ml-16 mt-5 hidden px-1 text-base lg:block lg:text-lg"
+      >
         Copyright © 2024 Bitshala
       </p>
     </div>
