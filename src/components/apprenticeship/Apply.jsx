@@ -478,14 +478,12 @@ const Apply = () => {
   const handleDesignSubmit = async (e) => {
     e.preventDefault();
     let designData = designFormData;
-    designData.lookingForFullTime =
-      designFormData.lookingForFullTime.toString();
     designData.employmentStatus =
       designFormData.employmentStatus.toString();
     designData.education =
       designFormData.education.toString();
 
-    console.log(designFormData);
+    console.log(designFormData, "designData");
     try {
       await axios.post(
         "https://bot.bitshala.org/designform",
@@ -522,7 +520,7 @@ const Apply = () => {
             </h1>
           </div>
           <div>
-            <div className="m-1 mt-4 flex w-full justify-center gap-4 rounded-xl text-2xl">
+            <div className="m-1 mt-0 flex w-full justify-center gap-4 rounded-xl text-2xl">
               <button
                 className={`w-1/3 rounded-lg border-[1px] px-4 py-2 text-base lg:text-xl ${
                   selectedTab === "devProjects"
@@ -992,7 +990,7 @@ const Apply = () => {
 
               {selectedTab === "designProgram" && (
                 <form
-                  onSubmit={handleEduSubmit}
+                  onSubmit={handleDesignSubmit}
                   className="flex flex-col text-lg font-medium"
                 >
                   {designQuestion.map((question, index) => {
