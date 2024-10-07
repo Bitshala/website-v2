@@ -1,7 +1,7 @@
 ---
 const list = [
   {
-    logo: "/apprenticeship/optech.png",
+    logo: "/carousel/1.webp",
     name: "Latest in Bitcoin Tech",
     leadBy: "Faisal",
     discord:
@@ -11,18 +11,18 @@ const list = [
     buttonText: "Tell me more  → ",
   },
   {
-    logo: "/apprenticeship/readingClub.webp",
+    logo: "/carousel/2.webp",
     name: "Bitcoin Reading Club",
     leadBy: "Shreyan",
     discord:
       "https://discord.com/events/1104831812720656540/1247922484230230138",
     desc: "General-purpose reading club to help build your non-tech Bitcoin knowledge. Here we dive deep into rabbit holes on philosophy, economics, and more",
     link: "https://discord.com/events/1104831812720656540/1247922484230230138",
-    buttonText: "Tell me more  → ",
+    buttonText: "Tell me more  →",
   },
   {
-    logo: "/apprenticeship/reviewClub.webp",
-    name: "Bitcoin PR Review Club",
+    logo: "/carousel/3.webp",
+    name: "Hands On Lightning",
     leadBy: "Stratospher",
     discord:
       "https://discord.com/events/1104831812720656540/1244707908382363835",
@@ -31,8 +31,8 @@ const list = [
     buttonText: "Tell me more  → ",
   },
   {
-    logo: "/apprenticeship/reviewClub.webp",
-    name: "Hands On Lightning",
+    logo: "/carousel/4.webp",
+    name: "Bitcoin PR Review Club",
     leadBy: "Stratospher",
     discord:
       "https://discord.com/events/1104831812720656540/1244707908382363835",
@@ -52,7 +52,7 @@ const list = [
 
 <div class="lg:p-8">
   <h1
-    class="mt-20 font-header text-3xl font-bold md:text-6xl lg:mt-40 lg:text-6xl"
+    class="mt-20 font-header text-2xl font-bold md:text-3xl lg:mt-40 lg:text-5xl"
     id="about_us"
   >
     Explore Our Education Programs
@@ -70,7 +70,7 @@ const list = [
   >
     {
       list.map((item) => (
-        <div class="lg: rounded-3xl bg-peach px-3 pb-3 pt-5 lg:px-5 lg:pb-5 lg:pt-8">
+        <div class="lg: rounded-3xl border-[1px] border-[#e0e0e0] bg-peach px-3 pb-3 pt-5 lg:px-5 lg:pb-5 lg:pt-8">
           <h1 class="mb-3 px-3 font-header text-xl font-medium   lg:text-3xl">
             {item.name}
           </h1>
@@ -79,20 +79,20 @@ const list = [
           </p>
           <a
             href={item.discord}
-            class="px-3 text-orange hover:underline"
+            class="px-3 font-header text-base font-medium text-orange hover:underline lg:text-xl"
           >
-            Tell me more
+            {item.buttonText}
           </a>
           <img
             src={item.logo}
-            class="mt-[32px] rounded-2xl "
+            class="mt-[32px] h-[203px] w-[360px] rounded-xl "
             alt=""
           />
         </div>
       ))
     }
     <div
-      class="lg: rounded-3xl bg-peach px-3 pb-3 pt-5 lg:px-5 lg:pb-5 lg:pt-8"
+      class="lg: rounded-3xl border-[1px] border-orange px-3 pb-3 pt-5 lg:px-5 lg:pb-5 lg:pt-8"
     >
       <h1
         class="mb-3 px-3 font-header text-xl font-medium lg:text-3xl"
@@ -106,14 +106,14 @@ const list = [
       <a
         href="#apply"
         idea?
-        class="my-5 px-3 text-orange hover:underline"
+        class="my-8 px-3 font-header text-base font-medium text-orange hover:underline lg:text-xl"
       >
         Apply for the Educator Fellowship →
       </a>
       <img
-        src="/apprenticeship/newIdea.webp"
+        src="/carousel/5.webp"
         idea?
-        class="mt-[32px] rounded-2xl lg:mt-[69px]"
+        class="mt-2 mt-[32px] rounded-xl lg:mt-[69px]"
         alt=""
       />
     </div>

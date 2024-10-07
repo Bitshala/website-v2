@@ -58,36 +58,36 @@ const list = [
 
 <div class="lg:p-8">
   <h1
-    class="mt-20 font-header text-3xl font-bold md:text-6xl lg:mt-40 lg:text-6xl"
+    class="mt-20 font-header text-2xl font-bold md:text-3xl lg:mt-32 lg:text-5xl"
     id="about_us"
   >
     Explore Dev Projects
   </h1>
-  <p class="my-5 text-base md:text-lg lg:text-2xl">
+  <p class="mb-16 mt-10 text-base md:text-lg lg:text-2xl">
     Here are open-source projects ready for your innovation
     and expertise. Each project offers a unique opportunity
     to contribute to the Bitcoin community's growth and
     development.
   </p>
 
-  <div class="my-10 grid grid-cols-1 gap-3 lg:grid-cols-2">
+  <div class="mt-10 grid grid-cols-1 gap-5 lg:grid-cols-2">
     {
       list.map((item) => (
         <>
-          <div class=" flex flex-col justify-center rounded-3xl bg-peach ">
+          <div class=" flex flex-col justify-center rounded-3xl border-[1px] border-[#e0e0e0] bg-peach ">
             <div class="flex w-full flex-col">
               <div class=" flex w-full items-center justify-between self-center">
                 <div class="flex h-32 items-center self-center ">
                   <img
                     loading="lazy"
                     srcset={item.logo}
-                    class=" m-8 h-14 rounded-full  "
+                    class=" -mt-6 ml-6 h-14 rounded-full  "
                   />
-                  <div class="mb-12 mt-12 font-header text-lg font-medium  lg:text-3xl">
+                  <div class="mb-12 ml-3 mt-6 font-header text-lg font-medium  lg:text-3xl">
                     {item.name}
                   </div>
                 </div>
-                <div class="m-3 flex w-20 ">
+                <div class="m-3 -mt-3 flex w-20 lg:mr-10">
                   <a
                     href={item.github}
                     target="_blank"
@@ -111,7 +111,7 @@ const list = [
                 </div>
               </div>
               <div class="mx-5 -mt-12 flex w-full flex-col p-5 font-medium">
-                <div class=" mr-3 mt-4 text-base font-thin lg:text-xl ">
+                <div class=" mt-4 text-base font-thin lg:mr-10 lg:text-xl ">
                   {item.desc}
                 </div>
                 <div class="lg:text-md mb-6 mt-3 flex flex-wrap gap-1 text-sm lg:gap-3">

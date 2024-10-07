@@ -514,7 +514,7 @@ const Apply = () => {
         <div>
           <input id="focus" className="h-0 w-0" />
           <div className="flex items-center justify-center">
-            <h1 className=" text-center font-header text-3xl font-bold  lg:text-7xl">
+            <h1 className="mb-20 text-center font-header text-3xl font-bold  lg:text-7xl">
               <span className="text-orange">
                 Apply&nbsp;
               </span>
@@ -526,7 +526,7 @@ const Apply = () => {
               <button
                 className={`w-1/3 rounded-lg border-[1px] px-4 py-2 text-base lg:text-xl ${
                   selectedTab === "devProjects"
-                    ? "bg-peach  text-black"
+                    ? "bg-darkPeach border-none text-black"
                     : ""
                 }`}
                 onClick={() =>
@@ -536,9 +536,9 @@ const Apply = () => {
                 Apply for a Developer role
               </button>
               <button
-                className={`w-1/3 rounded-lg border-[1px] px-4 py-2 text-base lg:text-xl ${
+                className={`w-1/3 rounded-lg border-[1px] px-4 py-4 text-base lg:text-xl ${
                   selectedTab === "educationProgram"
-                    ? "bg-peach text-black"
+                    ? "bg-darkPeach border-none text-black"
                     : ""
                 }`}
                 onClick={() =>
@@ -548,9 +548,9 @@ const Apply = () => {
                 Apply for an educator role
               </button>
               <button
-                className={`w-1/3 rounded-lg border-[1px] px-4 py-2 text-base lg:text-xl ${
+                className={`w-1/3 rounded-lg border-[1px] px-4 py-4 text-base lg:text-xl ${
                   selectedTab === "designProgram"
-                    ? "bg-peach text-black"
+                    ? "bg-darkPeach border-none text-black "
                     : ""
                 }`}
                 onClick={() =>
@@ -573,7 +573,7 @@ const Apply = () => {
                     ) {
                       return (
                         <div key={index}>
-                          <div className="text-base max-md:max-w-full lg:text-xl">
+                          <div className="mb-2 mt-4 text-base max-md:max-w-full lg:text-xl">
                             {question.heading}
                           </div>
                           <Select
@@ -612,7 +612,7 @@ const Apply = () => {
                     ) {
                       return (
                         <div>
-                          <div className="text-base max-md:max-w-full lg:text-xl">
+                          <div className="max-md:max mb-2 mt-4 w-full text-base lg:text-xl">
                             {question.heading}
                           </div>
                           <div className="flex">
@@ -655,7 +655,7 @@ const Apply = () => {
                     ) {
                       return (
                         <div key={index}>
-                          <div className="text-base max-md:max-w-full lg:text-xl">
+                          <div className="mb-2 mt-4 text-base max-md:max-w-full lg:text-xl">
                             {question.heading}
                           </div>
                           <Select
@@ -693,7 +693,7 @@ const Apply = () => {
                     ) {
                       return (
                         <div key={index}>
-                          <div className="text-base max-md:max-w-full lg:text-xl">
+                          <div className="mb-2 mt-4 text-base max-md:max-w-full lg:text-xl">
                             {question.heading}
                           </div>
                           <Select
@@ -732,7 +732,7 @@ const Apply = () => {
                     ) {
                       return (
                         <div key={index}>
-                          <div className="text-base max-md:max-w-full lg:text-xl">
+                          <div className="mb-2 mt-4 text-base max-md:max-w-full lg:text-xl">
                             {question.heading}
                           </div>
                           <Autocomplete
@@ -768,7 +768,7 @@ const Apply = () => {
                           key={index}
                           className="mt-2 flex flex-col"
                         >
-                          <div className="text-base max-md:max-w-full lg:text-xl">
+                          <div className="mb-2 mt-2 text-base max-md:max-w-full lg:text-xl">
                             {question.heading}
                           </div>
                           <Input
@@ -786,9 +786,9 @@ const Apply = () => {
                   <div className="flex justify-center">
                     <button
                       onSubmit={handleDevSubmit}
-                      className="w-24 justify-center rounded-lg bg-orange p-5 text-center text-white"
+                      className="mb-20 mt-5 w-full justify-center rounded-lg bg-orange px-5 py-4 text-center text-white lg:mb-40"
                     >
-                      Apply
+                      Submit Application
                     </button>
                   </div>
                 </form>
@@ -982,9 +982,9 @@ const Apply = () => {
                   <div className="flex justify-center">
                     <button
                       onSubmit={handleEduSubmit}
-                      className="w-24 justify-center rounded-lg bg-orange p-5 text-center text-white"
+                      className="mb-20 mt-5 w-full justify-center rounded-lg bg-orange px-5 py-4 text-center text-white lg:mb-40"
                     >
-                      Apply
+                      Submit Application
                     </button>
                   </div>
                 </form>
@@ -1094,9 +1094,9 @@ const Apply = () => {
                   <div className="flex justify-center">
                     <button
                       onSubmit={handleDesignSubmit}
-                      className="w-24 justify-center rounded-lg bg-orange p-5 text-center text-white"
+                      className="mb-20 mt-5 w-full justify-center rounded-lg bg-orange px-5 py-4 text-center  text-white lg:mb-40"
                     >
-                      Apply
+                      Submit Application
                     </button>
                   </div>
                 </form>
