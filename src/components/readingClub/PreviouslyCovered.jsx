@@ -48,7 +48,7 @@ const PreviouslyCovered = () => {
                   <h1 className="mb-2 mt-2 font-header text-2xl font-bold">
                     {item.title}
                   </h1>
-                  <p className="text-lg">{item.desc}</p>
+                  <p className="text-base">{item.desc}</p>
                 </div>
                 {item.link && (
                   <a

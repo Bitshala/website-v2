@@ -215,7 +215,7 @@ export const testimonial = [
     {
       text: "Personally, I was able to familiarize myself more deeply with concepts I only knew at a surface level. I was also able to get myself up-to-date with many recent developments. And, a special shoutout goes to the other weekly clubs conducted by Bitshala that I attended alongside the cohort — Bitcoin Optech Club, Reading Club, and the PR Review Club. They covered a ton of additional information, and attending them is a must for anyone who wants to stay up-to-date with everything happening in Bitcoin.  I can assure you that anyone who is able to stick through the entire Mastering Bitcoin cohort will gain a better understanding of Bitcoin than 99% of people and will be in a good position to grab opportunities in the Bitcoin space or start something of their own. ",
       name: "Rishabh",
-      cohort: "on Study Cohorts",
+      cohort: "on Mastering Bitcoin",
       img: "/testimonial/rishabh.png",
     },
     {

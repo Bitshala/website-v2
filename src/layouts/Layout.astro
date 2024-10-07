@@ -135,16 +135,6 @@ const { title, headerProps, isVisible } = Astro.props;
     @font-face {
       font-family: "Satoshi";
       src:
-        url("/fonts/Satoshi-Medium.woff2") format("woff2"),
-        url("/fonts/Satoshi-Medium.otf") format("opentype");
-      font-weight: normal;
-      font-style: normal;
-      font-display: swap;
-    }
-
-    @font-face {
-      font-family: "Satoshi";
-      src:
         url("/fonts/Satoshi-Bold.woff2") format("woff2"),
         url("/fonts/Satoshi-Bold.otf") format("opentype");
       font-weight: bold;
@@ -161,13 +151,12 @@ const { title, headerProps, isVisible } = Astro.props;
       font-style: normal;
       font-display: swap;
     }
-
     @font-face {
       font-family: "Satoshi";
       src:
-        url("/fonts/Satoshi-Bold.woff2") format("woff2"),
-        url("/fonts/Satoshi-Bold.otf") format("opentype");
-      font-weight: bold;
+        url("/fonts/Satoshi-Regular.woff2") format("woff2"),
+        url("/fonts/Satoshi-Regular.otf") format("opentype");
+      font-weight: thin;
       font-style: normal;
       font-display: swap;
     }
@@ -180,7 +169,7 @@ const { title, headerProps, isVisible } = Astro.props;
           format("woff2"),
         url("/fonts/ApfelGrotezk-Mittel.otf")
           format("opentype");
-      font-weight: 500; /* Mittel weight */
+      font-weight: 600; /* Mittel weight */
       font-style: normal;
       font-display: swap;
     }

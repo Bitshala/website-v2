@@ -23,33 +23,41 @@ const colabList = [
 ---
 
 <div
-  class="mx-auto max-w-screen-xl text-center lg:mt-32 lg:p-8"
+  class="mx-auto mt-20 max-w-screen-xl text-center lg:mt-40 lg:p-8"
 >
   <h1
-    class="my-8 font-header text-2xl font-bold md:text-3xl lg:text-6xl"
+    class="my-8 hidden font-header text-3xl font-bold md:text-3xl lg:block lg:text-6xl"
     id="about_us"
   >
     “So, what is it that you folks do at Bitshala?”
   </h1>
-
-  <p
-    class="text-basemd:text-lg m-4 hidden md:block lg:text-2xl"
+  <h1
+    class="my-8 block font-header text-3xl font-bold md:text-3xl lg:hidden lg:text-6xl"
+    id="about_us"
   >
+    “So, what is it that you <br /> folks do at Bitshala?”
+  </h1>
+
+  <p class="m-4 hidden text-base md:block lg:text-2xl">
     Bitshala is a <span class="font-bold text-orange"
       >grassroots education initiative</span
     > led by Indian Bitcoiners, focused on strengthening the
-    Bitcoin <br /> ecosystem by <span
+
+
+    <br /> Bitcoin ecosystem by <span
       class="font-bold text-orange"
       >nurturing and supporting Bitcoin FOSS (Free and Open
       Source Software) Devs</span
-    >. Our mission <br /> is to equip people with the skills
+    >.<br /> Our mission is to equip people with the skills
     and knowledge needed to contribute to Bitcoin FOSS
     projects.
-    <br /> We want you to be part of the revolution.
+    <br /> Together, we’re cultivating a stronger, more
+    robust, and more resilient open-source Bitcoin
+    ecosystem.
   </p>
 
   <p
-    class="text-basemd:text-lg m-4 block md:hidden lg:text-2xl"
+    class="m-4 mt-4 block min-w-[328px] text-base md:hidden lg:text-2xl"
   >
     Bitshala is a <span class="font-bold text-orange"
       >grassroots education initiative <br /></span
@@ -61,14 +69,16 @@ const colabList = [
     >. <br /> Our mission is to equip people with the <br />
      skills and knowledge needed to contribute <br /> to
     Bitcoin FOSS projects.
-    <br /> We want you to be part of the revolution.
+    <br /> Together, we’re cultivating a stronger, <br />
+     more robust, and more resilient open-source <br />
+    Bitcoin ecosystem.
   </p>
 
   <div
-    class="m-5 flex flex-col rounded-3xl border-2 border-black border-opacity-5 bg-peach lg:m-0 lg:mb-8 lg:mt-32 lg:flex-row"
+    class="m-5 mt-20 flex flex-col rounded-3xl border-2 border-black border-opacity-5 bg-peach lg:m-0 lg:mb-8 lg:mt-48 lg:flex-row"
   >
     <h1
-      class="my-3 ml-3 text-center font-header font-bold lg:my-8 lg:w-2/3 lg:pl-3 lg:text-start lg:text-3xl"
+      class="my-3 ml-3 text-center font-header lg:my-8 lg:w-2/3 lg:pl-3 lg:text-start lg:text-3xl"
     >
       Trusted and Supported by
     </h1>
@@ -80,7 +90,7 @@ const colabList = [
           <a href={li.link}>
             <img
               src={li.link}
-              class="h-8 object-contain py-2 lg:h-16"
+              class="h-10 object-contain py-2 lg:h-16"
               alt="Bitshala Logo"
             />
           </a>
@@ -92,19 +102,19 @@ const colabList = [
     class="m-5 flex flex-col rounded-3xl border-2 border-black border-opacity-5 bg-peach lg:m-0 lg:mb-32 lg:flex-row"
   >
     <h1
-      class="t my-3 ml-3 text-center font-header font-bold lg:my-8 lg:w-2/3 lg:pl-3 lg:text-start lg:text-3xl"
+      class="t my-3 ml-3 text-center font-header lg:my-8 lg:w-2/3 lg:pl-3 lg:text-start lg:text-3xl"
     >
       In collaboration with
     </h1>
     <div
-      class="mx-auto flex items-center gap-6 pr-5 lg:w-[120%] lg:justify-end lg:gap-10"
+      class="mx-auto flex flex-wrap items-center gap-6 pr-5 lg:w-[120%] lg:justify-end lg:gap-10"
     >
       {
         colabList.map((li) => (
           <a href={li.link}>
             <img
               src={li.link}
-              class="h-8 object-contain py-2 lg:h-16"
+              class="h-10  object-contain py-2 lg:h-16"
               alt="Bitshala Logo"
             />
           </a>
