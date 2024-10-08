@@ -512,7 +512,7 @@ const Apply = () => {
         <div>
           <input id="focus" className="h-0 w-0" />
           <div className="flex items-center justify-center">
-            <h1 className="mb-20 text-center font-header text-3xl font-bold  lg:text-7xl">
+            <h1 className="mb-10 text-center font-header text-3xl font-bold  lg:text-7xl">
               <span className="text-orange">
                 Apply&nbsp;
               </span>
@@ -522,9 +522,9 @@ const Apply = () => {
           <div>
             <div className="m-1 mt-0 flex w-full justify-center gap-4 rounded-xl text-2xl">
               <button
-                className={`w-1/3 rounded-lg border-[1px] px-4 py-2 text-base lg:text-xl ${
+                className={` w-1/3 rounded-lg border-[1px] px-4 py-4 text-base lg:text-xl ${
                   selectedTab === "devProjects"
-                    ? "bg-darkPeach border-none text-black"
+                    ? "border-none bg-darkPeach text-black"
                     : ""
                 }`}
                 onClick={() =>
@@ -536,26 +536,26 @@ const Apply = () => {
               <button
                 className={`w-1/3 rounded-lg border-[1px] px-4 py-4 text-base lg:text-xl ${
                   selectedTab === "educationProgram"
-                    ? "bg-darkPeach border-none text-black"
+                    ? "border-none bg-darkPeach text-black"
                     : ""
                 }`}
                 onClick={() =>
                   handleTabClick("educationProgram")
                 }
               >
-                Apply for an educator role
+                Apply for an Educator role
               </button>
               <button
                 className={`w-1/3 rounded-lg border-[1px] px-4 py-4 text-base lg:text-xl ${
                   selectedTab === "designProgram"
-                    ? "bg-darkPeach border-none text-black "
+                    ? "border-none bg-darkPeach text-black "
                     : ""
                 }`}
                 onClick={() =>
                   handleTabClick("designProgram")
                 }
               >
-                Apply for design role
+                Apply for Designer role
               </button>
             </div>
 
@@ -766,7 +766,7 @@ const Apply = () => {
                           key={index}
                           className="mt-2 flex flex-col"
                         >
-                          <div className="mb-2 mt-2 text-base max-md:max-w-full lg:text-xl">
+                          <div className="mb-2 mt-4 text-base max-md:max-w-full lg:text-xl">
                             {question.heading}
                           </div>
                           <Input
@@ -805,7 +805,7 @@ const Apply = () => {
                       ) {
                         return (
                           <div key={index}>
-                            <div className="text-base max-md:max-w-full lg:text-xl">
+                            <div className="mb-2 mt-4 text-base max-md:max-w-full lg:text-xl">
                               {question.heading}
                             </div>
                             <Select
@@ -844,7 +844,7 @@ const Apply = () => {
                       ) {
                         return (
                           <div key={index}>
-                            <div className="text-base max-md:max-w-full lg:text-xl">
+                            <div className="mb-2 mt-4 text-base max-md:max-w-full lg:text-xl">
                               {question.heading}
                             </div>
                             <Autocomplete
@@ -884,7 +884,7 @@ const Apply = () => {
                       ) {
                         return (
                           <div key={index}>
-                            <div className="text-base max-md:max-w-full lg:text-xl">
+                            <div className="mb-2 mt-4 text-base max-md:max-w-full lg:text-xl">
                               {question.heading}
                             </div>
                             <Select
@@ -921,7 +921,7 @@ const Apply = () => {
                       ) {
                         return (
                           <div key={index}>
-                            <div className="text-base max-md:max-w-full lg:text-xl">
+                            <div className="mb-2 mt-4 text-base max-md:max-w-full lg:text-xl">
                               {question.heading}
                             </div>
                             <Select
@@ -961,7 +961,7 @@ const Apply = () => {
                             key={index}
                             className="mt-2 flex flex-col"
                           >
-                            <div className="text-base max-md:max-w-full lg:text-xl">
+                            <div className="mb-2 mt-4 text-base max-md:max-w-full lg:text-xl">
                               {question.heading}
                             </div>
                             <Input
@@ -997,7 +997,7 @@ const Apply = () => {
                     if (question.name === "education") {
                       return (
                         <div key={index}>
-                          <div className="text-base max-md:max-w-full lg:text-xl">
+                          <div className="mb-2 mt-4 text-base max-md:max-w-full lg:text-xl">
                             {question.heading}
                           </div>
                           <Select
@@ -1034,7 +1034,7 @@ const Apply = () => {
                     ) {
                       return (
                         <div key={index}>
-                          <div className="text-base max-md:max-w-full lg:text-xl">
+                          <div className="mb-2 mt-4 text-base max-md:max-w-full lg:text-xl">
                             {question.heading}
                           </div>
                           <Select
@@ -1074,7 +1074,7 @@ const Apply = () => {
                           key={index}
                           className="mt-2 flex flex-col"
                         >
-                          <div className="text-base max-md:max-w-full lg:text-xl">
+                          <div className="mb-2 mt-4 text-base max-md:max-w-full lg:text-xl">
                             {question.heading}
                           </div>
                           <Input
