@@ -1,23 +1,65 @@
 ---
 const developers = [
   {
-    name: "Bit-aloo",
-    desc: "A young dev bored within the old mammoths of Oracle, decided to take Bitcoin’s fungibility problem seriously and moving the proverbial mountains of the complex protocol jungle of atomic swaps.",
-    img: "/apprenticeship/Bitaloo.webp",
-    github: "https://github.com/Shourya742",
-    twitter: "https://x.com/shourya742",
+    name: "Yuvic",
+    desc: "Balancing late-night coding with cramming for finals, because contributing to Bitcoin Core is more exciting than college exams.",
+    img: "/apprenticeship/yuvic.webp",
+    github: "https://github.com/i-am-yuvi",
+    twitter: "https://x.com/hey_yuvitwt",
+  },
+  {
+    name: "Probot",
+    desc: "Introverted enough to avoid eye contact but bold enough to host Bitcoin Core PR review clubs — because socializing is easier when it's about Bitcoin.",
+    img: "/apprenticeship/probot.webp",
+    github: "https://github.com/Prabhat1308",
+    twitter: "https://x.com/pr0b0t1sc00l",
+  },
+  {
+    name: "Rishab",
+    desc: "Bitcoin researcher by day, cypherpunk by night—because who needs hobbies when you have Bitcoin?",
+    img: "/apprenticeship/rishab.webp",
+    github: "https://github.com/rishkwal",
+    twitter: "",
+  },
+  {
+    name: "Tremploar",
+    desc: "Still in college, but already knows Bitcoin FOSS will pay off long before that diploma does.",
+    img: "/apprenticeship/tremploar.webp",
+    github: "https://github.com/007harshmahajan",
+    twitter: "",
+  },
+  {
+    name: "Claddy",
+    desc: "Two-time Summer of Bitcoin alumni, finding his way through the jungle of Open Source. Has become a valuable contributor to Coinswap.",
+    img: "/apprenticeship/claddy.webp",
+    github: "https://github.com/claddyy",
+    twitter: "",
+  },
+  {
+    name: "Whoami",
+    desc: "The silent backbencher known for putting his head down and just build. Seeing this we immediately offered him a fellowship.",
+    img: "/apprenticeship/whoami.webp",
+    github: "https://github.com/KnowWhoami",
+    twitter: "",
+  },
+  {
+    name: "Joshua",
+    desc: "From the land of the lion king, Joshua is contributing to making Bitcoin donations more private with the magic of Silent Payment.",
+    img: "/apprenticeship/joshua.webp",
+    github: "https://github.com/aruokhai",
+    twitter: "",
   },
   {
     name: "Rajat",
-    desc: "They say there is no right way to start in Bitcoin. Being a Civil Engg didn’t stop this little guy from spinning big code. Also our youngest fellow.",
-    img: "/apprenticeship/Rajat.webp",
+    desc: "They say there is no right way to start in Bitcoin. Being a Civil Engg didn’t stop this little guy from spinning big code.",
+    img: "/apprenticeship/rajat.webp",
     github: "https://github.com/wthrajat",
     twitter: "https://x.com/wthrajat",
   },
   {
     name: "Bala",
-    desc: "A material scientist who writes Bitcoin code in free time. He has been picking fights with some hardcore algorithms of selecting coins, in the hope of making a wallet dev’s life easier one day. Only if they knew.",
-    img: "/apprenticeship/Bala.webp",
+    desc: "A material scientist doing Bitcoin Research in his free time. Whether it’s decentralized mining or the depths of covenant proposals. Bala is our in-house expert. ",
+    img: "/apprenticeship/bala.webp",
     github: "https://github.com/jkciw",
     twitter: "https://x.com/balajic86",
   },
@@ -36,6 +78,23 @@ const educators = [
     img: "/apprenticeship/Aditya.webp",
     github: "https://github.com/adi2011",
     twitter: "https://x.com/adityaa2011",
+  },
+];
+
+const alumni = [
+  {
+    name: "Faisal",
+    desc: "The dude that came out of nowhere and busted the myth of “you need to be technical to do Bitcoin”. The only caveman who completed all four Bitshala Study Cohorts as a Top Performer. Hosting the Bitcoin Optech Study Club and  ",
+    img: "/apprenticeship/Faisal.webp",
+    github: "https://x.com/faisal_qrs",
+    twitter: "https://x.com/faisal_qrs",
+  },
+  {
+    name: "Bit-aloo",
+    desc: "A young dev bored within the old mammoths of Oracle, decided to take Bitcoin’s fungibility problem seriously and moving the proverbial mountains of the complex protocols from mining to atomic swaps.",
+    img: "/apprenticeship/Bitaloo.webp",
+    github: "https://github.com/Shourya742",
+    twitter: "https://x.com/shourya742",
   },
 ];
 ---
@@ -155,6 +214,61 @@ const educators = [
               </div>
 
               <p class="text-base">{educator.desc}</p>
+            </div>
+          </div>
+        </>
+      ))
+    }
+  </div>
+
+  <p
+    class="my-8 font-header text-3xl font-bold text-orange"
+  >
+    Alumni
+  </p>
+  <div class="grid grid-cols-2 gap-4 lg:grid-cols-4">
+    {
+      alumni.map((alumnus) => (
+        <>
+          <div class=" my-5 flex flex-col gap-3 rounded-xl">
+            <img
+              src={alumnus.img}
+              class="h-44 w-44 items-center rounded-3xl p-3 lg:h-56 lg:w-56"
+            />
+            <div class="absolute ml-5 mt-5 flex">
+              {alumnus.github && (
+                <a
+                  href={alumnus.github}
+                  target="_blank"
+                  class="group"
+                >
+                  <img
+                    src="/apprenticeship/github.png"
+                    class="m-1 h-7 rounded bg-peach group-hover:bg-white lg:h-10"
+                  />
+                </a>
+              )}
+              {alumnus.twitter && (
+                <a
+                  href={alumnus.twitter}
+                  target="_blank"
+                  class="group"
+                >
+                  <img
+                    src="/apprenticeship/twitter.png"
+                    class="m-1 h-7 rounded bg-peach group-hover:bg-white lg:h-10"
+                  />
+                </a>
+              )}
+            </div>
+            <div class="-mt-4 ml-2  p-1 lg:mr-5">
+              <div class="flex justify-between">
+                <p class="my-3 font-header text-2xl font-medium ">
+                  {alumnus.name}
+                </p>
+              </div>
+
+              <p class="text-base">{alumnus.desc}</p>
             </div>
           </div>
         </>
