@@ -43,7 +43,7 @@ const list = [
   {
     title:
       "Collaborate and build together with Bitcoin Devs in real life",
-    desc: "Take your learning offline and collaborate in-person with other Bitcoin devs, building real solutions together at Bitspace located in Bengaluru, India lorem ipsum dolor sit amet",
+    desc: "Take your learning offline and collaborate in-person with other Bitcoin devs, building real solutions together at Bitspace located in Bengaluru, India",
     link: "/bitspace",
     buttonText: "I’d like to know more about Bitspace  →",
     step: "Step 05",
@@ -58,13 +58,20 @@ const list = [
 >
   <div class="mx-auto max-w-screen-xl">
     <h1
-      class="my-8 text-center font-header text-2xl font-bold md:text-3xl lg:text-6xl"
+      class="my-8 mt-16 block text-center font-header text-3xl font-bold md:text-3xl lg:mt-40 lg:hidden lg:text-6xl"
+    >
+      “And, if I wanted to start <br /> my Bitcoin dev
+      journey <br /> with you, what would <br />that look
+      like?"
+    </h1>
+    <h1
+      class="my-8 mt-16 hidden text-center font-header text-3xl font-bold md:text-3xl lg:mt-40 lg:block lg:text-6xl"
     >
       “And, if I wanted to start my Bitcoin dev journey with
       you, what would that look like?"
     </h1>
     <p
-      class="m-4 text-center text-base md:text-lg lg:text-2xl"
+      class="m-4 text-center text-base md:text-base lg:text-2xl"
     >
       Well, we’re glad you asked! Here’s what your journey
       could look like with us...
@@ -81,16 +88,18 @@ const list = [
             } flex-col`}
           >
             <div class="mx-2 lg:mx-5 lg:w-[65rem] lg:pt-8">
-              <p class="mb-4 w-fit rounded-lg bg-black p-2 px-5 text-white">
+              <p class="mb-4 w-fit rounded-lg bg-black p-2 px-5 font-header text-white">
                 {item.step}
               </p>
               <h3 class="font-header text-2xl ">
                 {item.title}
               </h3>
-              <p class="my-2">{item.desc}</p>
+              <p class="my-2 text-base lg:text-xl">
+                {item.desc}
+              </p>
               <a
                 href={item.link}
-                class="text-orange hover:underline"
+                class="font-header text-base font-medium text-orange hover:underline lg:text-xl"
               >
                 {item.buttonText}
               </a>

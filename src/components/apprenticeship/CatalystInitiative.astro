@@ -40,13 +40,6 @@ const list = [
     link: "https://discord.com/events/1104831812720656540/1244707908382363835",
     buttonText: "Tell me more  → ",
   },
-  // {
-  //   logo: "/apprenticeship/newIdea.webp",
-  //   name: "Got a new idea for an education initiative?",
-  //   desc: "Tell us more about it in your fellowship application...",
-  //   link: "/fellowship",
-  //   buttonText: "Apply for the Educator Fellowship  → ",
-  // },
 ];
 ---
 
@@ -57,7 +50,9 @@ const list = [
   >
     Explore Our Education Programs
   </h1>
+
   <p class="my-10 text-base md:text-lg lg:text-2xl">
+
     Got a fresh idea for a technical educational project?
     We’d love to hear it! Below, we showcase initiatives our
     Educators are already pursuing — use these as
@@ -70,6 +65,7 @@ const list = [
   >
     {
       list.map((item) => (
+
         <div class="lg: rounded-3xl border-[1px] border-[#e0e0e0] bg-peach px-3 pb-3 pt-5 lg:px-5 lg:pb-5 lg:pt-8">
           <h1 class="mb-3 px-3 font-header text-xl font-medium   lg:text-3xl">
             {item.name}
@@ -77,6 +73,7 @@ const list = [
           <p class="mb-3 px-3 text-base font-normal lg:text-xl ">
             {item.desc}
           </p>
+
           <a
             href={item.discord}
             class="px-3 font-header text-base font-medium text-orange hover:underline lg:text-xl"

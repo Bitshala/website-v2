@@ -563,7 +563,7 @@ const Apply = () => {
               {selectedTab === "devProjects" && (
                 <form
                   onSubmit={handleDevSubmit}
-                  className="flex flex-col text-lg font-medium"
+                  className="flex flex-col text-base font-medium"
                 >
                   {devQuestion.map((question, index) => {
                     if (
@@ -795,7 +795,7 @@ const Apply = () => {
               {selectedTab === "educationProgram" && (
                 <form
                   onSubmit={handleEduSubmit}
-                  className="flex flex-col text-lg font-medium"
+                  className="flex flex-col text-base font-medium"
                 >
                   {educationQuestion.map(
                     (question, index) => {
