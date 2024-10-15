@@ -69,9 +69,24 @@ const Apply = () => {
     achieve: "",
   });
 
+  const [designFormData, setDesignFormData] = useState({
+    name: "",
+    portfolio: "",
+    github: "",
+    linkedIn: "",
+    project: "",
+    whyPassionate: "",
+    describeSkills: "",
+    contributedBefore: "",
+    education: [],
+    employmentStatus: [],
+    hours: "",
+    achieve: "",
+  });
+
   const devQuestion = [
     {
-      heading: "Name / pseudonym*",
+      heading: "Name / Pseudonym*",
       inputType: "text",
       name: "name",
       value: devFormData.name,
@@ -173,7 +188,7 @@ const Apply = () => {
 
   const educationQuestion = [
     {
-      heading: "Name / pseudonym*",
+      heading: "Name / Pseudonym*",
       name: "name",
       type: "text",
       value: eduFormData.name,
@@ -267,6 +282,99 @@ const Apply = () => {
     },
   ];
 
+  const designQuestion = [
+    {
+      heading: "Name / Pseudonym*",
+      name: "name",
+      type: "text",
+      value: designFormData.name,
+      isRequired: true,
+    },
+    {
+      heading: "Portfolio Link*",
+      name: "portfolio",
+      type: "link",
+      value: designFormData.portfolio,
+      isRequired: true,
+    },
+    {
+      heading: "Github Profile",
+      name: "github",
+      type: "link",
+      value: designFormData.github,
+      isRequired: false,
+    },
+    {
+      heading: "LinkedIn Profile",
+      name: "linkedIn",
+      type: "link",
+      value: designFormData.linkedIn,
+      isRequired: false,
+    },
+    {
+      heading:
+        "What project do you wish to contribute to?*",
+      name: "project",
+      type: "text",
+      value: designFormData.project,
+      isRequired: true,
+    },
+    {
+      heading:
+        "Why are you passionate about the project? (Please provide a detailed response)*",
+      name: "whyPassionate",
+      type: "textarea",
+      value: designFormData.whyPassionate,
+      isRequired: true,
+    },
+    {
+      heading:
+        "Please describe your design skill set and experiences, including any open-source contributions or personal projects*",
+      name: "describeSkills",
+      type: "textarea",
+      value: designFormData.describeSkills,
+      isRequired: true,
+    },
+    {
+      heading:
+        "Have you contributed to open-source before or created your own side projects?",
+      name: "contributedBefore",
+      type: "textarea",
+      value: designFormData.contributedBefore,
+      isRequired: false,
+    },
+    {
+      heading:
+        "Tell us a bit about your educational background*",
+      name: "education",
+      type: "text",
+      value: designFormData.education,
+      isRequired: true,
+    },
+    {
+      heading: "What is your employment status?*",
+      name: "employmentStatus",
+      type: "text",
+      value: designFormData.employmentStatus,
+      isRequired: true,
+    },
+    {
+      heading:
+        "How many hours per week can you realistically dedicate to the fellowship (we suggest around 20)?",
+      name: "hours",
+      type: "text",
+      value: designFormData.hours,
+      isRequired: true,
+    },
+    {
+      heading:
+        "What do you hope to achieve during this fellowship, and what would success look like for you? (Please provide a detailed response)",
+      name: "achieve",
+      type: "textarea",
+      value: designFormData.achieve,
+      isRequired: true,
+    },
+  ];
   const handleTabClick = (tab) => {
     setSelectedTab(tab);
   };
@@ -282,6 +390,14 @@ const Apply = () => {
   const handleEduChange = (e) => {
     const { name, value } = e.target;
     setEduFormData((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
+  };
+
+  const handleDesignChange = (e) => {
+    const { name, value } = e.target;
+    setDesignFormData((prevState) => ({
       ...prevState,
       [name]: value,
     }));
@@ -359,6 +475,28 @@ const Apply = () => {
     }
   };
 
+  const handleDesignSubmit = async (e) => {
+    e.preventDefault();
+    let designData = designFormData;
+    designData.employmentStatus =
+      designFormData.employmentStatus.toString();
+    designData.education =
+      designFormData.education.toString();
+
+    console.log(designFormData, "designData");
+    try {
+      await axios.post(
+        "https://bot.bitshala.org/designform",
+        designFormData,
+      );
+      setSubmitted(true);
+      const focusElement = document.getElementById("focus");
+      focusElement.focus();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div>
       {submitted ? (
@@ -374,7 +512,7 @@ const Apply = () => {
         <div>
           <input id="focus" className="h-0 w-0" />
           <div className="flex items-center justify-center">
-            <h1 className=" text-center font-header text-3xl font-bold  lg:text-7xl">
+            <h1 className="mb-10 text-center font-header text-3xl font-bold  lg:text-7xl">
               <span className="text-orange">
                 Apply&nbsp;
               </span>
@@ -382,30 +520,42 @@ const Apply = () => {
             </h1>
           </div>
           <div>
-            <div className="m-1 mt-4 flex w-full justify-center rounded-xl border-2 border-[#E5E5E5] text-2xl">
+            <div className="m-1 mt-0 flex w-full justify-center gap-4 rounded-xl text-2xl">
               <button
-                className={`w-1/2 rounded-lg px-4 py-2 ${
+                className={` w-1/3 rounded-lg border-[1px] px-4 py-4 text-base lg:text-xl ${
                   selectedTab === "devProjects"
-                    ? "bg-peach text-black"
+                    ? "border-none bg-darkPeach text-black"
                     : ""
                 }`}
                 onClick={() =>
                   handleTabClick("devProjects")
                 }
               >
-                Apply for dev projects
+                Apply for a Developer role
               </button>
               <button
-                className={`w-1/2 rounded-lg px-4 py-2 ${
+                className={`w-1/3 rounded-lg border-[1px] px-4 py-4 text-base lg:text-xl ${
                   selectedTab === "educationProgram"
-                    ? "bg-peach text-black"
+                    ? "border-none bg-darkPeach text-black"
                     : ""
                 }`}
                 onClick={() =>
                   handleTabClick("educationProgram")
                 }
               >
-                Apply for education program
+                Apply for an Educator role
+              </button>
+              <button
+                className={`w-1/3 rounded-lg border-[1px] px-4 py-4 text-base lg:text-xl ${
+                  selectedTab === "designProgram"
+                    ? "border-none bg-darkPeach text-black "
+                    : ""
+                }`}
+                onClick={() =>
+                  handleTabClick("designProgram")
+                }
+              >
+                Apply for Designer role
               </button>
             </div>
 
@@ -421,7 +571,7 @@ const Apply = () => {
                     ) {
                       return (
                         <div key={index}>
-                          <div className="max-md:max-w-full">
+                          <div className="mb-2 mt-4 text-base max-md:max-w-full lg:text-xl">
                             {question.heading}
                           </div>
                           <Select
@@ -460,7 +610,7 @@ const Apply = () => {
                     ) {
                       return (
                         <div>
-                          <div className="max-md:max-w-full">
+                          <div className="max-md:max mb-2 mt-4 w-full text-base lg:text-xl">
                             {question.heading}
                           </div>
                           <div className="flex">
@@ -503,7 +653,7 @@ const Apply = () => {
                     ) {
                       return (
                         <div key={index}>
-                          <div className="max-md:max-w-full">
+                          <div className="mb-2 mt-4 text-base max-md:max-w-full lg:text-xl">
                             {question.heading}
                           </div>
                           <Select
@@ -541,7 +691,7 @@ const Apply = () => {
                     ) {
                       return (
                         <div key={index}>
-                          <div className="max-md:max-w-full">
+                          <div className="mb-2 mt-4 text-base max-md:max-w-full lg:text-xl">
                             {question.heading}
                           </div>
                           <Select
@@ -580,7 +730,7 @@ const Apply = () => {
                     ) {
                       return (
                         <div key={index}>
-                          <div className="max-md:max-w-full">
+                          <div className="mb-2 mt-4 text-base max-md:max-w-full lg:text-xl">
                             {question.heading}
                           </div>
                           <Autocomplete
@@ -616,7 +766,7 @@ const Apply = () => {
                           key={index}
                           className="mt-2 flex flex-col"
                         >
-                          <div className="max-md:max-w-full">
+                          <div className="mb-2 mt-4 text-base max-md:max-w-full lg:text-xl">
                             {question.heading}
                           </div>
                           <Input
@@ -634,9 +784,9 @@ const Apply = () => {
                   <div className="flex justify-center">
                     <button
                       onSubmit={handleDevSubmit}
-                      className="w-24 justify-center rounded-lg bg-orange p-5 text-center text-white"
+                      className="mb-20 mt-5 w-full justify-center rounded-lg bg-orange px-5 py-4 text-center text-white lg:mb-40"
                     >
-                      Apply
+                      Submit Application
                     </button>
                   </div>
                 </form>
@@ -655,7 +805,7 @@ const Apply = () => {
                       ) {
                         return (
                           <div key={index}>
-                            <div className="max-md:max-w-full">
+                            <div className="mb-2 mt-4 text-base max-md:max-w-full lg:text-xl">
                               {question.heading}
                             </div>
                             <Select
@@ -694,7 +844,7 @@ const Apply = () => {
                       ) {
                         return (
                           <div key={index}>
-                            <div className="max-md:max-w-full">
+                            <div className="mb-2 mt-4 text-base max-md:max-w-full lg:text-xl">
                               {question.heading}
                             </div>
                             <Autocomplete
@@ -734,7 +884,7 @@ const Apply = () => {
                       ) {
                         return (
                           <div key={index}>
-                            <div className="max-md:max-w-full">
+                            <div className="mb-2 mt-4 text-base max-md:max-w-full lg:text-xl">
                               {question.heading}
                             </div>
                             <Select
@@ -771,7 +921,7 @@ const Apply = () => {
                       ) {
                         return (
                           <div key={index}>
-                            <div className="max-md:max-w-full">
+                            <div className="mb-2 mt-4 text-base max-md:max-w-full lg:text-xl">
                               {question.heading}
                             </div>
                             <Select
@@ -811,7 +961,7 @@ const Apply = () => {
                             key={index}
                             className="mt-2 flex flex-col"
                           >
-                            <div className="max-md:max-w-full">
+                            <div className="mb-2 mt-4 text-base max-md:max-w-full lg:text-xl">
                               {question.heading}
                             </div>
                             <Input
@@ -830,9 +980,121 @@ const Apply = () => {
                   <div className="flex justify-center">
                     <button
                       onSubmit={handleEduSubmit}
-                      className="w-24 justify-center rounded-lg bg-orange p-5 text-center text-white"
+                      className="mb-20 mt-5 w-full justify-center rounded-lg bg-orange px-5 py-4 text-center text-white lg:mb-40"
                     >
-                      Apply
+                      Submit Application
+                    </button>
+                  </div>
+                </form>
+              )}
+
+              {selectedTab === "designProgram" && (
+                <form
+                  onSubmit={handleDesignSubmit}
+                  className="flex flex-col text-lg font-medium"
+                >
+                  {designQuestion.map((question, index) => {
+                    if (question.name === "education") {
+                      return (
+                        <div key={index}>
+                          <div className="mb-2 mt-4 text-base max-md:max-w-full lg:text-xl">
+                            {question.heading}
+                          </div>
+                          <Select
+                            required
+                            className="mb-3 block w-full rounded-lg border font-base  text-sm"
+                            value={
+                              designFormData.education[0] ||
+                              ""
+                            }
+                            onChange={(event) => {
+                              setDesignFormData({
+                                ...designFormData,
+                                education: [
+                                  event.target.value,
+                                ],
+                              });
+                            }}
+                          >
+                            {educationOptions.map(
+                              (option, index) => (
+                                <MenuItem
+                                  key={index}
+                                  value={option}
+                                >
+                                  {option}
+                                </MenuItem>
+                              ),
+                            )}
+                          </Select>
+                        </div>
+                      );
+                    } else if (
+                      question.name === "employmentStatus"
+                    ) {
+                      return (
+                        <div key={index}>
+                          <div className="mb-2 mt-4 text-base max-md:max-w-full lg:text-xl">
+                            {question.heading}
+                          </div>
+                          <Select
+                            required
+                            className="mb-3 block w-full rounded-lg border font-base  text-sm"
+                            value={
+                              designFormData.employmentStatus
+                                ? designFormData
+                                    .employmentStatus[0]
+                                : ""
+                            }
+                            onChange={(event) => {
+                              setDesignFormData({
+                                ...designFormData,
+                                employmentStatus: [
+                                  event.target.value,
+                                ],
+                              });
+                            }}
+                          >
+                            {employmentStatusOptions.map(
+                              (option, index) => (
+                                <MenuItem
+                                  key={index}
+                                  value={option}
+                                >
+                                  {option}
+                                </MenuItem>
+                              ),
+                            )}
+                          </Select>
+                        </div>
+                      );
+                    } else {
+                      return (
+                        <div
+                          key={index}
+                          className="mt-2 flex flex-col"
+                        >
+                          <div className="mb-2 mt-4 text-base max-md:max-w-full lg:text-xl">
+                            {question.heading}
+                          </div>
+                          <Input
+                            className="mb-3 block w-full rounded-lg border p-2.5 font-base text-sm"
+                            type={question.type}
+                            name={question.name}
+                            value={question.value}
+                            onChange={handleDesignChange}
+                            required={question.isRequired}
+                          />
+                        </div>
+                      );
+                    }
+                  })}
+                  <div className="flex justify-center">
+                    <button
+                      onSubmit={handleDesignSubmit}
+                      className="mb-20 mt-5 w-full justify-center rounded-lg bg-orange px-5 py-4 text-center  text-white lg:mb-40"
+                    >
+                      Submit Application
                     </button>
                   </div>
                 </form>

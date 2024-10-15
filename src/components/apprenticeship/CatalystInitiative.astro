@@ -1,100 +1,118 @@
 ---
 const list = [
   {
-    logo: "/apprenticeship/optech.png",
+    logo: "/carousel/1.webp",
     name: "Latest in Bitcoin Tech",
     leadBy: "Faisal",
     discord:
       "https://discord.com/events/1104831812720656540/1242345418353016843",
-    desc: "A weekly Optech deep-dive session. Where we explore all the cutting edges of Bitcoin technology with fellow learners.",
+    desc: "Weekly Bitcoin Optech deep-dives where bitcoin enthusiasts explore the latest developments and happenings in the Bitcoin tech world",
+    link: "https://discord.com/events/1104831812720656540/1242345418353016843",
+    buttonText: "Tell me more  → ",
   },
   {
-    logo: "/apprenticeship/lightning.png",
-    name: "Hands-On Lightning",
-    leadBy: "Aditya",
-    discord:
-      "https://discord.com/events/1104831812720656540/1242484649972732024",
-    desc: "A weekly tutorial-based Lightning dev training program. Ideal to kick start your lightning dev journey.",
-  },
-  {
-    logo: "/apprenticeship/readingClub.webp",
+    logo: "/carousel/2.webp",
     name: "Bitcoin Reading Club",
     leadBy: "Shreyan",
     discord:
       "https://discord.com/events/1104831812720656540/1247922484230230138",
-    desc: "A general-purpose weekly Reading club to learn and build your non-technical Bitcoin knowledge.",
+    desc: "General-purpose reading club to help build your non-tech Bitcoin knowledge. Here we dive deep into rabbit holes on philosophy, economics, and more",
+    link: "https://discord.com/events/1104831812720656540/1247922484230230138",
+    buttonText: "Tell me more  →",
   },
-  // {
-  //   logo: "/apprenticeship/reviewClub.webp",
-  //   name: "Bitcoin Core Review Club",
-  //   leadBy: "Stratospher",
-  //   discord:
-  //     "https://discord.com/events/1104831812720656540/1244707908382363835",
-  //   desc: "A bi-weekly review club to get into the weeds of Bitcoin Core. Ideal for aspiring Bitcoin Core Devs.",
-  // },
+  {
+    logo: "/carousel/3.webp",
+    name: "Hands On Lightning",
+    leadBy: "Stratospher",
+    discord:
+      "https://discord.com/events/1104831812720656540/1244707908382363835",
+    desc: "Bi-weekly reviews to get into the weeds of Bitcoin Core. Ideal for aspiring Core Devs to learn hands-on and sharpen their dev skills along the way",
+    link: "https://discord.com/events/1104831812720656540/1244707908382363835",
+    buttonText: "Tell me more  → ",
+  },
+  {
+    logo: "/carousel/4.webp",
+    name: "Bitcoin PR Review Club",
+    leadBy: "Stratospher",
+    discord:
+      "https://discord.com/events/1104831812720656540/1244707908382363835",
+    desc: "Bi-weekly reviews to get into the weeds of Bitcoin Core. Ideal for aspiring Core Devs to learn hands-on and sharpen their dev skills along the way",
+    link: "https://discord.com/events/1104831812720656540/1244707908382363835",
+    buttonText: "Tell me more  → ",
+  },
 ];
 ---
 
 <div class="lg:p-8">
   <h1
-    class="my-8 font-header text-3xl font-bold md:text-6xl lg:text-6xl"
+    class="mt-20 font-header text-2xl font-bold md:text-3xl lg:mt-40 lg:text-5xl"
     id="about_us"
   >
     Explore Our Education Programs
   </h1>
-  <p class="text-base md:text-base lg:text-2xl">
+
+  <p class="my-10 text-base md:text-lg lg:text-2xl">
+
     Got a fresh idea for a technical educational project?
     We’d love to hear it! Below, we showcase initiatives our
-    Catalysts are already pursuing—use these as inspiration
-    to forge your own path. Share your vision, and let’s
-    collaborate to make a real impact.
+    Educators are already pursuing — use these as
+    inspiration to forge your own path. Share your vision,
+    and let’s collaborate to make a real impact.
   </p>
 
-  <div class="grid grid-cols-1 lg:grid-cols-2 lg:gap-4">
+  <div
+    class="mt-10 flex flex-col gap-4 md:grid md:grid-cols-2 lg:my-28 lg:grid lg:grid-cols-3 lg:gap-7"
+  >
     {
       list.map((item) => (
-        <div class="border-neutral-200 my-5 flex flex-col justify-center rounded-3xl bg-[#eaeaea] p-5">
-          <img
-            loading="lazy"
-            srcset={item.logo}
-            class="rounded-2xl"
-          />
-          <div class=" flex w-full flex-col font-medium lg:p-5">
-            <div class="font-header text-3xl font-bold ">
-              {item.name}
-            </div>
 
-            <div class="mt-3 text-xl">
-              Hosted By :
-              <span class="font-header font-bold">
-                {item.leadBy}
-              </span>
-            </div>
-            <div class=" mt-4 text-base ">{item.desc}</div>
-          </div>
+        <div class="lg: rounded-3xl border-[1px] border-[#e0e0e0] bg-peach px-3 pb-3 pt-5 lg:px-5 lg:pb-5 lg:pt-8">
+          <h1 class="mb-3 px-3 font-header text-xl font-medium   lg:text-3xl">
+            {item.name}
+          </h1>
+          <p class="mb-3 px-3 text-base font-normal lg:text-xl ">
+            {item.desc}
+          </p>
+
           <a
             href={item.discord}
-            target="_blank"
-            class="text-m my-5 rounded-lg p-4 text-center outline-dashed hover:bg-orange hover:text-white lg:w-1/2"
+            class="px-3 font-header text-base font-medium text-orange hover:underline lg:text-xl"
           >
-            Tell me more
+            {item.buttonText}
           </a>
+          <img
+            src={item.logo}
+            class="mt-[32px] h-[185px] w-[346px] rounded-xl lg:h-[203px] lg:w-[360px] "
+            alt=""
+          />
         </div>
       ))
     }
-  </div>
-  <div
-    class="flex w-full justify-between gap-5 rounded-xl bg-[#f0f0f0] py-4 pl-5 pr-4"
-  >
-    <div class="my-auto text-xl lg:text-3xl">
-      Got a new idea for an initiative?
-    </div>
-    <a href="#apply">
-      <div
-        class="rounded-xl bg-peach p-2 text-center lg:p-5 lg:text-xl"
+    <div
+      class="lg: rounded-3xl border-[1px] border-orange px-3 pb-3 pt-5 lg:px-5 lg:pb-5 lg:pt-8"
+    >
+      <h1
+        class="mb-3 px-3 font-header text-xl font-medium lg:text-3xl"
       >
-        Apply Now
-      </div>
-    </a>
+        Got a new idea for an education initiative?
+      </h1>
+      <p class="mb-3 px-3 text-base font-normal lg:text-xl">
+        Tell us more about it in your fellowship
+        application...
+      </p>
+      <a
+        href="#apply"
+        idea?
+        class="my-8 px-3 font-header text-base font-medium text-orange hover:underline lg:text-xl"
+      >
+        Apply for the Educator Fellowship →
+      </a>
+      <img
+        src="/carousel/5.webp"
+        idea?
+        class="mt-[32px] h-[185px] w-[346px] rounded-xl lg:mt-[75px] lg:h-[203px] lg:w-[360px]"
+        alt=""
+      />
+    </div>
   </div>
 </div>
