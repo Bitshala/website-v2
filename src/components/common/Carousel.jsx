@@ -61,7 +61,7 @@ function Carousel() {
         to <br /> get started?"
       </h1>
 
-      <p className="mx-4 mt-[40px] hidden text-center text-base md:text-base lg:block lg:text-2xl">
+      <p className="mx-4 mt-[40px] hidden text-center text-base lg:block lg:text-2xl">
         Don’t worry, our club activities, meetups, and study
         cohorts, will help make <br /> your Bitcoin journey
         much more smoother, accessible, and fun.
