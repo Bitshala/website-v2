@@ -1,19 +1,20 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import Carousel from "../../components/common/Carousel";
-import Description from "../../components/cohortPages/Description.astro";
 import CohortStructure from "../../components/cohortPages/CohortStructure.astro";
-import CohortDetails from "../../components/cohortPages/CohortDetails.astro";
+import CohortDetails from "../../components/cohortPages/common/CohortDetails.astro";
 import Syllabus from "../../components/cohortPages/Syllabus.astro";
 import CohortHeader from "../../components/cohort/CohortHeader.astro";
 import Application from "../../components/common/Application";
+import About from "../../components/cohortPages/pb/About.astro";
+import MeetYourTAs from "../../components/cohortPages/common/MeetYourTAs.astro";
+import CohortGraduates from "../../components/cohortPages/CohortGraduates.astro";
 
 const headerProps = {
   removeHeader: true,
 };
 const role = "pb_cohort";
 const cohortName = "Programming Bitcoin";
-
 const isVisible = false;
 ---
 
@@ -23,98 +24,34 @@ const isVisible = false;
   isVisible={isVisible}
 >
   <CohortHeader img="/cohort/pb.webp" />
-  <Description
-    takeaways={[
-      {
-        name: "Mastery of Bitcoin Programming",
-        desc: "Gain comprehensive knowledge of Bitcoin programming and development through hands-on assignments and self-study.",
-      },
-      {
-        name: "Practical Application",
-        desc: "Implement your learning in real-world projects and ventures within the BitShala Discord community.",
-      },
-      {
-        name: "Certificate of Accomplishment",
-        desc: "Receive a certificate recognizing your proof-of-work and accomplishment in mastering Bitcoin programming.",
-      },
-    ]}
-  >
-    <div slot="text">
-      <h1
-        class="my-2 font-header text-2xl font-bold lg:text-5xl"
-      >
-        Programming Bitcoin
-      </h1>
-      <h3
-        class="mb-5 font-header text-xl font-bold lg:text-3xl"
-      >
-        Cohort Kicking off on <span class="text-orange"
-          >8th November,2024</span
-        >
-      </h3>
-      <p class="lg:text-xl">
-        Programming Bitcoin, is an in-depth tutorial on
-        Bitcoin Core, unveils the intricacies of Bitcoin
-        development. Using bitcoin-cli and a local bitcoind
-        regtest node, this comprehensive program guides you
-        from the foundations of Bitcoin operations to the
-        implementation of complex scripting. It is a
-        must-read tutorial to explore the limitless
-        possibilities of Bitcoin. Upon successful completion
-        of the cohort program, participants will receive a
-        certificate recognizing their proof-of-work.
-      </p>
-    </div>
-  </Description>
+  <About />
+
   <CohortDetails
     format={[
       {
-        name: "Format",
-        desc: "Online virtual classroom",
-      },
-      {
-        name: "Structure",
-        desc: "Live sessions, once a week QnA",
-      },
-      {
-        name: "Categories",
-        desc: "Wallets, UTXOs, Transactions",
+        name: "Commencement date",
+        desc: "08th November 2024",
       },
       {
         name: "Duration",
         desc: "08 weeks",
       },
+      {
+        name: "Cohort level",
+        desc: "Advanced",
+      },
+      {
+        name: "Mode",
+        desc: "Self-study, weekly live sessions, group discussions, and QnA",
+      },
+      {
+        name: "Format",
+        desc: "Online virtual classroom",
+      },
     ]}
-  >
-    <ol slot="prerequisites" class="list-disc p-4 lg:px-8">
-      <li>
-        Familiarity with basic Bitcoin technology. Read
-        through Mastering Bitcoin.
-      </li>
-      <li>
-        Basic understanding of the Python programming
-        language
-      </li>
-    </ol>
-    <div slot="details">
-      <p class="mb-6 font-header font-bold lg:text-xl">
-        Cohort level: <span class="text-orange"
-          >Advanced</span
-        >
-      </p>
-      <p class="mb-6 font-header font-bold lg:text-xl">
-        This program comprehensively covers chapters 1 to 14
-        of "Programming Bitcoin," providing participants
-        with a solid foundation in Bitcoin programming and
-        development.
-      </p>
-      <p class="mb-6 font-header font-bold lg:text-xl">
-        Beyond the cohort, participants are encouraged to
-        actively engage in projects of interest within the
-        BitShala Discord community.
-      </p>
-    </div>
-  </CohortDetails>
+  />
+  <CohortStructure />
+
   <Syllabus
     syllabus={[
       {
@@ -165,8 +102,8 @@ const isVisible = false;
       },
     ]}
   />
+  <MeetYourTAs />
   <div id="applicationForm">
-    <CohortStructure />
     <Application
       client:only
       cohortName={cohortName}
@@ -174,5 +111,5 @@ const isVisible = false;
       regOpen={true}
     />
   </div>
-  <Carousel client:visible />
+  <CohortGraduates />
 </Layout>
