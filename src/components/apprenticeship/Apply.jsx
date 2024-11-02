@@ -41,6 +41,7 @@ const Apply = () => {
     name: "",
     github: "",
     linkedIn: "",
+    email: "",
     contributions: [],
     project: "",
     whyPassionate: "",
@@ -55,6 +56,7 @@ const Apply = () => {
 
   const [eduFormData, setEduFormData] = useState({
     name: "",
+    email: "",
     program: "",
     duration: "",
     impact: "",
@@ -74,6 +76,7 @@ const Apply = () => {
     portfolio: "",
     github: "",
     linkedIn: "",
+    email: "",
     project: "",
     whyPassionate: "",
     describeSkills: "",
@@ -90,6 +93,13 @@ const Apply = () => {
       inputType: "text",
       name: "name",
       value: devFormData.name,
+      isRequired: true,
+    },
+    {
+      heading: "Email*",
+      inputType: "email",
+      name: "email",
+      value: devFormData.email,
       isRequired: true,
     },
     {
@@ -195,6 +205,13 @@ const Apply = () => {
       isRequired: true,
     },
     {
+      heading: "Email*",
+      inputType: "email",
+      name: "email",
+      value: eduFormData.email,
+      isRequired: true,
+    },
+    {
       heading:
         "Describe your program: (Please provide a detailed description of the program you wish to run)*",
       name: "program",
@@ -288,6 +305,13 @@ const Apply = () => {
       name: "name",
       type: "text",
       value: designFormData.name,
+      isRequired: true,
+    },
+    {
+      heading: "Email*",
+      inputType: "email",
+      name: "email",
+      value: designFormData.email,
       isRequired: true,
     },
     {
