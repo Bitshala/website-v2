@@ -272,7 +272,7 @@ const Application = ({
               </>
             ) : (
               <>
-                <h3 className="flex h-14 cursor-pointer items-center font-bold lg:text-4xl">
+                <h3 className="flex h-14 cursor-pointer items-center text-2xl font-bold lg:text-4xl">
                   <span className="px-2 text-orange">
                     Register
                   </span>
@@ -280,7 +280,7 @@ const Application = ({
                 </h3>
                 <form
                   onSubmit={handleSubmit}
-                  className="flex flex-col gap-1 rounded-lg px-5 pt-2 lg:w-1/2"
+                  className="flex flex-col gap-1 rounded-lg px-5 pt-2 lg:w-full"
                 >
                   {list.map((item) => {
                     if (item.name === "name") {
@@ -292,7 +292,7 @@ const Application = ({
                                 Discord
                               </a>
                             </span>
-                            Name*
+                            &nbsp; Name*
                           </p>
                           <Input
                             className="mb-3 block w-full rounded-lg border p-2.5 font-base text-sm"
@@ -307,7 +307,7 @@ const Application = ({
                     } else if (item.name === "skills") {
                       return (
                         <>
-                          <p>
+                          <p className="text-lg">
                             Please select list of skills
                           </p>
                           <Autocomplete
@@ -339,7 +339,7 @@ const Application = ({
                     } else if (item.name === "books") {
                       return (
                         <>
-                          <p>
+                          <p className="text-lg">
                             Please select books/resources
                             that you have gone through?
                           </p>
@@ -372,7 +372,9 @@ const Application = ({
                     } else {
                       return (
                         <div key={item.name}>
-                          <p>{item.heading}</p>
+                          <p className="text-lg ">
+                            {item.heading}
+                          </p>
                           <Input
                             className="mb-3 block w-full rounded-lg border p-2.5 font-base text-sm"
                             type={item.type}
@@ -394,9 +396,9 @@ const Application = ({
                   />
                   <button
                     type="submit"
-                    className="my-5 rounded-lg bg-orange p-2 text-white hover:bg-peach hover:text-black lg:w-1/3 lg:self-center"
+                    className="my-5 rounded-lg bg-black p-2 py-4 font-bold text-white hover:bg-orange hover:text-black lg:w-full lg:self-center"
                   >
-                    Apply
+                    Submit Application
                   </button>
                 </form>
               </>

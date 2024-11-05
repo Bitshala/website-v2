@@ -1,0 +1,141 @@
+---
+const takeaways = [
+  {
+    name: "Achieve Bitcoin Programming Mastery",
+    desc: "Acquire in-depth knowledge of Bitcoin Core, covering Bitcoin scripting, consensus rules, and protocol behavior.",
+  },
+  {
+    name: "Build Cryptographic Proficiency",
+    desc: "Develop a strong foundation in cryptographic concepts essential to Bitcoin, including elliptic curve cryptography and digital signatures.",
+  },
+  {
+    name: "Gain Advanced Scripting Skills",
+    desc: "Write and validate complex Bitcoin scripts, enabling you to create custom transaction structures and smart contracts.",
+  },
+  {
+    name: "Hands-On Node Management",
+    desc: "Gain experience setting up and managing a local regtest node, essential for testing and experimenting in a controlled environment.",
+  },
+  {
+    name: "Community",
+    desc: "Connect with other advanced Bitcoiners and developers, engage in discussions, and collaborate with like-minded learners for future opportunities.",
+  },
+  {
+    name: "Certificate of Achievement",
+    desc: "Earn a certificate recognizing your completion and proof-of-work.",
+  },
+  {
+    name: "Fellowship Opportunities",
+    desc: "Gain access to fellowship opportunities at Bitshala and exclusive invites to Bitspace for more physical community experiences.",
+  },
+];
+---
+
+<div class="lg:p-8">
+  <h1
+    class="mb-3 mt-8 font-header text-3xl font-bold md:text-6xl lg:text-6xl"
+    id="about_us"
+  >
+    Programming Bitcoin
+  </h1>
+  <h3
+    class="mb-5 font-header text-xl font-bold lg:text-3xl"
+  >
+    Cohort Kicking off on <span class="text-orange"
+      >08th November 2024</span
+    >
+  </h3>
+  <p class="font-base text-base md:text-base lg:text-2xl">
+    <span class="font-bold text-orange">What is it?</span>
+     The PB Cohort is an advanced,<strong
+      >hands-on exploration of Bitcoin protocol internals.</strong
+    > Through solving <strong>exercises</strong> in <strong
+      >python</strong
+    >, you’ll gain skills to truly understand Bitcoin at the
+    protocol level, moving well beyond the basics. Guided by
+    Jimmy Song’s Programming Bitcoin, this cohort delves
+    into cryptography, Bitcoin’s scripting language, and
+    transaction mechanics, helping you <strong
+      >develop a programmer’s intuition for Bitcoin's
+      elementary protocol routines.</strong
+    > By the end, you will have your own little Bitcoin
+    tools library in python, and be prepared to innovate and
+    operate confidently within the Bitcoin FOSS ecosystem.
+  </p>
+  <p class="my-5 text-base md:text-base lg:text-2xl">
+    <span class="font-bold text-orange">Who is it for?</span
+    >
+     This cohort is for <span class="font-bold"
+      >advanced learners</span
+    >— technically proficient individuals, developers, and
+    engineers looking to dive deeper into Bitcoin’s
+    architecture and scripting. If you understand Bitcoin
+    basics and are ready to build, experiment, and solve
+    problems at a protocol level, this is for you.
+  </p>
+  <p class="text-base md:text-base lg:text-2xl">
+    <span class="font-bold text-orange">
+      What are the prerequisites?
+    </span>
+     You should have a <strong>
+      solid understanding of Bitcoin basics</strong
+    >
+     (ideally having read <a
+      target="_blank"
+      class="underline"
+      href="https://github.com/bitcoinbook/bitcoinbook"
+      >Mastering Bitcoin</a
+    > by Andreas Antonopoulos) and <strong
+      >proficiency in <a
+        target="_blank"
+        class="underline"
+        href="https://www.youtube.com/watch?v=YYXdXT2l-Gg&list=PL-osiE80TeTskrapNbzXhwoFUiLCjGgY7
+"
+        >Python programming</a
+      >.</strong
+    >
+     Familiarity with <a
+      target="_blank"
+      class="underline"
+      href="https://www.youtube.com/watch?v=j6vKLJxAKfw&list=PL-osiE80TeTvGhHkpvfmKWOiIPF8UVy6c"
+      >command-line tools and Unix/Linux</a
+    > operations will be beneficial for more complex
+    exercises. Above all, your grit to solve challenging
+    problems is what matters most!
+  </p>
+
+  <div class="my-10">
+    <slot name="text" />
+    <h3 class="my-8 text-2xl font-bold text-orange">
+      What are the takeaways?
+    </h3>
+    <ul class="list-disc pl-5 lg:pl-10">
+      {
+        takeaways.map((takeaway) => (
+          <li class="my-4 lg:text-2xl">
+            <span class="font-header font-bold">
+              {takeaway.name}
+            </span>
+            : {takeaway.desc}
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+
+  <p class="text-base md:text-base lg:text-2xl">
+    <span class="font-bold text-orange">
+      What is the fellowship program?
+    </span>
+    <span
+      >The fellowship program is your <span
+        class="font-bold">launchpad into</span
+      > the
+      <span class="font-bold">Bitcoin FOSS</span>(Free and
+      Open Source Software) world. Whether it's developing
+      innovative open-source software or leading educational
+      initiatives, this is where your contributions to
+      Bitcoin — and potentially your Bitcoin career — begin!
+    </span>
+  </p>
+</div>
