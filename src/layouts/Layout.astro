@@ -97,11 +97,11 @@ const { title, headerProps, isVisible } = Astro.props;
     <Navbar client:only />
 
     <div class=`${isVisible ? "block" : "hidden"}`>
-      <Notification
+      <!-- <Notification
         message="Register for upcoming PB Study Cohort"
         url="/cohorts/pb/#applicationForm"
         client:only
-      />
+      /> -->
     </div>
 
     {
