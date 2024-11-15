@@ -21,6 +21,7 @@ const Navbar = () => {
       subMenu: [
         { name: "Study cohorts", link: "/cohorts" },
         { name: "Fellowship", link: "/fellowship" },
+        { name: "Chaincode BOSS", link: "/chaincodeboss" },
       ],
     },
     {
