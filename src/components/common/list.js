@@ -22,7 +22,7 @@ export const ta = [
   //   github: "https://github.com/stratospher",
   // },
   {
-    name: "Sovrav",
+    name: "Saurabh S",
     desc: "PM juggling Bitcoin FOSS projects and ventures like a circus performer.",
     image: "sourav",
     bgColor: "bg-black",
@@ -87,7 +87,7 @@ export const ta2 = [
     twitter: "https://x.com/faisal_qrs",
   },
   {
-    name: "SOVRAV",
+    name: "Saurabh S",
     desc: "Operations Lead, Bitshala",
     image: "Sourav",
     bgColor: "bg-black",
