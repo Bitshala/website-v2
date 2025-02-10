@@ -4,7 +4,7 @@ const list = [
     logo: "/apprenticeship/bitlogo.webp",
     github:
       "https://github.com/Bitshala-Incubator/silent-pay",
-    twitter: "https://discord.gg/yHkd8bKRDU",
+    discord: "https://discord.gg/yHkd8bKRDU",
     name: "Silent-Payment Library",
     desc: "A Typescript wallet library implementing all the silent-payment primitives.",
     skills: ["Typescript"],
@@ -13,7 +13,7 @@ const list = [
     logo: "/apprenticeship/bitlogo.webp",
     github:
       "https://github.com/Bitshala-Incubator/silent-pay-indexer",
-    twitter: "https://discord.gg/yHkd8bKRDU",
+    discord: "https://discord.gg/yHkd8bKRDU",
     name: "Silent Payment Indexer",
     desc: "A Typescript project to build various mechanisms of fetching the SP indexes.",
     skills: ["Typescript"],
@@ -22,27 +22,114 @@ const list = [
     logo: "/apprenticeship/bitlogo.webp",
     github:
       "https://github.com/Bitshala-Incubator/rust-coinselect",
-    twitter: "https://discord.gg/6AMHcGdDga",
+    discord: "https://discord.gg/6AMHcGdDga",
     name: "Coinseletion",
-    desc: "A rust library bringing the Bitcoin Core’s coinselection algorithms to the wallet development world.A crucial missing piece of Bitcoin wallet infrastructure.",
+    desc: "A rust library bringing the Bitcoin Core's coinselection algorithms to the wallet development world.A crucial missing piece of Bitcoin wallet infrastructure.",
     skills: ["Rust"],
   },
-  {
-    logo: "/apprenticeship/bitlogo.webp",
-    github:
-      "https://github.com/Bitshala/BitcoinCore-PR-Review-Club",
-    twitter: "https://discord.gg/bDzA7Ae32m",
-    name: "Bitcoin Core Review",
-    desc: "An ongoing Review Club to get all the aspiring core devs get startedin the dense jungle of Bitcoin Core.",
-    skills: ["C++", "Python"],
-  },
+  // {
+  //   logo: "/apprenticeship/bitlogo.webp",
+  //   github:
+  //     "https://github.com/Bitshala/BitcoinCore-PR-Review-Club",
+  //   discord: "https://discord.gg/bDzA7Ae32m",
+  //   name: "Bitcoin Core Review",
+  //   desc: "An ongoing Review Club to get all the aspiring core devs get startedin the dense jungle of Bitcoin Core.",
+  //   skills: ["C++", "Python"],
+  // },
   {
     logo: "/apprenticeship/yinyang.webp",
     github:
       "https://github.com/utxo-teleport/teleport-transactions",
-    twitter: "https://discord.gg/ZfVxdYRPkt",
+    discord: "https://discord.gg/ZfVxdYRPkt",
     name: "Coinswap",
     desc: "Functioning, minimal-viable binaries and libraries to perform a trustless, p2p Maxwell-Belcher Coinswap Protocol",
+    skills: ["Rust"],
+  },
+  {
+    logo: "/apprenticeship/bitcoin_core.png",
+    github: "https://github.com/bitcoin/bitcoin",
+    discord: "https://discord.gg/bDzA7Ae32m",
+    name: "Bitcoin Core",
+    desc: "The reference implementation of the bitcoin protocol",
+    skills: ["C++"],
+  },
+  {
+    logo: "/apprenticeship/ldk.png",
+    github:
+      "https://github.com/lightningdevkit/rust-lightning",
+    name: "Lightning Development Kit",
+    desc: "A complete lightning implementation packaged as an SDK",
+    skills: ["Rust"],
+  },
+  {
+    logo: "/apprenticeship/lnd.png",
+    github: "https://github.com/lightningnetwork/lnd",
+    name: "Lightning Network Daemon",
+    desc: "A Golang implementation and the most widely run full node on the lightning network",
+    skills: ["Go"],
+  },
+  {
+    logo: "/apprenticeship/core-lightning.png",
+    github: "https://github.com/ElementsProject/lightning",
+    name: "Core Lightning",
+    desc: "A lightweight, highly customizable and standard compliant implementation of the lightning protocol written in C",
+    skills: ["C"],
+  },
+  {
+    logo: "/apprenticeship/eclair.png",
+    github: "https://github.com/ACINQ/eclair",
+    name: "Eclair",
+    desc: "A scala implementation of the lightning network, focusing on the mobile use case",
+    skills: ["Scala"],
+  },
+  {
+    logo: "/apprenticeship/bdk.png",
+    github: "https://github.com/bitcoindevkit/bdk",
+    name: "Bitcoin Development Kit",
+    desc: "Seamlessly build cross platform wallets",
+    skills: ["Rust"],
+  },
+  {
+    logo: "/apprenticeship/secp256k1.png",
+    github: "https://github.com/bitcoin-core/secp256k1",
+    name: "Libsecp256k1",
+    desc: "Optimized C library for elliptic curve operations on secp256k1",
+    skills: ["C"],
+  },
+  {
+    logo: "/apprenticeship/vls.png",
+    github:
+      "https://github.com/lightning-signer/validating-lightning-signer",
+    name: "Validating Lightning Signer",
+    desc: "Improve your lightning node security by protecting your keys separately",
+    skills: ["Rust"],
+  },
+  {
+    logo: "/apprenticeship/btc-pay.png",
+    github: "https://github.com/btcpayserver/btcpayserver",
+    name: "BTCPayserver",
+    desc: "Free, open-source and self-hosted, bitcoin payment processor",
+    skills: ["C#"],
+  },
+  {
+    logo: "/apprenticeship/fedimint.png",
+    github: "https://github.com/fedimint/fedimint",
+    name: "Fedimint",
+    desc: "A modular protocol to custody and transact bitcoin in a community context",
+    skills: ["Rust"],
+  },
+  {
+    logo: "/apprenticeship/stratum.png",
+    github: "https://github.com/stratum-mining/stratum",
+    name: "Stratum V2",
+    desc: "The next generation protocol for pooled mining",
+    skills: ["Rust"],
+  },
+  {
+    logo: "/apprenticeship/rust-btc.png",
+    github: "https://github.com/rust-bitcoin/rust-bitcoin",
+    name: "Rust Bitcoin Library",
+    desc: "A series of projects to implement various bitcoin protocols in Rust",
     skills: ["Rust"],
   },
 ];
@@ -80,7 +167,8 @@ const list = [
                     {item.name}
                   </div>
                 </div>
-                <div class="m-3 mt-3 flex w-20 lg:mr-10">
+
+                <div class="m-3 mt-3 flex w-20 justify-end lg:mr-10">
                   <a
                     href={item.github}
                     target="_blank"
@@ -91,16 +179,18 @@ const list = [
                       class="m-1 h-8 w-auto rounded  bg-peach p-1 group-hover:bg-white lg:h-10"
                     />
                   </a>
-                  <a
-                    href={item.twitter}
-                    target="_blank"
-                    class="group"
-                  >
-                    <img
-                      src="/apprenticeship/discord.png"
-                      class="m-1 h-8  rounded  bg-peach p-1 group-hover:bg-white lg:h-10 "
-                    />
-                  </a>
+                  {item.discord && (
+                    <a
+                      href={item.discord}
+                      target="_blank"
+                      class="group"
+                    >
+                      <img
+                        src="/apprenticeship/discord.png"
+                        class="m-1 h-8  rounded  bg-peach p-1 group-hover:bg-white lg:h-10 "
+                      />
+                    </a>
+                  )}
                 </div>
               </div>
               <div class="mx-5 -mt-12 flex w-full flex-col px-2 py-5 font-medium">
@@ -137,7 +227,7 @@ const list = [
         </div>
       </div>
       <div class="flex w-full flex-col font-medium">
-        <a
+        <!-- <a
           href="https://bitcoindevs.xyz/good-first-issues"
           target="_blank"
         >
@@ -146,13 +236,12 @@ const list = [
           >
             Choose any other project from this list →
           </div>
-        </a>
+        </a> -->
         <a
           href="#apply"
-          class="mb-8 text-orange hover:underline"
+          class="my-6 mb-8 text-xl text-orange hover:underline"
         >
-          Or tell us about the project you're interested in
-          →
+          Tell us about the project you're interested in →
         </a>
       </div>
     </div>
