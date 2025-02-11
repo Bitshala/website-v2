@@ -1,10 +1,10 @@
 ---
 import About from "../components/readingClub/About.astro";
 import Layout from "../layouts/Layout.astro";
-import PreviouslyCovered from "../components/readingClub/PreviouslyCovered";
-import PreviousSessions from "../components/readingClub/PreviousSessions";
+import PreviousSessions from "../components/readingClub/PreviousSessions.astro";
 import Calender from "../components/common/Calender.astro";
 import CohortHeader from "../components/cohort/CohortHeader.astro";
+import OngoingBook from "../components/readingClub/OngoingBook.astro";
 
 const headerProps = {
   removeHeader: true,
@@ -22,12 +22,10 @@ const isVisible = true;
   <CohortHeader img="/readingClub/hero.webp" />
 
   <About />
-  <PreviousSessions
-    client:only
-    heading="Watch us in action"
-    url="https://www.youtube.com/watch?v=J4wR4bXxX9Q"
-    description="Want to take a look at how the club runs? Have a look below. OR if you missed our live reading club... Catch up with the recordings here and join the conversation at your own pace."
+  <OngoingBook />
+  <PreviousSessions />
+  <hr
+    class="mx-auto mb-10 w-full max-w-screen-xl border-black border-opacity-20 lg:mb-24"
   />
-  <PreviouslyCovered client:load />
   <Calender />
 </Layout>
