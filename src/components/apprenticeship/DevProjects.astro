@@ -150,47 +150,46 @@ const list = [
     development.
   </p>
 
-  <div class="mt-10 grid grid-cols-1 gap-5 lg:grid-cols-2">
+  <div class="mt-10 grid grid-cols-1 gap-5 lg:grid-cols-3">
     {
       list.map((item) => (
         <>
-          <div class=" flex flex-col justify-center rounded-3xl border-[1px] border-[#e0e0e0] bg-peach ">
+          <div class=" flex  justify-center rounded-3xl border-[1px] border-[#e0e0e0] bg-peach ">
             <div class="flex w-full flex-col">
-              <div class=" flex w-full items-center justify-between self-center">
-                <div class="flex h-28 items-center self-center ">
+              <div class=" flex w-full flex-col ">
+                <div class="mt-6 flex w-full justify-between">
                   <img
                     loading="lazy"
                     srcset={item.logo}
-                    class=" -mt-0 ml-6 h-14 rounded-full  "
+                    class="ml-6 h-14 rounded-full  "
                   />
-                  <div class="mb-6 ml-3 mt-6 font-header text-lg font-medium  lg:text-3xl">
-                    {item.name}
-                  </div>
-                </div>
-
-                <div class="m-3 mt-3 flex w-20 justify-end lg:mr-10">
-                  <a
-                    href={item.github}
-                    target="_blank"
-                    class="group"
-                  >
-                    <img
-                      src="/apprenticeship/github.png"
-                      class="m-1 h-8 w-auto rounded  bg-peach p-1 group-hover:bg-white lg:h-10"
-                    />
-                  </a>
-                  {item.discord && (
+                  <div class="m-3 mt-3 flex w-20 justify-end lg:mr-10">
                     <a
-                      href={item.discord}
+                      href={item.github}
                       target="_blank"
                       class="group"
                     >
                       <img
-                        src="/apprenticeship/discord.png"
-                        class="m-1 h-8  rounded  bg-peach p-1 group-hover:bg-white lg:h-10 "
+                        src="/apprenticeship/github.png"
+                        class="m-1 h-8 w-auto rounded  bg-peach p-1 group-hover:bg-white lg:h-10"
                       />
                     </a>
-                  )}
+                    {item.discord && (
+                      <a
+                        href={item.discord}
+                        target="_blank"
+                        class="group"
+                      >
+                        <img
+                          src="/apprenticeship/discord.png"
+                          class="m-1 h-8  rounded  bg-peach p-1 group-hover:bg-white lg:h-10 "
+                        />
+                      </a>
+                    )}
+                  </div>
+                </div>
+                <div class=" mb-5 ml-7 font-header text-lg font-medium  lg:text-3xl">
+                  {item.name}
                 </div>
               </div>
               <div class="mx-5 -mt-12 flex w-full flex-col px-2 py-5 font-medium">
