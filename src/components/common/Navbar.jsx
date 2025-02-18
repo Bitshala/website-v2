@@ -11,7 +11,7 @@ const Navbar = () => {
         { name: "About", link: "/about" },
         {
           name: "Contact us ",
-          link: "/bitspace/#contact_us",
+          link: "/about/#contact_us",
         },
       ],
     },
@@ -21,7 +21,6 @@ const Navbar = () => {
       subMenu: [
         { name: "Study cohorts", link: "/cohorts" },
         { name: "Fellowship", link: "/fellowship" },
-        { name: "Chaincode BOSS", link: "/chaincodeboss" },
       ],
     },
     {
@@ -44,10 +43,6 @@ const Navbar = () => {
         {
           name: "Bitcoin PR Review Club",
           link: "/review",
-        },
-        {
-          name: "Hands-on Lightning",
-          link: "/hands-on-lightning",
         },
         { name: "Bitcoin Talks", link: "/talks" },
       ],
