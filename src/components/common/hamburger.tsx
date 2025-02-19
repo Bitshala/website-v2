@@ -112,10 +112,6 @@ const SideMenu = () => {
           name: "Bitcoin PR Review Club",
           link: "/review",
         },
-        {
-          name: "Hands-on Lightning",
-          link: "/hands-on-lightning",
-        },
         { name: "Bitcoin Talks", link: "/talks" },
       ],
     },
