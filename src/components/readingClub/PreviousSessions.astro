@@ -1,0 +1,70 @@
+---
+const slides = [
+  {
+    title: "How To Think About The Economy",
+    content:
+      "A brilliant and beginner-friendly book on Austrian economics",
+    targetLink: "/readingClub/howtothink.webp",
+    cta: "Check out the recordings  → ",
+  },
+  {
+    title: "Gradually, Then Suddenly",
+    content:
+      "An amazing and renowned resource for understanding Bitcoin as money",
+    targetLink: "/readingClub/gradually.webp",
+    cta: "Check out the recordings  → ",
+  },
+  {
+    title: "Bitcoin Development Philosophy",
+    content:
+      "Gain deeper understanding of Bitcoin’s design trade-offs & philosophy",
+    targetLink: "/readingClub/devphilosophy.webp",
+    cta: "Check out the recordings  → ",
+  },
+];
+---
+
+<div class="mx-auto my-32 max-w-screen-xl">
+  <h1
+    class="mb-5 mt-10 font-header text-3xl font-bold lg:text-6xl"
+  >
+    Previously Covered Books
+  </h1>
+  <p class="mb-10 text-base font-normal lg:text-2xl">
+    Need to catch up? Browse through the highlights and
+    discussions from the books we've covered. Get the gist
+    of past reads and stay in the loop with our collective
+    learning journey.
+  </p>
+  <div
+    class="mt-10 flex flex-col gap-4 md:grid md:grid-cols-2 lg:my-[72px] lg:grid lg:grid-cols-3 lg:gap-7 lg:p-0"
+  >
+    {
+      slides.map((slide, index) => (
+        <div class="lg: rounded-3xl bg-peach px-3 pb-3 pt-5 lg:px-5 lg:pb-5 lg:pt-8">
+          <h1 class="mb-3 px-3 font-header text-2xl font-medium lg:text-3xl">
+            {slide.title.split(" ").slice(0, -1).join(" ")}{" "}
+            <br />
+            {slide.title.split(" ").slice(-1)}
+          </h1>
+          <p class="font-regular mb-3 px-3 text-base lg:text-base ">
+            {slide.content}
+          </p>
+          <a
+            href={slide.targetLink}
+            class="px-3 font-header text-orange hover:underline"
+          >
+            {slide.cta}
+          </a>
+
+          <img
+            class="mt-[20px] rounded-2xl"
+            src={slide.targetLink}
+            alt=""
+          />
+          <a href={slide.targetLink} />
+        </div>
+      ))
+    }
+  </div>
+</div>
