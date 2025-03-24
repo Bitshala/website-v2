@@ -1,20 +1,14 @@
 ---
-import About from "../components/readingClub/About.astro";
 import Layout from "../layouts/Layout.astro";
-import PreviouslyCovered from "../components/readingClub/PreviouslyCovered";
-import PreviousSessions from "../components/readingClub/PreviousSessions";
-import { getPlaylistDetails } from "../scripts/googleApi";
+import About from "../components/readingClub/About.astro";
 import Calender from "../components/common/Calender.astro";
-
-const videoConfig = await getPlaylistDetails(
-  "PLdHBT9oS8yMVj4DgL1AUpKUnFsYmVWPpj",
-  import.meta.env.GOOGLE_KEY,
-);
+import PreviouslyCovered from "../components/readingClub/PreviouslyCovered";
 
 const headerProps = {
-  image: "/readingClub/readingClubHero.webp",
+  removeHeader: true,
 };
 const isVisible = true;
+const img = "/carousel/2.webp";
 ---
 
 <Layout
@@ -23,34 +17,16 @@ const isVisible = true;
   isVisible={isVisible}
 >
   <div
-    slot="headerChild"
-    class="flex flex-col items-center justify-center"
+    style={{
+      backgroundImage: `url(${img})`,
+      backgroundSize: "contain",
+      backgroundRepeat: "no-repeat",
+      backgroundPosition: "center",
+    }}
+    class="justify-betweenpx-5 m-auto mt-20 flex min-h-[30vh] flex-col items-center rounded-2xl pb-12 pt-32 md:min-h-[60vh] lg:min-h-[90vh]"
   >
-    <h1
-      class="text-center font-header text-4xl font-bold text-white md:text-6xl lg:text-9xl"
-    >
-      Bitshala Bitcoin Reading Clubs
-    </h1>
-    <p
-      class="mt-10 text-center text-xl font-bold text-white md:text-3xl lg:mx-96 lg:mt-28 lg:w-1/2 lg:text-5xl"
-    >
-      Weekly reading club for Bitcoin learners
-    </p>
-
-    <a
-      href="https://discord.com/invite/STeQFVEWf9"
-      target="_blank"
-      class="text-m mt-60 rounded-lg bg-white p-4 text-center font-bold hover:bg-orange hover:text-white lg:w-1/3 lg:text-2xl"
-      >RSVP on Discord</a
-    >
   </div>
   <About />
-  <PreviousSessions
-    client:only
-    heading="Watch us in action"
-    url="https://www.youtube.com/watch?v=J4wR4bXxX9Q"
-    description="Want to take a look at how the club runs? Have a look below. OR if you missed our live reading club... Catch up with the recordings here and join the conversation at your own pace."
-  />
-  <PreviouslyCovered client:load />
+  <PreviouslyCovered />
   <Calender />
 </Layout>

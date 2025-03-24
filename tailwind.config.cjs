@@ -10,6 +10,7 @@ module.exports = {
       orange: "#FA8816",
       peach: "#FFF0E5",
       darkPeach: "#FFDEC7",
+      hover: '#FFE1C4',
     },
     fontFamily: {
       header: "Apfel Grotezk, sans-serif",

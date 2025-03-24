@@ -1,55 +1,30 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import About from "../components/optech/About.astro";
-import PreviousSessions from "../components/readingClub/PreviousSessions";
-import { getPlaylistDetails } from "../scripts/googleApi";
 import Calender from "../components/common/Calender.astro";
-import type { url } from "../../dist/chunks/pages/apply_d7ea94b6.mjs";
-
-// const videoConfig = await getPlaylistDetails(
-//   "PLdHBT9oS8yMUx09HCH1fgmLUSRPItUmY2",
-//   import.meta.env.GOOGLE_KEY,
-// );
 
 const headerProps = {
-  image: "/optech/optechHero.webp",
+  removeHeader: true,
 };
 const isVisible = true;
+const img = "/optech/optech.webp";
 ---
 
 <Layout
-  title="Bitcoin Optech"
+  title="Optech"
   headerProps={headerProps}
   isVisible={isVisible}
 >
   <div
-    slot="headerChild"
-    class="flex flex-col items-center justify-center"
+    style={{
+      backgroundImage: `url(${img})`,
+      backgroundSize: "contain",
+      backgroundRepeat: "no-repeat",
+      backgroundPosition: "center",
+    }}
+    class="m-auto mt-20 flex min-h-[30vh] flex-col items-center justify-between px-5 pb-12 pt-32 md:min-h-[60vh] md:rounded-lg lg:min-h-[90vh]"
   >
-    <h1
-      class="text-center font-header text-4xl font-bold text-white md:text-6xl lg:text-9xl"
-    >
-      Latest In Bitcoin Tech This Week
-    </h1>
-    <p
-      class="mt-10 text-center text-xl font-bold text-white md:text-3xl lg:mx-96 lg:mt-28 lg:w-1/2 lg:text-5xl"
-    >
-      Bitcoin Optech Weekly Deep Dive Series
-    </p>
-
-    <a
-      href="https://discord.com/invite/STeQFVEWf9"
-      target="_blank"
-      class="text-m mt-60 rounded-lg bg-white p-4 text-center font-bold hover:bg-orange hover:text-white lg:w-1/3 lg:text-2xl"
-      >RSVP on Discord</a
-    >
   </div>
   <About />
-  <PreviousSessions
-    client:only
-    url="https://www.youtube.com/playlist?list=PLdHBT9oS8yMUx09HCH1fgmLUSRPItUmY2"
-    heading="Previous Sessions"
-    description="Life got in the way? No problem. You can always catch up on our previous sessions here."
-  />
   <Calender />
 </Layout>
