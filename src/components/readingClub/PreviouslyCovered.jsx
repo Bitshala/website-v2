@@ -33,7 +33,7 @@ const PreviouslyCovered = () => {
   return (
     <div>
       <div>
-        <h1 className="mb-5 mt-10 font-header text-5xl font-bold">
+        <h1 className="mb-5 mt-10 font-header text-3xl font-bold lg:text-6xl">
           Previously Covered Books
         </h1>
         <p className="mb-10 text-xl">
