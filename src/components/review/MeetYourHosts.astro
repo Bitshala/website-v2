@@ -1,0 +1,79 @@
+---
+const TAs = [
+  {
+    name: "Yuvic",
+    desc: "Balancing late-night coding with cramming for finals, because contributing to Bitcoin Core is more exciting than college exams.",
+    img: "/apprenticeship/yuvic.webp",
+    github: "https://github.com/i-am-yuvi",
+    twitter: "https://x.com/hey_yuvitwt",
+  },
+  {
+    name: "Probot",
+    desc: "Introverted enough to avoid eye contact but bold enough to host Bitcoin Core PR review clubs — because socializing is easier when it's about Bitcoin.",
+    img: "/apprenticeship/probot.webp",
+    github: "https://github.com/Prabhat1308",
+    twitter: "https://x.com/pr0b0t1sc00l",
+  },
+];
+---
+
+<div class="lg:p-8">
+  <h1
+    class="my-8 font-header text-3xl font-bold md:text-3xl"
+    id="about_us"
+  >
+    Meet Your Hosts
+  </h1>
+
+  <div
+    class="grid grid-cols-2 gap-4 text-base lg:grid-cols-4 lg:text-2xl"
+  >
+    {
+      TAs.map((ta) => (
+        <>
+          <div class=" my-5 flex flex-col gap-3 rounded-xl">
+            <img
+              src={ta.img}
+              class="h-44 w-44 items-center rounded-3xl p-3 lg:h-56 lg:w-56"
+            />
+            <div class="absolute ml-5 mt-5 flex">
+              {ta.github && (
+                <a
+                  href={ta.github}
+                  target="_blank"
+                  class="group"
+                >
+                  <img
+                    src="/apprenticeship/github.png"
+                    class="m-1 h-7 rounded-xl bg-peach group-hover:bg-white lg:h-10"
+                  />
+                </a>
+              )}
+              {ta.twitter && (
+                <a
+                  href={ta.twitter}
+                  target="_blank"
+                  class="group"
+                >
+                  <img
+                    src="/apprenticeship/twitter.png"
+                    class="m-1 h-7 rounded bg-peach group-hover:bg-white lg:h-10"
+                  />
+                </a>
+              )}
+            </div>
+            <div class="-mt-4 ml-2  p-1 lg:mr-5">
+              <div class="flex justify-between">
+                <p class="my-3 font-header text-2xl font-medium ">
+                  {ta.name}
+                </p>
+              </div>
+
+              <p class="text-base">{ta.desc}</p>
+            </div>
+          </div>
+        </>
+      ))
+    }
+  </div>
+</div>
