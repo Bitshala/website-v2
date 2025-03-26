@@ -88,6 +88,7 @@ const SideMenu = () => {
       link: "/#bitcoin_career",
       subMenu: [
         { name: "Study cohorts", link: "/cohorts" },
+        { name: "Bitcoin Clubs", link: "/clubs" },
         { name: "Fellowship", link: "/fellowship" },
       ],
     },

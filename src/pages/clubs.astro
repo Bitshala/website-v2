@@ -1,0 +1,163 @@
+---
+import About from "../components/clubs/About.astro";
+import Calender from "../components/common/Calender.astro";
+import Layout from "../layouts/Layout.astro";
+
+const headerProps = {
+  // heading: "Explore our Bitcoin Clubs",
+  // subheading:
+  //   "Hands-on learning, collaborative discussions, and engaging community activities for every Bitcoiner. Join in!",
+  image: "/clubs/header.webp",
+  removepadding: true,
+};
+const isVisible = true;
+
+const clubs = [
+  {
+    url: "/carousel/optech.webp",
+    title: "Latest in Bitcoin Tech",
+    content:
+      "Stay in the know and dive into the latest breakthroughs and trends in Bitcoin technology.",
+    targetLink: "/optech",
+    cta: "Stay updated  → ",
+  },
+  {
+    url: "/carousel/readingClub.webp",
+    title: "Bitcoin Reading Club",
+    content:
+      "Explore Bitcoin beyond the code with insightful, non-technical book discussions with your Bitcoin peers.",
+    targetLink: "/readingClub",
+    cta: "Join the club   → ",
+  },
+  {
+    url: "/carousel/reviewClub.webp",
+    title: "Bitcoin PR Review Club",
+    content:
+      "Dive deep into Bitcoin Core. Review PRs together and sharpen your Bitcoin development skills.",
+    targetLink: "/review",
+    cta: "Review PRs together  → ",
+  },
+  {
+    url: "/carousel/3.webp",
+    title: "Hands-On Lightning",
+    content:
+      "Experiment with the Lightning Network directly from your terminal. (Currently archived)",
+    targetLink:
+      "https://www.youtube.com/playlist?list=PLdHBT9oS8yMW034kOCRbXDgElbY7zUeRf",
+    cta: "Start stacking sats!  → ",
+  },
+  {
+    url: "/carousel/tradfi.webp",
+    title: "TradFi and Bitcoin",
+    content:
+      "Discover where traditional finance meets Bitcoin. Engage in discussions that bridge the two worlds.",
+    targetLink:
+      "https://www.youtube.com/playlist?list=PLdHBT9oS8yMWiWd0L48gHDgTi8roKB3Fs",
+    cta: "Learn more  → ",
+  },
+];
+---
+
+<Layout
+  title="Bitcoin Clubs"
+  headerProps={headerProps}
+  isVisible={isVisible}
+>
+  <div
+    slot="headerChild"
+    class="mx-auto flex h-[30vh] max-w-screen-xl flex-col justify-between"
+  >
+    <h1
+      class="text-center font-header text-5xl font-bold text-white lg:text-9xl"
+    >
+      Explore Our
+    </h1>
+    <h2
+      class="mt-0 text-center font-header text-5xl font-bold text-orange lg:text-9xl"
+    >
+      Bitcoin Clubs
+    </h2>
+    <div slot="after-heading">
+      <p
+        class="mt-5 hidden text-center text-xl font-normal text-white lg:block lg:text-3xl"
+      >
+        Hands-on learning, collaborative discussions, and <br
+        />
+         engaging community activities for every Bitcoiner.
+        Join in!
+      </p>
+      <p
+        class="mt-5 block text-center text-xl font-normal text-white lg:hidden lg:text-3xl"
+      >
+        Hands-on learning,<br /> collaborative discussions,<br
+        />
+         and engaging community <br /> activities for every
+        Bitcoiner. <br /> Join in!
+      </p>
+    </div>
+  </div>
+
+  <div
+    class="relative -top-40 flex flex-col gap-4 p-5 lg:my-[72px] lg:p-0 xl:-top-64"
+  >
+    <div
+      class="flex flex-col gap-4 md:grid md:grid-cols-2 lg:grid lg:grid-cols-3 lg:gap-7"
+    >
+      {
+        clubs.slice(0, 3).map((club) => (
+          <div class="rounded-3xl bg-peach px-3 pb-3 pt-5 hover:bg-hover lg:px-5 lg:pb-5 lg:pt-8">
+            <h1 class="mb-3 px-3 font-header text-2xl font-medium lg:text-3xl">
+              {club.title}
+            </h1>
+            <p class="font-regular mb-3 px-3 text-base lg:text-base">
+              {club.content}
+            </p>
+            <a
+              href={club.targetLink}
+              class="px-3 font-header text-orange hover:underline"
+            >
+              {club.cta}
+            </a>
+            <img
+              src={club.url}
+              class="mt-[20px] rounded-2xl"
+              alt=""
+            />
+          </div>
+        ))
+      }
+    </div>
+
+    <div
+      class="flex flex-col gap-4 md:grid md:grid-cols-2 lg:mx-auto lg:max-w-[calc(66.67%-1.75rem)] lg:gap-7"
+    >
+      {
+        clubs.slice(3, 5).map((club) => (
+          <div class="rounded-3xl bg-peach px-3 pb-3 pt-5 hover:bg-hover lg:px-5 lg:pb-5 lg:pt-8">
+            <h1 class="mb-3 px-3 font-header text-2xl font-medium lg:text-3xl">
+              {club.title}
+            </h1>
+            <p class="font-regular mb-3 px-3 text-base lg:text-base">
+              {club.content}
+            </p>
+            <a
+              href={club.targetLink}
+              class="px-3 font-header text-orange hover:underline"
+            >
+              {club.cta}
+            </a>
+            <img
+              src={club.url}
+              class="mt-[20px] rounded-2xl"
+              alt=""
+            />
+          </div>
+        ))
+      }
+    </div>
+  </div>
+  <div class="-mt-28 lg:-mt-64">
+    <About />
+    <Calender />
+  </div>
+</Layout>
