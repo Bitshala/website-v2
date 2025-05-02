@@ -1,7 +1,6 @@
 import React, { useState, type FormEvent } from "react";
 import axios from "axios";
 import {
-  Alert,
   Autocomplete,
   Input,
   TextField,
@@ -192,37 +191,49 @@ const Application = ({
   //   window.focus();
   // }
 
-  const handleSubmit = async (
-    e: FormEvent<HTMLFormElement>,
-  ) => {
-    e.preventDefault();
-    if (test === "") {
+
+    const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+      e.preventDefault();
+      const url = 'https://script.google.com/macros/s/AKfycby9yCEzbMbqR14HeDjaP7dM7LEbpJN-2ZEzPKfXCgpxpL368Y5MEhu_xH_HAjKpRoHT0g/exec';
+      const formParams = new URLSearchParams({
+        name: formData.name,
+        email: formData.email,
+        cohortName: formData.role,
+      });
+
+      console.log(formData,"formData");
+
       try {
-        await axios
-          .post(
-            "https://bot.bitshala.org/register",
-            formData,
-          )
-          .then((res) => {
-            if (
-              res.data.message === "User already present"
-            ) {
-              setUserExists(true);
-            }
-          });
-        setSubmitted(true);
-        const focusElement = document.getElementById(
-          "focus",
-        ) as HTMLInputElement;
-        focusElement.focus();
-      } catch (error) {
-        console.log(error);
+        const res = await fetch(url, {
+          method: 'POST',
+          body: formParams,  
+        });
+
+      } catch (err:any) {
+        console.error('Submission error:', err);
+        alert("email already in use")
       }
-    } else {
-      console.log("error");
-      window.location.reload();
-    }
-  };
+
+      setFormData({
+        name: "",
+        email: "",
+        location: "",
+        describeYourself: "",
+        year: "",
+        background: "",
+        github: "",
+        time: "",
+        why: "",
+        skills: [],
+        books: [],
+        enrolled: false,
+        role: role,
+        cohortName: cohortName,
+        hearFrom: "",
+      });
+    };
+  
+
 
   return (
     <>
