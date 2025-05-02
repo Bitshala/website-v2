@@ -1,10 +1,11 @@
 import React, { useState, type FormEvent } from "react";
-import axios from "axios";
 import {
   Autocomplete,
   Input,
   TextField,
 } from "@mui/material";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const skills = [
   "Full-stack",
@@ -194,11 +195,20 @@ const Application = ({
 
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
       e.preventDefault();
-      const url = 'https://script.google.com/macros/s/AKfycby9yCEzbMbqR14HeDjaP7dM7LEbpJN-2ZEzPKfXCgpxpL368Y5MEhu_xH_HAjKpRoHT0g/exec';
+      const url = 'https://script.google.com/macros/s/AKfycbxm2-4JyjmDaaIbXdm4io-sKUCJgsDHK-0rgeCX-I6uP9uuYBEerhVu-Pvb-11gGomV_Q/exec';
       const formParams = new URLSearchParams({
         name: formData.name,
         email: formData.email,
-        cohortName: formData.role,
+        role: formData.role,
+        describeYourself:formData.describeYourself,
+        year:formData.year,
+        background:formData.background,
+        location:formData.location,
+        github:formData.github,
+        time:formData.time,
+        why:formData.why,
+        skills:formData.skills.join(','),
+        books:formData.books.join(','),
       });
 
       console.log(formData,"formData");
@@ -208,10 +218,10 @@ const Application = ({
           method: 'POST',
           body: formParams,  
         });
-
+        toast.success("Your application was submitted successfully.");
       } catch (err:any) {
         console.error('Submission error:', err);
-        alert("email already in use")
+        toast.error("Email already in use.");
       }
 
       setFormData({
@@ -237,6 +247,14 @@ const Application = ({
 
   return (
     <>
+      <ToastContainer
+        position="bottom-center"
+        autoClose={5000}
+        hideProgressBar={true}
+        newestOnTop={false}
+        closeOnClick
+        pauseOnHover
+      />
       {regOpen ? (
         <>
           <section className="my-10 grid place-items-center ">
