@@ -90,6 +90,7 @@ const Application = ({
   const [submitted, setSubmitted] = useState(false);
   const [userExistes, setUserExists] = useState(false);
   const [test, setTest] = useState("");
+  const [loading,setLoading] = useState(false);
 
   const list = [
     {
@@ -195,6 +196,7 @@ const Application = ({
 
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
       e.preventDefault();
+      setLoading(true);
       const url = 'https://script.google.com/macros/s/AKfycbzsmq1xwJ99S5jSiaM9XkgHWXTHSlDjiWE8gFDvnlN05kdoqp0iisgm1X_Do1AevYB2Dg/exec';
       const formParams = new URLSearchParams({
         name: formData.name,
@@ -210,9 +212,6 @@ const Application = ({
         skills:formData.skills.join(','),
         books:formData.books.join(','),
       });
-
-      console.log(formData,"formData");
-
       try {
         const res = await fetch(url, {
           method: 'POST',
@@ -221,6 +220,7 @@ const Application = ({
         toast.success("Your application was submitted successfully.");
       } catch (err:any) {
         console.error('Submission error:', err);
+        setUserExists(true);
         toast.error("Email already in use.");
       }
 
@@ -241,6 +241,7 @@ const Application = ({
         cohortName: cohortName,
         hearFrom: "",
       });
+      setLoading(false);
     };
   
 
@@ -424,6 +425,7 @@ const Application = ({
                     }
                   />
                   <button
+                    disabled={loading}
                     type="submit"
                     className="my-5 rounded-lg bg-black p-2 py-4 font-bold text-white hover:bg-orange hover:text-black lg:w-full lg:self-center"
                   >
