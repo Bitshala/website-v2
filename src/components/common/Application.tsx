@@ -195,7 +195,7 @@ const Application = ({
 
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
       e.preventDefault();
-      const url = 'https://script.google.com/macros/s/AKfycbxm2-4JyjmDaaIbXdm4io-sKUCJgsDHK-0rgeCX-I6uP9uuYBEerhVu-Pvb-11gGomV_Q/exec';
+      const url = 'https://script.google.com/macros/s/AKfycbzsmq1xwJ99S5jSiaM9XkgHWXTHSlDjiWE8gFDvnlN05kdoqp0iisgm1X_Do1AevYB2Dg/exec';
       const formParams = new URLSearchParams({
         name: formData.name,
         email: formData.email,
