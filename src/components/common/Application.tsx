@@ -197,7 +197,7 @@ const Application = ({
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
       e.preventDefault();
       setLoading(true);
-      const url = 'https://script.google.com/macros/s/AKfycbzsmq1xwJ99S5jSiaM9XkgHWXTHSlDjiWE8gFDvnlN05kdoqp0iisgm1X_Do1AevYB2Dg/exec';
+      const url = 'https://script.google.com/macros/s/AKfycbzDTR2bNLwFXsRMluycZE5qaoDLVDHTT0NUIFBdzg8H7C0QBNQeDESYVDpbHLL5UIrAGg/exec';
       const formParams = new URLSearchParams({
         name: formData.name,
         email: formData.email,
@@ -312,6 +312,7 @@ const Application = ({
                   onSubmit={handleSubmit}
                   className="flex flex-col gap-1 rounded-lg px-5 pt-2 lg:w-full"
                 >
+                  <fieldset disabled={loading} style={{ border: 0, padding: 0 }}>
                   {list.map((item) => {
                     if (item.name === "name") {
                       return (
@@ -427,10 +428,11 @@ const Application = ({
                   <button
                     disabled={loading}
                     type="submit"
-                    className="my-5 rounded-lg bg-black p-2 py-4 font-bold text-white hover:bg-orange hover:text-black lg:w-full lg:self-center"
+                    className="my-5 rounded-lg bg-black p-2 py-4 font-bold text-white hover:bg-orange hover:text-black lg:w-full lg:self-center disabled:cursor-not-allowed disabled:bg-gray-300"
                   >
-                    Submit Application
+                    {!loading ? "Submit Applicaton" : "Processing..." }
                   </button>
+                  </fieldset>
                 </form>
               </>
             )}
