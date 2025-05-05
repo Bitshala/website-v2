@@ -4,7 +4,7 @@ import {
   Input,
   TextField,
 } from "@mui/material";
-
+import axios from "axios";
 
 const skills = [
   "Full-stack",
@@ -197,6 +197,7 @@ const Application = ({
       e.preventDefault();
       setLoading(true);
       const url = 'https://script.google.com/macros/s/AKfycbzwvpeqZ5VJFD22sdL3Y7rMZdUFB4gIJhVIqbLSJ5X1R6rK-GTkMTViB4DomRYDru-6uQ/exec';
+      const url2 = "https://bot.bitshala.org/register";
       const formParams = new URLSearchParams({
         name: formData.name,
         email: formData.email,
@@ -212,18 +213,22 @@ const Application = ({
         books:formData.books.join(','),
         cohortName: cohortName
       });
-      let data;
       try {
         const res = await fetch(url, {
           method: 'POST',
           body: formParams,  
         });
         
-        data = await res.json();
+        const data = await res.json();
         if (data.success == false) {
           setUserExists(true);
         } else {
           setSubmitted(true); 
+          await axios
+          .post(
+            "https://bot.bitshala.org/register",
+            formData,
+          )
         }
         } catch (err:any) {
         console.error('Submission error:', err);
