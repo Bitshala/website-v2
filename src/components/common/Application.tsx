@@ -4,8 +4,7 @@ import {
   Input,
   TextField,
 } from "@mui/material";
-import { toast, ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+
 
 const skills = [
   "Full-stack",
@@ -236,14 +235,6 @@ const Application = ({
 
   return (
     <>
-      <ToastContainer
-        position="bottom-center"
-        autoClose={5000}
-        hideProgressBar={true}
-        newestOnTop={false}
-        closeOnClick
-        pauseOnHover
-      />
       {regOpen ? (
         <>
           <section className="my-10 grid place-items-center ">
