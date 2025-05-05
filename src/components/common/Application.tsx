@@ -88,7 +88,7 @@ const Application = ({
     hearFrom: "",
   });
   const [submitted, setSubmitted] = useState(false);
-  const [userExistes, setUserExists] = useState(false);
+  const [userExists, setUserExists] = useState(false);
   const [test, setTest] = useState("");
   const [loading,setLoading] = useState(false);
 
@@ -197,7 +197,7 @@ const Application = ({
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
       e.preventDefault();
       setLoading(true);
-      const url = 'https://script.google.com/macros/s/AKfycbzDTR2bNLwFXsRMluycZE5qaoDLVDHTT0NUIFBdzg8H7C0QBNQeDESYVDpbHLL5UIrAGg/exec';
+      const url = 'https://script.google.com/macros/s/AKfycbzwvpeqZ5VJFD22sdL3Y7rMZdUFB4gIJhVIqbLSJ5X1R6rK-GTkMTViB4DomRYDru-6uQ/exec';
       const formParams = new URLSearchParams({
         name: formData.name,
         email: formData.email,
@@ -211,36 +211,24 @@ const Application = ({
         why:formData.why,
         skills:formData.skills.join(','),
         books:formData.books.join(','),
+        cohortName: cohortName
       });
+      let data;
       try {
         const res = await fetch(url, {
           method: 'POST',
           body: formParams,  
         });
-        toast.success("Your application was submitted successfully.");
-      } catch (err:any) {
+        
+        data = await res.json();
+        if (data.success == false) {
+          setUserExists(true);
+        } else {
+          setSubmitted(true); 
+        }
+        } catch (err:any) {
         console.error('Submission error:', err);
-        setUserExists(true);
-        toast.error("Email already in use.");
-      }
-
-      setFormData({
-        name: "",
-        email: "",
-        location: "",
-        describeYourself: "",
-        year: "",
-        background: "",
-        github: "",
-        time: "",
-        why: "",
-        skills: [],
-        books: [],
-        enrolled: false,
-        role: role,
-        cohortName: cohortName,
-        hearFrom: "",
-      });
+        }
       setLoading(false);
     };
   
@@ -260,7 +248,7 @@ const Application = ({
         <>
           <section className="my-10 grid place-items-center ">
             <input id="focus" className="h-0 w-0" />
-            {submitted ? (
+            {submitted || userExists ? (
               <>
                 <h3 className="flex h-14 cursor-pointer items-center font-bold lg:text-4xl">
                   <span className="px-2 text-orange">
@@ -268,7 +256,7 @@ const Application = ({
                   </span>
                   registered for the cohort
                 </h3>
-                {userExistes ? (
+                {userExists ? (
                   <div className="flex flex-col items-center">
                     <h1 className="my-5 rounded-lg bg-[#ffcccc] p-2 text-xl">
                       ❌ You are already registered. Please
