@@ -11,24 +11,14 @@ const list = [
     buttonText: "Tell me more  → ",
   },
   {
-    logo: "/carousel/2.webp",
-    name: "Bitcoin Reading Club",
+    logo: "/cohort/mb.webp",
+    name: "MB Study Club",
     leadBy: "Shreyan",
     discord:
       "https://discord.com/events/1104831812720656540/1247922484230230138",
     desc: "General-purpose reading club to help build your non-tech Bitcoin knowledge. Here we dive deep into rabbit holes on philosophy, economics, and more",
     link: "https://discord.com/events/1104831812720656540/1247922484230230138",
     buttonText: "Tell me more  →",
-  },
-  {
-    logo: "/carousel/3.webp",
-    name: "Hands On Lightning",
-    leadBy: "Stratospher",
-    discord:
-      "https://discord.com/events/1104831812720656540/1244707908382363835",
-    desc: "Bi-weekly reviews to get into the weeds of Bitcoin Core. Ideal for aspiring Core Devs to learn hands-on and sharpen their dev skills along the way",
-    link: "https://discord.com/events/1104831812720656540/1244707908382363835",
-    buttonText: "Tell me more  → ",
   },
   {
     logo: "/carousel/4.webp",
@@ -40,6 +30,46 @@ const list = [
     link: "https://discord.com/events/1104831812720656540/1244707908382363835",
     buttonText: "Tell me more  → ",
   },
+  {
+    logo: "/carousel/tradfi.webp",
+    name: "Trad-Fi & Bitcoin",
+    leadBy: "TBD",
+    discord:
+      "https://discord.com/events/1104831812720656540/",
+    desc: "Bi-weekly reviews to get into the weeds of Bitcoin Core. Ideal for aspiring Core Devs to learn hands-on and sharpen their dev skills along the way",
+    link: "https://discord.com/events/1104831812720656540/",
+    buttonText: "Tell me more  → ",
+  },
+  {
+    logo: "/carousel/2.webp",
+    name: "Reading Club",
+    leadBy: "TBD",
+    discord:
+      "https://discord.com/events/1104831812720656540/",
+    desc: "General-purpose reading club to help build your non-tech Bitcoin knowledge. Here we dive deep into rabbit holes on philosophy, economics, and more",
+    link: "https://discord.com/events/1104831812720656540/",
+    buttonText: "Tell me more  → ",
+  },
+  // {
+  //   logo: "/carousel/6.webp",
+  //   name: "Rust Club (placeholder)",
+  //   leadBy: "TBD",
+  //   discord:
+  //     "https://discord.com/events/1104831812720656540/",
+  //   desc: "placeholder subheads subheads that are placeholders and more that are subplaceholders 4 line criteria full-filled",
+  //   link: "https://discord.com/events/1104831812720656540/",
+  //   buttonText: "Tell me more  → ",
+  // },
+  {
+    logo: "/carousel/3.webp",
+    name: "Hands-On Lightning",
+    leadBy: "TBD",
+    discord:
+      "https://discord.com/events/1104831812720656540/",
+    desc: "Bi-weekly reviews to get into the weeds of Bitcoin Core. Ideal for aspiring Core Devs to learn hands-on and sharpen their dev skills along the way",
+    link: "https://discord.com/events/1104831812720656540/",
+    buttonText: "Tell me more  → ",
+  },
 ];
 ---
 
@@ -48,16 +78,22 @@ const list = [
     class="mt-20 font-header text-2xl font-bold md:text-3xl lg:mt-40 lg:text-5xl"
     id="about_us"
   >
-    Explore Our Education Programs
+    Explore Our Education Initiatives
   </h1>
 
   <p class="my-10 text-base md:text-lg lg:text-2xl">
-
-    Got a fresh idea for a technical educational project?
-    We’d love to hear it! Below, we showcase initiatives our
-    Educators are already pursuing — use these as
-    inspiration to forge your own path. Share your vision,
-    and let’s collaborate to make a real impact.
+    Want to teach? Start a club? Build resources that make
+    Bitcoin easier to learn? The Education Fellowship is <span
+      class="font-bold"
+      >for people who love simplifying complex ideas</span
+    >, and want to grow the Bitcoin learning movement in
+    India..
+  </p>
+  <p class="my-10 text-base md:text-lg lg:text-2xl">
+    You can propose your own initiative, or join an existing
+    one. Below are the initiatives taken up by past Fellows.
+    If you’ve ever thought, “more people should understand
+    this” — well, this is your path to make it happen.
   </p>
 
   <div
@@ -65,7 +101,6 @@ const list = [
   >
     {
       list.map((item) => (
-
         <div class="lg: rounded-3xl border-[1px] border-[#e0e0e0] bg-peach px-3 pb-3 pt-5 lg:px-5 lg:pb-5 lg:pt-8">
           <h1 class="mb-3 px-3 font-header text-xl font-medium   lg:text-3xl">
             {item.name}
