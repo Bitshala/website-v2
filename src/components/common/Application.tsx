@@ -1,11 +1,10 @@
 import React, { useState, type FormEvent } from "react";
-import axios from "axios";
 import {
-  Alert,
   Autocomplete,
   Input,
   TextField,
 } from "@mui/material";
+import axios from "axios";
 
 const skills = [
   "Full-stack",
@@ -88,8 +87,9 @@ const Application = ({
     hearFrom: "",
   });
   const [submitted, setSubmitted] = useState(false);
-  const [userExistes, setUserExists] = useState(false);
+  const [userExists, setUserExists] = useState(false);
   const [test, setTest] = useState("");
+  const [loading,setLoading] = useState(false);
 
   const list = [
     {
@@ -192,37 +192,51 @@ const Application = ({
   //   window.focus();
   // }
 
-  const handleSubmit = async (
-    e: FormEvent<HTMLFormElement>,
-  ) => {
-    e.preventDefault();
-    if (test === "") {
+
+    const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+      e.preventDefault();
+      setLoading(true);
+      const url = 'https://script.google.com/macros/s/AKfycbzwvpeqZ5VJFD22sdL3Y7rMZdUFB4gIJhVIqbLSJ5X1R6rK-GTkMTViB4DomRYDru-6uQ/exec';
+      const url2 = "https://bot.bitshala.org/register";
+      const formParams = new URLSearchParams({
+        name: formData.name,
+        email: formData.email,
+        role: formData.role,
+        describeYourself:formData.describeYourself,
+        year:formData.year,
+        background:formData.background,
+        location:formData.location,
+        github:formData.github,
+        time:formData.time,
+        why:formData.why,
+        skills:formData.skills.join(','),
+        books:formData.books.join(','),
+        cohortName: cohortName
+      });
       try {
-        await axios
+        const res = await fetch(url, {
+          method: 'POST',
+          body: formParams,  
+        });
+        
+        const data = await res.json();
+        if (data.success == false) {
+          setUserExists(true);
+        } else {
+          setSubmitted(true); 
+          await axios
           .post(
             "https://bot.bitshala.org/register",
             formData,
           )
-          .then((res) => {
-            if (
-              res.data.message === "User already present"
-            ) {
-              setUserExists(true);
-            }
-          });
-        setSubmitted(true);
-        const focusElement = document.getElementById(
-          "focus",
-        ) as HTMLInputElement;
-        focusElement.focus();
-      } catch (error) {
-        console.log(error);
-      }
-    } else {
-      console.log("error");
-      window.location.reload();
-    }
-  };
+        }
+        } catch (err:any) {
+        console.error('Submission error:', err);
+        }
+      setLoading(false);
+    };
+  
+
 
   return (
     <>
@@ -230,7 +244,7 @@ const Application = ({
         <>
           <section className="my-10 grid place-items-center ">
             <input id="focus" className="h-0 w-0" />
-            {submitted ? (
+            {submitted || userExists ? (
               <>
                 <h3 className="flex h-14 cursor-pointer items-center font-bold lg:text-4xl">
                   <span className="px-2 text-orange">
@@ -238,7 +252,7 @@ const Application = ({
                   </span>
                   registered for the cohort
                 </h3>
-                {userExistes ? (
+                {userExists ? (
                   <div className="flex flex-col items-center">
                     <h1 className="my-5 rounded-lg bg-[#ffcccc] p-2 text-xl">
                       ❌ You are already registered. Please
@@ -282,6 +296,7 @@ const Application = ({
                   onSubmit={handleSubmit}
                   className="flex flex-col gap-1 rounded-lg px-5 pt-2 lg:w-full"
                 >
+                  <fieldset disabled={loading} style={{ border: 0, padding: 0 }}>
                   {list.map((item) => {
                     if (item.name === "name") {
                       return (
@@ -395,11 +410,13 @@ const Application = ({
                     }
                   />
                   <button
+                    disabled={loading}
                     type="submit"
-                    className="my-5 rounded-lg bg-black p-2 py-4 font-bold text-white hover:bg-orange hover:text-black lg:w-full lg:self-center"
+                    className="my-5 rounded-lg bg-black p-2 py-4 font-bold text-white hover:bg-orange hover:text-black lg:w-full lg:self-center disabled:cursor-not-allowed disabled:bg-gray-300"
                   >
-                    Submit Application
+                    {!loading ? "Submit Applicaton" : "Processing..." }
                   </button>
+                  </fieldset>
                 </form>
               </>
             )}
