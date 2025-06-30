@@ -9,12 +9,67 @@ import Application from "../../components/common/Application";
 import About from "../../components/cohortPages/mb/About.astro";
 import MeetYourTAs from "../../components/cohortPages/common/MeetYourTAs.astro";
 import CohortGraduates from "../../components/cohortPages/CohortGraduates.astro";
+
+function getCohortDates() {
+  const now = new Date();
+  const currentYear = now.getFullYear();
+  const currentMonth = now.getMonth();
+  const currentDay = now.getDate();
+
+  let cohortMonth = currentMonth;
+  let cohortYear = currentYear;
+
+  if (currentDay > 1) {
+    cohortMonth += 2;
+  }
+
+  if (cohortMonth > 11) {
+    cohortMonth = cohortMonth - 12;
+    cohortYear++;
+  }
+
+  const commencementDate = new Date(
+    cohortYear,
+    cohortMonth,
+    1
+  );
+  const registrationDeadline = new Date(
+    cohortYear,
+    cohortMonth,
+    7
+  );
+
+  const formatDate = (date: Date) => {
+    const day = date.getDate();
+    const month = date.toLocaleString("en-US", {
+      month: "long",
+    });
+    const year = date.getFullYear();
+    const suffix =
+      day === 1
+        ? "st"
+        : day === 2
+        ? "nd"
+        : day === 3
+        ? "rd"
+        : "th";
+    return `${day}${suffix} ${month}, ${year}`;
+  };
+
+  return {
+    commencement: formatDate(commencementDate),
+    registration: formatDate(registrationDeadline),
+  };
+}
+
+const dates = getCohortDates();
+
 const headerProps = {
   removeHeader: true,
 };
 const role = "mb_cohort";
 const cohortName = "Mastering Bitcoin";
-const isVisible = true;
+const isVisible = false;
 ---
 
 <Layout
@@ -29,11 +84,11 @@ const isVisible = true;
     format={[
       {
         name: "Commencement date",
-        desc: "1st May, 2025",
+        desc: dates.commencement,
       },
       {
         name: "Registration deadline",
-        desc: "7th May, 2025",
+        desc: dates.registration,
       },
       {
         name: "Duration",
