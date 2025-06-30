@@ -11,32 +11,18 @@ import MeetYourTAs from "../../components/cohortPages/common/MeetYourTAs.astro";
 import CohortGraduates from "../../components/cohortPages/CohortGraduates.astro";
 
 function getCohortDates() {
+  let commencementDate = new Date(2025, 6, 10);
   const now = new Date();
-  const currentYear = now.getFullYear();
-  const currentMonth = now.getMonth();
-  const currentDay = now.getDate();
 
-  let cohortMonth = currentMonth;
-  let cohortYear = currentYear;
-
-  if (currentDay > 1) {
-    cohortMonth += 2;
+  while (commencementDate <= now) {
+    commencementDate.setMonth(
+      commencementDate.getMonth() + 2
+    );
   }
 
-  if (cohortMonth > 11) {
-    cohortMonth = cohortMonth - 12;
-    cohortYear++;
-  }
-
-  const commencementDate = new Date(
-    cohortYear,
-    cohortMonth,
-    1
-  );
-  const registrationDeadline = new Date(
-    cohortYear,
-    cohortMonth,
-    7
+  const registrationDeadline = new Date(commencementDate);
+  registrationDeadline.setDate(
+    registrationDeadline.getDate() + 7
   );
 
   const formatDate = (date: Date) => {
