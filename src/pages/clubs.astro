@@ -55,6 +55,14 @@ const clubs = [
       "https://www.youtube.com/playlist?list=PLdHBT9oS8yMWiWd0L48gHDgTi8roKB3Fs",
     cta: "Learn more  → ",
   },
+  {
+    url: "/clubs/rust.webp",
+    title: "Rust Club",
+    content:
+      "Get hands-on with Rust. Learn the fundamentals you need to get started with contributing to Bitcoin.",
+    targetLink: "https://discord.gg/jTx4bTUe",
+    cta: "Learn more   → ",
+  },
 ];
 ---
 
@@ -83,16 +91,16 @@ const clubs = [
       >
         Hands-on learning, collaborative discussions, and <br
         />
-         engaging community activities for every Bitcoiner.
-        Join in!
+        engaging community activities for every Bitcoiner. Join
+        in!
       </p>
       <p
         class="mt-5 block text-center text-xl font-normal text-white lg:hidden lg:text-3xl"
       >
         Hands-on learning,<br /> collaborative discussions,<br
         />
-         and engaging community <br /> activities for every
-        Bitcoiner. <br /> Join in!
+        and engaging community <br /> activities for every Bitcoiner.
+        <br /> Join in!
       </p>
     </div>
   </div>
@@ -104,35 +112,7 @@ const clubs = [
       class="flex flex-col gap-4 md:grid md:grid-cols-2 lg:grid lg:grid-cols-3 lg:gap-7"
     >
       {
-        clubs.slice(0, 3).map((club) => (
-          <div class="rounded-3xl bg-peach px-3 pb-3 pt-5 hover:bg-hover lg:px-5 lg:pb-5 lg:pt-8">
-            <h1 class="mb-3 px-3 font-header text-2xl font-medium lg:text-3xl">
-              {club.title}
-            </h1>
-            <p class="font-regular mb-3 px-3 text-base lg:text-base">
-              {club.content}
-            </p>
-            <a
-              href={club.targetLink}
-              class="px-3 font-header text-orange hover:underline"
-            >
-              {club.cta}
-            </a>
-            <img
-              src={club.url}
-              class="mt-[20px] rounded-2xl"
-              alt=""
-            />
-          </div>
-        ))
-      }
-    </div>
-
-    <div
-      class="flex flex-col gap-4 md:grid md:grid-cols-2 lg:mx-auto lg:max-w-[calc(66.67%-1.75rem)] lg:gap-7"
-    >
-      {
-        clubs.slice(3, 5).map((club) => (
+        clubs.map((club) => (
           <div class="rounded-3xl bg-peach px-3 pb-3 pt-5 hover:bg-hover lg:px-5 lg:pb-5 lg:pt-8">
             <h1 class="mb-3 px-3 font-header text-2xl font-medium lg:text-3xl">
               {club.title}
