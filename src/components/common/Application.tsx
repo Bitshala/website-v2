@@ -192,37 +192,37 @@ const Application = ({
   //   window.focus();
   // }
 
-  const handleSubmit = async (
-    e: FormEvent<HTMLFormElement>,
-  ) => {
-    e.preventDefault();
-    if (test === "") {
-      try {
-        await axios
-          .post(
-            "https://bot.bitshala.org/register",
-            formData,
-          )
-          .then((res) => {
-            if (
-              res.data.message === "User already present"
-            ) {
-              setUserExists(true);
-            }
-          });
-        setSubmitted(true);
-        const focusElement = document.getElementById(
-          "focus",
-        ) as HTMLInputElement;
-        focusElement.focus();
-      } catch (error) {
-        console.log(error);
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+  e.preventDefault();
+  
+  if (test === "") {
+    try {
+      const res = await axios.post("https://admin.bitshala.org/register", formData);
+      
+      // Check for success response
+      console.log("Success response:", res.data);
+      
+      setSubmitted(true);
+      
+      const focusElement = document.getElementById("focus") as HTMLInputElement;
+      focusElement.focus();
+      
+    } catch (error) {
+      console.log("Error response:", error.response?.data);
+      if (error.response?.status === 500) {
+        const errorMessage = error.response.data?.error || error.response.data;
+        
+        if (errorMessage && errorMessage.includes("UNIQUE constraint failed: participants.email")) {
+          console.log("User already exists");
+          setUserExists(true);
+        }
       }
-    } else {
-      console.log("error");
-      window.location.reload();
     }
-  };
+  } else {
+    console.log("error");
+    window.location.reload();
+  }
+};
 
   return (
     <>
