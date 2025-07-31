@@ -88,7 +88,7 @@ const Application = ({
     hearFrom: "",
   });
   const [submitted, setSubmitted] = useState(false);
-  const [userExistes, setUserExists] = useState(false);
+  const [userExists, setUserExists] = useState(false);
   const [test, setTest] = useState("");
 
   const list = [
@@ -201,13 +201,11 @@ const Application = ({
       
       // Check for success response
       console.log("Success response:", res.data);
-      
       setSubmitted(true);
-      
       const focusElement = document.getElementById("focus") as HTMLInputElement;
       focusElement.focus();
       
-    } catch (error) {
+    } catch (error: any) {
       console.log("Error response:", error.response?.data);
       if (error.response?.status === 500) {
         const errorMessage = error.response.data?.error || error.response.data;
@@ -215,6 +213,7 @@ const Application = ({
         if (errorMessage && errorMessage.includes("UNIQUE constraint failed: participants.email")) {
           console.log("User already exists");
           setUserExists(true);
+          setSubmitted(true);
         }
       }
     }
@@ -238,7 +237,7 @@ const Application = ({
                   </span>
                   registered for the cohort
                 </h3>
-                {userExistes ? (
+                {userExists ? (
                   <div className="flex flex-col items-center">
                     <h1 className="my-5 rounded-lg bg-[#ffcccc] p-2 text-xl">
                       ❌ You are already registered. Please
