@@ -1,5 +1,5 @@
 import React, { useState, type FormEvent } from "react";
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 import {
   Alert,
   Autocomplete,
@@ -59,6 +59,11 @@ interface FormData {
   role: string;
   cohortName: string;
   hearFrom: string;
+}
+
+interface ErrorResponse {
+  error?: string;
+  [key: string]: any;
 }
 
 const Application = ({
@@ -197,7 +202,7 @@ const Application = ({
   
   if (test === "") {
     try {
-      const res = await axios.post("https://admin.bitshala.org/register", formData);
+      const res = await axios.post("http://localhost:8080/register", formData);
       
       // Check for success response
       console.log("Success response:", res.data);
@@ -205,10 +210,12 @@ const Application = ({
       const focusElement = document.getElementById("focus") as HTMLInputElement;
       focusElement.focus();
       
-    } catch (error: any) {
-      console.log("Error response:", error.response?.data);
-      if (error.response?.status === 500) {
-        const errorMessage = error.response.data?.error || error.response.data;
+    } catch (error) {
+      const axiosError = error as AxiosError<ErrorResponse>;
+      console.log("Error response:", axiosError.response?.data);
+      if (axiosError.response?.status === 500) {
+        const responseData = axiosError.response.data;
+        const errorMessage = responseData?.error || responseData;
         
         if (errorMessage && errorMessage.includes("UNIQUE constraint failed: participants.email")) {
           console.log("User already exists");
