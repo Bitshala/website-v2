@@ -9,6 +9,11 @@ const images = [
   "/bitspace/Gallery/7.webp",
   "/bitspace/Gallery/8.webp",
   "/bitspace/Gallery/9.webp",
+  "/bitspace/Gallery/10.webp",
+  "/bitspace/Gallery/11.webp",
+  "/bitspace/Gallery/12.webp",
+  "/bitspace/Gallery/13.webp",
+  "/bitspace/Gallery/14.webp",
 ];
 
 const Gallery = () => {
