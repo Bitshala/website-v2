@@ -1,0 +1,144 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Carousel from "../../components/common/Carousel";
+import CohortStructure from "../../components/cohortPages/CohortStructure.astro";
+import CohortDetails from "../../components/cohortPages/common/CohortDetails.astro";
+import Syllabus from "../../components/cohortPages/Syllabus.astro";
+import CohortHeader from "../../components/cohort/CohortHeader.astro";
+import Application from "../../components/common/Application";
+import About from "../../components/cohortPages/ln/About.astro";
+import CohortGraduates from "../../components/cohortPages/CohortGraduates.astro";
+import MeetYourTAs from "../../components/cohortPages/ln/MeetYourTAs.astro";
+
+function getCohortDates() {
+  let commencementDate = new Date(2025, 6, 10);
+  const now = new Date();
+
+  while (commencementDate <= now) {
+    commencementDate.setMonth(
+      commencementDate.getMonth() + 2
+    );
+  }
+
+  const registrationDeadline = new Date(commencementDate);
+  registrationDeadline.setDate(
+    registrationDeadline.getDate() + 7
+  );
+
+  const formatDate = (date: Date) => {
+    const day = date.getDate();
+    const month = date.toLocaleString("en-US", {
+      month: "long",
+    });
+    const year = date.getFullYear();
+    const suffix =
+      day === 1
+        ? "st"
+        : day === 2
+          ? "nd"
+          : day === 3
+            ? "rd"
+            : "th";
+    return `${day}${suffix} ${month}, ${year}`;
+  };
+
+  return {
+    commencement: formatDate(commencementDate),
+    registration: formatDate(registrationDeadline),
+  };
+}
+
+const dates = getCohortDates();
+
+const headerProps = {
+  removeHeader: true,
+};
+const role = "ln_cohort";
+const cohortName = "Mastering Lightning";
+const isVisible = false;
+---
+
+<Layout
+  title="Mastering Lightning"
+  headerProps={headerProps}
+  isVisible={isVisible}
+>
+  <CohortHeader img="/cohort/ln.webp" />
+
+  <About />
+  <CohortDetails
+    format={[
+      {
+        name: "Commencement date",
+        desc: "16th July, 2025",
+      },
+      {
+        name: "Duration",
+        desc: "06 weeks",
+      },
+      {
+        name: "Cohort level",
+        desc: "Intermediate",
+      },
+      {
+        name: "Mode",
+        desc: "Online Discord Session",
+      },
+      {
+        name: "Format",
+        desc: "Self-study, weekly club sessions, group discussions, and QnA",
+      },
+    ]}
+  />
+  <CohortStructure />
+  <Syllabus
+    syllabus={[
+      {
+        week: "Week 0",
+        name: "Orientation",
+        chNo: "-",
+      },
+      {
+        week: "Week 1",
+        name: "Introduction, Getting Started, How LN works",
+        chNo: "1,2,3",
+      },
+      {
+        week: "Week 2",
+        name: "Node client, Node Operations, Lightning Architecture",
+        chNo: "4,5,6",
+      },
+      {
+        week: "Week 3",
+        name: "Payment channels, HTLCs, Channel operation",
+        chNo: "7,8,9",
+      },
+      {
+        week: "Week 4",
+        name: "Onion Routing, Gossip Channel",
+        chNo: "10,11",
+      },
+      {
+        week: "Week 5",
+        name: "Path finding, Wire Protocol, Encrypted Transport",
+        chNo: "12,13,14",
+      },
+      {
+        week: "Week 6",
+        name: "Payment Requests, Security, Privacy, Conclusion",
+        chNo: "15,16,17",
+      },
+    ]}
+  />
+  <MeetYourTAs />
+
+  <div id="applicationForm">
+    <Application
+      client:only
+      cohortName={cohortName}
+      role={role}
+      regOpen={false}
+    />
+  </div>
+  <CohortGraduates />
+</Layout>
