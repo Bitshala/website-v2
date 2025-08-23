@@ -2,64 +2,239 @@
 const developers = [
   {
     name: "Yuvic",
-    desc: "Contributing to Bitcoin Core while still in college.",
+    desc: "Libbitcoin kernel project, Reviewing Core PRs, Hosting the Bitshala Core Review Club.",
     img: "/apprenticeship/yuvic.webp",
     github: "https://github.com/yuvicc",
     twitter: "https://x.com/hey_yuvicc",
   },
   {
     name: "Probot",
-    desc: "Hosts Bitcoin Core PR review clubs. Quietly shaping the dev scene.",
+    desc: "Fuzz testing on various software. Bitcoin Core, LDK etc.",
     img: "/apprenticeship/probot.webp",
     github: "https://github.com/Prabhat1308",
     twitter: "https://x.com/pr0b0t1sc00l",
   },
   {
-    name: "Tanveer",
-    desc: "Early-career dev working on Bitcoin privacy. Building Silent Payments.",
+    name: "Vanshul",
+    desc: "MultiDescriptor wallet support at BDK.",
+    img: "/apprenticeship/vanshul.webp",
+    github: "",
+    twitter: "",
+  },
+  {
+    name: "Chaitika",
+    desc: "Building Silent Payment demo app.",
+    img: "/apprenticeship/chaitika.webp",
+    github: "",
+    twitter: "",
+  },
+  {
+    name: "Dhruvil",
+    desc: "Testing and adding new features at Lampo.",
+    img: "/apprenticeship/dhruvil.webp",
+    github: "",
+    twitter: "",
+  },
+  {
+    name: "Bala",
+    desc: "Bitcoin script analysis tool.",
+    img: "/apprenticeship/bala.webp",
+    github: "https://github.com/jkciw",
+    twitter: "https://x.com/balajic86",
+  },
+  {
+    name: "Abhijay",
+    desc: "Translation of various docs and adding POS features.",
+    img: "/apprenticeship/abhijay.webp",
+    github: "",
+    twitter: "",
+  },
+  {
+    name: "Sarthak",
+    desc: "Taproot and other protocol improvements at Coinswap.",
+    img: "/apprenticeship/sarthak.webp",
+    github: "",
+    twitter: "",
+  },
+  {
+    name: "CodingP110",
+    desc: "Adding more database support at BDK.",
+    img: "/apprenticeship/codingp110.webp",
+    github: "",
+    twitter: "",
+  },
+];
+
+const designers = [
+  {
+    name: "Deeksha",
+    desc: "UX patterns and interaction design for TwelveCash and Arora.",
+    img: "/apprenticeship/deeksha.webp",
+    github: "https://deekshasatapathy.framer.website/",
+    twitter: "https://x.com/hey_deeksha",
+  },
+  {
+    name: "Nandini",
+    desc: "User study and design improvements at Saving Satoshi.",
+    img: "/apprenticeship/nandini.webp",
+    github: "",
+    twitter: "",
+  },
+  {
+    name: "Veronika",
+    desc: "Usability research and interface prototypes for federated ecash.",
+    img: "/apprenticeship/v.webp",
+    github: "",
+    twitter: "",
+  },
+  {
+    name: "paperpsych",
+    desc: "Working with the Bitcoin Design Community.",
+    img: "/apprenticeship/paper.webp",
+    github: "https://github.com/paperpsych",
+    twitter: "https://x.com/_paperpsych",
+  },
+];
+
+const educators = [
+  {
+    name: "Bala",
+    desc: "Facilitating protocol & Optech reading groups; documenting key takeaways.",
+    img: "/apprenticeship/bala.webp",
+    github: "https://github.com/jkciw",
+    twitter: "https://x.com/balajic86",
+  },
+  {
+    name: "Vayras",
+    desc: "Hosting Rust Club sessions.",
+    img: "/apprenticeship/vayras.webp",
+    github: "",
+    twitter: "",
+  },
+  {
+    name: "Digant",
+    desc: "Leading TradFi & Bitcoin discussions.",
+    img: "/apprenticeship/digant.webp",
+    github: "",
+    twitter: "",
+  },
+  {
+    name: "Shreyan",
+    desc: "Managing Reading Club activities.",
+    img: "/apprenticeship/shreyan.webp",
+    github: "",
+    twitter: "https://x.com/JoshiShreyan",
+  },
+];
+
+const teachingAssistants = [
+  {
+    name: "BTC Noob",
+    desc: "Teaching Assistant for cohorts.",
+    img: "/apprenticeship/btcnoob.webp",
+    github: "",
+    twitter: "",
+  },
+  {
+    name: "Dhruvil",
+    desc: "Teaching Assistant for cohorts.",
+    img: "/apprenticeship/dhruvil.webp",
+    github: "",
+    twitter: "",
+  },
+  {
+    name: "CodingP110",
+    desc: "Teaching Assistant for cohorts.",
+    img: "/apprenticeship/codingp110.webp",
+    github: "",
+    twitter: "",
+  },
+  {
+    name: "Chaitika",
+    desc: "Teaching Assistant for cohorts.",
+    img: "/apprenticeship/chaitika.webp",
+    github: "",
+    twitter: "",
+  },
+  {
+    name: "Anmol",
+    desc: "Teaching Assistant for cohorts.",
+    img: "/people/anmol.png",
+    github: "",
+    twitter: "",
+  },
+  {
+    name: "Beulah",
+    desc: "Teaching Assistant for cohorts.",
+    img: "/apprenticeship/beulah.webp",
+    github: "",
+    twitter: "",
+  },
+];
+
+const alumni = [
+  {
+    name: "Faisal",
+    desc: "Non-tech guy, cohort top-performer. Now hosts Latest in Bitcoin Tech and the Mastering Bitcoin clubs.",
+    img: "/apprenticeship/faisal.webp",
+    github: "",
+    twitter: "https://x.com/faisal_qrs",
+  },
+  {
+    name: "Bitaloo",
+    desc: "Left Oracle to work full-time on Bitcoin Open Source. Currently building on Stratum V2.",
+    img: "/apprenticeship/bitaloo.webp",
+    github: "https://github.com/Shourya742",
+    twitter: "https://x.com/shourya742",
+  },
+  {
+    name: "Rishabh",
+    desc: "Bitcoin privacy advocate fully engaged in developing the Coinswap Protocol.",
+    img: "/apprenticeship/rishabh.webp",
+    github: "",
+    twitter: "http://x.com/rishkwal",
+  },
+  {
+    name: "Harsh Mahajan",
+    desc: "Straight from college, via the fellowship, became a backend engineer at Bitgo.",
+    img: "/apprenticeship/tremploar.webp",
+    github: "https://github.com/007harshmahajan",
+    twitter: "https://x.com/007harshmahajan",
+  },
+  {
+    name: "Neo",
+    desc: "Skilled writer delving deep into multiple rabbit holes, while slinging serious code at Coinswap.",
+    img: "/apprenticeship/neo.webp",
+    github: "https://github.com/NeoZ666",
+    twitter: "https://x.com/HarshSinyal",
+  },
+  {
+    name: "Claddy",
+    desc: "Two-time Summer of Bitcoin alum. Via this fellowship is currently working as full-time Rust developer.",
     img: "/apprenticeship/claddy.webp",
+    github: "https://github.com/claddyy",
+    twitter: "https://x.com/claddyyy",
+  },
+  {
+    name: "Joshua",
+    desc: "Talented African developer, started his fellowship with Silent Payment, and moved into full-time position at the Ark Labs.",
+    img: "/apprenticeship/joshua.webp",
+    github: "https://github.com/aruokhai",
+    twitter: "https://twitter.com/boringprimate",
+  },
+  {
+    name: "Tanveer",
+    desc: "Early-career dev working on Bitcoin privacy. Worked on Silent Payments.",
+    img: "/testimonial/tanveer.png",
     github: "https://github.com/notTanveer",
     twitter: "https://x.com/tnvvrrr?s=09",
   },
   {
     name: "Whoami",
-    desc: "Keeps his head down and ships. One of our quietest, strongest builders.",
+    desc: "Keeping head down and shipping code at Coinswap and other OSS since day 1.",
     img: "/apprenticeship/whoami.webp",
     github: "https://github.com/KnowWhoami",
     twitter: "",
-  },
-  {
-    name: "Bala",
-    desc: "A materials scientist turned Bitcoin researcher. Focused on mining and covenants.",
-    img: "/apprenticeship/bala.webp",
-    github: "https://github.com/jkciw",
-    twitter: "https://x.com/balajic86",
-  },
-];
-const educators = [
-  {
-    name: "Shreyan",
-    desc: "Lawyer turned educator. Started Bitshala Reading Club to spread Bitcoin’s mission and stories.",
-    img: "/apprenticeship/Shreyan.webp",
-    github: "",
-    twitter: "https://x.com/JoshiShreyan",
-  },
-  {
-    name: "Aditya Sharma",
-    desc: "Lightning dev hosting weekly hands-on CLN sessions. Teaches by making you build.",
-    img: "/apprenticeship/Aditya.webp",
-    github: "https://github.com/adi2011",
-    twitter: "https://x.com/adityaa2011",
-  },
-];
-
-const designer = [
-  {
-    name: "Deeksha",
-    desc: "Designs for TwelveCash. Crafting clean Bitcoin UX with sharp pixels.",
-    img: "/apprenticeship/deeksha.webp",
-    github: "https://deekshasatapathy.framer.website/",
-    twitter: "https://x.com/hey_deeksha",
   },
   {
     name: "Sushant",
@@ -74,66 +249,6 @@ const designer = [
     img: "/apprenticeship/sanya.webp",
     github: "https://github.com/sanya031",
     twitter: "https://x.com/SanyaMalhotraa",
-  },
-
-  {
-    name: "paperpsych",
-    desc: "Helping craft Bitcoin design education stuffs with the Bitcoin Design Community.",
-    img: "/apprenticeship/paper.webp",
-    github: "https://github.com/paperpsych",
-    twitter: "https://x.com/_paperpsych",
-  },
-];
-
-const alumni = [
-  {
-    name: "Faisal",
-    desc: " Non-tech guy, cohort top-performer. Now hosts Latest in Bitcoin Tech and manages our club programs.",
-    img: "/apprenticeship/Faisal.webp",
-    twitter: "https://x.com/faisal_qrs",
-  },
-  {
-    name: "Bit-aloo",
-    desc: "Left Oracle to work full-time on Bitcoin’s privacy and fungibility. Currently building on Stratum V2.",
-    img: "/apprenticeship/Bitaloo.webp",
-    github: "https://github.com/Shourya742",
-    twitter: "https://x.com/shourya742",
-  },
-  {
-    name: "Rishab",
-    desc: "BitcBitcoin researcher by day, obsessed privacy explorer by night.",
-    img: "/apprenticeship/rishab.webp",
-    twitter: "http://x.com/rishkwal",
-  },
-
-  {
-    name: "Harsh Mahajan",
-    desc: "Fresh out of college, but already deep in Bitcoin.",
-    img: "/apprenticeship/tremploar.webp",
-    github: "https://github.com/007harshmahajan",
-    twitter: "https://x.com/007harshmahajan",
-  },
-  {
-    name: "Neo",
-    desc: "Lead dev at rust-coinselection. Bridges Bitcoin code, culture, and philosophy.",
-    img: "/apprenticeship/neo.png",
-    github: "https://github.com/NeoZ666",
-    twitter: "https://x.com/HarshSinyal",
-  },
-
-  {
-    name: "Claddy",
-    desc: "Two-time Summer of Bitcoin alum. Valuable contributor to Coinswap.",
-    img: "/apprenticeship/claddy.webp",
-    github: "https://github.com/claddyy",
-    twitter: "https://x.com/claddyyy",
-  },
-  {
-    name: "Joshua",
-    desc: "Making Bitcoin donations more private. Contributing to Silent Payments from Africa.",
-    img: "/apprenticeship/joshua.webp",
-    github: "https://github.com/aruokhai",
-    twitter: "https://twitter.com/boringprimate",
   },
 ];
 ---
@@ -157,7 +272,7 @@ const alumni = [
   >
     Developers
   </p>
-  <div class="grid grid-cols-2 gap-4 lg:grid-cols-4">
+  <div class="grid grid-cols-2 gap-4 lg:grid-cols-5">
     {
       developers.map((apprentice) => (
         <>
@@ -212,9 +327,9 @@ const alumni = [
   >
     Designers
   </p>
-  <div class="grid grid-cols-2 gap-4 lg:grid-cols-4">
+  <div class="grid grid-cols-2 gap-4 lg:grid-cols-5">
     {
-      designer.map((apprentice) => (
+      designers.map((apprentice) => (
         <>
           <div class=" my-5 flex flex-col gap-3 rounded-xl">
             <img
@@ -267,52 +382,117 @@ const alumni = [
   >
     Educators
   </p>
-  <div class="grid grid-cols-2 gap-4 lg:grid-cols-4">
+
+  <!-- Club Hosts Section -->
+  <p
+    class="text-gray-700 mb-6 font-header text-xl font-semibold"
+  >
+    Club Hosts:
+  </p>
+  <div class="mb-8 grid grid-cols-2 gap-4 lg:grid-cols-5">
     {
       educators.map((educator) => (
-        <>
-          <div class=" my-5 flex flex-col gap-3 rounded-xl">
-            <img
-              src={educator.img}
-              class="h-44 w-44 items-center rounded-3xl p-3 lg:h-56 lg:w-56"
-            />
-            <div class="absolute ml-5 mt-5 flex">
-              {educator.github && (
-                <a
-                  href={educator.github}
-                  target="_blank"
-                  class="group"
-                >
-                  <img
-                    src="/apprenticeship/github.png"
-                    class="m-1 h-7 rounded-xl bg-peach group-hover:bg-white lg:h-10"
-                  />
-                </a>
-              )}
-              {educator.twitter && (
-                <a
-                  href={educator.twitter}
-                  target="_blank"
-                  class="group"
-                >
-                  <img
-                    src="/apprenticeship/twitter.png"
-                    class="m-1 h-7 rounded-xl bg-peach group-hover:bg-white lg:h-10"
-                  />
-                </a>
-              )}
-            </div>
-            <div class="-mt-4 ml-2  p-1 lg:mr-5">
-              <div class="flex justify-between">
-                <p class="my-3 font-header text-2xl font-medium ">
-                  {educator.name}
-                </p>
-              </div>
-
-              <p class="text-base">{educator.desc}</p>
-            </div>
+        <div class="my-5 flex flex-col gap-3 rounded-xl">
+          <img
+            src={educator.img}
+            class="h-44 w-44 items-center rounded-3xl p-3 lg:h-56 lg:w-56"
+          />
+          <div class="absolute ml-5 mt-5 flex">
+            {educator.github && (
+              <a
+                href={educator.github}
+                target="_blank"
+                class="group"
+              >
+                <img
+                  src="/apprenticeship/github.png"
+                  class="m-1 h-7 rounded-xl bg-peach group-hover:bg-white lg:h-10"
+                />
+              </a>
+            )}
+            {educator.twitter && (
+              <a
+                href={educator.twitter}
+                target="_blank"
+                class="group"
+              >
+                <img
+                  src="/apprenticeship/twitter.png"
+                  class="m-1 h-7 rounded-xl bg-peach group-hover:bg-white lg:h-10"
+                />
+              </a>
+            )}
           </div>
-        </>
+          <div class="-mt-4 ml-2 p-1 lg:mr-5">
+            <div class="flex justify-between">
+              <p class="my-3 font-header text-2xl font-medium">
+                {educator.name}
+              </p>
+            </div>
+            <p class="text-gray-600 mb-2 text-sm font-medium">
+              {/* Add specific club name here based on educator */}
+              {educator.name === "Bala" &&
+                "Latest in Bitcoin Tech"}
+              {educator.name === "Vayras" && "Rust Club"}
+              {educator.name === "Digant" &&
+                "TradFi & Bitcoin"}
+            </p>
+            <p class="text-base">{educator.desc}</p>
+          </div>
+        </div>
+      ))
+    }
+  </div>
+
+  <!-- Cohort TAs Section -->
+  <p
+    class="text-gray-700 mb-6 font-header text-xl font-semibold"
+  >
+    Cohort TAs (Teaching Assistants):
+  </p>
+  <div class="mb-8 grid grid-cols-2 gap-4 lg:grid-cols-5">
+    {
+      teachingAssistants.map((ta) => (
+        <div class="my-5 flex flex-col gap-3 rounded-xl">
+          <img
+            src={ta.img}
+            class="h-44 w-44 items-center rounded-3xl p-3 lg:h-56 lg:w-56"
+          />
+          <div class="absolute ml-5 mt-5 flex">
+            {ta.github && (
+              <a
+                href={ta.github}
+                target="_blank"
+                class="group"
+              >
+                <img
+                  src="/apprenticeship/github.png"
+                  class="m-1 h-7 rounded-xl bg-peach group-hover:bg-white lg:h-10"
+                />
+              </a>
+            )}
+            {ta.twitter && (
+              <a
+                href={ta.twitter}
+                target="_blank"
+                class="group"
+              >
+                <img
+                  src="/apprenticeship/twitter.png"
+                  class="m-1 h-7 rounded-xl bg-peach group-hover:bg-white lg:h-10"
+                />
+              </a>
+            )}
+          </div>
+          <div class="-mt-4 ml-2 p-1 lg:mr-5">
+            <div class="flex justify-between">
+              <p class="my-3 font-header text-2xl font-medium">
+                {ta.name}
+              </p>
+            </div>
+            <p class="text-base">{ta.desc}</p>
+          </div>
+        </div>
       ))
     }
   </div>
@@ -322,7 +502,7 @@ const alumni = [
   >
     Alumni
   </p>
-  <div class="grid grid-cols-2 gap-4 lg:grid-cols-4">
+  <div class="grid grid-cols-2 gap-4 lg:grid-cols-5">
     {
       alumni.map((alumnus) => (
         <>

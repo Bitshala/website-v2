@@ -144,73 +144,70 @@ const list = [
   </h1>
 
   <p class="mb-16 mt-10 text-base md:text-lg lg:text-2xl">
-    Here are open-source projects ready for your innovation
-    and expertise. Each project offers a unique opportunity
-    to contribute to the Bitcoin community's growth and
-    development.
+    Are you ready to build? Here are some of the projects
+    where Bitshala Fellows have contributed before and where
+    new contributors are always welcome.
   </p>
 
-  <div class="mt-10 grid grid-cols-1 gap-5 lg:grid-cols-2">
+  <div class="mt-10 grid grid-cols-1 gap-5 lg:grid-cols-3">
     {
       list.map((item) => (
-        <>
-          <div class=" flex flex-col justify-center rounded-3xl border-[1px] border-[#e0e0e0] bg-peach ">
-            <div class="flex w-full flex-col">
-              <div class=" flex w-full items-center justify-between self-center">
-                <div class="flex h-28 items-center self-center ">
+        <div class="flex h-full flex-col rounded-3xl border-[1px] border-[#e0e0e0] bg-peach">
+          <div class="flex h-full flex-col p-6">
+            {/* Logo and links in same line */}
+            <div class="mb-6 flex items-center justify-between">
+              <img
+                loading="lazy"
+                srcset={item.logo}
+                class="h-10 rounded-full object-cover"
+              />
+              <div class="flex gap-2">
+                <a
+                  href={item.github}
+                  target="_blank"
+                  class="group"
+                >
                   <img
-                    loading="lazy"
-                    srcset={item.logo}
-                    class=" -mt-0 ml-6 h-14 rounded-full  "
+                    src="/apprenticeship/github.png"
+                    class="h-8 rounded bg-peach p-1 group-hover:bg-white"
                   />
-                  <div class="mb-6 ml-3 mt-6 font-header text-lg font-medium  lg:text-3xl">
-                    {item.name}
-                  </div>
-                </div>
-
-                <div class="m-3 mt-3 flex w-20 justify-end lg:mr-10">
+                </a>
+                {item.discord && (
                   <a
-                    href={item.github}
+                    href={item.discord}
                     target="_blank"
                     class="group"
                   >
                     <img
-                      src="/apprenticeship/github.png"
-                      class="m-1 h-8 w-auto rounded  bg-peach p-1 group-hover:bg-white lg:h-10"
+                      src="/apprenticeship/discord.png"
+                      class="h-8 rounded bg-peach p-1 group-hover:bg-white"
                     />
                   </a>
-                  {item.discord && (
-                    <a
-                      href={item.discord}
-                      target="_blank"
-                      class="group"
-                    >
-                      <img
-                        src="/apprenticeship/discord.png"
-                        class="m-1 h-8  rounded  bg-peach p-1 group-hover:bg-white lg:h-10 "
-                      />
-                    </a>
-                  )}
-                </div>
-              </div>
-              <div class="mx-5 -mt-12 flex w-full flex-col px-2 py-5 font-medium">
-                <div class=" mt-4 text-base font-thin lg:mr-10 lg:text-xl ">
-                  {item.desc}
-                </div>
-                <div class="lg:text-md mb-2 mt-6 flex flex-wrap gap-1 text-sm lg:gap-3">
-                  <p class=" mt-1 font-semibold">
-                    Language:
-                  </p>
-                  {item.skills.map((skill) => (
-                    <p class="lg:text-md rounded-lg bg-[#ffdec7] px-2 py-1 font-semibold">
-                      {skill}
-                    </p>
-                  ))}
-                </div>
+                )}
               </div>
             </div>
+
+            {/* Project name */}
+            <div class="mb-4 font-header text-xl font-medium lg:text-2xl">
+              {item.name}
+            </div>
+
+            {/* Description - flex-grow to push language tags to bottom */}
+            <div class="mb-6 flex-grow text-sm font-normal lg:text-base">
+              {item.desc}
+            </div>
+
+            {/* Language tags - at bottom */}
+            <div class="mt-auto flex flex-wrap items-center gap-2">
+              <p class="text-sm font-semibold">Language:</p>
+              {item.skills.map((skill) => (
+                <span class="rounded-lg bg-[#ffdec7] px-3 py-1 text-sm font-medium">
+                  {skill}
+                </span>
+              ))}
+            </div>
           </div>
-        </>
+        </div>
       ))
     }
     <div
