@@ -204,7 +204,7 @@ const Application = ({
   if (test === "") {
     setLoading(true);
     try {
-      const res = await axios.post("http://localhost:8080/register", formData);
+      const res = await axios.post("https://admin.bitshala.org/register", formData);
       
       // Check for success response
       console.log("Success response:", res.data);
