@@ -94,6 +94,7 @@ const Application = ({
   });
   const [submitted, setSubmitted] = useState(false);
   const [userExists, setUserExists] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [test, setTest] = useState("");
 
   const list = [
@@ -201,6 +202,7 @@ const Application = ({
   e.preventDefault();
   
   if (test === "") {
+    setLoading(true);
     try {
       const res = await axios.post("http://localhost:8080/register", formData);
       
@@ -223,6 +225,8 @@ const Application = ({
           setSubmitted(true);
         }
       }
+    } finally {
+      setLoading(false);
     }
   } else {
     console.log("error");
@@ -402,9 +406,10 @@ const Application = ({
                   />
                   <button
                     type="submit"
-                    className="my-5 rounded-lg bg-black p-2 py-4 font-bold text-white hover:bg-orange hover:text-black lg:w-full lg:self-center"
+                    disabled={loading}
+                    className="my-5 rounded-lg bg-black p-2 py-4 font-bold text-white hover:bg-orange hover:text-black disabled:bg-gray-400 disabled:cursor-not-allowed lg:w-full lg:self-center"
                   >
-                    Submit Application
+                    {loading ? "Submitting..." : "Submit Application"}
                   </button>
                 </form>
               </>
