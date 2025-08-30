@@ -1,5 +1,5 @@
 import React, { useState, type FormEvent } from "react";
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 import {
   Alert,
   Autocomplete,
@@ -61,6 +61,11 @@ interface FormData {
   hearFrom: string;
 }
 
+interface ErrorResponse {
+  error?: string;
+  [key: string]: any;
+}
+
 const Application = ({
   cohortName,
   regOpen,
@@ -88,7 +93,8 @@ const Application = ({
     hearFrom: "",
   });
   const [submitted, setSubmitted] = useState(false);
-  const [userExistes, setUserExists] = useState(false);
+  const [userExists, setUserExists] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [test, setTest] = useState("");
 
   const list = [
@@ -192,37 +198,41 @@ const Application = ({
   //   window.focus();
   // }
 
-  const handleSubmit = async (
-    e: FormEvent<HTMLFormElement>,
-  ) => {
-    e.preventDefault();
-    if (test === "") {
-      try {
-        await axios
-          .post(
-            "https://bot.bitshala.org/register",
-            formData,
-          )
-          .then((res) => {
-            if (
-              res.data.message === "User already present"
-            ) {
-              setUserExists(true);
-            }
-          });
-        setSubmitted(true);
-        const focusElement = document.getElementById(
-          "focus",
-        ) as HTMLInputElement;
-        focusElement.focus();
-      } catch (error) {
-        console.log(error);
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+  e.preventDefault();
+  
+  if (test === "") {
+    setLoading(true);
+    try {
+      const res = await axios.post("https://admin.bitshala.org/register", formData);
+      
+      // Check for success response
+      console.log("Success response:", res.data);
+      setSubmitted(true);
+      const focusElement = document.getElementById("focus") as HTMLInputElement;
+      focusElement.focus();
+      
+    } catch (error) {
+      const axiosError = error as AxiosError<ErrorResponse>;
+      console.log("Error response:", axiosError.response?.data);
+      if (axiosError.response?.status === 500) {
+        const responseData = axiosError.response.data;
+        const errorMessage = responseData?.error || responseData;
+        
+        if (errorMessage && errorMessage.includes("UNIQUE constraint failed: participants.email")) {
+          console.log("User already exists");
+          setUserExists(true);
+          setSubmitted(true);
+        }
       }
-    } else {
-      console.log("error");
-      window.location.reload();
+    } finally {
+      setLoading(false);
     }
-  };
+  } else {
+    console.log("error");
+    window.location.reload();
+  }
+};
 
   return (
     <>
@@ -238,7 +248,7 @@ const Application = ({
                   </span>
                   registered for the cohort
                 </h3>
-                {userExistes ? (
+                {userExists ? (
                   <div className="flex flex-col items-center">
                     <h1 className="my-5 rounded-lg bg-[#ffcccc] p-2 text-xl">
                       ❌ You are already registered. Please
@@ -396,9 +406,10 @@ const Application = ({
                   />
                   <button
                     type="submit"
-                    className="my-5 rounded-lg bg-black p-2 py-4 font-bold text-white hover:bg-orange hover:text-black lg:w-full lg:self-center"
+                    disabled={loading}
+                    className="my-5 rounded-lg bg-black p-2 py-4 font-bold text-white hover:bg-orange hover:text-black disabled:bg-gray-400 disabled:cursor-not-allowed lg:w-full lg:self-center"
                   >
-                    Submit Application
+                    {loading ? "Submitting..." : "Submit Application"}
                   </button>
                 </form>
               </>
