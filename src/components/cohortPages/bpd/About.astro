@@ -1,0 +1,105 @@
+---
+const takeaways = [
+  {
+    name: "Understanding the Bitcoin Protocol",
+    desc: "Learn the fundamentals of how the Bitcoin protocol is developed, including its history, core technologies, and the various challenges and opportunities associated with its ongoing development.",
+  },
+  {
+    name: "Practical Knowledge",
+    desc: "Develop hands-on skills through assignments and real-world projects related to Bitcoin protocol development.",
+  },
+  {
+    name: "Community",
+    desc: "Learn with the Indian Bitcoin community of developers and builders",
+  },
+  {
+    name: "Certification",
+    desc: "Receive a certificate as proof of your accomplishment & hard work.",
+  },
+  {
+    name: "Fellowship Opportunities",
+    desc: "Gain access to fellowship opportunities at Bitshala and exclusive invites to Bitspace for in-person events and experiences",
+  },
+];
+---
+
+<div class="lg:p-8">
+  <h1
+    class="mb-3 mt-8 font-header text-3xl font-bold md:text-6xl lg:text-6xl"
+    id="about_us"
+  >
+    Bitcoin Protocol Development Cohort
+  </h1>
+  <p class="font-base text-base md:text-base lg:text-2xl">
+    <span class="font-bold text-orange">What is it?</span>
+    This cohort is an <span class="font-bold"
+      >in-depth dive into the Bitcoin protocol,</span
+    >
+    designed to help developers understand how Bitcoin operates
+    under the hood. Built by Chaincode, this program explores
+    Bitcoin's history, its evolution, and the technologies enabling
+    its secure, decentralized operation. Whether you’re looking
+    to learn about SegWit, network propagation, mining, or scripting,
+    this cohort equips you with the knowledge and hands-on experience
+    to begin contributing to Bitcoin’s open-source development.
+  </p>
+  <p class="my-5 text-base md:text-base lg:text-2xl">
+    <span class="font-bold text-orange">Who is it for?</span
+    >
+    Who is it for? If you’ve <span class="font-bold"
+      >already explored Bitcoin’s technicalities</span
+    >
+    and want to level up, this cohort is for you. It’s for developers
+    with some foundational Bitcoin knowledge, ready to explore
+    how the protocol works and why. Whether you're a builder,
+    contributor, or just an enthusiast curious about the deeper
+    technical aspects of Bitcoin, this program is your next step
+    toward mastering protocol development.
+  </p>
+  <p class="text-base md:text-base lg:text-2xl">
+    <span class="font-bold text-orange">
+      What are the prerequisites?
+    </span>
+    What are the prerequisites? To get the most out of this cohort,
+    you should have a foundational understanding of Bitcoin and
+    have read Mastering Bitcoin by Andreas Antonopoulos. Some
+    coding experience is highly recommended since we’ll be diving
+    into technical concepts and programming exercises.
+  </p>
+
+  <div class="my-10">
+    <slot name="text" />
+    <h3 class="my-8 text-2xl font-bold text-orange">
+      What are the takeaways?
+    </h3>
+    <ul class="list-disc pl-5 lg:pl-10">
+      {
+        takeaways.map((takeaway) => (
+          <li class="my-4 lg:text-2xl">
+            <span class="font-header font-bold">
+              {takeaway.name}
+            </span>
+            : {takeaway.desc}
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+
+  <p class="text-base md:text-base lg:text-2xl">
+    <span class="font-bold text-orange">
+      What is the fellowship program?
+    </span>
+    <span
+      >The fellowship program is your <span
+        class="font-bold">launchpad into</span
+      > the
+      <span class="font-bold">Bitcoin FOSS</span> (Free and Open
+      Source Software) world. Whether it's developing innovative
+      open-source software, leading educational initiatives or
+      making Bitcoin’s interface it’s best advertisement, this
+      is where your contributions to Bitcoin — and your career
+      in Bitcoin — begin!
+    </span>
+  </p>
+</div>
