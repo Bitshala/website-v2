@@ -1,166 +1,100 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import Carousel from "../../components/common/Carousel";
-import Description from "../../components/cohortPages/Description.astro";
-import CohortStructure from "../../components/cohortPages/CohortStructure.astro";
-import CohortDetails from "../../components/cohortPages/CohortDetails.astro";
+import CohortStructure from "../../components/cohortPages/bpd/CohortStructure.astro";
+import CohortDetails from "../../components/cohortPages/common/CohortDetails.astro";
 import Syllabus from "../../components/cohortPages/Syllabus.astro";
 import CohortHeader from "../../components/cohort/CohortHeader.astro";
 import Application from "../../components/common/Application";
-import { fade } from "astro:transitions";
-
+import About from "../../components/cohortPages/bpd/About.astro";
+import MeetYourTAs from "../../components/cohortPages/common/MeetYourTAs.astro";
+import CohortGraduates from "../../components/cohortPages/CohortGraduates.astro";
 const headerProps = {
   removeHeader: true,
 };
 const role = "bpd_cohort";
 const cohortName = "Bitcoin Protocol Development";
-const isVisible = true;
+const isVisible = false;
 ---
 
 <Layout
-  title="Bitcoin Protocol Dev"
+  title="Bitcoin Protocol Development"
   headerProps={headerProps}
   isVisible={isVisible}
 >
   <CohortHeader img="/cohort/bpd.webp" />
-  <Description
-    takeaways={[
-      {
-        name: "Understanding Bitcoin Protocol:",
-        desc: "Gain insights into the fundamentals of how the Bitcoin protocol is developed, covering its history, technologies, and ongoing challenges.",
-      },
-      {
-        name: "Practical Knowledge:",
-        desc: "Acquire practical skills through hands-on assignments and real-world projects related to Bitcoin protocol development.",
-      },
-      {
-        name: "Certificate of Completion:",
-        desc: "Receive a certificate recognizing your proof-of-work and accomplishment in Bitcoin protocol development.",
-      },
-      {
-        name: "Community",
-        desc: "Join a community of like-minded learners, actively participating in discussions and collaborative learning, fostering a supportive network.",
-      },
-    ]}
-  >
-    <div slot="text">
-      <h1
-        class="my-2 font-header text-2xl font-bold lg:text-5xl"
-      >
-        Bitcoin Protocol Development
-      </h1>
-      <h3
-        class="mb-5 font-header text-xl font-bold lg:text-3xl"
-      >
-        Cohort Kicking off on <span class="text-orange"
-          >August, 2025</span
-        >
-      </h3>
-      <p class="lg:text-xl">
-        Designed by Chaincode, the <a
-          class="font-bold text-orange underline"
-          href="https://chaincode.gitbook.io/seminars/bitcoin-protocol-development"
-          target="_blank">Bitcoin Protocol Development</a
-        > cohort is an enlightening course that introduces
-        developers to the basics of how the Bitcoin protocol
-        is developed. The scope covers topics such as the
-        history and evolution of the Bitcoin protocol, the
-        underlying technologies enabling its operation, and
-        the various challenges and opportunities associated
-        with its ongoing development and adoption.
-      </p>
-    </div>
-  </Description>
+
+  <About />
   <CohortDetails
     format={[
       {
-        name: "Format",
-        desc: "Online virtual classroom",
+        name: "Commencement date",
+        desc: "23rd Jan 2025",
       },
       {
-        name: "Structure",
-        desc: "Weekly live sessions, group discussions, and Q&A",
-      },
-      {
-        name: "Categories",
-        desc: "Bitcoin Basics, Advanced Concepts, Community Engagement",
+        name: "Registration deadline",
+        desc: "22nd Jan 2025",
       },
       {
         name: "Duration",
-        desc: "06 weeks",
+        desc: "7 Weeks",
+      },
+      {
+        name: "Cohort level",
+        desc: "Advanced (Theory)",
+      },
+      {
+        name: "Mode",
+        desc: "Online virtual classroom",
+      },
+      {
+        name: "Format",
+        desc: "Self-study, weekly live sessions, group discussions, and QnA",
       },
     ]}
-  >
-    <div class="flex text-2xl" slot="date">
-      <p class="mb-6 mr-2 font-header font-bold">
-        Next Cohort Starting On:
-      </p>August, 2025.
-    </div>
-    <ol slot="prerequisites" class="list-disc p-4 lg:px-8">
-      <li>
-        Basic knowledge of Bitcoin protocol (suggested-read
-        <a
-          class="text-orange underline"
-          href="https://github.com/bitcoinbook/bitcoinbook"
-          target="_blank"
-        >
-          Mastering Bitcoin</a
-        >)
-      </li>
-    </ol>
-    <div slot="details">
-      <p class="mb-6 font-header font-bold lg:text-xl">
-        Cohort level: <span class="text-orange"
-          >Intermediate</span
-        >
-      </p>
-      <p class="mb-6 font-header font-bold lg:text-xl">
-        This cohort assumes a basic level of Bitcoin
-        protocol knowledge. Participants are expected to
-        have pre-read Mastering Bitcoin as a prerequisite.
-        The program spans several weeks, covering topics
-        such as SegWit, mining, network block propagation,
-        P2P, scripts, wallets, and more.
-      </p>
-    </div>
-  </CohortDetails>
+  />
+  <CohortStructure />
   <Syllabus
     syllabus={[
       {
-        week: "Week 01",
-        name: "Welcome to the Bitcoin Protocol Development Seminar",
-        chNo: "00",
+        week: "Week 00",
+        name: "Orientation and Introductions",
+        chNo: "",
       },
       {
-        week: "Week 02",
-        name: "SEGWIT",
+        week: "Week 01",
+        name: "Welcome To Bitcoin Protocol Development",
         chNo: "01",
       },
       {
-        week: "Week 03",
-        name: "Mining and Network Block Propagation",
+        week: "Week 02",
+        name: "SegWit",
         chNo: "02",
-        bg: "bg-white",
+      },
+      {
+        week: "Week 03",
+        name: "Mining And Network Propagation",
+        chNo: "03",
       },
       {
         week: "Week 04",
         name: "P2P",
-        chNo: "03",
-      },
-      {
-        week: "Week 05",
-        name: "Scripts and Wallets",
         chNo: "04",
       },
       {
+        week: "Week 05",
+        name: "SCRIPT And Wallets",
+        chNo: "05",
+      },
+      {
         week: "Week 06",
-        name: "Next Steps",
+        name: "Next Steps: How to progress up in your Bitcoin career as a developer, contributor, educator, PM, etc.",
         chNo: "",
       },
     ]}
   />
+  <MeetYourTAs />
   <div id="applicationForm">
-    <CohortStructure />
     <Application
       client:only
       cohortName={cohortName}
@@ -168,5 +102,5 @@ const isVisible = true;
       regOpen={false}
     />
   </div>
-  <Carousel client:visible />
+  <CohortGraduates />
 </Layout>
