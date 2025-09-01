@@ -132,6 +132,34 @@ export const ta2 = [
   },
 ];
 
+export const ln_ta = [
+  {
+    name: "BtcNoob",
+    desc: "Rust Educator",
+    image: "Delcin",
+    bgColor: "bg-blue",
+    textColor: "text-white",
+    headingColor: "text-yellow",
+  },
+  {
+    name: "Dhruvil",
+    desc: "Host, Bitcoin Reads",
+    image: "Shreyan",
+    bgColor: "bg-purple",
+    textColor: "text-white",
+    headingColor: "text-green",
+  },
+  {
+    name: "Chaitika",
+    desc: "Open Source Lightning Dev",
+    image: "Aditya",
+    bgColor: "bg-orange",
+    textColor: "text-black",
+    headingColor: "text-black",
+    twitter: "https://x.com/adityaa2011",
+  },
+]
+
 export const dev = [
   {
     name: "Faisal",

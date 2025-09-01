@@ -1,0 +1,110 @@
+---
+const takeaways = [
+  {
+    name: "Certification",
+    desc: "Earn a certificate of cohort completion as your proof-of-work",
+  },
+  {
+    name: "Solid Understanding",
+    desc: "Gain a deep understanding of Bitcoin's protocol, architecture, and security",
+  },
+  {
+    name: "Hands-On Experience",
+    desc: "Get practical experience with Bitcoin development and tools",
+  },
+  {
+    name: "Economic Insights",
+    desc: "Understand the economic and philosophical aspects of Bitcoin",
+  },
+  {
+    name: "Community",
+    desc: "Join and connect with a vibrant Bitcoin community of like-minded individuals",
+  },
+  {
+    name: "Fellowship Opportunities",
+    desc: "Gain access to fellowship opportunities at Bitshala and exclusive invites to Bitspace for more physical community experiences",
+  },
+  {
+    name: "First Step to Contribution",
+    desc: "Be able to take your first step to contribute confidently to Bitcoin projects and communities",
+  },
+];
+---
+
+<div class="lg:p-8">
+  <h1
+    class="mb-3 mt-8 font-header text-3xl font-bold md:text-6xl lg:text-6xl"
+    id="about_us"
+  >
+    Lightning Network Cohort
+  </h1>
+  <p class="font-base text-base md:text-base lg:text-2xl">
+    <span class="font-bold text-orange">What is it?</span>
+    It's a
+    <span class="font-bold">comprehensive pathway</span> designed
+    for learning Lightning Network Engineering and its applications.
+    Using Andreas Antonopoulos’s book <span
+      class="font-bold"
+      >"Mastering the Lightning Network (1st Edition)",
+      Builder's Guide to the LND Galaxy</span
+    > and blogs on <span class="font-bold"
+      >Lightning Protocol Development by Chaincode Seminars
+    </span> as our primary study materials, we explore use cases,
+    technical aspects and future of Lightning.
+  </p>
+  <p class="my-5 text-base md:text-base lg:text-2xl">
+    <span class="font-bold text-orange">Who is it for?</span
+    >
+    This cohort is <span class="font-bold"
+      >open to all
+    </span>— doesn’t matter if you're a dev, designer, or
+    just a curious enthusiast. Befitting for technical
+    readers with an understanding of the fundamentals of
+    Bitcoin, this club is a home for those looking to learn
+    about the Lightning Network, its use-cases and to build
+    on top of it.
+  </p>
+  <p class="text-base md:text-base lg:text-2xl">
+    <span class="font-bold text-orange">
+      What are the prerequisites?
+    </span>A thorough read of
+    <span class="font-bold"
+      >Grokking Bitcoin or the Mastering Bitcoin book</span
+    >— is required before diving into LN.
+  </p>
+
+  <div class="my-10">
+    <slot name="text" />
+    <h3 class="my-8 text-2xl font-bold text-orange">
+      What are the takeaways?
+    </h3>
+    <ul class="list-disc pl-5 lg:pl-10">
+      {
+        takeaways.map((takeaway) => (
+          <li class="my-4 lg:text-2xl">
+            <span class="font-header font-bold">
+              {takeaway.name}
+            </span>
+            : {takeaway.desc}
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+
+  <p class="text-base md:text-base lg:text-2xl">
+    <span class="font-bold text-orange">
+      What is the fellowship program?
+    </span>
+    <span
+      >The fellowship program is your <span
+        class="font-bold">launchpad into</span
+      > the
+      <span class="font-bold">Bitcoin FOSS</span>(Free and
+      Open Source Software) world. Whether it's developing
+      innovative open-source software or leading educational
+      initiatives, this is where your contributions to
+      Bitcoin begin — and maybe even your Bitcoin career!
+    </span>
+  </p>
+</div>
