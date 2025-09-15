@@ -11,7 +11,7 @@ import MeetYourTAs from "../../components/cohortPages/common/MeetYourTAs.astro";
 import CohortGraduates from "../../components/cohortPages/CohortGraduates.astro";
 
 function getCohortDates() {
-  let commencementDate = new Date(2025, 6, 10);
+  let commencementDate = new Date(2025, 8, 18); // Months are 0-indexed (0 = January, 1 = February, ..., 8 = September)
   const now = new Date();
 
   while (commencementDate <= now) {
@@ -19,12 +19,6 @@ function getCohortDates() {
       commencementDate.getMonth() + 2
     );
   }
-
-  const registrationDeadline = new Date(commencementDate);
-  registrationDeadline.setDate(
-    registrationDeadline.getDate() + 7
-  );
-
   const formatDate = (date: Date) => {
     const day = date.getDate();
     const month = date.toLocaleString("en-US", {
@@ -35,16 +29,15 @@ function getCohortDates() {
       day === 1
         ? "st"
         : day === 2
-        ? "nd"
-        : day === 3
-        ? "rd"
-        : "th";
+          ? "nd"
+          : day === 3
+            ? "rd"
+            : "th";
     return `${day}${suffix} ${month}, ${year}`;
   };
 
   return {
     commencement: formatDate(commencementDate),
-    registration: formatDate(registrationDeadline),
   };
 }
 
@@ -71,10 +64,6 @@ const isVisible = false;
       {
         name: "Commencement date",
         desc: dates.commencement,
-      },
-      {
-        name: "Registration deadline",
-        desc: dates.registration,
       },
       {
         name: "Duration",
