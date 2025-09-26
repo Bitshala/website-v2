@@ -29,26 +29,30 @@ import { team, advisors } from "../common/list.js";
               {member.name}
             </p>
             <div class="flex">
-              <a
-                href={member.github}
-                target="_blank"
-                class="group"
-              >
-                <img
-                  src="/people/github.png"
-                  class="m-1 h-6 rounded-lg bg-white group-hover:bg-white lg:h-7"
-                />
-              </a>
-              <a
-                href={member.twitter}
-                target="_blank"
-                class="group"
-              >
-                <img
-                  src="/people/twitter.png"
-                  class="m-1 mr-3 h-6 scale-125 rounded-lg lg:h-7"
-                />
-              </a>
+              {member.github && (
+                <a
+                  href={member.github}
+                  target="_blank"
+                  class="group"
+                >
+                  <img
+                    src="/people/github.png"
+                    class="m-1 h-6 rounded-lg bg-white group-hover:bg-white lg:h-7"
+                  />
+                </a>
+              )}
+              {member.twitter && (
+                <a
+                  href={member.twitter}
+                  target="_blank"
+                  class="group"
+                >
+                  <img
+                    src="/people/twitter.png"
+                    class="m-1 mr-3 h-6 scale-125 rounded-lg lg:h-7"
+                  />
+                </a>
+              )}
             </div>
           </div>
           <p

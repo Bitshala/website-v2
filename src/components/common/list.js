@@ -167,8 +167,6 @@ export const team = [
     bgColor: "bg-black",
     textColor: "text-white",
     headingColor: "text-orange",
-    twitter: "https://twitter.com/jatinbtc",
-    github: "https://github.com/jatinbtc",
   },
   {
     name: "Veronika",
@@ -177,8 +175,6 @@ export const team = [
     bgColor: "bg-black",
     textColor: "text-white",
     headingColor: "text-orange",
-    twitter: "https://twitter.com/veronikabtc",
-    github: "https://github.com/veronikabtc",
   },
   // {
   //   name: "Vyras",
