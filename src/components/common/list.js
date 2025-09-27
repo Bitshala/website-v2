@@ -150,37 +150,6 @@ export const team = [
     twitter: "https://twitter.com/SetuSaurabh",
     github: "https://github.com/setusaurabh",
   },
-];
-
-export const ln_ta = [
-  {
-    name: "BtcNoob",
-    desc: "Rust Educator",
-    image: "btcnoob",
-    bgColor: "bg-blue",
-    textColor: "text-white",
-    headingColor: "text-yellow",
-  },
-  {
-    name: "Dhruvil",
-    desc: "Host, Bitcoin Reads",
-    image: "dhruvil",
-    bgColor: "bg-purple",
-    textColor: "text-white",
-    headingColor: "text-green",
-  },
-  {
-    name: "Chaitika",
-    desc: "Open Source Lightning Dev",
-    image: "chaitika",
-    bgColor: "bg-orange",
-    textColor: "text-black",
-    headingColor: "text-black",
-    twitter: "https://x.com/adityaa2011",
-  },
-]
-
-export const dev = [
   {
     name: "Anmol Sharma",
     desc: "When he is not talking about Bitcoin,he is busy writing code. But let's be honest, he is usually busy talking about Bitcoin.",
@@ -198,6 +167,7 @@ export const dev = [
     bgColor: "bg-black",
     textColor: "text-white",
     headingColor: "text-orange",
+    twitter: "https://x.com/jjatinvirdi",
   },
   {
     name: "Veronika",
@@ -238,6 +208,34 @@ export const dev = [
     github: "https://github.com/keraliss",
   },
 ];
+
+export const ln_ta = [
+  {
+    name: "BtcNoob",
+    desc: "Rust Educator",
+    image: "btcnoob",
+    bgColor: "bg-blue",
+    textColor: "text-white",
+    headingColor: "text-yellow",
+  },
+  {
+    name: "Dhruvil",
+    desc: "Host, Bitcoin Reads",
+    image: "dhruvil",
+    bgColor: "bg-purple",
+    textColor: "text-white",
+    headingColor: "text-green",
+  },
+  {
+    name: "Chaitika",
+    desc: "Open Source Lightning Dev",
+    image: "chaitika",
+    bgColor: "bg-orange",
+    textColor: "text-black",
+    headingColor: "text-black",
+    twitter: "https://x.com/adityaa2011",
+  },
+]
 
 export const advisors = [
   {
