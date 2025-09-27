@@ -9,6 +9,7 @@ import Application from "../../components/common/Application";
 import About from "../../components/cohortPages/ln/About.astro";
 import CohortGraduates from "../../components/cohortPages/CohortGraduates.astro";
 import MeetYourTAs from "../../components/cohortPages/ln/MeetYourTAs.astro";
+import Preperation from "../../components/cohortPages/ln/Preperation.astro";
 
 function getCohortDates() {
   let commencementDate = new Date(2025, 6, 10);
@@ -70,7 +71,7 @@ const isVisible = false;
     format={[
       {
         name: "Commencement date",
-        desc: "16th July, 2025",
+        desc: "January, 2026",
       },
       {
         name: "Duration",
@@ -91,6 +92,7 @@ const isVisible = false;
     ]}
   />
   <CohortStructure />
+  <Preperation />
   <Syllabus
     syllabus={[
       {

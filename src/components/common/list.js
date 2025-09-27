@@ -156,7 +156,7 @@ export const ln_ta = [
   {
     name: "BtcNoob",
     desc: "Rust Educator",
-    image: "Delcin",
+    image: "btcnoob",
     bgColor: "bg-blue",
     textColor: "text-white",
     headingColor: "text-yellow",
@@ -164,7 +164,7 @@ export const ln_ta = [
   {
     name: "Dhruvil",
     desc: "Host, Bitcoin Reads",
-    image: "Shreyan",
+    image: "dhruvil",
     bgColor: "bg-purple",
     textColor: "text-white",
     headingColor: "text-green",
@@ -172,7 +172,7 @@ export const ln_ta = [
   {
     name: "Chaitika",
     desc: "Open Source Lightning Dev",
-    image: "Aditya",
+    image: "chaitika",
     bgColor: "bg-orange",
     textColor: "text-black",
     headingColor: "text-black",
