@@ -17,13 +17,13 @@ function getCohortDates() {
 
   while (commencementDate <= now) {
     commencementDate.setMonth(
-      commencementDate.getMonth() + 2
+      commencementDate.getMonth() + 2,
     );
   }
 
   const registrationDeadline = new Date(commencementDate);
   registrationDeadline.setDate(
-    registrationDeadline.getDate() + 7
+    registrationDeadline.getDate() + 7,
   );
 
   const formatDate = (date: Date) => {
@@ -56,7 +56,7 @@ const headerProps = {
 };
 const role = "ln_cohort";
 const cohortName = "Mastering Lightning";
-const isVisible = false;
+const isVisible = true;
 ---
 
 <Layout
