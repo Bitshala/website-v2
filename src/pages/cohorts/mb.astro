@@ -16,7 +16,7 @@ function getCohortDates() {
 
   while (commencementDate <= now) {
     commencementDate.setMonth(
-      commencementDate.getMonth() + 2
+      commencementDate.getMonth() + 2,
     );
   }
   const formatDate = (date: Date) => {
@@ -48,7 +48,7 @@ const headerProps = {
 };
 const role = "mb_cohort";
 const cohortName = "Mastering Bitcoin";
-const isVisible = false;
+const isVisible = true;
 ---
 
 <Layout
