@@ -13,6 +13,10 @@ const Navbar = () => {
           name: "Contact us ",
           link: "/about/#contact_us",
         },
+        {
+          name: "BitPlebs",
+          link: "https://bitplebs.in/",
+        },
       ],
     },
     {

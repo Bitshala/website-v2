@@ -34,21 +34,18 @@ const Hamburger = () => {
         <div className="absolute left-1/2 top-1/2 block w-5 -translate-x-1/2 -translate-y-1/2 transform">
           <span
             aria-hidden="true"
-            className={`bg-current absolute block h-0.5 w-5 transform bg-white transition duration-500 ease-in-out ${
-              open ? "rotate-45" : "-translate-y-1.5"
-            }`}
+            className={`bg-current absolute block h-0.5 w-5 transform bg-white transition duration-500 ease-in-out ${open ? "rotate-45" : "-translate-y-1.5"
+              }`}
           />
           <span
             aria-hidden="true"
-            className={`bg-current absolute block h-0.5 w-5 transform bg-white transition duration-500 ease-in-out ${
-              open ? "opacity-0" : ""
-            }`}
+            className={`bg-current absolute block h-0.5 w-5 transform bg-white transition duration-500 ease-in-out ${open ? "opacity-0" : ""
+              }`}
           />
           <span
             aria-hidden="true"
-            className={`bg-current absolute block h-0.5 w-5 transform bg-white transition duration-200 ease-in-out ${
-              open ? "-rotate-45" : "translate-y-1.5"
-            }`}
+            className={`bg-current absolute block h-0.5 w-5 transform bg-white transition duration-200 ease-in-out ${open ? "-rotate-45" : "translate-y-1.5"
+              }`}
           />
         </div>
       </button>
@@ -80,6 +77,10 @@ const SideMenu = () => {
         {
           name: "Contact us ",
           link: "/bitspace/#contact_us",
+        },
+        {
+          name: "BitPlebs",
+          link: "https://bitplebs.in/",
         },
       ],
     },
@@ -122,10 +123,13 @@ const SideMenu = () => {
     <div className="flex h-full w-full flex-col pb-[10%] pt-16">
       {list.map((item, index) => {
         return (
-          <Accordion key={index} open={open === index + 1}>
+          // @ts-ignore
+          <Accordion key={index} open={open === index + 1} placeholder={"test"}>
+            {/* @ts-ignore */}
             <AccordionHeader
               className="font-header text-2xl text-white "
               onClick={() => handleOpen(index + 1)}
+              placeholder={"check"}
             >
               {item.name}
               <MdKeyboardArrowDown className="-ml-5" />
