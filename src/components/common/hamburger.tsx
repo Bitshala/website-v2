@@ -71,7 +71,6 @@ const SideMenu = () => {
   const list = [
     {
       name: "Org",
-      link: "/org",
       subMenu: [
         { name: "About", link: "/about" },
         {
@@ -85,8 +84,12 @@ const SideMenu = () => {
       ],
     },
     {
+      name: "BitPlebs",
+      link: "https://bitplebs.in/",
+      subMenu: []
+    },
+    {
       name: "Bitcoin Career",
-      link: "/#bitcoin_career",
       subMenu: [
         { name: "Study cohorts", link: "/cohorts" },
         { name: "Bitcoin Clubs", link: "/clubs" },
@@ -95,7 +98,6 @@ const SideMenu = () => {
     },
     {
       name: "IRL Funzzz",
-      link: "/#irl_funzzz",
       subMenu: [
         { name: "Bitspace", link: "/bitspace" },
         { name: "BITDEVS", link: "/bitdev" },
@@ -103,7 +105,6 @@ const SideMenu = () => {
     },
     {
       name: "Social Clubs ",
-      link: "/#social_clubs",
       subMenu: [
         {
           name: "Latest in Bitcoin Tech",
@@ -131,8 +132,9 @@ const SideMenu = () => {
               onClick={() => handleOpen(index + 1)}
               placeholder={"check"}
             >
-              {item.name}
-              <MdKeyboardArrowDown className="-ml-5" />
+              <a href={item.link} target="_blank">
+                {item.name}
+              </a>
             </AccordionHeader>
             <AccordionBody>
               {item.subMenu.map((subItem) => {
