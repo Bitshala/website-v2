@@ -6,22 +6,25 @@ const Navbar = () => {
   const list = [
     {
       name: "Org",
-      link: "/org",
       subMenu: [
         { name: "About", link: "/about" },
         {
           name: "Contact us ",
           link: "/about/#contact_us",
         },
-        {
-          name: "BitPlebs",
-          link: "https://bitplebs.in/",
-        },
+        // {
+        //   name: "BitPlebs",
+        //   link: "https://bitplebs.in/",
+        // },
       ],
     },
     {
+      name: "BitPlebs",
+      link: "https://bitplebs.in/",
+      // subMenu: [],
+    },
+    {
       name: "Bitcoin Career",
-      link: "/#bitcoin_career",
       subMenu: [
         { name: "Study cohorts", link: "/cohorts" },
         { name: "Bitcoin Clubs", link: "/clubs" },
@@ -30,7 +33,6 @@ const Navbar = () => {
     },
     {
       name: "IRL Funzzz",
-      link: "/#irl_funzzz",
       subMenu: [
         { name: "Bitspace", link: "/bitspace" },
         { name: "BITDEVS", link: "/bitdev" },
@@ -38,7 +40,6 @@ const Navbar = () => {
     },
     {
       name: "Social Clubs ",
-      link: "/#social_clubs",
       subMenu: [
         {
           name: "Latest in Bitcoin Tech",
@@ -68,10 +69,10 @@ const Navbar = () => {
             {list.map((item) => (
               <div class="group relative hidden lg:block">
                 <button class=" mt-2 flex w-full flex-row items-center rounded-lg px-4 py-4 text-left text-base font-bold uppercase focus:outline-none md:ml-4 md:mt-0 md:inline md:w-auto">
-                  <span className="flex font-header text-white">
+                  <a href={item.link} target="_blank" className="flex font-header text-white">
                     {item.name}
-                    <MdKeyboardArrowDown className="ml-2 pt-1" />
-                  </span>
+                    {item.subMenu ? <MdKeyboardArrowDown className="ml-2 pt-1" /> : <></>}
+                  </a>
                 </button>
                 <div class=" absolute z-10 hidden group-hover:block">
                   <div class="px-2 pb-4 pt-2">
