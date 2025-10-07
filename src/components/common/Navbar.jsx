@@ -15,9 +15,8 @@ const Navbar = () => {
       ],
     },
     {
-      name: "BitPlebs",
+      name: "BitPlebs Summit",
       link: "https://bitplebs.in/",
-      // subMenu: [],
     },
     {
       name: "Bitcoin Career",
@@ -65,9 +64,17 @@ const Navbar = () => {
             {list.map((item) => (
               <div class="group relative hidden lg:block">
                 <button class=" mt-2 flex w-full flex-row items-center rounded-lg px-4 py-4 text-left text-base font-bold uppercase focus:outline-none md:ml-4 md:mt-0 md:inline md:w-auto">
-                  <a href={item.link} target="_blank" className="flex font-header text-white">
+                  <a
+                    href={item.link}
+                    target="_blank"
+                    className="flex font-header text-white"
+                  >
                     {item.name}
-                    {item.subMenu ? <MdKeyboardArrowDown className="ml-2 pt-1" /> : <></>}
+                    {item.subMenu ? (
+                      <MdKeyboardArrowDown className="ml-2 pt-1" />
+                    ) : (
+                      <></>
+                    )}
                   </a>
                 </button>
                 <div class=" absolute z-10 hidden group-hover:block">
