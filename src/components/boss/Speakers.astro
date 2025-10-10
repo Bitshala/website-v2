@@ -1,46 +1,77 @@
 ---
-const speakers = [
+const list = [
   {
-    name: "Raj Maitra",
-    role: "Lead, Bitshala",
-    project: "Project Name",
-    subtitle: "Coin Swap",
-    description:
-      "Lorem ipsum dolor sit amet consectetur. Ullamcorper justo aliquam dolor cursus nulla faucibus lectus massa a. Aliquam volutpat magna massa vel porttitor.",
-    details: "At cursus integer duis arcu felis penatibus.",
-    image: "/boss/talk.png",
+    logo: "/apprenticeship/bitlogo.webp",
+    github:
+      "https://github.com/Bitshala-Incubator/silent-pay",
+    discord: "https://discord.gg/yHkd8bKRDU",
+    name: "Silent-Payment Library",
+    desc: "A Typescript wallet library implementing all the silent-payment primitives.",
+    skills: ["Typescript"],
   },
   {
-    name: "Raj Maitra",
-    role: "Lead, Bitshala",
-    project: "Project Name",
-    subtitle: "Coin Swap",
-    description:
-      "Lorem ipsum dolor sit amet consectetur. Ullamcorper justo aliquam dolor cursus nulla faucibus lectus massa a. Aliquam volutpat magna massa vel porttitor.",
-    details: "At cursus integer duis arcu felis penatibus.",
-    image: "/boss/talk.png",
+    logo: "/apprenticeship/bitlogo.webp",
+    github:
+      "https://github.com/Bitshala-Incubator/silent-pay-indexer",
+    discord: "https://discord.gg/yHkd8bKRDU",
+    name: "Silent Payment Indexer",
+    desc: "A Typescript project to build various mechanisms of fetching the SP indexes.",
+    skills: ["Typescript"],
   },
   {
-    name: "Raj Maitra",
-    role: "Lead, Bitshala",
-    project: "His",
-    projectHighlight: "talk",
-    subtitle: "Coin Swap",
-    description:
-      "Lorem ipsum dolor sit amet consectetur. Ullamcorper justo aliquam dolor cursus nulla faucibus lectus massa a. Aliquam volutpat magna massa vel porttitor.",
-    details: "At cursus integer duis arcu felis penatibus.",
-    image: "/boss/talk.png",
+    logo: "/apprenticeship/bitlogo.webp",
+    github:
+      "https://github.com/Bitshala-Incubator/rust-coinselect",
+    discord: "https://discord.gg/6AMHcGdDga",
+    name: "Coinselection",
+    desc: "A rust library bringing the Bitcoin Core's coinselection algorithms to the wallet development world. A crucial missing piece of Bitcoin wallet infrastructure.",
+    skills: ["Rust"],
   },
   {
-    name: "Raj Maitra",
-    role: "Lead, Bitshala",
-    project: "His",
-    projectHighlight: "talk",
-    subtitle: "Coin Swap",
-    description:
-      "Lorem ipsum dolor sit amet consectetur. Ullamcorper justo aliquam dolor cursus nulla faucibus lectus massa a. Aliquam volutpat magna massa vel porttitor.",
-    details: "At cursus integer duis arcu felis penatibus.",
-    image: "/boss/talk.png",
+    logo: "/apprenticeship/yinyang.webp",
+    github:
+      "https://github.com/utxo-teleport/teleport-transactions",
+    discord: "https://discord.gg/ZfVxdYRPkt",
+    name: "Coinswap",
+    desc: "Functioning, minimal-viable binaries and libraries to perform a trustless, p2p Maxwell-Belcher Coinswap Protocol",
+    skills: ["Rust"],
+  },
+  {
+    logo: "/apprenticeship/bitcoin_core.png",
+    github: "https://github.com/bitcoin/bitcoin",
+    discord: "https://discord.gg/bDzA7Ae32m",
+    name: "Bitcoin Core",
+    desc: "The reference implementation of the bitcoin protocol",
+    skills: ["C++"],
+  },
+  {
+    logo: "/apprenticeship/ldk.png",
+    github:
+      "https://github.com/lightningdevkit/rust-lightning",
+    name: "Lightning Development Kit",
+    desc: "A complete lightning implementation packaged as an SDK",
+    skills: ["Rust"],
+  },
+  {
+    logo: "/apprenticeship/lnd.png",
+    github: "https://github.com/lightningnetwork/lnd",
+    name: "Lightning Network Daemon",
+    desc: "A Golang implementation and the most widely run full node on the lightning network",
+    skills: ["Go"],
+  },
+  {
+    logo: "/apprenticeship/core-lightning.png",
+    github: "https://github.com/ElementsProject/lightning",
+    name: "Core Lightning",
+    desc: "A lightweight, highly customizable and standard compliant implementation of the lightning protocol written in C",
+    skills: ["C"],
+  },
+  {
+    logo: "/apprenticeship/eclair.png",
+    github: "https://github.com/ACINQ/eclair",
+    name: "Eclair",
+    desc: "A scala implementation of the lightning network, focusing on the mobile use case",
+    skills: ["Scala"],
   },
 ];
 ---
@@ -49,7 +80,7 @@ const speakers = [
   class="w-full px-4 py-16 md:px-8 lg:px-24 xl:px-32"
 >
   <div class="mx-auto max-w-[1400px]">
-    <h2 class="mb-8 font-header text-6xl">
+    <h2 class="font-boss mb-8 text-6xl">
       <span class="text-[#FF6B9E]">Who's shaping</span> the conversation
     </h2>
 
@@ -61,65 +92,74 @@ const speakers = [
         infrastructure maintainers.
       </p>
       <p>
-        We publish contributor names only with their
-        permission, and we curate the room to ensure
-        conversations are productive, focused, and useful.
+        Following are some of the projects that our summit
+        attendees work on.
       </p>
     </div>
 
     <div
-      class="mb-16 grid grid-cols-1 gap-8 lg:grid-cols-2"
+      class="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3"
     >
       {
-        speakers.map((speaker) => (
-          <div class="rounded-3xl border-2 border-[#6B4458] bg-[#3D2434] p-8">
-            <div class="flex gap-6">
-              <div class="flex flex-shrink-0 flex-col items-center text-center">
+        list.map((item) => (
+          <div class="flex h-full flex-col rounded-3xl border-2 border-[#6B4458] bg-[#3D2434]">
+            <div class="flex h-full flex-col p-6">
+              <div class="mb-6 flex items-center justify-between">
                 <img
-                  src={speaker.image}
-                  alt={speaker.name}
-                  class="mb-4 h-32 w-32 rounded-full border-4 border-[#6B4458] object-cover"
+                  src={item.logo}
+                  alt={item.name}
+                  class="h-10 w-10 rounded-full object-cover"
                 />
-                <p class="font-bold">{speaker.name}</p>
-                <p class="text-gray-400 text-sm">
-                  {speaker.role}
-                </p>
+                <div class="flex gap-2">
+                  <a
+                    href={item.github}
+                    target="_blank"
+                    class="group"
+                  >
+                    <img
+                      src="/apprenticeship/github.png"
+                      alt="GitHub"
+                      class="h-8 rounded bg-[#3D2434] p-1 group-hover:bg-[#4D3444]"
+                    />
+                  </a>
+                  {item.discord && (
+                    <a
+                      href={item.discord}
+                      target="_blank"
+                      class="group"
+                    >
+                      <img
+                        src="/apprenticeship/discord.png"
+                        alt="Discord"
+                        class="h-8 rounded bg-[#3D2434] p-1 group-hover:bg-[#4D3444]"
+                      />
+                    </a>
+                  )}
+                </div>
               </div>
 
-              <div class="flex-1">
-                <h3 class="mb-1 text-2xl font-bold">
-                  {speaker.projectHighlight ? (
-                    <>
-                      {speaker.project}{" "}
-                      <span class="text-[#D4FF00]">
-                        {speaker.projectHighlight}
-                      </span>
-                    </>
-                  ) : (
-                    speaker.project
-                  )}
-                </h3>
-                <p class="mb-4 text-sm">
-                  {speaker.subtitle}
-                </p>
+              <div class="mb-4 font-header text-xl lg:text-2xl">
+                {item.name}
+              </div>
 
-                <p class="mb-4 text-sm leading-relaxed">
-                  {speaker.description}
+              <div class="mb-6 flex-grow text-sm leading-relaxed lg:text-base">
+                {item.desc}
+              </div>
+
+              <div class="mt-auto flex flex-wrap items-center gap-2">
+                <p class="text-sm font-semibold">
+                  Language:
                 </p>
-                <p class="text-sm">{speaker.details}</p>
+                {item.skills.map((skill) => (
+                  <span class="rounded-lg bg-[#8B5A7C] px-3 py-1 text-sm font-medium">
+                    {skill}
+                  </span>
+                ))}
               </div>
             </div>
           </div>
         ))
       }
-    </div>
-
-    <div class="text-center">
-      <button
-        class="rounded-full bg-[#8B5A7C] px-12 py-4 text-lg font-bold transition-colors hover:bg-[#9B6A8C]"
-      >
-        some CTA
-      </button>
     </div>
   </div>
 </section>

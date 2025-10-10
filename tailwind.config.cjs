@@ -18,10 +18,12 @@ module.exports = {
     fontFamily: {
       header: "Apfel Grotezk, sans-serif",
       base: "Satoshi, sans-serif",
+      boss: "Dx Slight, sans-serif",
+      shadow: "Londrina Shadow, sans-serif",
     },
     extend: {
       fontWeight: {
-        bold: "700", // Ensures bold is 700, typical for headers
+        bold: "700",
       },
     },
   },
