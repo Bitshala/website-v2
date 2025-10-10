@@ -83,8 +83,8 @@ const SideMenu = () => {
       ],
     },
     {
-      name: "BitPlebs Summit",
-      link: "https://bitplebs.in/",
+      name: "BOSS",
+      link: "/boss",
       subMenu: [],
     },
     {

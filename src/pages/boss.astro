@@ -1,0 +1,126 @@
+---
+import About from "../components/boss/about.astro";
+import Things from "../components/boss/Things.astro";
+import Speakers from "../components/boss/Speakers.astro";
+import BackedBy from "../components/boss/BackedBy.astro";
+import Footer from "../components/boss/Footer.astro";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>BOSS Summit 2025 | Bitshala</title>
+  </head>
+  <body>
+    <main class="bg-bossBg text-base text-white lg:text-lg">
+      <section
+        id="hero"
+        class="flex w-full items-center justify-center px-4 py-4 md:px-8 lg:min-h-screen lg:px-16"
+      >
+        <img
+          src="/boss/hero.png"
+          alt="Bitshala BOSS Summit"
+          class="h-auto w-full max-w-7xl object-contain"
+        />
+      </section>
+
+      <section id="about">
+        <About />
+      </section>
+
+      <section id="things">
+        <Things />
+      </section>
+
+      <section
+        id="agenda"
+        class="w-full px-4 py-16 md:px-8 lg:px-24 xl:px-32"
+      >
+        <div class="mx-auto max-w-[1400px]">
+          <h2 class="mb-4 text-center font-boss text-6xl">
+            Last Summit's <span class="text-[#D4FF00]"
+              >Agenda</span
+            > (get an idea)
+          </h2>
+
+          <div class="relative mt-16">
+            <img
+              src="/boss/agenda.png"
+              alt="BOSS Summit Agenda"
+              class="h-auto w-full"
+            />
+          </div>
+        </div>
+      </section>
+
+      <section
+        id="highlights"
+        class="w-full bg-[#271A23] px-4 py-16 md:px-8 lg:px-24 xl:px-32"
+      >
+        <div class="mx-auto max-w-[1400px]">
+          <h2 class="mb-16 font-boss text-6xl">
+            Glimpse and <span
+              class="bg-[#D7FF00] text-black"
+              >highlight</span
+            >
+          </h2>
+          <img
+            src="/boss/highlights.png"
+            alt="BOSS Summit Highlights"
+            class="h-auto w-full"
+          />
+        </div>
+      </section>
+
+      <section id="Speakers">
+        <Speakers />
+      </section>
+
+      <section id="backed-by">
+        <div
+          class="w-full px-4 py-16 md:px-8 lg:px-24 xl:px-32"
+        >
+          <div class="mx-auto max-w-[1400px]">
+            <h2
+              class="mb-8 flex flex-col items-center justify-center gap-4 text-center font-boss text-6xl lg:flex-row"
+            >
+              <span class="text-[#FFA500]"
+                >Supported by</span
+              >
+              <img
+                src="/boss/btrust.png"
+                alt="BTrust"
+                class="h-32 w-auto"
+              />
+            </h2>
+          </div>
+        </div>
+      </section>
+
+      <section id="footer">
+        <Footer />
+      </section>
+    </main>
+  </body>
+</html>
+
+<style is:global>
+  @font-face {
+    font-family: "Dx Slight";
+    src: url("/fonts/dx-slight/Dx-Slight-Medium-Tall.otf")
+      format("opentype");
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Londrina Shadow";
+    src: url("/fonts/Londrina_Shadow/LondrinaShadow-Regular.ttf")
+      format("truetype");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+</style>

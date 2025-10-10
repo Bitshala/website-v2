@@ -1,0 +1,60 @@
+---
+const things = [
+  {
+    title:
+      "Small group sessions on current and emerging Bitcoin projects",
+    image: "/boss/thing1.png",
+  },
+  {
+    title:
+      "Deep dives into problems still waiting for the right solution",
+    image: "/boss/thing2.png",
+  },
+  {
+    title:
+      "Unscripted discussions where the real breakthroughs happen",
+    image: "/boss/thing3.png",
+  },
+  {
+    title:
+      "Off-the-record time for sensitive topics and early-stage ideas",
+    image: "/boss/thing4.png",
+  },
+  {
+    title:
+      "Evenings that bleed into informality: a walk, a meal, an argument that becomes a plan. Everything is arranged so the discussion matters more than the schedule.",
+    image: "/boss/thing5.png",
+  },
+];
+---
+
+<section
+  class="w-full bg-[#271A23] px-4 py-16 md:px-8 lg:px-24 xl:px-32"
+>
+  <div class="mx-auto max-w-[1400px]">
+    <h2 class="mb-16 text-center font-boss text-6xl">
+      A few things <span class="text-[#F4F199]"
+        >you can count on</span
+      >
+    </h2>
+
+    <div
+      class="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-3"
+    >
+      {
+        things.map((thing) => (
+          <div>
+            <div class="mb-6 overflow-hidden rounded-3xl border-2 border-[#962573]">
+              <img
+                src={thing.image}
+                alt=""
+                class="h-64 w-full object-cover"
+              />
+            </div>
+            <p class="leading-relaxed">{thing.title}</p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
