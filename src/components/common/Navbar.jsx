@@ -24,6 +24,7 @@ const Navbar = () => {
         { name: "Study cohorts", link: "/cohorts" },
         { name: "Bitcoin Clubs", link: "/clubs" },
         { name: "Fellowship", link: "/fellowship" },
+        { name: "Chaincode BOSS", link: "/chaincodeboss" },
       ],
     },
     {
