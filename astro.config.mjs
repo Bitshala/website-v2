@@ -20,6 +20,6 @@ export default defineConfig({
   redirects: {
     "/apply": "/cohorts",
     "/chaincodeboss":
-      "https://chaincode.applytojob.com/apply/BE0IuAAsqT/Bitshala-Start-Your-Career-In-Bitcoin-Open-Source-2025",
+      "http://bitshala.boss2026.com/",
   },
 });
