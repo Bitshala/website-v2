@@ -1,4 +1,4 @@
-import React, { useState, type FormEvent } from "react";
+import React, { useState, useEffect, type FormEvent } from "react";
 import axios, { AxiosError } from "axios";
 import {
   Alert,
@@ -96,6 +96,16 @@ const Application = ({
   const [userExists, setUserExists] = useState(false);
   const [loading, setLoading] = useState(false);
   const [test, setTest] = useState("");
+
+  useEffect(() => {
+    if (window.location.hash) {
+      const id = window.location.hash.substring(1);
+      const element = document.getElementById(id);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  }, []);
 
   const list = [
     {
@@ -417,7 +427,14 @@ const Application = ({
           </section>
         </>
       ) : (
-        <div className="my-10 items-center justify-center text-center">
+        <section id="register">
+        <div  className="my-10 items-center justify-center text-center">
+          <h1 className="font-header text-3xl font-bold  text-orange lg:text-5xl mb-2">
+           Registration for the cohort is now open
+          </h1>
+             <p className="mb-12 lg:text-xl">
+               register to proceed
+            </p>
           <a
             href="https://app.bitshala.org"
             target="_blank"
@@ -427,6 +444,7 @@ const Application = ({
             Register
           </a>
         </div>
+        </section>
       )}
     </>
   );
