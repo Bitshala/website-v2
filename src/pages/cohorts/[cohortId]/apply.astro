@@ -1,0 +1,19 @@
+---
+export async function getStaticPaths() {
+  return [
+    { params: { cohortId: "mb" } },
+    { params: { cohortId: "ln" } },
+    { params: { cohortId: "bpd" } },
+    { params: { cohortId: "lbtcl" } },
+    { params: { cohortId: "pb" } },
+  ];
+}
+
+const { cohortId } = Astro.params;
+---
+
+<script define:vars={{ cohortId }}>
+  window.location.href = `/cohorts/${cohortId}#register`;
+</script>
+
+<meta http-equiv="refresh" content={`0;url=/cohorts/${cohortId}#register`} />
