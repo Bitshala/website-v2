@@ -36,18 +36,7 @@ const Navbar = () => {
     },
     {
       name: "Social Clubs ",
-      subMenu: [
-        {
-          name: "Latest in Bitcoin Tech",
-          link: "/optech",
-        },
-        { name: "Reading Club", link: "/readingClub" },
-        {
-          name: "Bitcoin PR Review Club",
-          link: "/review",
-        },
-        { name: "Bitcoin Talks", link: "/talks" },
-      ],
+      link: "/clubs",
     },
   ];
 
