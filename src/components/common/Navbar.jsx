@@ -19,6 +19,10 @@ const Navbar = () => {
       link: "/boss",
     },
     {
+      name: "Bitplebs Summit",
+      link: "https://bitplebs.in/",
+    },
+    {
       name: "Bitcoin Career",
       subMenu: [
         { name: "Study cohorts", link: "/cohorts" },
@@ -36,18 +40,7 @@ const Navbar = () => {
     },
     {
       name: "Social Clubs ",
-      subMenu: [
-        {
-          name: "Latest in Bitcoin Tech",
-          link: "/optech",
-        },
-        { name: "Reading Club", link: "/readingClub" },
-        {
-          name: "Bitcoin PR Review Club",
-          link: "/review",
-        },
-        { name: "Bitcoin Talks", link: "/talks" },
-      ],
+      link: "/clubs",
     },
   ];
 
