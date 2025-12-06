@@ -19,6 +19,10 @@ const Navbar = () => {
       link: "/boss",
     },
     {
+      name: "Bitplebs Summit",
+      link: "https://bitplebs.in/",
+    },
+    {
       name: "Bitcoin Career",
       subMenu: [
         { name: "Study cohorts", link: "/cohorts" },

@@ -88,6 +88,11 @@ const SideMenu = () => {
       subMenu: [],
     },
     {
+      name: "Bitplebs Summit",
+      link: "https://bitplebs.in/",
+      subMenu: [],
+    },
+    {
       name: "Bitcoin Career",
       subMenu: [
         { name: "Study cohorts", link: "/cohorts" },
