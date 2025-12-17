@@ -10,46 +10,7 @@ import About from "../../components/cohortPages/ln/About.astro";
 import CohortGraduates from "../../components/cohortPages/CohortGraduates.astro";
 import MeetYourTAs from "../../components/cohortPages/ln/MeetYourTAs.astro";
 import Preperation from "../../components/cohortPages/ln/Preperation.astro";
-
-function getCohortDates() {
-  let commencementDate = new Date(2025, 6, 10);
-  const now = new Date();
-
-  while (commencementDate <= now) {
-    commencementDate.setMonth(
-      commencementDate.getMonth() + 2,
-    );
-  }
-
-  const registrationDeadline = new Date(commencementDate);
-  registrationDeadline.setDate(
-    registrationDeadline.getDate() + 7,
-  );
-
-  const formatDate = (date: Date) => {
-    const day = date.getDate();
-    const month = date.toLocaleString("en-US", {
-      month: "long",
-    });
-    const year = date.getFullYear();
-    const suffix =
-      day === 1
-        ? "st"
-        : day === 2
-          ? "nd"
-          : day === 3
-            ? "rd"
-            : "th";
-    return `${day}${suffix} ${month}, ${year}`;
-  };
-
-  return {
-    commencement: formatDate(commencementDate),
-    registration: formatDate(registrationDeadline),
-  };
-}
-
-const dates = getCohortDates();
+import { getCohortStartDate } from "../../lib/cohorts";
 
 const headerProps = {
   removeHeader: true,
@@ -57,6 +18,11 @@ const headerProps = {
 const role = "ln_cohort";
 const cohortName = "Mastering Lightning";
 const isVisible = true;
+
+const res = await fetch("https://api.bitshala.org/Cohorts/available");
+const cohorts = await res.json();
+
+const commencementDate = getCohortStartDate(cohorts, "mb");
 ---
 
 <Layout
@@ -71,7 +37,7 @@ const isVisible = true;
     format={[
       {
         name: "Commencement date",
-        desc: "January, 2026",
+        desc: commencementDate,
       },
       {
         name: "Duration",
