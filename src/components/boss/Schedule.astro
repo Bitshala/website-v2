@@ -1,0 +1,127 @@
+---
+const summits = [
+  {
+    id: "winter-2025",
+    label: "Winter 2025",
+    scheduleImage: "/boss/schedule.png",
+    scheduleUrl:
+      "https://github.com/Bitshala/BOSS-Summit/blob/main/winter-2025/schedule.png",
+  },
+  {
+    id: "summer-2025",
+    label: "Summer 2025",
+    scheduleImage: "/boss/summer-2025-schedule.png", // Update with actual path
+    scheduleUrl:
+      "https://github.com/Bitshala/BOSS-Summit/blob/main/summer-2025/schedule.png", // Update with actual URL
+  },
+];
+---
+
+<section
+  id="agenda"
+  class="w-full px-4 py-16 md:px-8 lg:px-24 xl:px-32"
+>
+  <div class="mx-auto max-w-[1400px]">
+    <h2 class="mb-12 text-center font-boss text-6xl">
+      This Summit's <span class="text-[#D4FF00]"
+        >Agenda</span
+      >
+    </h2>
+
+    <!-- Tabs -->
+    <div class="mb-8 flex flex-wrap justify-center gap-4">
+      {
+        summits.map((summit, index) => (
+          <button
+            data-schedule-tab={summit.id}
+            class={`schedule-tab-button rounded-lg px-6 py-3 font-boss text-2xl transition-colors ${
+              index === 0
+                ? "bg-[#D4FF00] text-black"
+                : "bg-[#662c53] text-white hover:bg-[#9B6A8C]"
+            }`}
+          >
+            {summit.label}
+          </button>
+        ))
+      }
+    </div>
+
+    <!-- Schedule Content for each summit -->
+    {
+      summits.map((summit, index) => (
+        <div
+          data-schedule-content={summit.id}
+          class={`schedule-content ${index === 0 ? "" : "hidden"}`}
+        >
+          <div class="relative mt-16">
+            <img
+              src={summit.scheduleImage}
+              alt={`${summit.label} Schedule`}
+              class="h-auto w-full"
+            />
+          </div>
+
+          <div class="pt-4 text-center">
+            <a
+              href={summit.scheduleUrl}
+              target="_blank"
+              class="inline-block rounded-lg bg-[#662c53] px-12 py-4 font-boss text-4xl transition-colors hover:bg-[#9B6A8C]"
+            >
+              Check Out the Schedule
+            </a>
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</section>
+
+<script>
+  // Tab switching functionality for schedule
+  const scheduleTabButtons = document.querySelectorAll(
+    ".schedule-tab-button"
+  );
+  const scheduleContents = document.querySelectorAll(
+    ".schedule-content"
+  );
+
+  scheduleTabButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const targetTab = button.getAttribute(
+        "data-schedule-tab"
+      );
+
+      // Update button states
+      scheduleTabButtons.forEach((btn) => {
+        if (
+          btn.getAttribute("data-schedule-tab") ===
+          targetTab
+        ) {
+          btn.classList.remove(
+            "bg-[#662c53]",
+            "text-white"
+          );
+          btn.classList.add("bg-[#D4FF00]", "text-black");
+        } else {
+          btn.classList.remove(
+            "bg-[#D4FF00]",
+            "text-black"
+          );
+          btn.classList.add("bg-[#662c53]", "text-white");
+        }
+      });
+
+      // Show/hide schedule content
+      scheduleContents.forEach((content) => {
+        if (
+          content.getAttribute("data-schedule-content") ===
+          targetTab
+        ) {
+          content.classList.remove("hidden");
+        } else {
+          content.classList.add("hidden");
+        }
+      });
+    });
+  });
+</script>

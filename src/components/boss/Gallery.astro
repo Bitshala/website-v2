@@ -1,0 +1,116 @@
+---
+const summits = [
+  {
+    id: "winter-2025",
+    label: "Winter 2025",
+    images: [
+      "/boss/winter-2025/gallery-1.webp",
+      "/boss/winter-2025/gallery-2.webp",
+      "/boss/winter-2025/gallery-3.webp",
+      "/boss/winter-2025/gallery-4.webp",
+      "/boss/winter-2025/gallery-5.webp",
+      "/boss/winter-2025/gallery-6.webp",
+    ],
+    synopsisUrl: "/boss/winter-2025-synopsis", // Update with actual URL
+  },
+  {
+    id: "summer-2025",
+    label: "Summer 2025",
+    images: [
+      "/boss/summer-2025/gallery-1.webp",
+      "/boss/summer-2025/gallery-2.webp",
+      "/boss/summer-2025/gallery-3.webp",
+      "/boss/summer-2025/gallery-4.webp",
+      "/boss/summer-2025/gallery-5.webp",
+      "/boss/summer-2025/gallery-6.webp",
+    ],
+    synopsisUrl: "/boss/summer-2025-synopsis", // Update with actual URL
+  },
+];
+---
+
+<section
+  id="gallery"
+  class="w-full bg-[#271A23] px-4 py-16 md:px-8 lg:px-24 xl:px-32"
+>
+  <div class="mx-auto max-w-[1400px]">
+    <h2 class="mb-12 font-boss text-6xl">
+      Glimpse and <span class="bg-[#D7FF00] text-black"
+        >highlight</span
+      >
+    </h2>
+
+    <!-- Tabs -->
+    <div class="mb-8 flex flex-wrap gap-4">
+      {
+        summits.map((summit, index) => (
+          <button
+            data-tab={summit.id}
+            class={`tab-button rounded-lg px-6 py-3 font-boss text-2xl transition-colors ${
+              index === 0
+                ? "bg-[#D7FF00] text-black"
+                : "bg-[#3D2434] text-white hover:bg-[#4D3444]"
+            }`}
+          >
+            {summit.label}
+          </button>
+        ))
+      }
+    </div>
+
+    <!-- Gallery Content for each summit -->
+    {
+      summits.map((summit, index) => (
+        <div
+          data-gallery={summit.id}
+          class={`gallery-content ${index === 0 ? "" : "hidden"}`}
+        >
+          <!-- Images Grid -->
+          <div class="mb-8 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {summit.images.map((image) => (
+              <div class="overflow-hidden rounded-2xl border-2 border-[#6B4458]">
+                <img
+                  src={image}
+                  alt={`${summit.label} gallery`}
+                  class="h-64 w-full object-cover transition-transform hover:scale-105"
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</section>
+
+<script>
+  // Tab switching functionality
+  const tabButtons = document.querySelectorAll(".tab-button");
+  const galleryContents = document.querySelectorAll(".gallery-content");
+
+  tabButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const targetTab = button.getAttribute("data-tab");
+
+      // Update button states
+      tabButtons.forEach((btn) => {
+        if (btn.getAttribute("data-tab") === targetTab) {
+          btn.classList.remove("bg-[#3D2434]", "text-white");
+          btn.classList.add("bg-[#D7FF00]", "text-black");
+        } else {
+          btn.classList.remove("bg-[#D7FF00]", "text-black");
+          btn.classList.add("bg-[#3D2434]", "text-white");
+        }
+      });
+
+      // Show/hide gallery content
+      galleryContents.forEach((content) => {
+        if (content.getAttribute("data-gallery") === targetTab) {
+          content.classList.remove("hidden");
+        } else {
+          content.classList.add("hidden");
+        }
+      });
+    });
+  });
+</script>

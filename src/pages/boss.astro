@@ -4,6 +4,8 @@ import Things from "../components/boss/Things.astro";
 import Speakers from "../components/boss/Speakers.astro";
 import BackedBy from "../components/boss/BackedBy.astro";
 import Footer from "../components/boss/Footer.astro";
+import Gallery from "../components/boss/Gallery.astro";
+import Schedule from "../components/boss/Schedule.astro";
 ---
 
 <!doctype html>
@@ -106,54 +108,12 @@ import Footer from "../components/boss/Footer.astro";
         <Things />
       </section>
 
-      <section
-        id="agenda"
-        class="w-full px-4 py-16 md:px-8 lg:px-24 xl:px-32"
-      >
-        <div class="mx-auto max-w-[1400px]">
-          <h2 class="mb-12 text-center font-boss text-6xl">
-            This Summit's <span class="text-[#D4FF00]"
-              >Agenda</span
-            >
-          </h2>
-
-          <div class="relative mt-16">
-            <img
-              src="/boss/schedule.png"
-              alt="BOSS Summit Agenda"
-              class="h-auto w-full"
-            />
-          </div>
-
-          <div class="pt-4 text-center">
-            <a
-              href="https://github.com/Bitshala/BOSS-Summit/blob/main/winter-2025/schedule.png"
-              target="_blank"
-              class="rounded-lg bg-[#662c53] px-12 py-4 font-boss text-4xl transition-colors hover:bg-[#9B6A8C]"
-            >
-              Check Out the Schedule
-            </a>
-          </div>
-        </div>
+      <section id="agenda">
+        <Schedule />
       </section>
 
-      <section
-        id="highlights"
-        class="w-full bg-[#271A23] px-4 py-16 md:px-8 lg:px-24 xl:px-32"
-      >
-        <div class="mx-auto max-w-[1400px]">
-          <h2 class="mb-16 font-boss text-6xl">
-            Glimpse and <span
-              class="bg-[#D7FF00] text-black"
-              >highlight</span
-            >
-          </h2>
-          <img
-            src="/boss/highlights.webp"
-            alt="BOSS Summit Highlights"
-            class="h-auto w-full"
-          />
-        </div>
+      <section id="gallery">
+        <Gallery />
       </section>
 
       <section id="Speakers">
