@@ -1,7 +1,7 @@
 ---
 import { getCohortStatus } from "../../lib/cohorts";
 
-const res = await fetch("https://api.bitshala.org/Cohorts/available");
+const res = await fetch("https://api.bitshala.org/cohorts/available");
 const cohorts = await res.json();
 
 const cardsList = [
