@@ -132,7 +132,8 @@ export const ta2 = [
 export const team = [
   {
     name: "Raj Maitra",
-    desc: "Pen-and-paper engineer turned keyboard warrior in multiple rabbit holes. Often known for making a mess. An actual rabbit.",
+    designation: "General Head",
+    // desc: "Pen-and-paper engineer turned keyboard warrior in multiple rabbit holes. Often known for making a mess. An actual rabbit.",
     image: "raj",
     bgColor: "bg-black",
     textColor: "text-white",
@@ -142,6 +143,7 @@ export const team = [
   },
   {
     name: "Saurabh S",
+    designation: "Accounts & Compliance Head.",
     desc: "PM juggling Bitcoin FOSS projects and ventures like a circus performer.",
     image: "sourav",
     bgColor: "bg-orange",
@@ -152,6 +154,7 @@ export const team = [
   },
   {
     name: "Anmol Sharma",
+    designation: "Engineering & Scouting Head",
     desc: "When he is not talking about Bitcoin,he is busy writing code. But let's be honest, he is usually busy talking about Bitcoin.",
     image: "anmol",
     bgColor: "bg-orange",
@@ -162,6 +165,7 @@ export const team = [
   },
   {
     name: "Jatin",
+    designation: "Media & Video Editor",
     desc: "Shrinks hours into minutes, and edits till the noise fades and the story shines through.",
     image: "jatin",
     bgColor: "bg-black",
@@ -171,24 +175,27 @@ export const team = [
   },
   {
     name: "Veronika",
+    designation: "Associate Designer",
     desc: "Good at spotting knots, better at untying them.",
     image: "veronika",
     bgColor: "bg-black",
     textColor: "text-white",
     headingColor: "text-orange",
   },
-  // {
-  //   name: "Vyras",
-  //   desc: "Always experimenting with new ideas in Bitcoin and Lightning, bringing fresh perspectives to the team.",
-  //   image: "anmol",
-  //   bgColor: "bg-orange",
-  //   textColor: "text-black",
-  //   headingColor: "text-black",
-  //   twitter: "https://twitter.com/vyrasbtc",
-  //   github: "https://github.com/vyrasbtc",
-  // },
+  {
+    name: "Vayras",
+    designation: "Associate Engineer",
+    desc: "Always experimenting with new ideas in Bitcoin and Lightning, bringing fresh perspectives to the team.",
+    image: "vayras",
+    bgColor: "bg-orange",
+    textColor: "text-black",
+    headingColor: "text-black",
+    twitter: "https://twitter.com/vyrasbtc",
+    github: "https://github.com/vyrasbtc",
+  },
   {
     name: "Paperpsych",
+    designation: "Events Head",
     desc: "If he’s not designing, he’s writing copy, if he’s not doing that, he’s planning some events. If not that.. he’s probably watching Mad Men!",
     image: "paperpsych",
     bgColor: "bg-orange",
@@ -197,15 +204,26 @@ export const team = [
     twitter: "https://twitter.com/_paperpsych",
     github: "https://github.com/paperpsych",
   },
-  {
-    name: "Keraliss",
+  // {
+  //   name: "Keraliss",
+  //   desc: "Contemplating by a river in his humble hut with his laptop, he codes. He says thats all he needs.",
+  //   image: "keraliss",
+  //   bgColor: "bg-orange",
+  //   textColor: "text-black",
+  //   headingColor: "text-black",
+  //   twitter: "https://twitter.com/keraliss1",
+  //   github: "https://github.com/keraliss",
+  // },
+    {
+    name: "Amol",
+    designation: "Communication and Coordination Head",
     desc: "Contemplating by a river in his humble hut with his laptop, he codes. He says thats all he needs.",
-    image: "keraliss",
+    image: "amol",
     bgColor: "bg-orange",
     textColor: "text-black",
     headingColor: "text-black",
-    twitter: "https://twitter.com/keraliss1",
-    github: "https://github.com/keraliss",
+    twitter: "",
+    github: "",
   },
 ];
 
