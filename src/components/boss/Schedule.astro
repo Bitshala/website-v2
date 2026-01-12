@@ -1,18 +1,18 @@
 ---
 const summits = [
   {
-    id: "winter-2025",
-    label: "Winter 2025",
+    id: "Summer-2025",
+    label: "Summer 2025",
     scheduleImage: "/boss/schedule.png",
     scheduleUrl:
-      "https://github.com/Bitshala/BOSS-Summit/blob/main/winter-2025/schedule.png",
+      "https://github.com/Bitshala/BOSS-Summit/blob/main/summer-2025/schedule.png",
   },
   {
-    id: "summer-2025",
-    label: "Summer 2025",
-    scheduleImage: "/boss/summer-2025-schedule.png", // Update with actual path
+    id: "Winter-2025",
+    label: "Winter 2025",
+    scheduleImage: "/boss/winter-2025-schedule.png", // Update with actual path
     scheduleUrl:
-      "https://github.com/Bitshala/BOSS-Summit/blob/main/summer-2025/schedule.png", // Update with actual URL
+      "https://github.com/Bitshala/BOSS-Summit/blob/main/winter-2025/schedule.png", // Update with actual URL
   },
 ];
 ---
@@ -22,28 +22,71 @@ const summits = [
   class="w-full px-4 py-16 md:px-8 lg:px-24 xl:px-32"
 >
   <div class="mx-auto max-w-[1400px]">
-    <h2 class="mb-12 text-center font-boss text-6xl">
-      This Summit's <span class="text-[#D4FF00]"
-        >Agenda</span
-      >
-    </h2>
-
-    <!-- Tabs -->
-    <div class="mb-8 flex flex-wrap justify-center gap-4">
-      {
-        summits.map((summit, index) => (
-          <button
-            data-schedule-tab={summit.id}
-            class={`schedule-tab-button rounded-lg px-6 py-3 font-boss text-2xl transition-colors ${
-              index === 0
-                ? "bg-[#D4FF00] text-black"
-                : "bg-[#662c53] text-white hover:bg-[#9B6A8C]"
-            }`}
+    <div class="flex justify-between">
+        <h2 class="mb-12 text-left font-boss text-[48px]">
+          Last Summit's  <span class="bg-[#F4F199] text-black"
+            >Agenda</span
           >
-            {summit.label}
+          (get an Idea)
+        </h2>
+
+        <!-- Tabs -->
+        <div class="mb-8 flex items-center justify-end gap-4">
+          <!-- Chevron Left Button -->
+          <button
+            id="chevron-left"
+            class="flex h-12 w-12 items-center justify-center rounded-lg  text-white transition-colors hover:bg-[#9B6A8C]"
+            aria-label="Previous summit"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="2"
+              stroke="currentColor"
+              class="h-6 w-6"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M15.75 19.5L8.25 12l7.5-7.5"
+              />
+            </svg>
           </button>
-        ))
-      }
+
+          {
+            summits.map((summit, index) => (
+              <button
+                data-schedule-tab={summit.id}
+                class={`schedule-tab-button px-6 py-3 font-boss text-[24px] transition-colors border-[#962573] border-2 border-solid rounded-xl bg-[#2b1223] outline-none text-white hover:bg-[#9B6A8C]`}
+              >
+                {summit.label}
+              </button>
+            ))
+          }
+
+          <!-- Chevron Right Button -->
+          <button
+            id="chevron-right"
+            class="flex h-12 w-12 items-center justify-center rounded-lg   text-white transition-colors hover:bg-[#9B6A8C]"
+            aria-label="Next summit"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="2"
+              stroke="currentColor"
+              class="h-6 w-6"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M8.25 4.5l7.5 7.5-7.5 7.5"
+              />
+            </svg>
+          </button>
+        </div>
     </div>
 
     <!-- Schedule Content for each summit -->
@@ -84,44 +127,69 @@ const summits = [
   const scheduleContents = document.querySelectorAll(
     ".schedule-content"
   );
+  const chevronLeft = document.getElementById("chevron-left");
+  const chevronRight = document.getElementById("chevron-right");
 
-  scheduleTabButtons.forEach((button) => {
+  let currentTabIndex = 0;
+
+  function switchToTab(index:number) {
+    const button = scheduleTabButtons[index];
+    if (!button) return;
+
+    const targetTab = button.getAttribute("data-schedule-tab");
+
+    // Update button states
+    scheduleTabButtons.forEach((btn) => {
+      if (
+        btn.getAttribute("data-schedule-tab") ===
+        targetTab
+      ) {
+        // Active state: remove background, keep only border
+        btn.classList.remove("bg-[#2b1223]");
+        btn.classList.add("bg-transparent");
+      } else {
+        // Inactive state: add background back
+        btn.classList.remove("bg-transparent");
+        btn.classList.add("bg-[#2b1223]");
+      }
+    });
+
+    // Show/hide schedule content
+    scheduleContents.forEach((content) => {
+      if (
+        content.getAttribute("data-schedule-content") ===
+        targetTab
+      ) {
+        content.classList.remove("hidden");
+      } else {
+        content.classList.add("hidden");
+      }
+    });
+
+    currentTabIndex = index;
+  }
+
+  scheduleTabButtons.forEach((button, index) => {
     button.addEventListener("click", () => {
-      const targetTab = button.getAttribute(
-        "data-schedule-tab"
-      );
-
-      // Update button states
-      scheduleTabButtons.forEach((btn) => {
-        if (
-          btn.getAttribute("data-schedule-tab") ===
-          targetTab
-        ) {
-          btn.classList.remove(
-            "bg-[#662c53]",
-            "text-white"
-          );
-          btn.classList.add("bg-[#D4FF00]", "text-black");
-        } else {
-          btn.classList.remove(
-            "bg-[#D4FF00]",
-            "text-black"
-          );
-          btn.classList.add("bg-[#662c53]", "text-white");
-        }
-      });
-
-      // Show/hide schedule content
-      scheduleContents.forEach((content) => {
-        if (
-          content.getAttribute("data-schedule-content") ===
-          targetTab
-        ) {
-          content.classList.remove("hidden");
-        } else {
-          content.classList.add("hidden");
-        }
-      });
+      switchToTab(index);
     });
   });
+
+  // Chevron navigation
+  chevronLeft?.addEventListener("click", () => {
+    const newIndex = currentTabIndex - 1;
+    if (newIndex >= 0) {
+      switchToTab(newIndex);
+    }
+  });
+
+  chevronRight?.addEventListener("click", () => {
+    const newIndex = currentTabIndex + 1;
+    if (newIndex < scheduleTabButtons.length) {
+      switchToTab(newIndex);
+    }
+  });
+
+  // Initialize first tab as active on page load
+  switchToTab(0);
 </script>

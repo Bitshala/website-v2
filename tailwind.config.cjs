@@ -20,6 +20,7 @@ module.exports = {
       base: "Satoshi, sans-serif",
       boss: "Dx Slight, sans-serif",
       shadow: "Londrina Shadow, sans-serif",
+      inter: "Inter, sans-serif",
     },
     extend: {
       fontWeight: {
