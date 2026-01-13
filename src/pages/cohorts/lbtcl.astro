@@ -9,12 +9,20 @@ import Application from "../../components/common/Application";
 import About from "../../components/cohortPages/lbtcl/About.astro";
 import MeetYourTAs from "../../components/cohortPages/common/MeetYourTAs.astro";
 import CohortGraduates from "../../components/cohortPages/CohortGraduates.astro";
+import { getCohortStartDate } from "../../lib/cohorts";
+
 const headerProps = {
   removeHeader: true,
 };
 const role = "lbtcl_cohort";
 const cohortName = "Learning Bitcoin Through Command Line";
 const isVisible = true;
+
+
+const res = await fetch("https://api.bitshala.org/Cohorts/available");
+const cohorts = await res.json();
+
+const commencementDate = getCohortStartDate(cohorts, "lbtcl");
 ---
 
 <Layout
@@ -29,7 +37,7 @@ const isVisible = true;
     format={[
       {
         name: "Commencement date",
-        desc: "8th December, 2025",
+        desc: commencementDate,
       },
       {
         name: "Duration",
