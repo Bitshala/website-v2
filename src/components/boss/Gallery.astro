@@ -4,27 +4,29 @@ const summits = [
     id: "winter-2025",
     label: "Winter 2025",
     images: [
-      "/boss/winter-2025/gallery-1.webp",
-      "/boss/winter-2025/gallery-2.webp",
-      "/boss/winter-2025/gallery-3.webp",
-      "/boss/winter-2025/gallery-4.webp",
-      "/boss/winter-2025/gallery-5.webp",
-      "/boss/winter-2025/gallery-6.webp",
+      "public/boss/gallery/image1.png",
+      "public/boss/gallery/image2.png",
+      "public/boss/gallery/image3.png",
+      "public/boss/gallery/image4.png",
+      "public/boss/gallery/image5.png",
+      "public/boss/gallery/image6.png",
+      "public/boss/gallery/image7.png",
+      "public/boss/gallery/image8.png",
     ],
-    synopsisUrl: "/boss/winter-2025-synopsis", // Update with actual URL
+    synopsisUrl: "/boss/winter-2025-synopsis",
   },
   {
     id: "summer-2025",
     label: "Summer 2025",
     images: [
-      "/boss/summer-2025/gallery-1.webp",
-      "/boss/summer-2025/gallery-2.webp",
-      "/boss/summer-2025/gallery-3.webp",
-      "/boss/summer-2025/gallery-4.webp",
-      "/boss/summer-2025/gallery-5.webp",
-      "/boss/summer-2025/gallery-6.webp",
+      "public/boss/gallery/image1.png",
+      "public/boss/gallery/image2.png",
+      "public/boss/gallery/image3.png",
+      "public/boss/gallery/image4.png",
+      "public/boss/gallery/image7.png",
+      "public/boss/gallery/image8.png",
     ],
-    synopsisUrl: "/boss/summer-2025-synopsis", // Update with actual URL
+    synopsisUrl: "/boss/summer-2025-synopsis",
   },
 ];
 ---
@@ -34,57 +36,105 @@ const summits = [
   class="w-full bg-[#271A23] px-4 py-16 md:px-8 lg:px-24 xl:px-32"
 >
   <div class="mx-auto max-w-[1400px]">
-    <h2 class="mb-12 font-boss text-6xl">
-      Glimpse and <span class="bg-[#D7FF00] text-black"
-        >highlight</span
-      >
+    <!-- Heading -->
+    <h2 class="mb-12 font-boss text-6xl text-white">
+      Glimpse and
+      <span class="bg-[#D7FF00] px-2 text-black">highlight</span>
     </h2>
 
     <!-- Tabs -->
     <div class="mb-8 flex flex-wrap gap-4">
-      {
-        summits.map((summit, index) => (
-          <button
-            data-tab={summit.id}
-            class={`tab-button rounded-lg px-6 py-3 font-boss text-2xl transition-colors ${
-              index === 0
-                ? "bg-[#D7FF00] text-black"
-                : "bg-[#3D2434] text-white hover:bg-[#4D3444]"
-            }`}
-          >
-            {summit.label}
-          </button>
-        ))
-      }
+      {summits.map((summit, index) => (
+        <button
+          data-tab={summit.id}
+          class={`tab-button rounded-lg px-6 py-3 font-boss text-2xl transition-colors ${
+            index === 0
+              ? "bg-[#D7FF00] text-black"
+              : "bg-[#3D2434] text-white hover:bg-[#4D3444]"
+          }`}
+        >
+          {summit.label}
+        </button>
+      ))}
     </div>
 
-    <!-- Gallery Content for each summit -->
-    {
-      summits.map((summit, index) => (
+    <!-- Galleries -->
+    {summits.map((summit, index) => {
+      const baseImages = summit.images.slice(0, 6);
+      const overlayImages = summit.images.slice(6);
+
+      return (
         <div
           data-gallery={summit.id}
-          class={`gallery-content ${index === 0 ? "" : "hidden"}`}
+          class={`gallery-content mt-20 ${index === 0 ? "" : "hidden"}`}
         >
-          <!-- Images Grid -->
-          <div class="mb-8 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {summit.images.map((image) => (
-              <div class="overflow-hidden rounded-2xl border-2 border-[#6B4458]">
+          <!-- DESKTOP -->
+          <div class="relative hidden md:block">
+            <!-- Base grid -->
+            <div
+              class="grid grid-cols-2 lg:grid-cols-3
+                     gap-x-1 gap-y-4
+                     [isolation:isolate]"
+            >
+              {baseImages.map((image) => (
                 <img
                   src={image}
                   alt={`${summit.label} gallery`}
-                  class="h-64 w-full object-cover transition-transform hover:scale-105"
+                  loading="lazy"
+                  class="
+                    w-full
+                    -mt-10
+                    relative
+                    transition-all duration-300 ease-out
+                    hover:scale-[1.08]
+                    hover:-translate-y-6
+                    hover:z-30
+                  "
                 />
-              </div>
+              ))}
+            </div>
+
+            <!-- Overlay images (ALWAYS CENTERED) -->
+              {overlayImages.map((image, i) => (
+                <img
+                  src={image}
+                  alt={`${summit.label} overlay`}
+                  loading="lazy"
+                  class={`
+                    absolute
+                    left-1/2
+                    w-[32%]
+                    transition-all duration-300 ease-out
+                    hover:scale-[1.1]
+                    hover:-translate-y-6
+                    hover:z-40
+                    ${
+                      i === 0
+                        ? "top-[4rem] left-[6rem] rotate-[-6deg]"
+                        : "top-[4rem] -translate-x-[-10%] rotate-[5deg]"
+                    }
+                  `}
+                />
+              ))}
+          </div>
+
+          <!-- MOBILE -->
+          <div class="grid grid-cols-1 gap-4 md:hidden">
+            {summit.images.map((image) => (
+              <img
+                src={image}
+                loading="lazy"
+                class="w-full transition-transform duration-300"
+              />
             ))}
           </div>
         </div>
-      ))
-    }
+      );
+    })}
   </div>
 </section>
 
 <script>
-  // Tab switching functionality
   const tabButtons = document.querySelectorAll(".tab-button");
   const galleryContents = document.querySelectorAll(".gallery-content");
 
@@ -92,24 +142,21 @@ const summits = [
     button.addEventListener("click", () => {
       const targetTab = button.getAttribute("data-tab");
 
-      // Update button states
       tabButtons.forEach((btn) => {
         if (btn.getAttribute("data-tab") === targetTab) {
-          btn.classList.remove("bg-[#3D2434]", "text-white");
           btn.classList.add("bg-[#D7FF00]", "text-black");
+          btn.classList.remove("bg-[#3D2434]", "text-white");
         } else {
-          btn.classList.remove("bg-[#D7FF00]", "text-black");
           btn.classList.add("bg-[#3D2434]", "text-white");
+          btn.classList.remove("bg-[#D7FF00]", "text-black");
         }
       });
 
-      // Show/hide gallery content
       galleryContents.forEach((content) => {
-        if (content.getAttribute("data-gallery") === targetTab) {
-          content.classList.remove("hidden");
-        } else {
-          content.classList.add("hidden");
-        }
+        content.classList.toggle(
+          "hidden",
+          content.getAttribute("data-gallery") !== targetTab
+        );
       });
     });
   });
