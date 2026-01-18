@@ -1,0 +1,49 @@
+---
+---
+
+<nav
+  class="fixed left-0 top-0 z-50 flex w-full items-center justify-between bg-bossBg/80 px-4 py-4 backdrop-blur-md md:px-8 lg:px-16"
+>
+  <!-- Left side (Logo or Empty if not needed, Image shows "BOSS Summit" on top left maybe? Or it's just right aligned?) 
+       The uploaded image crop shows the navbar items on the right. 
+       "BOSS Summit" text might be on the left or part of hero. 
+       I will leave the left empty or put a small text if needed. 
+       For now, I'll assume flex-end for the links or space-between if there's a logo. 
+       The crop shows items: Register, Schedule, Gallery, Button. 
+       I'll put them in a container on the right/center.
+       Actually, `justify-end` seems appropriate if there is no logo on the nav. 
+       But usually there is a home link. 
+       I'll use `justify-end` to match the "right aligned" look of standard navs if no logo is provided.
+  -->
+  <div class="flex w-full items-center justify-end gap-6 md:gap-12">
+    <a
+      href="#footer"
+      class="font-boss text-xl text-[#FF6B6B] transition-transform hover:scale-110 md:text-2xl"
+    >
+      Register
+    </a>
+    <a
+      href="#agenda"
+      class="font-boss text-xl text-[#F6E05E] transition-transform hover:scale-110 md:text-2xl"
+    >
+      Schedule
+    </a>
+    <a
+      href="#gallery"
+      class="font-boss text-xl text-[#68D391] transition-transform hover:scale-110 md:text-2xl"
+    >
+      Gallery
+    </a>
+    <a
+      href="/"
+      class="rounded-md bg-white px-4 py-2 font-boss text-lg text-black shadow-lg transition-transform hover:scale-105 hover:bg-gray-200 md:text-xl"
+    >
+      Go back to bitshala
+    </a>
+  </div>
+</nav>
+
+<script>
+  // Optional: Add active state or smooth scroll behavior if needed, 
+  // though CSS scroll-behavior: smooth in html is usually handled globally or in base styles.
+</script>
