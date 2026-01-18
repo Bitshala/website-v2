@@ -35,87 +35,73 @@ const summits = [
   id="gallery"
   class="w-full bg-[#271A23] px-4 py-16 md:px-8 lg:px-24 xl:px-32"
 >
-  <div class="mx-auto max-w-[1400px]">
-    <!-- Heading -->
-    <h2 class="mb-12 font-boss text-6xl text-white">
-      Glimpse and
-      <span class="bg-[#D7FF00] px-2 text-black">highlight</span>
-    </h2>
+    <!-- Header Container -->
+    <div
+      class="mb-12 flex flex-col items-start justify-between gap-6 md:flex-row md:items-end"
+    >
+      <!-- Heading -->
+      <h2 class="font-boss text-6xl text-white">
+        Glimpse and
+        <span class="bg-[#D7FF00] px-2 text-black">highlight</span>
+      </h2>
 
-    <!-- Tabs -->
-    <div class="mb-8 flex flex-wrap gap-4">
-      {summits.map((summit, index) => (
-        <button
-          data-tab={summit.id}
-          class={`tab-button rounded-lg px-6 py-3 font-boss text-2xl transition-colors ${
-            index === 0
-              ? "bg-[#D7FF00] text-black"
-              : "bg-[#3D2434] text-white hover:bg-[#4D3444]"
-          }`}
-        >
-          {summit.label}
-        </button>
-      ))}
+      <!-- Tabs -->
+      <div class="flex gap-4">
+        {
+          summits.map((summit, index) => (
+            <button
+              data-tab={summit.id}
+              class={`tab-button rounded-2xl border px-6 py-2 font-boss text-2xl lowercase transition-all duration-300 ${
+                index === 0
+                  ? "border-[#D7FF00] text-[#D7FF00] shadow-[0_0_10px_rgba(215,255,0,0.3)]"
+                  : "border-[#6B4C5E] text-white/80 hover:border-[#D7FF00] hover:text-white"
+              }`}
+            >
+              {summit.label.toLowerCase()}
+            </button>
+          ))
+        }
+      </div>
     </div>
 
     <!-- Galleries -->
     {summits.map((summit, index) => {
-      const baseImages = summit.images.slice(0, 6);
-      const overlayImages = summit.images.slice(6);
-
       return (
         <div
           data-gallery={summit.id}
           class={`gallery-content mt-20 ${index === 0 ? "" : "hidden"}`}
         >
-          <!-- DESKTOP -->
-          <div class="relative hidden md:block">
-            <!-- Base grid -->
-            <div
-              class="grid grid-cols-2 lg:grid-cols-3
-                     gap-x-1 gap-y-4
-                     [isolation:isolate]"
-            >
-              {baseImages.map((image) => (
+          <!-- DESKTOP - Scattered Gallery -->
+          <div class="relative hidden md:block h-[600px] lg:h-[700px] ml-20">
+            {summit.images.map((image, i) => {
+              const positions = [
+                "top-[0%] left-[10%] rotate-[-12.1deg] w-[23%] z-10",
+                "top-[27%] left-[24%] rotate-[3.01deg] w-[25%] z-20",
+                "top-[0%] left-[36%] rotate-[-9.32deg] w-[22%] z-10",
+                "top-[0%] left-[60%] rotate-[-7deg] w-[22%] z-10",
+                "top-[60%] left-[34%] rotate-[-7.57deg] w-[24%] z-0",
+                "top-[30%] left-[54%] rotate-[10deg] w-[26%] z-0",
+                "top-[52%] left-[4%] rotate-[10.82deg] w-[23%] z-40",
+                "top-[55%] left-[66%] rotate-[-13.8deg] w-[23%] z-0",
+              ];
+              return (
                 <img
                   src={image}
                   alt={`${summit.label} gallery`}
                   loading="lazy"
-                  class="
-                    w-full
-                    -mt-10
-                    relative
-                    transition-all duration-300 ease-out
-                    hover:scale-[1.08]
-                    hover:-translate-y-6
-                    hover:z-30
-                  "
-                />
-              ))}
-            </div>
-
-            <!-- Overlay images (ALWAYS CENTERED) -->
-              {overlayImages.map((image, i) => (
-                <img
-                  src={image}
-                  alt={`${summit.label} overlay`}
-                  loading="lazy"
                   class={`
                     absolute
-                    left-1/2
-                    w-[32%]
+                    rounded-sm
+                    shadow-xl
                     transition-all duration-300 ease-out
-                    hover:scale-[1.1]
-                    hover:-translate-y-6
-                    hover:z-40
-                    ${
-                      i === 0
-                        ? "top-[4rem] left-[6rem] rotate-[-6deg]"
-                        : "top-[4rem] -translate-x-[-10%] rotate-[5deg]"
-                    }
+                    hover:scale-110
+                    hover:z-50
+                    hover:shadow-2xl
+                    ${positions[i] || "top-0 left-0 w-[25%]"}
                   `}
                 />
-              ))}
+              );
+            })}
           </div>
 
           <!-- MOBILE -->
@@ -144,11 +130,19 @@ const summits = [
 
       tabButtons.forEach((btn) => {
         if (btn.getAttribute("data-tab") === targetTab) {
-          btn.classList.add("bg-[#D7FF00]", "text-black");
-          btn.classList.remove("bg-[#3D2434]", "text-white");
+          btn.classList.add(
+            "border-[#D7FF00]",
+            "text-[#D7FF00]",
+            "shadow-[0_0_10px_rgba(215,255,0,0.3)]"
+          );
+          btn.classList.remove("border-[#6B4C5E]", "text-white/80");
         } else {
-          btn.classList.add("bg-[#3D2434]", "text-white");
-          btn.classList.remove("bg-[#D7FF00]", "text-black");
+          btn.classList.add("border-[#6B4C5E]", "text-white/80");
+          btn.classList.remove(
+            "border-[#D7FF00]",
+            "text-[#D7FF00]",
+            "shadow-[0_0_10px_rgba(215,255,0,0.3)]"
+          );
         }
       });
 

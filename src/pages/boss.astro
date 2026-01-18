@@ -6,6 +6,7 @@ import BackedBy from "../components/boss/BackedBy.astro";
 import Footer from "../components/boss/Footer.astro";
 import Gallery from "../components/boss/Gallery.astro";
 import Schedule from "../components/boss/Schedule.astro";
+import Navbar from "../components/boss/Navbar.astro";
 ---
 
 <!doctype html>
@@ -88,10 +89,11 @@ import Schedule from "../components/boss/Schedule.astro";
     />
   </head>
   <body>
+    <Navbar />
     <main class="bg-bossBg text-base text-white lg:text-lg">
       <section
         id="hero"
-        class="flex w-full items-center justify-center px-4 py-4 md:px-8 lg:min-h-screen lg:px-16"
+        class="flex w-full items-center justify-center px-4 pt-24 pb-4 md:px-8 md:pt-36 lg:min-h-screen lg:px-16"
       >
         <img
           src="/boss/hero.webp"
