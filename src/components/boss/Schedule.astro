@@ -1,0 +1,195 @@
+---
+const summits = [
+  {
+    id: "Summer-2025",
+    label: "Summer 2025",
+    scheduleImage: "/boss/schedule.png",
+    scheduleUrl:
+      "https://github.com/Bitshala/BOSS-Summit/blob/main/summer-2025/schedule.png",
+  },
+  {
+    id: "Winter-2025",
+    label: "Winter 2025",
+    scheduleImage: "/boss/schedule_winter.png",
+    scheduleUrl:
+      "https://github.com/Bitshala/BOSS-Summit/blob/main/winter-2025/schedule.png", // Update with actual URL
+  },
+];
+---
+
+<section
+  id="agenda"
+  class="w-full px-4 py-16 md:px-8 lg:px-24 xl:px-32"
+>
+  <div class="mx-auto max-w-[1400px]">
+    <div class="flex flex-col justify-between lg:flex-row lg:items-center">
+        <h2 class="mb-8 text-left font-boss text-3xl md:mb-12 md:text-5xl lg:text-[48px]">
+          Last Summit's  <span class="bg-[#F4F199] text-black"
+            >Agenda</span
+          >
+          (get an Idea)
+        </h2>
+
+        <!-- Tabs -->
+        <div class="mb-8 flex items-center justify-start gap-4 md:justify-end">
+          <!-- Chevron Left Button -->
+          <button
+            id="chevron-left"
+            class="flex h-12 w-12 items-center justify-center rounded-lg  text-white transition-colors hover:bg-[#9B6A8C]"
+            aria-label="Previous summit"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="2"
+              stroke="currentColor"
+              class="h-6 w-6"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M15.75 19.5L8.25 12l7.5-7.5"
+              />
+            </svg>
+          </button>
+
+          {
+            summits.map((summit, index) => (
+              <button
+                data-schedule-tab={summit.id}
+                class={`schedule-tab-button px-4 py-2 font-boss text-lg md:px-6 md:py-3 md:text-[24px] transition-colors border-[#962573] border-2 border-solid rounded-xl bg-[#2b1223] outline-none text-white hover:bg-[#9B6A8C]`}
+              >
+                {summit.label}
+              </button>
+            ))
+          }
+
+          <!-- Chevron Right Button -->
+          <button
+            id="chevron-right"
+            class="flex h-12 w-12 items-center justify-center rounded-lg   text-white transition-colors hover:bg-[#9B6A8C]"
+            aria-label="Next summit"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="2"
+              stroke="currentColor"
+              class="h-6 w-6"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M8.25 4.5l7.5 7.5-7.5 7.5"
+              />
+            </svg>
+          </button>
+        </div>
+    </div>
+
+    <!-- Schedule Content for each summit -->
+    {
+      summits.map((summit, index) => (
+        <div
+          data-schedule-content={summit.id}
+          class={`schedule-content ${index === 0 ? "" : "hidden"}`}
+        >
+          <div class="relative mt-8 overflow-x-auto md:mt-16">
+            <img
+              src={summit.scheduleImage}
+              alt={`${summit.label} Schedule`}
+              class="h-auto w-full min-w-[600px] md:min-w-0"
+            />
+          </div>
+
+          <div class="pt-4 text-center">
+            <a
+              href={summit.scheduleUrl}
+              target="_blank"
+              class="hidden inline-block rounded-lg bg-[#662c53] px-8 py-3 font-boss text-2xl transition-colors hover:bg-[#9B6A8C] md:px-12 md:py-4 md:text-4xl"
+            >
+              Check Out the Schedule
+            </a>
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</section>
+
+<script>
+  // Tab switching functionality for schedule
+  const scheduleTabButtons = document.querySelectorAll(
+    ".schedule-tab-button"
+  );
+  const scheduleContents = document.querySelectorAll(
+    ".schedule-content"
+  );
+  const chevronLeft = document.getElementById("chevron-left");
+  const chevronRight = document.getElementById("chevron-right");
+
+  let currentTabIndex = 0;
+
+  function switchToTab(index:number) {
+    const button = scheduleTabButtons[index];
+    if (!button) return;
+
+    const targetTab = button.getAttribute("data-schedule-tab");
+
+    // Update button states
+    scheduleTabButtons.forEach((btn) => {
+      if (
+        btn.getAttribute("data-schedule-tab") ===
+        targetTab
+      ) {
+        // Active state: remove background, keep only border
+        btn.classList.remove("bg-[#2b1223]");
+        btn.classList.add("bg-transparent");
+      } else {
+        // Inactive state: add background back
+        btn.classList.remove("bg-transparent");
+        btn.classList.add("bg-[#2b1223]");
+      }
+    });
+
+    // Show/hide schedule content
+    scheduleContents.forEach((content) => {
+      if (
+        content.getAttribute("data-schedule-content") ===
+        targetTab
+      ) {
+        content.classList.remove("hidden");
+      } else {
+        content.classList.add("hidden");
+      }
+    });
+
+    currentTabIndex = index;
+  }
+
+  scheduleTabButtons.forEach((button, index) => {
+    button.addEventListener("click", () => {
+      switchToTab(index);
+    });
+  });
+
+  // Chevron navigation
+  chevronLeft?.addEventListener("click", () => {
+    const newIndex = currentTabIndex - 1;
+    if (newIndex >= 0) {
+      switchToTab(newIndex);
+    }
+  });
+
+  chevronRight?.addEventListener("click", () => {
+    const newIndex = currentTabIndex + 1;
+    if (newIndex < scheduleTabButtons.length) {
+      switchToTab(newIndex);
+    }
+  });
+
+  // Initialize first tab as active on page load
+  switchToTab(0);
+</script>
