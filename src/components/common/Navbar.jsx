@@ -31,17 +31,16 @@ const Navbar = () => {
         { name: "Chaincode BOSS", link: "/chaincodeboss" },
       ],
     },
-    {
-      name: "IRL Funzzz",
-      subMenu: [
-        { name: "Bitspace", link: "/bitspace" },
-        { name: "BITDEVS", link: "/bitdev" },
-      ],
-    },
-    {
-      name: "Social Clubs ",
-      link: "/clubs",
-    },
+    { name: "Bitspace", link: "/bitspace" },
+    { name: "BITDEVS", link: "/bitdev" },
+    // {
+    //   name: "IRL Funzzz",
+    //   subMenu: [
+    //     { name: "Bitspace", link: "/bitspace" },
+    //     { name: "BITDEVS", link: "/bitdev" },
+    //   ],
+    // },
+
   ];
 
   return (
@@ -57,7 +56,7 @@ const Navbar = () => {
           <div className="flex justify-end">
             {list.map((item) => (
               <div class="group relative hidden lg:block">
-                <button class=" mt-2 flex w-full flex-row items-center rounded-lg px-4 py-4 text-left text-base font-bold uppercase focus:outline-none md:ml-4 md:mt-0 md:inline md:w-auto">
+                <button class=" mt-2 flex w-full flex-row items-center rounded-lg px-2 py-4 text-left text-base font-bold uppercase focus:outline-none md:ml-4 md:mt-0 md:inline md:w-auto">
                   <a
                     href={item.link}
                     target="_blank"

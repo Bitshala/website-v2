@@ -1,4 +1,6 @@
 ---
+const currentYear = new Date().getFullYear();
+
 const list = [
   {
     name: "Org ",
@@ -157,12 +159,12 @@ const list = [
       <p
         class="text-md mt-10 block px-1 text-left lg:hidden"
       >
-        Copyright © 2024 <br /> Bitshala
+        Copyright © {currentYear} <br /> Bitshala
       </p>
       <p
         class="-ml-16 mt-5 hidden px-1 text-base lg:block lg:text-lg"
       >
-        Copyright © 2024 Bitshala
+        Copyright © {currentYear} Bitshala
       </p>
     </div>
   </div>
