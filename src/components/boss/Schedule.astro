@@ -1,18 +1,16 @@
 ---
 const summits = [
   {
-    id: "Summer-2025",
-    label: "Summer 2025",
-    scheduleImage: "/boss/schedule.png",
-    scheduleUrl:
-      "https://github.com/Bitshala/BOSS-Summit/blob/main/summer-2025/schedule.png",
-  },
-  {
     id: "Winter-2025",
     label: "Winter 2025",
     scheduleImage: "/boss/schedule_winter.png",
     scheduleUrl:
       "https://github.com/Bitshala/BOSS-Summit/blob/main/winter-2025/schedule.png", // Update with actual URL
+  },
+  {
+    id: "Summer-2026",
+    label: "Summer 2026",
+    comingSoon: true,
   },
 ];
 ---
@@ -94,25 +92,33 @@ const summits = [
       summits.map((summit, index) => (
         <div
           data-schedule-content={summit.id}
-          class={`schedule-content ${index === 0 ? "" : "hidden"}`}
+          class={`schedule-content ${index === summits.length - 1 ? "" : "hidden"}`}
         >
-          <div class="relative mt-8 overflow-x-auto md:mt-16">
-            <img
-              src={summit.scheduleImage}
-              alt={`${summit.label} Schedule`}
-              class="h-auto w-full min-w-[600px] md:min-w-0"
-            />
-          </div>
+          {summit.comingSoon ? (
+            <div class="flex w-full items-center justify-center mt-8 md:mt-16 py-32 md:py-40">
+              <p class="font-boss text-6xl md:text-8xl lg:text-9xl text-[#F4F199]">Coming Soon</p>
+            </div>
+          ) : (
+            <>
+              <div class="relative mt-8 overflow-x-auto md:mt-16">
+                <img
+                  src={summit.scheduleImage}
+                  alt={`${summit.label} Schedule`}
+                  class="h-auto w-full min-w-[600px] md:min-w-0"
+                />
+              </div>
 
-          <div class="pt-4 text-center">
-            <a
-              href={summit.scheduleUrl}
-              target="_blank"
-              class="hidden inline-block rounded-lg bg-[#662c53] px-8 py-3 font-boss text-2xl transition-colors hover:bg-[#9B6A8C] md:px-12 md:py-4 md:text-4xl"
-            >
-              Check Out the Schedule
-            </a>
-          </div>
+              <div class="pt-4 text-center">
+                <a
+                  href={summit.scheduleUrl}
+                  target="_blank"
+                  class="hidden inline-block rounded-lg bg-[#662c53] px-8 py-3 font-boss text-2xl transition-colors hover:bg-[#9B6A8C] md:px-12 md:py-4 md:text-4xl"
+                >
+                  Check Out the Schedule
+                </a>
+              </div>
+            </>
+          )}
         </div>
       ))
     }
@@ -190,6 +196,6 @@ const summits = [
     }
   });
 
-  // Initialize first tab as active on page load
-  switchToTab(0);
+  // Initialize last tab (Summer 2026) as active on page load
+  switchToTab(scheduleTabButtons.length - 1);
 </script>
