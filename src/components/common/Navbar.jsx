@@ -31,17 +31,8 @@ const Navbar = () => {
         { name: "Chaincode BOSS", link: "/chaincodeboss" },
       ],
     },
-    {
-      name: "IRL Funzzz",
-      subMenu: [
-        { name: "Bitspace", link: "/bitspace" },
-        { name: "BITDEVS", link: "/bitdev" },
-      ],
-    },
-    {
-      name: "Social Clubs ",
-      link: "/clubs",
-    },
+    { name: "Bitspace", link: "/bitspace" },
+    { name: "Meetups", link: "/meetups" },
   ];
 
   return (
@@ -57,7 +48,7 @@ const Navbar = () => {
           <div className="flex justify-end">
             {list.map((item) => (
               <div class="group relative hidden lg:block">
-                <button class=" mt-2 flex w-full flex-row items-center rounded-lg px-4 py-4 text-left text-base font-bold uppercase focus:outline-none md:ml-4 md:mt-0 md:inline md:w-auto">
+                <button class=" mt-2 flex w-full flex-row items-center rounded-lg px-2 py-4 text-left text-base font-bold uppercase focus:outline-none md:ml-4 md:mt-0 md:inline md:w-auto">
                   <a
                     href={item.link}
                     target="_blank"
@@ -71,11 +62,11 @@ const Navbar = () => {
                     )}
                   </a>
                 </button>
-                <div class=" absolute z-10 hidden group-hover:block">
-                  <div class="px-2 pb-4 pt-2">
-                    <div class="grid min-w-max grid-cols-1">
-                      {item.subMenu &&
-                        item.subMenu.map(
+                {item.subMenu && (
+                  <div class=" absolute z-10 hidden group-hover:block">
+                    <div class="px-2 pb-4 pt-2">
+                      <div class="grid min-w-max grid-cols-1">
+                        {item.subMenu.map(
                           ({ name, link }) => (
                             <div class="flex flex-col bg-black bg-opacity-90 p-2 ">
                               <a
@@ -89,9 +80,10 @@ const Navbar = () => {
                             </div>
                           ),
                         )}
+                      </div>
                     </div>
                   </div>
-                </div>
+                )}
               </div>
             ))}
             <a

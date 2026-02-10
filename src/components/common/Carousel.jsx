@@ -25,10 +25,10 @@ const slides = [
   },
   {
     url: "/carousel/bitdev.webp",
-    title: "Bengaluru BITDEVS",
+    title: "Bengaluru Meetups",
     content:
       "Join us offline for an evening of diving deep into Bitcoin tech with bitcoiners",
-    targetLink: "/bitdev",
+    targetLink: "/meetups",
     cta: "Tell me more  → ",
   },
   {
