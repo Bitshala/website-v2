@@ -1,41 +1,10 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import CohortCard from "../../components/cohort/CohortCard.astro";
-import Carousel from "../../components/common/Carousel";
-import { CollapseList } from "../../components/cohort/CollapseList";
-import Checkerboard from "../../components/cohort/Checkerboard.astro";
-import Application from "../../components/common/Application";
-
-const faqConfig = [
-  {
-    q: "How does the Bitcoin Study Cohort work?",
-    a: "The Bitcoin Study Cohort operates as an eight-week structured program that focuses on a comprehensive tutorial, such as ”Mastering Bitcoin”, ”Learning Bitcoin via CLI”, “Bitcoin Protocol Development” and “Programming Bitcoin”. Participants engage in self-study, group discussions, and hands-on assignments using tools like bitcoin-cli and a local bitcoind regtest node. The program covers various aspects of Bitcoin programming and development.",
-  },
-  {
-    q: "Who can join the Bitcoin Study Cohort?",
-    a: "Prerequisites may vary based on the specific cohort, as seen in the details provided under each cohort ”Mastering Bitcoin”, ”Learning Bitcoin via CLI”, “Bitcoin Protocol Development” and “Programming Bitcoin”.Beginners are suggested to get started with ”Mastering Bitcoin” or “Learning Bitcoin via CLI”.Individuals with a prior understanding of Bitcoin and, in some cases, basic CLI/programming knowledge are encouraged to apply for “Bitcoin Protocol Development” and “Programming Bitcoin“.",
-  },
-  {
-    q: "Is there a fee to join the cohort?",
-    a: "Our cohorts are free and open source (FOSS) and will always be. If you want to run your study program you are free to fork our git repo (containing study material, Q&A, assignment) and run it on your own.",
-  },
-  {
-    q: "What resources are provided to participants?",
-    a: "Participants in the Bitcoin Study Cohort receive comprehensive guidance through weekly group sessions, discussions, and hands-on exercises. The cohorts cover specific chapters of relevant tutorials, encouraging active participation and engagement. Teaching Assistants (TAs) are available during group sessions to clarify doubts, and participants may receive certificates upon successful completion.",
-  },
-  {
-    q: "Will I get a job after completing the cohort?",
-    a: "Bitcoin is for the sovereign and not for sheep. Most FOSS projects and ventures look for proof of work before hiring. Your graduating certificate is one of those and can help in opening doors but we advise you to contribute to open-source projects (at BitShala or beyond) to increase your chances of getting hired. FOSS projects incubated by BitShala hire contributors based on the quality of engagement and contributions. We also have a job board to help you find the right Bitcoin gig/work.",
-  },
-];
 
 const headerProps = {
-  heading:
-    "Learning Bitcoin alone can be a daunting journey.",
-  subheading: "Join our cohort and find your tribe",
   image: "/cohort/hero.webp",
-  headingColor: "text-white",
-  subheadingColor: "text-white",
+  removePadding: true,
 };
 const isVisible = true;
 ---
@@ -45,12 +14,153 @@ const isVisible = true;
   headerProps={headerProps}
   isVisible={isVisible}
 >
-  <CohortCard />
-  <Checkerboard />
-  <CollapseList
-    listConfig={faqConfig}
-    header="Checkout some of the FAQs"
-    client:visible
-  />
-  <!-- <Carousel client:visible /> -->
+<div
+    slot="headerChild"
+    class="mx-auto -mt-16 flex max-w-screen-xl flex-col"
+  >
+    <div slot="after-heading">
+    <h1
+      class="text-center font-header text-4xl font-bold leading-[100%] text-[#F7F7F7] [text-shadow:6px_6px_24px_rgba(0,0,0,0.32)] md:text-6xl lg:text-[124px]"
+    >
+      Study Cohorts
+    </h1>
+      <p
+        class="mt-3 px-4 text-center text-[18px] font-medium leading-[120%] text-[#F7F7F7] [text-shadow:4px_4px_8px_rgba(0,0,0,0.55)] md:mt-5 md:px-0 md:text-[24px] lg:text-[32px]"
+      >
+        Free, structured study cohorts that take you <br class="hidden lg:inline" /> from reading about Bitcoin to building it.
+      </p>
+
+      <div
+        class="mt-5 flex w-full flex-col justify-center px-4 font-bold md:px-0 lg:mt-10 lg:flex-row"
+      >
+        <a
+          href="https://app.bitshala.org"
+          target="_blank"
+          class="mx-3 flex items-center justify-center rounded-lg bg-white p-3 text-center text-[16px] font-bold leading-[120%] text-[#333] hover:bg-orange hover:text-white hover:outline-none md:text-[20px] lg:w-1/2 lg:rounded-xl lg:p-4"
+          >
+          Register for a cohort now
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="mx-auto max-w-screen-xl px-4 py-10 md:px-8 lg:py-16">
+    <CohortCard />
+  </div>
+
+  <!-- FAQ Section -->
+  <div class="mx-auto max-w-screen-xl px-4 pb-16 pt-10 md:px-8 lg:pb-24 lg:pt-16">
+    <h2 class="font-header text-[28px] font-bold leading-[120%] text-[#333] md:text-[36px] lg:text-[44px]">
+      &ldquo;Wait, I have a few questions!&rdquo;
+    </h2>
+
+    <div class="mt-8 flex flex-col gap-8">
+      <div>
+        <p class="text-[18px] font-bold leading-[140%] text-orange md:text-[20px]">
+          Q. What actually happens in a cohort?
+        </p>
+        <p class="mt-2 text-[16px] font-normal leading-[160%] text-[#333] md:text-[18px]">
+          You join a small group studying the same material over 6 to 8 weeks. There are scheduled live sessions each week, a curriculum with reading and coding assignments, and teaching assistants available when you're stuck. Expect to spend around 12 hours/week for beginner cohorts and 16+ hours/week for advanced ones. You do the learning, we give you the structure and people to do it alongside.
+        </p>
+      </div>
+
+      <div>
+        <p class="text-[18px] font-bold leading-[140%] text-orange md:text-[20px]">
+          Q. Do I need to be a developer to join?
+        </p>
+        <p class="mt-2 text-[16px] font-normal leading-[160%] text-[#333] md:text-[18px]">
+          Not for the beginner cohorts. Mastering Bitcoin is pure theory, no code. Learning Bitcoin from the Command Line eases you into the terminal. If you can follow instructions and are willing to be uncomfortable for a few weeks, you're ready. The advanced cohorts expect you to be comfortable writing code.
+        </p>
+      </div>
+
+      <div>
+        <p class="text-[18px] font-bold leading-[140%] text-orange md:text-[20px]">
+          Q. Is there a recommended order?
+        </p>
+        <p class="mt-2 text-[16px] font-normal leading-[160%] text-[#333] md:text-[18px]">
+          There's no enforced sequence, but there's a natural one. Most people start with Mastering Bitcoin for the theory, then Learning Bitcoin from the Command Line for hands-on basics. From there, Programming Bitcoin and Bitcoin Protocol Development go deeper. Lightning is its own track, you can start it once you have a grip on Bitcoin fundamentals.
+        </p>
+      </div>
+      <div>
+        <p class="text-[18px] font-bold leading-[140%] text-orange md:text-[20px]">
+          Q. What happens after I finish a cohort?
+        </p>
+        <p class="mt-2 text-[16px] font-normal leading-[160%] text-[#333] md:text-[18px]">
+          Most cohort graduates go on to our <a href="/fellowship" class="font-bold text-orange underline hover:text-orange/80">Fellowship program</a>, where you work on a real Bitcoin open-source project with mentorship and funding. Some get hired directly into Bitcoin companies. A few realize Bitcoin development isn't for them (and that's totally fine too.) The cohort gives you enough knowledge to make that call honestly.
+        </p>
+      </div>
+
+      <div>
+        <p class="text-[18px] font-bold leading-[140%] text-orange md:text-[20px]">
+          Q. Are cohorts necessary to join the Fellowship?
+        </p>
+        <p class="mt-2 text-[16px] font-normal leading-[160%] text-[#333] md:text-[18px]">
+          Not technically. If you already have the knowledge, you can come in directly with a project proposal. But most of our fellows came through the cohorts first because most people do not have deep Bitcoin protocol knowledge on day one. The cohorts exist to close that gap.
+        </p>
+      </div>
+
+      <div>
+        <p class="text-[18px] font-bold leading-[140%] text-orange md:text-[20px]">
+          Q. Are the cohorts free?
+        </p>
+        <p class="mt-2 text-[16px] font-normal leading-[160%] text-[#333] md:text-[18px]">
+          Yes. Completely free. Always. Only thing we ask is your time, curiosity, and commitment.
+        </p>
+      </div>
+
+      <div>
+        <p class="text-[18px] font-bold leading-[140%] text-orange md:text-[20px]">
+          Q. What if I fall behind or can't finish?
+        </p>
+        <p class="mt-2 text-[16px] font-normal leading-[160%] text-[#333] md:text-[18px]">
+          It happens. Life gets in the way. You won't be penalized or shamed for it. Cohorts run in batches throughout the year, so you can pick up where you left off in the next one. The material isn't going anywhere, and neither are we.
+        </p>
+      </div>
+
+      <div>
+        <p class="text-[18px] font-bold leading-[140%] text-orange md:text-[20px]">
+          Q. When do cohorts start?
+        </p>
+        <p class="mt-2 text-[16px] font-normal leading-[160%] text-[#333] md:text-[18px]">
+          We run cohorts in batches throughout the year. Check <a href="https://app.bitshala.org" target="_blank" class="font-bold text-orange underline hover:text-orange/80">app.bitshala.org</a> for the next start dates and open registrations. We deliberately don't put dates on this page, they go stale, and we'd rather you see what's actually live right now.
+        </p>
+      </div>
+
+      <div>
+        <p class="text-[18px] font-bold leading-[140%] text-orange md:text-[20px]">
+          Q. I'm not from India. Can I still join?
+        </p>
+        <p class="mt-2 text-[16px] font-normal leading-[160%] text-[#333] md:text-[18px]">
+          Yes. Cohorts are open to everyone, everywhere. All sessions are conducted in English. Bitshala started in India and our community is strongest here, but the knowledge is borderless and so is the door.
+        </p>
+      </div>
+
+      <div>
+        <p class="text-[18px] font-bold leading-[140%] text-orange md:text-[20px]">
+          Q. Are the sessions live? Do I need to show up at a specific time?
+        </p>
+        <p class="mt-2 text-[16px] font-normal leading-[160%] text-[#333] md:text-[18px]">
+          Yes, cohorts have scheduled live sessions that you're expected to attend. There isn't a playlist of recordings you watch whenever. The live format is the point, it keeps you accountable, lets you ask questions in real time, and connects you with the other people in your batch.
+        </p>
+      </div>
+
+      <div>
+        <p class="text-[18px] font-bold leading-[140%] text-orange md:text-[20px]">
+          Q. Do I get a certificate when I finish?
+        </p>
+        <p class="mt-2 text-[16px] font-normal leading-[160%] text-[#333] md:text-[18px]">
+          Yes. You receive a certificate of completion. But honestly, in the Bitcoin open-source world, your contributions matter more than a credential. The real proof is the code you write, the PRs you review, and the knowledge you can demonstrate. The certificate is a nice marker... your work is the actual signal.
+        </p>
+      </div>
+
+      <div>
+        <p class="text-[18px] font-bold leading-[140%] text-orange md:text-[20px]">
+          Q. How do I join?
+        </p>
+        <p class="mt-2 text-[16px] font-normal leading-[160%] text-[#333] md:text-[18px]">
+          Go to <a href="https://app.bitshala.org" target="_blank" class="font-bold text-orange underline hover:text-orange/80">app.bitshala.org</a>. Pick a cohort. Fill in your details. Register. That's it.
+        </p>
+      </div>
+    </div>
+  </div>
 </Layout>
