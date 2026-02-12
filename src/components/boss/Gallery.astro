@@ -4,14 +4,14 @@ const summits = [
     id: "summer-2025",
     label: "Summer 2025",
     images: [
-      "/boss/gallery/image1.png",
-      "/boss/gallery/image2.png",
-      "/boss/gallery/image3.png",
-      "/boss/gallery/image4.png",
-      "/boss/gallery/image5.png",
-      "/boss/gallery/image6.png",
-      "/boss/gallery/image7.png",
-      "/boss/gallery/image8.png",
+      "/boss/gallery/image1.webp",
+      "/boss/gallery/image2.webp",
+      "/boss/gallery/image3.webp",
+      "/boss/gallery/image4.webp",
+      "/boss/gallery/image5.webp",
+      "/boss/gallery/image6.webp",
+      "/boss/gallery/image7.webp",
+      "/boss/gallery/image8.webp",
     ],
     synopsisUrl: "/boss/winter-2025-synopsis",
   },
@@ -73,17 +73,17 @@ const summits = [
           class={`gallery-content mt-20 ${index === 0 ? "" : "hidden"}`}
         >
           <!-- DESKTOP - Scattered Gallery -->
-          <div class="relative hidden md:block h-[600px] lg:h-[700px] ml-20">
+          <div class="relative hidden md:block h-[620px] lg:h-[720px] ml-20">
             {summit.images.map((image, i) => {
               const positions = [
-                "top-[0%] left-[10%] rotate-[-12.1deg] w-[23%] z-10",
-                "top-[27%] left-[24%] rotate-[3.01deg] w-[25%] z-20",
-                "top-[0%] left-[36%] rotate-[-9.32deg] w-[22%] z-10",
-                "top-[0%] left-[60%] rotate-[-7deg] w-[22%] z-10",
-                "top-[60%] left-[34%] rotate-[-7.57deg] w-[24%] z-0",
-                "top-[30%] left-[54%] rotate-[10deg] w-[26%] z-0",
-                "top-[52%] left-[4%] rotate-[10.82deg] w-[23%] z-40",
-                "top-[55%] left-[66%] rotate-[-13.8deg] w-[23%] z-0",
+                "top-[0%] left-[10%] rotate-[-12.1deg] w-[25%] z-10",
+                "top-[27%] left-[24%] rotate-[3.01deg] w-[27%] z-20",
+                "top-[0%] left-[36%] rotate-[-9.32deg] w-[24%] z-10",
+                "top-[0%] left-[60%] rotate-[-7deg] w-[24%] z-10",
+                "top-[60%] left-[34%] rotate-[-7.57deg] w-[26%] z-0",
+                "top-[30%] left-[54%] rotate-[10deg] w-[28%] z-0",
+                "top-[52%] left-[4%] rotate-[10.82deg] w-[25%] z-40",
+                "top-[55%] left-[66%] rotate-[-13.8deg] w-[25%] z-0",
               ];
               return (
                 <img
