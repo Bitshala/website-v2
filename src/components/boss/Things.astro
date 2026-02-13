@@ -1,35 +1,58 @@
 ---
 const things = [
   {
-    title:
-      "Small group sessions on current and emerging Bitcoin projects",
+    title: "Focused Technical Sessions",
+    tags: ["Small Group", "Hands-On"],
+    description:
+      "Intimate working sessions on current and emerging Bitcoin projects. Dig into real code, review proposals, and workshop ideas with the people actually building them.",
     image: "/boss/thing1.webp",
   },
   {
-    title:
-      "Deep dives into problems still waiting for the right solution",
+    title: "Unsolved Problem Deep Dives",
+    tags: ["Advanced", "Research"],
+    description:
+      "Structured explorations into the hard problems still waiting for the right solution — from scaling challenges to protocol-level design decisions that shape Bitcoin's future.",
     image: "/boss/thing2.webp",
   },
   {
-    title:
-      "Unscripted discussions where the real breakthroughs happen",
+    title: "Unscripted Breakthroughs",
+    tags: ["Open Floor", "Discussion"],
+    description:
+      "No slides, no scripts. The best ideas emerge from real-time debate among people who deeply understand the problem space. These sessions let that happen.",
     image: "/boss/thing3.webp",
   },
   {
-    title:
-      "Off-the-record time for sensitive topics and early-stage ideas",
+    title: "Off-the-Record Roundtables",
+    tags: ["Private", "Early-Stage"],
+    description:
+      "A safe space for sensitive topics and early-stage ideas. Chatham House rules apply — speak freely about what's next without worrying about public attribution.",
     image: "/boss/thing4.webp",
   },
   {
-    title:
-      "Evenings that bleed into informality: a walk, a meal, an argument that becomes a plan. Everything is arranged so the discussion matters more than the schedule.",
+    title: "Evenings That Become Plans",
+    tags: ["Informal", "Community"],
+    description:
+      "A walk, a meal, an argument that becomes a plan. Everything is arranged so the discussion matters more than the schedule. The best collaborations start here.",
     image: "/boss/thing5.webp",
   },
 ];
+
+const tagColors: Record<string, string> = {
+  "Small Group": "bg-[#D4FF00] text-[#1D0415]",
+  "Hands-On": "bg-[#FF6B9E] text-[#1D0415]",
+  Advanced: "bg-[#DAA5FE] text-[#1D0415]",
+  Research: "bg-[#F4F199] text-[#1D0415]",
+  "Open Floor": "bg-[#68D391] text-[#1D0415]",
+  Discussion: "bg-[#FFA500] text-[#1D0415]",
+  Private: "bg-[#FF6B6B] text-[#1D0415]",
+  "Early-Stage": "bg-[#F6E05E] text-[#1D0415]",
+  Informal: "bg-[#D7FF00] text-[#1D0415]",
+  Community: "bg-[#DAA5FE] text-[#1D0415]",
+};
 ---
 
 <section
-  class="w-full bg-[#271A23] px-4 py-16 md:px-8 lg:px-24 xl:px-32"
+  class="w-full px-4 py-16 md:px-8 lg:px-24 xl:px-32"
 >
   <div class="mx-auto max-w-[1400px]">
     <h2 class="mb-16 text-left font-boss text-[32px] md:text-[48px]">
@@ -39,19 +62,37 @@ const things = [
     </h2>
 
     <div
-      class="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-3"
+      class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3"
     >
       {
         things.map((thing) => (
-          <div>
-            <div class="mb-6 overflow-hidden rounded-3xl border-2 border-[#962573]">
-              <img
-                src={thing.image}
-                alt=""
-                class="h-64 w-full object-cover"
-              />
+          <div class="group relative min-h-[360px] overflow-hidden rounded-3xl border-2 border-[#D8A7C3] transition-all duration-300 hover:border-[#F4F199] hover:shadow-[0_0_20px_rgba(244,241,153,0.15)]">
+            <img
+              src={thing.image}
+              alt={thing.title}
+              class="absolute inset-0 h-full w-full object-cover"
+            />
+            <div class="absolute inset-0 bg-[#2b1223]/80"></div>
+
+            <div class="relative z-10 flex h-full flex-col p-6 lg:p-8">
+              <h3 class="mb-4 font-boss text-[22px] leading-tight md:text-[26px]">
+                {thing.title}
+              </h3>
+
+              <div class="mb-4 flex flex-wrap gap-2">
+                {thing.tags.map((tag) => (
+                  <span
+                    class={`rounded-full px-3 py-1 text-xs font-semibold ${tagColors[tag] || "bg-[#D4FF00] text-[#1D0415]"}`}
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+
+              <p class="flex-1 font-inter text-[15px] font-light leading-relaxed text-gray-300">
+                {thing.description}
+              </p>
             </div>
-            <p class="font-inter font-light text-[16px]">{thing.title}</p>
           </div>
         ))
       }
