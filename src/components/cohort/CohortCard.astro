@@ -1,151 +1,139 @@
 ---
-import { getCohortStatus } from "../../lib/cohorts";
-
-const res = await fetch("https://api.bitshala.org/cohorts/available");
-const cohorts = await res.json();
-
 const cardsList = [
   {
     key: "mb",
-    name: "Mastering Bitcoin by Andreas M. ",
+    name: "Mastering Bitcoin by Andreas Antonopoulos",
     img: "/cohort/mb.webp",
-    desc: "Mastering Bitcoin, a foundational tutorial, provides in-depth insights into Bitcoin and its applications, equipping participants with a robust understanding.",
+    desc: "The starting point. Understand how Bitcoin actually works - transactions, mining, keys, scripting, and more. Build your foundation right.",
     url: "/cohorts/mb",
+    tags: ["Beginner", "Theory"],
+    time: "10-12 hrs/week (8 weeks)",
   },
   {
     key: "lbtcl",
-    name: "Learning Bitcoin From Command Line",
+    name: "Learning Bitcoin from the Command Line",
     img: "/cohort/lbtcl.webp",
-    desc: "Learning Bitcoin via CLI is a comprehensive tutorial series that teaches you how to use Bitcoin Core through the command line.",
+    desc: "Get your hands dirty. Set up a node, build transactions, and interact with the Bitcoin network directly from your terminal.",
     url: "/cohorts/lbtcl",
-    status: "Starting in October",
-  },
-  {
-    key: "bpd",
-    name: "Bitcoin Protocol Development",
-    img: "/cohort/bpd.webp",
-    desc: "BPD delves into the core protocols, offering a deeper theoretical understanding of Bitcoin's technical intricacies, enabling you to contribute to protocol development.",
-    url: "/cohorts/bpd",
-    status: "Starting in December",
+    tags: ["Beginner", "Hands-On"],
+    time: "10-12 hrs/week (8 weeks)",
   },
   {
     key: "pb",
     name: "Programming Bitcoin by Jimmy Song",
     img: "/cohort/pb.webp",
-    desc: "Programming Bitcoin, a comprehensive tutorial on Bitcoin Core, unlocks the intricacies of Bitcoin development.",
+    desc: "Build a Bitcoin library from scratch. Walk you through elliptic curve cryptography, transactions, and more - all in code.",
     url: "/cohorts/pb",
-    status: "Starting Soon",
+    tags: ["Advanced", "Practical"],
+    time: "10-12 hrs/week (8 weeks)",
+  },
+  {
+    key: "bpd",
+    name: "Bitcoin Protocol Development",
+    img: "/cohort/bpd.webp",
+    desc: "The deep end. Dive into Bitcoin's consensus rules, P2P networking, mempool policy, the design decisions that hold the protocol together.",
+    url: "/cohorts/bpd",
+    tags: ["Advanced", "Theory"],
+    time: "16-20 hrs/week (6 weeks)",
   },
   {
     key: "ln",
-    name: "LN Cohort",
+    name: "Mastering the Lightning Network",
     img: "/cohort/ln.webp",
-    desc: "Programming Bitcoin, a comprehensive tutorial on Bitcoin Core, unlocks the intricacies of Bitcoin development.",
+    desc: "Understand payment channels, routing, invoices, and the Lightning protocol stack. Some familiarity with Bitcoin fundamentals is helpful.",
     url: "/cohorts/ln",
-    status: "Starting in January",
+    tags: ["Theory", "Hands-On"],
+    time: "14-16 hrs/week (8 weeks)",
   },
-].map((card) => ({
-  ...card,
-  status: getCohortStatus(cohorts, card.key),
-}));
+];
 ---
 
-<div class="h-min md:-translate-y-40">
+<div class="-mt-20 md:-mt-32 lg:-mt-40">
+  <!-- Row 1: First 3 cards -->
   <div
-    class="mb-10 grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3"
+    class="mb-6 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3"
   >
     {
       cardsList.slice(0, 3).map((card, index) => (
-        <div
-          class={`flex flex-col justify-between rounded-2xl ${
-            index % 2 == 0 ? "bg-orange" : "bg-black"
-          } my-2 p-3 text-white`}
-        >
-          <div style={{ position: "relative" }}>
-            <img
-              src={card.img}
-              class="w-fit rounded-lg bg-white"
-            />
-            <p
-              class={`absolute right-2 top-2 rounded-lg ${
-                card.status === "Registration Open"
-                  ? "bg-[#008000]"
-                  : "bg-[#cc0808]"
-              } px-3 py-1 text-sm font-bold text-white`}
-            >
-              {card.status}
-            </p>
+        <div class={`flex flex-col items-start gap-5 self-stretch rounded-2xl bg-[#FFF0E5] p-6 ${index === 2 ? 'md:col-span-2 lg:col-span-1 md:mx-auto md:max-w-[calc(50%-0.75rem)] lg:max-w-none lg:mx-0' : ''}`}>
+          <h2 class="font-header text-[28px] font-medium leading-[120%] text-[#333]">
+            {card.name}
+          </h2>
+
+          <div class="flex flex-wrap gap-2">
+            {card.tags.map((tag) => (
+              <span class="rounded-full border border-orange px-3 py-1 text-sm font-medium text-orange">
+                {tag}
+              </span>
+            ))}
           </div>
-          <p class="text-sm lg:text-xl">
-            cohort #0{index + 1}
+
+          <p class="text-[22px] font-normal leading-[130%] text-[#333] md:text-[20px]">
+            {card.desc}
           </p>
-          <div class="px-1">
-            <h1 class="text-2xl font-bold lg:text-4xl">
-              {card.name}
-            </h1>
-            <p class="text-base lg:text-xl">{card.desc}</p>
-          </div>
-          <a href={card.url}>
-            <button
-              class={`my-2 w-full rounded-lg text-base lg:text-xl ${
-                index % 2 == 0
-                  ? "bg-white text-black hover:bg-black hover:text-peach"
-                  : "bg-black text-white hover:bg-orange hover:text-white"
-              } border-2 border-dotted border-white px-3 py-5 font-bold`}
-            >
-              Visit the Cohort Page
-            </button>
+
+          <p class="text-[16px] font-bold leading-[150%] text-[#333] md:text-[14px]">
+            Time Commitment: {card.time}
+          </p>
+
+          <a
+            href={card.url}
+            class="flex items-center gap-1 text-[16px] font-bold text-orange hover:underline"
+          >
+            Tell me more
+            <span class="text-lg">&rarr;</span>
           </a>
+
+          <img
+            src={card.img}
+            alt={card.name}
+            class="w-full rounded-xl"
+          />
         </div>
       ))
     }
   </div>
 
+  <!-- Row 2: Last 2 cards centered -->
   <div
-    class="grid grid-cols-1 gap-10 md:mx-auto md:max-w-4xl md:grid-cols-2"
+    class="grid grid-cols-1 gap-6 md:mx-auto md:max-w-[52rem] md:grid-cols-2"
   >
     {
-      cardsList.slice(3, 5).map((card, index) => (
-        <div
-          class={`flex flex-col justify-between rounded-2xl ${
-            (index + 3) % 2 == 0 ? "bg-orange" : "bg-black"
-          } my-2 p-3 text-white`}
-        >
-          <div style={{ position: "relative" }}>
-            <img
-              src={card.img}
-              class="w-fit rounded-lg bg-white"
-            />
-            <p
-              class={`absolute right-2 top-2 rounded-lg ${
-                card.status === "Registration Open"
-                  ? "bg-[#008000]"
-                  : "bg-[#cc0808]"
-              } px-3 py-1 text-sm font-bold text-white`}
-            >
-              {card.status}
-            </p>
+      cardsList.slice(3, 5).map((card) => (
+        <div class="flex flex-col items-start gap-5 self-stretch rounded-2xl bg-[#FFF0E5] p-6">
+          <h2 class="font-header text-[28px] font-medium leading-[120%] text-[#333]">
+            {card.name}
+          </h2>
+
+          <div class="flex flex-wrap gap-2">
+            {card.tags.map((tag) => (
+              <span class="rounded-full border border-orange px-3 py-1 text-sm font-medium text-orange">
+                {tag}
+              </span>
+            ))}
           </div>
-          <p class="text-sm lg:text-xl">
-            cohort #0{index + 4}
+
+          <p class="text-[22px] font-normal leading-[130%] text-[#333] md:text-[20px]">
+            {card.desc}
           </p>
-          <div class="px-1">
-            <h1 class="text-2xl font-bold lg:text-4xl">
-              {card.name}
-            </h1>
-            <p class="text-base lg:text-xl">{card.desc}</p>
-          </div>
-          <a href={card.url}>
-            <button
-              class={`my-2 w-full rounded-lg text-base lg:text-xl ${
-                (index + 3) % 2 == 0
-                  ? "bg-white text-black hover:bg-black hover:text-peach"
-                  : "bg-black text-white hover:bg-orange hover:text-white"
-              } border-2 border-dotted border-white px-3 py-5 font-bold`}
-            >
-              Visit the Cohort Page
-            </button>
+
+          <p class="text-[16px] font-bold leading-[150%] text-[#333] md:text-[14px]">
+            Time Commitment: {card.time}
+          </p>
+
+          <a
+            href={card.url}
+            class="flex items-center gap-1 text-[16px] font-bold text-orange hover:underline"
+          >
+            Tell me more
+            <span class="text-lg">&rarr;</span>
           </a>
+
+          <img
+            src={card.img}
+            alt={card.name}
+            class="w-full rounded-xl"
+          />
         </div>
       ))
     }
