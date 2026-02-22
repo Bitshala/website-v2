@@ -33,6 +33,34 @@ export function getCohortStartDate(
   return formatDate(cohort.startDate);
 }
 
+export function getCohortEndDate(
+  cohortsData: Record<string, any>,
+  key: CohortKey
+): string {
+  const apiKey = COHORT_KEY_MAP[key];
+  const cohort = cohortsData?.[apiKey];
+
+  if (!cohort || !cohort.endDate) {
+    return "TBA";
+  }
+
+  return formatDate(cohort.endDate);
+}
+
+export function getCohortRegistrationDeadline(
+  cohortsData: Record<string, any>,
+  key: CohortKey
+): string {
+  const apiKey = COHORT_KEY_MAP[key];
+  const cohort = cohortsData?.[apiKey];
+
+  if (!cohort || !cohort.registrationDeadline) {
+    return "TBA";
+  }
+
+  return formatDate(cohort.registrationDeadline);
+}
+
 export function getCohortStatus(
   cohortsData: Record<string, any>,
   key: CohortKey
