@@ -103,7 +103,7 @@ const colabList = [
     </div>
   </div>
   <div
-    class="m-5 flex flex-col rounded-3xl border-2 border-black border-opacity-5 bg-peach lg:m-0 lg:mb-32 lg:flex-row"
+    class="m-5 flex flex-col rounded-3xl border-2 border-black border-opacity-5 bg-peach lg:m-0 lg:mb-8 lg:flex-row"
   >
     <h1
       class="t my-3 ml-3 text-center font-header lg:my-8 lg:w-2/3 lg:pl-3 lg:text-start lg:text-3xl"
@@ -124,6 +124,57 @@ const colabList = [
           </a>
         ))
       }
+    </div>
+  </div>
+
+  <!-- Calendar Section -->
+  <div
+    class="m-5 mt-10 flex flex-col rounded-3xl border-2 border-black border-opacity-5 bg-peach p-6 lg:m-0 lg:mt-12 lg:mb-32 lg:p-10"
+  >
+    <div class="flex flex-col items-center gap-2 lg:flex-row lg:items-start lg:justify-between lg:gap-10">
+      <div class="text-center lg:text-left lg:w-1/3 lg:shrink-0">
+        <h1 class="font-header text-xl lg:text-3xl">
+          Cohorts, Clubs & Meetups
+        </h1>
+        <p class="mt-2 text-sm lg:text-base text-black text-opacity-70">
+          Never miss a session. Subscribe to our calendar for all upcoming events.
+        </p>
+        <div class="mt-4 flex flex-col gap-3 sm:flex-row sm:justify-center lg:justify-start">
+          <a
+            href="https://calendar.google.com/calendar/u/0?cid=Y29udGFjdEBiaXRzaGFsYS5vcmc"
+            target="_blank"
+            class="inline-flex items-center gap-2 whitespace-nowrap rounded-lg bg-black px-4 py-2.5 text-xs font-header text-white hover:bg-orange transition-colors lg:text-sm"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 5v14M5 12h14"></path>
+            </svg>
+            Add to Google Calendar
+          </a>
+          <a
+            href="https://calendar.google.com/calendar/ical/contact%40bitshala.org/public/basic.ics"
+            target="_blank"
+            class="inline-flex items-center gap-2 whitespace-nowrap rounded-lg border-2 border-black px-4 py-2.5 text-xs font-header hover:bg-black hover:text-white transition-colors lg:text-sm"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+              <line x1="16" y1="2" x2="16" y2="6"></line>
+              <line x1="8" y1="2" x2="8" y2="6"></line>
+              <line x1="3" y1="10" x2="21" y2="10"></line>
+            </svg>
+            Subscribe via iCal
+          </a>
+        </div>
+      </div>
+      <div class="mt-6 w-full overflow-hidden rounded-2xl border border-black border-opacity-10 lg:mt-0 lg:w-2/3">
+        <iframe
+          src="https://calendar.google.com/calendar/embed?src=contact%40bitshala.org&ctz=Asia%2FKolkata"
+          class="h-[400px] w-full lg:h-[450px]"
+          style="border: 0"
+          frameborder="0"
+          scrolling="no"
+          loading="lazy"
+        ></iframe>
+      </div>
     </div>
   </div>
 </div>

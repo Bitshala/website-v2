@@ -1,48 +1,53 @@
 ---
+import { getCohortStartDate, type CohortKey } from "../../lib/cohorts";
+
+const res = await fetch("https://api.bitshala.org/Cohorts/available");
+const cohorts = await res.json();
+
 const cardsList = [
   {
-    key: "mb",
+    key: "mb" as CohortKey,
     name: "Mastering Bitcoin by Andreas Antonopoulos",
     img: "/cohort/mb.webp",
     desc: "The starting point. Understand how Bitcoin actually works - transactions, mining, keys, scripting, and more. Build your foundation right.",
     url: "/cohorts/mb",
-    tags: ["Beginner", "Theory"],
+    tags: ["Beginner"],
     time: "10-12 hrs/week (8 weeks)",
   },
   {
-    key: "lbtcl",
+    key: "lbtcl" as CohortKey,
     name: "Learning Bitcoin from the Command Line",
     img: "/cohort/lbtcl.webp",
     desc: "Get your hands dirty. Set up a node, build transactions, and interact with the Bitcoin network directly from your terminal.",
     url: "/cohorts/lbtcl",
-    tags: ["Beginner", "Hands-On"],
+    tags: ["Intermediate"],
     time: "10-12 hrs/week (8 weeks)",
   },
   {
-    key: "pb",
+    key: "pb" as CohortKey,
     name: "Programming Bitcoin by Jimmy Song",
     img: "/cohort/pb.webp",
     desc: "Build a Bitcoin library from scratch. Walk you through elliptic curve cryptography, transactions, and more - all in code.",
     url: "/cohorts/pb",
-    tags: ["Advanced", "Practical"],
+    tags: ["Advanced"],
     time: "10-12 hrs/week (8 weeks)",
   },
   {
-    key: "bpd",
+    key: "bpd" as CohortKey,
     name: "Bitcoin Protocol Development",
     img: "/cohort/bpd.webp",
     desc: "The deep end. Dive into Bitcoin's consensus rules, P2P networking, mempool policy, the design decisions that hold the protocol together.",
     url: "/cohorts/bpd",
-    tags: ["Advanced", "Theory"],
+    tags: ["Advanced"],
     time: "16-20 hrs/week (6 weeks)",
   },
   {
-    key: "ln",
+    key: "ln" as CohortKey,
     name: "Mastering the Lightning Network",
     img: "/cohort/ln.webp",
     desc: "Understand payment channels, routing, invoices, and the Lightning protocol stack. Some familiarity with Bitcoin fundamentals is helpful.",
     url: "/cohorts/ln",
-    tags: ["Theory", "Hands-On"],
+    tags: ["Intermediate"],
     time: "14-16 hrs/week (8 weeks)",
   },
 ];
@@ -54,88 +59,114 @@ const cardsList = [
     class="mb-6 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3"
   >
     {
-      cardsList.slice(0, 3).map((card) => (
-        <div class="flex flex-col items-start gap-5 self-stretch rounded-2xl bg-[#FFF0E5] p-6">
-          <h2 class="font-header text-[28px] font-medium leading-[120%] text-[#333]">
-            {card.name}
-          </h2>
+      cardsList.slice(0, 3).map((card) => {
+        const startDate = getCohortStartDate(cohorts, card.key);
+        return (
+          <div class="flex flex-col items-start gap-5 self-stretch rounded-2xl bg-[#FFF0E5] p-6">
+            <h2 class="font-header text-[28px] font-medium leading-[120%] text-[#333]">
+              {card.name}
+            </h2>
 
-          <div class="flex flex-wrap gap-2">
-            {card.tags.map((tag) => (
-              <span class="rounded-full border border-orange px-3 py-1 text-sm font-medium text-orange">
-                {tag}
-              </span>
-            ))}
+            <div class="flex flex-wrap items-center gap-2">
+              {card.tags.map((tag) => (
+                <span class="rounded-full border border-orange px-3 py-1 text-sm font-medium text-orange">
+                  {tag}
+                </span>
+              ))}
+              <a
+                href={`${card.url}/apply`}
+                class="rounded-full bg-black px-3 py-1 text-sm font-medium text-white hover:bg-orange transition-colors"
+              >
+                Apply Now
+              </a>
+            </div>
+
+            <p class="text-[20px] font-normal leading-[130%] text-[#333]">
+              {card.desc}
+            </p>
+
+            <p class="text-[14px] font-bold leading-[150%] text-[#333]">
+              Starts: {startDate}
+            </p>
+
+            <p class="text-[14px] font-bold leading-[150%] text-[#333]">
+              Time Commitment: {card.time}
+            </p>
+
+            <a
+              href={card.url}
+              class="flex items-center gap-1 text-[16px] font-bold text-orange hover:underline"
+            >
+              Tell me more
+              <span class="text-lg">&rarr;</span>
+            </a>
+
+            <img
+              src={card.img}
+              alt={card.name}
+              class="w-full rounded-xl"
+            />
           </div>
-
-          <p class="text-[20px] font-normal leading-[130%] text-[#333]">
-            {card.desc}
-          </p>
-
-          <p class="text-[14px] font-bold leading-[150%] text-[#333]">
-            Time Commitment: {card.time}
-          </p>
-
-          <a
-            href={card.url}
-            class="flex items-center gap-1 text-[16px] font-bold text-orange hover:underline"
-          >
-            Tell me more
-            <span class="text-lg">&rarr;</span>
-          </a>
-
-          <img
-            src={card.img}
-            alt={card.name}
-            class="w-full rounded-xl"
-          />
-        </div>
-      ))
+        );
+      })
     }
   </div>
 
   <!-- Row 2: Last 2 cards centered -->
   <div
-    class="grid grid-cols-1 gap-6 md:mx-auto md:max-w-3xl md:grid-cols-2"
+    class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:mx-auto lg:max-w-[66%]"
   >
     {
-      cardsList.slice(3, 5).map((card) => (
-        <div class="flex flex-col items-start gap-5 self-stretch rounded-2xl bg-[#FFF0E5] p-6">
-          <h2 class="font-header text-[28px] font-medium leading-[120%] text-[#333]">
-            {card.name}
-          </h2>
+      cardsList.slice(3, 5).map((card) => {
+        const startDate = getCohortStartDate(cohorts, card.key);
+        return (
+          <div class="flex flex-col items-start gap-5 self-stretch rounded-2xl bg-[#FFF0E5] p-6">
+            <h2 class="font-header text-[28px] font-medium leading-[120%] text-[#333]">
+              {card.name}
+            </h2>
 
-          <div class="flex flex-wrap gap-2">
-            {card.tags.map((tag) => (
-              <span class="rounded-full border border-orange px-3 py-1 text-sm font-medium text-orange">
-                {tag}
-              </span>
-            ))}
+            <div class="flex flex-wrap items-center gap-2">
+              {card.tags.map((tag) => (
+                <span class="rounded-full border border-orange px-3 py-1 text-sm font-medium text-orange">
+                  {tag}
+                </span>
+              ))}
+              <a
+                href={`${card.url}/apply`}
+                class="rounded-full bg-black px-3 py-1 text-sm font-medium text-white hover:bg-orange transition-colors"
+              >
+                Apply Now
+              </a>
+            </div>
+
+            <p class="text-[20px] font-normal leading-[130%] text-[#333]">
+              {card.desc}
+            </p>
+
+            <p class="text-[14px] font-bold leading-[150%] text-[#333]">
+              Starts: {startDate}
+            </p>
+
+            <p class="text-[14px] font-bold leading-[150%] text-[#333]">
+              Time Commitment: {card.time}
+            </p>
+
+            <a
+              href={card.url}
+              class="flex items-center gap-1 text-[16px] font-bold text-orange hover:underline"
+            >
+              Tell me more
+              <span class="text-lg">&rarr;</span>
+            </a>
+
+            <img
+              src={card.img}
+              alt={card.name}
+              class="w-full rounded-xl"
+            />
           </div>
-
-          <p class="text-[20px] font-normal leading-[130%] text-[#333]">
-            {card.desc}
-          </p>
-
-          <p class="text-[14px] font-bold leading-[150%] text-[#333]">
-            Time Commitment: {card.time}
-          </p>
-
-          <a
-            href={card.url}
-            class="flex items-center gap-1 text-[16px] font-bold text-orange hover:underline"
-          >
-            Tell me more
-            <span class="text-lg">&rarr;</span>
-          </a>
-
-          <img
-            src={card.img}
-            alt={card.name}
-            class="w-full rounded-xl"
-          />
-        </div>
-      ))
+        );
+      })
     }
   </div>
 </div>
