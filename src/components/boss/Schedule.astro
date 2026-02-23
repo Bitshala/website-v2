@@ -1,16 +1,23 @@
 ---
 const summits = [
   {
+    id: "Summer-2026",
+    label: "Summer 2026",
+    comingSoon: true,
+  },
+  {
     id: "Winter-2025",
     label: "Winter 2025",
     scheduleImage: "/boss/schedule_winter.png",
     scheduleUrl:
-      "https://github.com/Bitshala/BOSS-Summit/blob/main/winter-2025/schedule.png", // Update with actual URL
+      "https://github.com/Bitshala/BOSS-Summit/blob/main/winter-2025/schedule.png",
   },
   {
-    id: "Summer-2026",
-    label: "Summer 2026",
-    comingSoon: true,
+    id: "Summer-2025",
+    label: "Summer 2025",
+    scheduleImage: "/boss/schedule.png",
+    scheduleUrl:
+      "https://github.com/Bitshala/BOSS-Summit/blob/main/summer-2025/schedule.png",
   },
 ];
 ---
@@ -56,7 +63,7 @@ const summits = [
             summits.map((summit, index) => (
               <button
                 data-schedule-tab={summit.id}
-                class={`schedule-tab-button px-4 py-2 font-boss text-lg md:px-6 md:py-3 md:text-[24px] transition-colors border-[#962573] border-2 border-solid rounded-xl bg-[#2b1223] outline-none text-white hover:bg-[#9B6A8C]`}
+                class={`schedule-tab-button px-4 py-2 font-boss text-lg md:px-6 md:py-3 md:text-[24px] transition-colors border-[#962573] border-2 border-solid rounded-xl bg-[#2b1223] outline-none text-white hover:bg-[#F4F199] hover:text-black hover:border-[#F4F199]`}
               >
                 {summit.label}
               </button>
@@ -92,7 +99,7 @@ const summits = [
       summits.map((summit, index) => (
         <div
           data-schedule-content={summit.id}
-          class={`schedule-content ${index === summits.length - 1 ? "" : "hidden"}`}
+          class={`schedule-content ${index === 0 ? "" : "hidden"}`}
         >
           {summit.comingSoon ? (
             <div class="flex w-full items-center justify-center mt-8 md:mt-16 py-32 md:py-40">
@@ -150,13 +157,13 @@ const summits = [
         btn.getAttribute("data-schedule-tab") ===
         targetTab
       ) {
-        // Active state: remove background, keep only border
-        btn.classList.remove("bg-[#2b1223]");
-        btn.classList.add("bg-transparent");
+        // Active state: agenda yellow accent
+        btn.classList.remove("bg-[#2b1223]", "border-[#962573]", "text-white");
+        btn.classList.add("bg-[#F4F199]", "border-[#F4F199]", "text-black");
       } else {
-        // Inactive state: add background back
-        btn.classList.remove("bg-transparent");
-        btn.classList.add("bg-[#2b1223]");
+        // Inactive state
+        btn.classList.remove("bg-[#F4F199]", "border-[#F4F199]", "text-black");
+        btn.classList.add("bg-[#2b1223]", "border-[#962573]", "text-white");
       }
     });
 
@@ -181,21 +188,19 @@ const summits = [
     });
   });
 
-  // Chevron navigation
+  // Chevron navigation (wraps around)
+  const totalTabs = scheduleTabButtons.length;
+
   chevronLeft?.addEventListener("click", () => {
-    const newIndex = currentTabIndex - 1;
-    if (newIndex >= 0) {
-      switchToTab(newIndex);
-    }
+    const newIndex = (currentTabIndex - 1 + totalTabs) % totalTabs;
+    switchToTab(newIndex);
   });
 
   chevronRight?.addEventListener("click", () => {
-    const newIndex = currentTabIndex + 1;
-    if (newIndex < scheduleTabButtons.length) {
-      switchToTab(newIndex);
-    }
+    const newIndex = (currentTabIndex + 1) % totalTabs;
+    switchToTab(newIndex);
   });
 
-  // Initialize last tab (Summer 2026) as active on page load
-  switchToTab(scheduleTabButtons.length - 1);
+  // Initialize first tab (Summer 2026) as active on page load
+  switchToTab(0);
 </script>

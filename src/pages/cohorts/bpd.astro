@@ -9,7 +9,7 @@ import Application from "../../components/common/Application";
 import About from "../../components/cohortPages/bpd/About.astro";
 import MeetYourTAs from "../../components/cohortPages/common/MeetYourTAs.astro";
 import CohortGraduates from "../../components/cohortPages/CohortGraduates.astro";
-import { getCohortStartDate } from "../../lib/cohorts";
+import { getCohortStartDate, getCohortEndDate, getCohortRegistrationDeadline } from "../../lib/cohorts";
 
 const headerProps = {
   removeHeader: true,
@@ -22,6 +22,8 @@ const res = await fetch("https://api.bitshala.org/Cohorts/available");
 const cohorts = await res.json();
 
 const commencementDate = getCohortStartDate(cohorts, "bpd");
+const endDate = getCohortEndDate(cohorts, "bpd");
+const registrationDeadline = getCohortRegistrationDeadline(cohorts, "bpd");
 ---
 
 <Layout
@@ -32,19 +34,39 @@ const commencementDate = getCohortStartDate(cohorts, "bpd");
   <CohortHeader img="/cohort/bpd.webp" />
 
   <About />
+  <div class="px-3 lg:px-8">
+    <a
+      href="#applicationForm"
+      class="inline-block rounded-lg bg-black px-6 py-3 font-header font-bold text-white hover:bg-orange transition-colors lg:text-lg"
+    >
+      Apply Now
+    </a>
+  </div>
   <CohortDetails
     format={[
       {
-        name: "Commencement date",
+        name: "Start date",
         desc: commencementDate,
+      },
+      {
+        name: "End date",
+        desc: endDate,
+      },
+      {
+        name: "Registration deadline",
+        desc: registrationDeadline,
       },
       {
         name: "Duration",
         desc: "7 Weeks",
       },
       {
+        name: "Session timing",
+        desc: "Friday | 8:00 PM IST",
+      },
+      {
         name: "Cohort level",
-        desc: "Advanced (Theory)",
+        desc: "Advanced",
       },
       {
         name: "Mode",
