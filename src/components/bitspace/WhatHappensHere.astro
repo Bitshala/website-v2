@@ -1,0 +1,138 @@
+---
+const eventCategories = [
+  {
+    image: "/bitspace/940c5c8050d96c3b1adb217933edec0378c9d482.png",
+    title: "BITDEVS:",
+    description:
+      "For technical people who are excited to dive deep into bitcoin technicals with developers who actually read the mailing lists, dissect what's happening in Bitcoin development. We discuss protocols like silent payments, Bolt12, script capabilities, cryptographic primitives, and so much more about whatever's being debated, built, or broken in bitcoin right now.",
+  },
+  {
+    image: "/bitspace/6bbb00e5066ed71c32f9de87f81f54bc8c363922.png",
+    title: "Hands-On Workshops:",
+    description:
+      "In these, you don't listen to a presentation. You build something. Set up and run your own hardened Bitcoin node. Assemble a Seed Signer. Walk through a real privacy setups step by step. You leave with something working on your machine, not just slides or concepts in your head.",
+  },
+  {
+    image: "/bitspace/97d45ffa5a89963414f5ce743f5508bc23a06670.png",
+    title: "CyberSwaraj:",
+    description:
+      "Our privacy and digital freedom series, created by two Bitspace regulars working on NOSTR. Each session digs into a real question, like how surveillance actually works, what censorship resistance looks like in practice, which tools you should be using and why you probably aren't. Hosted live at Bitspace and published on YouTube.",
+  },
+  {
+    image: "/bitspace/cddedac488fff068d701e2633977a96771bdc400.png",
+    title: "Bitcoinology:",
+    description:
+      "Our 101 event series dedicated to helping enthusiasts make sense of everything Bitcoin. Across various different sessions, we'll explore the basics, debunk the myths, and finally get some clear, honest answers to the questions you've been too afraid to ask. Think of it as a journey of discovery, together, with no jargon and no judgment.",
+  },
+  {
+    image: "/bitspace/f4ac4e9c7cf58ef665efe9a5eb0bfa9413af9214.png",
+    title: "Hands On Design Lab (HODL):",
+    description:
+      "Bitcoin desperately needs more designers but designers need a path into Bitcoin. This workshop series is that path in to introduce designers to Bitcoin, open design, and what it means to contribute to software that millions of people depend on. Built by two Bitspace regulars who got tired of waiting for someone else to do it.",
+  },
+];
+---
+
+<div class="mx-auto max-w-[1280px] px-4 lg:px-0">
+  <div class="flex flex-col gap-[60px]">
+    <h2
+      class="font-header text-3xl font-bold text-black lg:text-[48px] lg:leading-[78px]"
+    >
+      "Apart from co-working, what else happens here?"
+    </h2>
+
+    <div class="flex flex-col gap-[48px]">
+      <!-- Intro text -->
+      <p
+        class="font-base text-base leading-[1.6] text-black lg:text-2xl"
+        style="text-align: justify;"
+      >
+        Events. All free. All Bitcoin-only.
+      </p>
+
+      <!-- Events calendar image -->
+      <div class="w-full overflow-hidden rounded-xl">
+        <img
+          src="/bitspace/c30c1dcae410deff8ff7ea187cce26e269dfe533.png"
+          alt="Bitspace Events Calendar"
+          class="h-auto w-full object-cover"
+          loading="lazy"
+        />
+      </div>
+
+      <!-- Recurring events intro -->
+      <p
+        class="font-base text-base leading-[1.6] text-black lg:text-2xl"
+        style="text-align: justify;"
+      >
+        These are the few common categories of events we host on a recurring
+        basis:
+      </p>
+
+      <!-- Event category cards -->
+      {
+        eventCategories.map((event) => (
+          <div class="flex flex-col items-center gap-6 lg:flex-row lg:gap-10">
+            <div class="h-[160px] w-[160px] flex-shrink-0 overflow-hidden rounded-2xl lg:h-[200px] lg:w-[200px]">
+              <img
+                src={event.image}
+                alt={event.title}
+                class="h-full w-full object-cover"
+                loading="lazy"
+              />
+            </div>
+            <p
+              class="font-base text-base leading-[1.5] text-black lg:text-2xl"
+              style="text-align: justify;"
+            >
+              <span class="font-bold text-orange">{event.title}</span>
+              {" "}
+              {event.description}
+            </p>
+          </div>
+        ))
+      }
+
+      <!-- Additional events description -->
+      <p
+        class="font-base text-base leading-[1.6] text-black lg:text-2xl"
+        style="text-align: justify;"
+      >
+        Plus, we also host gatherings that don't fit a category. We do <strong
+          class="font-bold">board/video game nights</strong
+        >, group <strong class="font-bold">hangouts</strong> in cafes, <strong
+          class="font-bold">badminton</strong
+        > sessions, and the occasional chaos. The stuff that turns a workspace into
+        a community.
+      </p>
+
+      <!-- Bi-weekly note -->
+      <p
+        class="font-base text-base leading-[1.6] text-black lg:text-2xl"
+        style="text-align: justify;"
+      >
+        Public events happen on a roughly bi-weekly basis. Check our calendar for
+        what's coming up.
+      </p>
+    </div>
+
+    <!-- CTA Button -->
+    <a
+      href="https://lu.ma/bitshala"
+      target="_blank"
+      class="inline-flex h-[68px] items-center self-start rounded-xl bg-orange px-8 py-6 font-base text-lg font-bold text-white transition-opacity hover:opacity-90 lg:text-2xl"
+    >
+      See our upcoming events on Luma →
+    </a>
+
+    <!-- Large gallery/banner image -->
+    <div class="w-full overflow-hidden rounded-xl">
+      <img
+        src="/bitspace/7b58c95581e7f39998c740451502734ce9fed499.png"
+        alt="Bitspace community events collage"
+        class="h-auto w-full object-cover"
+        loading="lazy"
+      />
+    </div>
+  </div>
+</div>
