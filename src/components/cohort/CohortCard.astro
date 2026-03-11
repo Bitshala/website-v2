@@ -73,12 +73,6 @@ const cardsList = [
                   {tag}
                 </span>
               ))}
-              <a
-                href={`${card.url}/apply`}
-                class="rounded-full bg-black px-3 py-1 text-sm font-medium text-white hover:bg-orange transition-colors"
-              >
-                Apply Now
-              </a>
             </div>
 
             <p class="text-[20px] font-normal leading-[130%] text-[#333]">
@@ -93,13 +87,21 @@ const cardsList = [
               Time Commitment: {card.time}
             </p>
 
-            <a
-              href={card.url}
-              class="flex items-center gap-1 text-[16px] font-bold text-orange hover:underline"
-            >
-              Tell me more
-              <span class="text-lg">&rarr;</span>
-            </a>
+            <div class="flex items-center gap-4">
+              <a
+                href={`${card.url}/apply`}
+                class="rounded-md bg-black px-3 py-1 text-sm font-medium text-white hover:bg-orange transition-colors"
+              >
+                Apply Now
+              </a>
+              <a
+                href={card.url}
+                class="flex items-center gap-1 text-[16px] font-bold text-orange hover:underline"
+              >
+                Tell me more
+                <span class="text-lg">&rarr;</span>
+              </a>
+            </div>
 
             <img
               src={card.img}
@@ -131,12 +133,6 @@ const cardsList = [
                   {tag}
                 </span>
               ))}
-              <a
-                href={`${card.url}/apply`}
-                class="rounded-full bg-black px-3 py-1 text-sm font-medium text-white hover:bg-orange transition-colors"
-              >
-                Apply Now
-              </a>
             </div>
 
             <p class="text-[20px] font-normal leading-[130%] text-[#333]">
@@ -151,13 +147,21 @@ const cardsList = [
               Time Commitment: {card.time}
             </p>
 
-            <a
-              href={card.url}
-              class="flex items-center gap-1 text-[16px] font-bold text-orange hover:underline"
-            >
-              Tell me more
-              <span class="text-lg">&rarr;</span>
-            </a>
+            <div class="flex items-center gap-4">
+              <a
+                href={`${card.url}/apply`}
+                class="rounded-md bg-black px-3 py-1 text-sm font-medium text-white hover:bg-orange transition-colors"
+              >
+                Apply Now
+              </a>
+              <a
+                href={card.url}
+                class="flex items-center gap-1 text-[16px] font-bold text-orange hover:underline"
+              >
+                Tell me more
+                <span class="text-lg">&rarr;</span>
+              </a>
+            </div>
 
             <img
               src={card.img}
