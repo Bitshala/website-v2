@@ -29,18 +29,18 @@ const faqs = [
 ---
 
 <div class="mx-auto max-w-[1280px] px-4 lg:px-0">
-  <div class="flex flex-col gap-[48px]">
-    <h2 class="font-header text-3xl font-bold text-black lg:text-[48px] lg:leading-[65px]">
+  <div class="flex flex-col items-start gap-[60px] self-stretch">
+    <h2 class="font-header text-3xl font-bold text-[#333] lg:text-[48px] lg:leading-[77.612px]">
       "Wait, I have a some more questions!"
     </h2>
     <div class="flex flex-col gap-[60px]">
       {
         faqs.map((faq) => (
-          <div style="text-align: justify;">
+          <div class="text-justify">
             <p class="font-base text-base font-bold leading-[1.6] text-orange lg:text-2xl">
               {faq.question}
             </p>
-            <p class="font-base text-base leading-[1.6] text-black lg:text-2xl">
+            <p class="font-base text-base font-medium text-[#333] lg:text-2xl lg:leading-[160%]">
               {faq.answer}
             </p>
           </div>
