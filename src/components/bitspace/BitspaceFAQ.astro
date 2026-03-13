@@ -1,0 +1,51 @@
+---
+const faqs = [
+  {
+    question: "Q. Where exactly is Bitspace?",
+    answer:
+      "HSR Layout, Bangalore. The exact address shows up when you register for an event on Luma.",
+  },
+  {
+    question: "Q. Are events free?",
+    answer:
+      "Yes. Always. Just register on Luma so we know you're coming.",
+  },
+  {
+    question:
+      "Q. I'm not in Bangalore. Is there a way to participate remotely?",
+    answer:
+      "Bitspace is a physical space, that's kind of the whole point. For online community, join Bitshala's Discord. That's where remote conversations happen.",
+  },
+  {
+    question: "Q. How do I become a regular here?",
+    answer:
+      "Show up. Come to events. Build something. Talk to people. If you're doing work that fits and you want to be here daily, tell us what you're working on. There's no waitlist or committee, just people who know when someone belongs.",
+  },
+  {
+    question: "Q. Why is the space Bitcoin-only?",
+    answer: "Because everything else is a distraction.",
+  },
+];
+---
+
+<div class="mx-auto max-w-[1280px] px-4 lg:px-0">
+  <div class="flex flex-col items-start gap-[60px] self-stretch">
+    <h2 class="font-header text-3xl font-bold text-[#333] lg:text-[48px] lg:leading-[77.612px]">
+      "Wait, I have a some more questions!"
+    </h2>
+    <div class="flex flex-col gap-[60px]">
+      {
+        faqs.map((faq) => (
+          <div class="text-justify">
+            <p class="font-base text-base font-bold leading-[1.6] text-orange lg:text-2xl">
+              {faq.question}
+            </p>
+            <p class="font-base text-base font-medium text-[#333] lg:text-2xl lg:leading-[160%]">
+              {faq.answer}
+            </p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</div>
