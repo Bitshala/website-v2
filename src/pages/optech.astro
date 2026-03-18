@@ -5,9 +5,10 @@ import Calender from "../components/common/Calender.astro";
 
 const headerProps = {
   removeHeader: true,
+  removePadding: true,
 };
 const isVisible = true;
-const img = "/optech/optech.webp";
+const img = "/optech/optechHero.webp";
 ---
 
 <Layout
@@ -15,16 +16,20 @@ const img = "/optech/optech.webp";
   headerProps={headerProps}
   isVisible={isVisible}
 >
-  <div
-    style={{
-      backgroundImage: `url(${img})`,
-      backgroundSize: "contain",
-      backgroundRepeat: "no-repeat",
-      backgroundPosition: "center",
-    }}
-    class="m-auto mt-20 flex min-h-[30vh] flex-col items-center justify-between px-5 pb-12 pt-32 md:min-h-[60vh] md:rounded-lg lg:min-h-[90vh]"
-  >
+  <div class="mx-auto mt-24 w-full max-w-[1360px] px-4 md:px-8 lg:mt-32">
+    <div
+      style={{
+        backgroundImage: `url(${img})`,
+        backgroundSize: "cover",
+        backgroundRepeat: "no-repeat",
+        backgroundPosition: "center",
+      }}
+      class="w-full aspect-video rounded-xl shadow-lg md:rounded-[24px]"
+    >
+    </div>
   </div>
   <About />
-  <Calender />
+  <div class="mx-auto w-full max-w-[1280px] px-4 pb-12 md:px-8 lg:pb-24">
+    <Calender />
+  </div>
 </Layout>

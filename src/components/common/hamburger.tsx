@@ -133,7 +133,7 @@ const SideMenu = () => {
             >
               <a
                 href={item.link}
-                target="_blank"
+                target={item.link && item.link.startsWith("http") ? "_blank" : "_self"}
                 className="flex w-full items-center justify-between"
               >
                 {item.name}
