@@ -6,6 +6,7 @@ export interface Props {
   headingColor: string;
   subheadingColor: string;
   isContain: boolean;
+  overlayStyle?: Record<string, string>;
 }
 
 const {
@@ -14,6 +15,7 @@ const {
   image,
   headingColor,
   subheadingColor,
+  overlayStyle,
 } = Astro.props;
 ---
 
@@ -24,25 +26,30 @@ const {
     backgroundRepeat: "no-repeat",
     backgroundPosition: "center",
   }}
-  class="m-auto flex min-h-screen flex-col items-center justify-center bg-black px-5 pb-12 pt-32 md:rounded-lg"
+  class="relative m-auto flex min-h-screen flex-col items-center justify-center bg-black px-5 pb-12 pt-32 md:rounded-lg"
 >
-  {
-    heading && subheading ? (
-      <>
-        <h1
-          class={`text-center font-header font-bold ${headingColor} text-3xl lg:text-8xl`}
-        >
-          {heading}
-        </h1>
-        <p
-          class={`w-2/3 text-center text-xl ${subheadingColor} lg:text-4xl xl:mb-10`}
-        >
-          {subheading}
-        </p>
-        <div />
-      </>
-    ) : (
-      <slot />
-    )
-  }
+  {overlayStyle && (
+    <div class="absolute inset-0 md:rounded-lg" style={overlayStyle} />
+  )}
+  <div class="relative z-10 flex flex-col items-center justify-center">
+    {
+      heading && subheading ? (
+        <>
+          <h1
+            class={`text-center font-header font-bold ${headingColor} text-3xl lg:text-8xl`}
+          >
+            {heading}
+          </h1>
+          <p
+            class={`w-2/3 text-center text-xl ${subheadingColor} lg:text-4xl xl:mb-10`}
+          >
+            {subheading}
+          </p>
+          <div />
+        </>
+      ) : (
+        <slot />
+      )
+    }
+  </div>
 </main>
