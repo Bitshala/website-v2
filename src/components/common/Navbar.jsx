@@ -51,7 +51,7 @@ const Navbar = () => {
                 <button class=" mt-2 flex w-full flex-row items-center rounded-lg px-2 py-4 text-left text-base font-bold uppercase focus:outline-none md:ml-4 md:mt-0 md:inline md:w-auto">
                   <a
                     href={item.link}
-                    target="_blank"
+                    target={item.link && item.link.startsWith("http") ? "_blank" : "_self"}
                     className="flex font-header text-white"
                   >
                     {item.name}
