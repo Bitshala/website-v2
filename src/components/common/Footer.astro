@@ -104,7 +104,7 @@ const list = [
                     <a
                       href={subItem.link}
                       class="hover:text-orange"
-                      target="_blank"
+                      target={subItem.link.startsWith("http") ? "_blank" : "_self"}
                     >
                       {subItem.name}
                     </a>
