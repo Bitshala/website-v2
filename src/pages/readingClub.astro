@@ -16,15 +16,17 @@ const img = "/carousel/2.webp";
   headerProps={headerProps}
   isVisible={isVisible}
 >
-  <div
-    style={{
-      backgroundImage: `url(${img})`,
-      backgroundSize: "contain",
-      backgroundRepeat: "no-repeat",
-      backgroundPosition: "center",
-    }}
-    class="justify-betweenpx-5 m-auto mt-20 flex min-h-[30vh] flex-col items-center rounded-2xl pb-12 pt-32 md:min-h-[60vh] lg:min-h-[90vh]"
-  >
+  <div class="mx-auto mt-24 w-full max-w-[1360px] px-4 md:px-8 lg:mt-32">
+    <div
+      style={{
+        backgroundImage: `url(${img})`,
+        backgroundSize: "cover",
+        backgroundRepeat: "no-repeat",
+        backgroundPosition: "center",
+      }}
+      class="w-full aspect-video rounded-xl shadow-lg md:rounded-[24px]"
+    >
+    </div>
   </div>
   <About />
   <PreviouslyCovered />
