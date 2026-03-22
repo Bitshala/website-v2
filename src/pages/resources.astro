@@ -1,0 +1,239 @@
+---
+import Layout from "../layouts/Layout.astro";
+import ResourceSection from "../components/resources/ResourceSection.astro";
+
+const headerProps = {
+  removeHeader: true,
+  removePadding: true,
+};
+const isVisible = true;
+
+const books = [
+  {
+    title: "Mastering Bitcoin",
+    description:
+      "Andreas Antonopoulos' comprehensive guide to Bitcoin's technical foundations — transactions, keys, mining, and the network.",
+    link: "https://github.com/bitcoinbook/bitcoinbook",
+    tag: "Essential",
+  },
+  {
+    title: "Programming Bitcoin",
+    description:
+      "Jimmy Song's hands-on guide to learning Bitcoin by building it from scratch in Python.",
+    link: "https://programmingbitcoin.com/",
+    tag: "Developer",
+  },
+  {
+    title: "The Bitcoin Standard",
+    description:
+      "Saifedean Ammous' exploration of the economics and history of money, and Bitcoin's role as sound money.",
+    link: "https://saifedean.com/thebitcoinstandard",
+    tag: "Economics",
+  },
+  {
+    title: "Grokking Bitcoin",
+    description:
+      "A visually rich, beginner-friendly book that explains how Bitcoin works under the hood with clear illustrations.",
+    link: "https://github.com/kallerosenbaum/grokkingbitcoin",
+    tag: "Beginner",
+  },
+  {
+    title: "Mastering the Lightning Network",
+    description:
+      "The definitive guide to the Lightning Network — second-layer payment channels, routing, and building LN applications.",
+    link: "https://github.com/lnbook/lnbook",
+    tag: "Lightning",
+  },
+  {
+    title: "Bitcoin Development Philosophy",
+    description:
+      "Understand the principles and philosophy behind Bitcoin Core development and open-source contribution.",
+    link: "https://bitcoindevphilosophy.com/",
+    tag: "Philosophy",
+  },
+];
+
+const technicalResources = [
+  {
+    title: "Bitcoin Optech",
+    description:
+      "Weekly newsletters covering the latest Bitcoin tech developments, soft fork proposals, and protocol changes.",
+    link: "https://bitcoinops.org/",
+    tag: "Newsletter",
+  },
+  {
+    title: "Learn Me a Bitcoin",
+    description:
+      "Greg Walker's beautifully illustrated, interactive guide to how Bitcoin works — from transactions to mining.",
+    link: "https://learnmeabitcoin.com/",
+    tag: "Interactive",
+  },
+  {
+    title: "Bitcoin Wiki",
+    description:
+      "Community-maintained wiki covering Bitcoin protocols, concepts, and technical specifications.",
+    link: "https://en.bitcoin.it/wiki/Main_Page",
+    tag: "Reference",
+  },
+  {
+    title: "Bitcoin Improvement Proposals (BIPs)",
+    description:
+      "The design documents for Bitcoin protocol changes. Essential reading for understanding Bitcoin's evolution.",
+    link: "https://github.com/bitcoin/bips",
+    tag: "Protocol",
+  },
+  {
+    title: "Bitcoin Core Source Code",
+    description:
+      "The reference implementation of Bitcoin. Dive into the codebase to understand how Bitcoin actually works.",
+    link: "https://github.com/bitcoin/bitcoin",
+    tag: "Code",
+  },
+  {
+    title: "Bitcoin Stack Exchange",
+    description:
+      "Q&A site for Bitcoin developers and enthusiasts. Great for finding answers to specific technical questions.",
+    link: "https://bitcoin.stackexchange.com/",
+    tag: "Q&A",
+  },
+];
+
+const courses = [
+  {
+    title: "Chaincode Seminars",
+    description:
+      "Curated study groups covering Bitcoin protocol development, Lightning Network, and Bitcoin Core contributions.",
+    link: "https://chaincode.com/",
+    tag: "Seminar",
+  },
+  {
+    title: "Base58 Courses",
+    description:
+      "Deep-dive technical courses on Bitcoin transactions, scripting, and protocol development by Lisa Neigut.",
+    link: "https://base58.info/",
+    tag: "Course",
+  },
+  {
+    title: "Saylor Academy - Bitcoin for Everybody",
+    description:
+      "A free, beginner-friendly course covering the basics of Bitcoin, its history, and economic significance.",
+    link: "https://learn.saylor.org/course/PRDV151",
+    tag: "Free",
+  },
+  {
+    title: "MIT OCW - Blockchain and Money",
+    description:
+      "Gary Gensler's MIT course exploring blockchain technology, crypto finance, and the future of money.",
+    link: "https://ocw.mit.edu/courses/15-s12-blockchain-and-money-fall-2018/",
+    tag: "University",
+  },
+  {
+    title: "Bitshala Study Cohorts",
+    description:
+      "Bitshala's own guided study cohorts — structured learning paths for Bitcoin development with mentorship.",
+    link: "/cohorts",
+    tag: "Bitshala",
+  },
+  {
+    title: "Bitcoin Optech Workshops",
+    description:
+      "Technical workshops by Bitcoin Optech for wallet developers and engineers working with Bitcoin.",
+    link: "https://bitcoinops.org/en/topics/",
+    tag: "Workshop",
+  },
+];
+
+const tools = [
+  {
+    title: "Bitcoin Signet",
+    description:
+      "A test network for Bitcoin with a controlled block production. Perfect for development and testing.",
+    link: "https://en.bitcoin.it/wiki/Signet",
+    tag: "Testnet",
+  },
+  {
+    title: "Polar",
+    description:
+      "One-click Lightning Network development environment. Spin up local LN nodes for testing in seconds.",
+    link: "https://lightningpolar.com/",
+    tag: "Lightning",
+  },
+  {
+    title: "Bitcoin Script IDE",
+    description:
+      "An interactive IDE for writing, debugging, and understanding Bitcoin Script operations.",
+    link: "https://siminchen.github.io/bitcoinIDE/build/editor.html",
+    tag: "Scripting",
+  },
+  {
+    title: "Mempool.space",
+    description:
+      "Open-source Bitcoin blockchain explorer and mempool visualizer. Essential tool for understanding transactions.",
+    link: "https://mempool.space/",
+    tag: "Explorer",
+  },
+  {
+    title: "Bitcoin Transcripts",
+    description:
+      "Searchable archive of transcripts from Bitcoin conferences, meetups, and developer discussions.",
+    link: "https://btctranscripts.com/",
+    tag: "Transcripts",
+  },
+  {
+    title: "Bitcoin Search",
+    description:
+      "AI-powered search engine for Bitcoin technical documentation, mailing lists, and developer resources.",
+    link: "https://bitcoinsearch.xyz/",
+    tag: "Search",
+  },
+];
+---
+
+<Layout
+  title="Resources"
+  headerProps={headerProps}
+  isVisible={isVisible}
+>
+  <div class="mx-auto mt-24 w-full max-w-[1280px] px-4 md:px-8 lg:mt-32">
+    <!-- Page Header -->
+    <div class="flex flex-col gap-4 pb-12 lg:pb-16">
+      <h1
+        class="font-header text-4xl font-bold text-black md:text-5xl lg:text-[60px] lg:leading-[1.1]"
+      >
+        Bitcoin Study <span class="text-orange">Resources</span>
+      </h1>
+      <p class="max-w-3xl font-base text-lg leading-relaxed text-black md:text-xl lg:text-2xl">
+        A curated collection of books, courses, tools, and references to help
+        you on your Bitcoin learning journey — whether you're just getting
+        started or diving deep into protocol development.
+      </p>
+    </div>
+
+    <!-- Sections -->
+    <div class="flex flex-col gap-16 pb-16 lg:gap-24 lg:pb-24">
+      <ResourceSection
+        heading="📚 Books"
+        description="Foundational reading for understanding Bitcoin — from beginner-friendly introductions to deep technical dives."
+        resources={books}
+      />
+
+      <ResourceSection
+        heading="🔧 Technical References"
+        description="Documentation, wikis, and newsletters to stay current with Bitcoin's technical landscape."
+        resources={technicalResources}
+      />
+
+      <ResourceSection
+        heading="🎓 Courses & Seminars"
+        description="Structured learning paths — free courses, university programs, and guided cohorts."
+        resources={courses}
+      />
+
+      <ResourceSection
+        heading="🛠 Developer Tools"
+        description="Testnets, explorers, and development environments to build and experiment with Bitcoin."
+        resources={tools}
+      />
+    </div>
+  </div>
+</Layout>
