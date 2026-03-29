@@ -113,6 +113,11 @@ const SideMenu = () => {
       link: "/clubs",
       subMenu: [],
     },
+    {
+      name: "Resources",
+      link: "/resources",
+      subMenu: [],
+    },
   ];
 
   return (
