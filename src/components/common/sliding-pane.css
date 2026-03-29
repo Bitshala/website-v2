@@ -47,6 +47,7 @@
   left: 0px;
   right: 0px;
   bottom: 0px;
+  z-index: 40;
   background-color: rgba(0, 0, 0, 0);
 }
 .slide-pane__overlay.overlay-after-open {
