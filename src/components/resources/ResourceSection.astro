@@ -1,0 +1,55 @@
+---
+interface Resource {
+  title: string;
+  description: string;
+  link: string;
+  tag: string;
+}
+
+interface Props {
+  heading: string;
+  description: string;
+  resources: Resource[];
+}
+
+const { heading, description, resources } = Astro.props;
+---
+
+<div class="flex flex-col gap-8">
+  <div>
+    <h2 class="font-header text-3xl font-bold text-black lg:text-[40px]">
+      {heading}
+    </h2>
+    <p class="mt-3 font-base text-lg leading-relaxed text-black lg:text-xl">
+      {description}
+    </p>
+  </div>
+
+  <div class="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
+    {
+      resources.map((resource) => (
+        <a
+          href={resource.link}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="group flex flex-col justify-between gap-4 rounded-2xl border border-darkPeach bg-peach p-6 transition-colors hover:bg-hover"
+        >
+          <div class="flex flex-col gap-3">
+            <span class="w-fit rounded-full bg-orange px-3 py-1 font-base text-xs font-bold uppercase text-white">
+              {resource.tag}
+            </span>
+            <h3 class="font-header text-xl font-bold text-black lg:text-2xl">
+              {resource.title}
+            </h3>
+            <p class="font-base text-base leading-relaxed text-black" style="font-weight: 400;">
+              {resource.description}
+            </p>
+          </div>
+          <span class="font-header text-base text-orange" style="font-weight: 600;">
+            Explore →
+          </span>
+        </a>
+      ))
+    }
+  </div>
+</div>
