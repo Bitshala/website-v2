@@ -99,6 +99,7 @@ const SideMenu = () => {
         { name: "Bitcoin Clubs", link: "/clubs" },
         { name: "Fellowship", link: "/fellowship" },
         { name: "Chaincode BOSS", link: "/chaincodeboss" },
+        { name: "Resources", link: "/resources" },
       ],
     },
     {
@@ -114,8 +115,8 @@ const SideMenu = () => {
       subMenu: [],
     },
     {
-      name: "Resources",
-      link: "/resources",
+      name: "Blogs & Posts",
+      link: "/blogs",
       subMenu: [],
     },
   ];
