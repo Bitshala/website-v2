@@ -1,6 +1,14 @@
 ---
 const summits = [
   {
+    id: "Winter-2026",
+    label: "Winter 2026",
+    comingSoon: true,
+    scheduleImage: "/boss26/boss26schedule.png",
+    scheduleUrl:
+      "https://github.com/Bitshala/BOSS-Summit/blob/main/summer-2026/schedule.png",
+  },
+  {
     id: "Summer-2026",
     label: "Summer 2026",
     scheduleImage: "/boss26/boss26schedule.png",
@@ -29,71 +37,83 @@ const summits = [
   class="w-full px-4 py-16 md:px-8 lg:px-24 xl:px-32"
 >
   <div class="mx-auto max-w-[1400px]">
-    <div class="flex flex-col justify-between lg:flex-row lg:items-center">
-        <h2 class="mb-8 text-left font-boss text-3xl md:mb-12 md:text-5xl lg:text-[48px]">
-          Last Summit's  <span class="bg-[#F4F199] text-black"
-            >Agenda</span
-          >
-          (get an Idea)
-        </h2>
+    <div
+      class="flex flex-col justify-between lg:flex-row lg:items-center"
+    >
+      <h2
+        class="mb-8 text-left font-boss text-3xl md:mb-12 md:text-5xl lg:text-[48px]"
+      >
+        Last Summit's <span class="bg-[#F4F199] text-black"
+          >Agenda</span
+        >
+        (get an Idea)
+      </h2>
 
-        <!-- Tabs -->
-        <div class="mb-8 flex items-center justify-start gap-4 md:justify-end">
-          <!-- Chevron Left Button -->
-          <button
-            id="chevron-left"
-            class="flex h-12 w-12 items-center justify-center rounded-lg  text-white transition-colors hover:bg-[#9B6A8C]"
-            aria-label="Previous summit"
+      <!-- Tabs -->
+      <div
+        class="mb-8 flex items-center justify-start gap-4 md:justify-end"
+      >
+        <!-- Chevron Left Button -->
+        <button
+          id="chevron-left"
+          class="flex h-12 w-12 items-center justify-center rounded-lg text-white transition-colors hover:bg-[#9B6A8C]"
+          aria-label="Previous summit"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="2"
+            stroke="currentColor"
+            class="h-6 w-6"
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke-width="2"
-              stroke="currentColor"
-              class="h-6 w-6"
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M15.75 19.5L8.25 12l7.5-7.5"></path>
+          </svg>
+        </button>
+
+        <!-- Visible window of 2 tab "slots" (labels filled by script) -->
+        <div id="schedule-tabs" data-summits={JSON.stringify(summits)}>
+          <div
+            id="schedule-tabs-track"
+            class="flex items-center gap-4 transition-all duration-300"
+          >
+            <button
+              data-slot="0"
+              class="schedule-tab-button rounded-xl border-2 border-solid border-[#962573] bg-[#2b1223] px-4 py-2 font-boss text-lg text-white outline-none transition-colors hover:border-[#F4F199] hover:bg-[#F4F199] hover:text-black md:px-6 md:py-3 md:text-[24px]"
             >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M15.75 19.5L8.25 12l7.5-7.5"
-              />
-            </svg>
-          </button>
-
-          {
-            summits.map((summit, index) => (
-              <button
-                data-schedule-tab={summit.id}
-                class={`schedule-tab-button px-4 py-2 font-boss text-lg md:px-6 md:py-3 md:text-[24px] transition-colors border-[#962573] border-2 border-solid rounded-xl bg-[#2b1223] outline-none text-white hover:bg-[#F4F199] hover:text-black hover:border-[#F4F199]`}
-              >
-                {summit.label}
-              </button>
-            ))
-          }
-
-          <!-- Chevron Right Button -->
-          <button
-            id="chevron-right"
-            class="flex h-12 w-12 items-center justify-center rounded-lg   text-white transition-colors hover:bg-[#9B6A8C]"
-            aria-label="Next summit"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke-width="2"
-              stroke="currentColor"
-              class="h-6 w-6"
+            </button>
+            <button
+              data-slot="1"
+              class="schedule-tab-button rounded-xl border-2 border-solid border-[#962573] bg-[#2b1223] px-4 py-2 font-boss text-lg text-white outline-none transition-colors hover:border-[#F4F199] hover:bg-[#F4F199] hover:text-black md:px-6 md:py-3 md:text-[24px]"
             >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M8.25 4.5l7.5 7.5-7.5 7.5"
-              />
-            </svg>
-          </button>
+            </button>
+          </div>
         </div>
+
+        <!-- Chevron Right Button -->
+        <button
+          id="chevron-right"
+          class="flex h-12 w-12 items-center justify-center rounded-lg text-white transition-colors hover:bg-[#9B6A8C]"
+          aria-label="Next summit"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="2"
+            stroke="currentColor"
+            class="h-6 w-6"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M8.25 4.5l7.5 7.5-7.5 7.5"></path>
+          </svg>
+        </button>
+      </div>
     </div>
 
     <!-- Schedule Content for each summit -->
@@ -103,19 +123,27 @@ const summits = [
           data-schedule-content={summit.id}
           class={`schedule-content ${index === 0 ? "" : "hidden"}`}
         >
-          <div class="relative mt-8 overflow-x-auto md:mt-16">
-            <img
-              src={summit.scheduleImage}
-              alt={`${summit.label} Schedule`}
-              class="h-auto w-full min-w-[600px] md:min-w-0"
-            />
-          </div>
+          {summit.comingSoon ? (
+            <div class="flex min-h-[300px] items-center justify-center py-16 md:min-h-[400px] md:py-24">
+              <h3 class="text-center font-boss text-[98px] leading-tight md:text-[122px] lg:text-[146px]">
+                Coming<br />Soon
+              </h3>
+            </div>
+          ) : (
+            <div class="relative mt-8 overflow-x-auto md:mt-16">
+              <img
+                src={summit.scheduleImage}
+                alt={`${summit.label} Schedule`}
+                class="h-auto w-full min-w-[600px] md:min-w-0"
+              />
+            </div>
+          )}
 
           <div class="pt-4 text-center">
             <a
               href={summit.scheduleUrl}
               target="_blank"
-              class="hidden inline-block rounded-lg bg-[#662c53] px-8 py-3 font-boss text-2xl transition-colors hover:bg-[#9B6A8C] md:px-12 md:py-4 md:text-4xl"
+              class="inline-block hidden rounded-lg bg-[#662c53] px-8 py-3 font-boss text-2xl transition-colors hover:bg-[#9B6A8C] md:px-12 md:py-4 md:text-4xl"
             >
               Check Out the Schedule
             </a>
@@ -127,74 +155,123 @@ const summits = [
 </section>
 
 <script>
-  // Tab switching functionality for schedule
-  const scheduleTabButtons = document.querySelectorAll(
-    ".schedule-tab-button"
-  );
-  const scheduleContents = document.querySelectorAll(
-    ".schedule-content"
-  );
-  const chevronLeft = document.getElementById("chevron-left");
-  const chevronRight = document.getElementById("chevron-right");
-
-  let currentTabIndex = 0;
-
-  function switchToTab(index:number) {
-    const button = scheduleTabButtons[index];
-    if (!button) return;
-
-    const targetTab = button.getAttribute("data-schedule-tab");
-
-    // Update button states
-    scheduleTabButtons.forEach((btn) => {
-      if (
-        btn.getAttribute("data-schedule-tab") ===
-        targetTab
-      ) {
-        // Active state: agenda yellow accent
-        btn.classList.remove("bg-[#2b1223]", "border-[#962573]", "text-white");
-        btn.classList.add("bg-[#F4F199]", "border-[#F4F199]", "text-black");
-      } else {
-        // Inactive state
-        btn.classList.remove("bg-[#F4F199]", "border-[#F4F199]", "text-black");
-        btn.classList.add("bg-[#2b1223]", "border-[#962573]", "text-white");
-      }
-    });
-
-    // Show/hide schedule content
-    scheduleContents.forEach((content) => {
-      if (
-        content.getAttribute("data-schedule-content") ===
-        targetTab
-      ) {
-        content.classList.remove("hidden");
-      } else {
-        content.classList.add("hidden");
-      }
-    });
-
-    currentTabIndex = index;
+  // Schedule tabs: a sliding window of 2 visible "slot" buttons that the
+  // chevrons advance through the full summit list (by 1, wrapping around).
+  interface Summit {
+    id: string;
+    label: string;
   }
 
-  scheduleTabButtons.forEach((button, index) => {
-    button.addEventListener("click", () => {
-      switchToTab(index);
+  const tabsEl = document.getElementById("schedule-tabs");
+  const trackEl = document.getElementById(
+    "schedule-tabs-track",
+  );
+  const slotButtons =
+    document.querySelectorAll<HTMLButtonElement>(
+      "[data-slot]",
+    );
+  const scheduleContents = document.querySelectorAll(
+    ".schedule-content",
+  );
+  const chevronLeft =
+    document.getElementById("chevron-left");
+  const chevronRight =
+    document.getElementById("chevron-right");
+
+  if (tabsEl && trackEl && slotButtons.length === 2) {
+    const summits: Summit[] = JSON.parse(
+      tabsEl.dataset.summits || "[]",
+    );
+    const n = summits.length;
+
+    // Left slot shows summits[startIndex], right slot the next one.
+    let startIndex = 0;
+    let activeId = summits[0]?.id ?? "";
+
+    const visibleIds = () => [
+      summits[startIndex].id,
+      summits[(startIndex + 1) % n].id,
+    ];
+
+    function setActiveStyles(
+      btn: HTMLButtonElement,
+      active: boolean,
+    ) {
+      if (active) {
+        btn.classList.remove(
+          "bg-[#2b1223]",
+          "border-[#962573]",
+          "text-white",
+        );
+        btn.classList.add(
+          "bg-[#F4F199]",
+          "border-[#F4F199]",
+          "text-black",
+        );
+      } else {
+        btn.classList.remove(
+          "bg-[#F4F199]",
+          "border-[#F4F199]",
+          "text-black",
+        );
+        btn.classList.add(
+          "bg-[#2b1223]",
+          "border-[#962573]",
+          "text-white",
+        );
+      }
+    }
+
+    function render() {
+      slotButtons.forEach((btn, i) => {
+        const summit = summits[(startIndex + i) % n];
+        btn.textContent = summit.label;
+        btn.setAttribute("data-schedule-tab", summit.id);
+        setActiveStyles(btn, summit.id === activeId);
+      });
+
+      scheduleContents.forEach((content) => {
+        content.classList.toggle(
+          "hidden",
+          content.getAttribute("data-schedule-content") !==
+            activeId,
+        );
+      });
+    }
+
+    function slide(dir: number) {
+      startIndex = (startIndex + dir + n) % n;
+      // Keep the current selection if it's still visible,
+      // otherwise default to the left tab.
+      if (!visibleIds().includes(activeId)) {
+        activeId = summits[startIndex].id;
+      }
+
+      // Smooth fade + directional slide on the tabs track.
+      const shift =
+        dir > 0 ? "translate-x-4" : "-translate-x-4";
+      trackEl!.classList.add("opacity-0", shift);
+      setTimeout(() => {
+        render();
+        trackEl!.classList.remove(shift);
+        void trackEl!.offsetWidth; // force reflow
+        trackEl!.classList.remove("opacity-0");
+      }, 150);
+    }
+
+    slotButtons.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const id = btn.getAttribute("data-schedule-tab");
+        if (id) {
+          activeId = id;
+          render();
+        }
+      });
     });
-  });
 
-  // Chevron navigation (wraps around)
-  const totalTabs = scheduleTabButtons.length;
+    chevronLeft?.addEventListener("click", () => slide(-1));
+    chevronRight?.addEventListener("click", () => slide(1));
 
-  chevronLeft?.addEventListener("click", () => {
-    const newIndex = (currentTabIndex - 1 + totalTabs) % totalTabs;
-    switchToTab(newIndex);
-  });
-
-  chevronRight?.addEventListener("click", () => {
-    const newIndex = (currentTabIndex + 1) % totalTabs;
-    switchToTab(newIndex);
-  });
-
-  // Initialize first tab (Summer 2026) as active on page load
-  switchToTab(0);
+    render();
+  }
 </script>
