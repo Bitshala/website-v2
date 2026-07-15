@@ -1,0 +1,87 @@
+---
+const takeaways = [
+  {
+    name: "Rust Fundamentals With Real Context",
+    desc: "Build a practical foundation in Rust syntax, ownership, borrowing, lifetimes, and idiomatic project structure through Bitcoin-flavored problems.",
+  },
+  {
+    name: "Domain Modeling for Bitcoin",
+    desc: "Model transactions, blocks, networks, validation errors, and reusable library APIs that can power miners, nodes, and wallet tools.",
+  },
+  {
+    name: "Production-Style Engineering Habits",
+    desc: "Practice testing, error handling, linting, serialization, modular architecture, and clean CLI design using real assignment workflows.",
+  },
+  {
+    name: "Concurrency and Async Skills",
+    desc: "Implement multi-threaded CPU mining, then move to async Rust and Tokio for networking and node-style command handling.",
+  },
+  {
+    name: "End-to-End Bitcoin Builder Path",
+    desc: "Finish with wallet construction, request/dispatch design, and an extended capstone window to integrate all prior components.",
+  },
+  {
+    name: "Certificate and Community",
+    desc: "Earn a completion certificate and continue collaborating with peers, TAs, and mentors on deeper Bitcoin open-source work.",
+  },
+];
+---
+
+<div class="lg:p-8">
+  <h1
+    class="mb-3 mt-8 font-header text-3xl font-bold md:text-6xl lg:text-6xl"
+    id="about_us"
+  >
+    Building Bitcoin in Rust by Lukáš Hozda
+  </h1>
+
+  <p class="font-base text-base md:text-base lg:text-2xl">
+    <span class="font-bold text-orange">What is it?</span>
+    This is an <strong>11-week Rust cohort</strong> designed for programmers who are new to Rust and want to learn it through a practical Bitcoin-focused build path. The curriculum follows the learning arc of <strong><a
+      target="_blank"
+      class="underline"
+      href="https://braiins.com/books/building-bitcoin-in-rust?lang=en"
+      >Building Bitcoin in Rust</a
+    ></strong>, starting with Rust setup and fundamentals, then moving through ownership, traits, testing, mining, async networking, node design, and wallet construction.
+  </p>
+
+  <p class="my-5 text-base md:text-base lg:text-2xl">
+    <span class="font-bold text-orange">Who is it for?</span>
+    This cohort is for developers and technical learners who can code in at least one language and want to transition into <span class="font-bold">Rust + Bitcoin systems programming</span>. If you prefer learning by building and want clear weekly structure, this track is for you.
+  </p>
+
+  <p class="text-base md:text-base lg:text-2xl">
+    <span class="font-bold text-orange">What are the prerequisites?</span>
+    Comfort with basic programming concepts (functions, loops, data structures, and debugging) is expected. Prior Rust experience is <strong>not required</strong>. Familiarity with Git and command-line workflows will help. Bitcoin curiosity is required; deep protocol expertise is not.
+  </p>
+
+  <div class="my-10">
+    <h3 class="my-8 text-2xl font-bold text-orange">
+      What are the takeaways?
+    </h3>
+    <ul class="list-disc pl-5 lg:pl-10">
+      {
+        takeaways.map((takeaway) => (
+          <li class="my-4 lg:text-2xl">
+            <span class="font-header font-bold">{takeaway.name}</span>: {takeaway.desc}
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+
+  <p class="text-base md:text-base lg:text-2xl">
+    <span class="font-bold text-orange">What is the assignment flow?</span>
+    Each week includes one live teaching session and one GitHub Classroom assignment. Assignments are test-driven with visible tests for feedback and may include hidden tests for edge-case grading.
+  </p>
+
+  <p class="mt-5 text-base md:text-base lg:text-2xl">
+    <span class="font-bold text-orange">Primary reference book:</span>
+    <a
+      target="_blank"
+      class="underline"
+      href="https://braiins.com/books/building-bitcoin-in-rust?lang=en"
+      >Building Bitcoin in Rust (Braiins)</a
+    > by Lukáš Hozda.
+  </p>
+</div>

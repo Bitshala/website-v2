@@ -1,4 +1,4 @@
-export type CohortKey = "bpd" | "mb" | "lbtcl" | "pb" | "ln";
+export type CohortKey = "bpd" | "mb" | "lbtcl" | "pb" | "ln" | "rust";
 
 /**
  * Maps short keys used in pages to API keys
@@ -9,6 +9,7 @@ export const COHORT_KEY_MAP: Record<CohortKey, string> = {
   lbtcl: "LEARNING_BITCOIN_FROM_COMMAND_LINE",
   pb: "PROGRAMMING_BITCOIN",
   ln: "MASTERING_LIGHTNING_NETWORK",
+  rust: "BUILDING_BITCOIN_IN_RUST",
 };
 
 export function formatDate(date: string) {
