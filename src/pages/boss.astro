@@ -14,7 +14,7 @@ import Navbar from "../components/boss/Navbar.astro";
     <meta charset="UTF-8" />
     <meta
       name="description"
-      content="Join us Oct 26 - 30, 2026 in Jaipur for a week of Bitcoin Open Source development."
+      content="Join us Oct 26 - 31, 2026 in Jaipur for a week of Bitcoin Open Source development."
     />
     <meta name="viewport" content="width=device-width" />
     <link
@@ -54,7 +54,7 @@ import Navbar from "../components/boss/Navbar.astro";
     />
     <meta
       property="og:description"
-      content="Join us Oct 26 - 30, 2026 in Jaipur for a week of Bitcoin Open Source development. Developers & designers sharing demos, workshops, and working on active GitHub repos."
+      content="Join us Oct 26 - 31, 2026 in Jaipur for a week of Bitcoin Open Source development. Developers & designers sharing demos, workshops, and working on active GitHub repos."
     />
     <meta
       property="og:image"
@@ -80,7 +80,7 @@ import Navbar from "../components/boss/Navbar.astro";
     />
     <meta
       name="twitter:description"
-      content="Join us Oct 26 - 30, 2026 in Jaipur for a week of Bitcoin Open Source development. Developers & designers sharing demos, workshops, and working on active GitHub repos."
+      content="Join us Oct 26 - 31, 2026 in Jaipur for a week of Bitcoin Open Source development. Developers & designers sharing demos, workshops, and working on active GitHub repos."
     />
     <meta
       name="twitter:image"
@@ -92,20 +92,35 @@ import Navbar from "../components/boss/Navbar.astro";
     <main class="bg-bossBg text-base text-white lg:text-lg">
       <section
         id="hero"
-        class="flex w-full flex-col items-center justify-center px-4 pb-4 pt-24 md:px-8 md:pt-36 lg:min-h-screen lg:px-16"
+        class="flex w-full flex-col items-center justify-center gap-4 px-4 pb-4 pt-24 md:gap-6 md:px-8 md:pt-32 lg:min-h-screen lg:px-16 lg:pb-8 lg:pt-28"
       >
         <img
           src="/boss/hero.webp"
           alt="Bitshala BOSS Summit"
-          class="h-auto w-full max-w-7xl object-contain"
+          class="h-auto w-full max-w-6xl object-contain lg:max-h-[58vh]"
         />
-        <a
-          href="https://luma.com/bitshalaboss"
-          target="_blank"
-          class="mt-8 inline-block rounded-lg bg-[#662c53] px-10 py-3 font-boss text-2xl transition-colors hover:bg-[#9B6A8C] md:mt-12 md:px-14 md:py-4 md:text-4xl"
+
+        <div
+          class="flex flex-row flex-wrap items-center justify-center gap-4 md:gap-8"
         >
-          Apply for the next event
-        </a>
+          <div class="flex items-center gap-3">
+            <img
+              src="/boss/goa.webp"
+              alt="Location"
+              class="h-8 w-8 md:h-10 md:w-10"
+            />
+            <span class="text-lg md:text-xl">Jaipur</span>
+          </div>
+
+          <div class="flex items-center gap-3">
+            <img
+              src="/boss/date.webp"
+              alt="Date"
+              class="h-8 w-8 md:h-10 md:w-10"
+            />
+            <span class="text-lg md:text-xl">26 Oct - 31 Oct</span>
+          </div>
+        </div>
       </section>
 
       <section id="about">
