@@ -1,0 +1,163 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import CohortStructure from "../../components/cohortPages/CohortStructure.astro";
+import CohortDetails from "../../components/cohortPages/common/CohortDetails.astro";
+import Syllabus from "../../components/cohortPages/Syllabus.astro";
+import CohortHeader from "../../components/cohort/CohortHeader.astro";
+import Application from "../../components/common/Application";
+import About from "../../components/cohortPages/rust/About.astro";
+import MeetYourTAs from "../../components/cohortPages/common/MeetYourTAs.astro";
+import CohortGraduates from "../../components/cohortPages/CohortGraduates.astro";
+import { getCohortStartDate, getCohortEndDate, getCohortRegistrationDeadline } from "../../lib/cohorts";
+
+const headerProps = {
+  removeHeader: true,
+};
+const role = "rust_cohort";
+const cohortName = "Building Bitcoin in Rust";
+const isVisible = true;
+
+const res = await fetch("https://api.bitshala.org/Cohorts/available");
+const cohorts = await res.json();
+
+const commencementDate = getCohortStartDate(cohorts, "rust");
+const endDate = getCohortEndDate(cohorts, "rust");
+const registrationDeadline = getCohortRegistrationDeadline(cohorts, "rust");
+---
+
+<Layout
+  title="Building Bitcoin in Rust Cohort"
+  headerProps={headerProps}
+  isVisible={isVisible}
+>
+  <CohortHeader img="/cohort/rust.webp" />
+
+  <About />
+  <div class="px-3 lg:px-8">
+    <a
+      href="#applicationForm"
+      class="inline-block rounded-lg bg-black px-6 py-3 font-header font-bold text-white hover:bg-orange transition-colors lg:text-lg"
+    >
+      Apply Now
+    </a>
+  </div>
+
+  <CohortDetails
+    format={[
+      {
+        name: "Start date",
+        desc: commencementDate,
+      },
+      {
+        name: "End date",
+        desc: endDate,
+      },
+      {
+        name: "Registration deadline",
+        desc: registrationDeadline,
+      },
+      {
+        name: "Duration",
+        desc: "11 weeks",
+      },
+      {
+        name: "Session timing",
+        desc: "8:00 PM - 9:30 PM IST",
+      },
+      {
+        name: "Cohort level",
+        desc: "Intermediate",
+      },
+      {
+        name: "Mode",
+        desc: "Self-study, weekly live sessions, GitHub Classroom assignments, group discussions, and QnA",
+      },
+      {
+        name: "Format",
+        desc: "Online virtual classroom",
+      },
+    ]}
+  />
+
+  <CohortStructure />
+
+  <Syllabus
+    syllabus={[
+      {
+        week: "Week 00",
+        name: "Introductions",
+        chNo: "",
+      },
+      {
+        week: "Week 01",
+        name: "Rust setup, syntax, data structures, and Bitcoin context",
+        chNo: "Intro",
+      },
+      {
+        week: "Week 02",
+        name: "Functions, ownership, borrowing, structs, enums, pattern matching",
+        chNo: "Ownership",
+      },
+      {
+        week: "Week 03",
+        name: "Bitcoin library architecture and domain modeling",
+        chNo: "Types",
+      },
+      {
+        week: "Week 04",
+        name: "Error handling, traits, generics, and iterators",
+        chNo: "Traits",
+      },
+      {
+        week: "Week 05",
+        name: "Testing, tooling, closures, macros, and serialization",
+        chNo: "Testing",
+      },
+      {
+        week: "Week 06",
+        name: "Smart pointers, interior mutability, and CPU mining",
+        chNo: "Mining",
+      },
+      {
+        week: "Week 07",
+        name: "Async Rust, Tokio, networking, and node foundations",
+        chNo: "Async",
+      },
+      {
+        week: "Week 08",
+        name: "Wallet CLI, dispatch, and design patterns",
+        chNo: "CLI/TUI",
+      },
+      {
+        week: "Week 09",
+        name: "Capstone build sprint",
+        chNo: "",
+      },
+      {
+        week: "Week 10",
+        name: "Capstone completion, demos, reviews, and graduation",
+        chNo: "",
+      },
+    ]}
+  >
+    <p
+      slot="additionalText"
+      class="mt-5 font-medium lg:text-xl"
+    >
+      The weekly arc is based on <span class="font-bold">Building Bitcoin in Rust</span>, with a practical assignment every week and a capstone phase in the final two weeks.
+    </p>
+  </Syllabus>
+
+  <MeetYourTAs />
+
+  <div id="applicationForm">
+    <Application
+      client:only
+      cohortName={cohortName}
+      role={role}
+      regOpen={false}
+    />
+  </div>
+
+  <CohortGraduates />
+</Layout>
