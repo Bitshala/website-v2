@@ -63,72 +63,9 @@ const cardsList = [
 ---
 
 <div class="-mt-20 md:-mt-32 lg:-mt-40">
-  <!-- Row 1: First 3 cards -->
-  <div
-    class="mb-6 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3"
-  >
+  <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
     {
-      cardsList.slice(0, 3).map((card) => {
-        const startDate = getCohortStartDate(cohorts, card.key);
-        return (
-          <div class="flex flex-col items-start gap-5 self-stretch rounded-2xl bg-[#FFF0E5] p-6">
-            <h2 class="font-header text-[28px] font-medium leading-[120%] text-[#333]">
-              {card.name}
-            </h2>
-
-            <div class="flex flex-wrap items-center gap-2">
-              {card.tags.map((tag) => (
-                <span class="rounded-full border border-orange px-3 py-1 text-sm font-medium text-orange">
-                  {tag}
-                </span>
-              ))}
-            </div>
-
-            <p class="text-[20px] font-normal leading-[130%] text-[#333]">
-              {card.desc}
-            </p>
-
-            <p class="text-[14px] font-bold leading-[150%] text-[#333]">
-              Starts: {startDate}
-            </p>
-
-            <p class="text-[14px] font-bold leading-[150%] text-[#333]">
-              Time Commitment: {card.time}
-            </p>
-
-            <div class="flex items-center gap-4">
-              <a
-                href={`${card.url}/apply`}
-                class="rounded-md bg-black px-3 py-1 text-sm font-medium text-white hover:bg-orange transition-colors"
-              >
-                Apply Now
-              </a>
-              <a
-                href={card.url}
-                class="flex items-center gap-1 text-[16px] font-bold text-orange hover:underline"
-              >
-                Tell me more
-                <span class="text-lg">&rarr;</span>
-              </a>
-            </div>
-
-            <img
-              src={card.img}
-              alt={card.name}
-              class="w-full rounded-xl"
-            />
-          </div>
-        );
-      })
-    }
-  </div>
-
-  <!-- Row 2: Last 2 cards centered -->
-  <div
-    class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:mx-auto lg:max-w-[66%]"
-  >
-    {
-      cardsList.slice(3, 5).map((card) => {
+      cardsList.map((card) => {
         const startDate = getCohortStartDate(cohorts, card.key);
         return (
           <div class="flex flex-col items-start gap-5 self-stretch rounded-2xl bg-[#FFF0E5] p-6">
