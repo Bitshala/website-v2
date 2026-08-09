@@ -1,70 +1,109 @@
 ---
 import { testimonial } from "../common/list.js";
-import TestimonialMobile from "./TestimonialMobile";
 
-const imageList = [
-  ["/testimonial/1.webp", "/testimonial/2.webp"],
-  [
-    "/testimonial/3.webp",
-    "/testimonial/4.webp",
-    "/testimonial/5.webp",
-  ],
-  ["/testimonial/6.webp", "/testimonial/7.webp"],
+const people = testimonial.flat();
+
+// Matches Figma wall pattern: orange, white, black / white, orange, white / white, black, white
+const variants = [
+  "orange",
+  "white",
+  "black",
+  "white",
+  "orange",
+  "white",
+  "white",
+  "black",
+  "white",
 ];
+
+const styles = {
+  orange: {
+    card: "bg-orange text-white shadow-[5px_5px_0_0_#1a1a1a]",
+    quote: "text-black",
+    rule: "border-white/40",
+    role: "text-white/80",
+  },
+  white: {
+    card: "bg-white text-black shadow-[5px_5px_0_0_#FA8816]",
+    quote: "text-orange",
+    rule: "border-black/15",
+    role: "text-black/60",
+  },
+  black: {
+    card: "bg-[#2D2D2D] text-white shadow-[5px_5px_0_0_#FA8816]",
+    quote: "text-orange",
+    rule: "border-white/25",
+    role: "text-white/70",
+  },
+};
 ---
 
-<div>
-  <div
-    class="mx-auto mt-20 grid max-w-screen-xl grid-cols-1 gap-x-3 gap-y-4 lg:mt-40"
-  >
-    <h1
-      class="my-4 block text-center font-header text-3xl font-bold md:text-3xl lg:my-8 lg:hidden lg:text-6xl"
-    >
-      Hear from others who’ve <br /> been in the same place <br
-      /> you are right now
-    </h1>
-    <h1
-      class="my-4 hidden text-center font-header text-3xl font-bold md:text-3xl lg:my-8 lg:block lg:text-6xl"
-    >
-      Hear from others who’ve been in the <br />
-       same place you are right now
-    </h1>
+<section class="bg-peach px-4 py-16 lg:px-10 lg:py-24">
+  <div class="mx-auto flex max-w-screen-xl flex-col items-center gap-10 lg:gap-14">
+    <div class="flex flex-col items-center gap-3 text-center lg:gap-4">
+      <h2
+        class="max-w-[920px] font-header text-3xl/[1.2] font-bold md:text-4xl/[1.2] lg:text-[48px]/[1.2]"
+      >
+        “And what’s the experience of the people who have
+        already walked this path?”
+      </h2>
+      <p
+        class="font-header text-sm font-semibold tracking-[0.08em] text-black/60 lg:text-base"
+      >
+        WALL OF LOVE
+      </p>
+    </div>
 
-    <div
-      class="mt-9 hidden grid-cols-2 gap-4 p-5 lg:grid lg:grid-cols-3 lg:p-0"
-    >
+    <div class="grid w-full grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 lg:gap-6">
       {
-        imageList.map((column, colIndex) => (
-          <div class="grid gap-4">
-            {column.map((image, imgIndex) => (
-              <div>
+        people.map((item, index) => {
+          const variant = variants[index % variants.length];
+          const s = styles[variant];
+          return (
+            <article
+              class:list={[
+                "flex-col gap-4 rounded-[20px] p-5 lg:p-6",
+                s.card,
+                index >= 3 ? "hidden lg:flex" : "flex",
+              ]}
+            >
+              <span
+                class:list={[
+                  "font-header text-5xl leading-none",
+                  s.quote,
+                ]}
+                aria-hidden="true"
+              >
+                “
+              </span>
+              <p class="line-clamp-6 text-sm leading-[1.45] lg:text-base">
+                {item.text}
+              </p>
+              <hr class:list={["mt-auto border-t", s.rule]} />
+              <div class="flex items-center gap-3">
                 <img
-                  class="h-full rounded-lg "
-                  src={image}
+                  src={item.img}
                   alt=""
+                  class="h-11 w-11 rounded-full object-cover"
                 />
+                <div class="flex min-w-0 flex-col">
+                  <p class="truncate font-header text-base font-bold leading-tight">
+                    {item.name}
+                  </p>
+                  <p
+                    class:list={[
+                      "truncate text-sm leading-tight",
+                      s.role,
+                    ]}
+                  >
+                    {item.cohort}
+                  </p>
+                </div>
               </div>
-            ))}
-          </div>
-        ))
+            </article>
+          );
+        })
       }
     </div>
-
-    <div class="lg:hidden">
-      <TestimonialMobile client:load />
-    </div>
   </div>
-</div>
-<p
-  class="mb-16 mt-24 block px-2 text-center text-base lg:mb-64 lg:hidden lg:text-2xl"
->
-  P.S. "If I could do it, you can too" <br /> is what
-  they’re all trying to say :)
-</p>
-
-<p
-  class="mb-32 mt-24 hidden px-2 text-center text-base lg:mb-64 lg:block lg:text-2xl"
->
-  P.S. "If I could do it, you can too" is what they’re all
-  trying to say :)
-</p>
+</section>

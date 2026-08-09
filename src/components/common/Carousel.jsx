@@ -58,18 +58,21 @@ const bitspaceCards = [
     desc: "Bitcoin & freedom tech talks, workshops, and meetups - open to anyone in Bangalore.",
     cta: "RSVP for the next one   → ",
     href: "/bitspace",
+    img: "/bitspace/collage.jpg",
   },
   {
     title: "Host an event with us",
     desc: "Got a bitcoin talk or workshop in mind? Use the space and the crowd to run it.",
     cta: "Tell me more   → ",
     href: "mailto:contact@bitshala.org",
+    img: "/bitspace/Gallery/3.webp",
   },
   {
     title: "Co-work at Bitspace",
     desc: "A desk among Bitcoin builders and a chance to collaborate with some of the brightest minds.",
     cta: "Apply to join in   → ",
     href: "https://docs.google.com/forms/d/e/1FAIpQLScM_PzAyEKOs3QNCzX-wfvdB3stIB6yh-WoHklQU6hof9s9Rg/viewform",
+    img: "/bitspace/Gallery/7.webp",
   },
 ];
 
@@ -158,6 +161,91 @@ const tabs = [
   },
 ];
 
+const linkClass =
+  "w-fit font-header text-base font-semibold text-orange hover:underline";
+
+function isExternal(href) {
+  return href.startsWith("http") || href.startsWith("mailto:");
+}
+
+function ExtLink({ href, className, children }) {
+  return (
+    <a
+      href={href}
+      className={className}
+      target={isExternal(href) ? "_blank" : undefined}
+      rel={isExternal(href) ? "noopener noreferrer" : undefined}
+    >
+      {children}
+    </a>
+  );
+}
+
+function MobileShell({ title, cta, href, children }) {
+  return (
+    <div className="flex flex-col gap-5 rounded-[24px] bg-peach p-5">
+      <div className="flex flex-col gap-2">
+        <h2 className="font-header text-2xl font-bold leading-[1.25]">
+          {title}
+        </h2>
+        {cta && (
+          <a href={href} className={linkClass}>
+            {cta}
+          </a>
+        )}
+      </div>
+      {children}
+    </div>
+  );
+}
+
+function ClubGrid({ cols = "grid-cols-2 lg:grid-cols-3" }) {
+  return (
+    <div className={`grid gap-3 ${cols} lg:gap-5`}>
+      {clubCards.map((club) => (
+        <ExtLink
+          key={club.name}
+          href={club.href}
+          className="overflow-hidden rounded-[16px] transition-opacity hover:opacity-90 lg:rounded-[20px]"
+        >
+          <img
+            src={club.img}
+            alt={club.name}
+            className="aspect-[16/9] w-full object-cover"
+          />
+        </ExtLink>
+      ))}
+    </div>
+  );
+}
+
+function CohortGrid({ withDesc = false }) {
+  return (
+    <div
+      className={`grid grid-cols-2 gap-3 lg:grid-cols-3 lg:gap-5 ${withDesc ? "lg:grid-cols-3" : ""}`}
+    >
+      {cohortCards.map((cohort) => (
+        <a
+          key={cohort.url}
+          href={cohort.url}
+          className="group flex flex-col gap-2"
+        >
+          <img
+            src={cohort.img}
+            alt={cohort.name}
+            className="aspect-[16/9] w-full rounded-[16px] object-cover transition-opacity group-hover:opacity-90"
+          />
+          {withDesc && (
+            <p className="hidden text-sm leading-[1.3] text-black lg:block lg:text-base">
+              {cohort.desc}
+            </p>
+          )}
+        </a>
+      ))}
+    </div>
+  );
+}
+
 function Carousel() {
   const [active, setActive] = useState(0);
   const tabRefs = useRef([]);
@@ -186,11 +274,102 @@ function Carousel() {
           </p>
         </div>
 
-        <div className="flex flex-col gap-8 lg:gap-10">
+        {/* Mobile: each section is its own stacked card */}
+        <div className="flex flex-col gap-5 lg:hidden">
+          <MobileShell
+            title="SHOW UP AT YOUR LOCAL BITCOIN MEETUP"
+            cta="Tell me more   → "
+            href="/meetups"
+          >
+            <img
+              src="/home/meetup-showup.jpg"
+              alt="Show up at a Bitcoin meetup"
+              className="aspect-[4/3] w-full rounded-[16px] object-cover"
+            />
+          </MobileShell>
+
+          <MobileShell
+            title="JOIN OUR BITCOIN CLUBS"
+            cta="See all clubs   → "
+            href="/clubs"
+          >
+            <ClubGrid />
+          </MobileShell>
+
+          <MobileShell
+            title="JOIN OUR STUDY COHORTS"
+            cta="See all cohorts   → "
+            href="/cohorts"
+          >
+            <CohortGrid />
+          </MobileShell>
+
+          <MobileShell
+            title="JOIN OUR FELLOWSHIP PROGRAM"
+            cta="More details   → "
+            href="/fellowship"
+          >
+            <div className="flex flex-col gap-3">
+              {fellowshipCards.map((card) => (
+                <a
+                  key={card.title}
+                  href={card.href}
+                  className="flex flex-col gap-3 rounded-[16px] border border-black/10 bg-white p-4"
+                >
+                  <div className="flex items-center gap-2">
+                    <span
+                      aria-hidden="true"
+                      className="h-2.5 w-2.5 shrink-0 rounded-full bg-black"
+                    />
+                    <p className="font-header text-lg font-semibold leading-[1.2]">
+                      {card.title}
+                    </p>
+                  </div>
+                  <p className="text-sm leading-[1.35] text-black/80">
+                    {card.desc}
+                  </p>
+                  <span className={linkClass}>Tell me more   → </span>
+                </a>
+              ))}
+            </div>
+          </MobileShell>
+
+          <MobileShell
+            title="JOIN BITCOIN CONTRIBUTORS AT BITSPACE"
+            cta="Tell me more about Bitspace   → "
+            href="/bitspace"
+          >
+            <div className="flex flex-col gap-3">
+              {bitspaceCards.map((card) => (
+                <ExtLink
+                  key={card.title}
+                  href={card.href}
+                  className="flex flex-col gap-3 rounded-[16px] border border-black/10 bg-white p-4"
+                >
+                  <p className="font-header text-lg font-semibold leading-[1.2]">
+                    {card.title}
+                  </p>
+                  <p className="text-sm leading-[1.35] text-black/80">
+                    {card.desc}
+                  </p>
+                  <span className={linkClass}>{card.cta}</span>
+                  <img
+                    src={card.img}
+                    alt={card.title}
+                    className="aspect-[16/10] w-full rounded-[12px] object-cover"
+                  />
+                </ExtLink>
+              ))}
+            </div>
+          </MobileShell>
+        </div>
+
+        {/* Desktop: tabbed panels */}
+        <div className="hidden flex-col gap-10 lg:flex">
           <div
             role="tablist"
             aria-label="Ways to get started with Bitshala"
-            className="-mx-4 flex snap-x snap-mandatory gap-3 overflow-x-auto px-4 pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden lg:mx-0 lg:grid lg:grid-cols-5 lg:gap-4 lg:overflow-visible lg:px-0 lg:pb-0"
+            className="grid grid-cols-5 gap-4"
           >
             {tabs.map((tab, index) => {
               const isActive = index === active;
@@ -201,7 +380,7 @@ function Carousel() {
                   ref={(el) => {
                     tabRefs.current[index] = el;
                   }}
-                  className="relative flex w-[78%] max-w-[280px] shrink-0 snap-center lg:w-auto lg:max-w-none lg:shrink"
+                  className="relative flex"
                 >
                   <button
                     type="button"
@@ -210,7 +389,7 @@ function Carousel() {
                     aria-selected={isActive}
                     aria-controls="tab-panel"
                     onClick={() => setActive(index)}
-                    className={`relative z-10 flex h-[120px] w-full flex-col rounded-[20px] px-5 pb-4 pt-4 text-left transition-colors lg:h-auto lg:min-h-[120px] lg:px-6 lg:pb-5 lg:pt-5 ${isDark
+                    className={`relative z-10 flex min-h-[120px] w-full flex-col rounded-[20px] px-6 pb-5 pt-5 text-left transition-colors ${isDark
                       ? "bg-black text-white"
                       : "bg-peach text-black"
                       } ${isActive
@@ -218,10 +397,10 @@ function Carousel() {
                         : "border-4 border-transparent"
                       }`}
                   >
-                    <p className="font-header text-xl font-bold leading-[1.1] lg:text-[20px]">
+                    <p className="font-header text-[20px] font-bold leading-[1.1]">
                       {tab.label}
                     </p>
-                    <p className="mt-3 text-sm/[1.3] lg:mt-4 lg:text-base/[1.3]">
+                    <p className="mt-4 text-base/[1.3]">
                       {tab.tagline}
                     </p>
                   </button>
@@ -230,7 +409,7 @@ function Carousel() {
                       src="/home/tab-pointer.svg"
                       alt=""
                       aria-hidden="true"
-                      className="absolute -bottom-[29px] left-1/2 -ml-[2px] hidden h-[45px] w-[50px] -translate-x-1/2 rotate-180 lg:block"
+                      className="absolute -bottom-[29px] left-1/2 -ml-[2px] h-[45px] w-[50px] -translate-x-1/2 rotate-180"
                     />
                   )}
                 </div>
@@ -242,19 +421,19 @@ function Carousel() {
             id="tab-panel"
             role="tabpanel"
             aria-labelledby={`tab-${active}`}
-            className="flex flex-col gap-7 rounded-[24px] border border-black border-opacity-10 bg-peach p-5 lg:p-8"
+            className="flex flex-col gap-7 rounded-[24px] border border-black border-opacity-10 bg-peach p-8"
           >
             <div className="flex flex-col gap-2">
-              <h2 className="font-header text-2xl font-bold leading-[1.3] lg:text-[32px]">
+              <h2 className="font-header text-[32px] font-bold leading-[1.3]">
                 {panel.title}
               </h2>
-              <p className="text-base leading-[1.4] lg:text-[24px]">
+              <p className="text-[24px] leading-[1.4]">
                 {panel.content}
               </p>
               {panel.cta && (
                 <a
                   href={panel.targetLink}
-                  className="w-fit font-header text-base font-semibold text-orange hover:underline lg:text-[24px]"
+                  className={`${linkClass} text-[24px]`}
                 >
                   {panel.cta}
                 </a>
@@ -262,118 +441,58 @@ function Carousel() {
             </div>
 
             {panel.type === "clubs" ? (
-              <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-                {clubCards.map((club) => (
-                  <a
-                    key={club.name}
-                    href={club.href}
-                    target={
-                      club.href.startsWith("http")
-                        ? "_blank"
-                        : undefined
-                    }
-                    rel={
-                      club.href.startsWith("http")
-                        ? "noopener noreferrer"
-                        : undefined
-                    }
-                    className="overflow-hidden rounded-[20px] transition-opacity hover:opacity-90"
-                  >
-                    <img
-                      src={club.img}
-                      alt={club.name}
-                      className="aspect-[16/9] w-full object-cover"
-                    />
-                  </a>
-                ))}
-              </div>
+              <ClubGrid cols="grid-cols-3" />
             ) : panel.type === "cohorts" ? (
-              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-5">
-                {cohortCards.map((cohort) => (
-                  <a
-                    key={cohort.url}
-                    href={cohort.url}
-                    className="group flex flex-col gap-3"
-                  >
-                    <img
-                      src={cohort.img}
-                      alt={cohort.name}
-                      className="aspect-[16/9] w-84 rounded-[16px] object-cover transition-opacity group-hover:opacity-90"
-                    />
-                    <p className="text-sm leading-[1.3] text-black lg:text-base">
-                      {cohort.desc}
-                    </p>
-                  </a>
-                ))}
-              </div>
+              <CohortGrid withDesc />
             ) : panel.type === "fellowship" ? (
-              <div className="grid grid-cols-1 gap-5 md:grid-cols-3">
+              <div className="grid grid-cols-3 gap-5">
                 {fellowshipCards.map((card) => (
                   <a
                     key={card.title}
                     href={card.href}
-                    className={`relative flex min-h-[280px] flex-col gap-5 overflow-hidden rounded-[20px] border border-black border-opacity-10 p-6 transition-opacity hover:opacity-90 lg:min-h-[460px] ${card.bg
-                      ? "bg-black text-white"
-                      : "bg-white text-black"
-                      }`}
+                    className="relative flex min-h-[460px] flex-col gap-5 overflow-hidden rounded-[20px] border border-black border-opacity-10 bg-black p-6 text-white transition-opacity hover:opacity-90"
                   >
-                    {card.bg && (
-                      <>
-                        <img
-                          src={card.bg}
-                          alt=""
-                          aria-hidden="true"
-                          className="pointer-events-none absolute inset-0 h-full w-full scale-125 object-cover blur-[28px]"
-                        />
-                        <div
-                          aria-hidden="true"
-                          className="absolute inset-0 bg-black/50"
-                        />
-                      </>
-                    )}
-                    {card.icon && (
-                      <img
-                        src={card.icon}
-                        alt=""
-                        aria-hidden="true"
-                        className="pointer-events-none absolute left-1/2 top-1/2 z-[1] h-20 w-20 -translate-x-1/2 -translate-y-1/2 opacity-90 lg:h-28 lg:w-28"
-                      />
-                    )}
+                    <img
+                      src={card.bg}
+                      alt=""
+                      aria-hidden="true"
+                      className="pointer-events-none absolute inset-0 h-full w-full scale-125 object-cover blur-[28px]"
+                    />
+                    <div
+                      aria-hidden="true"
+                      className="absolute inset-0 bg-black/50"
+                    />
+                    <img
+                      src={card.icon}
+                      alt=""
+                      aria-hidden="true"
+                      className="pointer-events-none absolute left-1/2 top-1/2 z-[1] h-28 w-28 -translate-x-1/2 -translate-y-1/2 opacity-90"
+                    />
                     <div className="relative z-10 flex flex-col gap-4">
-                      <p className="font-header text-2xl font-semibold leading-[1.2] lg:text-[30px]">
+                      <p className="font-header text-[30px] font-semibold leading-[1.2]">
                         {card.title}
                       </p>
-                      <p className="text-sm leading-[1.2] lg:text-base">
+                      <p className="text-base leading-[1.2]">
                         {card.desc}
                       </p>
                     </div>
-                    <span className="relative z-10 mt-auto font-header text-base font-semibold text-orange lg:text-[19px]">
+                    <span className="relative z-10 mt-auto font-header text-[19px] font-semibold text-orange">
                       Tell me more   →
                     </span>
                   </a>
                 ))}
               </div>
             ) : panel.type === "bitspace" ? (
-              <div className="flex flex-col gap-5 lg:flex-row lg:items-stretch">
-                <div className="flex w-full flex-col gap-5 lg:max-w-[393px]  lg:shrink-0">
+              <div className="flex items-stretch gap-5">
+                <div className="flex w-full max-w-[393px] shrink-0 flex-col gap-5">
                   {bitspaceCards.map((card) => (
-                    <a
+                    <ExtLink
                       key={card.title}
                       href={card.href}
-                      target={
-                        card.href.startsWith("http")
-                          ? "_blank"
-                          : undefined
-                      }
-                      rel={
-                        card.href.startsWith("http")
-                          ? "noopener noreferrer"
-                          : undefined
-                      }
                       className="flex h-[160px] max-h-[140px] flex-col overflow-hidden rounded-[20px] border border-black border-opacity-10 bg-white px-5 py-4 transition-opacity hover:opacity-90"
                     >
                       <div className="flex flex-col gap-2">
-                        <p className="font-header text-xl font-semibold leading-[1.2] lg:text-[24px]">
+                        <p className="font-header text-[24px] font-semibold leading-[1.2]">
                           {card.title}
                         </p>
                         <p className="text-sm leading-[1.2]">
@@ -383,10 +502,10 @@ function Carousel() {
                           {card.cta}
                         </span>
                       </div>
-                    </a>
+                    </ExtLink>
                   ))}
                 </div>
-                <div className="relative h-[280px] w-full max-h-[456px] overflow-hidden rounded-[18px] border border-black border-opacity-10 bg-white sm:h-[360px] lg:h-[521px] lg:flex-1">
+                <div className="relative h-[521px] max-h-[456px] w-full flex-1 overflow-hidden rounded-[18px] border border-black border-opacity-10 bg-white">
                   <img
                     src="/bitspace/collage.jpg"
                     alt="Life at Bitspace"
@@ -398,17 +517,12 @@ function Carousel() {
               <img
                 src={panel.url}
                 alt={panel.title}
-                className="aspect-video w-full rounded-[20px] object-cover lg:aspect-auto lg:h-[433px]"
+                className="h-[433px] w-full rounded-[20px] object-cover"
               />
             )}
           </div>
         </div>
 
-        <p className="text-center text-base leading-[1.4] lg:text-[28px]">
-          And, we totally understand, Bitcoin Tech can seem
-          overwhelming in the start but it’s hard mostly if
-          you’re trying to learn alone.
-        </p>
       </div>
     </div>
   );
