@@ -1,7 +1,9 @@
 name: Deploy to GitHub Pages
 
 env:
-  GOOGLE_KEY: ${{secrets.GOOGLE_KEY}}
+  GOOGLE_KEY: ${{ secrets.GOOGLE_KEY }}
+  X_BEARER_TOKEN: ${{ secrets.X_BEARER_TOKEN }}
+  X_USERNAME: ${{ secrets.X_USERNAME }}
 
 on:
   # Trigger the workflow every time you push to the `main` branch

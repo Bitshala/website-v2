@@ -104,23 +104,25 @@ const colabList = [
     </div>
   </div>
   <div
-    class="mx-5 mt-4 flex flex-col items-center gap-6 rounded-3xl border border-black/5 bg-peach px-6 py-8 lg:mx-0 lg:mb-8 lg:mt-0 lg:flex-row lg:items-center lg:gap-0 lg:px-3 lg:py-0"
+    class="mx-5 mt-4 flex flex-col items-center gap-6 rounded-3xl border border-black/5 bg-peach px-6 py-8 lg:mx-0 lg:mb-8 lg:mt-0 lg:flex-row lg:items-center lg:justify-between lg:gap-8 lg:px-8 lg:py-6"
   >
     <h1
-      class="text-center font-header text-xl font-bold lg:my-8 lg:w-2/3 lg:pl-3 lg:text-start lg:text-3xl lg:font-normal"
+      class="shrink-0 text-center font-header text-xl font-bold lg:text-start lg:text-3xl lg:font-normal"
     >
       In collaboration with
     </h1>
     <div
-      class="flex w-full max-w-[340px] flex-wrap items-center justify-center gap-x-8 gap-y-6 lg:max-w-none lg:w-[120%] lg:justify-end lg:gap-10 lg:pr-5"
+      class="grid w-full grid-cols-2 items-center justify-items-center gap-x-8 gap-y-6 sm:grid-cols-4 lg:w-auto lg:gap-x-10"
     >
       {
         colabList.map((li) => (
-          <img
-            src={li.link}
-            class="h-10 max-w-[140px] object-contain lg:h-12 lg:max-w-none"
-            alt=""
-          />
+          <div class="flex h-12 w-full max-w-[150px] items-center justify-center lg:h-14 lg:max-w-[160px]">
+            <img
+              src={li.link}
+              class="max-h-full max-w-full object-contain"
+              alt=""
+            />
+          </div>
         ))
       }
     </div>

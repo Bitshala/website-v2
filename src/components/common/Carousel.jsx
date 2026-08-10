@@ -3,27 +3,32 @@ import { useEffect, useRef, useState } from "react";
 const clubCards = [
   {
     name: "Latest in Bitcoin Tech",
-    img: "/clubs/cards/optech.jpg",
+    img: "/clubs/cards/optech.png",
     href: "/optech",
   },
   {
     name: "TradFi & Bitcoin",
-    img: "/clubs/cards/tradfi.jpg",
+    img: "/clubs/cards/tradfi.png",
     href: "https://www.youtube.com/playlist?list=PLdHBT9oS8yMWiWd0L48gHDgTi8roKB3Fs",
   },
   {
     name: "Bitcoin Kernel Club",
-    img: "/clubs/cards/kernel.jpg",
+    img: "/clubs/cards/kernel.png",
     href: "/clubs",
   },
   {
-    name: "Bitcoin Mining Club",
-    img: "/clubs/cards/mining.jpg",
+    name: "Bitcoin CFB Club",
+    img: "/clubs/cards/cfb.jpg",
+    href: "/clubs",
+  },
+  {
+    name: "Bitcoin H&S Club",
+    img: "/clubs/cards/hs.jpg",
     href: "/clubs",
   },
   {
     name: "Bitshala Reading Club",
-    img: "/clubs/cards/reading.jpg",
+    img: "/clubs/cards/reading.png",
     href: "/readingClub",
   },
 ];

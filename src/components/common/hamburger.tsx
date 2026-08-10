@@ -115,7 +115,7 @@ const SideMenu = () => {
       subMenu: [],
     },
     {
-      name: "Blogs & Posts",
+      name: "Blogs & Podcasts",
       link: "/blogs",
       subMenu: [],
     },
