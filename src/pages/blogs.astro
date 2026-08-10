@@ -1,5 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import { getXArticles } from "../scripts/xArticles";
 
 const headerProps = {
   image: "/cohort/hero.webp",
@@ -7,117 +8,8 @@ const headerProps = {
 };
 const isVisible = true;
 
-const posts = [
-  {
-    title: "How to Build a Bitcoin Wallet (Conceptually)",
-    description:
-      "Wallets are a fundamental part of the Bitcoin ecosystem, serving as the primary interface for most Bitcoin users to interact with the ecosystem.",
-    link: "https://x.com/bitshala_org/status/2081582870401802522",
-    tag: "Wallets",
-    author: "Bitshala",
-    date: "Jul 27, 2026",
-    source: "X",
-  },
-  {
-    title: "Turning nginx into a payment gateway for AI agents",
-    description:
-      "Ever since AI agents took off, one problem keeps resurfacing: how does an agent pay for things on the web?",
-    link: "https://x.com/bitshala_org/status/2079040743692455968",
-    tag: "AI Agents",
-    author: "Bitshala",
-    date: "Jul 20, 2026",
-    source: "X",
-  },
-  {
-    title: "How Bitcoin Transactions Get Confirmed on Braidpool",
-    description:
-      "A technical look at how transactions move through Braidpool's braid structure to reach confirmation.",
-    link: "https://x.com/bitshala_org/status/2076531205437358579",
-    tag: "Mining",
-    author: "Bitshala",
-    date: "Jul 13, 2026",
-    source: "X",
-  },
-  {
-    title: "Deep Dive: Zeus Lightning Wallet Architecture",
-    description:
-      "A technical deep dive into the Zeus Lightning wallet — its architecture and how it connects to Lightning nodes.",
-    link: "https://x.com/bitshala_org/status/2073973376453144650",
-    tag: "Lightning",
-    author: "Bitshala",
-    date: "Jul 6, 2026",
-    source: "X",
-  },
-  {
-    title: "Inside Fedimint Observer: Building Observability Infrastructure for Bitcoin Federations",
-    description:
-      "A technical look at Fedimint Observer — the tooling built to monitor and observe Bitcoin federations.",
-    link: "https://x.com/bitshala_org/status/2071454255291261343",
-    tag: "Fedimint",
-    author: "Bitshala",
-    date: "Jun 29, 2026",
-    source: "X",
-  },
-  {
-    title: "Inside P2Pool v2",
-    description:
-      "A technical look at P2Pool v2 — how the decentralized mining pool protocol works under the hood.",
-    link: "https://x.com/bitshala_org/status/2068903908194611602",
-    tag: "Mining",
-    author: "Bitshala",
-    date: "Jun 22, 2026",
-    source: "X",
-  },
-  {
-    title: "Coinswap: Swapping Coin Histories Without Handing Over Custody",
-    description:
-      "A story-shaped technical tour of Coinswap: maker discovery, fidelity bonds, legacy and taproot contracts, and the current demo apps.",
-    link: "https://x.com/bitshala_org/status/2065964017835970581",
-    tag: "Coinswap",
-    author: "Bitshala",
-    date: "Jun 14, 2026",
-    source: "X",
-  },
-  {
-    title: "Braidpool - Attempt towards mining decentralization and Internals",
-    description:
-      "A look into Braidpool's approach to decentralizing mining pools, and how it works under the hood.",
-    link: "https://x.com/bitshala_org/status/2063204362386800944",
-    tag: "Mining",
-    author: "Bitshala",
-    date: "Jun 6, 2026",
-    source: "X",
-  },
-  {
-    title: "BTCPay Server: A Technical Introduction for Users and Contributors",
-    description:
-      "A technical walkthrough of BTCPay Server — its architecture, self-hosting, and how to start contributing.",
-    link: "https://x.com/bitshala_org/status/2054415374100135974",
-    tag: "BTCPay Server",
-    author: "Bitshala",
-    date: "May 13, 2026",
-    source: "X",
-  },
-  {
-    title: "Bitshala's BOSS Summit Summer 2026 🇮🇳",
-    description:
-      "Bringing Bitcoin builders together in India — highlights from Bitshala's BOSS Summit Summer 2026.",
-    link: "https://x.com/bitshala_org/status/2043577634081357927",
-    tag: "Events",
-    author: "Bitshala",
-    date: "Apr 13, 2026",
-    source: "X",
-  },
-  {
-    title: "The Missing Component",
-    description:
-      "For 40 years, the smartest minds collided with an invisible wall. Then, physics broke it down.",
-    link: "https://x.com/bitshala_org/status/2018905163650736242",
-    tag: "Physics",
-    author: "Bitshala",
-    date: "Feb 4, 2026",
-    source: "X",
-  },
+// Older posts not on X Articles — kept static.
+const legacyPosts = [
   {
     title: "Coin Selection for Dummies: Part 5 — Waste Metric",
     description:
@@ -169,7 +61,7 @@ const posts = [
     source: "Summer of Bitcoin",
   },
   {
-    title: "From \"Hello World\" to Bitcoin Core",
+    title: 'From "Hello World" to Bitcoin Core',
     description:
       "A guide to start your hike up the Bitcoin Hill — orientation for newcomers stepping into Bitcoin Core development.",
     link: "https://medium.com/from-hello-world-to-bitcoin-core-dd233ce99f72",
@@ -229,10 +121,13 @@ const posts = [
     source: "Medium",
   },
 ];
+
+const xPosts = await getXArticles();
+const posts = [...xPosts, ...legacyPosts];
 ---
 
 <Layout
-  title="Blogs & Posts"
+  title="Blogs & Podcasts"
   headerProps={headerProps}
   isVisible={isVisible}
 >
@@ -244,7 +139,7 @@ const posts = [
       <h1
         class="text-center font-header text-4xl font-bold leading-[100%] text-[#F7F7F7] [text-shadow:6px_6px_24px_rgba(0,0,0,0.32)] md:text-6xl lg:text-[124px]"
       >
-        Blogs & Posts
+        Blogs & Podcasts
       </h1>
       <p
         class="mt-3 px-4 text-center text-[18px] font-medium leading-[120%] text-[#F7F7F7] [text-shadow:4px_4px_8px_rgba(0,0,0,0.55)] md:mt-5 md:px-0 md:text-[24px] lg:text-[32px]"
@@ -257,47 +152,49 @@ const posts = [
     </div>
   </div>
 
-  <!-- Substack-style feed -->
-  <div class="mx-auto max-w-3xl px-4 py-12 md:px-6 lg:py-20">
-    {
-      posts.map((post, idx) => (
-        <a
-          href={post.link}
-          target="_blank"
-          rel="noopener noreferrer"
-          class={`group block py-8 transition-colors hover:bg-peach/40 ${idx !== posts.length - 1 ? "border-b border-darkPeach/60" : ""}`}
-        >
-          <div class="flex flex-wrap items-center gap-x-2 gap-y-1 font-base text-sm text-black/60">
-            <span class="text-black" style="font-weight: 600;">
-              {post.author}
-            </span>
-            <span>·</span>
-            <span>{post.date}</span>
-            <span>·</span>
-            <span>{post.source}</span>
-          </div>
-          <h2 class="mt-3 font-header text-2xl font-bold leading-[1.2] text-black transition-colors group-hover:text-orange md:text-3xl lg:text-[34px]">
-            {post.title}
-          </h2>
-          <p
-            class="mt-3 font-base text-base leading-relaxed text-black/80 md:text-lg"
-            style="font-weight: 400;"
+  <!-- Card grid -->
+  <div class="mx-auto max-w-screen-xl px-4 py-12 md:px-6 lg:py-20">
+    <div class="grid grid-cols-1 gap-5 md:grid-cols-3 md:gap-6">
+      {
+        posts.map((post) => (
+          <a
+            href={post.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="group flex h-full flex-col rounded-2xl border border-black/10 bg-peach p-5 transition-transform hover:-translate-y-1 hover:border-orange sm:p-6"
           >
-            {post.description}
-          </p>
-          <div class="mt-4 flex items-center gap-3">
-            <span class="w-fit rounded-full bg-orange px-3 py-1 font-base text-xs font-bold uppercase tracking-wide text-white">
-              {post.tag}
-            </span>
-            <span
-              class="font-header text-sm text-orange opacity-0 transition-opacity group-hover:opacity-100"
-              style="font-weight: 600;"
+            <div class="flex flex-wrap items-center gap-x-2 gap-y-1 font-base text-sm text-black/60">
+              <span class="text-black" style="font-weight: 600;">
+                {post.author}
+              </span>
+              <span>·</span>
+              <span>{post.date}</span>
+              <span>·</span>
+              <span>{post.source}</span>
+            </div>
+            <h2 class="mt-3 font-header text-xl font-bold leading-[1.25] text-black transition-colors group-hover:text-orange md:text-2xl">
+              {post.title}
+            </h2>
+            <p
+              class="mt-3 line-clamp-3 flex-1 font-base text-base leading-relaxed text-black/80"
+              style="font-weight: 400;"
             >
-              Read →
-            </span>
-          </div>
-        </a>
-      ))
-    }
+              {post.description}
+            </p>
+            <div class="mt-5 flex items-center justify-between gap-3">
+              <span class="w-fit rounded-full bg-orange px-3 py-1 font-base text-xs font-bold uppercase tracking-wide text-white">
+                {post.tag}
+              </span>
+              <span
+                class="font-header text-sm text-orange transition-transform group-hover:translate-x-1"
+                style="font-weight: 600;"
+              >
+                Read →
+              </span>
+            </div>
+          </a>
+        ))
+      }
+    </div>
   </div>
 </Layout>

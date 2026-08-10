@@ -34,7 +34,7 @@ const Navbar = () => {
     },
     { name: "Bitspace", link: "/bitspace" },
     { name: "Meetups", link: "/meetups" },
-    { name: "Blogs & Posts", link: "/blogs" },
+    { name: "Blogs & Podcasts", link: "/blogs" },
   ];
 
   return (

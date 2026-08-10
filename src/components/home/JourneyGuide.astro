@@ -1,118 +1,120 @@
 ---
 const list = [
   {
+    n: "01",
     title:
       "Join the community of passionate Bitcoin devs and enthusiasts",
-    desc: "Firstly (and most importantly), join a thriving community of Bitcoin devs and enthusiasts ready to share insights, solve problems together, and grow collectively",
     link: "https://discord.com/invite/STeQFVEWf9",
-    buttonText: "Take me to Discord  →",
-    step: "Step 01",
+    buttonText: "Take me to Discord   → ",
     img: "/journeyGuide/1.webp",
-    isLeft: true,
   },
   {
+    n: "02",
     title:
       "Grow your Bitcoin knowledge with hands-on club activities",
-    desc: "Expand your Bitcoin knowledge through hands-on activities and real-world discussions, designed to make learning both effective and enjoyable",
-    link: "/optech",
-    buttonText: "Show me the clubs  →",
-    step: "Step 02",
+    link: "/clubs",
+    buttonText: "Show me the clubs   → ",
     img: "/journeyGuide/2.webp",
-    isLeft: false,
   },
   {
+    n: "03",
     title:
       "Gain deeper understanding of Bitcoin tech with fellow aspiring Bitcoin devs",
-    desc: "Dive deeper into Bitcoin tech with structured, hands-on study cohorts — no traditional grading system, just project assignments and building real-world skills",
     link: "/cohorts/",
-    buttonText: "Let me explore the cohorts  →",
-    step: "Step 03",
+    buttonText: "Let me explore the study cohorts   → ",
     img: "/journeyGuide/3.webp",
-    isLeft: true,
   },
   {
+    n: "04",
     title:
       "Kickstart your Bitcoin career with our paid Fellowship Program",
-    desc: "Put the study cohort lessons to use and begin your Bitcoin FOSS career where you’ll contribute to real Bitcoin projects and gain practical experience with guidance",
     link: "/fellowship",
-    buttonText: "Tell me more about the fellowship  →",
-    step: "Step 04",
+    buttonText: "Tell me more about the fellowship   → ",
     img: "/journeyGuide/4.webp",
-    isLeft: false,
   },
   {
+    n: "05",
     title:
-      "Collaborate and build together with Bitcoin Devs in real life",
-    desc: "Take your learning offline and collaborate in-person with other Bitcoin devs, building real solutions together at Bitspace located in Bengaluru, India",
+      "Collaborate and build together with Bitcoin Devs in real life at Bitspace",
     link: "/bitspace",
-    buttonText: "I’d like to know more about Bitspace  →",
-    step: "Step 05",
+    buttonText: "I’d like to know more about Bitspace   → ",
     img: "/journeyGuide/5.webp",
-    isLeft: true,
   },
 ];
 ---
 
-<div
-  class="mx-auto bg-gradient-to-b from-orange to-white p-5 lg:p-10"
->
-  <div class="mx-auto max-w-screen-xl">
-    <h1
-      class="my-8 mt-16 block text-center font-header text-3xl font-bold md:text-3xl lg:mt-40 lg:hidden lg:text-6xl"
-    >
-      “And, if I wanted to start <br /> my Bitcoin dev
-      journey <br /> with you, what would <br />that look
-      like?"
-    </h1>
-    <h1
-      class="my-8 mt-16 hidden text-center font-header text-3xl font-bold md:text-3xl lg:mt-40 lg:block lg:text-6xl"
-    >
-      “And, if I wanted to start my Bitcoin dev journey with
-      you, what would that look like?"
-    </h1>
-    <p
-      class="m-4 text-center text-base md:text-base lg:text-2xl"
-    >
-      Well, we’re glad you asked! Here’s what your journey
-      could look like with us...
-    </p>
+<section class="bg-[#F7F7F7] px-4 py-16 lg:px-10 lg:py-24">
+  <div class="mx-auto flex max-w-screen-xl flex-col gap-10 lg:gap-16">
+    <div class="flex flex-col items-center gap-4 text-center lg:gap-5">
+      <h2
+        class="max-w-[980px] font-header text-3xl/[1.2] font-bold md:text-4xl/[1.2] lg:text-[48px]/[1.2]"
+      >
+        “And, if I wanted to start my Bitcoin dev journey
+        with you, what would that look like?”
+      </h2>
+      <p class="max-w-[720px] text-base leading-[1.4] text-black/80 lg:text-[22px]">
+        Well, we’re glad you asked! Here’s what your journey
+        could look like with us...
+      </p>
+    </div>
 
-    <div class="lg:p-5">
-      {
-        list.map((item, i) => (
-          <div
-            class={`my-5 flex w-full justify-between gap-2 rounded-3xl bg-white px-3 py-5 lg:m-5 lg:gap-5 lg:p-5 lg:py-3 ${
-              i % 2 == 0
-                ? "lg:flex-row"
-                : "lg:flex-row-reverse"
-            } flex-col`}
-          >
-            <div class="mx-2 lg:mx-5 lg:w-[65rem] lg:pt-8">
-              <p class="mb-4 w-fit rounded-lg bg-black p-2 px-5 font-header text-white">
-                {item.step}
-              </p>
-              <h3 class="font-header text-2xl ">
-                {item.title}
-              </h3>
-              <p class="my-2 text-base lg:text-xl">
-                {item.desc}
-              </p>
-              <a
-                href={item.link}
-                class="font-header text-base font-medium text-orange hover:underline lg:text-xl"
-              >
-                {item.buttonText}
-              </a>
-            </div>
-            <div>
+    <ol class="relative mx-auto w-full max-w-[1100px]">
+      <!-- dashed spine -->
+      <div
+        aria-hidden="true"
+        class="absolute bottom-8 left-[19px] top-8 w-px border-l border-dashed border-black/30 lg:left-[23px]"
+      >
+      </div>
+
+      <div class="flex flex-col gap-10 lg:gap-14">
+        {
+          list.map((item) => (
+            <li class="relative grid grid-cols-[40px_1fr] gap-x-4 lg:grid-cols-[48px_1fr_minmax(280px,420px)] lg:items-start lg:gap-x-8">
+              <div class="relative z-10 flex justify-center">
+                <span class="flex h-10 w-10 items-center justify-center rounded-full bg-black font-header text-sm font-bold text-white lg:h-12 lg:w-12 lg:text-base">
+                  {item.n}
+                </span>
+              </div>
+
+              <div class="flex flex-col gap-2 pt-1 lg:gap-3 lg:pt-2">
+                <h3 class="font-header text-xl font-bold leading-[1.25] lg:text-[28px]">
+                  {item.title}
+                </h3>
+                <a
+                  href={item.link}
+                  class="w-fit font-header text-base font-semibold text-orange hover:underline lg:text-xl"
+                  target={
+                    item.link.startsWith("http")
+                      ? "_blank"
+                      : undefined
+                  }
+                  rel={
+                    item.link.startsWith("http")
+                      ? "noopener noreferrer"
+                      : undefined
+                  }
+                >
+                  {item.buttonText}
+                </a>
+
+                <!-- mobile: image under each step -->
+                <img
+                  src={item.img}
+                  alt=""
+                  class="mt-3 aspect-[16/10] w-full rounded-[18px] object-cover lg:hidden"
+                />
+              </div>
+
+              <!-- desktop: image beside each step -->
               <img
                 src={item.img}
-                class="aspect-video h-48 rounded-2xl p-2 lg:aspect-video lg:h-auto lg:w-[1090px] "
+                alt=""
+                class="mt-1 hidden aspect-[16/10] w-full rounded-[20px] object-cover lg:block"
               />
-            </div>
-          </div>
-        ))
-      }
-    </div>
+            </li>
+          ))
+        }
+      </div>
+    </ol>
   </div>
-</div>
+</section>
