@@ -8,24 +8,33 @@ export type VideoConfigType = {
 
 export async function getPlaylistDetails(
   playlistId: string,
-  GOOGLE_KEY: string,
+  GOOGLE_KEY?: string,
 ): Promise<VideoConfigType> {
-  const response = await fetch(
-    `https://www.googleapis.com/youtube/v3/playlistItems?key=${GOOGLE_KEY}&playlistId=${playlistId}&part=snippet,contentDetails&maxResults=50`,
-  );
-  const data: any = await response.json();
-  return data.items
-    .map((item: any, index: number) => {
-      return {
-        index,
-        title: item.snippet.title,
-        description: item.snippet.description,
-        img: item.snippet.thumbnails?.medium?.url,
-        link: `https://www.youtube.com/watch?v=${item.contentDetails.videoId}`,
-      };
-    })
-    .filter((item: any) => !!item.img)
-    .slice(-6);
+  if (!GOOGLE_KEY) return mockedVideoConfig.slice(-6);
+
+  try {
+    const response = await fetch(
+      `https://www.googleapis.com/youtube/v3/playlistItems?key=${GOOGLE_KEY}&playlistId=${playlistId}&part=snippet,contentDetails&maxResults=50`,
+    );
+    if (!response.ok) return mockedVideoConfig.slice(-6);
+
+    const data: any = await response.json();
+    return (data.items ?? [])
+      .map((item: any, index: number) => {
+        return {
+          index,
+          title: item.snippet.title,
+          description: item.snippet.description,
+          img: item.snippet.thumbnails?.medium?.url,
+          link: `https://www.youtube.com/watch?v=${item.contentDetails.videoId}`,
+        };
+      })
+      .filter((item: any) => !!item.img)
+      .slice(-6);
+  } catch (error) {
+    console.error("YouTube playlist lookup failed:", error);
+    return mockedVideoConfig.slice(-6);
+  }
 }
 
 export const mockedVideoConfig = [
