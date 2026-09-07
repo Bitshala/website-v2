@@ -1,64 +1,33 @@
 ---
-const cities = [
-  {
-    name: "BENGALURU",
-    image: "/meetups/dd13e8f7a9a53eebe9b68d23ae59b5aa4db2fd3c.png",
-    lead: "Paperpsych",
-    description:
-      "The starting point. Understand how Bitcoin actually works - transactions, mining, keys, scripting, and more.",
-    description2: "Build your foundation right.",
-    link: "#",
-  },
-  {
-    name: "MUMBAI",
-    image: "/meetups/2c758a6eb5443290e079373600a8bb14a4e40c72.png",
-    lead: "Amol",
-    description:
-      "The starting point. Understand how Bitcoin actually works - transactions, mining, keys, scripting, and more.",
-    description2: "Build your foundation right.",
-    link: "#",
-  },
-  {
-    name: "CHENNAI",
-    image: "/meetups/b4ad75c53e6784fb5342386a0f183899a12ae0b6.png",
-    lead: "Bala",
-    description:
-      "The starting point. Understand how Bitcoin actually works - transactions, mining, keys, scripting, and more.",
-    description2: "Build your foundation right.",
-    link: "#",
-  },
-  {
-    name: "DELHI",
-    image: "/meetups/791ecadd79e001f0b908c2ece47bee0bc597428b.png",
-    lead: "Saurabh",
-    description:
-      "The starting point. Understand how Bitcoin actually works - transactions, mining, keys, scripting, and more.",
-    description2: "Build your foundation right.",
-    link: "#",
-  },
-  {
-    name: "BIKANER",
-    image: "/meetups/7ba690e8cc8f034cb76987a70c0010aa86089fac.png",
-    lead: "Rajendra",
-    description:
-      "The starting point. Understand how Bitcoin actually works - transactions, mining, keys, scripting, and more.",
-    description2: "Build your foundation right.",
-    link: "#",
-  },
-  {
-    name: "HYDERABAD",
-    image: "/meetups/f07216c4c1cdc5291197a6b599d193a4afcc2dd7.png",
-    lead: "Paperpsych",
-    description:
-      "The starting point. Understand how Bitcoin actually works - transactions, mining, keys, scripting, and more.",
-    description2: "Build your foundation right.",
-    link: "#",
-  },
-];
+import { getLumaEvents } from "../../scripts/luma";
+
+const events = await getLumaEvents();
+
+// Events are already sorted ascending by start time. Rows are flat rather than
+// nested per day so a city filter can reorder individual events; the date rail
+// shows only on the first row of a day and is recomputed after each reorder.
+const rows = events.map((ev, i) => ({
+  ev,
+  repeat: i > 0 && events[i - 1].dayKey === ev.dayKey,
+}));
+
+// Cities ordered by event count, most active first.
+const cityCounts = new Map<string, number>();
+for (const ev of events)
+  cityCounts.set(
+    ev.city,
+    (cityCounts.get(ev.city) ?? 0) + 1,
+  );
+const cities = [...cityCounts.keys()].sort(
+  (a, b) =>
+    (cityCounts.get(b) ?? 0) - (cityCounts.get(a) ?? 0),
+);
 ---
 
 <div class="mx-auto max-w-[1280px] px-4 lg:px-0">
-  <div class="flex flex-col items-start gap-[60px] self-stretch">
+  <div
+    class="flex flex-col items-start gap-[60px] self-stretch"
+  >
     <h2
       class="font-header text-3xl font-bold text-[#333] lg:text-[48px] lg:leading-[77.612px]"
     >
@@ -67,60 +36,152 @@ const cities = [
 
     <div class="flex flex-col gap-[48px]">
       <p
-        class="font-base text-base font-medium text-[#333] text-justify lg:text-2xl lg:leading-[160%]"
+        class="text-justify font-base text-base font-medium text-[#333] lg:text-2xl lg:leading-[160%]"
       >
-        Bitshala Local Meetups are currently active in multiple cities across
-        India. Each city has its own rhythm, some run monthly, others are still
-        finding their cadence. Join your city's group to stay in the loop.
+        Bitshala Local Meetups are currently active in
+        multiple cities across India. Each city has its own
+        rhythm, some run monthly, others are still finding
+        their cadence. Join your city's group to stay in the
+        loop.
       </p>
 
-      <!-- City cards grid: 2 rows of 3 -->
-      <div class="grid grid-cols-1 gap-7 md:grid-cols-2 lg:grid-cols-3">
-        {
-          cities.map((city) => (
-            <div class="overflow-hidden rounded-[20px] border border-[#e0e0e0]">
-              <div class="flex flex-col gap-7 bg-peach p-6">
-                {/* Image with city name overlay */}
-                <div class="relative h-[203px] w-full overflow-hidden rounded-lg shadow-md">
-                  <img
-                    src={city.image}
-                    alt={city.name}
-                    class="h-full w-full object-cover"
-                    loading="lazy"
-                  />
-                  <div class="absolute inset-0 rounded-lg backdrop-blur-[4px]" style="background: rgba(255,255,255,0.01);" />
-                  <p
-                    class="absolute bottom-2 left-5 font-header text-2xl font-bold text-white lg:text-4xl"
-                    style="text-shadow: 1px 2px 3px rgba(0,0,0,0.28);"
-                  >
-                    {city.name}
-                  </p>
-                </div>
-
-                {/* Card content */}
-                <div class="flex flex-col gap-7 px-2 pb-3">
-                  <div class="flex flex-col gap-5 text-black">
-                    <p class="font-base text-xl font-bold leading-[1.3]">
-                      City Lead:{" "}
-                      <span class="underline">{city.lead}</span>
-                    </p>
-                    <div class="font-base text-xl leading-[1.3]" style="font-weight: 400;">
-                      <p>{city.description}</p>
-                      <p>{city.description2}</p>
-                    </div>
-                  </div>
-                  <span
-                    class="font-header text-xl cursor-not-allowed"
-                    style="font-weight: 600; color: #d1d5db;"
-                  >
-                    Join the group for updates →
+      {
+        events.length > 0 && (
+          <div class="flex flex-col gap-8">
+            <div
+              class="-mx-4 overflow-x-auto px-4 lg:mx-0 lg:px-0"
+              role="tablist"
+              aria-label="Filter events by city"
+            >
+              <div class="inline-flex gap-1.5 rounded-full border border-black/10 bg-peach p-1.5">
+                <button
+                  class="city-tab flex items-center gap-1.5 whitespace-nowrap rounded-full px-4 py-2 font-header text-sm font-bold transition-colors"
+                  type="button"
+                  role="tab"
+                  aria-selected="true"
+                  data-city="all"
+                >
+                  All
+                  <span class="rounded-full bg-white/40 px-2 py-0.5 font-base text-xs">
+                    {events.length}
                   </span>
-                </div>
+                </button>
+                {cities.map((city) => (
+                  <button
+                    class="city-tab flex items-center gap-1.5 whitespace-nowrap rounded-full px-4 py-2 font-header text-sm font-bold transition-colors"
+                    type="button"
+                    role="tab"
+                    aria-selected="false"
+                    tabindex="-1"
+                    data-city={city}
+                  >
+                    {city}
+                    <span class="rounded-full bg-black/10 px-2 py-0.5 font-base text-xs">
+                      {cityCounts.get(city)}
+                    </span>
+                  </button>
+                ))}
               </div>
             </div>
-          ))
-        }
-      </div>
+
+            <div
+              class="flex flex-col gap-8"
+              aria-live="polite"
+            >
+              {rows.map(({ ev, repeat }) => (
+                <div
+                  class="event-row grid gap-4 lg:grid-cols-[140px_1fr] lg:gap-6"
+                  data-city={ev.city}
+                  data-day={ev.dayKey}
+                  data-repeat={repeat ? "" : undefined}
+                >
+                  <div class="date-cell lg:flex lg:items-stretch lg:gap-3">
+                    <div class="hidden lg:flex lg:flex-col lg:items-center">
+                      <span class="mt-2 h-3 w-3 shrink-0 rounded-full bg-orange" />
+                      <span class="mt-1 w-px flex-1 border-l border-dashed border-black/20" />
+                    </div>
+                    <div>
+                      <p class="font-header text-xl font-bold text-black">
+                        {ev.dayLabel}
+                      </p>
+                      <p class="font-base text-sm text-black/60">
+                        {ev.weekday}
+                      </p>
+                    </div>
+                  </div>
+
+                  <a
+                    href={ev.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="flex items-start justify-between gap-4 rounded-[20px] border border-[#e0e0e0] bg-peach p-6 transition hover:-translate-y-1 hover:border-orange hover:shadow-lg"
+                  >
+                    <div class="flex min-w-0 flex-1 flex-col gap-1.5">
+                      <p class="font-base text-sm font-bold text-black/60">
+                        {ev.time}
+                      </p>
+                      <h3 class="line-clamp-2 font-header text-lg font-bold leading-tight text-black lg:text-xl">
+                        {ev.name}
+                      </h3>
+                      {ev.hosts.length > 0 && (
+                        <p class="truncate font-base text-sm text-black/60">
+                          {ev.hosts
+                            .map((h) => h.name)
+                            .join(", ")}
+                        </p>
+                      )}
+                      {(ev.venue ||
+                        ev.city !== "Other") && (
+                        <p class="truncate font-base text-sm text-black/60">
+                          📍 {ev.venue || ev.city}
+                        </p>
+                      )}
+                      <div class="flex flex-wrap items-center gap-2 pt-1">
+                        <span class="font-base text-xs text-black/50">
+                          {ev.guestCount} going
+                        </span>
+                        {ev.soldOut ? (
+                          <span class="rounded-full bg-black/10 px-2 py-0.5 font-base text-xs font-bold text-black/70">
+                            Sold out
+                          </span>
+                        ) : (
+                          ev.waitlist && (
+                            <span class="rounded-full bg-black/10 px-2 py-0.5 font-base text-xs font-bold text-black/70">
+                              Waitlist
+                            </span>
+                          )
+                        )}
+                        {ev.priceLabel &&
+                          ev.priceLabel !== "Free" && (
+                            <span class="rounded-full bg-orange/15 px-2 py-0.5 font-base text-xs font-bold text-orange">
+                              {ev.priceLabel}
+                            </span>
+                          )}
+                      </div>
+                    </div>
+                    {ev.cover && (
+                      <img
+                        src={ev.cover}
+                        alt=""
+                        class="h-[100px] w-[100px] shrink-0 rounded-lg object-cover lg:h-[130px] lg:w-[130px]"
+                        loading="lazy"
+                      />
+                    )}
+                  </a>
+                </div>
+              ))}
+
+              <p
+                class="order-none font-header text-sm font-bold uppercase tracking-wide text-black/40 lg:pl-[164px]"
+                data-divider
+                hidden
+              >
+                Elsewhere in India
+              </p>
+            </div>
+          </div>
+        )
+      }
     </div>
 
     <!-- CTA Button -->
@@ -133,3 +194,112 @@ const cities = [
     </a>
   </div>
 </div>
+
+<style>
+  .city-tab[aria-selected="true"] {
+    background: #333333;
+    color: #f7f7f7;
+  }
+
+  .city-tab[aria-selected="false"] {
+    color: rgba(51, 51, 51, 0.62);
+  }
+
+  /* A repeated day collapses entirely once rows stack on mobile, but keeps its
+     grid column on desktop so the cards stay aligned. */
+  .event-row[data-repeat] .date-cell {
+    display: none;
+  }
+
+  @media (min-width: 1024px) {
+    .event-row[data-repeat] .date-cell {
+      display: flex;
+      visibility: hidden;
+    }
+  }
+</style>
+
+<script>
+  import { planTimeline } from "../../scripts/luma-map.mjs";
+
+  // No-ops safely when the section degraded to its empty state (no tabs, no
+  // rows) — see getLumaEvents() in src/scripts/luma.ts.
+  const tabs = Array.from(
+    document.querySelectorAll<HTMLButtonElement>(
+      "[role='tablist'] .city-tab",
+    ),
+  );
+  const rows = Array.from(
+    document.querySelectorAll<HTMLElement>(".event-row"),
+  );
+  const divider = document.querySelector<HTMLElement>(
+    "[data-divider]",
+  );
+
+  const rowKeys = rows.map((el) => ({
+    el,
+    city: el.dataset.city,
+    day: el.dataset.day,
+  }));
+
+  // Selecting a city floats its events to the top instead of hiding the rest.
+  // Nothing moves in the DOM — the divider holds flex order 0, so matched rows
+  // just go above it and everything else below. planTimeline() has the test.
+  function applyFilter(city: string) {
+    const { matched, repeats } = planTimeline(
+      rowKeys,
+      city,
+    );
+    const isMatched = new Set(matched);
+    for (const row of rowKeys) {
+      row.el.style.order = isMatched.has(row) ? "-1" : "1";
+      row.el.toggleAttribute(
+        "data-repeat",
+        repeats.has(row),
+      );
+    }
+    if (divider) divider.hidden = city === "all";
+  }
+
+  function selectTab(
+    tab: HTMLButtonElement,
+    focus = false,
+  ) {
+    tabs.forEach((t) => {
+      const isActive = t === tab;
+      t.setAttribute("aria-selected", String(isActive));
+      t.tabIndex = isActive ? 0 : -1;
+      if (focus && isActive) t.focus();
+    });
+    applyFilter(tab.dataset.city ?? "all");
+  }
+
+  tabs.forEach((tab, index) => {
+    tab.addEventListener("click", () => selectTab(tab));
+
+    tab.addEventListener("keydown", (event) => {
+      if (
+        ![
+          "ArrowLeft",
+          "ArrowRight",
+          "Home",
+          "End",
+        ].includes(event.key)
+      )
+        return;
+
+      event.preventDefault();
+      let nextIndex = index;
+      if (event.key === "ArrowLeft") {
+        nextIndex = (index - 1 + tabs.length) % tabs.length;
+      } else if (event.key === "ArrowRight") {
+        nextIndex = (index + 1) % tabs.length;
+      } else if (event.key === "Home") {
+        nextIndex = 0;
+      } else if (event.key === "End") {
+        nextIndex = tabs.length - 1;
+      }
+      selectTab(tabs[nextIndex], true);
+    });
+  });
+</script>

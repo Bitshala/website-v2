@@ -299,8 +299,7 @@ function formatDuration(durationMs?: number) {
                   data-podcast-player
                   data-src={initialPodcast.mediaUrl}
                   data-poster={initialPodcast.posterUrl}
-                >
-                </iframe>
+                />
               </div>
               <div class="flex flex-1 flex-col p-5 text-white sm:p-7">
                 <div class="mb-3 flex flex-wrap items-center gap-2 font-base text-sm text-white/60">
@@ -344,7 +343,7 @@ function formatDuration(durationMs?: number) {
             <aside class="flex min-h-full flex-col border-t border-white/10 bg-[#171717] lg:border-l lg:border-t-0">
               <div class="border-b border-white/10 px-5 py-5 sm:px-6">
                 <p class="font-base text-xs font-bold uppercase tracking-[0.16em] text-orange">
-                  Bitcoin Talks
+                  Episodes
                 </p>
                 <div class="mt-1 flex items-end justify-between gap-4">
                   <h2 class="font-header text-2xl font-bold text-white">
@@ -530,9 +529,10 @@ function formatDuration(durationMs?: number) {
       });
     });
 
-    const player = document.querySelector<HTMLIFrameElement>(
-      "[data-podcast-player]",
-    );
+    const player =
+      document.querySelector<HTMLIFrameElement>(
+        "[data-podcast-player]",
+      );
     const queueItems = Array.from(
       document.querySelectorAll<HTMLButtonElement>(
         "[data-podcast-item]",
@@ -564,7 +564,11 @@ function formatDuration(durationMs?: number) {
         .replaceAll("<", "&lt;");
     }
 
-    function loadPodcast(src: string, poster = "", autoplay = false) {
+    function loadPodcast(
+      src: string,
+      poster = "",
+      autoplay = false,
+    ) {
       if (!player || !src) return;
       const posterAttr = poster
         ? ` poster="${escapeAttr(poster)}"`
