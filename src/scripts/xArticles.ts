@@ -13,15 +13,58 @@ export type BlogPost = {
 
 const TTL_MS = 60 * 60 * 1000; // ponytail: in-memory cache; file cache if rate limits bite
 const PODCAST_MIN_DURATION_MS = 10 * 60 * 1000;
+// The archive starts at the Jul 2026 episode. Everything earlier is a one-off
+// club session recording we don't publish. Placed in the empty gap between the
+// two (2026-05-03 and 2026-07-25) so no timezone edge can move an episode
+// across it.
+const PODCAST_EPOCH = Date.parse("2026-07-01T00:00:00Z");
+const MAX_PLAYBACK_BITRATE = 3_000_000;
 let cache: { at: number; posts: BlogPost[] } | null = null;
 
-function formatDate(iso: string) {
-  return new Date(iso).toLocaleDateString("en-US", {
+/** X escapes exactly these three in post text. */
+const decode = (text: string) =>
+  text
+    .replaceAll("&lt;", "<")
+    .replaceAll("&gt;", ">")
+    .replaceAll("&amp;", "&");
+
+/** One-line summary of a post: links dropped, whitespace collapsed. */
+const summarize = (text: string) =>
+  decode(text)
+    .replace(/https:\/\/t\.co\/\S+/g, "")
+    .replace(/\s+/g, " ")
+    .trim();
+
+/**
+ * The episode title is the post's first line — writing a good one is the
+ * author's job on X, not a parser's job here.
+ */
+const firstLine = (text: string) =>
+  decode(text)
+    .split("\n")
+    .find((line) => line.trim())
+    ?.trim() ?? "";
+
+/** Best mp4 the browser can stream comfortably. */
+const playbackUrl = (video: any) =>
+  (video.variants ?? [])
+    .filter(
+      (v: any) =>
+        v.content_type === "video/mp4" &&
+        v.bit_rate <= MAX_PLAYBACK_BITRATE,
+    )
+    .sort((a: any, b: any) => b.bit_rate - a.bit_rate)[0]
+    ?.url;
+
+// Pinned to IST: without it a UTC CI build and a local build disagree by a day
+// on anything posted after 18:30 UTC.
+const formatDate = (iso: string) =>
+  new Date(iso).toLocaleDateString("en-US", {
+    timeZone: "Asia/Kolkata",
     month: "short",
     day: "numeric",
     year: "numeric",
   });
-}
 
 function guessTag(title: string): string {
   const rules: [RegExp, string][] = [
@@ -40,68 +83,6 @@ function guessTag(title: string): string {
   return (
     rules.find(([re]) => re.test(title))?.[1] ?? "Article"
   );
-}
-
-function cleanPodcastText(text: string): string {
-  return text
-    .replace(/https:\/\/t\.co\/\S+/g, "")
-    .replace(/\s+/g, " ")
-    .trim();
-}
-
-function podcastTitle(text: string): string {
-  const directGuest = text.match(
-    /Bitcoin Talks\s+with\s+(@\w+)/i,
-  )?.[1];
-  if (directGuest)
-    return `Bitshala Bitcoin Talks with ${directGuest}`;
-
-  const seatedGuest = text.match(
-    /Bitshala Bitcoin Talks[\s\S]{0,60}?sit(?:\s+down)?\s+with\s+(@\w+)/i,
-  )?.[1];
-  if (seatedGuest)
-    return `Bitshala Bitcoin Talks with ${seatedGuest}`;
-
-  const cleaned = cleanPodcastText(text);
-  return cleaned.length > 110
-    ? `${cleaned.slice(0, 107)}...`
-    : cleaned;
-}
-
-function getPodcastMedia(
-  text: string,
-  mediaKeys: string[],
-  mediaByKey: Map<string, any>,
-): any | undefined {
-  if (!/\b(?:Bitshala\s+)?Bitcoin Talks\b/i.test(text))
-    return undefined;
-
-  return mediaKeys
-    .map((key) => mediaByKey.get(key))
-    .find((media) => {
-      return (
-        media?.type === "video" &&
-        (media.duration_ms ?? 0) >= PODCAST_MIN_DURATION_MS
-      );
-    });
-}
-
-function getPlaybackUrl(media: any): string | undefined {
-  const mp4Variants = (media?.variants ?? [])
-    .filter(
-      (variant: any) =>
-        variant.content_type === "video/mp4",
-    )
-    .sort(
-      (a: any, b: any) =>
-        (a.bit_rate ?? 0) - (b.bit_rate ?? 0),
-    );
-
-  const webOptimized = mp4Variants.filter(
-    (variant: any) => (variant.bit_rate ?? 0) <= 3_000_000,
-  );
-
-  return (webOptimized.at(-1) ?? mp4Variants.at(0))?.url;
 }
 
 async function fetchAllContent(
@@ -173,21 +154,18 @@ async function fetchAllContent(
     );
 
     for (const t of data.data ?? []) {
+      const link = `https://x.com/${username}/status/${t.id}`;
       const a = t.article;
+
       if (a?.title) {
-        const description = (
-          a.preview_text ||
-          a.plain_text ||
-          ""
-        )
-          .trim()
-          .replace(/\s+/g, " ")
-          .slice(0, 280);
+        const title = decode(a.title).trim();
         posts.push({
-          title: a.title.trim(),
-          description,
-          link: `https://x.com/${username}/status/${t.id}`,
-          tag: guessTag(a.title),
+          title,
+          description: summarize(
+            a.preview_text || a.plain_text || "",
+          ).slice(0, 280),
+          link,
+          tag: guessTag(title),
           author: "Bitshala",
           date: formatDate(t.created_at),
           source: "X",
@@ -195,26 +173,33 @@ async function fetchAllContent(
         continue;
       }
 
-      const text = t.note_tweet?.text || t.text || "";
-      const mediaKeys = t.attachments?.media_keys ?? [];
-      const podcastMedia = getPodcastMedia(
-        text,
-        mediaKeys,
-        mediaByKey,
-      );
-      if (!podcastMedia) continue;
+      // Any video this long is an episode; nothing else @bitshala_org posts
+      // comes close.
+      const video = (t.attachments?.media_keys ?? [])
+        .map((key: string) => mediaByKey.get(key))
+        .find(
+          (media: any) =>
+            media?.type === "video" &&
+            media.duration_ms >= PODCAST_MIN_DURATION_MS,
+        );
+      if (
+        !video ||
+        Date.parse(t.created_at) < PODCAST_EPOCH
+      )
+        continue;
 
+      const text = t.note_tweet?.text || t.text || "";
       posts.push({
-        title: podcastTitle(text),
-        description: cleanPodcastText(text).slice(0, 280),
-        link: `https://x.com/${username}/status/${t.id}`,
+        title: firstLine(text),
+        description: summarize(text).slice(0, 280),
+        link,
         tag: "Podcast",
         author: "Bitshala",
         date: formatDate(t.created_at),
         source: "X",
-        mediaUrl: getPlaybackUrl(podcastMedia),
-        posterUrl: podcastMedia.preview_image_url,
-        durationMs: podcastMedia.duration_ms,
+        mediaUrl: playbackUrl(video),
+        posterUrl: video.preview_image_url,
+        durationMs: video.duration_ms,
       });
     }
 
@@ -225,7 +210,7 @@ async function fetchAllContent(
   return posts;
 }
 
-/** Live X Articles and Bitcoin Talks podcast episodes for @bitshala_org. */
+/** Live X Articles and long-form video episodes for @bitshala_org. */
 export async function getXContent(): Promise<BlogPost[]> {
   if (cache && Date.now() - cache.at < TTL_MS)
     return cache.posts;
