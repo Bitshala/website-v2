@@ -1,14 +1,15 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import PodcastWatch from "../components/blogs/PodcastWatch.astro";
+import { getPlaylistVideos } from "../scripts/googleApi";
 
 type FeedItem = {
   id: string;
-  type: "podcast" | "article";
+  type: "article";
   title: string;
   text: string;
   date: string;
   thumbnail: string | null;
-  duration?: number;
   articleUrl?: string;
   postUrl: string;
 };
@@ -20,7 +21,11 @@ const headerProps = {
 };
 const isVisible = true;
 
-// Written by scripts/fetch-x.js in the "Update X feed" workflow. The site
+// Bitcoin Talks episodes come from this YouTube playlist, embedded inline.
+const PODCAST_PLAYLIST_ID =
+  "PLdHBT9oS8yMX3ozzhidF8-WODxcr8ZwAU";
+
+// Articles are written by scripts/fetch-x.js in the "Update X feed" workflow. The site
 // never calls the X API. Globbed so a missing file renders the empty state
 // instead of failing the build.
 const feedModules = import.meta.glob<{ default: Feed }>(
@@ -28,28 +33,33 @@ const feedModules = import.meta.glob<{ default: Feed }>(
   { eager: true },
 );
 const feed = Object.values(feedModules)[0]?.default;
-const items = (feed?.items ?? [])
+const podcasts = await getPlaylistVideos(
+  PODCAST_PLAYLIST_ID,
+  import.meta.env.GOOGLE_KEY,
+);
+// Only native X Articles; a cache from before the switch also holds link
+// posts and X videos.
+const articles = (feed?.items ?? [])
   .filter(
     (item) =>
-      item.type === "podcast" || item.type === "article",
+      item.type === "article" &&
+      item.articleUrl === item.postUrl,
   )
   .sort((a, b) => Date.parse(b.date) - Date.parse(a.date));
-const podcastCount = items.filter(
-  (item) => item.type === "podcast",
-).length;
-const articleCount = items.length - podcastCount;
 
+// The first tab is shown on load.
 const tabs = [
-  { name: "all", label: "All", count: items.length },
   {
     name: "podcast",
     label: "Podcasts",
-    count: podcastCount,
+    count: podcasts.length,
+    empty: "New Bitcoin Talks episodes will appear here.",
   },
   {
     name: "article",
     label: "Articles",
-    count: articleCount,
+    count: articles.length,
+    empty: "New articles will appear here.",
   },
 ];
 
@@ -62,19 +72,6 @@ const formatDate = (iso: string) =>
     day: "numeric",
     year: "numeric",
   });
-
-function formatDuration(durationMs?: number) {
-  if (!durationMs) return "";
-
-  const totalSeconds = Math.floor(durationMs / 1000);
-  const hours = Math.floor(totalSeconds / 3600);
-  const minutes = Math.floor((totalSeconds % 3600) / 60);
-  const seconds = totalSeconds % 60;
-
-  return hours > 0
-    ? `${hours}:${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`
-    : `${minutes}:${String(seconds).padStart(2, "0")}`;
-}
 
 const updatedAt = feed?.updatedAt
   ? new Date(feed.updatedAt).toLocaleString("en-US", {
@@ -113,130 +110,126 @@ const updatedAt = feed?.updatedAt
   <div
     class="mx-auto max-w-screen-xl px-4 py-10 md:px-6 lg:py-14"
   >
-    {
-      items.length === 0 ? (
-        <div class="rounded-3xl border border-dashed border-black/20 bg-peach px-6 py-20 text-center">
-          <h2 class="font-header text-2xl font-bold">
-            Nothing here yet
-          </h2>
-          <p class="mt-2 font-base text-black/60">
-            New articles and Bitcoin Talks episodes will
-            appear here automatically. Check back soon.
-          </p>
-        </div>
-      ) : (
-        <>
-          <div
-            class="mb-8 flex justify-center md:mb-10"
-            role="tablist"
-            aria-label="Filter blogs and podcasts"
-          >
-            <div class="inline-flex rounded-full border border-black/10 bg-peach p-1.5 shadow-sm">
-              {tabs.map((tab, index) => (
-                <button
-                  class="content-tab flex items-center gap-2 rounded-full px-4 py-2.5 font-header text-base font-bold transition-colors md:px-7 md:text-lg"
-                  type="button"
-                  role="tab"
-                  aria-selected={String(index === 0)}
-                  aria-controls="feed-panel"
-                  data-filter={tab.name}
-                  tabindex={index === 0 ? undefined : "-1"}
+    <div
+      class="mb-8 flex justify-center md:mb-10"
+      role="tablist"
+      aria-label="Filter blogs and podcasts"
+    >
+      <div
+        class="inline-flex rounded-full border border-black/10 bg-peach p-1.5 shadow-sm"
+      >
+        {
+          tabs.map((tab, index) => (
+            <button
+              class="content-tab flex items-center gap-2 rounded-full px-4 py-2.5 font-header text-base font-bold transition-colors md:px-7 md:text-lg"
+              type="button"
+              role="tab"
+              aria-selected={String(index === 0)}
+              aria-controls="feed-panel"
+              data-filter={tab.name}
+              tabindex={index === 0 ? undefined : "-1"}
+            >
+              {tab.label}
+              <span
+                class:list={[
+                  "rounded-full px-2 py-0.5 font-base text-xs",
+                  index === 0
+                    ? "bg-white/15"
+                    : "bg-black/10",
+                ]}
+              >
+                {tab.count}
+              </span>
+            </button>
+          ))
+        }
+      </div>
+    </div>
+
+    <section id="feed-panel" role="tabpanel">
+      <div data-panel="podcast">
+        {
+          podcasts.length > 0 ? (
+            <PodcastWatch
+              episodes={podcasts}
+              playlistId={PODCAST_PLAYLIST_ID}
+            />
+          ) : (
+            <div class="rounded-3xl border border-dashed border-black/20 bg-peach px-6 py-20 text-center">
+              <h2 class="font-header text-2xl font-bold">
+                Nothing here yet
+              </h2>
+              <p class="mt-2 font-base text-black/60">
+                {tabs[0].empty} Check back soon.
+              </p>
+            </div>
+          )
+        }
+      </div>
+
+      <div data-panel="article" hidden>
+        {
+          articles.length > 0 ? (
+            <div class="grid grid-cols-1 gap-5 md:grid-cols-2 md:gap-6 lg:grid-cols-3">
+              {articles.map((item) => (
+                <a
+                  href={item.articleUrl ?? item.postUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="group flex flex-col overflow-hidden rounded-2xl border border-black/10 bg-peach transition-all hover:-translate-y-1 hover:border-orange hover:shadow-lg"
                 >
-                  {tab.label}
-                  <span
-                    class:list={[
-                      "rounded-full px-2 py-0.5 font-base text-xs",
-                      index === 0
-                        ? "bg-white/15"
-                        : "bg-black/10",
-                    ]}
-                  >
-                    {tab.count}
-                  </span>
-                </button>
+                  {item.thumbnail && (
+                    <div class="relative aspect-video w-full overflow-hidden bg-black">
+                      <img
+                        class="h-full w-full object-cover transition-transform group-hover:scale-105"
+                        src={item.thumbnail}
+                        alt=""
+                        loading="lazy"
+                        decoding="async"
+                      />
+                    </div>
+                  )}
+                  <div class="flex flex-1 flex-col p-5 sm:p-6">
+                    <div class="font-base text-sm text-black/60">
+                      {formatDate(item.date)}
+                    </div>
+                    <h2 class="mt-3 line-clamp-3 font-header text-xl font-bold leading-[1.25] text-black transition-colors group-hover:text-orange md:text-2xl">
+                      {item.title}
+                    </h2>
+                    <p
+                      class="mt-3 line-clamp-3 flex-1 font-base text-base leading-relaxed text-black/80"
+                      style="font-weight: 400;"
+                    >
+                      {item.text}
+                    </p>
+                    <div class="mt-5 flex items-center justify-between gap-3">
+                      <span class="w-fit rounded-full bg-orange px-3 py-1 font-base text-xs font-bold uppercase tracking-wide text-white">
+                        Article
+                      </span>
+                      <span
+                        class="font-header text-sm text-orange transition-transform group-hover:translate-x-1"
+                        style="font-weight: 600;"
+                      >
+                        Read →
+                      </span>
+                    </div>
+                  </div>
+                </a>
               ))}
             </div>
-          </div>
-
-          <section id="feed-panel" role="tabpanel">
-            <div class="grid grid-cols-1 gap-5 md:grid-cols-2 md:gap-6 lg:grid-cols-3">
-              {items.map((item) => {
-                const isPodcast = item.type === "podcast";
-                return (
-                  <a
-                    href={
-                      isPodcast
-                        ? item.postUrl
-                        : (item.articleUrl ?? item.postUrl)
-                    }
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="group flex flex-col overflow-hidden rounded-2xl border border-black/10 bg-peach transition-all hover:-translate-y-1 hover:border-orange hover:shadow-lg"
-                    data-type={item.type}
-                  >
-                    {item.thumbnail && (
-                      <div class="relative aspect-video w-full overflow-hidden bg-black">
-                        <img
-                          class="h-full w-full object-cover transition-transform group-hover:scale-105"
-                          src={item.thumbnail}
-                          alt=""
-                          loading="lazy"
-                          decoding="async"
-                        />
-                        {isPodcast && item.duration && (
-                          <span class="absolute bottom-2 right-2 rounded bg-black/80 px-1.5 py-0.5 font-base text-xs font-bold text-white">
-                            {formatDuration(item.duration)}
-                          </span>
-                        )}
-                      </div>
-                    )}
-                    <div class="flex flex-1 flex-col p-5 sm:p-6">
-                      <div class="flex flex-wrap items-center gap-x-2 gap-y-1 font-base text-sm text-black/60">
-                        <span>{formatDate(item.date)}</span>
-                        {isPodcast && item.duration && (
-                          <>
-                            <span>·</span>
-                            <span>
-                              {formatDuration(
-                                item.duration,
-                              )}
-                            </span>
-                          </>
-                        )}
-                      </div>
-                      <h2 class="mt-3 line-clamp-3 font-header text-xl font-bold leading-[1.25] text-black transition-colors group-hover:text-orange md:text-2xl">
-                        {item.title}
-                      </h2>
-                      <p
-                        class="mt-3 line-clamp-3 flex-1 font-base text-base leading-relaxed text-black/80"
-                        style="font-weight: 400;"
-                      >
-                        {item.text}
-                      </p>
-                      <div class="mt-5 flex items-center justify-between gap-3">
-                        <span class="w-fit rounded-full bg-orange px-3 py-1 font-base text-xs font-bold uppercase tracking-wide text-white">
-                          {isPodcast
-                            ? "Podcast"
-                            : "Article"}
-                        </span>
-                        <span
-                          class="font-header text-sm text-orange transition-transform group-hover:translate-x-1"
-                          style="font-weight: 600;"
-                        >
-                          {isPodcast
-                            ? "Watch on X ↗"
-                            : "Read →"}
-                        </span>
-                      </div>
-                    </div>
-                  </a>
-                );
-              })}
+          ) : (
+            <div class="rounded-3xl border border-dashed border-black/20 bg-peach px-6 py-20 text-center">
+              <h2 class="font-header text-2xl font-bold">
+                Nothing here yet
+              </h2>
+              <p class="mt-2 font-base text-black/60">
+                {tabs[1].empty} Check back soon.
+              </p>
             </div>
-          </section>
-        </>
-      )
-    }
+          )
+        }
+      </div>
+    </section>
 
     {
       updatedAt && (
@@ -264,8 +257,10 @@ const updatedAt = feed?.updatedAt
         "[data-filter]",
       ),
     );
-    const cards = Array.from(
-      document.querySelectorAll<HTMLElement>("[data-type]"),
+    const panels = Array.from(
+      document.querySelectorAll<HTMLElement>(
+        "[data-panel]",
+      ),
     );
 
     function activateTab(name: string, focus = false) {
@@ -283,15 +278,14 @@ const updatedAt = feed?.updatedAt
         count?.classList.toggle("bg-black/10", !isActive);
       });
 
-      cards.forEach((card) => {
-        card.hidden =
-          name !== "all" && card.dataset.type !== name;
+      panels.forEach((panel) => {
+        panel.hidden = panel.dataset.panel !== name;
       });
     }
 
     tabButtons.forEach((button, index) => {
       button.addEventListener("click", () => {
-        activateTab(button.dataset.filter ?? "all");
+        activateTab(button.dataset.filter ?? "podcast");
       });
 
       button.addEventListener("keydown", (event) => {
@@ -320,7 +314,7 @@ const updatedAt = feed?.updatedAt
         }
 
         activateTab(
-          tabButtons[nextIndex].dataset.filter ?? "all",
+          tabButtons[nextIndex].dataset.filter ?? "podcast",
           true,
         );
       });

@@ -1,0 +1,1571 @@
+---
+// YouTube-style watch page for Bitcoin Talks: a playlist on the left and one
+// persistent YouTube player (driven through the IFrame Player API, with our
+// own controls) on the right. Episodes are rendered at build time; the script
+// below only swaps the selection, so the page works as plain links without JS.
+import type { PlaylistVideo } from "../../scripts/googleApi";
+
+interface Props {
+  episodes: PlaylistVideo[];
+  playlistId: string;
+}
+
+const { episodes, playlistId } = Astro.props;
+
+const SHOW = "Bitcoin Talks";
+const HOST = "Bitshala";
+const CHANNEL_URL = "https://www.youtube.com/@bitshala";
+
+// Pinned to IST like the rest of the page, so CI and local builds agree.
+const formatDate = (iso: string) =>
+  new Date(iso).toLocaleDateString("en-US", {
+    timeZone: "Asia/Kolkata",
+    month: "short",
+    day: "numeric",
+    year: "numeric",
+  });
+
+/** 3723 → "1:02:03" */
+const formatTime = (seconds: number) => {
+  const total = Math.max(0, Math.floor(seconds));
+  const h = Math.floor(total / 3600);
+  const m = Math.floor((total % 3600) / 60);
+  const s = String(total % 60).padStart(2, "0");
+  return h > 0
+    ? `${h}:${String(m).padStart(2, "0")}:${s}`
+    : `${m}:${s}`;
+};
+
+/** 34860 → "9h 41m" */
+const formatLength = (seconds: number) => {
+  const h = Math.floor(seconds / 3600);
+  const m = Math.round((seconds % 3600) / 60);
+  return h > 0 ? `${h}h ${m}m` : `${m}m`;
+};
+
+/** "1:02:03" → 3723 */
+const toSeconds = (stamp: string) =>
+  stamp
+    .split(":")
+    .reduce((total, part) => total * 60 + Number(part), 0);
+
+/**
+ * Chapters from "12:34 Topic" lines in the description, the same convention
+ * YouTube uses. Fewer than two stamps isn't a chapter list.
+ */
+const parseChapters = (description: string) => {
+  const chapters = description
+    .split("\n")
+    .map((line) =>
+      line.match(
+        /^\s*[-•*]?\s*\(?((?:\d{1,2}:)?\d{1,2}:\d{2})\)?\s*[-–—:|]?\s*(.+?)\s*$/,
+      ),
+    )
+    .filter((match): match is RegExpMatchArray => !!match)
+    .map(([, stamp, label]) => ({
+      t: toSeconds(stamp),
+      label,
+    }));
+  return chapters.length >= 2 ? chapters : [];
+};
+
+const items = episodes.map((episode) => ({
+  ...episode,
+  url: `https://www.youtube.com/watch?v=${episode.id}&list=${playlistId}`,
+  dateLabel: formatDate(episode.date),
+  durationLabel: episode.duration
+    ? formatTime(episode.duration)
+    : "",
+  chapters: parseChapters(episode.description),
+}));
+const first = items[0];
+const totalLength = items.every((item) => item.duration)
+  ? formatLength(
+      items.reduce(
+        (sum, item) => sum + (item.duration ?? 0),
+        0,
+      ),
+    )
+  : "";
+
+// Escaped so a "</script>" in a description can't end the tag early.
+const episodeData = JSON.stringify(
+  items.map(
+    ({
+      id,
+      title,
+      description,
+      url,
+      dateLabel,
+      durationLabel,
+      duration,
+      chapters,
+    }) => ({
+      id,
+      title,
+      description,
+      url,
+      dateLabel,
+      durationLabel,
+      duration,
+      chapters,
+    }),
+  ),
+).replace(/</g, "\\u003c");
+
+const iconButton =
+  "pw-btn inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-white transition-colors hover:bg-white/15 disabled:opacity-35 disabled:hover:bg-[transparent]";
+const pill =
+  "inline-flex items-center gap-2 rounded-full px-4 py-2 font-base text-sm font-bold transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange";
+---
+
+<div
+  id="podcast-watch"
+  class="grid grid-cols-1 gap-x-6 gap-y-5 md:grid-cols-[minmax(0,2fr)_minmax(0,3fr)] lg:grid-cols-[minmax(0,35fr)_minmax(0,65fr)] lg:gap-x-8"
+  data-playlist={playlistId}
+>
+  <script
+    type="application/json"
+    id="pw-data"
+    set:html={episodeData}
+  />
+
+  {
+    /* On mobile this wrapper dissolves so the player can stick on its own. */
+  }
+  <div
+    class="contents md:sticky md:top-28 md:order-2 md:block md:self-start"
+  >
+    <div
+      class="pw-sticky sticky top-[56px] z-20 order-1 -mx-4 bg-white px-4 pb-3 pt-2 md:static md:mx-0 md:bg-[transparent] md:p-0"
+    >
+      <div
+        id="pw-shell"
+        class="overflow-hidden rounded-2xl bg-[#111111] shadow-lg"
+      >
+        <div
+          id="pw-stage"
+          class="relative aspect-video w-full bg-[#000000]"
+        >
+          <img
+            id="pw-poster"
+            class="absolute inset-0 h-full w-full object-cover opacity-60"
+            src={first.thumbnail ?? undefined}
+            alt=""
+          />
+          <div
+            id="pw-skeleton"
+            class="absolute inset-0 flex items-center justify-center"
+            aria-hidden="true"
+          >
+            <span
+              class="h-14 w-14 animate-spin rounded-full border-4 border-white/25 border-t-orange"
+            ></span>
+          </div>
+          <div
+            id="pw-error"
+            class="absolute inset-0 hidden flex-col items-center justify-center gap-3 bg-[#000000]/80 p-6 text-center font-base text-white"
+          >
+            <p>The player couldn't load here.</p>
+            <a
+              id="pw-error-link"
+              href={first.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="rounded-full bg-orange px-4 py-2 font-bold"
+              >Watch on YouTube ↗</a
+            >
+          </div>
+          <div class="absolute inset-0">
+            <div id="pw-player" class="h-full w-full"></div>
+          </div>
+        </div>
+
+        <div class="px-2 pb-2 pt-1 text-white sm:px-3">
+          <div class="flex items-center gap-3 px-1">
+            <input
+              id="pw-seek"
+              class="pw-range w-full"
+              type="range"
+              min="0"
+              max="1000"
+              step="1"
+              value="0"
+              aria-label="Seek"
+              aria-valuetext="0:00"
+              disabled
+            />
+            <span
+              id="pw-time"
+              class="whitespace-nowrap font-base text-xs tabular-nums text-white/80 sm:text-sm"
+              >0:00 / {first.durationLabel || "–:––"}</span
+            >
+          </div>
+          <div class="flex items-center gap-0.5 sm:gap-1">
+            <button
+              id="pw-prev"
+              class={iconButton}
+              type="button"
+              aria-label="Previous episode"
+              title="Previous episode"
+              disabled
+            >
+              <svg
+                viewBox="0 0 24 24"
+                class="h-5 w-5"
+                fill="currentColor"
+                aria-hidden="true"
+                ><path d="M6 6h2v12H6zM9.5 12 18 18V6z"
+                ></path></svg
+              >
+            </button>
+            <button
+              id="pw-back"
+              class={iconButton}
+              type="button"
+              aria-label="Back 10 seconds"
+              title="Back 10 seconds (J)"
+              disabled
+            >
+              <svg
+                viewBox="0 0 24 24"
+                class="h-6 w-6"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                ><path
+                  d="M3.5 12a8.5 8.5 0 1 0 2.6-6.1L3.5 8.5"
+                ></path><path d="M3.5 3.5v5h5"></path><text
+                  x="12.5"
+                  y="15.5"
+                  font-size="7.5"
+                  font-weight="700"
+                  text-anchor="middle"
+                  fill="currentColor"
+                  stroke="none"
+                  font-family="sans-serif">10</text
+                ></svg
+              >
+            </button>
+            <button
+              id="pw-play"
+              class={`${iconButton} h-11 w-11 bg-white/10`}
+              type="button"
+              aria-label="Play"
+              title="Play (Space)"
+              disabled
+            >
+              <svg
+                viewBox="0 0 24 24"
+                class="pw-icon-play h-6 w-6"
+                fill="currentColor"
+                aria-hidden="true"
+                ><path d="M8 5v14l11-7z"></path></svg
+              >
+              <svg
+                viewBox="0 0 24 24"
+                class="pw-icon-pause hidden h-6 w-6"
+                fill="currentColor"
+                aria-hidden="true"
+                ><path d="M6 5h4v14H6zM14 5h4v14h-4z"
+                ></path></svg
+              >
+            </button>
+            <button
+              id="pw-fwd"
+              class={iconButton}
+              type="button"
+              aria-label="Forward 30 seconds"
+              title="Forward 30 seconds"
+              disabled
+            >
+              <svg
+                viewBox="0 0 24 24"
+                class="h-6 w-6"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                ><path
+                  d="M20.5 12a8.5 8.5 0 1 1-2.6-6.1l2.6 2.6"
+                ></path><path d="M20.5 3.5v5h-5"
+                ></path><text
+                  x="11.5"
+                  y="15.5"
+                  font-size="7.5"
+                  font-weight="700"
+                  text-anchor="middle"
+                  fill="currentColor"
+                  stroke="none"
+                  font-family="sans-serif">30</text
+                ></svg
+              >
+            </button>
+            <button
+              id="pw-next"
+              class={iconButton}
+              type="button"
+              aria-label="Next episode"
+              title="Next episode (N)"
+              disabled
+            >
+              <svg
+                viewBox="0 0 24 24"
+                class="h-5 w-5"
+                fill="currentColor"
+                aria-hidden="true"
+                ><path d="M16 6h2v12h-2zM6 18l8.5-6L6 6z"
+                ></path></svg
+              >
+            </button>
+
+            <span class="flex-1"></span>
+
+            <button
+              id="pw-mute"
+              class={`${iconButton} max-sm:hidden`}
+              type="button"
+              aria-label="Mute"
+              title="Mute (M)"
+              disabled
+            >
+              <svg
+                viewBox="0 0 24 24"
+                class="pw-icon-vol h-5 w-5"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                ><path
+                  d="M4 9v6h4l5 4V5L8 9z"
+                  fill="currentColor"></path><path
+                  d="M16.5 8.5a5 5 0 0 1 0 7M19 6a8.5 8.5 0 0 1 0 12"
+                ></path></svg
+              >
+              <svg
+                viewBox="0 0 24 24"
+                class="pw-icon-muted hidden h-5 w-5"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                ><path
+                  d="M4 9v6h4l5 4V5L8 9z"
+                  fill="currentColor"></path><path
+                  d="m16 9 6 6M22 9l-6 6"></path></svg
+              >
+            </button>
+            <input
+              id="pw-volume"
+              class="pw-range hidden w-20 lg:block"
+              type="range"
+              min="0"
+              max="100"
+              step="1"
+              value="100"
+              aria-label="Volume"
+              disabled
+            />
+            <label class="sr-only" for="pw-speed"
+              >Playback speed</label
+            >
+            <select
+              id="pw-speed"
+              class="ml-1 h-9 cursor-pointer rounded-full border border-white/20 bg-[#111111] px-2 font-base text-xs font-bold text-white sm:text-sm"
+              title="Playback speed"
+              disabled
+            >
+              <option value="0.5">0.5×</option>
+              <option value="0.75">0.75×</option>
+              <option value="1" selected>1×</option>
+              <option value="1.25">1.25×</option>
+              <option value="1.5">1.5×</option>
+              <option value="1.75">1.75×</option>
+              <option value="2">2×</option>
+            </select>
+            <button
+              id="pw-fullscreen"
+              class={iconButton}
+              type="button"
+              aria-label="Full screen"
+              title="Full screen"
+              disabled
+            >
+              <svg
+                viewBox="0 0 24 24"
+                class="h-5 w-5"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                ><path
+                  d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"
+                ></path></svg
+              >
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="pw-details" class="order-2 md:mt-5">
+      <h2
+        id="pw-title"
+        class="font-header text-2xl font-bold leading-tight text-black md:text-3xl"
+      >
+        {first.title}
+      </h2>
+
+      <div
+        class="mt-4 flex flex-wrap items-center justify-between gap-3"
+      >
+        <div class="flex items-center gap-3">
+          <span
+            class="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-orange font-header text-lg font-bold text-white"
+            aria-hidden="true">B</span
+          >
+          <div class="font-base leading-tight">
+            <p class="font-bold text-black">{SHOW}</p>
+            <p class="text-sm text-black/60">
+              by {HOST} · <span id="pw-date"
+                >{first.dateLabel}</span
+              >
+            </p>
+          </div>
+          <a
+            href={`${CHANNEL_URL}?sub_confirmation=1`}
+            target="_blank"
+            rel="noopener noreferrer"
+            class={`${pill} ml-1 bg-black text-white hover:bg-orange`}
+          >
+            Subscribe
+          </a>
+        </div>
+
+        <div class="flex flex-wrap items-center gap-2">
+          <a
+            id="pw-like"
+            href={first.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            class={`${pill} bg-darkPeach text-black hover:bg-hover`}
+            aria-label="Like on YouTube (opens in a new tab)"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              class="h-4 w-4"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+              ><path
+                d="M7 10v11H3V10zM7 10l4-8a3 3 0 0 1 3 3v4h6a2 2 0 0 1 2 2.3l-1.4 8A2 2 0 0 1 18.6 21H7"
+              ></path></svg
+            >
+            Like
+          </a>
+          <button
+            id="pw-share"
+            type="button"
+            class={`${pill} bg-darkPeach text-black hover:bg-hover`}
+          >
+            <svg
+              viewBox="0 0 24 24"
+              class="h-4 w-4"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+              ><path
+                d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"
+              ></path></svg
+            >
+            <span id="pw-share-label">Share</span>
+          </button>
+          <a
+            id="pw-youtube"
+            href={first.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            class={`${pill} text-orange hover:bg-peach`}
+          >
+            YouTube ↗
+          </a>
+        </div>
+      </div>
+      <p id="pw-status" class="sr-only" aria-live="polite">
+      </p>
+
+      <div class="mt-4 rounded-2xl bg-peach p-4 md:p-5">
+        <p class="font-base text-sm font-bold text-black">
+          <span id="pw-meta"
+            >{first.dateLabel}{
+              first.durationLabel &&
+                ` · ${first.durationLabel}`
+            }</span
+          >
+        </p>
+        <div
+          id="pw-desc"
+          class="mt-2 line-clamp-4 whitespace-pre-line break-words font-base text-sm leading-relaxed text-black/80 md:text-base"
+          style="font-weight: 400;"
+        >
+          {first.description}
+        </div>
+        <button
+          id="pw-more"
+          type="button"
+          class="mt-2 font-base text-sm font-bold text-black hover:text-orange"
+          aria-expanded="false"
+          aria-controls="pw-desc"
+        >
+          Show more
+        </button>
+
+        <div
+          id="pw-chapters-wrap"
+          class="mt-5 border-t border-black/10 pt-4"
+          hidden={first.chapters.length === 0}
+        >
+          <h3
+            class="font-header text-lg font-bold text-black"
+          >
+            Chapters
+          </h3>
+          <ol
+            id="pw-chapters"
+            class="mt-2 grid gap-1 font-base text-sm"
+          >
+            {
+              first.chapters.map((chapter) => (
+                <li>
+                  <button
+                    type="button"
+                    class="pw-chapter flex w-full gap-3 rounded-lg px-2 py-1.5 text-left hover:bg-darkPeach"
+                    data-t={chapter.t}
+                  >
+                    <span class="font-bold tabular-nums text-orange">
+                      {formatTime(chapter.t)}
+                    </span>
+                    <span>{chapter.label}</span>
+                  </button>
+                </li>
+              ))
+            }
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <aside
+    class="order-3 flex flex-col overflow-hidden rounded-2xl border border-black/10 bg-peach md:sticky md:top-28 md:order-1 md:max-h-[calc(100vh-8rem)] md:self-start"
+    aria-labelledby="pw-list-heading"
+  >
+    <div class="border-b border-black/10 p-4">
+      <h2
+        id="pw-list-heading"
+        class="font-header text-xl font-bold text-black"
+      >
+        {SHOW}
+      </h2>
+      <p class="mt-0.5 font-base text-sm text-black/60">
+        {HOST} · {items.length} episode{
+          items.length === 1 ? "" : "s"
+        }{totalLength && ` · ${totalLength}`}
+      </p>
+      <div class="mt-3 flex items-center gap-3">
+        <label class="relative flex-1">
+          <span class="sr-only">Search episodes</span>
+          <svg
+            viewBox="0 0 24 24"
+            class="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-black/50"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            aria-hidden="true"
+            ><circle cx="11" cy="11" r="7"></circle><path
+              d="m20 20-3.5-3.5"></path></svg
+          >
+          <input
+            id="pw-search"
+            type="search"
+            placeholder="Search episodes"
+            autocomplete="off"
+            class="w-full rounded-full border border-black/15 bg-white py-2 pl-9 pr-3 font-base text-sm text-black placeholder:text-black/50 focus:border-orange focus:outline-none"
+          />
+        </label>
+        <button
+          id="pw-autoplay"
+          type="button"
+          role="switch"
+          aria-checked="true"
+          class="flex shrink-0 items-center gap-2 font-base text-sm font-bold text-black"
+        >
+          Autoplay
+          <span
+            class="pw-switch relative h-5 w-9 rounded-full bg-black/25 transition-colors"
+            aria-hidden="true"
+          >
+            <span
+              class="absolute left-0.5 top-0.5 h-4 w-4 rounded-full bg-white shadow transition-transform"
+            ></span>
+          </span>
+        </button>
+      </div>
+    </div>
+
+    <ol
+      id="pw-list"
+      class="flex-1 overflow-y-auto overscroll-contain p-2"
+      aria-label="Episodes"
+    >
+      {
+        items.map((item, index) => (
+          <li data-index={index}>
+            <a
+              href={`?ep=${item.id}`}
+              class="pw-row group flex gap-3 rounded-xl p-2 transition-colors hover:bg-darkPeach focus-visible:outline focus-visible:outline-2 focus-visible:outline-orange"
+              data-ep={item.id}
+              aria-current={
+                index === 0 ? "true" : undefined
+              }
+            >
+              <span class="relative aspect-video w-32 shrink-0 overflow-hidden rounded-lg bg-darkPeach sm:w-40 md:w-32 lg:w-40">
+                {item.thumbnail && (
+                  <img
+                    class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                    src={item.thumbnail}
+                    alt=""
+                    loading="lazy"
+                    decoding="async"
+                  />
+                )}
+                {item.durationLabel && (
+                  <span class="absolute bottom-1.5 right-1.5 rounded bg-black/85 px-1 py-px font-base text-[11px] font-bold tabular-nums text-white">
+                    {item.durationLabel}
+                  </span>
+                )}
+                <span
+                  class="pw-eq absolute inset-0 hidden items-center justify-center bg-black/55"
+                  aria-hidden="true"
+                >
+                  <span class="flex h-5 items-end gap-[3px]">
+                    <span class="w-1 rounded-sm bg-white" />
+                    <span class="w-1 rounded-sm bg-white" />
+                    <span class="w-1 rounded-sm bg-white" />
+                    <span class="w-1 rounded-sm bg-white" />
+                  </span>
+                </span>
+                <span
+                  class="pw-progress absolute inset-x-0 bottom-0 h-1 bg-white/50"
+                  hidden
+                >
+                  <span class="block h-full bg-orange" />
+                </span>
+              </span>
+              <span class="min-w-0 flex-1 py-0.5 font-base">
+                <span class="pw-now hidden text-[11px] font-bold uppercase tracking-wide text-orange">
+                  Now playing
+                </span>
+                <span class="line-clamp-2 text-sm font-bold leading-snug text-black lg:text-[15px]">
+                  {item.title}
+                </span>
+                <span class="mt-1 block text-xs text-black/60">
+                  {SHOW} · {HOST}
+                </span>
+                <span class="block text-xs text-black/60">
+                  {item.dateLabel}
+                  {item.durationLabel &&
+                    ` · ${item.durationLabel}`}
+                </span>
+              </span>
+            </a>
+          </li>
+        ))
+      }
+      <li
+        id="pw-empty"
+        class="px-3 py-8 text-center font-base text-sm text-black/60"
+        hidden
+      >
+        No episodes match your search.
+      </li>
+    </ol>
+  </aside>
+</div>
+
+<style is:global>
+  .pw-row[aria-current="true"] {
+    background: #ffdec7;
+    box-shadow: inset 3px 0 0 #fa8816;
+  }
+  .pw-row[aria-current="true"] .pw-eq {
+    display: flex;
+  }
+  .pw-row[aria-current="true"] .pw-now {
+    display: block;
+  }
+  .pw-eq > span > span {
+    height: 30%;
+  }
+  #podcast-watch[data-playing="true"]
+    .pw-row[aria-current="true"]
+    .pw-eq
+    > span
+    > span {
+    animation: pw-eq 0.9s ease-in-out infinite alternate;
+  }
+  .pw-eq > span > span:nth-child(2) {
+    animation-delay: -0.3s !important;
+    height: 70%;
+  }
+  .pw-eq > span > span:nth-child(3) {
+    animation-delay: -0.6s !important;
+    height: 50%;
+  }
+  .pw-eq > span > span:nth-child(4) {
+    animation-delay: -0.15s !important;
+  }
+  @keyframes pw-eq {
+    from {
+      height: 15%;
+    }
+    to {
+      height: 100%;
+    }
+  }
+
+  #pw-autoplay[aria-checked="true"] .pw-switch {
+    background: #fa8816;
+  }
+  #pw-autoplay[aria-checked="true"] .pw-switch > span {
+    transform: translateX(16px);
+  }
+  #pw-autoplay:focus-visible .pw-switch,
+  .pw-btn:focus-visible,
+  #pw-speed:focus-visible {
+    outline: 2px solid #fa8816;
+    outline-offset: 2px;
+  }
+
+  .pw-range {
+    appearance: none;
+    height: 18px;
+    background: transparent;
+    cursor: pointer;
+    --fill: 0%;
+  }
+  .pw-range:disabled {
+    cursor: default;
+    opacity: 0.5;
+  }
+  .pw-range::-webkit-slider-runnable-track {
+    height: 4px;
+    border-radius: 999px;
+    background: linear-gradient(
+      to right,
+      #fa8816 var(--fill),
+      rgba(247, 247, 247, 0.3) var(--fill)
+    );
+  }
+  .pw-range::-moz-range-track {
+    height: 4px;
+    border-radius: 999px;
+    background: rgba(247, 247, 247, 0.3);
+  }
+  .pw-range::-moz-range-progress {
+    height: 4px;
+    border-radius: 999px;
+    background: #fa8816;
+  }
+  .pw-range::-webkit-slider-thumb {
+    appearance: none;
+    margin-top: -5px;
+    height: 14px;
+    width: 14px;
+    border-radius: 999px;
+    background: #fa8816;
+    transition: transform 0.15s;
+  }
+  .pw-range::-moz-range-thumb {
+    height: 14px;
+    width: 14px;
+    border: 0;
+    border-radius: 999px;
+    background: #fa8816;
+  }
+  .pw-range:hover::-webkit-slider-thumb,
+  .pw-range:focus-visible::-webkit-slider-thumb {
+    transform: scale(1.25);
+  }
+  .pw-range:focus-visible {
+    outline: 2px solid #fa8816;
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  #pw-shell:fullscreen {
+    display: flex;
+    flex-direction: column;
+    border-radius: 0;
+  }
+  #pw-shell:fullscreen #pw-stage {
+    flex: 1;
+    aspect-ratio: auto;
+  }
+
+  .pw-chapter[aria-current="true"] {
+    background: #ffdec7;
+    font-weight: 700;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    #podcast-watch * {
+      animation: none !important;
+      transition: none !important;
+    }
+  }
+</style>
+
+<script>
+  type Chapter = { t: number; label: string };
+  type Episode = {
+    id: string;
+    title: string;
+    description: string;
+    url: string;
+    dateLabel: string;
+    durationLabel: string;
+    duration?: number;
+    chapters: Chapter[];
+  };
+  type Progress = Record<string, { t: number; d: number }>;
+
+  // YouTube IFrame Player API states.
+  const ENDED = 0;
+  const PLAYING = 1;
+  const BUFFERING = 3;
+
+  const PROGRESS_KEY = "bitshala:podcast-progress";
+  const AUTOPLAY_KEY = "bitshala:podcast-autoplay";
+
+  // Storage can throw (private mode, blocked site data); the page must work
+  // without it.
+  const loadJson = <T,>(key: string, fallback: T): T => {
+    try {
+      const raw = localStorage.getItem(key);
+      return raw === null
+        ? fallback
+        : (JSON.parse(raw) as T);
+    } catch {
+      return fallback;
+    }
+  };
+  const saveJson = (key: string, value: unknown) => {
+    try {
+      localStorage.setItem(key, JSON.stringify(value));
+    } catch {}
+  };
+
+  const formatTime = (seconds: number) => {
+    const total = Math.max(0, Math.floor(seconds || 0));
+    const h = Math.floor(total / 3600);
+    const m = Math.floor((total % 3600) / 60);
+    const s = String(total % 60).padStart(2, "0");
+    return h > 0
+      ? `${h}:${String(m).padStart(2, "0")}:${s}`
+      : `${m}:${s}`;
+  };
+
+  const root = document.getElementById("podcast-watch");
+  if (root) init(root);
+
+  function init(root: HTMLElement) {
+    const byId = <T extends HTMLElement>(id: string) =>
+      document.getElementById(id) as T;
+    const episodes: Episode[] = JSON.parse(
+      byId("pw-data").textContent ?? "[]",
+    );
+    if (episodes.length === 0) return;
+
+    const shell = byId("pw-shell");
+    const poster = byId<HTMLImageElement>("pw-poster");
+    const skeleton = byId("pw-skeleton");
+    const errorBox = byId("pw-error");
+    const errorLink =
+      byId<HTMLAnchorElement>("pw-error-link");
+    const seek = byId<HTMLInputElement>("pw-seek");
+    const timeLabel = byId("pw-time");
+    const playBtn = byId<HTMLButtonElement>("pw-play");
+    const prevBtn = byId<HTMLButtonElement>("pw-prev");
+    const nextBtn = byId<HTMLButtonElement>("pw-next");
+    const backBtn = byId<HTMLButtonElement>("pw-back");
+    const fwdBtn = byId<HTMLButtonElement>("pw-fwd");
+    const muteBtn = byId<HTMLButtonElement>("pw-mute");
+    const volume = byId<HTMLInputElement>("pw-volume");
+    const speed = byId<HTMLSelectElement>("pw-speed");
+    const fullscreenBtn =
+      byId<HTMLButtonElement>("pw-fullscreen");
+    const title = byId("pw-title");
+    const date = byId("pw-date");
+    const meta = byId("pw-meta");
+    const desc = byId("pw-desc");
+    const moreBtn = byId<HTMLButtonElement>("pw-more");
+    const chaptersWrap = byId("pw-chapters-wrap");
+    const chaptersList = byId("pw-chapters");
+    const like = byId<HTMLAnchorElement>("pw-like");
+    const youtube = byId<HTMLAnchorElement>("pw-youtube");
+    const shareBtn = byId<HTMLButtonElement>("pw-share");
+    const shareLabel = byId("pw-share-label");
+    const status = byId("pw-status");
+    const search = byId<HTMLInputElement>("pw-search");
+    const autoplayBtn =
+      byId<HTMLButtonElement>("pw-autoplay");
+    const list = byId("pw-list");
+    const empty = byId("pw-empty");
+    const rows = Array.from(
+      list.querySelectorAll<HTMLAnchorElement>(".pw-row"),
+    );
+    const controls = [
+      seek,
+      playBtn,
+      backBtn,
+      fwdBtn,
+      muteBtn,
+      volume,
+      speed,
+      fullscreenBtn,
+    ];
+
+    const progress = loadJson<Progress>(PROGRESS_KEY, {});
+    let autoplay = loadJson<boolean>(AUTOPLAY_KEY, true);
+    let player: any = null;
+    let ready = false;
+    let seeking = false;
+    let tick = 0;
+    let lastSaved = 0;
+    let rate = 1;
+    let lastSeek = { target: 0, at: 0 };
+
+    const requested = new URLSearchParams(
+      location.search,
+    ).get("ep");
+    let index = Math.max(
+      0,
+      episodes.findIndex(
+        (episode) => episode.id === requested,
+      ),
+    );
+    const current = () => episodes[index];
+
+    /** Where to resume; restart if barely started or basically finished. */
+    const resumeAt = (episode: Episode) => {
+      const saved = progress[episode.id];
+      return saved && saved.t > 5 && saved.t < saved.d - 15
+        ? Math.floor(saved.t)
+        : 0;
+    };
+    const duration = () =>
+      (ready && player.getDuration()) ||
+      current().duration ||
+      0;
+
+    // ---------- Rendering ----------
+
+    const setFill = (input: HTMLInputElement) => {
+      const max = Number(input.max) || 1;
+      input.style.setProperty(
+        "--fill",
+        `${(Number(input.value) / max) * 100}%`,
+      );
+    };
+
+    function renderRowProgress(id: string) {
+      const row = rows.find((r) => r.dataset.ep === id);
+      const bar =
+        row?.querySelector<HTMLElement>(".pw-progress");
+      const saved = progress[id];
+      if (!bar) return;
+      bar.hidden = !saved || saved.t <= 5 || !saved.d;
+      if (!bar.hidden) {
+        (bar.firstElementChild as HTMLElement).style.width =
+          `${Math.min(100, (saved.t / saved.d) * 100)}%`;
+      }
+    }
+
+    /** Plain text with links made clickable; never parsed as HTML. */
+    function renderDescription(text: string) {
+      desc.replaceChildren(
+        ...text
+          .split(/(https?:\/\/[^\s)]+)/g)
+          .map((part, i) => {
+            if (i % 2 === 0)
+              return document.createTextNode(part);
+            const a = document.createElement("a");
+            a.href = part;
+            a.target = "_blank";
+            a.rel = "noopener noreferrer";
+            a.className = "text-orange underline break-all";
+            a.textContent = part;
+            return a;
+          }),
+      );
+      desc.classList.add("line-clamp-4");
+      moreBtn.setAttribute("aria-expanded", "false");
+      moreBtn.textContent = "Show more";
+      moreBtn.hidden =
+        desc.scrollHeight <= desc.clientHeight + 1;
+    }
+
+    function renderChapters(chapters: Chapter[]) {
+      chaptersWrap.hidden = chapters.length === 0;
+      chaptersList.replaceChildren(
+        ...chapters.map((chapter) => {
+          const li = document.createElement("li");
+          const button = document.createElement("button");
+          button.type = "button";
+          button.className =
+            "pw-chapter flex w-full gap-3 rounded-lg px-2 py-1.5 text-left hover:bg-darkPeach";
+          button.dataset.t = String(chapter.t);
+          const stamp = document.createElement("span");
+          stamp.className =
+            "font-bold tabular-nums text-orange";
+          stamp.textContent = formatTime(chapter.t);
+          const label = document.createElement("span");
+          label.textContent = chapter.label;
+          button.append(stamp, label);
+          li.append(button);
+          return li;
+        }),
+      );
+    }
+
+    function renderDetails() {
+      const episode = current();
+      title.textContent = episode.title;
+      date.textContent = episode.dateLabel;
+      meta.textContent = episode.durationLabel
+        ? `${episode.dateLabel} · ${episode.durationLabel}`
+        : episode.dateLabel;
+      like.href =
+        youtube.href =
+        errorLink.href =
+          episode.url;
+      renderDescription(episode.description);
+      renderChapters(episode.chapters);
+      rows.forEach((row, i) => {
+        if (i === index)
+          row.setAttribute("aria-current", "true");
+        else row.removeAttribute("aria-current");
+      });
+      prevBtn.disabled = index === 0;
+      nextBtn.disabled = index === episodes.length - 1;
+      const start = resumeAt(episode);
+      seek.value = String(
+        episode.duration
+          ? (start / episode.duration) * 1000
+          : 0,
+      );
+      setFill(seek);
+      timeLabel.textContent = `${formatTime(start)} / ${episode.durationLabel || "–:––"}`;
+    }
+
+    function renderTime() {
+      if (!ready) return;
+      const t = player.getCurrentTime() || 0;
+      const d = duration();
+      if (!seeking && d) {
+        seek.value = String((t / d) * 1000);
+        setFill(seek);
+      }
+      seek.setAttribute(
+        "aria-valuetext",
+        `${formatTime(t)} of ${formatTime(d)}`,
+      );
+      timeLabel.textContent = `${formatTime(seeking ? (Number(seek.value) / 1000) * d : t)} / ${formatTime(d)}`;
+
+      const chapterButtons = Array.from(
+        chaptersList.querySelectorAll<HTMLElement>(
+          ".pw-chapter",
+        ),
+      );
+      let active = -1;
+      chapterButtons.forEach((button, i) => {
+        if (Number(button.dataset.t) <= t) active = i;
+      });
+      chapterButtons.forEach((button, i) => {
+        if (i === active)
+          button.setAttribute("aria-current", "true");
+        else button.removeAttribute("aria-current");
+      });
+    }
+
+    function saveProgress(force = false) {
+      if (!ready) return;
+      const d = duration();
+      const t = player.getCurrentTime() || 0;
+      if (!d || t <= 0) return;
+      progress[current().id] = { t, d };
+      renderRowProgress(current().id);
+      if (force || Date.now() - lastSaved > 3000) {
+        lastSaved = Date.now();
+        saveJson(PROGRESS_KEY, progress);
+      }
+    }
+
+    function setPlaying(playing: boolean) {
+      root.dataset.playing = String(playing);
+      playBtn
+        .querySelector(".pw-icon-play")!
+        .classList.toggle("hidden", playing);
+      playBtn
+        .querySelector(".pw-icon-pause")!
+        .classList.toggle("hidden", !playing);
+      playBtn.setAttribute(
+        "aria-label",
+        playing ? "Pause" : "Play",
+      );
+      playBtn.title = playing
+        ? "Pause (Space)"
+        : "Play (Space)";
+      window.clearInterval(tick);
+      if (playing) {
+        tick = window.setInterval(() => {
+          renderTime();
+          saveProgress();
+        }, 250);
+      }
+    }
+
+    function renderVolume() {
+      const muted = ready && player.isMuted();
+      const level = ready ? player.getVolume() : 100;
+      muteBtn
+        .querySelector(".pw-icon-vol")!
+        .classList.toggle("hidden", muted);
+      muteBtn
+        .querySelector(".pw-icon-muted")!
+        .classList.toggle("hidden", !muted);
+      muteBtn.setAttribute(
+        "aria-label",
+        muted ? "Unmute" : "Mute",
+      );
+      muteBtn.title = muted ? "Unmute (M)" : "Mute (M)";
+      volume.value = String(muted ? 0 : level);
+      setFill(volume);
+    }
+
+    function renderAutoplay() {
+      autoplayBtn.setAttribute(
+        "aria-checked",
+        String(autoplay),
+      );
+    }
+
+    // ---------- Actions ----------
+
+    function select(i: number, play: boolean) {
+      if (i < 0 || i >= episodes.length) return;
+      if (i !== index) saveProgress(true);
+      index = i;
+      const episode = current();
+
+      const url = new URL(location.href);
+      url.searchParams.set("ep", episode.id);
+      history.replaceState(history.state, "", url);
+
+      renderDetails();
+      if (poster && rows[i]) {
+        const thumb = rows[i].querySelector("img")?.src;
+        if (thumb) poster.src = thumb;
+      }
+      rows[i].scrollIntoView({ block: "nearest" });
+
+      if (!ready) return;
+      const request = {
+        videoId: episode.id,
+        startSeconds: resumeAt(episode),
+      };
+      // Same player instance throughout; only the video changes.
+      if (play) player.loadVideoById(request);
+      else player.cueVideoById(request);
+    }
+
+    const seekTo = (seconds: number) => {
+      if (!ready) return;
+      const d = duration();
+      const target = Math.min(
+        Math.max(0, seconds),
+        d || seconds,
+      );
+      lastSeek = { target, at: Date.now() };
+      player.seekTo(target, true);
+      window.setTimeout(renderTime, 50);
+    };
+    // The player reports the old time for a moment after a seek, so repeated
+    // presses build on the last target instead.
+    const seekBy = (delta: number) => {
+      if (!ready) return;
+      const base =
+        Date.now() - lastSeek.at < 1000
+          ? lastSeek.target
+          : player.getCurrentTime() || 0;
+      seekTo(base + delta);
+    };
+    const togglePlay = () => {
+      if (!ready) return;
+      if (player.getPlayerState() === PLAYING)
+        player.pauseVideo();
+      else player.playVideo();
+    };
+    const toggleMute = () => {
+      if (!ready) return;
+      if (player.isMuted()) {
+        player.unMute();
+        if (player.getVolume() === 0) player.setVolume(50);
+      } else player.mute();
+      window.setTimeout(renderVolume, 50);
+    };
+
+    // ---------- Wiring ----------
+
+    playBtn.addEventListener("click", togglePlay);
+    backBtn.addEventListener("click", () => seekBy(-10));
+    fwdBtn.addEventListener("click", () => seekBy(30));
+    prevBtn.addEventListener("click", () =>
+      select(index - 1, true),
+    );
+    nextBtn.addEventListener("click", () =>
+      select(index + 1, true),
+    );
+    muteBtn.addEventListener("click", toggleMute);
+
+    seek.addEventListener("input", () => {
+      seeking = true;
+      setFill(seek);
+      renderTime();
+    });
+    seek.addEventListener("change", () => {
+      seeking = false;
+      seekTo((Number(seek.value) / 1000) * duration());
+    });
+
+    volume.addEventListener("input", () => {
+      if (!ready) return;
+      const level = Number(volume.value);
+      player.setVolume(level);
+      if (level > 0 && player.isMuted()) player.unMute();
+      if (level === 0) player.mute();
+      setFill(volume);
+      window.setTimeout(renderVolume, 50);
+    });
+
+    speed.addEventListener("change", () => {
+      rate = Number(speed.value);
+      if (ready) player.setPlaybackRate(rate);
+    });
+
+    if (!document.fullscreenEnabled)
+      fullscreenBtn.style.display = "none";
+    fullscreenBtn.addEventListener("click", () => {
+      if (document.fullscreenElement)
+        document.exitFullscreen();
+      else shell.requestFullscreen().catch(() => {});
+    });
+    document.addEventListener("fullscreenchange", () => {
+      const on = document.fullscreenElement === shell;
+      fullscreenBtn.setAttribute(
+        "aria-label",
+        on ? "Exit full screen" : "Full screen",
+      );
+      fullscreenBtn.title = on
+        ? "Exit full screen"
+        : "Full screen";
+    });
+
+    moreBtn.addEventListener("click", () => {
+      const expanded =
+        desc.classList.toggle("line-clamp-4") === false;
+      moreBtn.setAttribute(
+        "aria-expanded",
+        String(expanded),
+      );
+      moreBtn.textContent = expanded
+        ? "Show less"
+        : "Show more";
+    });
+
+    chaptersList.addEventListener("click", (event) => {
+      const button = (
+        event.target as HTMLElement
+      ).closest<HTMLElement>(".pw-chapter");
+      if (!button) return;
+      seekTo(Number(button.dataset.t));
+      if (ready && player.getPlayerState() !== PLAYING)
+        player.playVideo();
+    });
+
+    shareBtn.addEventListener("click", async () => {
+      const url = new URL(
+        location.pathname,
+        location.origin,
+      );
+      url.searchParams.set("ep", current().id);
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: current().title,
+            url: url.href,
+          });
+        } catch {}
+        return;
+      }
+      try {
+        await navigator.clipboard.writeText(url.href);
+        shareLabel.textContent = "Link copied";
+        status.textContent =
+          "Episode link copied to clipboard";
+        window.setTimeout(() => {
+          shareLabel.textContent = "Share";
+        }, 2000);
+      } catch {
+        window.prompt("Copy this link", url.href);
+      }
+    });
+
+    autoplayBtn.addEventListener("click", () => {
+      autoplay = !autoplay;
+      saveJson(AUTOPLAY_KEY, autoplay);
+      renderAutoplay();
+    });
+
+    search.addEventListener("input", () => {
+      const query = search.value.trim().toLowerCase();
+      let shown = 0;
+      rows.forEach((row, i) => {
+        const episode = episodes[i];
+        const match =
+          !query ||
+          `${episode.title}\n${episode.description}`
+            .toLowerCase()
+            .includes(query);
+        row.parentElement!.hidden = !match;
+        if (match) shown++;
+      });
+      empty.hidden = shown > 0;
+    });
+
+    list.addEventListener("click", (event) => {
+      const row = (
+        event.target as HTMLElement
+      ).closest<HTMLAnchorElement>(".pw-row");
+      // Let modified clicks open the shareable link in a new tab.
+      if (
+        !row ||
+        event.metaKey ||
+        event.ctrlKey ||
+        event.shiftKey ||
+        (event as MouseEvent).button !== 0
+      )
+        return;
+      event.preventDefault();
+      select(rows.indexOf(row), true);
+    });
+
+    // Arrow keys move through the visible rows; Enter plays (it's a link).
+    list.addEventListener("keydown", (event) => {
+      if (
+        !["ArrowDown", "ArrowUp", "Home", "End"].includes(
+          event.key,
+        )
+      )
+        return;
+      const visible = rows.filter(
+        (row) => !row.parentElement!.hidden,
+      );
+      const at = visible.indexOf(
+        document.activeElement as HTMLAnchorElement,
+      );
+      if (at === -1) return;
+      event.preventDefault();
+      const target =
+        event.key === "Home"
+          ? 0
+          : event.key === "End"
+            ? visible.length - 1
+            : Math.min(
+                visible.length - 1,
+                Math.max(
+                  0,
+                  at + (event.key === "ArrowDown" ? 1 : -1),
+                ),
+              );
+      visible[target].focus();
+    });
+
+    document.addEventListener("keydown", (event) => {
+      // Only while the podcast tab is showing.
+      if (!ready || root.offsetParent === null) return;
+      if (event.metaKey || event.ctrlKey || event.altKey)
+        return;
+      const target = event.target as HTMLElement;
+      if (
+        target.closest(
+          "input, textarea, select, [contenteditable]",
+        )
+      )
+        return;
+      const onControl = !!target.closest("button, a");
+      // The tab bar uses arrows to switch tabs.
+      if (target.closest('[role="tab"]')) return;
+
+      switch (event.key) {
+        case " ":
+        case "k":
+        case "K":
+          // Space on a focused button or link activates it instead.
+          if (event.key === " " && onControl) return;
+          event.preventDefault();
+          togglePlay();
+          break;
+        case "j":
+        case "J":
+          seekBy(-10);
+          break;
+        case "l":
+        case "L":
+          seekBy(10);
+          break;
+        case "ArrowLeft":
+          event.preventDefault();
+          seekBy(-5);
+          break;
+        case "ArrowRight":
+          event.preventDefault();
+          seekBy(5);
+          break;
+        case "m":
+        case "M":
+          toggleMute();
+          break;
+        case "n":
+        case "N":
+          select(index + 1, true);
+          break;
+      }
+    });
+
+    window.addEventListener("pagehide", () =>
+      saveProgress(true),
+    );
+
+    // ---------- Player ----------
+
+    function onReady() {
+      ready = true;
+      skeleton.remove();
+      poster.hidden = true;
+      controls.forEach(
+        (control) => (control.disabled = false),
+      );
+      prevBtn.disabled = index === 0;
+      nextBtn.disabled = index === episodes.length - 1;
+      renderVolume();
+      renderTime();
+    }
+
+    function onStateChange(event: { data: number }) {
+      const state = event.data;
+      setPlaying(state === PLAYING || state === BUFFERING);
+      if (state === PLAYING) {
+        if (player.getPlaybackRate() !== rate)
+          player.setPlaybackRate(rate);
+        renderTime();
+      } else {
+        renderTime();
+        saveProgress(true);
+      }
+      if (state === ENDED) {
+        const d = duration();
+        progress[current().id] = { t: d, d };
+        saveJson(PROGRESS_KEY, progress);
+        renderRowProgress(current().id);
+        if (autoplay && index < episodes.length - 1)
+          select(index + 1, true);
+      }
+    }
+
+    function showError() {
+      skeleton.remove();
+      errorBox.classList.replace("hidden", "flex");
+    }
+
+    function createPlayer() {
+      const YT = (window as any).YT;
+      player = new YT.Player("pw-player", {
+        host: "https://www.youtube-nocookie.com",
+        videoId: current().id,
+        width: "100%",
+        height: "100%",
+        playerVars: {
+          controls: 0,
+          disablekb: 1,
+          playsinline: 1,
+          rel: 0,
+          start: resumeAt(current()),
+          origin: location.origin,
+        },
+        events: {
+          onReady,
+          onStateChange,
+          onError: () => {
+            // Unembeddable or removed video: offer YouTube instead.
+            showError();
+          },
+        },
+      });
+    }
+
+    renderDetails();
+    renderAutoplay();
+    episodes.forEach((episode) =>
+      renderRowProgress(episode.id),
+    );
+    if (requested && index > 0) {
+      list.scrollTop =
+        rows[index].offsetTop - list.offsetTop - 8;
+    }
+
+    const w = window as any;
+    if (w.YT?.Player) createPlayer();
+    else {
+      const previous = w.onYouTubeIframeAPIReady;
+      w.onYouTubeIframeAPIReady = () => {
+        previous?.();
+        createPlayer();
+      };
+      const script = document.createElement("script");
+      script.src = "https://www.youtube.com/iframe_api";
+      script.async = true;
+      script.onerror = showError;
+      document.head.append(script);
+    }
+  }
+</script>

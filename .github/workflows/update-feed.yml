@@ -12,6 +12,10 @@ on:
       max_new_posts:
         description: "Max posts to read this run (raise once for a backfill)"
         default: "50"
+      resync:
+        description: "Ignore the cache and rebuild it from scratch (pair with a higher max)"
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -40,6 +44,10 @@ jobs:
             echo "No x-feed branch yet; seeding from main."
           fi
           cp data/podcasts-articles.json "$RUNNER_TEMP/feed-before.json"
+          if [ "${{ inputs.resync }}" = "true" ]; then
+            echo "Resync: starting from an empty feed."
+            rm data/podcasts-articles.json
+          fi
       - name: Fetch new posts from X
         run: node scripts/fetch-x.js
         env:
