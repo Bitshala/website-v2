@@ -37,6 +37,154 @@ export async function getPlaylistDetails(
   }
 }
 
+export type PlaylistVideo = {
+  id: string;
+  title: string;
+  description: string;
+  date: string;
+  thumbnail: string | null;
+  /** Seconds; missing when only the keyless feed was available. */
+  duration?: number;
+};
+
+/** "PT1H2M3S" → 3723. */
+const parseIsoDuration = (iso: string) => {
+  const [, h = 0, m = 0, s = 0] =
+    iso.match(/PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?/) ?? [];
+  return Number(h) * 3600 + Number(m) * 60 + Number(s);
+};
+
+/** Fills in durations in place, 50 videos per request. Best effort. */
+async function addDurations(
+  videos: PlaylistVideo[],
+  GOOGLE_KEY: string,
+) {
+  try {
+    for (let i = 0; i < videos.length; i += 50) {
+      const batch = videos.slice(i, i + 50);
+      const response = await fetch(
+        `https://www.googleapis.com/youtube/v3/videos?key=${GOOGLE_KEY}&part=contentDetails&id=${batch.map((video) => video.id).join(",")}`,
+      );
+      if (!response.ok) {
+        throw new Error(
+          `YouTube API responded ${response.status}`,
+        );
+      }
+      const data: any = await response.json();
+      const byId = new Map(
+        (data.items ?? []).map((item: any) => [
+          item.id,
+          parseIsoDuration(item.contentDetails.duration),
+        ]),
+      );
+      for (const video of batch) {
+        video.duration = byId.get(video.id) as
+          | number
+          | undefined;
+      }
+    }
+  } catch (error) {
+    console.error("YouTube duration lookup failed:", error);
+  }
+}
+
+const decodeXml = (text: string) =>
+  text
+    .replaceAll("&lt;", "<")
+    .replaceAll("&gt;", ">")
+    .replaceAll("&quot;", '"')
+    .replaceAll("&#39;", "'")
+    .replaceAll("&amp;", "&");
+
+/** Keyless fallback; YouTube's feed only lists the 15 newest uploads. */
+async function getPlaylistVideosFromFeed(
+  playlistId: string,
+): Promise<PlaylistVideo[]> {
+  const response = await fetch(
+    `https://www.youtube.com/feeds/videos.xml?playlist_id=${playlistId}`,
+  );
+  if (!response.ok) {
+    throw new Error(
+      `YouTube feed responded ${response.status}`,
+    );
+  }
+  const xml = await response.text();
+  return [
+    ...xml.matchAll(/<entry>([\s\S]*?)<\/entry>/g),
+  ].map(([, entry]) => {
+    const tag = (name: string) =>
+      decodeXml(
+        entry.match(
+          new RegExp(
+            `<${name}[^>]*>([\\s\\S]*?)</${name}>`,
+          ),
+        )?.[1] ?? "",
+      );
+    const id = tag("yt:videoId");
+    return {
+      id,
+      title: tag("title"),
+      description: tag("media:description"),
+      date: tag("published"),
+      thumbnail: `https://i.ytimg.com/vi/${id}/hqdefault.jpg`,
+    };
+  });
+}
+
+/**
+ * Every public video in a playlist, newest first. Uses the Data API when a key
+ * is set, otherwise the public feed. Returns [] on failure so a YouTube outage
+ * can't break the build.
+ */
+export async function getPlaylistVideos(
+  playlistId: string,
+  GOOGLE_KEY?: string,
+): Promise<PlaylistVideo[]> {
+  try {
+    let videos: PlaylistVideo[] = [];
+    if (!GOOGLE_KEY) {
+      videos = await getPlaylistVideosFromFeed(playlistId);
+    } else {
+      let pageToken = "";
+      do {
+        const response = await fetch(
+          `https://www.googleapis.com/youtube/v3/playlistItems?key=${GOOGLE_KEY}&playlistId=${playlistId}&part=snippet,contentDetails&maxResults=50&pageToken=${pageToken}`,
+        );
+        if (!response.ok) {
+          throw new Error(
+            `YouTube API responded ${response.status}`,
+          );
+        }
+        const data: any = await response.json();
+        for (const item of data.items ?? []) {
+          // Private and deleted videos have no publish date.
+          const date =
+            item.contentDetails?.videoPublishedAt;
+          if (!date) continue;
+          const thumbnails = item.snippet.thumbnails ?? {};
+          videos.push({
+            id: item.contentDetails.videoId,
+            title: item.snippet.title,
+            description: item.snippet.description,
+            date,
+            thumbnail:
+              (thumbnails.high ?? thumbnails.medium)?.url ??
+              null,
+          });
+        }
+        pageToken = data.nextPageToken ?? "";
+      } while (pageToken);
+      await addDurations(videos, GOOGLE_KEY);
+    }
+    return videos.sort(
+      (a, b) => Date.parse(b.date) - Date.parse(a.date),
+    );
+  } catch (error) {
+    console.error("YouTube playlist lookup failed:", error);
+    return [];
+  }
+}
+
 export const mockedVideoConfig = [
   {
     index: 1,

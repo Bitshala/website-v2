@@ -1,5 +1,7 @@
 #!/usr/bin/env node
-// Refreshes data/podcasts-articles.json from the X API. Run by the "Update X
+// Refreshes data/podcasts-articles.json from the X API with @bitshala_org's
+// native X Articles (x.com/bitshala_org/articles); other posts are skipped.
+// Podcasts come from YouTube on the blogs page, not from here. Run by the "Update X
 // feed" workflow; the site itself never calls X. Only posts newer than the
 // newest one already seen are requested, so each run is billed only for new
 // posts. On any failure the existing JSON is left untouched.
@@ -28,13 +30,6 @@ const MAX_NEW_POSTS = Number(
   process.env.MAX_NEW_POSTS_PER_RUN || 50,
 );
 
-// Any video this long is an episode; nothing else @bitshala_org posts comes
-// close.
-const PODCAST_MIN_DURATION_MS = 10 * 60 * 1000;
-// The archive starts at the Jul 2026 episode. Everything earlier is a one-off
-// club session recording we don't publish.
-const PODCAST_EPOCH = Date.parse("2026-07-01T00:00:00Z");
-
 class ApiError extends Error {
   constructor(status, body) {
     super(
@@ -57,14 +52,6 @@ const summarize = (text) =>
     .replace(/https:\/\/t\.co\/\S+/g, "")
     .replace(/\s+/g, " ")
     .trim();
-
-/** First non-empty line, ignoring t.co links. */
-const firstLine = (text) =>
-  decode(text)
-    .replace(/https:\/\/t\.co\/\S+/g, "")
-    .split("\n")
-    .map((line) => line.trim())
-    .find(Boolean) ?? "";
 
 /** Post IDs are 64-bit; compare as BigInt. */
 const newerId = (a, b) => (BigInt(a) > BigInt(b) ? a : b);
@@ -137,84 +124,33 @@ async function fetchNewPosts(userId, sinceId) {
   return { posts, media, capped };
 }
 
-/** First link that leaves X — quote posts and our own media don't count. */
-function externalLink(urls) {
-  return urls.find((u) => {
-    const href = u.unwound_url || u.expanded_url || "";
-    return (
-      href &&
-      !/^https?:\/\/(www\.)?(x|twitter)\.com\//.test(href)
-    );
-  });
-}
+/** Native X Article: true when the post publishes an article on X. */
+const isArticle = (item) =>
+  item.type === "article" &&
+  item.articleUrl === item.postUrl;
 
-/** Turns a post into a feed item, or null if it's neither kind. */
+/** Turns a native X Article post into a feed item; null for anything else. */
 function toItem(post, media) {
+  if (!post.article?.title) return null;
   const postUrl = `https://x.com/${USERNAME}/status/${post.id}`;
-  const rawText = post.note_tweet?.text || post.text || "";
-  const urls = [
-    ...(post.note_tweet?.entities?.urls ?? []),
-    ...(post.entities?.urls ?? []),
-  ];
-  const attached = (post.attachments?.media_keys ?? [])
+  const photo = (post.attachments?.media_keys ?? [])
     .map((key) => media.get(key))
-    .filter(Boolean);
-  const photo = attached.find(
-    (m) => m.type === "photo",
-  )?.url;
-  const base = {
+    .find((m) => m?.type === "photo")?.url;
+  return {
     id: post.id,
     date: post.created_at,
     postUrl,
+    type: "article",
+    title: decode(post.article.title).trim(),
+    text: summarize(
+      post.article.preview_text ||
+        post.note_tweet?.text ||
+        post.text ||
+        "",
+    ),
+    thumbnail: photo ?? null,
+    articleUrl: postUrl,
   };
-
-  // Native X Article: the post links to the article on X.
-  if (post.article?.title) {
-    return {
-      ...base,
-      type: "article",
-      title: decode(post.article.title).trim(),
-      text: summarize(post.article.preview_text || rawText),
-      thumbnail: photo ?? null,
-      articleUrl: postUrl,
-    };
-  }
-
-  const video = attached.find(
-    (m) =>
-      m.type === "video" &&
-      m.duration_ms >= PODCAST_MIN_DURATION_MS,
-  );
-  if (
-    video &&
-    Date.parse(post.created_at) >= PODCAST_EPOCH
-  ) {
-    return {
-      ...base,
-      type: "podcast",
-      title: firstLine(rawText),
-      text: summarize(rawText),
-      thumbnail: video.preview_image_url ?? null,
-      duration: video.duration_ms,
-    };
-  }
-
-  const link = externalLink(urls);
-  if (link) {
-    return {
-      ...base,
-      type: "article",
-      title:
-        firstLine(rawText) ||
-        link.title ||
-        link.display_url,
-      text: summarize(rawText) || link.description || "",
-      thumbnail: link.images?.[0]?.url ?? photo ?? null,
-      articleUrl: link.unwound_url || link.expanded_url,
-    };
-  }
-
-  return null;
 }
 
 async function main() {
@@ -235,7 +171,9 @@ async function main() {
   }
 
   const feed = await readFeed();
-  const items = feed?.items ?? [];
+  // Older runs also kept link posts and X videos; drop them.
+  const items = (feed?.items ?? []).filter(isArticle);
+  const pruned = (feed?.items?.length ?? 0) - items.length;
   // sinceId tracks the newest post *seen*, not the newest kept, so posts that
   // are neither podcasts nor articles aren't paid for twice.
   const sinceId =
@@ -266,7 +204,11 @@ async function main() {
     );
   }
 
-  if (posts.length === 0 && feed?.userId === userId) {
+  if (
+    posts.length === 0 &&
+    feed?.userId === userId &&
+    pruned === 0
+  ) {
     console.log("No new posts; feed unchanged.");
     return;
   }
