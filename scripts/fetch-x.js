@@ -106,7 +106,8 @@ async function fetchNewPosts(userId, sinceId) {
       exclude: "retweets,replies",
       "tweet.fields":
         "created_at,entities,attachments,article,note_tweet",
-      expansions: "attachments.media_keys",
+      expansions:
+        "attachments.media_keys,article.cover_media",
       "media.fields":
         "media_key,type,preview_image_url,url,duration_ms",
     });
@@ -133,9 +134,17 @@ const isArticle = (item) =>
 function toItem(post, media) {
   if (!post.article?.title) return null;
   const postUrl = `https://x.com/${USERNAME}/status/${post.id}`;
-  const photo = (post.attachments?.media_keys ?? [])
-    .map((key) => media.get(key))
-    .find((m) => m?.type === "photo")?.url;
+  // The Article's cover image, else the first photo attached to the post.
+  const coverKey =
+    post.article.cover_media?.media_key ??
+    post.article.cover_media;
+  const cover = media.get(coverKey);
+  const photo =
+    cover?.url ??
+    cover?.preview_image_url ??
+    (post.attachments?.media_keys ?? [])
+      .map((key) => media.get(key))
+      .find((m) => m?.type === "photo")?.url;
   return {
     id: post.id,
     date: post.created_at,
