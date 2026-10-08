@@ -1,7 +1,9 @@
 name: Update X feed
 
 # The only place the X API is called. Refreshes data/podcasts-articles.json
-# and redeploys the site when it changes.
+# and redeploys the site when it changes. main is protected, so the cache
+# lives on the unprotected x-feed branch; deploy.yml builds with that copy.
+# The copy on main only seeds x-feed the first time.
 on:
   schedule:
     - cron: "0 */6 * * *"
@@ -30,26 +32,44 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version-file: .nvmrc
+      - name: Load cached feed from x-feed
+        run: |
+          if git fetch --depth=1 origin x-feed:refs/remotes/origin/x-feed; then
+            git show origin/x-feed:data/podcasts-articles.json > data/podcasts-articles.json
+          else
+            echo "No x-feed branch yet; seeding from main."
+          fi
+          cp data/podcasts-articles.json "$RUNNER_TEMP/feed-before.json"
       - name: Fetch new posts from X
         run: node scripts/fetch-x.js
         env:
           X_BEARER_TOKEN: ${{ secrets.X_BEARER_TOKEN }}
           X_USERNAME: ${{ secrets.X_USERNAME }}
           MAX_NEW_POSTS_PER_RUN: ${{ inputs.max_new_posts || '50' }}
-      - name: Commit feed if changed
+      - name: Push feed to x-feed if changed
         id: commit
         run: |
-          if [ -z "$(git status --porcelain -- data/podcasts-articles.json)" ]; then
+          if cmp -s data/podcasts-articles.json "$RUNNER_TEMP/feed-before.json"; then
             echo "Feed unchanged."
             echo "changed=false" >> "$GITHUB_OUTPUT"
             exit 0
           fi
+          cp data/podcasts-articles.json "$RUNNER_TEMP/feed.json"
+          worktree="$RUNNER_TEMP/x-feed"
+          if git rev-parse -q --verify origin/x-feed >/dev/null; then
+            git worktree add --detach "$worktree" origin/x-feed
+          else
+            git worktree add --detach "$worktree"
+            git -C "$worktree" switch --orphan x-feed
+          fi
+          mkdir -p "$worktree/data"
+          cp "$RUNNER_TEMP/feed.json" "$worktree/data/podcasts-articles.json"
+          cd "$worktree"
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add data/podcasts-articles.json
           git commit -m "Update X feed cache"
-          git pull --rebase origin main
-          git push origin HEAD:main
+          git push origin HEAD:refs/heads/x-feed
           echo "changed=true" >> "$GITHUB_OUTPUT"
       # Pushes made with GITHUB_TOKEN don't trigger other workflows, so start
       # the deploy explicitly.
