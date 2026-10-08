@@ -1,6 +1,18 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import { getXContent } from "../scripts/xArticles";
+
+type FeedItem = {
+  id: string;
+  type: "podcast" | "article";
+  title: string;
+  text: string;
+  date: string;
+  thumbnail: string | null;
+  duration?: number;
+  articleUrl?: string;
+  postUrl: string;
+};
+type Feed = { updatedAt: string | null; items: FeedItem[] };
 
 const headerProps = {
   image: "/cohort/hero.webp",
@@ -8,135 +20,48 @@ const headerProps = {
 };
 const isVisible = true;
 
-// Older posts not on X Articles — kept static.
-const legacyPosts = [
+// Written by scripts/fetch-x.js in the "Update X feed" workflow. The site
+// never calls the X API. Globbed so a missing file renders the empty state
+// instead of failing the build.
+const feedModules = import.meta.glob<{ default: Feed }>(
+  "../../data/podcasts-articles.json",
+  { eager: true },
+);
+const feed = Object.values(feedModules)[0]?.default;
+const items = (feed?.items ?? [])
+  .filter(
+    (item) =>
+      item.type === "podcast" || item.type === "article",
+  )
+  .sort((a, b) => Date.parse(b.date) - Date.parse(a.date));
+const podcastCount = items.filter(
+  (item) => item.type === "podcast",
+).length;
+const articleCount = items.length - podcastCount;
+
+const tabs = [
+  { name: "all", label: "All", count: items.length },
   {
-    title:
-      "Coin Selection for Dummies: Part 5 — Waste Metric",
-    description:
-      "The waste metric heuristic — comparing UTXO selection sets by the cost of change, excess, and the fee difference between spending now versus later.",
-    link: "https://blog.summerofbitcoin.org/coin-selection-waste-metric/",
-    tag: "Coin Selection",
-    author: "Anmol Sharma",
-    date: "Aug 23, 2022",
-    source: "Summer of Bitcoin",
+    name: "podcast",
+    label: "Podcasts",
+    count: podcastCount,
   },
   {
-    title:
-      "Coin Selection for Dummies: Part 4 — Lowest Larger Selection",
-    description:
-      "Binary search applied to UTXO selection — pick the smallest UTXO greater than the target to minimize fees with minimal effort.",
-    link: "https://blog.summerofbitcoin.org/coin-selection-for-dummies-part-4-lowest-larger-selection/",
-    tag: "Coin Selection",
-    author: "Anmol Sharma",
-    date: "Aug 19, 2022",
-    source: "Summer of Bitcoin",
-  },
-  {
-    title:
-      "Coin Selection for Dummies: Part 3 — Knapsack Solver",
-    description:
-      "Applying the classic knapsack problem to Bitcoin coin selection — multi-pass search for the smallest set of UTXOs that meets the spend target.",
-    link: "https://blog.summerofbitcoin.org/coin-selection-for-dummies-part-3/",
-    tag: "Coin Selection",
-    author: "Anmol Sharma",
-    date: "Aug 12, 2022",
-    source: "Summer of Bitcoin",
-  },
-  {
-    title:
-      "Coin Selection for Dummies: Part 2 — Branch and Bound",
-    description:
-      "How the Branch and Bound algorithm systematically explores input combinations to find an exact match — no change output required.",
-    link: "https://blog.summerofbitcoin.org/coin-selection-for-dummies-2/",
-    tag: "Coin Selection",
-    author: "Anmol Sharma",
-    date: "Jul 14, 2022",
-    source: "Summer of Bitcoin",
-  },
-  {
-    title: "Coin Selection for Dummies: Part 1 — Overview",
-    description:
-      "How Bitcoin wallets pick UTXOs as inputs — the goals of coin selection (confirmation time, fees, privacy) and an overview of Bitcoin Core's approach.",
-    link: "https://blog.summerofbitcoin.org/coin-selection-part-1/",
-    tag: "Coin Selection",
-    author: "Anmol Sharma",
-    date: "Jun 24, 2022",
-    source: "Summer of Bitcoin",
-  },
-  {
-    title: 'From "Hello World" to Bitcoin Core',
-    description:
-      "A guide to start your hike up the Bitcoin Hill — orientation for newcomers stepping into Bitcoin Core development.",
-    link: "https://medium.com/from-hello-world-to-bitcoin-core-dd233ce99f72",
-    tag: "Onboarding",
-    author: "Rajarshi Maitra",
-    date: "Jun 15, 2020",
-    source: "Medium",
-  },
-  {
-    title: "What The Heck is Script",
-    description:
-      "A deep dive into Bitcoin Script — the stack-based language behind Bitcoin's smart contracts.",
-    link: "https://medium.com/bitbees/what-the-heck-is-script-588c7ba061cd",
-    tag: "Script",
-    author: "Rajarshi Maitra",
-    date: "May 5, 2020",
-    source: "Medium",
-  },
-  {
-    title: "What The Heck is UTXO",
-    description:
-      "Peeking into the Bitcoin transaction structure to understand UTXOs — the building blocks of Bitcoin's state.",
-    link: "https://medium.com/bitbees/what-the-heck-is-utxo-ca68f2651819",
-    tag: "UTXO",
-    author: "Rajarshi Maitra",
-    date: "Apr 25, 2020",
-    source: "Medium",
-  },
-  {
-    title: "What The Heck is Schnorr",
-    description:
-      "On digital signatures and the magic of Schnorr — why it matters for Bitcoin and how it differs from ECDSA.",
-    link: "https://medium.com/bitbees/what-the-heck-is-schnorr-52ef5dba289f",
-    tag: "Schnorr",
-    author: "Rajarshi Maitra",
-    date: "Apr 21, 2020",
-    source: "Medium",
-  },
-  {
-    title: "What the Heck is SegWit",
-    description:
-      "The story, battle, and legacy of SegWit activation — what changed, why it mattered, and how it shaped Bitcoin.",
-    link: "https://medium.com/bitbees/what-the-heck-is-segwit-3f58b7352b1c",
-    tag: "SegWit",
-    author: "Rajarshi Maitra",
-    date: "Apr 10, 2020",
-    source: "Medium",
-  },
-  {
-    title: "Submarine Swap",
-    description:
-      "The era of decentralised trustware — how submarine swaps bridge on-chain Bitcoin and the Lightning Network.",
-    link: "https://medium.com/bitbees/submarine-swap-7ea000b56092",
-    tag: "Lightning",
-    author: "Rajarshi Maitra",
-    date: "Apr 1, 2020",
-    source: "Medium",
+    name: "article",
+    label: "Articles",
+    count: articleCount,
   },
 ];
 
-const xPosts = await getXContent();
-const posts = [...xPosts, ...legacyPosts].sort(
-  (a, b) => Date.parse(b.date) - Date.parse(a.date),
-);
-const articles = posts.filter(
-  (post) => post.tag !== "Podcast",
-);
-const podcasts = posts.filter(
-  (post) => post.tag === "Podcast",
-);
-const initialPodcast = podcasts[0];
+// Pinned to IST: without it a UTC CI build and a local build disagree by a day
+// on anything posted after 18:30 UTC.
+const formatDate = (iso: string) =>
+  new Date(iso).toLocaleDateString("en-US", {
+    timeZone: "Asia/Kolkata",
+    month: "short",
+    day: "numeric",
+    year: "numeric",
+  });
 
 function formatDuration(durationMs?: number) {
   if (!durationMs) return "";
@@ -150,6 +75,14 @@ function formatDuration(durationMs?: number) {
     ? `${hours}:${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`
     : `${minutes}:${String(seconds).padStart(2, "0")}`;
 }
+
+const updatedAt = feed?.updatedAt
+  ? new Date(feed.updatedAt).toLocaleString("en-US", {
+      timeZone: "Asia/Kolkata",
+      dateStyle: "medium",
+      timeStyle: "short",
+    }) + " IST"
+  : null;
 ---
 
 <Layout
@@ -180,260 +113,138 @@ function formatDuration(durationMs?: number) {
   <div
     class="mx-auto max-w-screen-xl px-4 py-10 md:px-6 lg:py-14"
   >
-    <div
-      class="mb-8 flex justify-center md:mb-10"
-      role="tablist"
-      aria-label="Blogs and podcasts"
-    >
-      <div
-        class="inline-flex rounded-full border border-black/10 bg-peach p-1.5 shadow-sm"
-      >
-        <button
-          id="articles-tab"
-          class="content-tab flex items-center gap-2 rounded-full px-5 py-2.5 font-header text-base font-bold transition-colors md:px-7 md:text-lg"
-          type="button"
-          role="tab"
-          aria-selected="true"
-          aria-controls="articles-panel"
-          data-content-tab="articles"
-        >
-          Articles
-          <span
-            class="rounded-full bg-white/15 px-2 py-0.5 font-base text-xs"
+    {
+      items.length === 0 ? (
+        <div class="rounded-3xl border border-dashed border-black/20 bg-peach px-6 py-20 text-center">
+          <h2 class="font-header text-2xl font-bold">
+            Nothing here yet
+          </h2>
+          <p class="mt-2 font-base text-black/60">
+            New articles and Bitcoin Talks episodes will
+            appear here automatically. Check back soon.
+          </p>
+        </div>
+      ) : (
+        <>
+          <div
+            class="mb-8 flex justify-center md:mb-10"
+            role="tablist"
+            aria-label="Filter blogs and podcasts"
           >
-            {articles.length}
-          </span>
-        </button>
-        <button
-          id="podcasts-tab"
-          class="content-tab flex items-center gap-2 rounded-full px-5 py-2.5 font-header text-base font-bold transition-colors md:px-7 md:text-lg"
-          type="button"
-          role="tab"
-          aria-selected="false"
-          aria-controls="podcasts-panel"
-          data-content-tab="podcasts"
-          tabindex="-1"
-        >
-          Podcasts
-          <span
-            class="rounded-full bg-black/10 px-2 py-0.5 font-base text-xs"
-          >
-            {podcasts.length}
-          </span>
-        </button>
-      </div>
-    </div>
-
-    <section
-      id="articles-panel"
-      role="tabpanel"
-      aria-labelledby="articles-tab"
-      data-content-panel="articles"
-    >
-      <div
-        class="grid grid-cols-1 gap-5 md:grid-cols-2 md:gap-6 lg:grid-cols-3"
-      >
-        {
-          articles.map((post) => (
-            <a
-              href={post.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="group flex h-[350px] flex-col rounded-2xl border border-black/10 bg-peach p-5 transition-all hover:-translate-y-1 hover:border-orange hover:shadow-lg sm:h-[370px] sm:p-6"
-            >
-              <div class="flex flex-wrap items-center gap-x-2 gap-y-1 font-base text-sm text-black/60">
-                <span
-                  class="text-black"
-                  style="font-weight: 600;"
+            <div class="inline-flex rounded-full border border-black/10 bg-peach p-1.5 shadow-sm">
+              {tabs.map((tab, index) => (
+                <button
+                  class="content-tab flex items-center gap-2 rounded-full px-4 py-2.5 font-header text-base font-bold transition-colors md:px-7 md:text-lg"
+                  type="button"
+                  role="tab"
+                  aria-selected={String(index === 0)}
+                  aria-controls="feed-panel"
+                  data-filter={tab.name}
+                  tabindex={index === 0 ? undefined : "-1"}
                 >
-                  {post.author}
-                </span>
-                <span>·</span>
-                <span>{post.date}</span>
-                <span>·</span>
-                <span>{post.source}</span>
-              </div>
-              <h2 class="mt-3 line-clamp-3 font-header text-xl font-bold leading-[1.25] text-black transition-colors group-hover:text-orange md:text-2xl">
-                {post.title}
-              </h2>
-              <p
-                class="mt-3 line-clamp-4 flex-1 font-base text-base leading-relaxed text-black/80"
-                style="font-weight: 400;"
-              >
-                {post.description}
-              </p>
-              <div class="mt-5 flex items-center justify-between gap-3">
-                <span class="w-fit rounded-full bg-orange px-3 py-1 font-base text-xs font-bold uppercase tracking-wide text-white">
-                  {post.tag}
-                </span>
-                <span
-                  class="font-header text-sm text-orange transition-transform group-hover:translate-x-1"
-                  style="font-weight: 600;"
-                >
-                  Read →
-                </span>
-              </div>
-            </a>
-          ))
-        }
-      </div>
-    </section>
-
-    <section
-      id="podcasts-panel"
-      role="tabpanel"
-      aria-labelledby="podcasts-tab"
-      data-content-panel="podcasts"
-      hidden
-    >
-      {
-        initialPodcast ? (
-          <div class="overflow-hidden rounded-3xl border border-black/10 bg-[#171717] shadow-sm lg:grid lg:grid-cols-[minmax(0,1.65fr)_minmax(360px,0.85fr)]">
-            <div class="flex min-w-0 flex-col bg-[#171717]">
-              <div class="aspect-video w-full bg-[#0d0d0d]">
-                {/* X CDN 403s mp4s that send a non-X Referer; Chromium ignores referrerpolicy on <video>, so play inside a no-referrer iframe. */}
-                <iframe
-                  class="h-full w-full border-0"
-                  title="Podcast player"
-                  allow="autoplay; fullscreen"
-                  data-podcast-player
-                  data-src={initialPodcast.mediaUrl}
-                  data-poster={initialPodcast.posterUrl}
-                />
-              </div>
-              <div class="flex flex-1 flex-col p-5 text-white sm:p-7">
-                <div class="mb-3 flex flex-wrap items-center gap-2 font-base text-sm text-white/60">
-                  <span class="rounded-full bg-orange px-3 py-1 text-xs font-bold uppercase tracking-wide text-white">
-                    Now playing
-                  </span>
-                  <span data-player-date>
-                    {initialPodcast.date}
-                  </span>
-                  <span aria-hidden="true">·</span>
-                  <span data-player-duration>
-                    {formatDuration(
-                      initialPodcast.durationMs,
-                    )}
-                  </span>
-                </div>
-                <h2
-                  class="font-header text-2xl font-bold leading-tight sm:text-3xl"
-                  data-player-title
-                >
-                  {initialPodcast.title}
-                </h2>
-                <p
-                  class="mt-3 line-clamp-3 font-base text-sm leading-relaxed text-white/70 sm:text-base"
-                  data-player-description
-                >
-                  {initialPodcast.description}
-                </p>
-                <a
-                  class="mt-5 w-fit font-header text-sm font-bold text-orange hover:underline"
-                  href={initialPodcast.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  data-player-link
-                >
-                  View original post on X ↗
-                </a>
-              </div>
-            </div>
-
-            <aside class="flex min-h-full flex-col border-t border-white/10 bg-[#171717] lg:border-l lg:border-t-0">
-              <div class="border-b border-white/10 px-5 py-5 sm:px-6">
-                <p class="font-base text-xs font-bold uppercase tracking-[0.16em] text-orange">
-                  Episodes
-                </p>
-                <div class="mt-1 flex items-end justify-between gap-4">
-                  <h2 class="font-header text-2xl font-bold text-white">
-                    Up next
-                  </h2>
-                  <span class="font-base text-sm text-white/50">
-                    {podcasts.length} episodes
-                  </span>
-                </div>
-              </div>
-
-              <div
-                class="flex flex-col gap-3 p-3 sm:p-4"
-                data-podcast-queue
-              >
-                {podcasts.map((podcast, index) => (
-                  <button
-                    class="podcast-queue-item group flex w-full gap-3 rounded-2xl border p-2.5 text-left transition-colors hover:border-orange/60 hover:bg-white/10 sm:p-3"
-                    type="button"
-                    aria-current={
-                      index === 0 ? "true" : "false"
-                    }
-                    data-podcast-item
-                    data-src={podcast.mediaUrl}
-                    data-poster={podcast.posterUrl}
-                    data-title={podcast.title}
-                    data-description={podcast.description}
-                    data-date={podcast.date}
-                    data-duration={formatDuration(
-                      podcast.durationMs,
-                    )}
-                    data-link={podcast.link}
+                  {tab.label}
+                  <span
+                    class:list={[
+                      "rounded-full px-2 py-0.5 font-base text-xs",
+                      index === 0
+                        ? "bg-white/15"
+                        : "bg-black/10",
+                    ]}
                   >
-                    <div class="relative aspect-video w-28 shrink-0 overflow-hidden rounded-xl bg-black sm:w-36">
-                      {podcast.posterUrl && (
+                    {tab.count}
+                  </span>
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <section id="feed-panel" role="tabpanel">
+            <div class="grid grid-cols-1 gap-5 md:grid-cols-2 md:gap-6 lg:grid-cols-3">
+              {items.map((item) => {
+                const isPodcast = item.type === "podcast";
+                return (
+                  <a
+                    href={
+                      isPodcast
+                        ? item.postUrl
+                        : (item.articleUrl ?? item.postUrl)
+                    }
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="group flex flex-col overflow-hidden rounded-2xl border border-black/10 bg-peach transition-all hover:-translate-y-1 hover:border-orange hover:shadow-lg"
+                    data-type={item.type}
+                  >
+                    {item.thumbnail && (
+                      <div class="relative aspect-video w-full overflow-hidden bg-black">
                         <img
                           class="h-full w-full object-cover transition-transform group-hover:scale-105"
-                          src={podcast.posterUrl}
+                          src={item.thumbnail}
                           alt=""
                           loading="lazy"
+                          decoding="async"
                         />
-                      )}
-                      <span class="absolute bottom-1.5 right-1.5 rounded bg-black/80 px-1.5 py-0.5 font-base text-[10px] font-bold text-white">
-                        {formatDuration(podcast.durationMs)}
-                      </span>
+                        {isPodcast && item.duration && (
+                          <span class="absolute bottom-2 right-2 rounded bg-black/80 px-1.5 py-0.5 font-base text-xs font-bold text-white">
+                            {formatDuration(item.duration)}
+                          </span>
+                        )}
+                      </div>
+                    )}
+                    <div class="flex flex-1 flex-col p-5 sm:p-6">
+                      <div class="flex flex-wrap items-center gap-x-2 gap-y-1 font-base text-sm text-black/60">
+                        <span>{formatDate(item.date)}</span>
+                        {isPodcast && item.duration && (
+                          <>
+                            <span>·</span>
+                            <span>
+                              {formatDuration(
+                                item.duration,
+                              )}
+                            </span>
+                          </>
+                        )}
+                      </div>
+                      <h2 class="mt-3 line-clamp-3 font-header text-xl font-bold leading-[1.25] text-black transition-colors group-hover:text-orange md:text-2xl">
+                        {item.title}
+                      </h2>
+                      <p
+                        class="mt-3 line-clamp-3 flex-1 font-base text-base leading-relaxed text-black/80"
+                        style="font-weight: 400;"
+                      >
+                        {item.text}
+                      </p>
+                      <div class="mt-5 flex items-center justify-between gap-3">
+                        <span class="w-fit rounded-full bg-orange px-3 py-1 font-base text-xs font-bold uppercase tracking-wide text-white">
+                          {isPodcast
+                            ? "Podcast"
+                            : "Article"}
+                        </span>
+                        <span
+                          class="font-header text-sm text-orange transition-transform group-hover:translate-x-1"
+                          style="font-weight: 600;"
+                        >
+                          {isPodcast
+                            ? "Watch on X ↗"
+                            : "Read →"}
+                        </span>
+                      </div>
                     </div>
-                    <span class="flex min-w-0 flex-1 flex-col py-0.5">
-                      <span
-                        class:list={[
-                          "font-base text-[11px] font-bold uppercase tracking-wide text-orange",
-                          { hidden: index !== 0 },
-                        ]}
-                        data-playing-label
-                      >
-                        Currently playing
-                      </span>
-                      <span
-                        class:list={[
-                          "font-base text-[11px] font-bold uppercase tracking-wide text-white/40",
-                          { hidden: index === 0 },
-                        ]}
-                        data-next-label
-                      >
-                        Up next
-                      </span>
-                      <span class="mt-1 line-clamp-2 font-header text-base font-bold leading-tight text-white sm:text-lg">
-                        {podcast.title}
-                      </span>
-                      <span class="mt-auto pt-2 font-base text-xs text-white/50">
-                        {podcast.date}
-                      </span>
-                    </span>
-                  </button>
-                ))}
-              </div>
-            </aside>
-          </div>
-        ) : (
-          <div class="rounded-3xl border border-dashed border-black/20 bg-peach px-6 py-20 text-center">
-            <h2 class="font-header text-2xl font-bold">
-              No podcast episodes yet
-            </h2>
-            <p class="mt-2 font-base text-black/60">
-              New Bitcoin Talks episodes will appear here
-              automatically.
-            </p>
-          </div>
-        )
-      }
-    </section>
+                  </a>
+                );
+              })}
+            </div>
+          </section>
+        </>
+      )
+    }
+
+    {
+      updatedAt && (
+        <p class="mt-10 text-center font-base text-sm text-black/50">
+          Last updated {updatedAt}
+        </p>
+      )
+    }
   </div>
 
   <style>
@@ -445,33 +256,21 @@ function formatDuration(durationMs?: number) {
     .content-tab[aria-selected="false"] {
       color: rgba(51, 51, 51, 0.62);
     }
-
-    .podcast-queue-item[aria-current="true"] {
-      border-color: #fa8816;
-      background: #242424;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.16);
-    }
-
-    .podcast-queue-item[aria-current="false"] {
-      border-color: transparent;
-    }
   </style>
 
   <script>
     const tabButtons = Array.from(
       document.querySelectorAll<HTMLButtonElement>(
-        "[data-content-tab]",
+        "[data-filter]",
       ),
     );
-    const tabPanels = Array.from(
-      document.querySelectorAll<HTMLElement>(
-        "[data-content-panel]",
-      ),
+    const cards = Array.from(
+      document.querySelectorAll<HTMLElement>("[data-type]"),
     );
 
     function activateTab(name: string, focus = false) {
       tabButtons.forEach((button) => {
-        const isActive = button.dataset.contentTab === name;
+        const isActive = button.dataset.filter === name;
         button.setAttribute(
           "aria-selected",
           String(isActive),
@@ -484,16 +283,15 @@ function formatDuration(durationMs?: number) {
         count?.classList.toggle("bg-black/10", !isActive);
       });
 
-      tabPanels.forEach((panel) => {
-        panel.hidden = panel.dataset.contentPanel !== name;
+      cards.forEach((card) => {
+        card.hidden =
+          name !== "all" && card.dataset.type !== name;
       });
     }
 
     tabButtons.forEach((button, index) => {
       button.addEventListener("click", () => {
-        activateTab(
-          button.dataset.contentTab ?? "articles",
-        );
+        activateTab(button.dataset.filter ?? "all");
       });
 
       button.addEventListener("keydown", (event) => {
@@ -522,108 +320,10 @@ function formatDuration(durationMs?: number) {
         }
 
         activateTab(
-          tabButtons[nextIndex].dataset.contentTab ??
-            "articles",
+          tabButtons[nextIndex].dataset.filter ?? "all",
           true,
         );
       });
-    });
-
-    const player =
-      document.querySelector<HTMLIFrameElement>(
-        "[data-podcast-player]",
-      );
-    const queueItems = Array.from(
-      document.querySelectorAll<HTMLButtonElement>(
-        "[data-podcast-item]",
-      ),
-    );
-    const playerTitle = document.querySelector<HTMLElement>(
-      "[data-player-title]",
-    );
-    const playerDescription =
-      document.querySelector<HTMLElement>(
-        "[data-player-description]",
-      );
-    const playerDate = document.querySelector<HTMLElement>(
-      "[data-player-date]",
-    );
-    const playerDuration =
-      document.querySelector<HTMLElement>(
-        "[data-player-duration]",
-      );
-    const playerLink =
-      document.querySelector<HTMLAnchorElement>(
-        "[data-player-link]",
-      );
-
-    function escapeAttr(value: string) {
-      return value
-        .replaceAll("&", "&amp;")
-        .replaceAll('"', "&quot;")
-        .replaceAll("<", "&lt;");
-    }
-
-    function loadPodcast(
-      src: string,
-      poster = "",
-      autoplay = false,
-    ) {
-      if (!player || !src) return;
-      const posterAttr = poster
-        ? ` poster="${escapeAttr(poster)}"`
-        : "";
-      const autoplayAttr = autoplay ? " autoplay" : "";
-      player.srcdoc = `<!doctype html><meta name="referrer" content="no-referrer"><style>html,body,video{margin:0;width:100%;height:100%;background:#0d0d0d}video{object-fit:contain}</style><video controls playsinline preload="metadata"${autoplayAttr}${posterAttr} src="${escapeAttr(src)}"></video>`;
-    }
-
-    function selectPodcast(item: HTMLButtonElement) {
-      const src = item.dataset.src;
-      if (!src) return;
-
-      loadPodcast(src, item.dataset.poster ?? "", true);
-
-      if (playerTitle)
-        playerTitle.textContent = item.dataset.title ?? "";
-      if (playerDescription)
-        playerDescription.textContent =
-          item.dataset.description ?? "";
-      if (playerDate)
-        playerDate.textContent = item.dataset.date ?? "";
-      if (playerDuration)
-        playerDuration.textContent =
-          item.dataset.duration ?? "";
-      if (playerLink)
-        playerLink.href = item.dataset.link ?? "#";
-
-      queueItems.forEach((queueItem) => {
-        const isActive = queueItem === item;
-        queueItem.setAttribute(
-          "aria-current",
-          String(isActive),
-        );
-        queueItem
-          .querySelector<HTMLElement>(
-            "[data-playing-label]",
-          )
-          ?.classList.toggle("hidden", !isActive);
-        queueItem
-          .querySelector<HTMLElement>("[data-next-label]")
-          ?.classList.toggle("hidden", isActive);
-      });
-    }
-
-    if (player?.dataset.src) {
-      loadPodcast(
-        player.dataset.src,
-        player.dataset.poster ?? "",
-      );
-    }
-
-    queueItems.forEach((item) => {
-      item.addEventListener("click", () =>
-        selectPodcast(item),
-      );
     });
   </script>
 </Layout>

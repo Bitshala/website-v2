@@ -1,0 +1,60 @@
+name: Update X feed
+
+# The only place the X API is called. Refreshes data/podcasts-articles.json
+# and redeploys the site when it changes.
+on:
+  schedule:
+    - cron: "0 */6 * * *"
+  workflow_dispatch:
+    inputs:
+      max_new_posts:
+        description: "Max posts to read this run (raise once for a backfill)"
+        default: "50"
+
+permissions:
+  contents: write
+  # Needed to trigger the deploy workflow below.
+  actions: write
+
+concurrency:
+  group: update-x-feed
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+      - name: Fetch new posts from X
+        run: node scripts/fetch-x.js
+        env:
+          X_BEARER_TOKEN: ${{ secrets.X_BEARER_TOKEN }}
+          X_USERNAME: ${{ secrets.X_USERNAME }}
+          MAX_NEW_POSTS_PER_RUN: ${{ inputs.max_new_posts || '50' }}
+      - name: Commit feed if changed
+        id: commit
+        run: |
+          if [ -z "$(git status --porcelain -- data/podcasts-articles.json)" ]; then
+            echo "Feed unchanged."
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/podcasts-articles.json
+          git commit -m "Update X feed cache"
+          git pull --rebase origin main
+          git push origin HEAD:main
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+      # Pushes made with GITHUB_TOKEN don't trigger other workflows, so start
+      # the deploy explicitly.
+      - name: Deploy site
+        if: steps.commit.outputs.changed == 'true'
+        run: gh workflow run deploy.yml --ref main
+        env:
+          GH_TOKEN: ${{ github.token }}

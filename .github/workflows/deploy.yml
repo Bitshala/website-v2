@@ -2,18 +2,13 @@ name: Deploy to GitHub Pages
 
 env:
   GOOGLE_KEY: ${{ secrets.GOOGLE_KEY }}
-  X_BEARER_TOKEN: ${{ secrets.X_BEARER_TOKEN }}
-  X_USERNAME: ${{ secrets.X_USERNAME }}
 
 on:
   # Trigger the workflow every time you push to the `main` branch
   # Using a different branch name? Replace `main` with your branch’s name
   push:
     branches: [main]
-  # X articles and podcasts are fetched while Astro builds. Rebuild
-  # daily so GitHub Pages receives new content without a code change.
-  schedule:
-    - cron: "30 2 * * *"
+  # Also triggered by the "Update X feed" workflow when the feed changes.
   # Allows you to run this workflow manually from the Actions tab on GitHub.
   workflow_dispatch:
 
