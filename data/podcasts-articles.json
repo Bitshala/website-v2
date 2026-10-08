@@ -1,288 +1,168 @@
 {
-  "updatedAt": "2026-10-08T18:30:45.870Z",
+  "updatedAt": "2026-10-08T19:02:52.662Z",
   "username": "bitshala_org",
   "userId": "1605182892161699840",
   "sinceId": "2108102882998505733",
   "items": [
     {
-      "id": "2108102882998505733",
-      "date": "2026-10-08T07:51:08.000Z",
-      "postUrl": "https://x.com/bitshala_org/status/2108102882998505733",
+      "id": "2094256139944993003",
+      "date": "2026-08-31T02:49:07.000Z",
+      "postUrl": "https://x.com/bitshala_org/status/2094256139944993003",
       "type": "article",
-      "title": "Last week, we explored Schnorr Proofs of Knowledge. Tonight, we go deeper into ECDSA and see exactly why nonce reuse is so dangerous.",
-      "text": "Last week, we explored Schnorr Proofs of Knowledge. Tonight, we go deeper into ECDSA and see exactly why nonce reuse is so dangerous. A 256-bit private key can be protected by some of the most sophisticated mathematics in Bitcoin. But reuse one nonce & the math can give the private key back. We’ll break down: • Fiat-Shamir: How interactive proofs become signatures • ECDSA: The signing equation, security properties, and its evolution toward Schnorr and Taproot • Nonce Reuse: How two signatures can reveal the private key, step by step Join the Cryptographic Foundations of Bitcoin club tonight at 8 PM IST with host @sha512rma. 📍8 PM only on Discord:",
+      "title": "Connecting ASICs to Braidpool: When Hardware Fights Back",
+      "text": "A field report from the Braidpool device dashboard, and everything that broke along the way Hi, I’m Priya Rani, a 4th-year Computer Science student and open-source contributor. I’ve spent over a",
       "thumbnail": null,
-      "articleUrl": "http://discord.com/invite/STeQFVEWf9"
+      "articleUrl": "https://x.com/bitshala_org/status/2094256139944993003"
     },
     {
-      "id": "2107712352712065172",
-      "date": "2026-10-07T05:59:18.000Z",
-      "postUrl": "https://x.com/bitshala_org/status/2107712352712065172",
+      "id": "2091379437841576192",
+      "date": "2026-08-23T04:18:08.000Z",
+      "postUrl": "https://x.com/bitshala_org/status/2091379437841576192",
       "type": "article",
-      "title": "We were full for BOSS Summit. But quite a few of you kept reaching out asking if there was still a way to join.",
-      "text": "We were full for BOSS Summit. But quite a few of you kept reaching out asking if there was still a way to join. So we’ve made room for 10 more people to attend the BOSS sessions in Jaipur. ₹2,499 gets you access to all 3 days of sessions + lunch and evening snacks. That’s all the space we can open up. If you wanted to be there, now’s the time. ➡️ Get your spot: If you're a developer, work in open source, contribute to Bitcoin, or want to start doing so, you'll find your people here. *Session Pass DOES NOT include stay or the Bitmela pass.",
+      "title": "What is Mailstr and how is it different from other emails?",
+      "text": "Email used to be simple. It was our entry into the digital world. Create an address, share it with someone, and you had a way to communicate without necessarily revealing much about who you were in",
       "thumbnail": null,
-      "articleUrl": "http://luma.com/bitshalaboss"
+      "articleUrl": "https://x.com/bitshala_org/status/2091379437841576192"
     },
     {
-      "id": "2107650089263227293",
-      "date": "2026-10-07T01:51:54.000Z",
-      "postUrl": "https://x.com/bitshala_org/status/2107650089263227293",
+      "id": "2089349070532026787",
+      "date": "2026-08-17T13:50:11.000Z",
+      "postUrl": "https://x.com/bitshala_org/status/2089349070532026787",
       "type": "article",
-      "title": "Ecash is custodial. EcashMesh makes the trust behind it visible.",
-      "text": "Ecash is custodial. EcashMesh makes the trust behind it visible. @bansalayush247 building it for BOSS Battle 2026 Pay across @CashuBTC mints and @fedimint federations over Lightning, with every source ranked on evidence before you pay. More projects:",
+      "title": "ngx_l402 primitives: nginx",
+      "text": "Hi, I’m @iamthesvn, a Bitshala fellow and contributor to ngx_l402. A few months ago I was trying to explain ngx_l402 to a friend (non-tech). Ten minutes in I realized I was doing that thing where you",
       "thumbnail": null,
-      "articleUrl": "http://boss-battle.devfolio.co/projects"
+      "articleUrl": "https://x.com/bitshala_org/status/2089349070532026787"
     },
     {
-      "id": "2107493497423167964",
-      "date": "2026-10-06T15:29:39.000Z",
-      "postUrl": "https://x.com/bitshala_org/status/2107493497423167964",
+      "id": "2086702111765774532",
+      "date": "2026-08-10T06:32:07.000Z",
+      "postUrl": "https://x.com/bitshala_org/status/2086702111765774532",
       "type": "article",
-      "title": "🟠 CHANDIGARH MEETUP | 17 OCTOBER",
-      "text": "🟠 CHANDIGARH MEETUP | 17 OCTOBER Want to become a Bitcoin open-source developer & go deeper into the software that runs Bitcoin? Bitcoin Wallets: Keys, Transactions & the Mempool 📅 17 October 🕐 12 – 2 PM Understand what happens under the hood, from keys and transaction construction to signatures and the mempool. 🎟️ Register now: Chandigarh, come learn, build and contribute to Bitcoin. 🟠",
+      "title": "Why an Indian Startup Built a Bitcoin Hardware Wallet Disguised as a $20 Feature Phone",
+      "text": "Hi, this is @apalok21, founder of @cryobrick, and a Bitshala fellow. I wanted reliable cold storage for our Bitcoin. Like most people, I started shopping around for hardware wallets, but the market",
       "thumbnail": null,
-      "articleUrl": "https://luma.com/92dic2g8"
+      "articleUrl": "https://x.com/bitshala_org/status/2086702111765774532"
     },
     {
-      "id": "2107316239945359474",
-      "date": "2026-10-06T03:45:18.000Z",
-      "postUrl": "https://x.com/bitshala_org/status/2107316239945359474",
+      "id": "2084131259375296785",
+      "date": "2026-08-03T04:16:28.000Z",
+      "postUrl": "https://x.com/bitshala_org/status/2084131259375296785",
       "type": "article",
-      "title": "Today’s Bitshala Club: Is your phone ever truly offline?",
-      "text": "Today’s Bitshala Club: Is your phone ever truly offline? Bitcoin Hardware & Sovereignty Club | Today · 8 PM IST | 2:30 PM UTC With host @EmbeddedSDE, we’ll explore: • OS hardening: Why privacy toggles are not enough • Private replacements: LibreWolf, Signal, Organic Maps and more • Privacy tools: Self-hosted passwords, E2EE notes, private cloud • Financial privacy: Sparrow Wallet + your own node + Tor 📍 8 PM. Only on Discord:",
+      "title": "Silent Payments: A Technical Guide to BIP 352",
+      "text": "Bitcoin has a well-known hygiene rule: never reuse an address. Every time a receiver hands out the same address twice, they hand an observer a free clustering heuristic. Balance, payment history,",
       "thumbnail": null,
-      "articleUrl": "http://discord.com/invite/STeQFVEWf9"
+      "articleUrl": "https://x.com/bitshala_org/status/2084131259375296785"
     },
     {
-      "id": "2107120315604008972",
-      "date": "2026-10-05T14:46:46.000Z",
-      "postUrl": "https://x.com/bitshala_org/status/2107120315604008972",
+      "id": "2081582870401802522",
+      "date": "2026-07-27T03:30:04.000Z",
+      "postUrl": "https://x.com/bitshala_org/status/2081582870401802522",
       "type": "article",
-      "title": "LIVE NOW: Learning Bitcoin from the Command Line (LBTCL) Cohort - Season 5 for orientation session",
-      "text": "LIVE NOW: Learning Bitcoin from the Command Line (LBTCL) Cohort - Season 5 for orientation session ✅ Ideal for anyone with basic Bitcoin knowledge and comfort with the command line. 📌 Apply here: 📖 Reading material:",
-      "thumbnail": "https://pbs.twimg.com/news_img/2105316143896625152/VBgwIVZe?format=jpg&name=orig",
-      "articleUrl": "https://app.bitshala.org/"
-    },
-    {
-      "id": "2106976314129572016",
-      "date": "2026-10-05T05:14:33.000Z",
-      "postUrl": "https://x.com/bitshala_org/status/2106976314129572016",
-      "type": "article",
-      "title": "LBTCL Season 5 starts today. 🟠",
-      "text": "LBTCL Season 5 starts today. 🟠 More info →",
+      "title": "How to Build a Bitcoin Wallet (Conceptually)",
+      "text": "Wallets are a fundamental part of the Bitcoin ecosystem serving as the primary interface for most Bitcoin users to interact with the ecosystem. So a lot of user-facing applications contain a wallet",
       "thumbnail": null,
-      "articleUrl": "https://app.bitshala.org/"
+      "articleUrl": "https://x.com/bitshala_org/status/2081582870401802522"
     },
     {
-      "id": "2106956051249766754",
-      "date": "2026-10-05T03:54:02.000Z",
-      "postUrl": "https://x.com/bitshala_org/status/2106956051249766754",
+      "id": "2079040743692455968",
+      "date": "2026-07-20T03:08:34.000Z",
+      "postUrl": "https://x.com/bitshala_org/status/2079040743692455968",
       "type": "article",
-      "title": "From an idea to a working Bitcoin wallet you can call.",
-      "text": "From an idea to a working Bitcoin wallet you can call. @Anipy1 built this for BOSS Battle 2026, making Bitcoin accessible through a phone call and SMS 👀 This is why we built the hackathon. Submissions close today. Learn more:",
+      "title": "Turning nginx into a payment gateway for AI agents",
+      "text": "Ever since AI agents took off, one problem keeps resurfacing: How does an agent pay for things on the web? Not sign up. Not open a browser and type in a credit card. Not commit to a $20/month",
       "thumbnail": null,
-      "articleUrl": "https://boss-battle.devfolio.co/projects"
+      "articleUrl": "https://x.com/bitshala_org/status/2079040743692455968"
     },
     {
-      "id": "2106950558611607679",
-      "date": "2026-10-05T03:32:13.000Z",
-      "postUrl": "https://x.com/bitshala_org/status/2106950558611607679",
+      "id": "2076531205437358579",
+      "date": "2026-07-13T04:56:34.000Z",
+      "postUrl": "https://x.com/bitshala_org/status/2076531205437358579",
       "type": "article",
-      "title": "How do you recover a Bitcoin wallet without exposing its keys?",
-      "text": "How do you recover a Bitcoin wallet without exposing its keys? Latest in Bitcoin Tech | TODAY · 8 PM We deep dive into: • Multisig backups Why recovery is harder than signing. • BIP-138 Encrypted backups for wallet descriptors and metadata, without exposing private keys. 📍 8 PM only on Discord:",
+      "title": "How Bitcoin Transactions Get Confirmed on Braidpool.",
+      "text": "Topic: Bitcoin Mining Protocol · Distributed Systems · Blockchain Architecture Level: Intermediate–Advanced | Students, Researchers, Protocol Engineers Abstract Bitcoin’s mining infrastructure has a",
       "thumbnail": null,
-      "articleUrl": "http://discord.com/invite/STeQFVEWf9"
+      "articleUrl": "https://x.com/bitshala_org/status/2076531205437358579"
     },
     {
-      "id": "2106368682532159756",
-      "date": "2026-10-03T13:00:03.000Z",
-      "postUrl": "https://x.com/bitshala_org/status/2106368682532159756",
+      "id": "2073973376453144650",
+      "date": "2026-07-06T03:32:40.000Z",
+      "postUrl": "https://x.com/bitshala_org/status/2073973376453144650",
       "type": "article",
-      "title": "Who’s it for? Developers, designers, builders & curious Bitcoiners",
-      "text": "Who’s it for? Developers, designers, builders & curious Bitcoiners Prerequisites: Intermediate Bitcoin knowledge You’ll explore • LN engineering & node operations • Channels, routing, liquidity & security • Real-world Lightning use cases • Self-study + weekly live sessions • Group discussions & live Q&A Based on: Mastering the Lightning Network, LND Builder’s Guide & Chaincode resources Reading material:",
+      "title": "Deep Dive: Zeus Lightning Wallet Architecture",
+      "text": "I'm Khushal, a Summer of Bitcoin Fellow '25 and Bitshala Fellow. Over the past few months I've contributed more than 43 pull requests to Zeus, working on Core Lightning support, BOLT 12, routing",
       "thumbnail": null,
-      "articleUrl": "https://app.bitshala.org/ln-instructions"
+      "articleUrl": "https://x.com/bitshala_org/status/2073973376453144650"
     },
     {
-      "id": "2106368681320079398",
-      "date": "2026-10-03T13:00:02.000Z",
-      "postUrl": "https://x.com/bitshala_org/status/2106368681320079398",
+      "id": "2071454255291261343",
+      "date": "2026-06-29T04:42:34.000Z",
+      "postUrl": "https://x.com/bitshala_org/status/2071454255291261343",
       "type": "article",
-      "title": "⚡ Mastering Lightning Network | Season 5",
-      "text": "⚡ Mastering Lightning Network | Season 5 Want to go beyond on-chain Bitcoin and learn to build on Lightning? Join an 8-week, hands-on cohort covering LN engineering, node operations, channels, routing, security and real-world use cases. Starts 18 Nov 2026 | Wednesdays, 8 PM IST 🎟️ Apply:",
+      "title": "Inside Fedimint Observer: Building Observability Infrastructure for Bitcoin Federations",
+      "text": "Hi everyone, I’m Ayush Bansal, a Bitshala Fellow and open-source contributor working in the eCash ecosystem. My journey with Fedimint began through the Bitshala Fellowship Program, where I had the",
       "thumbnail": null,
-      "articleUrl": "https://app.bitshala.org/"
+      "articleUrl": "https://x.com/bitshala_org/status/2071454255291261343"
     },
     {
-      "id": "2105891055724044535",
-      "date": "2026-10-02T05:22:07.000Z",
-      "postUrl": "https://x.com/bitshala_org/status/2105891055724044535",
+      "id": "2068903908194611602",
+      "date": "2026-06-22T03:48:24.000Z",
+      "postUrl": "https://x.com/bitshala_org/status/2068903908194611602",
       "type": "article",
-      "title": "Watch it on YouTube",
-      "text": "Watch it on YouTube",
+      "title": "Inside P2Pool v2",
+      "text": "Introduction I am Raunak(R27), a second-year Computer Science student who has been contributing to Bitcoin open-source projects for the past year. My journey started with Summer of Bitcoin 2025, where",
       "thumbnail": null,
-      "articleUrl": "https://youtu.be/87nb2pgYG5g"
+      "articleUrl": "https://x.com/bitshala_org/status/2068903908194611602"
     },
     {
-      "id": "2105890664445771849",
-      "date": "2026-10-02T05:20:34.000Z",
-      "postUrl": "https://x.com/bitshala_org/status/2105890664445771849",
-      "type": "podcast",
-      "title": "New Bitcoin Talks episode with @Basanta_Goswami just dropped.",
-      "text": "New Bitcoin Talks episode with @Basanta_Goswami just dropped. How do we build truly private, self-custodial software for a Bitcoin-native future? In this episode of Bitshala Talks, we sit down with open-source developer Basanta to unpack the technical reality of building freedom tech. Key takeaways from the conversation: Reproducible Builds: Why verifying software binaries from source code is critical for wallet security. Bull Bitcoin: The philosophy behind self-custodial exchanges & mobile wallet architecture at @BULLBITCOIN_ Privacy-First Education: Bringing non-bitcoiners into freedom tech through community initiatives like Cyber Suraj at Bitspace @bitshala. L2 Trade-Offs: Breaking down Lightning, @Liquid_BTC federations, & @arc for scalable self-custody. Open-Source Dev: How to contribute meaningfully to Bitcoin repositories. Watch the full interview here 👇",
-      "thumbnail": "https://pbs.twimg.com/amplify_video_thumb/2105884012703363072/img/sPgnLSqTeBa3VKRU.jpg",
-      "duration": 4388083
-    },
-    {
-      "id": "2105882874461422000",
-      "date": "2026-10-02T04:49:37.000Z",
-      "postUrl": "https://x.com/bitshala_org/status/2105882874461422000",
+      "id": "2065964017835970581",
+      "date": "2026-06-14T01:06:20.000Z",
+      "postUrl": "https://x.com/bitshala_org/status/2065964017835970581",
       "type": "article",
-      "title": "How did banking move from free banking toward centralization, and what did Bretton Woods change?",
-      "text": "How did banking move from free banking toward centralization, and what did Bretton Woods change? Join Bitshala Reading Club today, 2nd October at 8 PM. We’re in Week 3 of Broken Money by @LynAldenContact. Today, we’ll cover Chapters 7–10, exploring: 🔹 The transition from Free Banking to Centralized Banking 🔹 The evolution of the modern banking system 🔹 The Bretton Woods System and its role in shaping global money 📍 8 PM only on Discord: ✨",
-      "thumbnail": "https://pbs.twimg.com/media/HTmZTusawAAWAwk.jpg",
-      "articleUrl": "https://discord.com/invite/STeQFVEWf9"
-    },
-    {
-      "id": "2105561608735109580",
-      "date": "2026-10-01T07:33:01.000Z",
-      "postUrl": "https://x.com/bitshala_org/status/2105561608735109580",
-      "type": "article",
-      "title": "How can reusing a single random number lead to the loss of your Bitcoin private key? ⚡️",
-      "text": "How can reusing a single random number lead to the loss of your Bitcoin private key? ⚡️ Last week, we explored the Schnorr Proof of Knowledge. Today, we move from theory to practice and see how that interactive protocol becomes a non-interactive digital signature scheme. Join the Cryptographic Foundations of Bitcoin club, every Thursday at 8 PM, with host @sha512rma. We’ll cover: 🔹 Schnorr Interactive Proof: Proving ownership of a secret without revealing it 🔹 Fiat-Shamir Transform: How hashing removes the need for interaction 🔹 Nonce Reuse Catastrophe: How poor randomness can expose a private key 📍 8 PM only on Discord:",
-      "thumbnail": "https://pbs.twimg.com/media/HTh1HoLagAAZohw.jpg",
-      "articleUrl": "http://discord.com/invite/STeQFVEWf9"
-    },
-    {
-      "id": "2105323974905487581",
-      "date": "2026-09-30T15:48:45.000Z",
-      "postUrl": "https://x.com/bitshala_org/status/2105323974905487581",
-      "type": "article",
-      "title": "Bitcoin Protocol Development Cohort Season 3",
-      "text": "Bitcoin Protocol Development Cohort Season 3 Starts 16 October 2026 | Every Fridays, 8:00 PM Apply now:",
+      "title": "Coinswap: Swapping Coin Histories Without Handing Over Custody",
+      "text": "A story-shaped technical tour of Coinswap: maker discovery, fidelity bonds, legacy and taproot contracts, and the current demo apps. Introduction: Hello to whoever is reading this article. I am",
       "thumbnail": null,
-      "articleUrl": "https://app.bitshala.org"
+      "articleUrl": "https://x.com/bitshala_org/status/2065964017835970581"
     },
     {
-      "id": "2105316097595761102",
-      "date": "2026-09-30T15:17:27.000Z",
-      "postUrl": "https://x.com/bitshala_org/status/2105316097595761102",
+      "id": "2063204362386800944",
+      "date": "2026-06-06T10:20:27.000Z",
+      "postUrl": "https://x.com/bitshala_org/status/2063204362386800944",
       "type": "article",
-      "title": "⚡Who’s it for? If you’ve already explored Bitcoin’s technicalities and want to level up, this cohort is for you.",
-      "text": "⚡Who’s it for? If you’ve already explored Bitcoin’s technicalities and want to level up, this cohort is for you. 🎓 Earn a Proof‑of‑Work certificate on completion ✅ Potential fellowship opportunities at Bitshala 📌 Apply here: 📖 Reading material: After applying, check your email to join the Discord and get started.",
+      "title": "Braidpool - Attempt towards mining decentralization and Internals",
+      "text": "Introduction Before diving deep inside @braidpool a little introduction about myself, I am @AnshSharma54105, a Bitshala fellow, and have been working over braidpool for more than a year now. My work",
       "thumbnail": null,
-      "articleUrl": "https://app.bitshala.org/"
+      "articleUrl": "https://x.com/bitshala_org/status/2063204362386800944"
     },
     {
-      "id": "2105316092768071855",
-      "date": "2026-09-30T15:17:26.000Z",
-      "postUrl": "https://x.com/bitshala_org/status/2105316092768071855",
+      "id": "2054415374100135974",
+      "date": "2026-05-13T04:16:09.000Z",
+      "postUrl": "https://x.com/bitshala_org/status/2054415374100135974",
       "type": "article",
-      "title": "🚀 Bitcoin Protocol Development (BPD) Cohort | Season 3",
-      "text": "🚀 Bitcoin Protocol Development (BPD) Cohort | Season 3 Want to go deeper into how Bitcoin works at the protocol level? A 6-week immersive cohort designed to take you into Bitcoin Protocol Development through hands-on learning. Built around Bitcoin Protocol Development by Chaincode Labs, the cohort combines coding challenges with weekly question assignments to help you engage directly with the protocol. 📅 Starts 16 October 2026 🕗 Fridays, 8:00 PM IST | 2:30 PM UTC Apply now:",
-      "thumbnail": "https://pbs.twimg.com/media/HTeV0tJbgAEKbEU.jpg",
-      "articleUrl": "https://app.bitshala.org/"
-    },
-    {
-      "id": "2105141847425425658",
-      "date": "2026-09-30T03:45:02.000Z",
-      "postUrl": "https://x.com/bitshala_org/status/2105141847425425658",
-      "type": "article",
-      "title": "TradFi & Bitcoin Club | 8 PM on Discord",
-      "text": "TradFi & Bitcoin Club | 8 PM on Discord Today, we continue our Early Riders’ Top 50 Bitcoin Companies series with host @imdab002. Join us today, 30th September at 8:00 PM IST | 2:30 PM UTC as we explore the evolution of financial infrastructure around Bitcoin. We’ll cover: 🔹 Custody, institutional rails, and settlement 🔹 Why some business models scaled while others collapsed 🔹 The evolution of financial infrastructure 🔹 Lessons for building durable Bitcoin businesses 🔹 Why compliance, custody, and institutional-grade infrastructure matter 📍 8 PM only on Discord:",
-      "thumbnail": "https://pbs.twimg.com/media/HTb3WNYbwAA4mkj.jpg",
-      "articleUrl": "http://discord.com/invite/STeQFVEWf9"
-    },
-    {
-      "id": "2105134909102882849",
-      "date": "2026-09-30T03:17:28.000Z",
-      "postUrl": "https://x.com/bitshala_org/status/2105134909102882849",
-      "type": "article",
-      "title": "🟠 Mastering Bitcoin | Season 8 is now open",
-      "text": "🟠 Mastering Bitcoin | Season 8 is now open Work through Mastering Bitcoin, 3rd Edition and learn alongside Bitcoin builders through live sessions, self-study, and group discussion. 8 weeks | 14 chapters | One cohort 📅 Starts 5 Nov 2026 | Thursdays, 8 PM IST Apply now:",
+      "title": "BTCPay Server: A Technical Introduction for Users and Contributors",
+      "text": "Hi everyone, I’m Abhijay Jain and you can find me @CodeInVeins . I contribute to @BtcpayServer as an open-source contributor and as an ambassador, and my work is supported by Bitshala. In this",
       "thumbnail": null,
-      "articleUrl": "https://app.bitshala.org/"
+      "articleUrl": "https://x.com/bitshala_org/status/2054415374100135974"
     },
     {
-      "id": "2104993502539186216",
-      "date": "2026-09-29T17:55:34.000Z",
-      "postUrl": "https://x.com/bitshala_org/status/2104993502539186216",
+      "id": "2043577634081357927",
+      "date": "2026-04-13T06:30:50.000Z",
+      "postUrl": "https://x.com/bitshala_org/status/2043577634081357927",
       "type": "article",
-      "title": "Register on Luma to get a reminder, and join our Discord to explore other Bitshala clubs and sessions happening every week.",
-      "text": "Register on Luma to get a reminder, and join our Discord to explore other Bitshala clubs and sessions happening every week. 🟠 Saturday, 3rd Oct '26 | 3:00 PM IST | 9:30 AM UTC 📍 Live on our Discord: 🎟️ Register on luma:",
+      "title": "Bitshala’s BOSS Summit Summer 2026 🇮🇳",
+      "text": "Builders, Ideas, and Open Source Collaboration Bitshala successfully concluded the 5‑day BOSS (Bitcoin Open Source Software) Summit – Summer 2026, held from 01–05 April 2026. The event took place at",
       "thumbnail": null,
-      "articleUrl": "http://discord.com/invite/STeQFVEWf9"
+      "articleUrl": "https://x.com/bitshala_org/status/2043577634081357927"
     },
     {
-      "id": "2104993498495963385",
-      "date": "2026-09-29T17:55:33.000Z",
-      "postUrl": "https://x.com/bitshala_org/status/2104993498495963385",
+      "id": "2018905163650736242",
+      "date": "2026-02-04T04:31:15.000Z",
+      "postUrl": "https://x.com/bitshala_org/status/2018905163650736242",
       "type": "article",
-      "title": "Are you a developer who has completed multiple cohorts, explored open source, and knows you want to work in the space, but still haven’t made the leap from learning to contributing?",
-      "text": "Are you a developer who has completed multiple cohorts, explored open source, and knows you want to work in the space, but still haven’t made the leap from learning to contributing? This session is designed for you. The First PR: Your 0 → 1 Guide to Open Source We’ll break down the path from curious developer to active contributor, including how to find the right repository, identify a meaningful first issue, understand an unfamiliar codebase, work with maintainers, and make your first Pull Request. 📍Sat, Oct 3rd | 3 PM | Live on our Discord :",
-      "thumbnail": "https://pbs.twimg.com/media/HTZwa65b0AAy0KE.jpg",
-      "articleUrl": "http://discord.com/invite/STeQFVEWf9"
-    },
-    {
-      "id": "2104842760402665898",
-      "date": "2026-09-29T07:56:34.000Z",
-      "postUrl": "https://x.com/bitshala_org/status/2104842760402665898",
-      "type": "article",
-      "title": "🟠 Mumbai Workshop | 10 Oct '26 | Privacy on Bitcoin",
-      "text": "🟠 Mumbai Workshop | 10 Oct '26 | Privacy on Bitcoin 🎟️ Register: 🕐 11:45 AM - 2:00 PM Privacy on Bitcoin isn’t automatic. It starts with understanding how Bitcoin works. We’ll dive deeper into: • How can your transactions reveal more than you realise? • What metadata can leak? • How does chain analysis work? Join us for an in-depth, hands-on workshop exploring the core principles of Bitcoin privacy, common privacy leaks, and practical ways to better protect your financial privacy. Limited spots. Register now 👇",
+      "title": "For 40 years, the smartest minds collided with an invisible wall. Then, physics broke it down.",
+      "text": "Here is the story of the \"Missing Component\" that broke the hearts of the smartest cryptographers in history. Before Bitcoin, brilliant minds kept colliding with the same invisible wall while trying",
       "thumbnail": null,
-      "articleUrl": "http://luma.com/2vt8n3ap"
-    },
-    {
-      "id": "2104773381698859428",
-      "date": "2026-09-29T03:20:53.000Z",
-      "postUrl": "https://x.com/bitshala_org/status/2104773381698859428",
-      "type": "article",
-      "title": "How has Bitcoin self-custody evolved over 17 years? And what does sovereignty look like today? 🟠",
-      "text": "How has Bitcoin self-custody evolved over 17 years? And what does sovereignty look like today? 🟠 Join Bitcoin Hardware & Sovereignty Club today, 29 Sep | 8 PM IST / 2:30 PM UTC, with host @EmbeddedSDE. We’ll explore: 🔹 ETFs, exchanges & self-custody 🔹 From Satoshi’s full node to BIP32/BIP39 🔹 Custodian risks & the Coldcard RNG flaw 🔹 Multivendor multisig, steel backups & Miniscript inheritance 📍 8 PM only on Discord: ✨ Join us and understand the technology behind self-custody, see you soon! 🚀",
-      "thumbnail": "https://pbs.twimg.com/media/HTWoOxnaAAAP8uo.jpg",
-      "articleUrl": "http://discord.com/invite/STeQFVEWf9"
-    },
-    {
-      "id": "2104586100060852368",
-      "date": "2026-09-28T14:56:42.000Z",
-      "postUrl": "https://x.com/bitshala_org/status/2104586100060852368",
-      "type": "article",
-      "title": "Based on Mastering Bitcoin, 3rd Edition  by @aantonop",
-      "text": "Based on Mastering Bitcoin, 3rd Edition by @aantonop 📚 Reading material: 📅 Starts 5 November 2026 | 8 weeks Proof-of-Work certificate on completion. Apply now. 👇",
-      "thumbnail": null,
-      "articleUrl": "http://app.bitshala.org/mb-instructions"
-    },
-    {
-      "id": "2104586096671924225",
-      "date": "2026-09-28T14:56:41.000Z",
-      "postUrl": "https://x.com/bitshala_org/status/2104586096671924225",
-      "type": "article",
-      "title": "🚀 Mastering Bitcoin Cohort | Season 8",
-      "text": "🚀 Mastering Bitcoin Cohort | Season 8 Registration's NOW OPEN for Season 8 of the Mastering Bitcoin Cohort. You don’t need to be a developer to understand Bitcoin, you need the curiosity to go deeper. From transactions and wallets to scripts, mining, and consensus, go beyond the surface and understand how Bitcoin works under the hood through self-study, live sessions, and group discussions. 🎟️ Registration is now open: *After applying, check your email to join the Discord and get started.",
-      "thumbnail": "https://pbs.twimg.com/media/HTT95dXbUAAe8pK.jpg",
-      "articleUrl": "http://app.bitshala.org"
-    },
-    {
-      "id": "2104407894225776870",
-      "date": "2026-09-28T03:08:34.000Z",
-      "postUrl": "https://x.com/bitshala_org/status/2104407894225776870",
-      "type": "article",
-      "title": "Privacy on Bitcoin has long been considered a missing piece, but a recent proposal aims to change that.",
-      "text": "Privacy on Bitcoin has long been considered a missing piece, but a recent proposal aims to change that. Join club Latest in Bitcoin Tech today, 28th September at 8:00 PM IST | 2:30 PM UTC, on Discord. Today, we’ll discuss: 🔹 What is Shielded Bitcoin? 🔹 The Two-Layer Architecture 🔹 The Shielded Transaction Model 🔹 How a Shielded Payment Works 🔹 Properties, Limitations & Open Questions 📍 8 PM only on Discord: This session covers the core ideas from the recent Shielded Bitcoin paper. 📖 Paper:",
-      "thumbnail": "https://pbs.twimg.com/media/HTRb0tYaYAAFX3Y.jpg",
-      "articleUrl": "http://discord.com/invite/STeQFVEWf9"
-    },
-    {
-      "id": "2103388035794788378",
-      "date": "2026-09-25T07:36:01.000Z",
-      "postUrl": "https://x.com/bitshala_org/status/2103388035794788378",
-      "type": "article",
-      "title": "📍 8 cities 8 meet-ups 🗓️ 26–27 September",
-      "text": "📍 8 cities 8 meet-ups 🗓️ 26–27 September This weekend, Bitshala meetups are happening across India 🇮🇳 Mumbai | Kolkata | Bengaluru | Chennai | Pune | Surat | Hyderabad | Chandigarh From mining and Lightning to multisig, self-custody, UX, transactions, and the fundamentals of Bitcoin. If you’ve been curious about Bitcoin, come join us. ➡️ Find your city and register now:",
-      "thumbnail": "https://pbs.twimg.com/media/HTC8QhMa8AEHuta.jpg",
-      "articleUrl": "http://luma.com/bitshala"
+      "articleUrl": "https://x.com/bitshala_org/status/2018905163650736242"
     }
   ]
 }
