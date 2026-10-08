@@ -24,6 +24,14 @@ jobs:
     steps:
       - name: Checkout your repository using git
         uses: actions/checkout@v4
+      # The X feed cache is kept on the x-feed branch (see update-feed.yml).
+      - name: Use latest X feed cache
+        run: |
+          if git fetch --depth=1 origin x-feed; then
+            git show FETCH_HEAD:data/podcasts-articles.json > data/podcasts-articles.json
+          else
+            echo "No x-feed branch yet; using the feed on main."
+          fi
       - name: Install, build, and upload your site
         uses: withastro/action@v2
         # with:
