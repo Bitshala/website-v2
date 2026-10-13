@@ -1,9 +1,19 @@
 {
-  "updatedAt": "2026-10-13T00:30:42.805Z",
+  "updatedAt": "2026-10-13T14:02:23.645Z",
   "username": "bitshala_org",
   "userId": "1605182892161699840",
-  "sinceId": "2109688298046398712",
+  "sinceId": "2109872820415275493",
   "items": [
+    {
+      "id": "2109860263646359984",
+      "date": "2026-10-13T04:14:20.000Z",
+      "postUrl": "https://x.com/bitshala_org/status/2109860263646359984",
+      "type": "article",
+      "title": "Don't keep your sats idle. Run a Router with Portal.",
+      "text": "Hello! I'm Egao (@0xEgao). This is our second article on OpenSwap. In our first article, we introduced the protocol. This time, we have something you can install and play with: Portal. New to",
+      "thumbnail": "https://pbs.twimg.com/media/HUerZkva4AAi49k.jpg",
+      "articleUrl": "https://x.com/bitshala_org/status/2109860263646359984"
+    },
     {
       "id": "2094256139944993003",
       "date": "2026-08-31T02:49:07.000Z",
