@@ -1,0 +1,571 @@
+---
+// Live summit agenda in the Summer 2026 layout: each day is a header bar,
+// then Session block · LUNCH · Session block. Sizes follow the container
+// (@container boss-agenda), not the window. No client JS: cards with an
+// abstract are native <details>.
+import type {
+  BossSchedule,
+  BossSession,
+} from "../../lib/bossWinter2026";
+
+interface Props {
+  schedule: BossSchedule;
+}
+
+const { schedule } = Astro.props;
+
+const mins = (t: string) => {
+  const [h, m] = t.split(":").map(Number);
+  return h * 60 + m;
+};
+// 12-hour without AM/PM, as on the Summer 2026 chips
+const clock = (t: string) => {
+  const m = mins(t);
+  return `${Math.floor(m / 60) % 12 || 12}:${String(m % 60).padStart(2, "0")}`;
+};
+const clockAmPm = (t: string) =>
+  `${clock(t)} ${mins(t) >= 720 ? "PM" : "AM"}`;
+const range = (a: string, b: string) =>
+  `${clockAmPm(a)} - ${clockAmPm(b)}`;
+const two = (n: number) => String(n).padStart(2, "0");
+const names = (list: string[]) =>
+  list.length < 2
+    ? list.join("")
+    : `${list.slice(0, -1).join(", ")} & ${list[list.length - 1]}`;
+const splitTitle = (title: string) => {
+  const cut = title.indexOf(": ");
+  return cut > 0
+    ? {
+        main: title.slice(0, cut + 1),
+        sub: title.slice(cut + 2),
+      }
+    : { main: title, sub: "" };
+};
+const duration = (s: BossSession) =>
+  `${mins(s.end) - mins(s.start)}m`;
+
+const lunch = schedule.lunch;
+const lunchMins = mins(lunch.start);
+
+// Session blocks are numbered across the whole summit
+let blockNo = 0;
+const days = schedule.days.map((d, i) => {
+  const am = d.sessions.filter(
+    (s) => mins(s.start) < lunchMins,
+  );
+  const pm = d.sessions.filter(
+    (s) => mins(s.start) >= lunchMins,
+  );
+  const blocks = d.sessions.length
+    ? [am, pm].map((list) => ({ no: ++blockNo, list }))
+    : [];
+  return { ...d, index: i + 1, blocks };
+});
+---
+
+<div class="boss-agenda">
+  {
+    days.map((d) => (
+      <div class="boss-day" id={`boss-day-${d.day}`}>
+        <header class="boss-dayhead">
+          <h3 class="boss-dayhead__title">
+            <span class="boss-dayhead__date">
+              {schedule.month.toUpperCase()} {two(d.day)} •
+              DAY {two(d.index)}
+            </span>
+            <span class="boss-dayhead__sep"> : </span>
+            <span>{d.title}</span>
+          </h3>
+          {d.start && d.end && (
+            <span class="boss-dayhead__time">
+              {range(d.start, d.end)}
+            </span>
+          )}
+        </header>
+
+        {d.blocks.length > 0 && (
+          <div class="boss-grid">
+            {d.blocks.map((b, bi) => (
+              <Fragment>
+                {bi === 1 && (
+                  <div
+                    class="boss-lunch"
+                    role="note"
+                    aria-label={`Lunch, ${range(lunch.start, lunch.end)}`}
+                  >
+                    <span class="boss-chip boss-lunch__chip">
+                      {clock(lunch.start)}
+                    </span>
+                    <span class="boss-lunch__label">
+                      Lunch
+                    </span>
+                    <span class="boss-lunch__dur">
+                      {mins(lunch.end) - lunchMins}m
+                    </span>
+                  </div>
+                )}
+                <section
+                  class="boss-block"
+                  aria-label={`Session ${two(b.no)}`}
+                >
+                  <header class="boss-block__head">
+                    <span>Session {two(b.no)}</span>
+                    <span>
+                      {range(
+                        b.list[0].start,
+                        b.list[b.list.length - 1].end,
+                      )}
+                    </span>
+                  </header>
+                  <div class="boss-block__list">
+                    {b.list.map((s) => {
+                      const t = splitTitle(s.title);
+                      const inner = (
+                        <Fragment>
+                          <span class="boss-chip">
+                            {clock(s.start)}
+                          </span>
+                          <span class="boss-card__body">
+                            <span class="boss-card__title">
+                              {t.main}
+                              {t.sub && (
+                                <span class="boss-card__sub">
+                                  {t.sub}
+                                </span>
+                              )}
+                            </span>
+                            {s.speakers.length > 0 && (
+                              <span class="boss-card__by">
+                                <span class="boss-card__byword">
+                                  by
+                                </span>{" "}
+                                {names(s.speakers)}
+                              </span>
+                            )}
+                          </span>
+                          <span class="boss-card__dur">
+                            {s.about && (
+                              <span
+                                class="boss-card__more"
+                                aria-hidden="true"
+                              />
+                            )}
+                            {duration(s)}
+                          </span>
+                        </Fragment>
+                      );
+                      return s.about ? (
+                        <details
+                          class={`boss-card boss-card--${s.kind}`}
+                        >
+                          <summary class="boss-card__row">
+                            {inner}
+                          </summary>
+                          <p class="boss-card__about">
+                            {s.about}
+                          </p>
+                        </details>
+                      ) : (
+                        <div
+                          class={`boss-card boss-card--${s.kind}`}
+                        >
+                          <div class="boss-card__row">
+                            {inner}
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </section>
+              </Fragment>
+            ))}
+          </div>
+        )}
+      </div>
+    ))
+  }
+</div>
+
+<style is:global>
+  /* Tokens from the BOSS Winter 2026 design system (design/boss-winter-2026) */
+  .boss-agenda {
+    --plum-900: #250e21;
+    --plum-800: #3a1530;
+    --plum-500: #8e2f72;
+    --ink: #f5f3f0;
+    --ink-muted: #bfc3ce;
+    --ink-muted-olive: #c9c6a6;
+    --ink-muted-plum: #c9b3c4;
+    --frame: #8da2c4;
+    --slate: #3c4253;
+    --slate-line: #646c82;
+    --olive: #45452f;
+    --olive-line: #d4cf4a;
+    --chip: #f2f2f2;
+    --on-chip: #1c0716;
+    --focus: #d7f55a;
+
+    container-type: inline-size;
+    container-name: boss-agenda;
+    color: var(--ink);
+    font-family: "Inter", system-ui, sans-serif;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+  }
+  .boss-agenda :focus-visible {
+    outline: 2px solid var(--focus);
+    outline-offset: 3px;
+  }
+
+  /* Day header */
+  .boss-day + .boss-day {
+    margin-top: 44px;
+  }
+  .boss-dayhead {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px 24px;
+    padding: 18px 24px;
+    border: 2px solid var(--frame);
+    border-radius: 12px;
+    background: var(--plum-900);
+  }
+  .boss-dayhead__title {
+    margin: 0;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 1.3;
+    letter-spacing: 0.01em;
+  }
+  .boss-dayhead__time {
+    flex: none;
+    font-weight: 500;
+    font-size: 21px;
+    line-height: 1.3;
+  }
+
+  /* Session block · LUNCH · Session block */
+  .boss-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 88px minmax(
+        0,
+        1fr
+      );
+    gap: 22px;
+    margin-top: 22px;
+  }
+  .boss-block {
+    padding: 22px 24px 24px;
+    border: 2px solid var(--frame);
+    border-radius: 16px;
+  }
+  .boss-block__head {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    margin: 0 0 16px;
+    font-weight: 500;
+    font-size: 21px;
+    line-height: 1.3;
+  }
+  .boss-block__list {
+    display: grid;
+    gap: 12px;
+  }
+
+  /* Session card: colour is the only type signal */
+  .boss-card {
+    border-radius: 8px;
+    border: 2px solid var(--slate-line);
+    background: var(--slate);
+  }
+  .boss-card--workshop {
+    background: var(--olive);
+    border-color: var(--olive-line);
+  }
+  .boss-card--open {
+    background: var(--plum-800);
+    border-color: var(--plum-500);
+  }
+  .boss-card__row {
+    position: relative;
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    column-gap: 22px;
+    padding: 22px 20px 20px;
+    list-style: none;
+  }
+  summary.boss-card__row {
+    cursor: pointer;
+  }
+  summary.boss-card__row::-webkit-details-marker {
+    display: none;
+  }
+  .boss-chip {
+    align-self: start;
+    display: inline-block;
+    min-width: 76px;
+    margin-top: 3px;
+    padding: 6px 10px;
+    border-radius: 4px;
+    background: var(--chip);
+    color: var(--on-chip);
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 1;
+    text-align: center;
+    font-variant-numeric: tabular-nums;
+  }
+  .boss-card__body {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding-right: 36px;
+  }
+  .boss-card__title {
+    font-weight: 700;
+    font-size: 25px;
+    line-height: 1.25;
+    letter-spacing: -0.005em;
+    text-wrap: pretty;
+  }
+  .boss-card__sub {
+    display: block;
+    margin-top: 2px;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 1.3;
+  }
+  .boss-card__by {
+    font-style: italic;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 1.3;
+  }
+  .boss-card__byword {
+    font-weight: 400;
+  }
+  .boss-card__dur {
+    position: absolute;
+    right: 18px;
+    bottom: 14px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 1;
+    color: var(--ink-muted);
+  }
+  .boss-card--workshop .boss-card__dur {
+    color: var(--ink-muted-olive);
+  }
+  .boss-card--open .boss-card__dur {
+    color: var(--ink-muted-plum);
+  }
+
+  /* Tap to read: a small + that turns into − */
+  .boss-card__more {
+    position: relative;
+    width: 10px;
+    height: 10px;
+  }
+  .boss-card__more::before,
+  .boss-card__more::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 4px;
+    width: 10px;
+    height: 2px;
+    border-radius: 1px;
+    background: currentColor;
+  }
+  .boss-card__more::after {
+    transform: rotate(90deg);
+    transition: transform 0.2s ease;
+  }
+  details[open] .boss-card__more::after {
+    transform: rotate(0deg);
+  }
+  .boss-card__about {
+    max-width: 72ch;
+    margin: -6px 0 0;
+    padding: 0 20px 34px calc(20px + 76px + 22px);
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--ink);
+  }
+
+  /* Lunch strip */
+  .boss-lunch {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 22px;
+    padding: 24px 0 22px;
+    border: 2px solid var(--frame);
+    border-radius: 16px;
+  }
+  .boss-lunch__chip {
+    writing-mode: vertical-rl;
+    min-width: 0;
+    min-height: 70px;
+    margin: 0;
+    padding: 10px 6px;
+  }
+  .boss-lunch__label {
+    writing-mode: vertical-rl;
+    font-weight: 700;
+    font-size: 26px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .boss-lunch__dur {
+    writing-mode: vertical-rl;
+    margin-top: auto;
+    font-weight: 500;
+    font-size: 15px;
+    color: var(--ink-muted);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .boss-card__more::after {
+      transition: none;
+    }
+  }
+
+  /* 861–1180px: same three columns, tighter type */
+  @container boss-agenda (max-width: 1180px) {
+    .boss-card__title {
+      font-size: 21px;
+    }
+    .boss-card__sub,
+    .boss-card__by {
+      font-size: 16px;
+    }
+    .boss-chip {
+      min-width: 64px;
+      font-size: 17px;
+    }
+    .boss-card__about {
+      padding-left: calc(20px + 64px + 22px);
+    }
+    .boss-block__head,
+    .boss-dayhead__time {
+      font-size: 18px;
+    }
+    .boss-dayhead__title {
+      font-size: 20px;
+    }
+  }
+
+  /* 860px and below: blocks stack, lunch lies flat between them */
+  @container boss-agenda (max-width: 860px) {
+    .boss-day + .boss-day {
+      margin-top: 32px;
+    }
+    .boss-dayhead {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 4px;
+      padding: 14px 16px;
+    }
+    .boss-dayhead__title {
+      font-size: 16px;
+      line-height: 1.35;
+    }
+    .boss-dayhead__date {
+      display: block;
+    }
+    .boss-dayhead__sep {
+      display: none;
+    }
+    .boss-dayhead__time {
+      font-size: 14px;
+    }
+
+    .boss-grid {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 12px;
+      margin-top: 12px;
+    }
+    .boss-block {
+      padding: 14px 12px 12px;
+      border-radius: 14px;
+    }
+    .boss-block__head {
+      margin-bottom: 12px;
+      padding: 0 4px;
+      font-size: 15px;
+    }
+    .boss-block__list {
+      gap: 10px;
+    }
+
+    .boss-card__row {
+      column-gap: 12px;
+      padding: 14px 12px;
+    }
+    .boss-chip {
+      min-width: 52px;
+      margin-top: 1px;
+      padding: 5px 7px;
+      font-size: 14px;
+    }
+    .boss-card__body {
+      gap: 4px;
+      padding-right: 0;
+      padding-bottom: 14px;
+    }
+    .boss-card__title {
+      font-size: 18px;
+    }
+    .boss-card__sub,
+    .boss-card__by {
+      font-size: 15px;
+    }
+    .boss-card__dur {
+      right: 12px;
+      bottom: 10px;
+      font-size: 13px;
+    }
+    .boss-card__about {
+      margin: 0;
+      padding: 0 12px 30px calc(12px + 52px + 12px);
+      font-size: 14px;
+    }
+
+    .boss-lunch {
+      flex-direction: row;
+      justify-content: flex-start;
+      gap: 14px;
+      padding: 12px 16px;
+      border-radius: 14px;
+    }
+    .boss-lunch__chip,
+    .boss-lunch__label,
+    .boss-lunch__dur {
+      writing-mode: horizontal-tb;
+    }
+    .boss-lunch__chip {
+      min-width: 52px;
+      min-height: 0;
+      padding: 5px 7px;
+    }
+    .boss-lunch__label {
+      font-size: 18px;
+    }
+    .boss-lunch__dur {
+      margin: 0 0 0 auto;
+      font-size: 13px;
+    }
+  }
+
+  @container boss-agenda (max-width: 400px) {
+    .boss-card__about {
+      padding-left: 12px;
+    }
+  }
+</style>
