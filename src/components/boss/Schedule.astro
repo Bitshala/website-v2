@@ -1,12 +1,12 @@
 ---
+import Agenda from "./Agenda.astro";
+import { winter2026 } from "../../lib/bossWinter2026";
+
 const summits = [
   {
     id: "Winter-2026",
     label: "Winter 2026",
-    comingSoon: true,
-    scheduleImage: "/boss26/boss26schedule.png",
-    scheduleUrl:
-      "https://github.com/Bitshala/BOSS-Summit/blob/main/summer-2026/schedule.png",
+    agenda: winter2026,
   },
   {
     id: "Summer-2026",
@@ -43,10 +43,8 @@ const summits = [
       <h2
         class="mb-8 text-left font-boss text-3xl md:mb-12 md:text-5xl lg:text-[48px]"
       >
-        Last Summit's <span class="bg-[#F4F199] text-black"
-          >Agenda</span
-        >
-        (get an Idea)
+        <span id="schedule-heading-label">{summits[0].label}</span>
+        <span class="bg-[#F4F199] text-black">Agenda</span>
       </h2>
 
       <!-- Tabs -->
@@ -75,7 +73,9 @@ const summits = [
         </button>
 
         <!-- Visible window of 2 tab "slots" (labels filled by script) -->
-        <div id="schedule-tabs" data-summits={JSON.stringify(summits)}>
+        <div id="schedule-tabs" data-summits={JSON.stringify(
+            summits.map(({ id, label }) => ({ id, label })),
+          )}>
           <div
             id="schedule-tabs-track"
             class="flex items-center gap-4 transition-all duration-300"
@@ -123,11 +123,9 @@ const summits = [
           data-schedule-content={summit.id}
           class={`schedule-content ${index === 0 ? "" : "hidden"}`}
         >
-          {summit.comingSoon ? (
-            <div class="flex min-h-[300px] items-center justify-center py-16 md:min-h-[400px] md:py-24">
-              <h3 class="text-center font-boss text-[98px] leading-tight md:text-[122px] lg:text-[146px]">
-                Coming<br />Soon
-              </h3>
+          {summit.agenda ? (
+            <div class="relative mt-8 md:mt-16">
+              <Agenda schedule={summit.agenda} />
             </div>
           ) : (
             <div class="relative mt-8 overflow-x-auto md:mt-16">
@@ -139,6 +137,7 @@ const summits = [
             </div>
           )}
 
+          {summit.scheduleUrl && (
           <div class="pt-4 text-center">
             <a
               href={summit.scheduleUrl}
@@ -148,6 +147,7 @@ const summits = [
               Check Out the Schedule
             </a>
           </div>
+          )}
         </div>
       ))
     }
@@ -172,6 +172,9 @@ const summits = [
     );
   const scheduleContents = document.querySelectorAll(
     ".schedule-content",
+  );
+  const headingLabel = document.getElementById(
+    "schedule-heading-label",
   );
   const chevronLeft =
     document.getElementById("chevron-left");
@@ -229,6 +232,11 @@ const summits = [
         btn.setAttribute("data-schedule-tab", summit.id);
         setActiveStyles(btn, summit.id === activeId);
       });
+
+      const activeSummit = summits.find((s) => s.id === activeId);
+      if (headingLabel && activeSummit) {
+        headingLabel.textContent = activeSummit.label;
+      }
 
       scheduleContents.forEach((content) => {
         content.classList.toggle(
