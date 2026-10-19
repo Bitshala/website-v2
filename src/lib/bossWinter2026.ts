@@ -53,7 +53,7 @@ export const winter2026: BossSchedule = {
       day: 26,
       title: "Check-in and Community Kickoff",
       allDay: true,
-      note: "Orientation · intros · games · bonfire night",
+      note: "Orientation",
       sessions: [],
     },
     {
