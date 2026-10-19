@@ -124,7 +124,7 @@ const summits = [
           class={`schedule-content ${index === 0 ? "" : "hidden"}`}
         >
           {summit.agenda ? (
-            <div class="mt-4 md:mt-8">
+            <div class="relative mt-8 md:mt-16">
               <Agenda schedule={summit.agenda} />
             </div>
           ) : (

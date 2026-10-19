@@ -64,132 +64,143 @@ const days = schedule.days.map((d, i) => {
 ---
 
 <div class="boss-agenda">
-  {
-    days.map((d) => (
-      <div class="boss-day" id={`boss-day-${d.day}`}>
-        <header class="boss-dayhead">
-          <h3 class="boss-dayhead__title">
-            <span class="boss-dayhead__date">
-              {schedule.month.toUpperCase()} {two(d.day)} •
-              DAY {two(d.index)}
-            </span>
-            <span class="boss-dayhead__sep"> : </span>
-            <span>{d.title}</span>
-          </h3>
-          {d.start && d.end && (
-            <span class="boss-dayhead__time">
-              {range(d.start, d.end)}
-            </span>
-          )}
-        </header>
+  <div class="boss-agenda__frame">
+    <div class="boss-agenda__content">
+      {
+        days.map((d) => (
+          <div
+            class={`boss-day${d.blocks.length ? "" : " boss-day--empty"}`}
+            id={`boss-day-${d.day}`}
+          >
+            <header class="boss-dayhead">
+              <h3 class="boss-dayhead__title">
+                <span class="boss-dayhead__date">
+                  {schedule.month.toUpperCase()}{" "}
+                  {two(d.day)} • DAY {two(d.index)}
+                </span>
+                <span class="boss-dayhead__sep"> : </span>
+                <span>{d.title}</span>
+              </h3>
+              {d.start && d.end && (
+                <span class="boss-dayhead__time">
+                  {range(d.start, d.end)}
+                </span>
+              )}
+            </header>
 
-        {d.blocks.length > 0 && (
-          <div class="boss-grid">
-            {d.blocks.map((b, bi) => (
-              <Fragment>
-                {bi === 1 && (
-                  <div
-                    class="boss-lunch"
-                    role="note"
-                    aria-label={`Lunch, ${range(lunch.start, lunch.end)}`}
-                  >
-                    <span class="boss-chip boss-lunch__chip">
-                      {clock(lunch.start)}
-                    </span>
-                    <span class="boss-lunch__label">
-                      Lunch
-                    </span>
-                    <span class="boss-lunch__dur">
-                      {mins(lunch.end) - lunchMins}m
-                    </span>
-                  </div>
-                )}
-                <section
-                  class="boss-block"
-                  aria-label={`Session ${two(b.no)}`}
-                >
-                  <header class="boss-block__head">
-                    <span>Session {two(b.no)}</span>
-                    <span>
-                      {range(
-                        b.list[0].start,
-                        b.list[b.list.length - 1].end,
-                      )}
-                    </span>
-                  </header>
-                  <div class="boss-block__list">
-                    {b.list.map((s) => {
-                      const t = splitTitle(s.title);
-                      const inner = (
-                        <Fragment>
-                          <span class="boss-chip">
-                            {clock(s.start)}
-                          </span>
-                          <span class="boss-card__body">
-                            <span class="boss-card__title">
-                              {t.main}
-                              {t.sub && (
-                                <span class="boss-card__sub">
-                                  {t.sub}
-                                </span>
-                              )}
-                            </span>
-                            {s.speakers.length > 0 && (
-                              <span class="boss-card__by">
-                                <span class="boss-card__byword">
-                                  by
-                                </span>{" "}
-                                {names(s.speakers)}
+            {d.blocks.length > 0 && (
+              <div class="boss-grid">
+                {d.blocks.map((b, bi) => (
+                  <Fragment>
+                    {bi === 1 && (
+                      <div
+                        class="boss-lunch"
+                        role="note"
+                        aria-label={`Lunch, ${range(lunch.start, lunch.end)}`}
+                      >
+                        <span class="boss-chip boss-lunch__chip">
+                          {clock(lunch.start)}
+                        </span>
+                        <span class="boss-lunch__label">
+                          Lunch
+                        </span>
+                        <span class="boss-lunch__dur">
+                          {mins(lunch.end) - lunchMins}m
+                        </span>
+                      </div>
+                    )}
+                    <section
+                      class="boss-block"
+                      aria-label={`Session ${two(b.no)}`}
+                    >
+                      <header class="boss-block__head">
+                        <span>Session {two(b.no)}</span>
+                        <span>
+                          {range(
+                            b.list[0].start,
+                            b.list[b.list.length - 1].end,
+                          )}
+                        </span>
+                      </header>
+                      <div class="boss-block__list">
+                        {b.list.map((s) => {
+                          const t = splitTitle(s.title);
+                          const inner = (
+                            <Fragment>
+                              <span class="boss-chip">
+                                {clock(s.start)}
                               </span>
-                            )}
-                          </span>
-                          <span class="boss-card__dur">
-                            {s.about && (
-                              <span
-                                class="boss-card__more"
-                                aria-hidden="true"
-                              />
-                            )}
-                            {duration(s)}
-                          </span>
-                        </Fragment>
-                      );
-                      return s.about ? (
-                        <details
-                          class={`boss-card boss-card--${s.kind}`}
-                        >
-                          <summary class="boss-card__row">
-                            {inner}
-                          </summary>
-                          <p class="boss-card__about">
-                            {s.about}
-                          </p>
-                        </details>
-                      ) : (
-                        <div
-                          class={`boss-card boss-card--${s.kind}`}
-                        >
-                          <div class="boss-card__row">
-                            {inner}
-                          </div>
-                        </div>
-                      );
-                    })}
-                  </div>
-                </section>
-              </Fragment>
-            ))}
+                              <span class="boss-card__body">
+                                <span class="boss-card__title">
+                                  {t.main}
+                                  {t.sub && (
+                                    <span class="boss-card__sub">
+                                      {t.sub}
+                                    </span>
+                                  )}
+                                </span>
+                                {s.speakers.length > 0 && (
+                                  <span class="boss-card__by">
+                                    <span class="boss-card__byword">
+                                      by
+                                    </span>{" "}
+                                    {names(s.speakers)}
+                                  </span>
+                                )}
+                              </span>
+                              <span class="boss-card__dur">
+                                {s.about && (
+                                  <span
+                                    class="boss-card__more"
+                                    aria-hidden="true"
+                                  />
+                                )}
+                                {duration(s)}
+                              </span>
+                            </Fragment>
+                          );
+                          return s.about ? (
+                            <details
+                              class={`boss-card boss-card--${s.kind}`}
+                            >
+                              <summary class="boss-card__row">
+                                {inner}
+                              </summary>
+                              <p class="boss-card__about">
+                                {s.about}
+                              </p>
+                            </details>
+                          ) : (
+                            <div
+                              class={`boss-card boss-card--${s.kind}`}
+                            >
+                              <div class="boss-card__row">
+                                {inner}
+                              </div>
+                            </div>
+                          );
+                        })}
+                      </div>
+                    </section>
+                  </Fragment>
+                ))}
+              </div>
+            )}
           </div>
-        )}
-      </div>
-    ))
-  }
+        ))
+      }
+    </div>
+  </div>
 </div>
 
 <style is:global>
   /* Tokens from the BOSS Winter 2026 design system (design/boss-winter-2026).
-     Desktop sizes match the Summer 2026 agenda image as it renders on /boss
-     at a 1440px window (card titles ~19px, 48px day bars, 60px lunch). */
+
+     Desktop geometry is measured from the Summer 2026 agenda image
+     (public/boss26/boss26schedule.png, 2380px wide) and scales with the
+     width exactly like that image does on /boss: the frame keeps the
+     image's margins (146px sides, 119px top, 151px bottom of 2380) and
+     --u is one pixel of the image's 2088px-wide content. */
   .boss-agenda {
     --plum-900: #250e21;
     --plum-800: #3a1530;
@@ -206,6 +217,7 @@ const days = schedule.days.map((d, i) => {
     --chip: #f2f2f2;
     --on-chip: #1c0716;
     --focus: #d7f55a;
+    --u: calc(100cqw / 2088);
 
     container-type: inline-size;
     container-name: boss-agenda;
@@ -218,67 +230,78 @@ const days = schedule.days.map((d, i) => {
     outline: 2px solid var(--focus);
     outline-offset: 3px;
   }
+  .boss-agenda__frame {
+    padding: 5% 6.134% 6.345%;
+  }
+  .boss-agenda__content {
+    container-type: inline-size;
+  }
 
   /* Day header */
   .boss-day + .boss-day {
-    margin-top: 40px;
+    margin-top: calc(93 * var(--u));
+  }
+  .boss-day--empty + .boss-day {
+    margin-top: calc(62 * var(--u));
   }
   .boss-dayhead {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 6px 20px;
-    padding: 11px 18px;
+    gap: calc(12 * var(--u)) calc(40 * var(--u));
+    padding: calc(22 * var(--u)) calc(37 * var(--u))
+      calc(22 * var(--u)) calc(34 * var(--u));
     border: 2px solid var(--frame);
-    border-radius: 10px;
+    border-radius: calc(20 * var(--u));
     background: var(--plum-900);
   }
   .boss-dayhead__title {
     margin: 0;
     font-weight: 700;
-    font-size: 17px;
+    font-size: calc(35.8 * var(--u));
     line-height: 1.3;
     letter-spacing: 0.01em;
   }
   .boss-dayhead__time {
     flex: none;
     font-weight: 500;
-    font-size: 15px;
+    font-size: calc(31.6 * var(--u));
     line-height: 1.3;
   }
 
-  /* Session block · LUNCH · Session block */
+  /* Session block · LUNCH · Session block (951 · 126 · 951, 30 gaps) */
   .boss-grid {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) 60px minmax(
-        0,
-        1fr
-      );
-    gap: 16px;
-    margin-top: 16px;
+    grid-template-columns: minmax(0, 1fr) calc(
+        126 * var(--u)
+      ) minmax(0, 1fr);
+    gap: calc(30 * var(--u));
+    margin-top: calc(31 * var(--u));
   }
   .boss-block {
-    padding: 16px 18px 18px;
+    padding: calc(25 * var(--u)) calc(35 * var(--u))
+      calc(35 * var(--u));
     border: 2px solid var(--frame);
-    border-radius: 12px;
+    border-radius: calc(24 * var(--u));
   }
   .boss-block__head {
     display: flex;
     justify-content: space-between;
-    gap: 12px;
-    margin: 0 0 12px;
+    gap: calc(24 * var(--u));
+    margin: 0 0 calc(23 * var(--u));
+    padding-left: calc(3 * var(--u));
     font-weight: 500;
-    font-size: 15px;
+    font-size: calc(34.4 * var(--u));
     line-height: 1.3;
   }
   .boss-block__list {
     display: grid;
-    gap: 10px;
+    gap: calc(18 * var(--u));
   }
 
   /* Session card: colour is the only type signal */
   .boss-card {
-    border-radius: 6px;
+    border-radius: calc(12 * var(--u));
     border: 2px solid var(--slate-line);
     background: var(--slate);
   }
@@ -294,8 +317,9 @@ const days = schedule.days.map((d, i) => {
     position: relative;
     display: grid;
     grid-template-columns: auto minmax(0, 1fr);
-    column-gap: 16px;
-    padding: 14px 14px 12px;
+    column-gap: calc(36 * var(--u));
+    padding: calc(20 * var(--u)) calc(28 * var(--u))
+      calc(22 * var(--u));
     list-style: none;
   }
   summary.boss-card__row {
@@ -307,14 +331,14 @@ const days = schedule.days.map((d, i) => {
   .boss-chip {
     align-self: start;
     display: inline-block;
-    min-width: 56px;
-    margin-top: 2px;
-    padding: 4px 8px;
-    border-radius: 3px;
+    min-width: calc(110 * var(--u));
+    margin-top: calc(13 * var(--u));
+    padding: calc(7.5 * var(--u)) calc(14 * var(--u));
+    border-radius: calc(5 * var(--u));
     background: var(--chip);
     color: var(--on-chip);
     font-weight: 500;
-    font-size: 15px;
+    font-size: calc(28.9 * var(--u));
     line-height: 1;
     text-align: center;
     font-variant-numeric: tabular-nums;
@@ -322,27 +346,27 @@ const days = schedule.days.map((d, i) => {
   .boss-card__body {
     display: flex;
     flex-direction: column;
-    gap: 4px;
-    padding-right: 30px;
+    gap: calc(5 * var(--u));
+    padding-right: calc(70 * var(--u));
   }
   .boss-card__title {
     font-weight: 700;
-    font-size: 19px;
-    line-height: 1.25;
+    font-size: calc(41.3 * var(--u));
+    line-height: 1.21;
     letter-spacing: -0.005em;
     text-wrap: pretty;
   }
   .boss-card__sub {
     display: block;
-    margin-top: 1px;
+    margin-top: calc(2 * var(--u));
     font-weight: 600;
-    font-size: 14px;
+    font-size: calc(30 * var(--u));
     line-height: 1.3;
   }
   .boss-card__by {
     font-style: italic;
     font-weight: 600;
-    font-size: 14px;
+    font-size: calc(28.9 * var(--u));
     line-height: 1.3;
   }
   .boss-card__byword {
@@ -350,13 +374,13 @@ const days = schedule.days.map((d, i) => {
   }
   .boss-card__dur {
     position: absolute;
-    right: 12px;
-    bottom: 10px;
+    right: calc(26 * var(--u));
+    bottom: calc(16 * var(--u));
     display: inline-flex;
     align-items: center;
-    gap: 6px;
+    gap: calc(12 * var(--u));
     font-weight: 500;
-    font-size: 12px;
+    font-size: calc(23.4 * var(--u));
     line-height: 1;
     color: var(--ink-muted);
   }
@@ -370,16 +394,16 @@ const days = schedule.days.map((d, i) => {
   /* Tap to read: a small + that turns into − */
   .boss-card__more {
     position: relative;
-    width: 8px;
-    height: 8px;
+    width: calc(16 * var(--u));
+    height: calc(16 * var(--u));
   }
   .boss-card__more::before,
   .boss-card__more::after {
     content: "";
     position: absolute;
     left: 0;
-    top: 3px;
-    width: 8px;
+    top: calc(50% - 1px);
+    width: 100%;
     height: 2px;
     border-radius: 1px;
     background: currentColor;
@@ -393,9 +417,10 @@ const days = schedule.days.map((d, i) => {
   }
   .boss-card__about {
     max-width: 72ch;
-    margin: -4px 0 0;
-    padding: 0 14px 28px calc(14px + 56px + 16px);
-    font-size: 13.5px;
+    margin: calc(-8 * var(--u)) 0 0;
+    padding: 0 calc(28 * var(--u)) calc(56 * var(--u))
+      calc((28 + 110 + 36) * var(--u));
+    font-size: calc(27 * var(--u));
     line-height: 1.55;
     color: var(--ink);
   }
@@ -405,23 +430,24 @@ const days = schedule.days.map((d, i) => {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 16px;
-    padding: 16px 0;
+    gap: calc(38 * var(--u));
+    padding: calc(37 * var(--u)) 0;
     border: 2px solid var(--frame);
-    border-radius: 12px;
+    border-radius: calc(24 * var(--u));
   }
   .boss-lunch .boss-lunch__chip {
     align-self: center;
     writing-mode: vertical-rl;
     min-width: 0;
-    min-height: 52px;
+    min-height: calc(109 * var(--u));
     margin: 0;
-    padding: 8px 4px;
+    padding: calc(19 * var(--u)) calc(7.5 * var(--u));
+    font-size: calc(30 * var(--u));
   }
   .boss-lunch__label {
     writing-mode: vertical-rl;
     font-weight: 700;
-    font-size: 18px;
+    font-size: calc(40 * var(--u));
     line-height: 1;
     letter-spacing: 0.04em;
     text-transform: uppercase;
@@ -430,7 +456,7 @@ const days = schedule.days.map((d, i) => {
     writing-mode: vertical-rl;
     margin-top: auto;
     font-weight: 500;
-    font-size: 12px;
+    font-size: calc(23.4 * var(--u));
     line-height: 1;
     color: var(--ink-muted);
   }
@@ -441,34 +467,13 @@ const days = schedule.days.map((d, i) => {
     }
   }
 
-  /* 861–1180px: same three columns, tighter type */
-  @container boss-agenda (max-width: 1180px) {
-    .boss-card__title {
-      font-size: 17px;
-    }
-    .boss-card__sub,
-    .boss-card__by {
-      font-size: 13px;
-    }
-    .boss-chip {
-      min-width: 50px;
-      font-size: 14px;
-    }
-    .boss-card__about {
-      padding-left: calc(14px + 50px + 16px);
-    }
-    .boss-block__head,
-    .boss-dayhead__time {
-      font-size: 14px;
-    }
-    .boss-dayhead__title {
-      font-size: 15px;
-    }
-  }
-
   /* 860px and below: blocks stack, lunch lies flat between them */
   @container boss-agenda (max-width: 860px) {
-    .boss-day + .boss-day {
+    .boss-agenda__frame {
+      padding: 0;
+    }
+    .boss-day + .boss-day,
+    .boss-day--empty + .boss-day {
       margin-top: 28px;
     }
     .boss-dayhead {
@@ -476,6 +481,7 @@ const days = schedule.days.map((d, i) => {
       align-items: flex-start;
       gap: 2px;
       padding: 10px 14px;
+      border-radius: 10px;
     }
     .boss-dayhead__title {
       font-size: 15px;
@@ -498,16 +504,21 @@ const days = schedule.days.map((d, i) => {
     }
     .boss-block {
       padding: 12px 10px 10px;
+      border-radius: 12px;
     }
     .boss-block__head {
       margin-bottom: 10px;
       padding: 0 4px;
+      gap: 12px;
       font-size: 14px;
     }
     .boss-block__list {
       gap: 8px;
     }
 
+    .boss-card {
+      border-radius: 6px;
+    }
     .boss-card__row {
       column-gap: 12px;
       padding: 12px 12px 10px;
@@ -516,6 +527,7 @@ const days = schedule.days.map((d, i) => {
       min-width: 48px;
       margin-top: 1px;
       padding: 4px 6px;
+      border-radius: 3px;
       font-size: 13px;
     }
     .boss-card__body {
@@ -525,6 +537,7 @@ const days = schedule.days.map((d, i) => {
     }
     .boss-card__title {
       font-size: 16px;
+      line-height: 1.25;
     }
     .boss-card__sub,
     .boss-card__by {
@@ -533,6 +546,12 @@ const days = schedule.days.map((d, i) => {
     .boss-card__dur {
       right: 10px;
       bottom: 8px;
+      gap: 6px;
+      font-size: 12px;
+    }
+    .boss-card__more {
+      width: 8px;
+      height: 8px;
     }
     .boss-card__about {
       margin: 0;
@@ -545,6 +564,7 @@ const days = schedule.days.map((d, i) => {
       justify-content: flex-start;
       gap: 12px;
       padding: 10px 14px;
+      border-radius: 12px;
     }
     .boss-lunch .boss-lunch__chip,
     .boss-lunch__label,
@@ -555,12 +575,14 @@ const days = schedule.days.map((d, i) => {
       min-width: 48px;
       min-height: 0;
       padding: 4px 6px;
+      font-size: 13px;
     }
     .boss-lunch__label {
       font-size: 15px;
     }
     .boss-lunch__dur {
       margin: 0 0 0 auto;
+      font-size: 12px;
     }
   }
 
