@@ -1,12 +1,20 @@
 ---
-// Live summit agenda in the Summer 2026 layout: each day is a header bar,
-// then Session block · LUNCH · Session block. Sizes follow the container
-// (@container boss-agenda), not the window. No client JS: cards with an
-// abstract are native <details>.
+// Live summit agenda: contribution-grid banner, the all-day kickoff line,
+// a sticky bar of day tabs and type filters, then one panel per day with a
+// Morning series · LUNCH · Afternoon series on a time rail. Panels are all
+// rendered here; the script below only switches tabs, filters cards and
+// rotates the banner words. Sizes follow the container (@container
+// boss-agenda), not the window.
 import type {
+  BossDay,
   BossSchedule,
   BossSession,
 } from "../../lib/bossWinter2026";
+import {
+  GH_GRIDS,
+  GH_WORDS,
+  ghDelayStep,
+} from "../../lib/bossGhGrid";
 
 interface Props {
   schedule: BossSchedule;
@@ -18,7 +26,7 @@ const mins = (t: string) => {
   const [h, m] = t.split(":").map(Number);
   return h * 60 + m;
 };
-// 12-hour without AM/PM, as on the Summer 2026 chips
+// 12-hour without AM/PM, as on the time chips
 const clock = (t: string) => {
   const m = mins(t);
   return `${Math.floor(m / 60) % 12 || 12}:${String(m % 60).padStart(2, "0")}`;
@@ -41,167 +49,539 @@ const splitTitle = (title: string) => {
       }
     : { main: title, sub: "" };
 };
-const duration = (s: BossSession) =>
-  `${mins(s.end) - mins(s.start)}m`;
+const plural = (n: number, w: string) =>
+  `${n} ${w}${n === 1 ? "" : "s"}`;
+const DOW = [
+  "Sun",
+  "Mon",
+  "Tue",
+  "Wed",
+  "Thu",
+  "Fri",
+  "Sat",
+];
+const dow = (date: string) => {
+  const [y, m, d] = date.split("-").map(Number);
+  return DOW[new Date(Date.UTC(y, m - 1, d)).getUTCDay()];
+};
+const tally = (list: BossSession[]) => ({
+  all: list.length,
+  talk: list.filter((s) => s.kind === "talk").length,
+  workshop: list.filter((s) => s.kind === "workshop")
+    .length,
+  open: list.filter((s) => s.kind === "open").length,
+});
+const countLine = (d: BossDay) => {
+  const c = tally(d.sessions);
+  return [
+    c.workshop && plural(c.workshop, "workshop"),
+    c.talk && plural(c.talk, "talk"),
+    c.open && `${c.open} open stage`,
+  ]
+    .filter(Boolean)
+    .join(" · ");
+};
+
+const TAGS = {
+  talk: "Talk",
+  workshop: "Workshop",
+  open: "Open stage",
+};
+// Day colours in summit order: Mon mint, Tue coral, Wed butter, Thu lime
+const ACCENTS = ["mint", "coral", "butter", "lime"];
 
 const lunch = schedule.lunch;
 const lunchMins = mins(lunch.start);
 
-// Session blocks are numbered across the whole summit
-let blockNo = 0;
-const days = schedule.days.map((d, i) => {
-  const am = d.sessions.filter(
-    (s) => mins(s.start) < lunchMins,
-  );
-  const pm = d.sessions.filter(
-    (s) => mins(s.start) >= lunchMins,
-  );
-  const blocks = d.sessions.length
-    ? [am, pm].map((list) => ({ no: ++blockNo, list }))
-    : [];
-  return { ...d, index: i + 1, blocks };
-});
+// The kickoff day has no sessions and sits above the tabs
+const kickoffIndex = schedule.days.findIndex(
+  (d) => d.sessions.length === 0,
+);
+const kickoff =
+  kickoffIndex >= 0
+    ? {
+        ...schedule.days[kickoffIndex],
+        index: kickoffIndex + 1,
+        accent: ACCENTS[kickoffIndex % ACCENTS.length],
+      }
+    : null;
+
+// Session series are numbered across the whole summit
+let seriesNo = 0;
+const days = schedule.days
+  .map((d, i) => ({ d, i }))
+  .filter(({ d }) => d.sessions.length > 0)
+  .map(({ d, i }) => {
+    const am = d.sessions.filter(
+      (s) => mins(s.start) < lunchMins,
+    );
+    const pm = d.sessions.filter(
+      (s) => mins(s.start) >= lunchMins,
+    );
+    const series = [
+      {
+        part: "Morning",
+        list: am,
+        lunchAfter: pm.length > 0,
+      },
+      { part: "Afternoon", list: pm, lunchAfter: false },
+    ]
+      .filter((s) => s.list.length > 0)
+      .map((s) => ({ ...s, no: ++seriesNo }));
+    return {
+      ...d,
+      accent: ACCENTS[i % ACCENTS.length],
+      dow: dow(d.date),
+      counts: tally(d.sessions),
+      series,
+    };
+  });
+
+const filters = [
+  { id: "all", label: "All" },
+  { id: "talk", label: "Talks" },
+  { id: "workshop", label: "Workshops" },
+] as const;
+const first = days[0];
 ---
 
-<div class="boss-agenda">
-  <div class="boss-agenda__frame">
-    <div class="boss-agenda__content">
-      {
-        days.map((d) => (
-          <div
-            class={`boss-day${d.blocks.length ? "" : " boss-day--empty"}`}
-            id={`boss-day-${d.day}`}
-          >
-            <header class="boss-dayhead">
-              <h3 class="boss-dayhead__title">
-                <span class="boss-dayhead__date">
-                  {schedule.month.toUpperCase()}{" "}
-                  {two(d.day)} • DAY {two(d.index)}
-                </span>
-                <span class="boss-dayhead__sep"> : </span>
-                <span>{d.title}</span>
-              </h3>
+<div class="boss-agenda" data-boss-agenda>
+  <div class="boss-schedule">
+    <div
+      class="gh-box"
+      style={`--accent: var(--${GH_WORDS[0].accent})`}
+      data-gh
+    >
+      <div
+        class="gh-grid"
+        role="img"
+        aria-label={`${GH_WORDS.map((w) => w.text).join(", ")} spelled out in a contribution grid`}
+      >
+        {
+          GH_GRIDS[0].map((v, i) => (
+            <span
+              class="gh"
+              data-v={v}
+              style={`--d: ${ghDelayStep(i)}`}
+            />
+          ))
+        }
+      </div>
+    </div>
+
+    {
+      kickoff && (
+        <div
+          class="kick"
+          style={`--accent: var(--${kickoff.accent})`}
+          role="note"
+          aria-label={`${dow(kickoff.date)} ${kickoff.day} ${schedule.month}, Day ${two(kickoff.index)}: ${kickoff.title}, ${kickoff.allDay ? "all day" : range(kickoff.start!, kickoff.end!)}`}
+        >
+          <div>
+            <p class="kick__kicker">
+              {dow(kickoff.date)} · {schedule.month}{" "}
+              {kickoff.day} · Day {two(kickoff.index)}
+            </p>
+            <h3 class="kick__title">{kickoff.title}</h3>
+          </div>
+          <div class="kick__meta">
+            <span class="kick__time">
+              {kickoff.allDay
+                ? "All day"
+                : range(kickoff.start!, kickoff.end!)}
+            </span>
+            {kickoff.note && (
+              <span class="kick__note">{kickoff.note}</span>
+            )}
+          </div>
+        </div>
+      )
+    }
+
+    <div class="boss-bar" data-boss-bar>
+      <div
+        class="boss-tabs"
+        role="tablist"
+        aria-label="Summit days"
+      >
+        {
+          days.map((d) => (
+            <button
+              type="button"
+              role="tab"
+              class="boss-tab"
+              style={`--accent: var(--${d.accent})`}
+              id={`boss-tab-${d.day}`}
+              aria-controls={`boss-panel-${d.day}`}
+              aria-selected={d === first ? "true" : "false"}
+              tabindex={d === first ? 0 : -1}
+              data-date={d.date}
+            >
+              <span class="boss-tab__dow">{d.dow}</span>
+              <span class="boss-tab__num">{d.day}</span>
+            </button>
+          ))
+        }
+      </div>
+      <div
+        class="boss-filters"
+        role="group"
+        aria-label="Show"
+      >
+        {
+          filters.map((f) => (
+            <button
+              type="button"
+              class="boss-fchip"
+              aria-pressed={
+                f.id === "all" ? "true" : "false"
+              }
+              data-filter={f.id}
+            >
+              {f.id !== "all" && (
+                <span
+                  class={`boss-fchip__sw boss-fchip__sw--${f.id}`}
+                  aria-hidden="true"
+                />
+              )}
+              <span>{f.label}</span>
+              <span class="boss-fchip__n" data-count>
+                {first.counts[f.id]}
+              </span>
+            </button>
+          ))
+        }
+      </div>
+    </div>
+
+    {
+      days.map((d) => (
+        <div
+          class="boss-panel"
+          style={`--accent: var(--${d.accent})`}
+          role="tabpanel"
+          id={`boss-panel-${d.day}`}
+          aria-labelledby={`boss-tab-${d.day}`}
+          hidden={d !== first}
+          data-counts={JSON.stringify(d.counts)}
+        >
+          <header class="boss-dayhead">
+            <h3 class="boss-dayhead__title">{d.title}</h3>
+            <div class="boss-dayhead__meta">
               {d.start && d.end && (
                 <span class="boss-dayhead__time">
                   {range(d.start, d.end)}
                 </span>
               )}
-            </header>
+              <span class="boss-dayhead__count">
+                {countLine(d)}
+              </span>
+            </div>
+          </header>
 
-            {d.blocks.length > 0 && (
-              <div class="boss-grid">
-                {d.blocks.map((b, bi) => (
-                  <Fragment>
-                    {bi === 1 && (
-                      <div
-                        class="boss-lunch"
-                        role="note"
-                        aria-label={`Lunch, ${range(lunch.start, lunch.end)}`}
-                      >
-                        <span class="boss-chip boss-lunch__chip">
-                          {clock(lunch.start)}
-                        </span>
-                        <span class="boss-lunch__label">
-                          Lunch
-                        </span>
-                        <span class="boss-lunch__dur">
-                          {mins(lunch.end) - lunchMins}m
-                        </span>
-                      </div>
-                    )}
-                    <section
-                      class="boss-block"
-                      aria-label={`Session ${two(b.no)}`}
+          {d.series.map((s) => (
+            <section
+              aria-label={`Session ${two(s.no)} ${s.part}`}
+              data-series
+            >
+              <div class="ser-head">
+                <span class="ser-head__name">
+                  Session {two(s.no)}
+                  <span class="ser-head__part">
+                    {s.part}
+                  </span>
+                </span>
+                <span class="ser-head__range">
+                  {range(
+                    s.list[0].start,
+                    s.list[s.list.length - 1].end,
+                  )}
+                </span>
+              </div>
+
+              <ol class="boss-rail">
+                {s.list.map((x) => {
+                  const t = splitTitle(x.title);
+                  return (
+                    <li
+                      class="boss-slot"
+                      data-kind={x.kind}
                     >
-                      <header class="boss-block__head">
-                        <span>Session {two(b.no)}</span>
-                        <span>
-                          {range(
-                            b.list[0].start,
-                            b.list[b.list.length - 1].end,
+                      <span class="boss-slot__time">
+                        <span class="boss-chip">
+                          {clock(x.start)}
+                        </span>
+                        <span class="boss-slot__dur">
+                          {mins(x.end) - mins(x.start)} min
+                        </span>
+                      </span>
+                      <div
+                        class={`boss-card boss-card--${x.kind}`}
+                      >
+                        <span class={`tag tag--${x.kind}`}>
+                          {TAGS[x.kind]}
+                        </span>
+                        <span class="boss-card__title">
+                          {t.main}
+                          {t.sub && (
+                            <span class="boss-card__sub">
+                              {t.sub}
+                            </span>
                           )}
                         </span>
-                      </header>
-                      <div class="boss-block__list">
-                        {b.list.map((s) => {
-                          const t = splitTitle(s.title);
-                          const inner = (
-                            <Fragment>
-                              <span class="boss-chip">
-                                {clock(s.start)}
-                              </span>
-                              <span class="boss-card__body">
-                                <span class="boss-card__title">
-                                  {t.main}
-                                  {t.sub && (
-                                    <span class="boss-card__sub">
-                                      {t.sub}
-                                    </span>
-                                  )}
-                                </span>
-                                {s.speakers.length > 0 && (
-                                  <span class="boss-card__by">
-                                    <span class="boss-card__byword">
-                                      by
-                                    </span>{" "}
-                                    {names(s.speakers)}
-                                  </span>
-                                )}
-                              </span>
-                              <span class="boss-card__dur">
-                                {s.about && (
-                                  <span
-                                    class="boss-card__more"
-                                    aria-hidden="true"
-                                  />
-                                )}
-                                {duration(s)}
-                              </span>
-                            </Fragment>
-                          );
-                          return s.about ? (
-                            <details
-                              class={`boss-card boss-card--${s.kind}`}
-                            >
-                              <summary class="boss-card__row">
-                                {inner}
-                              </summary>
-                              <p class="boss-card__about">
-                                {s.about}
-                              </p>
-                            </details>
-                          ) : (
-                            <div
-                              class={`boss-card boss-card--${s.kind}`}
-                            >
-                              <div class="boss-card__row">
-                                {inner}
-                              </div>
-                            </div>
-                          );
-                        })}
+                        {x.speakers.length > 0 ? (
+                          <span class="boss-card__by">
+                            <span class="boss-card__byword">
+                              by
+                            </span>{" "}
+                            {names(x.speakers)}
+                          </span>
+                        ) : (
+                          <span class="boss-card__by boss-card__by--open">
+                            Open floor
+                          </span>
+                        )}
+                        {x.about && (
+                          <p class="boss-card__about">
+                            {x.about}
+                          </p>
+                        )}
                       </div>
-                    </section>
-                  </Fragment>
-                ))}
-              </div>
-            )}
-          </div>
-        ))
-      }
-    </div>
+                    </li>
+                  );
+                })}
+              </ol>
+              <p
+                class="boss-empty"
+                data-part={s.part.toLowerCase()}
+                hidden
+              />
+
+              {s.lunchAfter && (
+                <div
+                  class="boss-lunch"
+                  role="note"
+                  aria-label={`Lunch, ${range(lunch.start, lunch.end)}`}
+                >
+                  <span class="boss-chip">
+                    {clock(lunch.start)}
+                  </span>
+                  <span class="boss-lunch__label">
+                    Lunch
+                  </span>
+                  <span class="boss-lunch__span">
+                    {clock(lunch.start)} –{" "}
+                    {clock(lunch.end)} ·{" "}
+                    {mins(lunch.end) - lunchMins} min
+                  </span>
+                </div>
+              )}
+            </section>
+          ))}
+        </div>
+      ))
+    }
   </div>
 </div>
 
-<style is:global>
-  /* Tokens from the BOSS Winter 2026 design system (design/boss-winter-2026).
+<script>
+  import { GH_GRIDS, GH_WORDS } from "../../lib/bossGhGrid";
 
-     Desktop geometry is measured from the Summer 2026 agenda image
-     (public/boss26/boss26schedule.png, 2380px wide) and scales with the
-     width exactly like that image does on /boss: the frame keeps the
-     image's margins (146px sides, 119px top, 151px bottom of 2380) and
-     --u is one pixel of the image's 2088px-wide content. */
+  type Filter = "all" | "talk" | "workshop";
+  const EMPTY: Record<Filter, string> = {
+    all: "Nothing",
+    talk: "No talks",
+    workshop: "No workshops",
+  };
+
+  document
+    .querySelectorAll<HTMLElement>("[data-boss-agenda]")
+    .forEach((root) => {
+      const tabs = [
+        ...root.querySelectorAll<HTMLButtonElement>(
+          '[role="tab"]',
+        ),
+      ];
+      const chips = [
+        ...root.querySelectorAll<HTMLButtonElement>(
+          "[data-filter]",
+        ),
+      ];
+      const bar = root.querySelector<HTMLElement>(
+        "[data-boss-bar]",
+      )!;
+      const panelOf = (tab: HTMLButtonElement) =>
+        document.getElementById(
+          tab.getAttribute("aria-controls")!,
+        )!;
+      let filter: Filter = "all";
+
+      // Keep the sticky bar clear of the site's fixed navbar
+      const nav =
+        document.querySelector<HTMLElement>("body > nav");
+      if (
+        nav &&
+        getComputedStyle(nav).position === "fixed"
+      ) {
+        const place = () =>
+          root.style.setProperty(
+            "--boss-bar-top",
+            `${nav.offsetHeight}px`,
+          );
+        place();
+        new ResizeObserver(place).observe(nav);
+      }
+
+      const current = () =>
+        tabs.find(
+          (t) => t.getAttribute("aria-selected") === "true",
+        )!;
+
+      function applyFilter() {
+        const panel = panelOf(current());
+        const counts = JSON.parse(
+          panel.dataset.counts || "{}",
+        );
+        // A filter the chosen day has nothing for falls back to All
+        if (filter !== "all" && !counts[filter])
+          filter = "all";
+        chips.forEach((chip) => {
+          const id = chip.dataset.filter as Filter;
+          chip.setAttribute(
+            "aria-pressed",
+            String(id === filter),
+          );
+          chip.disabled = id !== "all" && !counts[id];
+          chip.querySelector("[data-count]")!.textContent =
+            String(counts[id] ?? 0);
+        });
+        panel
+          .querySelectorAll<HTMLElement>("[data-series]")
+          .forEach((series) => {
+            let shown = 0;
+            series
+              .querySelectorAll<HTMLElement>("[data-kind]")
+              .forEach((slot) => {
+                const on =
+                  filter === "all" ||
+                  slot.dataset.kind === filter;
+                slot.hidden = !on;
+                if (on) shown++;
+              });
+            series.querySelector<HTMLElement>(
+              ".boss-rail",
+            )!.hidden = shown === 0;
+            const empty =
+              series.querySelector<HTMLElement>(
+                ".boss-empty",
+              )!;
+            empty.hidden = shown > 0;
+            empty.textContent = `${EMPTY[filter]} this ${empty.dataset.part}`;
+          });
+      }
+
+      function select(
+        tab: HTMLButtonElement,
+        focus = false,
+      ) {
+        tabs.forEach((t) => {
+          const on = t === tab;
+          t.setAttribute("aria-selected", String(on));
+          t.tabIndex = on ? 0 : -1;
+          panelOf(t).hidden = !on;
+        });
+        if (focus) tab.focus();
+        applyFilter();
+        // If the bar is stuck, bring the new day's top up under it
+        const panel = panelOf(tab);
+        const barBottom =
+          bar.getBoundingClientRect().bottom;
+        if (panel.getBoundingClientRect().top < barBottom) {
+          window.scrollBy(
+            0,
+            panel.getBoundingClientRect().top - barBottom,
+          );
+        }
+      }
+
+      tabs.forEach((tab, i) => {
+        tab.addEventListener("click", () => select(tab));
+        tab.addEventListener("keydown", (e) => {
+          const last = tabs.length - 1;
+          const next =
+            e.key === "ArrowRight" || e.key === "ArrowDown"
+              ? i === last
+                ? 0
+                : i + 1
+              : e.key === "ArrowLeft" || e.key === "ArrowUp"
+                ? i === 0
+                  ? last
+                  : i - 1
+                : e.key === "Home"
+                  ? 0
+                  : e.key === "End"
+                    ? last
+                    : -1;
+          if (next < 0) return;
+          e.preventDefault();
+          select(tabs[next], true);
+        });
+      });
+
+      chips.forEach((chip) =>
+        chip.addEventListener("click", () => {
+          filter = chip.dataset.filter as Filter;
+          applyFilter();
+        }),
+      );
+
+      // Open on today's tab during the summit (IST, UTC+5:30)
+      const today = new Date(Date.now() + 330 * 60_000)
+        .toISOString()
+        .slice(0, 10);
+      const todayTab = tabs.find(
+        (t) => t.dataset.date === today,
+      );
+      if (todayTab) select(todayTab);
+
+      // Banner: rotate the spelled word every 2.2s
+      const box =
+        root.querySelector<HTMLElement>("[data-gh]");
+      const cells = box
+        ? [...box.querySelectorAll<HTMLElement>(".gh")]
+        : [];
+      const still = window.matchMedia(
+        "(prefers-reduced-motion: reduce)",
+      );
+      let step = 0;
+      const show = (k: number) => {
+        box!.style.setProperty(
+          "--accent",
+          `var(--${GH_WORDS[k].accent})`,
+        );
+        GH_GRIDS[k].forEach(
+          (v, i) => (cells[i].dataset.v = v),
+        );
+      };
+      if (box) {
+        setInterval(() => {
+          if (document.hidden) return;
+          if (still.matches) {
+            if (step) show((step = 0));
+            return;
+          }
+          step = (step + 1) % GH_WORDS.length;
+          show(step);
+        }, 2200);
+      }
+    });
+</script>
+
+<style>
+  /* Tokens from the BOSS Winter 2026 design system. Dark theme only;
+     flat outlines, no shadows, gradients or glows. */
   .boss-agenda {
+    --plum-950: #1c0716;
     --plum-900: #250e21;
     --plum-800: #3a1530;
     --plum-500: #8e2f72;
@@ -216,98 +596,381 @@ const days = schedule.days.map((d, i) => {
     --olive-line: #d4cf4a;
     --chip: #f2f2f2;
     --on-chip: #1c0716;
+    --highlight: #f3f09b;
+    --coral: #f27b7b;
+    --butter: #f4e66c;
+    --lime: #d7f55a;
+    --mint: #7ed08f;
     --focus: #d7f55a;
-    --u: calc(100cqw / 2088);
-    /* Vertical scale: Winter has more sessions than Summer, so type and
-       vertical spacing are compressed by --k to give the same total height.
-       Horizontal geometry stays at --u, one-to-one with Summer. */
-    --k: 0.827;
-    --v: calc(var(--u) * var(--k));
+    --font-display: "Dx Slight", "Arial Narrow", sans-serif;
+    --font-sans:
+      "Inter", system-ui, -apple-system, "Segoe UI",
+      sans-serif;
 
     container-type: inline-size;
     container-name: boss-agenda;
     color: var(--ink);
-    font-family: "Inter", system-ui, sans-serif;
+    font-family: var(--font-sans);
     font-size: 16px;
+    line-height: 1.4;
     -webkit-font-smoothing: antialiased;
+  }
+  .boss-agenda *,
+  .boss-agenda *::before,
+  .boss-agenda *::after {
+    box-sizing: border-box;
+  }
+  .boss-agenda [hidden] {
+    display: none !important;
   }
   .boss-agenda :focus-visible {
     outline: 2px solid var(--focus);
     outline-offset: 3px;
   }
-  .boss-agenda__frame {
-    padding: 5% 6.134% 6.345%;
-  }
-  .boss-agenda__content {
-    container-type: inline-size;
+
+  .boss-schedule {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 0 32px;
   }
 
-  /* Day header */
-  .boss-day + .boss-day {
-    margin-top: calc(93 * var(--v));
+  /* ---------- Contribution-grid banner ---------- */
+  .gh-box {
+    margin: 0 0 14px;
+    padding: 16px;
+    border: 2px dashed var(--frame);
+    border-radius: 16px;
   }
-  .boss-day--empty + .boss-day {
-    margin-top: calc(62 * var(--v));
+  .gh-grid {
+    display: grid;
+    grid-template-columns: repeat(53, minmax(0, 1fr));
+    gap: 4px;
+  }
+  .gh {
+    display: block;
+    aspect-ratio: 1;
+    border-radius: 3px;
+    background: var(--plum-900);
+    transition: background-color 0.35s ease;
+    transition-delay: calc(var(--d, 0) * 40ms);
+  }
+  .gh[data-v="1"] {
+    background: var(--plum-800);
+  }
+  .gh[data-v="2"] {
+    background: var(--plum-500);
+  }
+  .gh[data-v="on"] {
+    background: var(--accent);
+  }
+
+  /* ---------- Kickoff line ---------- */
+  .kick {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 10px 24px;
+    margin: 0 0 14px;
+    padding: 16px 20px 18px;
+    border: 2px dashed var(--frame);
+    border-radius: 12px;
+  }
+  .kick__kicker {
+    margin: 0 0 6px;
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+  .kick__title {
+    margin: 0;
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-synthesis: none;
+    font-size: 40px;
+    line-height: 1.05;
+  }
+  .kick__meta {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 4px;
+    text-align: right;
+  }
+  .kick__time {
+    font-weight: 500;
+    font-size: 17px;
+  }
+  .kick__note {
+    font-weight: 500;
+    font-size: 14px;
+    color: var(--ink-muted);
+  }
+
+  /* ---------- Sticky bar: day tabs + filters ---------- */
+  .boss-bar {
+    position: sticky;
+    top: var(--boss-bar-top, 0px);
+    z-index: 5;
+    margin: 0 -32px;
+    padding: 10px 32px 12px;
+    background: var(--plum-950);
+    border-bottom: 2px solid var(--plum-800);
+  }
+  .boss-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .boss-tab {
+    appearance: none;
+    cursor: pointer;
+    font: inherit;
+    flex: 0 0 auto;
+    min-width: 76px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    padding: 8px 14px 9px;
+    border: 2px solid var(--plum-500);
+    border-radius: 12px;
+    background: transparent;
+    color: var(--ink);
+    transition:
+      border-color 0.15s ease,
+      background-color 0.15s ease;
+  }
+  .boss-tab:hover {
+    border-color: var(--accent);
+  }
+  .boss-tab__dow {
+    font-weight: 600;
+    font-size: 11px;
+    line-height: 1;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+  }
+  .boss-tab__num {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-synthesis: none;
+    font-size: 32px;
+    line-height: 1;
+    color: var(--accent);
+  }
+  .boss-tab[aria-selected="true"] {
+    background: var(--highlight);
+    border-color: var(--highlight);
+  }
+  .boss-tab[aria-selected="true"] .boss-tab__dow,
+  .boss-tab[aria-selected="true"] .boss-tab__num {
+    color: var(--on-chip);
+  }
+
+  .boss-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 10px;
+  }
+  .boss-fchip {
+    appearance: none;
+    cursor: pointer;
+    font: inherit;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 36px;
+    padding: 4px 6px 4px 12px;
+    border: 2px solid var(--frame);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--ink);
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 1.2;
+  }
+  .boss-fchip:hover {
+    border-color: var(--ink);
+  }
+  .boss-fchip__sw {
+    width: 22px;
+    height: 16px;
+    border: 2px solid;
+    border-radius: 4px;
+  }
+  .boss-fchip__sw--talk {
+    background: var(--slate);
+    border-color: var(--slate-line);
+  }
+  .boss-fchip__sw--workshop {
+    background: var(--olive);
+    border-color: var(--olive-line);
+  }
+  .boss-fchip__n {
+    min-width: 28px;
+    padding: 4px 8px;
+    border-radius: 999px;
+    background: var(--plum-800);
+    color: var(--ink);
+    font-size: 13px;
+    line-height: 1;
+    text-align: center;
+    font-variant-numeric: tabular-nums;
+  }
+  .boss-fchip[aria-pressed="true"] {
+    background: var(--ink);
+    border-color: var(--ink);
+    color: var(--on-chip);
+  }
+  .boss-fchip[aria-pressed="true"] .boss-fchip__n {
+    background: var(--highlight);
+    color: var(--on-chip);
+  }
+  .boss-fchip[aria-pressed="true"] .boss-fchip__sw {
+    border-color: var(--on-chip);
+  }
+  .boss-fchip:disabled {
+    opacity: 0.4;
+    cursor: default;
+  }
+
+  /* ---------- Day panel ---------- */
+  .boss-panel {
+    margin-top: 28px;
   }
   .boss-dayhead {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: calc(12 * var(--v)) calc(40 * var(--v));
-    padding: calc(22 * var(--v)) calc(37 * var(--u))
-      calc(22 * var(--v)) calc(34 * var(--u));
-    border: 2px solid var(--frame);
-    border-radius: calc(20 * var(--v));
-    background: var(--plum-900);
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: end;
+    column-gap: 22px;
+    padding-bottom: 16px;
+    border-bottom: 2px solid var(--frame);
   }
   .boss-dayhead__title {
     margin: 0;
-    font-weight: 700;
-    font-size: calc(35.8 * var(--v));
-    line-height: 1.3;
-    letter-spacing: 0.01em;
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-synthesis: none;
+    font-size: 46px;
+    line-height: 1.08;
+    text-wrap: balance;
+  }
+  .boss-dayhead__meta {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 6px;
+    padding-bottom: 4px;
+    text-align: right;
   }
   .boss-dayhead__time {
-    flex: none;
     font-weight: 500;
-    font-size: calc(31.6 * var(--v));
-    line-height: 1.3;
+    font-size: 17px;
+  }
+  .boss-dayhead__count {
+    font-weight: 500;
+    font-size: 14px;
+    color: var(--ink-muted);
   }
 
-  /* Session block · LUNCH · Session block (951 · 126 · 951, 30 gaps) */
-  .boss-grid {
-    display: grid;
-    grid-template-columns:
-      minmax(0, 1fr) calc(126 * var(--u))
-      minmax(0, 1fr);
-    gap: calc(30 * var(--u));
-    margin-top: calc(31 * var(--v));
-  }
-  .boss-block {
-    padding: calc(25 * var(--v)) calc(35 * var(--u))
-      calc(35 * var(--v));
-    border: 2px solid var(--frame);
-    border-radius: calc(24 * var(--v));
-  }
-  .boss-block__head {
+  .ser-head {
     display: flex;
     justify-content: space-between;
-    gap: calc(24 * var(--v));
-    margin: 0 0 calc(23 * var(--v));
-    padding-left: calc(3 * var(--u));
-    font-weight: 500;
-    font-size: calc(34.4 * var(--v));
-    line-height: 1.3;
+    align-items: baseline;
+    gap: 12px;
+    margin: 28px 0 14px;
   }
-  .boss-block__list {
-    display: grid;
-    gap: calc(18 * var(--v));
+  .ser-head__name {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 12px;
+    font-weight: 600;
+    font-size: 21px;
+  }
+  .ser-head__part {
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+  .ser-head__range {
+    font-weight: 500;
+    font-size: 19px;
+    color: var(--ink-muted);
   }
 
-  /* Session card: colour is the only type signal */
+  /* ---------- Time rail ---------- */
+  .boss-rail {
+    position: relative;
+    display: grid;
+    gap: 10px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .boss-rail::before {
+    content: "";
+    position: absolute;
+    left: 37px;
+    top: 20px;
+    bottom: 20px;
+    border-left: 2px dashed var(--frame);
+  }
+  .boss-slot {
+    display: grid;
+    grid-template-columns: 76px minmax(0, 1fr);
+    column-gap: 16px;
+  }
+  .boss-slot__time {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 12px;
+  }
+  .boss-chip {
+    display: inline-block;
+    min-width: 76px;
+    padding: 6px 8px;
+    border-radius: 4px;
+    background: var(--chip);
+    color: var(--on-chip);
+    font-weight: 600;
+    font-size: 19px;
+    line-height: 1;
+    text-align: center;
+    font-variant-numeric: tabular-nums;
+  }
+  .boss-slot__dur {
+    display: block;
+    width: 100%;
+    margin: auto 0;
+    padding: 7px 0;
+    background: var(--plum-950);
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 1.3;
+    text-align: center;
+    color: var(--ink-muted);
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* ---------- Session card ---------- */
   .boss-card {
-    border-radius: calc(12 * var(--v));
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 12px 18px 14px;
     border: 2px solid var(--slate-line);
+    border-radius: 8px;
     background: var(--slate);
   }
   .boss-card--workshop {
@@ -318,282 +981,296 @@ const days = schedule.days.map((d, i) => {
     background: var(--plum-800);
     border-color: var(--plum-500);
   }
-  .boss-card__row {
-    position: relative;
-    display: grid;
-    grid-template-columns: auto minmax(0, 1fr);
-    column-gap: calc(36 * var(--v));
-    padding: calc(20 * var(--v)) calc(28 * var(--u))
-      calc(22 * var(--v));
-    list-style: none;
-  }
-  summary.boss-card__row {
-    cursor: pointer;
-  }
-  summary.boss-card__row::-webkit-details-marker {
-    display: none;
-  }
-  .boss-chip {
-    align-self: start;
-    display: inline-block;
-    min-width: calc(110 * var(--v));
-    margin-top: calc(13 * var(--v));
-    padding: calc(7.5 * var(--v)) calc(14 * var(--v));
-    border-radius: calc(5 * var(--v));
-    background: var(--chip);
-    color: var(--on-chip);
-    font-weight: 500;
-    font-size: calc(28.9 * var(--v));
+  .tag {
+    align-self: flex-start;
+    padding: 5px 7px 4px;
+    border-radius: 4px;
+    font-weight: 700;
+    font-size: 11px;
     line-height: 1;
-    text-align: center;
-    font-variant-numeric: tabular-nums;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
   }
-  .boss-card__body {
-    display: flex;
-    flex-direction: column;
-    gap: calc(5 * var(--v));
-    padding-right: calc(70 * var(--v));
+  .tag--talk {
+    background: var(--ink-muted);
+    color: var(--on-chip);
+  }
+  .tag--workshop {
+    background: var(--olive-line);
+    color: var(--on-chip);
+  }
+  .tag--open {
+    background: var(--plum-500);
+    color: var(--ink);
   }
   .boss-card__title {
     font-weight: 700;
-    font-size: calc(41.3 * var(--v));
-    line-height: 1.21;
+    font-size: 19px;
+    line-height: 1.3;
     letter-spacing: -0.005em;
     text-wrap: pretty;
   }
   .boss-card__sub {
     display: block;
-    margin-top: calc(2 * var(--v));
+    margin-top: 2px;
     font-weight: 600;
-    font-size: calc(30 * var(--v));
+    font-size: 15px;
     line-height: 1.3;
   }
   .boss-card__by {
     font-style: italic;
     font-weight: 600;
-    font-size: calc(28.9 * var(--v));
+    font-size: 14px;
     line-height: 1.3;
   }
   .boss-card__byword {
     font-weight: 400;
   }
-  .boss-card__dur {
-    position: absolute;
-    right: calc(26 * var(--v));
-    bottom: calc(16 * var(--v));
-    display: inline-flex;
-    align-items: center;
-    gap: calc(12 * var(--v));
-    font-weight: 500;
-    font-size: calc(23.4 * var(--v));
-    line-height: 1;
-    color: var(--ink-muted);
+  .boss-card__by--open {
+    font-style: normal;
+    font-size: 13px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-muted-plum);
   }
-  .boss-card--workshop .boss-card__dur {
+  .boss-card__about {
+    max-width: 75ch;
+    margin: 2px 0 0;
+    font-size: 14.5px;
+    line-height: 1.55;
+    color: var(--ink-muted);
+    text-wrap: pretty;
+  }
+  .boss-card--workshop .boss-card__about {
     color: var(--ink-muted-olive);
   }
-  .boss-card--open .boss-card__dur {
+  .boss-card--open .boss-card__about {
     color: var(--ink-muted-plum);
   }
 
-  /* Tap to read: a small + that turns into − */
-  .boss-card__more {
-    position: relative;
-    width: calc(16 * var(--v));
-    height: calc(16 * var(--v));
-  }
-  .boss-card__more::before,
-  .boss-card__more::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: calc(50% - 1px);
-    width: 100%;
-    height: 2px;
-    border-radius: 1px;
-    background: currentColor;
-  }
-  .boss-card__more::after {
-    transform: rotate(90deg);
-    transition: transform 0.2s ease;
-  }
-  details[open] .boss-card__more::after {
-    transform: rotate(0deg);
-  }
-  .boss-card__about {
-    max-width: 72ch;
-    margin: calc(-8 * var(--v)) 0 0;
-    padding: 0 calc(28 * var(--v)) calc(56 * var(--v))
-      calc((28 + 110 + 36) * var(--v));
-    font-size: calc(27 * var(--v));
-    line-height: 1.55;
-    color: var(--ink);
-  }
-
-  /* Lunch strip: chip, LUNCH and duration share one centre line */
-  .boss-lunch {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: calc(38 * var(--v));
-    padding: calc(37 * var(--v)) 0;
-    border: 2px solid var(--frame);
-    border-radius: calc(24 * var(--v));
-  }
-  .boss-lunch .boss-lunch__chip {
-    align-self: center;
-    writing-mode: vertical-rl;
-    min-width: 0;
-    min-height: calc(109 * var(--v));
+  .boss-empty {
     margin: 0;
-    padding: calc(19 * var(--v)) calc(7.5 * var(--v));
-    font-size: calc(30 * var(--v));
-  }
-  .boss-lunch__label {
-    writing-mode: vertical-rl;
-    font-weight: 700;
-    font-size: calc(40 * var(--v));
-    line-height: 1;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-  }
-  .boss-lunch__dur {
-    writing-mode: vertical-rl;
-    margin-top: auto;
+    padding: 28px 16px;
+    border: 2px dashed var(--plum-500);
+    border-radius: 8px;
+    text-align: center;
     font-weight: 500;
-    font-size: calc(23.4 * var(--v));
-    line-height: 1;
+    font-size: 16px;
     color: var(--ink-muted);
   }
 
+  /* ---------- Lunch strip ---------- */
+  .boss-lunch {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-top: 22px;
+    padding: 10px 18px;
+    border: 2px dashed var(--frame);
+    border-radius: 16px;
+  }
+  .boss-lunch__label {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-synthesis: none;
+    font-size: 34px;
+    line-height: 1;
+    text-transform: uppercase;
+    color: var(--butter);
+  }
+  .boss-lunch__span {
+    margin-left: auto;
+    font-weight: 500;
+    font-size: 15px;
+    color: var(--ink-muted);
+    font-variant-numeric: tabular-nums;
+  }
+
   @media (prefers-reduced-motion: reduce) {
-    .boss-card__more::after {
+    .gh,
+    .boss-tab {
       transition: none;
     }
   }
 
-  /* 860px and below: blocks stack, lunch lies flat between them */
-  @container boss-agenda (max-width: 860px) {
-    .boss-agenda__frame {
-      padding: 0;
-    }
-    .boss-day + .boss-day,
-    .boss-day--empty + .boss-day {
-      margin-top: 28px;
-    }
-    .boss-dayhead {
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 2px;
-      padding: 10px 14px;
-      border-radius: 10px;
+  /* ---------- 1180px and below: slightly smaller type ---------- */
+  @container boss-agenda (max-width: 1180px) {
+    .kick__title {
+      font-size: 36px;
     }
     .boss-dayhead__title {
-      font-size: 15px;
-      line-height: 1.35;
+      font-size: 38px;
     }
-    .boss-dayhead__date {
-      display: block;
+    .ser-head__name {
+      font-size: 18px;
     }
-    .boss-dayhead__sep {
-      display: none;
-    }
-    .boss-dayhead__time {
-      font-size: 13px;
-    }
-
-    .boss-grid {
-      grid-template-columns: minmax(0, 1fr);
-      gap: 10px;
-      margin-top: 10px;
-    }
-    .boss-block {
-      padding: 12px 10px 10px;
-      border-radius: 12px;
-    }
-    .boss-block__head {
-      margin-bottom: 10px;
-      padding: 0 4px;
-      gap: 12px;
-      font-size: 14px;
-    }
-    .boss-block__list {
-      gap: 8px;
-    }
-
-    .boss-card {
-      border-radius: 6px;
-    }
-    .boss-card__row {
-      column-gap: 12px;
-      padding: 12px 12px 10px;
-    }
-    .boss-chip {
-      min-width: 48px;
-      margin-top: 1px;
-      padding: 4px 6px;
-      border-radius: 3px;
-      font-size: 13px;
-    }
-    .boss-card__body {
-      gap: 3px;
-      padding-right: 0;
-      padding-bottom: 12px;
+    .ser-head__range {
+      font-size: 16px;
     }
     .boss-card__title {
-      font-size: 16px;
-      line-height: 1.25;
-    }
-    .boss-card__sub,
-    .boss-card__by {
-      font-size: 13px;
-    }
-    .boss-card__dur {
-      right: 10px;
-      bottom: 8px;
-      gap: 6px;
-      font-size: 12px;
-    }
-    .boss-card__more {
-      width: 8px;
-      height: 8px;
-    }
-    .boss-card__about {
-      margin: 0;
-      padding: 0 12px 26px calc(12px + 48px + 12px);
-      font-size: 13px;
-    }
-
-    .boss-lunch {
-      flex-direction: row;
-      justify-content: flex-start;
-      gap: 12px;
-      padding: 10px 14px;
-      border-radius: 12px;
-    }
-    .boss-lunch .boss-lunch__chip,
-    .boss-lunch__label,
-    .boss-lunch__dur {
-      writing-mode: horizontal-tb;
-    }
-    .boss-lunch .boss-lunch__chip {
-      min-width: 48px;
-      min-height: 0;
-      padding: 4px 6px;
-      font-size: 13px;
-    }
-    .boss-lunch__label {
-      font-size: 15px;
-    }
-    .boss-lunch__dur {
-      margin: 0 0 0 auto;
-      font-size: 12px;
+      font-size: 18px;
     }
   }
 
-  @container boss-agenda (max-width: 400px) {
+  /* ---------- 860px and below ---------- */
+  @container boss-agenda (max-width: 860px) {
+    .boss-schedule {
+      padding: 0 16px;
+    }
+    .gh-box {
+      padding: 12px;
+    }
+    .gh-grid {
+      gap: 2px;
+    }
+    .gh {
+      border-radius: 1px;
+    }
+
+    .kick {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 8px;
+      padding: 12px 14px 14px;
+    }
+    .kick__kicker {
+      font-size: 11px;
+    }
+    .kick__title {
+      font-size: 26px;
+    }
+    .kick__meta {
+      align-items: flex-start;
+      text-align: left;
+    }
+    .kick__time {
+      font-size: 14px;
+    }
+    .kick__note {
+      font-size: 12px;
+    }
+
+    .boss-bar {
+      margin: 0 -16px;
+      padding: 8px 16px 10px;
+    }
+    .boss-tab {
+      flex: 1 1 0;
+      min-width: 0;
+      padding: 7px 4px 8px;
+    }
+    .boss-tab__num {
+      font-size: 26px;
+    }
+    .boss-tab__dow {
+      font-size: 10px;
+    }
+    .boss-filters {
+      gap: 6px;
+    }
+    .boss-fchip {
+      flex: 1 1 auto;
+      justify-content: center;
+      gap: 6px;
+      min-height: 36px;
+      padding: 4px 4px 4px 10px;
+      font-size: 13px;
+    }
+    .boss-fchip__sw {
+      width: 16px;
+      height: 12px;
+    }
+    .boss-fchip__n {
+      min-width: 22px;
+      padding: 3px 6px;
+      font-size: 12px;
+    }
+
+    .boss-panel {
+      margin-top: 24px;
+    }
+    .boss-dayhead {
+      grid-template-columns: minmax(0, 1fr);
+      row-gap: 10px;
+      padding-bottom: 14px;
+    }
+    .boss-dayhead__title {
+      font-size: 26px;
+    }
+    .boss-dayhead__meta {
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 4px 12px;
+      padding: 0;
+      text-align: left;
+    }
+    .boss-dayhead__time {
+      font-size: 14px;
+    }
+    .boss-dayhead__count {
+      font-size: 12px;
+    }
+
+    .ser-head {
+      margin: 22px 0 12px;
+    }
+    .ser-head__name {
+      gap: 8px;
+      font-size: 16px;
+    }
+    .ser-head__part {
+      font-size: 11px;
+    }
+    .ser-head__range {
+      font-size: 13px;
+    }
+
+    .boss-rail::before {
+      left: 25px;
+      top: 16px;
+      bottom: 16px;
+    }
+    .boss-slot {
+      grid-template-columns: 52px minmax(0, 1fr);
+      column-gap: 10px;
+    }
+    .boss-chip {
+      min-width: 52px;
+      padding: 5px 4px;
+      font-size: 14px;
+    }
+    .boss-slot__dur {
+      font-size: 11px;
+    }
+
+    .boss-card {
+      gap: 5px;
+      padding: 10px 12px 12px;
+    }
+    .boss-card__title {
+      font-size: 16px;
+    }
+    .boss-card__sub {
+      font-size: 14px;
+    }
+    .boss-card__by {
+      font-size: 13px;
+    }
     .boss-card__about {
-      padding-left: 12px;
+      font-size: 13.5px;
+    }
+
+    .boss-lunch {
+      gap: 10px;
+      padding: 8px 12px;
+    }
+    .boss-lunch__label {
+      font-size: 26px;
+    }
+    .boss-lunch__span {
+      font-size: 12px;
     }
   }
 </style>

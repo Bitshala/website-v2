@@ -1,6 +1,7 @@
 // BOSS Winter 2026 programme (Jaipur, 26–31 Oct 2026), from the BOSS PM Sheet "BOSS Schedule" tab.
 // Times are 24-hour IST "HH:MM"; the agenda shows them 12-hour like the Summer 2026 agenda.
 // kind: "workshop" = olive card, "talk" = slate card, "open" = plum Open Stage card.
+// Wording matches BOSS_DAYS in the Winter 2026 agenda design; keep it exact.
 
 export type SessionKind = "talk" | "workshop" | "open";
 
@@ -12,7 +13,7 @@ export interface BossSession {
   title: string;
   /** Joined as "A, B & C" after "by". Empty for Open Stage. */
   speakers: string[];
-  /** Optional 1–3 sentence abstract, shown when the card is opened. */
+  /** Optional 1–3 sentence abstract, always shown under the speakers. */
   about: string;
 }
 
@@ -22,6 +23,9 @@ export interface BossDay {
   title: string;
   start?: string;
   end?: string;
+  /** A day without sessions shows as the kickoff line, not a tab. */
+  allDay?: boolean;
+  note?: string;
   sessions: BossSession[];
 }
 
@@ -47,9 +51,9 @@ export const winter2026: BossSchedule = {
     {
       date: "2026-10-26",
       day: 26,
-      title: "Orientation & Community Kickoff",
-      start: "10:00",
-      end: "17:00",
+      title: "Check-in and Community Kickoff",
+      allDay: true,
+      note: "Orientation · intros · games · bonfire night",
       sessions: [],
     },
     {
