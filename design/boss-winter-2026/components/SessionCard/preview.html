@@ -1,9 +1,0 @@
-<!-- @dsCard group="Schedule" height=620 subtitle="Workshop (olive), talk with a subtitle (slate), talk with its abstract open, open stage (plum)." -->
-<div class="boss" style="padding:24px;display:grid;gap:12px;max-width:720px">
-  <div id="list" style="display:grid;gap:12px"></div>
-</div>
-<script>
-  var B = window.BOSS, d = B.schedule.days, c = B.html.sessionCard;
-  document.getElementById('list').innerHTML =
-    c(d[3].sessions[1]) + c(d[3].sessions[6]) + c(d[1].sessions[6], { open: true }) + c(d[3].sessions[8]);
-</script>

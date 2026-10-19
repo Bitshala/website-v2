@@ -1,1 +1,0 @@
-The Winter 2026 agenda rendered inside a 390px phone frame, to check the mobile layout. It is the same `BOSS.renderSchedule` call as the Schedule page; the narrow container triggers the stacked layout.
