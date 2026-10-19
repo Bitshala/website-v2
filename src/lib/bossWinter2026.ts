@@ -317,17 +317,5 @@ export const winter2026: BossSchedule = {
         },
       ],
     },
-    {
-      date: "2026-10-30",
-      day: 30,
-      title: "To be announced",
-      sessions: [],
-    },
-    {
-      date: "2026-10-31",
-      day: 31,
-      title: "To be announced",
-      sessions: [],
-    },
   ],
 };
