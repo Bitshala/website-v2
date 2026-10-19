@@ -1,0 +1,10 @@
+<!-- @dsCard group="Schedule" height=560 subtitle="Desktop: a vertical strip between the blocks. Mobile: a flat bar." -->
+<div class="boss" style="padding:24px;display:flex;gap:40px;align-items:flex-start">
+  <div id="v" style="width:88px;height:480px;display:grid"></div>
+  <div class="boss" style="width:360px" id="h"></div>
+</div>
+<script>
+  var B = window.BOSS;
+  document.getElementById('v').innerHTML = B.html.lunchStrip(B.schedule.lunch);
+  document.getElementById('h').innerHTML = B.html.lunchStrip(B.schedule.lunch);
+</script>

@@ -1,0 +1,6 @@
+<!-- @dsCard group="Schedule" height=760 subtitle="Session 03, the morning of Day 03: label, time range and its cards." -->
+<div class="boss" style="padding:24px;max-width:760px" id="root"></div>
+<script>
+  var B = window.BOSS, d = B.schedule.days[2];
+  document.getElementById('root').innerHTML = B.html.sessionBlock(3, d.sessions.slice(0, 5));
+</script>
