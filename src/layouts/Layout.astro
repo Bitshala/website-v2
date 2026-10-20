@@ -162,7 +162,9 @@ const preloadImage =
       src:
         url("/fonts/Satoshi-Regular.woff2") format("woff2"),
         url("/fonts/Satoshi-Regular.otf") format("opentype");
-      font-weight: thin;
+      /* The file's OS/2 weight class. "thin" isn't a valid value, so the
+         browser treated this as "normal" (400) anyway. */
+      font-weight: 400;
       font-style: normal;
       font-display: swap;
     }
