@@ -558,10 +558,22 @@
     "width": 1200,
     "height": 675
   },
+  "clubs/cards/optech.webp": {
+    "sha1": "a3fd5f0c57cf1dd72e1bdfd20a62baecc29889a5",
+    "width": 1200,
+    "height": 675,
+    "from": "clubs/cards/optech.png"
+  },
   "clubs/cards/reading.png": {
     "sha1": "adca9a90f0580f18965eea514493baee1e491a85",
     "width": 1200,
     "height": 675
+  },
+  "clubs/cards/reading.webp": {
+    "sha1": "2e513f2d87fd85faf2825291e8aca2166b24b809",
+    "width": 1200,
+    "height": 675,
+    "from": "clubs/cards/reading.png"
   },
   "clubs/cards/tradfi.webp": {
     "sha1": "81963b54b67b57606a9e59308bc2b66d9cb88ac5",
@@ -849,20 +861,44 @@
     "width": 1200,
     "height": 715
   },
+  "readingClub/1.webp": {
+    "sha1": "b5d8a2bb83df86c631d9c5c3a51eb2fa09f249b9",
+    "width": 1200,
+    "height": 715,
+    "from": "readingClub/1.png"
+  },
   "readingClub/2.png": {
     "sha1": "dc89723af5a3e212686967a8370d40a354a85b4b",
     "width": 1200,
     "height": 715
+  },
+  "readingClub/2.webp": {
+    "sha1": "01fc63a1bf475e0a131f21f2dc0dae6f5b0a140e",
+    "width": 1200,
+    "height": 715,
+    "from": "readingClub/2.png"
   },
   "readingClub/3.png": {
     "sha1": "f7e5547809883b66c2e717869651e72f0b0d0312",
     "width": 1200,
     "height": 715
   },
+  "readingClub/3.webp": {
+    "sha1": "053eebb83d37ba52aa19b31cea581b64ff2c6aff",
+    "width": 1200,
+    "height": 715,
+    "from": "readingClub/3.png"
+  },
   "readingClub/4.png": {
     "sha1": "47d9f5a63769731a5616dffa2166f7309a542e10",
     "width": 1200,
     "height": 715
+  },
+  "readingClub/4.webp": {
+    "sha1": "d35d835e1a87d1927ec962da593a6c06521591e4",
+    "width": 1200,
+    "height": 715,
+    "from": "readingClub/4.png"
   },
   "review/hero.webp": {
     "sha1": "7dd31caa2432c3eb0ace3a4edeb23ccc7c282671",

@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from "react";
 const clubCards = [
   {
     name: "Latest in Bitcoin Tech",
-    img: "/clubs/cards/optech.png",
+    img: "/clubs/cards/optech.webp",
     href: "/optech",
   },
   {
@@ -28,7 +28,7 @@ const clubCards = [
   },
   {
     name: "Bitshala Reading Club",
-    img: "/clubs/cards/reading.png",
+    img: "/clubs/cards/reading.webp",
     href: "/readingClub",
   },
 ];
