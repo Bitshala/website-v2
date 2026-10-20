@@ -278,8 +278,9 @@ export const winter2026: BossSchedule = {
           start: "12:30",
           end: "13:00",
           kind: "talk",
-          title: "Zeus Update",
-          speakers: ["Ajey Shewal"],
+          title:
+            "Nostr Wallet Connect: How It Works and Its Integration into Zeus",
+          speakers: ["Ajay"],
           about: "",
         },
         {
@@ -298,7 +299,7 @@ export const winter2026: BossSchedule = {
           kind: "talk",
           title:
             "Formstr Drive: Your Cloud Storage Ends Here",
-          speakers: ["Sidharth"],
+          speakers: ["Siddhant"],
           about:
             "How we built a file storage app where nobody monitors your data: entirely client-side encryption, built where Nostr keys meet Blossom servers.",
         },
