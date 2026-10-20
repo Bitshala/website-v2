@@ -23,9 +23,11 @@ function htmlFor(page) {
   return readFileSync(join(DIST, p), "utf8");
 }
 
-function jsGraph(entries) {
+function jsGraph(entries, inline = []) {
   const seen = new Set();
   const queue = [...entries];
+  for (const code of inline)
+    for (const m of code.matchAll(/(?:import|from)\s*["'](\/_astro\/[^"']+\.js)["']/g)) queue.push(m[1]);
   while (queue.length) {
     const url = queue.pop();
     if (seen.has(url)) continue;
@@ -36,15 +38,22 @@ function jsGraph(entries) {
     for (const m of src.matchAll(/(?:import|from)\s*["'](\.\/[^"']+\.js)["']/g)) {
       queue.push("/_astro/" + m[1].slice(2));
     }
+    for (const m of src.matchAll(/(?:import|from)\s*["'](\/_astro\/[^"']+\.js)["']/g)) {
+      queue.push(m[1]);
+    }
   }
   let raw = 0;
   let gz = 0;
+  for (const code of inline) {
+    raw += Buffer.byteLength(code);
+    gz += gzipSync(code).length;
+  }
   for (const url of seen) {
     const buf = readFileSync(join(DIST, url));
     raw += buf.length;
     gz += gzipSync(buf).length;
   }
-  return { files: [...seen], raw, gz };
+  return { files: [...seen], inline: inline.length, raw, gz };
 }
 
 function images(html) {
@@ -81,7 +90,7 @@ function images(html) {
 }
 
 console.log(
-  "| Page | HTML (gz KB) | JS files | JS (KB raw / gz) | Images (count / MB) | Eager images (count / MB) |",
+  "| Page | HTML (gz KB) | JS files + inline | JS (KB raw / gz) | Images (count / MB) | Eager images (count / MB) |",
 );
 console.log("|---|---|---|---|---|---|");
 const missingAll = [];
@@ -92,11 +101,13 @@ for (const page of pages) {
     entries.add(m[1]);
   for (const m of html.matchAll(/<script[^>]*type="module"[^>]*src="([^"]+)"/g))
     entries.add(m[1]);
-  const js = jsGraph([...entries]);
+  // Small hoisted scripts are inlined by Astro: count them too.
+  const inline = [...html.matchAll(/<script type="module">([\s\S]*?)<\/script>/g)].map((m) => m[1]);
+  const js = jsGraph([...entries], inline);
   const img = images(html);
   missingAll.push(...img.missing.map((s) => `${page}: ${s}`));
   console.log(
-    `| ${page} | ${kb(gzipSync(html).length)} | ${js.files.length} | ${kb(js.raw)} / ${kb(js.gz)} | ${img.count} / ${mb(img.all)} | ${img.eagerCount} / ${mb(img.eager)} |`,
+    `| ${page} | ${kb(gzipSync(html).length)} | ${js.files.length} + ${js.inline} | ${kb(js.raw)} / ${kb(js.gz)} | ${img.count} / ${mb(img.all)} | ${img.eagerCount} / ${mb(img.eager)} |`,
   );
 }
 if (missingAll.length) {
