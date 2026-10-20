@@ -11,8 +11,9 @@
 // - Opaque PNG photos over 100 KB become WebP q80 next to the original, and every
 //   reference in src/ and data/ is rewritten. The original PNG is kept, for
 //   removal after review.
-// - PNGs with real transparency stay PNG (lossless), and the script checks the
-//   alpha channel survives.
+// - PNGs with real transparency stay PNG (lossless), except those listed in
+//   ALPHA_TO_WEBP, which become WebP with lossless alpha. Either way the script
+//   checks the alpha channel survives.
 // - A result is kept only if it's smaller, and at least 10% smaller unless it
 //   was resized or converted.
 //
@@ -30,6 +31,8 @@ const MANIFEST = "scripts/optimize-images.manifest.json";
 // First match wins. Widths are 2x the largest size the image is displayed at,
 // capped at 2400 for full-width heroes.
 const SKIP = [/^boss\/og-image\.jpg$/, /^footer\/logo\.png$/];
+// Transparent PNG photos that are worth converting: lossy colour, exact alpha.
+const ALPHA_TO_WEBP = [/^clubs\/cards\/(reading|optech)\.png$/, /^readingClub\/[1-4]\.png$/];
 const CAPS = [
   [/^apprenticeship\/twitter\.png$/, 96],
   [/^(apprenticeship\/(github|discord1?)|people\/(github|twitter)|bitspace\/(whatsapp|email)|logo\/\d)\.png$/, 128],
@@ -74,7 +77,8 @@ const rows = [];
 for (const rel of used) {
   const src = join(PUBLIC, rel);
   const input = readFileSync(src);
-  if (manifest[rel]?.sha1 === sha1(input)) continue;
+  const alphaToWebp = ALPHA_TO_WEBP.some((r) => r.test(rel));
+  if (manifest[rel]?.sha1 === sha1(input) && !alphaToWebp) continue;
   if (manifest[rel.replace(/\.png$/i, ".webp")]?.from === rel) continue;
 
   const cap = CAPS.find(([r]) => r.test(rel))[1];
@@ -86,11 +90,11 @@ for (const rel of used) {
   }
   const resize = meta.width > cap;
   const ext = rel.split(".").pop().toLowerCase();
-  const toWebp = ext === "png" && !alpha && input.length > 100 * 1024;
+  const toWebp = ext === "png" && (alpha ? alphaToWebp : input.length > 100 * 1024);
 
   let pipe = sharp(input).rotate();
   if (resize) pipe = pipe.resize({ width: cap, withoutEnlargement: true });
-  if (toWebp || ext === "webp") pipe = pipe.webp({ quality: 80, effort: 6 });
+  if (toWebp || ext === "webp") pipe = pipe.webp({ quality: 80, alphaQuality: 100, effort: 6 });
   else if (ext === "png") pipe = pipe.png({ compressionLevel: 9, adaptiveFiltering: true, effort: 10 });
   else pipe = pipe.jpeg({ quality: 80, mozjpeg: true });
   const { data: out, info } = await pipe.toBuffer({ resolveWithObject: true });
