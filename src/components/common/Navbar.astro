@@ -197,12 +197,33 @@ const accordionHeader =
        for this fixed overlay. -->
   <div id="nav-menu" class="slide-pane__overlay" hidden>
     <div
-      class="slide-pane slide-pane_from_left bg-black"
+      class="slide-pane slide-pane_from_left relative bg-black"
       role="dialog"
       aria-modal="true"
       aria-label="Main menu"
       tabindex="-1"
     >
+      <!-- The panel covers the hamburger, so it carries its own close button:
+           the hamburger in its ✕ state, at the hamburger's position. -->
+      <button
+        id="nav-menu-close"
+        type="button"
+        aria-label="Close menu"
+        class="absolute right-0 top-0 z-10 m-3 h-10 w-10 rounded-lg border-2 border-white bg-black focus:outline-none"
+      >
+        <div
+          class="absolute left-1/2 top-1/2 block w-5 -translate-x-1/2 -translate-y-1/2 transform"
+        >
+          <span
+            aria-hidden="true"
+            class="absolute block h-0.5 w-5 rotate-45 transform bg-white"
+          ></span>
+          <span
+            aria-hidden="true"
+            class="absolute block h-0.5 w-5 -rotate-45 transform bg-white"
+          ></span>
+        </div>
+      </button>
       <div class="slide-pane__content">
         <div class="flex h-full w-full flex-col pb-[10%] pt-16">
           {
@@ -304,7 +325,7 @@ const accordionHeader =
   let closeTimer: number | undefined;
 
   const focusable = () =>
-    [...pane.querySelectorAll<HTMLElement>("summary, a[href]")].filter(
+    [...pane.querySelectorAll<HTMLElement>("button, summary, a[href]")].filter(
       (el) => el.getClientRects().length > 0,
     );
 
@@ -351,6 +372,10 @@ const accordionHeader =
       ? openMenu()
       : closeMenu(),
   );
+
+  document
+    .getElementById("nav-menu-close")!
+    .addEventListener("click", closeMenu);
 
   menu.addEventListener("click", (event) => {
     const target = event.target as HTMLElement;
