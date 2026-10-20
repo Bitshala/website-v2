@@ -1,10 +1,7 @@
 ---
 import Footer from "../components/common/Footer.astro";
 import Header from "../components/common/Header.astro";
-import Navbar from "../components/common/Navbar";
-import Hamburger from "../components/common/hamburger";
-import Notification from "../components/common/notification";
-// import Notification from "../components/common/notification";
+import Navbar from "../components/common/Navbar.astro";
 interface Props {
   title: string;
   headerProps: any;
@@ -115,15 +112,7 @@ const preloadImage =
     />
   </head>
   <body class="bg-white">
-    <Navbar client:only />
-
-    <div class="hidden">
-      <Notification
-        message="Apply to Chaincode BOSS"
-        url="https://job-boards.greenhouse.io/chaincodelabs/jobs/4067628009"
-        client:only
-      />
-    </div>
+    <Navbar />
 
     {
       headerProps.removeHeader ? null : (

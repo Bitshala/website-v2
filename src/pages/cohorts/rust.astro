@@ -4,7 +4,7 @@ import CohortStructure from "../../components/cohortPages/CohortStructure.astro"
 import CohortDetails from "../../components/cohortPages/common/CohortDetails.astro";
 import Syllabus from "../../components/cohortPages/Syllabus.astro";
 import CohortHeader from "../../components/cohort/CohortHeader.astro";
-import Application from "../../components/common/Application";
+import CohortRegistration from "../../components/cohort/CohortRegistration.astro";
 import About from "../../components/cohortPages/rust/About.astro";
 import MeetYourTAs from "../../components/cohortPages/common/MeetYourTAs.astro";
 import CohortGraduates from "../../components/cohortPages/CohortGraduates.astro";
@@ -152,8 +152,7 @@ const registrationDeadline = getCohortRegistrationDeadline(cohorts, "rust");
   <MeetYourTAs />
 
   <div id="applicationForm">
-    <Application
-      client:only
+    <CohortRegistration
       cohortName={cohortName}
       role={role}
       regOpen={false}
