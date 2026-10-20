@@ -1,0 +1,907 @@
+{
+  "404/404.png": {
+    "sha1": "e2363273dd97af4c66ec30d2136e98c2d27684f5",
+    "width": 2400,
+    "height": 1326
+  },
+  "404/bg.png": {
+    "sha1": "bcccb23a0e049e7ba1d51eb216f28c22d100f31e",
+    "width": 2400,
+    "height": 1349
+  },
+  "apprenticeship/abhijay.webp": {
+    "sha1": "7c6e50fbb7cd2bdc3ba4d60037b156dc52bea028",
+    "width": 512,
+    "height": 512
+  },
+  "apprenticeship/bala.webp": {
+    "sha1": "967a90872fbf12a23a839ab3d1b2642335f9dc95",
+    "width": 512,
+    "height": 512
+  },
+  "apprenticeship/bdk.png": {
+    "sha1": "ae9c42d85b72ab1956073ac2f7c47abf9a85294d",
+    "width": 200,
+    "height": 200
+  },
+  "apprenticeship/bitaloo.webp": {
+    "sha1": "35e9a7219a64674273b978bc6046d6f1e0115d50",
+    "width": 512,
+    "height": 512
+  },
+  "apprenticeship/bitcoin_core.png": {
+    "sha1": "2933ee2d05fe788b65faa445d3806686bb3548f3",
+    "width": 302,
+    "height": 294
+  },
+  "apprenticeship/bitlogo.webp": {
+    "sha1": "e44b125c85b28f50091f700378ec22a88311684e",
+    "width": 192,
+    "height": 192
+  },
+  "apprenticeship/btc-pay.png": {
+    "sha1": "48d21a5f486ef78e640fe5aa238b62dbed8e623b",
+    "width": 200,
+    "height": 200
+  },
+  "apprenticeship/btcnoob.webp": {
+    "sha1": "fd4c77903f4e18a1d7d81af4be92b81bc092099b",
+    "width": 512,
+    "height": 512
+  },
+  "apprenticeship/chaitika.webp": {
+    "sha1": "04293e5feb32bcb848603800b36239341d8d839d",
+    "width": 512,
+    "height": 512
+  },
+  "apprenticeship/claddy.webp": {
+    "sha1": "0c52f86090996faa0563c023f10495cb43bc4740",
+    "width": 460,
+    "height": 460
+  },
+  "apprenticeship/codingp110.webp": {
+    "sha1": "37e44e196ded8f950872eed09ba3eaf4e7a2dc4c",
+    "width": 512,
+    "height": 512
+  },
+  "apprenticeship/core-lightning.png": {
+    "sha1": "f37a97134e8c35aae1a44cca5a842feb2772a9d5",
+    "width": 384,
+    "height": 384
+  },
+  "apprenticeship/deeksha.webp": {
+    "sha1": "c32b6cf9c4283afa5cf54a5af3da0910cd969a09",
+    "width": 512,
+    "height": 512
+  },
+  "apprenticeship/dhruvil.webp": {
+    "sha1": "0ddfa1e2497bc61a9dc79939d7cf804e38588cb2",
+    "width": 512,
+    "height": 512
+  },
+  "apprenticeship/digant.webp": {
+    "sha1": "b62426c7190fd3b8f855ae4186bcf78428ca124d",
+    "width": 512,
+    "height": 512
+  },
+  "apprenticeship/discord.png": {
+    "sha1": "3c83bf7588b0d3c26718f03a7e4c901bbdf6bf64",
+    "width": 129,
+    "height": 129
+  },
+  "apprenticeship/discord1.png": {
+    "sha1": "a05484a824605f3aad49c1624ef4b8e80b70fc0f",
+    "width": 128,
+    "height": 128
+  },
+  "apprenticeship/eclair.png": {
+    "sha1": "3f4dd22b9795ffa9c966365b37977f41607ae686",
+    "width": 260,
+    "height": 260
+  },
+  "apprenticeship/faisal.webp": {
+    "sha1": "7eb3ca80b6b6e10c4a5a6d833e5f566acae41063",
+    "width": 512,
+    "height": 590
+  },
+  "apprenticeship/fedimint.png": {
+    "sha1": "16b43cd5358862e1cff8f8a85ac1f56385d6f49f",
+    "width": 200,
+    "height": 200
+  },
+  "apprenticeship/github.png": {
+    "sha1": "fabb3f3ba63904d94e25e150821afa77c175c53c",
+    "width": 129,
+    "height": 129
+  },
+  "apprenticeship/joshua.webp": {
+    "sha1": "176b4295caf70be2a1df77032df9b213d094b985",
+    "width": 460,
+    "height": 460
+  },
+  "apprenticeship/ldk.png": {
+    "sha1": "aa63afa1910a928a225719e0c6b7c68ba04a91f0",
+    "width": 200,
+    "height": 200
+  },
+  "apprenticeship/lnd.png": {
+    "sha1": "09925f396d9cbf290de4550a11bdc63d007c1060",
+    "width": 300,
+    "height": 300
+  },
+  "apprenticeship/nandini.webp": {
+    "sha1": "67ddfa13dc63ce55aeb0941a5429bf7431af5615",
+    "width": 512,
+    "height": 512
+  },
+  "apprenticeship/neo.webp": {
+    "sha1": "a243de31a99a2f16d51f818a0bd125257703328b",
+    "width": 512,
+    "height": 512
+  },
+  "apprenticeship/paper.webp": {
+    "sha1": "da7cc172025e8e2a6cbdd35bcd70804fc01e0352",
+    "width": 512,
+    "height": 512
+  },
+  "apprenticeship/probot.webp": {
+    "sha1": "9db6c3aad75b5f593ec9ffa2b36a70640a557eb6",
+    "width": 460,
+    "height": 460
+  },
+  "apprenticeship/rishabh.webp": {
+    "sha1": "fc00e02d404254db383b96573578d1e8e37d9b45",
+    "width": 460,
+    "height": 460
+  },
+  "apprenticeship/rust-btc.png": {
+    "sha1": "c78d2cdc059c6755f06c3df81556a367ff06c2df",
+    "width": 260,
+    "height": 260
+  },
+  "apprenticeship/sanya.webp": {
+    "sha1": "5a738862c378770a3c965663be3a7aa98e42416c",
+    "width": 512,
+    "height": 513
+  },
+  "apprenticeship/sarthak.webp": {
+    "sha1": "b4271618860f659e4e78df94a24d43e7c401fb76",
+    "width": 512,
+    "height": 512
+  },
+  "apprenticeship/secp256k1.png": {
+    "sha1": "662db53c84550798f674cde15ca81a118c907a85",
+    "width": 384,
+    "height": 384
+  },
+  "apprenticeship/shreyan.webp": {
+    "sha1": "b6913f071cb625b9dd649e72d0b5a3457552e56f",
+    "width": 512,
+    "height": 512
+  },
+  "apprenticeship/stratum.png": {
+    "sha1": "0fc49f6f91af1d1e31739185b72a79bce2fc6a4c",
+    "width": 200,
+    "height": 200
+  },
+  "apprenticeship/sushant.webp": {
+    "sha1": "52dab9abecbee7efdcc3494e6a96e905c9a7f008",
+    "width": 512,
+    "height": 511
+  },
+  "apprenticeship/tremploar.webp": {
+    "sha1": "67990ad5ba0409b7a9d78f3e22c33c6cf5753b3d",
+    "width": 460,
+    "height": 460
+  },
+  "apprenticeship/twitter.webp": {
+    "sha1": "4cf32ec1259443776a401ace96c35657a5c4fb0a",
+    "width": 96,
+    "height": 96,
+    "from": "apprenticeship/twitter.png"
+  },
+  "apprenticeship/v.webp": {
+    "sha1": "40a82c6f3a5424c57f07f5e62ccbebe67d050136",
+    "width": 512,
+    "height": 512
+  },
+  "apprenticeship/vanshul.webp": {
+    "sha1": "4d63194168bc76845e5f62c9a94c73824fd340fe",
+    "width": 512,
+    "height": 512
+  },
+  "apprenticeship/vayras.webp": {
+    "sha1": "009c6584f3ac91de439d9a9ee779aa1f8ce459ce",
+    "width": 512,
+    "height": 512
+  },
+  "apprenticeship/vls.png": {
+    "sha1": "a7ddf49e78e2ddcbdb70d737130ab06510e8c14e",
+    "width": 280,
+    "height": 280
+  },
+  "apprenticeship/whoami.webp": {
+    "sha1": "e356d3b5558a7b88afb286a2f6627affa98b9b34",
+    "width": 420,
+    "height": 420
+  },
+  "apprenticeship/yinyang.webp": {
+    "sha1": "ad4289218ee596875ecf9cfbf2e60672b9a9996d",
+    "width": 192,
+    "height": 192
+  },
+  "apprenticeship/yuvic.webp": {
+    "sha1": "1dce82c196945bffb5cb64925e0d134cbf00979e",
+    "width": 400,
+    "height": 400
+  },
+  "bitspace/6bbb00e5066ed71c32f9de87f81f54bc8c363922.webp": {
+    "sha1": "f23b58f6ccfde8a63b1d909766226ca0bfe23a2d",
+    "width": 1000,
+    "height": 1000,
+    "from": "bitspace/6bbb00e5066ed71c32f9de87f81f54bc8c363922.png"
+  },
+  "bitspace/7b58c95581e7f39998c740451502734ce9fed499.webp": {
+    "sha1": "875beb7a58f62db08b5b32f2747268385c915594",
+    "width": 2400,
+    "height": 1696,
+    "from": "bitspace/7b58c95581e7f39998c740451502734ce9fed499.png"
+  },
+  "bitspace/940c5c8050d96c3b1adb217933edec0378c9d482.webp": {
+    "sha1": "92a293bbe278fdd4ef451875c30302bcf81ef445",
+    "width": 1500,
+    "height": 1500,
+    "from": "bitspace/940c5c8050d96c3b1adb217933edec0378c9d482.png"
+  },
+  "bitspace/97d45ffa5a89963414f5ce743f5508bc23a06670.webp": {
+    "sha1": "0c685b1197807028d2a0444c739585ae10842c17",
+    "width": 1000,
+    "height": 1000,
+    "from": "bitspace/97d45ffa5a89963414f5ce743f5508bc23a06670.png"
+  },
+  "bitspace/bitspace_hero.webp": {
+    "sha1": "8702a2369ed236f7c5b963fec638396e1a172646",
+    "width": 1920,
+    "height": 898
+  },
+  "bitspace/c30c1dcae410deff8ff7ea187cce26e269dfe533.webp": {
+    "sha1": "c85b98882fb46a7306366de65fa4ff54f725b864",
+    "width": 1928,
+    "height": 1088,
+    "from": "bitspace/c30c1dcae410deff8ff7ea187cce26e269dfe533.png"
+  },
+  "bitspace/cddedac488fff068d701e2633977a96771bdc400.webp": {
+    "sha1": "1f3acf55a58d0840c0739b4e183bbf2726c08ad7",
+    "width": 800,
+    "height": 800,
+    "from": "bitspace/cddedac488fff068d701e2633977a96771bdc400.png"
+  },
+  "bitspace/collage.jpg": {
+    "sha1": "cfedf035be344e28865f96a51250d3ecc33d9e82",
+    "width": 1600,
+    "height": 1038
+  },
+  "bitspace/email.png": {
+    "sha1": "26a7b52ac459e4265b0a49779029c1ea9ae2416d",
+    "width": 201,
+    "height": 202
+  },
+  "bitspace/f4ac4e9c7cf58ef665efe9a5eb0bfa9413af9214.webp": {
+    "sha1": "c5031203d0e312b06b08bc1fa7a4493f03e34d0e",
+    "width": 1600,
+    "height": 1600,
+    "from": "bitspace/f4ac4e9c7cf58ef665efe9a5eb0bfa9413af9214.png"
+  },
+  "bitspace/Gallery/3.webp": {
+    "sha1": "ea0b278869fc300b5dc17da27ce0b1db1d4fb3a8",
+    "width": 1200,
+    "height": 900
+  },
+  "bitspace/Gallery/7.webp": {
+    "sha1": "bff6527e8042be4c825e0f5c2afb5ba13c917fc2",
+    "width": 1200,
+    "height": 900
+  },
+  "bitspace/whatsapp.png": {
+    "sha1": "bb7f6058b6626d317a740cdd6952515d8684910f",
+    "width": 201,
+    "height": 202
+  },
+  "boss/1.webp": {
+    "sha1": "c6507527478c910c2d7b860a19ccd189b776ea5d",
+    "width": 1600,
+    "height": 1603
+  },
+  "boss/comein.webp": {
+    "sha1": "660825361a625b4cdb2bb48e6e08c923c06a4e61",
+    "width": 733,
+    "height": 1344
+  },
+  "boss/date.webp": {
+    "sha1": "5bcee1d855c2752e52963e218fa23b0b6e86244e",
+    "width": 352,
+    "height": 269
+  },
+  "boss/gallery/image1.webp": {
+    "sha1": "5f5f63154c01a11b558a6f53625a2fe11d00f6c2",
+    "width": 1200,
+    "height": 898
+  },
+  "boss/gallery/image2.webp": {
+    "sha1": "edd89bc07d1b7c2a32ab53e7861e0864d18dd6ce",
+    "width": 1200,
+    "height": 898
+  },
+  "boss/gallery/image3.webp": {
+    "sha1": "44375f91fbc993d5afa58d8a0c06b48d5069a884",
+    "width": 1200,
+    "height": 898
+  },
+  "boss/gallery/image4.webp": {
+    "sha1": "8bf2c1f647f65a4e7f882ec34c0d9270a1fd7508",
+    "width": 1200,
+    "height": 898
+  },
+  "boss/gallery/image5.webp": {
+    "sha1": "5f6db7bc2b2296974d31b30708389c853d6a5531",
+    "width": 1200,
+    "height": 898
+  },
+  "boss/gallery/image6.webp": {
+    "sha1": "8db4b6c3a5c6b6df80682f2298e4168aff0c1b94",
+    "width": 1200,
+    "height": 898
+  },
+  "boss/gallery/image7.webp": {
+    "sha1": "312d05032031e0c6dcef2809862965665d399505",
+    "width": 1200,
+    "height": 898
+  },
+  "boss/gallery/image8.webp": {
+    "sha1": "ce91b66cfc77652cde016be1edb30aae7c52045a",
+    "width": 1200,
+    "height": 898
+  },
+  "boss/goa.webp": {
+    "sha1": "eee5c4ed34b37980a7680234312aa652fec36a3e",
+    "width": 184,
+    "height": 272
+  },
+  "boss/hero.webp": {
+    "sha1": "7393f81a6a49dcbec63f00dd996dba8abdb6aeb5",
+    "width": 2400,
+    "height": 1662
+  },
+  "boss/schedule_winter.png": {
+    "sha1": "82f0607effa3afe155b9ac035939d6fd16e4d508",
+    "width": 1190,
+    "height": 1684
+  },
+  "boss/schedule.png": {
+    "sha1": "08ef13355f1ce109c73ed086040d5e5ec71ca658",
+    "width": 2400,
+    "height": 1707
+  },
+  "boss/summer2026/comic/1.webp": {
+    "sha1": "500cb0a5866f31335b5fa59b38b86a505a95dc90",
+    "width": 1200,
+    "height": 900
+  },
+  "boss/summer2026/comic/2.webp": {
+    "sha1": "74f4af80392cfb407bd8feef8edaf9d57c135fec",
+    "width": 1200,
+    "height": 675
+  },
+  "boss/summer2026/comic/3.webp": {
+    "sha1": "1ef76173af95b4f33c9caaa45b26b45de6449fdc",
+    "width": 1200,
+    "height": 675
+  },
+  "boss/summer2026/comic/4.webp": {
+    "sha1": "fd25d10a0b550eda8248f4f5bc57ef799ef4f35b",
+    "width": 1200,
+    "height": 900
+  },
+  "boss/summer2026/comic/5.webp": {
+    "sha1": "38babe75472bc5ee8907d5aa59d46c2ec8e6ea0d",
+    "width": 1200,
+    "height": 675
+  },
+  "boss/summer2026/comic/6.webp": {
+    "sha1": "9d96e00cdc2394c48d78f257736b7d2fb3ee0890",
+    "width": 1200,
+    "height": 675
+  },
+  "boss/summer2026/comic/7.webp": {
+    "sha1": "e64793d727dfa7c0fe2362f09e06e0bf8803b805",
+    "width": 1200,
+    "height": 900
+  },
+  "boss/summer2026/comic/8.webp": {
+    "sha1": "7215f17a0c087abf81ba7aadf4ee4f91e5917a56",
+    "width": 1200,
+    "height": 900
+  },
+  "boss/summer2026/comic/9.webp": {
+    "sha1": "112a68088e179e509e942c1be6396cdd4f8ccbf0",
+    "width": 1200,
+    "height": 900
+  },
+  "boss/thing1.webp": {
+    "sha1": "380e5c8963b278e8c6c7e482e4569d5583e9b632",
+    "width": 1200,
+    "height": 800
+  },
+  "boss/thing2.webp": {
+    "sha1": "cfeac5f50d67962649b867a35456805d6b8a5a65",
+    "width": 1200,
+    "height": 800
+  },
+  "boss/thing3.webp": {
+    "sha1": "dfbb3d3762ff5261db1f73c3c7e86cb32d8b4d5b",
+    "width": 1200,
+    "height": 800
+  },
+  "boss/thing4.webp": {
+    "sha1": "70cfcb2401bcd57166e8347d0ed5c23dce853505",
+    "width": 1200,
+    "height": 800
+  },
+  "boss/thing5.webp": {
+    "sha1": "3c5bb070eec08b07dcc4a2b93dcbb7093562c1ab",
+    "width": 1200,
+    "height": 800
+  },
+  "boss/winter_gallery/image1.webp": {
+    "sha1": "8480fb58b0ca522dbdd77042690258382e710a7c",
+    "width": 1200,
+    "height": 898
+  },
+  "boss/winter_gallery/image2.webp": {
+    "sha1": "86c492b3654b0e9e948958f2dca5299418360a1f",
+    "width": 1200,
+    "height": 898
+  },
+  "boss/winter_gallery/image3.webp": {
+    "sha1": "d6ea1c857c40b5692315edc8a5ff150aa3ecc95a",
+    "width": 1200,
+    "height": 898
+  },
+  "boss/winter_gallery/image4.webp": {
+    "sha1": "3677302cf43af46481e45db9cd60c1a4354e427f",
+    "width": 1200,
+    "height": 898
+  },
+  "boss/winter_gallery/image5.webp": {
+    "sha1": "d62d6381590c57eed6e72067bffa9e9e52f7ff91",
+    "width": 1200,
+    "height": 898
+  },
+  "boss/winter_gallery/image6.webp": {
+    "sha1": "47c49ed243051423babd3894ffc53e013bd5a80f",
+    "width": 1200,
+    "height": 898
+  },
+  "boss/winter_gallery/image7.webp": {
+    "sha1": "1b0eda4192346056d171fe24b6460e8fccc4f0a8",
+    "width": 1200,
+    "height": 898
+  },
+  "boss26/boss26schedule.png": {
+    "sha1": "ae78db9e3b2bb5445e85f155ea987f7a8ec31950",
+    "width": 2380,
+    "height": 3368
+  },
+  "calender/yt.webp": {
+    "sha1": "61c147bec81ab63cae4b31bb3b03b3903bf56745",
+    "width": 1200,
+    "height": 675
+  },
+  "carousel/1.webp": {
+    "sha1": "bcc891367966df25a59050f2f207fb609b81f20c",
+    "width": 1200,
+    "height": 675
+  },
+  "carousel/2.webp": {
+    "sha1": "d420631ae40dd6aed17df455c375f0a410959662",
+    "width": 1200,
+    "height": 675
+  },
+  "carousel/3.webp": {
+    "sha1": "33ed54e5e97df1a5696e713026114018df919e51",
+    "width": 1200,
+    "height": 675
+  },
+  "carousel/4.webp": {
+    "sha1": "bf72405ce6eff561dfcde335d93575e0f8bc02d1",
+    "width": 1200,
+    "height": 675
+  },
+  "carousel/5.webp": {
+    "sha1": "a07fcee57a9457854b02a3f4e836a0a5d1c0098d",
+    "width": 1200,
+    "height": 675
+  },
+  "carousel/readingClub.webp": {
+    "sha1": "80226aa8c15f686779bfaa4d618e71cf91defb63",
+    "width": 1200,
+    "height": 715
+  },
+  "carousel/reviewClub.webp": {
+    "sha1": "2141cca375c410a698d71dbcfeddf66cfbc6198e",
+    "width": 1200,
+    "height": 715
+  },
+  "carousel/tradfi.webp": {
+    "sha1": "2fe120c6f4cc2eededa8afec96f9da4b63c89310",
+    "width": 1200,
+    "height": 715
+  },
+  "clubs/cards/cfb.jpg": {
+    "sha1": "6372711ae2ae5153423bb79cc3ed8c8e60684fe1",
+    "width": 1200,
+    "height": 675
+  },
+  "clubs/cards/hs.jpg": {
+    "sha1": "4ae014616973b9b50a536ebeed4c1046ab62626e",
+    "width": 1200,
+    "height": 675
+  },
+  "clubs/cards/kernel.webp": {
+    "sha1": "f0f0eaed5d9cda7f854f9edcee26a785f427079d",
+    "width": 1200,
+    "height": 675,
+    "from": "clubs/cards/kernel.png"
+  },
+  "clubs/cards/optech.png": {
+    "sha1": "c5c9fb931f9500aa6b36229fd83d0e76d6a5eb1a",
+    "width": 1200,
+    "height": 675
+  },
+  "clubs/cards/reading.png": {
+    "sha1": "adca9a90f0580f18965eea514493baee1e491a85",
+    "width": 1200,
+    "height": 675
+  },
+  "clubs/cards/tradfi.webp": {
+    "sha1": "81963b54b67b57606a9e59308bc2b66d9cb88ac5",
+    "width": 1200,
+    "height": 675,
+    "from": "clubs/cards/tradfi.png"
+  },
+  "clubs/header.webp": {
+    "sha1": "7dae8e53d218c1bfbbf17350a67658e3223c8d43",
+    "width": 2400,
+    "height": 1122
+  },
+  "clubs/rust.webp": {
+    "sha1": "98bd8b4a9a16e60414dd2b904d58737d081ccb65",
+    "width": 1200,
+    "height": 715
+  },
+  "cohort/bpd.webp": {
+    "sha1": "477ed083d1c52ec4018d6bda7e818954346b2039",
+    "width": 2400,
+    "height": 1350
+  },
+  "cohort/hero.webp": {
+    "sha1": "92c260b8cadb87da4537e6c0b49e544aa8202fd2",
+    "width": 2400,
+    "height": 1309
+  },
+  "cohort/lbtcl.webp": {
+    "sha1": "051a3a5e203bb19af22c5eac1320ac84ce82563a",
+    "width": 2400,
+    "height": 1350
+  },
+  "cohort/ln.webp": {
+    "sha1": "138195c7fd85cbc783c81f258d8af940ed4bdef6",
+    "width": 2400,
+    "height": 1350
+  },
+  "cohort/mb.webp": {
+    "sha1": "7e74ff79698aa0647180181777bc2b7abb93d969",
+    "width": 1600,
+    "height": 900
+  },
+  "cohort/pb.webp": {
+    "sha1": "9036599d9a966c79cae287b028b95e5379d05f17",
+    "width": 2400,
+    "height": 1350
+  },
+  "cohort/rust.webp": {
+    "sha1": "2962a337d16d0e9b8a839ae65f704616d887c660",
+    "width": 2400,
+    "height": 1291
+  },
+  "header/Apprenticeship_Hero.webp": {
+    "sha1": "ccbbe8452eb767ba45300f8c6c5f412034522e25",
+    "width": 1540,
+    "height": 700
+  },
+  "header/Talks_Hero.webp": {
+    "sha1": "aa1148d5ec60f874311ababbd2a18ec4694455c6",
+    "width": 1540,
+    "height": 840
+  },
+  "home/about.webp": {
+    "sha1": "c086561f997acae31f62a0a199c63b283b9413c2",
+    "width": 2400,
+    "height": 1122
+  },
+  "home/bob.webp": {
+    "sha1": "7d4522dd4b1a1e8fed2a07e13036fdb918175468",
+    "width": 700,
+    "height": 320
+  },
+  "home/btrust.webp": {
+    "sha1": "6573eb2d77f3a176707f084727b51116bbbf4ecd",
+    "width": 567,
+    "height": 240
+  },
+  "home/chaincode.png": {
+    "sha1": "60d72b95cab67e3a6628c86c8cfa95de8e025cbf",
+    "width": 433,
+    "height": 62
+  },
+  "home/code-icon.png": {
+    "sha1": "d004c06569a967deb70e6f3841dc46fe28cb69c4",
+    "width": 256,
+    "height": 256
+  },
+  "home/fellowship-design.jpg": {
+    "sha1": "acfefc3c3beb84baac1287df58f712912ad8b295",
+    "width": 576,
+    "height": 1024
+  },
+  "home/fellowship-dev.jpg": {
+    "sha1": "269ce753e6be9670291b08413e4e5dff41508032",
+    "width": 1024,
+    "height": 682
+  },
+  "home/fellowship-edu.jpg": {
+    "sha1": "ec895872b047375c04fd25838123480ae717197a",
+    "width": 576,
+    "height": 1024
+  },
+  "home/grad-icon.png": {
+    "sha1": "7ec53693ece5d98728abc385a2a8a1f0bc6e1bc9",
+    "width": 256,
+    "height": 256
+  },
+  "home/headerbg.webp": {
+    "sha1": "f344b89eee031845085f90a5f72c82a6536d678d",
+    "width": 1920,
+    "height": 898
+  },
+  "home/logo.png": {
+    "sha1": "5fbfd9be854e58d75b9a38fc2aced0e955d9b50d",
+    "width": 836,
+    "height": 224
+  },
+  "home/meetup-showup.jpg": {
+    "sha1": "29226a29712254635c9ddd506e38437781b24084",
+    "width": 1024,
+    "height": 682
+  },
+  "home/opensats.webp": {
+    "sha1": "e94899e9e955b8593f7455f7f9b19314aac68faa",
+    "width": 576,
+    "height": 146
+  },
+  "home/pencil-icon.png": {
+    "sha1": "e8622d4497d5ad2bf58c488a5525dc0184345fda",
+    "width": 256,
+    "height": 256
+  },
+  "home/pts.webp": {
+    "sha1": "0e960bf1506d6c66deab8d64c36ced0c30725076",
+    "width": 651,
+    "height": 288
+  },
+  "home/sob.webp": {
+    "sha1": "0bfcf313e8bcce3f4e790bd07b485b86acb5150e",
+    "width": 1051,
+    "height": 280
+  },
+  "journeyGuide/1.webp": {
+    "sha1": "a9e127d6403bc23d51c4c38cd9516a648a9e85ab",
+    "width": 1600,
+    "height": 900
+  },
+  "journeyGuide/2.webp": {
+    "sha1": "e654c7a75bb3cff67825f03c1aa46dd159dcec71",
+    "width": 1600,
+    "height": 900
+  },
+  "journeyGuide/3.webp": {
+    "sha1": "5cd725d45ec54ff836d261748d3119de43fab854",
+    "width": 1600,
+    "height": 900
+  },
+  "journeyGuide/4.webp": {
+    "sha1": "e27d6dcd5d660eb5a17c7dc71b60cd78bfebc500",
+    "width": 1600,
+    "height": 900
+  },
+  "journeyGuide/5.webp": {
+    "sha1": "8a6cc044abb5617f9306afe6dd39d742d1c2fdce",
+    "width": 1600,
+    "height": 900
+  },
+  "logo/1.png": {
+    "sha1": "0f1f8d7413598511b3b23eadd09ac49c42b270db",
+    "width": 128,
+    "height": 128
+  },
+  "logo/2.png": {
+    "sha1": "cf87b02cf9544b2541bfe7aa1d389d30b37e6d22",
+    "width": 112,
+    "height": 112
+  },
+  "logo/3.png": {
+    "sha1": "1adc3acd38bba47e622907270afe86dc6f23784e",
+    "width": 112,
+    "height": 112
+  },
+  "logo/4.png": {
+    "sha1": "2360d1607c679fd134c93bd02f545ac2bdca009a",
+    "width": 112,
+    "height": 112
+  },
+  "meetups/meetups.webp": {
+    "sha1": "c9d5cfbd51d313e568c2f47f4175d449e828835a",
+    "width": 1920,
+    "height": 1012
+  },
+  "optech/optechHero.webp": {
+    "sha1": "f32f4ffd32979704618e35814cb1bea58aabea14",
+    "width": 2400,
+    "height": 1372
+  },
+  "people/adam.png": {
+    "sha1": "2b670a10223f54f2ed37b8e8638b9f11214cdbe5",
+    "width": 340,
+    "height": 340
+  },
+  "people/adi.png": {
+    "sha1": "79bf27894fc931197c6b68978c782dd8b56aa1e0",
+    "width": 340,
+    "height": 340
+  },
+  "people/amol.png": {
+    "sha1": "1c7f3822806129c4b4eeac44408078da32702e64",
+    "width": 177,
+    "height": 177
+  },
+  "people/anmol.png": {
+    "sha1": "852d33a083c22743650041131b04e574eb4b6898",
+    "width": 512,
+    "height": 512
+  },
+  "people/bala.png": {
+    "sha1": "9f968f5d4083d86ae857f8fe43ee56544ddfef53",
+    "width": 512,
+    "height": 512
+  },
+  "people/btcnoob.png": {
+    "sha1": "91f192c0c0e0a1f92a73043a18f2dc59a7a0f568",
+    "width": 512,
+    "height": 512
+  },
+  "people/chaitika.png": {
+    "sha1": "0e637957b8d24e4eaebc6bf13146e4b75be9035b",
+    "width": 512,
+    "height": 512
+  },
+  "people/codingp110.png": {
+    "sha1": "cf6cb9fde760ed49fab6c0d13b9c8e80014ed748",
+    "width": 120,
+    "height": 120
+  },
+  "people/dhruvil.png": {
+    "sha1": "0c23ed2939abb90f8f46de383b4329d817bee8c6",
+    "width": 512,
+    "height": 512
+  },
+  "people/github.png": {
+    "sha1": "302b5701367891a21c7d483cd5b1a1e8faa9252e",
+    "width": 60,
+    "height": 60
+  },
+  "people/jatin.png": {
+    "sha1": "6702ec021e6f8aede7001c7da8e8644117229f69",
+    "width": 512,
+    "height": 512
+  },
+  "people/paperpsych.png": {
+    "sha1": "70810746369bcdcf033b4034cf12b08b80d91153",
+    "width": 512,
+    "height": 512
+  },
+  "people/raj.png": {
+    "sha1": "caf9a0d1f338cb7faf27f44a23820b399fbcffc2",
+    "width": 340,
+    "height": 340
+  },
+  "people/sourav.png": {
+    "sha1": "067c54f4a23aba986dd4a1d387f91323bebeaa4a",
+    "width": 512,
+    "height": 512
+  },
+  "people/twitter.png": {
+    "sha1": "0f1f8d7413598511b3b23eadd09ac49c42b270db",
+    "width": 128,
+    "height": 128
+  },
+  "people/vayras.png": {
+    "sha1": "61da8221db932e3dc138a6a150beda787da5e853",
+    "width": 170,
+    "height": 170
+  },
+  "people/veronika.png": {
+    "sha1": "162d0d6f347ddd4f319cff585054864a9c041b41",
+    "width": 512,
+    "height": 512
+  },
+  "readingClub/1.png": {
+    "sha1": "138cda457d7613f7c1934690eb72e18092040a70",
+    "width": 1200,
+    "height": 715
+  },
+  "readingClub/2.png": {
+    "sha1": "dc89723af5a3e212686967a8370d40a354a85b4b",
+    "width": 1200,
+    "height": 715
+  },
+  "readingClub/3.png": {
+    "sha1": "f7e5547809883b66c2e717869651e72f0b0d0312",
+    "width": 1200,
+    "height": 715
+  },
+  "readingClub/4.png": {
+    "sha1": "47d9f5a63769731a5616dffa2166f7309a542e10",
+    "width": 1200,
+    "height": 715
+  },
+  "review/hero.webp": {
+    "sha1": "7dd31caa2432c3eb0ace3a4edeb23ccc7c282671",
+    "width": 2400,
+    "height": 1372
+  },
+  "testimonial/bala.png": {
+    "sha1": "cf74331b542dc0eac07160e32e60b8f80f155b67",
+    "width": 120,
+    "height": 120
+  },
+  "testimonial/claddy.png": {
+    "sha1": "cf714e2cc6ddb21cde12d63b8800f2f5085447c7",
+    "width": 120,
+    "height": 120
+  },
+  "testimonial/codingp110.png": {
+    "sha1": "cf6cb9fde760ed49fab6c0d13b9c8e80014ed748",
+    "width": 120,
+    "height": 120
+  },
+  "testimonial/lazy.webp": {
+    "sha1": "3b9e55f281bcee63cdef23dc1da48fd8012f62d5",
+    "width": 180,
+    "height": 180
+  },
+  "testimonial/mango.png": {
+    "sha1": "2c2115814fc10a6b16901975e5efe1ffd79d05b8",
+    "width": 120,
+    "height": 120
+  },
+  "testimonial/rishabh.png": {
+    "sha1": "07f3db11042d0b4209789171a4f0670237e09de8",
+    "width": 120,
+    "height": 120
+  },
+  "testimonial/tanveer.png": {
+    "sha1": "567cd6573083114ea354368f0fa60df75ff089d9",
+    "width": 120,
+    "height": 120
+  }
+}

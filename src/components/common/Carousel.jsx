@@ -8,12 +8,12 @@ const clubCards = [
   },
   {
     name: "TradFi & Bitcoin",
-    img: "/clubs/cards/tradfi.png",
+    img: "/clubs/cards/tradfi.webp",
     href: "https://www.youtube.com/playlist?list=PLdHBT9oS8yMWiWd0L48gHDgTi8roKB3Fs",
   },
   {
     name: "Bitcoin Kernel Club",
-    img: "/clubs/cards/kernel.png",
+    img: "/clubs/cards/kernel.webp",
     href: "/clubs",
   },
   {
