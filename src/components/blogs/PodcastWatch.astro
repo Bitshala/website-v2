@@ -162,6 +162,26 @@ const pill =
               class="h-14 w-14 animate-spin rounded-full border-4 border-white/25 border-t-orange"
             ></span>
           </div>
+          <!-- Shown by the script in place of the spinner: YouTube's player
+               (~1 MB) only loads once someone asks to play. -->
+          <button
+            id="pw-start"
+            type="button"
+            class="absolute inset-0 z-10 hidden items-center justify-center"
+            aria-label="Play episode"
+          >
+            <span
+              class="flex h-14 w-14 items-center justify-center rounded-full bg-orange text-white shadow-lg transition-transform hover:scale-105"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                class="h-7 w-7"
+                fill="currentColor"
+                aria-hidden="true"
+                ><path d="M8 5v14l11-7z"></path></svg
+              >
+            </span>
+          </button>
           <div
             id="pw-error"
             class="absolute inset-0 hidden flex-col items-center justify-center gap-3 bg-[#000000]/80 p-6 text-center font-base text-white"
@@ -908,6 +928,7 @@ const pill =
     const shell = byId("pw-shell");
     const poster = byId<HTMLImageElement>("pw-poster");
     const skeleton = byId("pw-skeleton");
+    const startBtn = byId<HTMLButtonElement>("pw-start");
     const errorBox = byId("pw-error");
     const errorLink =
       byId<HTMLAnchorElement>("pw-error-link");
@@ -963,6 +984,9 @@ const pill =
     let lastSaved = 0;
     let rate = 1;
     let lastSeek = { target: 0, at: 0 };
+    let starting = false;
+    let startAt: number | undefined;
+    let loadedId = "";
 
     const requested = new URLSearchParams(
       location.search,
@@ -1198,7 +1222,10 @@ const pill =
       }
       rows[i].scrollIntoView({ block: "nearest" });
 
-      if (!ready) return;
+      if (!ready) {
+        if (play) start();
+        return;
+      }
       const request = {
         videoId: episode.id,
         startSeconds: resumeAt(episode),
@@ -1230,7 +1257,7 @@ const pill =
       seekTo(base + delta);
     };
     const togglePlay = () => {
-      if (!ready) return;
+      if (!ready) return start();
       if (player.getPlayerState() === PLAYING)
         player.pauseVideo();
       else player.playVideo();
@@ -1317,6 +1344,7 @@ const pill =
         event.target as HTMLElement
       ).closest<HTMLElement>(".pw-chapter");
       if (!button) return;
+      if (!ready) return start(Number(button.dataset.t));
       seekTo(Number(button.dataset.t));
       if (ready && player.getPlayerState() !== PLAYING)
         player.playVideo();
@@ -1421,8 +1449,9 @@ const pill =
     });
 
     document.addEventListener("keydown", (event) => {
-      // Only while the podcast tab is showing.
-      if (!ready || root.offsetParent === null) return;
+      // Only while the podcast tab is showing. Before the player loads, the
+      // play and next-episode keys load it; the rest wait for it.
+      if (root.offsetParent === null) return;
       if (event.metaKey || event.ctrlKey || event.altKey)
         return;
       const target = event.target as HTMLElement;
@@ -1489,6 +1518,14 @@ const pill =
       nextBtn.disabled = index === episodes.length - 1;
       renderVolume();
       renderTime();
+      // Someone pressed play to get here, maybe picking another episode
+      // while the player loaded.
+      if (current().id === loadedId) player.playVideo();
+      else
+        player.loadVideoById({
+          videoId: current().id,
+          startSeconds: resumeAt(current()),
+        });
     }
 
     function onStateChange(event: { data: number }) {
@@ -1519,9 +1556,10 @@ const pill =
 
     function createPlayer() {
       const YT = (window as any).YT;
+      loadedId = current().id;
       player = new YT.Player("pw-player", {
         host: "https://www.youtube-nocookie.com",
-        videoId: current().id,
+        videoId: loadedId,
         width: "100%",
         height: "100%",
         playerVars: {
@@ -1529,7 +1567,7 @@ const pill =
           disablekb: 1,
           playsinline: 1,
           rel: 0,
-          start: resumeAt(current()),
+          start: startAt ?? resumeAt(current()),
           origin: location.origin,
         },
         events: {
@@ -1553,19 +1591,36 @@ const pill =
         rows[index].offsetTop - list.offsetTop - 8;
     }
 
-    const w = window as any;
-    if (w.YT?.Player) createPlayer();
-    else {
-      const previous = w.onYouTubeIframeAPIReady;
-      w.onYouTubeIframeAPIReady = () => {
-        previous?.();
-        createPlayer();
-      };
-      const script = document.createElement("script");
-      script.src = "https://www.youtube.com/iframe_api";
-      script.async = true;
-      script.onerror = showError;
-      document.head.append(script);
+    /** Loads YouTube's player on the first play intent, then plays. */
+    function start(at?: number) {
+      if (starting) return;
+      starting = true;
+      startAt = at;
+      startBtn.remove();
+      skeleton.classList.replace("hidden", "flex");
+      playBtn.disabled = true;
+
+      const w = window as any;
+      if (w.YT?.Player) createPlayer();
+      else {
+        const previous = w.onYouTubeIframeAPIReady;
+        w.onYouTubeIframeAPIReady = () => {
+          previous?.();
+          createPlayer();
+        };
+        const script = document.createElement("script");
+        script.src = "https://www.youtube.com/iframe_api";
+        script.async = true;
+        script.onerror = showError;
+        document.head.append(script);
+      }
     }
+
+    // Until someone presses play, show a play button instead of a spinner.
+    // (`hidden` the attribute loses to the `flex` class, so swap classes.)
+    skeleton.classList.replace("flex", "hidden");
+    startBtn.classList.replace("hidden", "flex");
+    startBtn.addEventListener("click", () => start());
+    playBtn.disabled = false;
   }
 </script>
