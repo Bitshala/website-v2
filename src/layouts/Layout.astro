@@ -34,6 +34,37 @@ const preloadImage =
     />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
+    <!-- The body (Satoshi 400/700) and heading (Apfel Grotezk 600/700) faces
+         every page uses: fetching them with the HTML means text paints in
+         them instead of swapping from the fallback font and shifting. -->
+    <link
+      rel="preload"
+      href="/fonts/Satoshi-Regular.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="/fonts/Satoshi-Bold.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="/fonts/ApfelGrotezk-Mittel.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="/fonts/ApfelGrotezk-Fett.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
     {
       preloadImage && (
         <link
