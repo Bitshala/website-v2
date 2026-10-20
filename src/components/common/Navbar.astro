@@ -1,0 +1,386 @@
+---
+import "./sliding-pane.css";
+
+const list = [
+  {
+    name: "Org",
+    subMenu: [
+      { name: "About", link: "/about" },
+      {
+        name: "Contact us ",
+        link: "/about/#contact_us",
+      },
+    ],
+  },
+  {
+    name: "BOSS",
+    link: "/boss",
+  },
+  {
+    name: "Bitmela",
+    link: "https://thebitmela.com/",
+  },
+  {
+    name: "Bitcoin Career",
+    subMenu: [
+      { name: "Study cohorts", link: "/cohorts" },
+      { name: "Bitcoin Clubs", link: "/clubs" },
+      { name: "Fellowship", link: "/fellowship" },
+      { name: "Chaincode BOSS", link: "/chaincodeboss" },
+      { name: "Resources", link: "/resources" },
+    ],
+  },
+  { name: "Bitspace", link: "/bitspace" },
+  { name: "Meetups", link: "/meetups" },
+  { name: "Blogs & Podcasts", link: "/blogs" },
+];
+
+const mobileList = [
+  {
+    name: "Org",
+    subMenu: [
+      { name: "About", link: "/about" },
+      {
+        name: "Contact us ",
+        link: "/bitspace/#contact_us",
+      },
+    ],
+  },
+  { name: "BOSS", link: "/boss", subMenu: [] },
+  { name: "Bitmela", link: "https://thebitmela.com/", subMenu: [] },
+  {
+    name: "Bitcoin Career",
+    subMenu: [
+      { name: "Study cohorts", link: "/cohorts" },
+      { name: "Bitcoin Clubs", link: "/clubs" },
+      { name: "Fellowship", link: "/fellowship" },
+      { name: "Chaincode BOSS", link: "/chaincodeboss" },
+      { name: "Resources", link: "/resources" },
+    ],
+  },
+  {
+    name: "IRL Funzzz",
+    subMenu: [
+      { name: "Bitspace", link: "/bitspace" },
+      { name: "Meetups", link: "/meetups" },
+    ],
+  },
+  { name: "Social Clubs ", link: "/clubs", subMenu: [] },
+  { name: "Blogs & Podcasts", link: "/blogs", subMenu: [] },
+];
+
+const target = (link?: string) =>
+  link && link.startsWith("http") ? "_blank" : "_self";
+
+// Same classes the material-tailwind accordion rendered, minus the ones that
+// never existed in this site's Tailwind build (so they never had an effect).
+const accordionHeader =
+  "flex justify-between items-center w-full py-4 border-b antialiased text-left font-semibold transition-colors font-header text-2xl text-white";
+---
+
+<div>
+  <nav
+    class="fixed left-0 top-0 z-30 w-full bg-black backdrop-blur-sm lg:p-4"
+  >
+    <div class="m-auto flex w-full justify-between gap-4">
+      <a href="/">
+        <img
+          src="/home/logo.png"
+          class="ml-4 mt-4 h-10 justify-start lg:mt-0 lg:h-14"
+        />
+      </a>
+      <div class="flex justify-end">
+        {
+          list.map((item) => (
+            <div class="group relative hidden lg:block">
+              <button class="mt-2 flex w-full flex-row items-center rounded-lg px-2 py-4 text-left text-base font-bold uppercase focus:outline-none md:ml-4 md:mt-0 md:inline md:w-auto">
+                <a
+                  href={item.link}
+                  target={target(item.link)}
+                  class="flex font-header text-white"
+                >
+                  {item.name}
+                  {item.subMenu && (
+                    <svg
+                      stroke="currentColor"
+                      fill="currentColor"
+                      stroke-width="0"
+                      viewBox="0 0 24 24"
+                      class="ml-2 pt-1"
+                      height="1em"
+                      width="1em"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path fill="none" d="M0 0h24v24H0V0z" />
+                      <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z" />
+                    </svg>
+                  )}
+                </a>
+              </button>
+              {item.subMenu && (
+                <div class="absolute z-10 hidden group-hover:block">
+                  <div class="px-2 pb-4 pt-2">
+                    <div class="grid min-w-max grid-cols-1">
+                      {item.subMenu.map(({ name, link }) => (
+                        <div class="flex flex-col bg-black bg-opacity-90 p-2">
+                          <a
+                            href={link}
+                            class="block rounded-lg p-2 text-white hover:text-orange"
+                          >
+                            <p class="font-header text-xl font-bold">
+                              {name}
+                            </p>
+                          </a>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
+          ))
+        }
+        <a
+          href="https://discord.com/invite/STeQFVEWf9"
+          class="text mt-1 hidden max-h-12 justify-center rounded-lg bg-white px-6 py-10 pb-2 pt-[10px] text-center align-middle font-header text-xl font-bold text-black hover:bg-orange hover:text-white lg:ml-5 lg:flex"
+        >
+          Join Our Community
+          <img
+            src="/apprenticeship/discord1.png"
+            class="ml-2 h-8 rounded-full pb-1 text-2xl lg:text-3xl"
+          />
+        </a>
+        <a
+          href="https://discord.com/invite/STeQFVEWf9"
+          class="text mt-3 flex max-h-10 justify-center rounded-md bg-white px-2 pt-2 text-center align-middle font-header text-xl font-bold text-black hover:bg-orange hover:text-white lg:hidden"
+        >
+          <img
+            src="/apprenticeship/discord1.png"
+            class="h-8 rounded-full pb-2"
+          />
+        </a>
+        <div class="sm:block lg:hidden">
+          <button
+            id="nav-menu-button"
+            type="button"
+            aria-expanded="false"
+            aria-controls="nav-menu"
+            class="relative m-3 h-10 w-10 rounded-lg border-2 border-white bg-black focus:outline-none"
+          >
+            <span class="sr-only">Open main menu</span>
+            <div
+              class="absolute left-1/2 top-1/2 block w-5 -translate-x-1/2 -translate-y-1/2 transform"
+            >
+              <span
+                aria-hidden="true"
+                data-bar="top"
+                class="bg-current absolute block h-0.5 w-5 -translate-y-1.5 transform bg-white transition duration-500 ease-in-out"
+              ></span>
+              <span
+                aria-hidden="true"
+                data-bar="middle"
+                class="bg-current absolute block h-0.5 w-5 transform bg-white transition duration-500 ease-in-out"
+              ></span>
+              <span
+                aria-hidden="true"
+                data-bar="bottom"
+                class="bg-current absolute block h-0.5 w-5 translate-y-1.5 transform bg-white transition duration-200 ease-in-out"
+              ></span>
+            </div>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Outside <nav>: its backdrop-filter would make it the containing block
+       for this fixed overlay. -->
+  <div id="nav-menu" class="slide-pane__overlay" hidden>
+    <div
+      class="slide-pane slide-pane_from_left bg-black"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Main menu"
+      tabindex="-1"
+    >
+      <div class="slide-pane__content">
+        <div class="flex h-full w-full flex-col pb-[10%] pt-16">
+          {
+            mobileList.map((item, index) =>
+              item.subMenu.length > 0 ? (
+                <details
+                  name="nav-menu"
+                  class="relative block w-full"
+                  open={index === 0}
+                >
+                  <summary class={accordionHeader}>
+                    <span class="flex w-full items-center justify-between">
+                      {item.name}
+                      <svg
+                        stroke="currentColor"
+                        fill="currentColor"
+                        stroke-width="0"
+                        viewBox="0 0 24 24"
+                        class="-ml-5"
+                        height="1em"
+                        width="1em"
+                        xmlns="http://www.w3.org/2000/svg"
+                        aria-hidden="true"
+                      >
+                        <path fill="none" d="M0 0h24v24H0V0z" />
+                        <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z" />
+                      </svg>
+                    </span>
+                    <span class="ml-4" />
+                  </summary>
+                  <div class="block w-full py-4 text-sm font-light antialiased">
+                    {item.subMenu.map((subItem) => (
+                      <div class="ml-2 font-header text-base text-white">
+                        <a href={subItem.link}>- {subItem.name}</a>
+                      </div>
+                    ))}
+                  </div>
+                </details>
+              ) : (
+                <div class="relative block w-full">
+                  <div class={accordionHeader}>
+                    <a
+                      href={item.link}
+                      target={target(item.link)}
+                      class="flex w-full items-center justify-between"
+                    >
+                      {item.name}
+                    </a>
+                    <span class="ml-4" />
+                  </div>
+                </div>
+              ),
+            )
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  summary {
+    cursor: pointer;
+    list-style: none;
+  }
+  summary::-webkit-details-marker {
+    display: none;
+  }
+  /* Animate the accordion like the old framer-motion collapse (0.2s) where
+     the browser can animate to height: auto; elsewhere it toggles instantly. */
+  @supports (interpolate-size: allow-keywords) {
+    #nav-menu {
+      interpolate-size: allow-keywords;
+    }
+    details::details-content {
+      height: 0;
+      overflow: hidden;
+      transition:
+        height 0.2s,
+        content-visibility 0.2s allow-discrete;
+    }
+    details[open]::details-content {
+      height: auto;
+    }
+  }
+</style>
+
+<script>
+  const button = document.getElementById("nav-menu-button")!;
+  const menu = document.getElementById("nav-menu")!;
+  const pane = menu.querySelector<HTMLElement>(".slide-pane")!;
+  const bars = {
+    top: button.querySelector('[data-bar="top"]')!,
+    middle: button.querySelector('[data-bar="middle"]')!,
+    bottom: button.querySelector('[data-bar="bottom"]')!,
+  };
+  // Matches react-sliding-pane's closeTimeoutMS and the .slide-pane transition.
+  const CLOSE_MS = 500;
+  let closeTimer: number | undefined;
+
+  const focusable = () =>
+    [...pane.querySelectorAll<HTMLElement>("summary, a[href]")].filter(
+      (el) => el.getClientRects().length > 0,
+    );
+
+  function setBars(open: boolean) {
+    bars.top.classList.toggle("rotate-45", open);
+    bars.top.classList.toggle("-translate-y-1.5", !open);
+    bars.middle.classList.toggle("opacity-0", open);
+    bars.bottom.classList.toggle("-rotate-45", open);
+    bars.bottom.classList.toggle("translate-y-1.5", !open);
+  }
+
+  function openMenu() {
+    clearTimeout(closeTimer);
+    menu.hidden = false;
+    menu.classList.remove("overlay-before-close");
+    pane.classList.remove("content-before-close");
+    // Let the closed position render before transitioning in.
+    void pane.offsetWidth;
+    menu.classList.add("overlay-after-open");
+    pane.classList.add("content-after-open");
+    button.setAttribute("aria-expanded", "true");
+    setBars(true);
+    document.documentElement.style.overflow = "hidden";
+    (focusable()[0] ?? pane).focus();
+  }
+
+  function closeMenu() {
+    if (menu.hidden) return;
+    menu.classList.replace("overlay-after-open", "overlay-before-close");
+    pane.classList.replace("content-after-open", "content-before-close");
+    button.setAttribute("aria-expanded", "false");
+    setBars(false);
+    document.documentElement.style.overflow = "";
+    button.focus();
+    closeTimer = window.setTimeout(() => {
+      menu.hidden = true;
+      menu.classList.remove("overlay-before-close");
+      pane.classList.remove("content-before-close");
+    }, CLOSE_MS);
+  }
+
+  button.addEventListener("click", () =>
+    menu.hidden || menu.classList.contains("overlay-before-close")
+      ? openMenu()
+      : closeMenu(),
+  );
+
+  menu.addEventListener("click", (event) => {
+    const target = event.target as HTMLElement;
+    if (target === menu || target.closest("a[href]")) closeMenu();
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (menu.hidden || menu.classList.contains("overlay-before-close"))
+      return;
+    if (event.key === "Escape") {
+      event.preventDefault();
+      closeMenu();
+      return;
+    }
+    // Keep Tab focus inside the open menu.
+    if (event.key === "Tab") {
+      const items = focusable();
+      if (!items.length) return;
+      const first = items[0];
+      const last = items[items.length - 1];
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      } else if (!pane.contains(document.activeElement)) {
+        event.preventDefault();
+        first.focus();
+      }
+    }
+  });
+</script>

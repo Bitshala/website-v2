@@ -1,8 +1,7 @@
 ---
 import Footer from "../components/common/Footer.astro";
 import Header from "../components/common/Header.astro";
-import Navbar from "../components/common/Navbar";
-import Hamburger from "../components/common/hamburger";
+import Navbar from "../components/common/Navbar.astro";
 interface Props {
   title: string;
   headerProps: any;
@@ -113,7 +112,7 @@ const preloadImage =
     />
   </head>
   <body class="bg-white">
-    <Navbar client:only />
+    <Navbar />
 
     {
       headerProps.removeHeader ? null : (
