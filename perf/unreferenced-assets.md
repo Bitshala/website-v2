@@ -124,9 +124,9 @@ Pairs with the same name in `bitspace/` and `meetups/` are byte-identical duplic
 | `public/meetups/3f22db01851ea9848ea3bb249526604cf052f8e2.svg` | 0 KB |
 | `public/bitspace/3f22db01851ea9848ea3bb249526604cf052f8e2.svg` | 0 KB |
 
-## D. Referenced only by code that no page renders (42 files, 20.86 MB): not proposed for deletion
+## D. Referenced only by code that no page renders (42 files, 20.86 MB)
 
-These are referenced in source, but only from components that no page imports, or from data entries that are commented out. Delete them only together with that code. Phase 4 may propose removing the dead components.
+These are referenced in source, but only from components that no page imports, or from data entries that are commented out. Delete them only together with that code. Phase 4 deleted the dead components together with the first 37 rows below; the five `people/` images stay, because `list.js` still names them.
 
 | File | Size | Referenced from |
 |---|---|---|
@@ -176,6 +176,8 @@ These are referenced in source, but only from components that no page imports, o
 ## Done
 
 - `public/people/Sourav.png`, a case-only duplicate of `sourav.png`, was removed from git with your approval (`a7674a7`).
+- Sections A and B (94 files, 114.86 MB) were deleted with your approval (`c38362c`).
+- Phase 4: the 18 components no page imports and the 37 section D images only they referenced (20.59 MB) were deleted with your approval.
 
 ## Summary
 
