@@ -18,6 +18,8 @@ import { team, advisors } from "../common/list.js";
         class={`flex w-full items-center rounded-3xl ${member.bgColor} ${member.textColor}}`}
       >
         <img
+          loading="lazy"
+          decoding="async"
           src={`/people/${member.image}.png`}
           class="h-28 items-center rounded-3xl p-2 pl-2 lg:h-40 lg:p-5"
         />
@@ -36,6 +38,8 @@ import { team, advisors } from "../common/list.js";
                   class="group"
                 >
                   <img
+                    loading="lazy"
+                    decoding="async"
                     src="/people/github.png"
                     class="m-1 h-6 rounded-lg bg-white group-hover:bg-white lg:h-7"
                   />
@@ -48,6 +52,8 @@ import { team, advisors } from "../common/list.js";
                   class="group"
                 >
                   <img
+                    loading="lazy"
+                    decoding="async"
                     src="/people/twitter.png"
                     class="m-1 mr-3 h-6 scale-125 rounded-lg lg:h-7"
                   />
@@ -80,6 +86,8 @@ import { team, advisors } from "../common/list.js";
         class={`flex w-full items-center rounded-3xl lg:pr-5  ${member.bgColor} ${member.textColor}}`}
       >
         <img
+          loading="lazy"
+          decoding="async"
           src={`/people/${member.image}.png`}
           class="h-28 items-center rounded-3xl p-2 pl-2 lg:h-40 lg:p-5"
         />
@@ -97,6 +105,8 @@ import { team, advisors } from "../common/list.js";
                 target="_blank"
               >
                 <img
+                  loading="lazy"
+                  decoding="async"
                   src="/people/twitter.png"
                   class="m-1 mr-3 h-6 scale-125 rounded-lg group-hover:bg-white lg:h-7 "
                 />

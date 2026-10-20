@@ -161,6 +161,7 @@ const cities = [...cityCounts.keys()].sort(
                     </div>
                     {ev.cover && (
                       <img
+                        decoding="async"
                         src={ev.cover}
                         alt=""
                         class="h-[100px] w-[100px] shrink-0 rounded-lg object-cover lg:h-[130px] lg:w-[130px]"

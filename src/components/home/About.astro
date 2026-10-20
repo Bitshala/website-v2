@@ -95,6 +95,8 @@ const colabList = [
       {
         trustedList.map((li) => (
           <img
+            loading="lazy"
+            decoding="async"
             src={li.link}
             class="h-12 max-w-[140px] object-contain lg:h-16 lg:max-w-none"
             alt=""
@@ -118,6 +120,8 @@ const colabList = [
         colabList.map((li) => (
           <div class="flex h-12 w-full max-w-[150px] items-center justify-center lg:h-14 lg:max-w-[160px]">
             <img
+              loading="lazy"
+              decoding="async"
               src={li.link}
               class="max-h-full max-w-full object-contain"
               alt=""

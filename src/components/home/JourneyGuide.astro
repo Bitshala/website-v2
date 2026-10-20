@@ -99,6 +99,8 @@ const list = [
 
                 <!-- mobile: image under each step -->
                 <img
+                  loading="lazy"
+                  decoding="async"
                   src={item.img}
                   alt=""
                   class="mt-3 aspect-[16/10] w-full rounded-[18px] object-cover lg:hidden"
@@ -107,6 +109,8 @@ const list = [
 
               <!-- desktop: image beside each step -->
               <img
+                loading="lazy"
+                decoding="async"
                 src={item.img}
                 alt=""
                 class="mt-1 hidden aspect-[16/10] w-full rounded-[20px] object-cover lg:block"

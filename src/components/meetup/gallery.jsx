@@ -48,6 +48,7 @@ const Gallery = () => {
         {images.slice(0, visible).map((image, index) => {
           return (
             <img
+              decoding="async"
               key={index}
               className="h-24 w-full rounded-lg md:h-44 lg:h-64"
               src={image}

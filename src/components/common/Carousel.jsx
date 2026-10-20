@@ -3,17 +3,17 @@ import { useEffect, useRef, useState } from "react";
 const clubCards = [
   {
     name: "Latest in Bitcoin Tech",
-    img: "/clubs/cards/optech.png",
+    img: "/clubs/cards/optech.webp",
     href: "/optech",
   },
   {
     name: "TradFi & Bitcoin",
-    img: "/clubs/cards/tradfi.png",
+    img: "/clubs/cards/tradfi.webp",
     href: "https://www.youtube.com/playlist?list=PLdHBT9oS8yMWiWd0L48gHDgTi8roKB3Fs",
   },
   {
     name: "Bitcoin Kernel Club",
-    img: "/clubs/cards/kernel.png",
+    img: "/clubs/cards/kernel.webp",
     href: "/clubs",
   },
   {
@@ -28,7 +28,7 @@ const clubCards = [
   },
   {
     name: "Bitshala Reading Club",
-    img: "/clubs/cards/reading.png",
+    img: "/clubs/cards/reading.webp",
     href: "/readingClub",
   },
 ];
@@ -214,6 +214,8 @@ function ClubGrid({ cols = "grid-cols-2 lg:grid-cols-3" }) {
           className="overflow-hidden rounded-[16px] transition-opacity hover:opacity-90 lg:rounded-[20px]"
         >
           <img
+            loading="lazy"
+            decoding="async"
             src={club.img}
             alt={club.name}
             className="aspect-[16/9] w-full object-cover"
@@ -236,6 +238,8 @@ function CohortGrid({ withDesc = false }) {
           className="group flex flex-col gap-2"
         >
           <img
+            loading="lazy"
+            decoding="async"
             src={cohort.img}
             alt={cohort.name}
             className="aspect-[16/9] w-full rounded-[16px] object-cover transition-opacity group-hover:opacity-90"
@@ -287,6 +291,8 @@ function Carousel() {
             href="/meetups"
           >
             <img
+              loading="lazy"
+              decoding="async"
               src="/home/meetup-showup.jpg"
               alt="Show up at a Bitcoin meetup"
               className="aspect-[4/3] w-full rounded-[16px] object-cover"
@@ -359,6 +365,8 @@ function Carousel() {
                   </p>
                   <span className={linkClass}>{card.cta}</span>
                   <img
+                    loading="lazy"
+                    decoding="async"
                     src={card.img}
                     alt={card.title}
                     className="aspect-[16/10] w-full rounded-[12px] object-cover"
@@ -411,6 +419,8 @@ function Carousel() {
                   </button>
                   {isActive && (
                     <img
+                      loading="lazy"
+                      decoding="async"
                       src="/home/tab-pointer.svg"
                       alt=""
                       aria-hidden="true"
@@ -458,6 +468,8 @@ function Carousel() {
                     className="relative flex min-h-[460px] flex-col gap-5 overflow-hidden rounded-[20px] border border-black border-opacity-10 bg-black p-6 text-white transition-opacity hover:opacity-90"
                   >
                     <img
+                      loading="lazy"
+                      decoding="async"
                       src={card.bg}
                       alt=""
                       aria-hidden="true"
@@ -468,6 +480,8 @@ function Carousel() {
                       className="absolute inset-0 bg-black/50"
                     />
                     <img
+                      loading="lazy"
+                      decoding="async"
                       src={card.icon}
                       alt=""
                       aria-hidden="true"
@@ -512,6 +526,8 @@ function Carousel() {
                 </div>
                 <div className="relative h-[521px] max-h-[456px] w-full flex-1 overflow-hidden rounded-[18px] border border-black border-opacity-10 bg-white">
                   <img
+                    loading="lazy"
+                    decoding="async"
                     src="/bitspace/collage.jpg"
                     alt="Life at Bitspace"
                     className="h-full w-full object-cover"
@@ -520,6 +536,8 @@ function Carousel() {
               </div>
             ) : (
               <img
+                loading="lazy"
+                decoding="async"
                 src={panel.url}
                 alt={panel.title}
                 className="h-[433px] w-full rounded-[20px] object-cover"

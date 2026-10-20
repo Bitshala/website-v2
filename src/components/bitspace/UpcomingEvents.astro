@@ -32,6 +32,8 @@ const list = [
             {item.isHappening ? (
               <div class=" my-5 flex flex-col gap-3 rounded-xl bg-[#f0f0f0] p-2 lg:flex-row">
                 <img
+                  loading="lazy"
+                  decoding="async"
                   src={item.logo}
                   class="w-96 items-center rounded-3xl border-8 border-orange lg:max-h-64  "
                 />

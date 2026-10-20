@@ -9,9 +9,15 @@ interface Props {
   title: string;
   headerProps: any;
   isVisible: boolean;
+  // Hero background for pages that render their own header (removeHeader).
+  heroImage?: string;
 }
 
-const { title, headerProps, isVisible } = Astro.props;
+const { title, headerProps, isVisible, heroImage } = Astro.props;
+// CSS background heroes aren't discoverable until styles apply, so preload
+// the one this page shows.
+const preloadImage =
+  heroImage ?? (headerProps.removeHeader ? undefined : headerProps.image);
 ---
 
 <!doctype html>
@@ -31,6 +37,16 @@ const { title, headerProps, isVisible } = Astro.props;
     />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
+    {
+      preloadImage && (
+        <link
+          rel="preload"
+          as="image"
+          href={preloadImage}
+          fetchpriority="high"
+        />
+      )
+    }
 
     <!-- Google Fonts - Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />

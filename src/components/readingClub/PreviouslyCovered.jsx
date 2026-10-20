@@ -1,27 +1,27 @@
 const books = [
   {
-    url: "/readingClub/1.png",
+    url: "/readingClub/1.webp",
     title: "How To Think About The Economy",
     formattedTitle: "How To Think About The Economy",
     desc: "A brilliant and beginner-friendly book on Austrian economics",
     link: "https://www.youtube.com/playlist?list=PLdHBT9oS8yMUPtwNtV5wg7sapTvv8UFbP",
   },
   {
-    url: "/readingClub/2.png",
+    url: "/readingClub/2.webp",
     title: "Gradually, Then Suddenly",
     formattedTitle: "Gradually,\nThen Suddenly",
     desc: "An amazing and renowned resource for understanding Bitcoin as money",
     link: "https://www.youtube.com/playlist?list=PLdHBT9oS8yMWLc59cCo7uZDC4_9zYtxqx",
   },
   {
-    url: "/readingClub/3.png",
+    url: "/readingClub/3.webp",
     title: "Bitcoin Development Philosophy",
     formattedTitle: "Bitcoin Development\nPhilosophy",
     desc: "An amazing and renowned resource for understanding Bitcoin as money",
     link: "https://discord.com/invite/STeQFVEWf9",
   },
   {
-    url: "/readingClub/4.png",
+    url: "/readingClub/4.webp",
     title: "Bitcoin: The Inverse of Clown World",
     formattedTitle: "Bitcoin: The Inverse of\n Clown World",
     desc: "Unravelling the clownery with bitcoiners in a world plagued by economic and political absurdities",
@@ -60,6 +60,8 @@ const PreviouslyCovered = () => {
               </a>
 
               <img
+                loading="lazy"
+                decoding="async"
                 src={book.url}
                 className="mt-[20px] rounded-2xl "
                 alt=""

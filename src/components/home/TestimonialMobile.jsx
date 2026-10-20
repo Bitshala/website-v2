@@ -31,6 +31,8 @@ const TestimonialMobile = () => {
                     <p className="text-base">{item.text}</p>
                     <div className="flex">
                       <img
+                        loading="lazy"
+                        decoding="async"
                         src={item.img}
                         alt={item.name}
                         className="h-16 w-16   py-2 pr-5"

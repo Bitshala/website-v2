@@ -18,6 +18,8 @@ import { ta2 } from "../../common/list.js";
           <div class="flex flex-col items-start justify-center self-start pb-2">
             <div class="relative flex flex-col items-end p-5 max-md:pl-5">
               <img
+                loading="lazy"
+                decoding="async"
                 src={`/people/${member.image}.png`}
                 class="rounded-3xl align-middle sm:h-12 md:h-48 lg:h-64"
                 alt={member.name}
@@ -30,6 +32,7 @@ import { ta2 } from "../../common/list.js";
                   class="absolute bottom-7 left-7 aspect-square h-12 p-2"
                 >
                   <img
+                    decoding="async"
                     loading="lazy"
                     src="/apprenticeship/github.png"
                     class="rounded-xl"
@@ -45,8 +48,9 @@ import { ta2 } from "../../common/list.js";
                   class="absolute bottom-7 left-16 aspect-square h-12 p-2"
                 >
                   <img
+                    decoding="async"
                     loading="lazy"
-                    src="/apprenticeship/twitter.png"
+                    src="/apprenticeship/twitter.webp"
                     class="rounded-xl"
                     alt="Twitter"
                   />
