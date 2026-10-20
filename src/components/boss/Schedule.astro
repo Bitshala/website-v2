@@ -12,6 +12,7 @@ const summits = [
     id: "Summer-2026",
     label: "Summer 2026",
     scheduleImage: "/boss26/boss26schedule.png",
+    scheduleSize: [2380, 3368],
     scheduleUrl:
       "https://github.com/Bitshala/BOSS-Summit/blob/main/summer-2026/schedule.png",
   },
@@ -19,6 +20,7 @@ const summits = [
     id: "Winter-2025",
     label: "Winter 2025",
     scheduleImage: "/boss/schedule_winter.png",
+    scheduleSize: [1190, 1684],
     scheduleUrl:
       "https://github.com/Bitshala/BOSS-Summit/blob/main/winter-2025/schedule.png",
   },
@@ -26,6 +28,7 @@ const summits = [
     id: "Summer-2025",
     label: "Summer 2025",
     scheduleImage: "/boss/schedule.png",
+    scheduleSize: [2400, 1707],
     scheduleUrl:
       "https://github.com/Bitshala/BOSS-Summit/blob/main/summer-2025/schedule.png",
   },
@@ -134,6 +137,8 @@ const summits = [
                 decoding="async"
                 src={summit.scheduleImage}
                 alt={`${summit.label} Schedule`}
+                width={summit.scheduleSize?.[0]}
+                height={summit.scheduleSize?.[1]}
                 class="h-auto w-full min-w-[600px] md:min-w-0"
               />
             </div>
