@@ -106,6 +106,7 @@ const desktopPositions = [
             {summit.images.map((image, i) => {
               return (
                 <img
+                  decoding="async"
                   src={image}
                   alt={`${summit.label} gallery`}
                   loading="lazy"
@@ -134,6 +135,7 @@ const desktopPositions = [
           <div class="grid grid-cols-1 gap-4 md:hidden">
             {summit.images.map((image) => (
               <img
+                decoding="async"
                 src={image}
                 alt={`${summit.label} gallery`}
                 loading="lazy"

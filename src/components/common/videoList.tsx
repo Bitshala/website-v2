@@ -18,7 +18,7 @@ export const VideoList = ({
                 href={vid.link}
                 target="_blank"
               >
-                <img className=" mr-5 h-24" src={vid.img} alt={vid.title} />
+                <img loading="lazy" decoding="async" className=" mr-5 h-24" src={vid.img} alt={vid.title} />
                 {vid.title}
               </a>
             ),

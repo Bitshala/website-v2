@@ -60,6 +60,8 @@ const PreviouslyCovered = () => {
               </a>
 
               <img
+                loading="lazy"
+                decoding="async"
                 src={book.url}
                 className="mt-[20px] rounded-2xl "
                 alt=""

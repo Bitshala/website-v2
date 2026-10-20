@@ -68,6 +68,8 @@ const tagColors: Record<string, string> = {
         things.map((thing) => (
           <div class="group relative min-h-[360px] overflow-hidden rounded-3xl border-2 border-[#D8A7C3] transition-all duration-300 hover:border-[#F4F199] hover:shadow-[0_0_20px_rgba(244,241,153,0.15)]">
             <img
+              loading="lazy"
+              decoding="async"
               src={thing.image}
               alt={thing.title}
               class="absolute inset-0 h-full w-full object-cover"

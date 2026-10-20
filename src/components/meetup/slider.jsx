@@ -58,6 +58,8 @@ const Slider = () => {
               <SwiperSlide>
                 <div class="flex flex-col rounded-3xl bg-[#fff] p-3 shadow-xl lg:flex-row lg:p-10">
                   <img
+                    loading="lazy"
+                    decoding="async"
                     src={item.url}
                     class="h-[40vh] rounded-lg py-2 lg:h-[50vh]"
                   />
