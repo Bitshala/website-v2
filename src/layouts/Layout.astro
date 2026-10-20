@@ -34,6 +34,37 @@ const preloadImage =
     />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
+    <!-- The body (Satoshi 400/700) and heading (Apfel Grotezk 600/700) faces
+         every page uses: fetching them with the HTML means text paints in
+         them instead of swapping from the fallback font and shifting. -->
+    <link
+      rel="preload"
+      href="/fonts/Satoshi-Regular.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="/fonts/Satoshi-Bold.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="/fonts/ApfelGrotezk-Mittel.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="/fonts/ApfelGrotezk-Fett.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
     {
       preloadImage && (
         <link
@@ -45,10 +76,6 @@ const preloadImage =
       )
     }
 
-    <!-- Google Fonts - Inter -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 
     <!-- Google tag (gtag.js) -->
     <script
@@ -166,7 +193,9 @@ const preloadImage =
       src:
         url("/fonts/Satoshi-Regular.woff2") format("woff2"),
         url("/fonts/Satoshi-Regular.otf") format("opentype");
-      font-weight: thin;
+      /* The file's OS/2 weight class. "thin" isn't a valid value, so the
+         browser treated this as "normal" (400) anyway. */
+      font-weight: 400;
       font-style: normal;
       font-display: swap;
     }
