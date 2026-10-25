@@ -51,9 +51,9 @@ export const winter2026: BossSchedule = {
     {
       date: "2026-10-26",
       day: 26,
-      title: "Check-in and Community Kickoff",
+      title: "Orientation & Community Kickoff",
       allDay: true,
-      note: "Orientation",
+      note: "Introductions, Games & Bonfire Night",
       sessions: [],
     },
     {
@@ -81,7 +81,7 @@ export const winter2026: BossSchedule = {
           end: "12:00",
           kind: "talk",
           title:
-            "Don’t trust, attest: an architecture Deep Dive into TEEs for remote Multisig and Auditable AI",
+            "Don’t Trust, Attest: An Architecture Deep Dive into TEEs for Remote Multisig and Auditable AI",
           speakers: ["Yshok"],
           about:
             "A practical tour of trusted execution environments (TEEs), the hardware primitives behind secure-enclave cloud signing for multisigs and attested AI inference, from first principles to advanced architecture.",
@@ -90,8 +90,8 @@ export const winter2026: BossSchedule = {
           start: "12:00",
           end: "12:30",
           kind: "talk",
-          title: "Sovereign Engineering Project Showcase",
-          speakers: ["Jo"],
+          title: "Sattle: Splitwise on Bitcoin",
+          speakers: ["Om Swami"],
           about: "",
         },
         {
@@ -115,7 +115,7 @@ export const winter2026: BossSchedule = {
           start: "15:30",
           end: "16:00",
           kind: "talk",
-          title: "What’s new in BDK",
+          title: "What’s New in BDK",
           speakers: ["codingp110"],
           about:
             "The changes coming in BDK 4.0. For BDK users, a guide to the next major release; for everyone else, an introduction to some of the nuances of Bitcoin wallet design.",
@@ -133,7 +133,7 @@ export const winter2026: BossSchedule = {
           start: "16:30",
           end: "17:00",
           kind: "talk",
-          title: "OpenSwap: Intro + quick Demo",
+          title: "OpenSwap: Intro + Quick Demo",
           speakers: ["Stark"],
           about: "",
         },
@@ -158,20 +158,26 @@ export const winter2026: BossSchedule = {
         },
         {
           start: "10:30",
+          end: "11:00",
+          kind: "talk",
+          title: "Sovereign Engineering Project Showcase",
+          speakers: ["Jo"],
+          about: "",
+        },
+        {
+          start: "11:00",
           end: "11:30",
-          kind: "workshop",
-          title:
-            "Post-Quantum Signatures in Practice: Hash, Lattice, and Isogeny Schemes",
-          speakers: ["Jamal"],
-          about:
-            "A 10-minute overview of hash-based, lattice and isogeny-based signature schemes. Participants then sign the same message with one algorithm from each family by completing prepared starter code, and finish by benchmarking the three on signature size, public-key size and verification time (benchmark code provided).",
+          kind: "talk",
+          title: "Bitcoin for Payments: The Journey at BULL",
+          speakers: ["Ishi"],
+          about: "",
         },
         {
           start: "11:30",
           end: "12:00",
           kind: "talk",
           title:
-            "Challenges building Epoch Shield - Cryptography meets Chaos",
+            "Challenges Building Epoch Shield: Cryptography Meets Chaos",
           speakers: ["Sameer P"],
           about:
             "The challenges of implementing MLS group encryption on Nostr’s unordered relay mesh, where cryptographic assumptions about ordering, reliable delivery and shared state collide with permissionless networks, and what we learned bridging the two.",
@@ -188,7 +194,7 @@ export const winter2026: BossSchedule = {
           start: "12:30",
           end: "13:00",
           kind: "talk",
-          title: "Self-custody UX trade-offs",
+          title: "Self-Custody UX Trade-offs",
           speakers: ["Veronika"],
           about:
             "What breaks when a non-technical user tries to run their own self-custodial Lightning wallet.",
@@ -198,7 +204,7 @@ export const winter2026: BossSchedule = {
           end: "15:30",
           kind: "workshop",
           title: "Self-Custody Models and Penlock Workshop",
-          speakers: ["Rama Gan"],
+          speakers: ["Paperpsych"],
           about:
             "Seed generation, splitting and recovery with Penlock, followed by Q&A.",
         },
@@ -206,7 +212,7 @@ export const winter2026: BossSchedule = {
           start: "15:30",
           end: "16:00",
           kind: "talk",
-          title: "Krux showcase",
+          title: "Krux Showcase",
           speakers: ["qlrd"],
           about:
             "An integration-test framework for Krux and for hardware wallets in general.",
@@ -216,7 +222,7 @@ export const winter2026: BossSchedule = {
           end: "16:30",
           kind: "talk",
           title:
-            "Exploring Zero Knowledge Proofs for Bitcoin",
+            "Exploring Zero-Knowledge Proofs for Bitcoin",
           speakers: ["sha512rma"],
           about:
             "How BitVM enables optimistic off-chain verification of STARK/SNARK proofs, contrasting Ethereum’s on-chain KZG polynomial verification with Bitcoin’s trustless, off-chain client-side validation models.",
@@ -243,7 +249,7 @@ export const winter2026: BossSchedule = {
           start: "10:00",
           end: "10:30",
           kind: "talk",
-          title: "UI/UX Walkthrough of coconut wallet",
+          title: "UI/UX Walkthrough of Coconut Wallet",
           speakers: ["Louis"],
           about:
             "The UI/UX design elements behind Coconut Wallet.",
@@ -261,7 +267,7 @@ export const winter2026: BossSchedule = {
           start: "11:30",
           end: "12:00",
           kind: "talk",
-          title: "Smite: Lightning Fuzzing Engine",
+          title: "Fuzzing the Lightning Network with Smite",
           speakers: ["Nishant Bansal"],
           about: "",
         },
@@ -280,7 +286,7 @@ export const winter2026: BossSchedule = {
           kind: "talk",
           title:
             "Nostr Wallet Connect: How It Works and Its Integration into Zeus",
-          speakers: ["Ajay"],
+          speakers: ["Ajay Shewal"],
           about: "",
         },
         {
