@@ -259,7 +259,7 @@ export const winter2026: BossSchedule = {
           end: "11:30",
           kind: "workshop",
           title: "Creating a Cashu Wallet with CDK",
-          speakers: ["Luiz Medina"],
+          speakers: ["TheMhv"],
           about:
             "How to use the CDK library to build a Cashu wallet.",
         },
