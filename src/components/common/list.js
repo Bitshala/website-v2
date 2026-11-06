@@ -204,6 +204,14 @@ export const team = [
     twitter: "https://twitter.com/_paperpsych",
     github: "https://github.com/paperpsych",
   },
+  {
+    name: "Satori",
+    designation: "Social Media & Marketing",
+    image: "satori",
+    bgColor: "bg-black",
+    textColor: "text-white",
+    headingColor: "text-orange",
+  },
   // {
   //   name: "Keraliss",
   //   desc: "Contemplating by a river in his humble hut with his laptop, he codes. He says thats all he needs.",
