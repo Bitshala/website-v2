@@ -1,9 +1,19 @@
 {
-  "updatedAt": "2026-11-19T20:26:22.553Z",
+  "updatedAt": "2026-11-20T06:56:46.048Z",
   "username": "bitshala_org",
   "userId": "1605182892161699840",
-  "sinceId": "2123424638864859611",
+  "sinceId": "2123653824669794551",
   "items": [
+    {
+      "id": "2123632214948856135",
+      "date": "2026-11-20T04:19:09.000Z",
+      "postUrl": "https://x.com/bitshala_org/status/2123632214948856135",
+      "type": "article",
+      "title": "BOSS Summit Winter 2026: A Week at the Frontier of Bitcoin Open-Source Development",
+      "text": "Jaipur, India | October 26–31, 2026 The BOSS Summit Winter 2026 brought together some of India's most dedicated Bitcoin open-source contributors for six days of technical deep dives, hands-on",
+      "thumbnail": "https://pbs.twimg.com/media/HXWE0LVa8AAfh4E.jpg",
+      "articleUrl": "https://x.com/bitshala_org/status/2123632214948856135"
+    },
     {
       "id": "2109860263646359984",
       "date": "2026-10-13T04:14:20.000Z",
